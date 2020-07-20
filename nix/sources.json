@@ -35,18 +35,6 @@
         "url": "https://github.com/rycee/home-manager/archive/5c639ff68abf0f16f2e63fb3f8aca016d54c7d10.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "impermanence": {
-        "branch": "master",
-        "description": "Modules to help you handle persistent state on systems with ephemeral root storage [maintainer=@talyz]",
-        "homepage": "",
-        "owner": "nix-community",
-        "repo": "impermanence",
-        "rev": "a45918b80cf845b18cdfc1a1ac0807652a137f55",
-        "sha256": "1s1s5qga21zj5mbf9n3d49kzd9cb6jmj8pssqqj4x3c1bbm2hics",
-        "type": "tarball",
-        "url": "https://github.com/nix-community/impermanence/archive/a45918b80cf845b18cdfc1a1ac0807652a137f55.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "niv": {
         "branch": "master",
         "description": "Easy dependency management for Nix projects",
