@@ -42,11 +42,13 @@ in
       "https://nix-community.cachix.org"
       "https://nix-matrix-yggdrasil.cachix.org"
       "https://eigenvalue.cachix.org" # for crate2nix
+      "https://bbigras-nix-config.cachix.org"
     ];
     binaryCachePublicKeys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "nix-matrix-yggdrasil.cachix.org-1:zxDWWJFEiOxpvKHP8qoi2HS4CtHxUPPQtoWz9D66m9g="
       "eigenvalue.cachix.org-1:ykerQDDa55PGxU25CETy9wF6uVDpadGGXYrFNJA3TUs="
+      "bbigras-nix-config.cachix.org-1:aXL6Q9Oi0jyF79YAKRu17iVNk9HY0p23OZX7FA8ulhU="
     ];
     nixPath = [
       "nixos-config=${dummyConfig}"
