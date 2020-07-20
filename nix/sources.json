@@ -1,0 +1,122 @@
+{
+    "NUR": {
+        "branch": "master",
+        "description": "Nix User Repository: User contributed nix packages [maintainer=@Mic92]",
+        "homepage": "",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "2034f3715216af2bafe83ce535b4fe80f6745bb0",
+        "sha256": "05793746ls491mff9ziryhnryx4nmhpnhs272glzxh6q2cm1l7vs",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/NUR/archive/2034f3715216af2bafe83ce535b4fe80f6745bb0.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "emacs-overlay": {
+        "branch": "master",
+        "description": "Bleeding edge emacs overlay [maintainer=@adisbladis] ",
+        "homepage": "",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "23e5cd2b7e9558d472672f48bd1de239a4b9031e",
+        "sha256": "0m77flr1yb7ybhjcl9chf1irgvzqf8fnfyvilbdi944d7b459il5",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/23e5cd2b7e9558d472672f48bd1de239a4b9031e.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "home-manager": {
+        "branch": "master",
+        "description": "Manage a user environment using Nix",
+        "homepage": "https://rycee.gitlab.io/home-manager/",
+        "owner": "rycee",
+        "repo": "home-manager",
+        "rev": "5c639ff68abf0f16f2e63fb3f8aca016d54c7d10",
+        "sha256": "1p4sxg6v59cl723x97dfq474hj855x5i8ifk4r43hh4fn9dl6vms",
+        "type": "tarball",
+        "url": "https://github.com/rycee/home-manager/archive/5c639ff68abf0f16f2e63fb3f8aca016d54c7d10.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "impermanence": {
+        "branch": "master",
+        "description": "Modules to help you handle persistent state on systems with ephemeral root storage [maintainer=@talyz]",
+        "homepage": "",
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "rev": "a45918b80cf845b18cdfc1a1ac0807652a137f55",
+        "sha256": "1s1s5qga21zj5mbf9n3d49kzd9cb6jmj8pssqqj4x3c1bbm2hics",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/impermanence/archive/a45918b80cf845b18cdfc1a1ac0807652a137f55.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "niv": {
+        "branch": "master",
+        "description": "Easy dependency management for Nix projects",
+        "homepage": "https://github.com/nmattia/niv",
+        "owner": "nmattia",
+        "repo": "niv",
+        "rev": "febd3530f0c2f2fb74752ee4d9dd2518d302f618",
+        "sha256": "1gifi50k4h6wk9ix0yvp66p7jk8rrqgr39r5rf4lyha6pbs7dbk6",
+        "type": "tarball",
+        "url": "https://github.com/nmattia/niv/archive/febd3530f0c2f2fb74752ee4d9dd2518d302f618.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nix-matrix-yggdrasil": {
+        "branch": "master",
+        "description": null,
+        "homepage": null,
+        "owner": "bbigras",
+        "repo": "nix-matrix-yggdrasil",
+        "rev": "078e604315df6fa39488c797ab76399e6b82fbc3",
+        "sha256": "1a8flz1k3im7kzc6k2rk3lfzpwc6cqym7lc01iid46vy1zb5p184",
+        "type": "tarball",
+        "url": "https://github.com/bbigras/nix-matrix-yggdrasil/archive/078e604315df6fa39488c797ab76399e6b82fbc3.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixos-hardware": {
+        "branch": "master",
+        "description": "A collection of NixOS modules covering hardware quirks.",
+        "homepage": "",
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "rev": "cc353d439e3135dbe3f5473d897d2c35537f260c",
+        "sha256": "1vwjdbl7x5nx3i6x4xqqsbfwm5kby4qskr1yrx5sv849560ag4dm",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixos-hardware/archive/cc353d439e3135dbe3f5473d897d2c35537f260c.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs": {
+        "branch": "nixos-unstable",
+        "description": "A read-only mirror of NixOS/nixpkgs tracking the released channels. Send issues and PRs to",
+        "homepage": "https://github.com/NixOS/nixpkgs",
+        "owner": "NixOS",
+        "repo": "nixpkgs-channels",
+        "rev": "c71518e75bf067fb639d44264fdd8cf80f53d75a",
+        "sha256": "0hwa79prsqgvfwd3ah54nl0wh73q215z7np4k6y0pd6zr3m17vxs",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs-channels/archive/c71518e75bf067fb639d44264fdd8cf80f53d75a.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs-mozilla": {
+        "branch": "master",
+        "description": "mozilla related nixpkgs (extends nixos/nixpkgs repo)",
+        "homepage": null,
+        "owner": "mozilla",
+        "repo": "nixpkgs-mozilla",
+        "rev": "efda5b357451dbb0431f983cca679ae3cd9b9829",
+        "sha256": "11wqrg86g3qva67vnk81ynvqyfj0zxk83cbrf0p9hsvxiwxs8469",
+        "type": "tarball",
+        "url": "https://github.com/mozilla/nixpkgs-mozilla/archive/efda5b357451dbb0431f983cca679ae3cd9b9829.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixus": {
+        "branch": "master",
+        "description": null,
+        "homepage": "",
+        "owner": "Infinisil",
+        "repo": "nixus",
+        "rev": "0a5c95553dc0f19f5daa9cebc016f4e3235992d7",
+        "sha256": "1liqpab0dx71y8rx5j4pqi8a3fy464ms800nkbpmim2f6kz02z8c",
+        "type": "tarball",
+        "url": "https://github.com/Infinisil/nixus/archive/0a5c95553dc0f19f5daa9cebc016f4e3235992d7.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}

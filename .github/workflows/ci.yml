@@ -1,0 +1,37 @@
+{
+  "name": "CI",
+  "on": [
+    "pull_request",
+    "push"
+  ],
+  "jobs": {
+    "build": {
+      "runs-on": "ubuntu-latest",
+      "steps": [
+        {
+          "name": "Checkout",
+          "uses": "actions/checkout@v2"
+        },
+        {
+          "name": "Nix",
+          "uses": "cachix/install-nix-action@v10",
+          "with": {
+            "skip_adding_nixpkgs_channel": true
+          }
+        },
+        {
+          "name": "Cachix",
+          "uses": "cachix/cachix-action@v6",
+          "with": {
+            "name": "bbigras-nix-config",
+            "signingKey": "'${{ secrets.CACHIX_SIGNING_KEY }}'"
+          }
+        },
+        {
+          "name": "Build",
+          "run": "nix-build"
+        }
+      ]
+    }
+  }
+}
