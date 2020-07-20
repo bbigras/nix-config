@@ -6,7 +6,7 @@ in
 {
   imports = [
     ./git.nix
-    ./email.nix
+    # ./email.nix
   ];
 
   programs.aria2.enable = true;
