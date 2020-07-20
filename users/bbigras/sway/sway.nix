@@ -130,7 +130,7 @@
         # };
       };
 
-      startup = [];
+      startup = [ ];
 
       terminal = "${pkgs.alacritty}/bin/alacritty";
 
