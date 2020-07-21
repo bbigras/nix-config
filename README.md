@@ -1,4 +1,4 @@
-![CI](https://github.com/bbigras/nix-config/workflows/CI/badge.svg)
+# nix-config ![CI](https://github.com/bbigras/nix-config/workflows/CI/badge.svg)
 
 WIP
 
