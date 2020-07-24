@@ -24,7 +24,7 @@
     ];
 
   hardware.brillo.enable = true;
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernel.sysctl = {
     "kernel.sysrq" = 1;
     # "fs.inotify.max_user_watches" = 524288;
