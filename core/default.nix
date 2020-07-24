@@ -15,8 +15,7 @@ in
     ./steam.nix
     ./sudo.nix
     ./tailscale.nix
-    ../secrets
-  ];
+  ] ++ (if builtins.pathExists ../secrets then [ ../secrets ] else []) ;
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.extraModulePackages = [ config.boot.kernelPackages.exfat-nofuse ];
