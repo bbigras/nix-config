@@ -15,6 +15,7 @@ in
     ./steam.nix
     ./sudo.nix
     ./tailscale.nix
+    ../secrets
   ];
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
