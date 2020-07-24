@@ -138,6 +138,8 @@ in
       # dejavu_fonts
       font-awesome
 
+      restic
+
       # exa gist gopass  weechat
     ];
   };
