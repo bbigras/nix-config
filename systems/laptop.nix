@@ -154,6 +154,9 @@
   # DISK_APM_LEVEL_ON_BAT="128 127"
 
   home-manager.verbose = true;
+  environment.etc."restic-pw-id".text = ''
+    BW_ID=873078f3-3587-40ed-8ecc-aba30019a273
+  '';
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

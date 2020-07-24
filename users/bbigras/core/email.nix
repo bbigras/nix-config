@@ -1,6 +1,10 @@
 { pkgs, ... }: {
   accounts.email.accounts.bbigras = {
     primary = true;
+    flavor = "gmail.com";
+    realName = "Bruno Bigras";
+    address = "bigras.bruno@gmail.com";
+    userName = "bigras.bruno@gmail.com";
     notmuch.enable = true;
 
     lieer.enable = true;

@@ -2,6 +2,8 @@
   programs.git = {
     enable = true;
     package = pkgs.gitAndTools.gitFull;
+    userName = "Bruno Bigras";
+    userEmail = "bigras.bruno@gmail.com";
 
     ignores = [ "*~" "*.swp" ];
 

@@ -6,7 +6,7 @@ in
 {
   imports = [
     ./git.nix
-    # ./email.nix
+    ./email.nix
   ];
 
   programs.aria2.enable = true;
@@ -21,6 +21,7 @@ in
   programs.vscode.enable = true;
   programs.zoxide.enable = true;
   services.lorri.enable = true;
+  services.spotifyd.enable = true;
 
   programs.alacritty = {
     enable = true;
@@ -194,7 +195,7 @@ in
     # GS_OPTIONS = "-sPAPERSIZE=letter";
     # ASPELL_CONF = "data-dir /home/bbigras/.nix-profile/lib/aspell";
     # RUSTC_WRAPPER = "${pkgs.sccache}/bin/sccache";
-    GOPATH = "~/go";
+    GOPATH = "$HOME/go";
   };
 
   home.language.base = "fr_CA.UTF-8";
