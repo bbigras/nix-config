@@ -61,8 +61,8 @@ in
   nixpkgs = {
     config.allowUnfree = true;
     overlays = [
-      (import (import ../nix).moz_overlay)
-      (import (import ../nix).emacs_overlay)
+      (import (import ../nix).nixpkgs-mozilla)
+      (import (import ../nix).emacs-overlay)
       (import ../overlays/ffmpeg.nix)
       (import ../overlays/mkSecret.nix)
     ];
