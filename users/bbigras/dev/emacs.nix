@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 let
-  # nurNoPkgs = import <nur> { pkgs = null; };
-  nurNoPkgs = (import (import ../../../nix).NUR) { };
+  nurpkgs = (import (import ../../../nix).nixpkgs { });
+  nurNoPkgs = (import (import ../../../nix).NUR) { inherit pkgs nurpkgs; };
 
   explain-pause-mode = epkgs: epkgs.trivialBuild {
     pname = "explain-pause-mode";
