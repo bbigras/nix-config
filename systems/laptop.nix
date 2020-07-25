@@ -31,9 +31,6 @@
     # "vm.swappiness" = 1;
   };
 
-  hardware.enableAllFirmware = true;
-  # hardware.enableRedistributableFirmware = true;
-
   networking = {
     dhcpcd.enable = false;
     hostName = "laptop"; # Define your hostname.
