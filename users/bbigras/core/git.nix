@@ -21,24 +21,6 @@
       core = {
         excludesfile = "~/.gitignore";
       };
-
-      color.ui = true;
-
-      color."diff-highlight" = {
-        newHighlight = "green bold 22";
-        newNormal = "green bold";
-        oldHighlight = "red bold 52";
-        oldNormal = "red bold";
-      };
-
-      color."diff" = {
-        commit = "yellow bold";
-        frag = "magenta bold";
-        meta = "yellow";
-        new = "green bold";
-        old = "red bold";
-        whitespace = "red reverse";
-      };
     };
   };
 }
