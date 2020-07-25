@@ -35,18 +35,6 @@
         "url": "https://github.com/rycee/home-manager/archive/3f1be6935903c61065f7036f312f574585c9cfe8.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "niv": {
-        "branch": "master",
-        "description": "Easy dependency management for Nix projects",
-        "homepage": "https://github.com/nmattia/niv",
-        "owner": "nmattia",
-        "repo": "niv",
-        "rev": "ab9cc41caf44d1f1d465d8028e4bc0096fd73238",
-        "sha256": "17k52n8zwp832cqifsc4458mhy4044wmk22f807171hf6p7l4xvr",
-        "type": "tarball",
-        "url": "https://github.com/nmattia/niv/archive/ab9cc41caf44d1f1d465d8028e4bc0096fd73238.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "nix-matrix-yggdrasil": {
         "branch": "master",
         "description": null,
