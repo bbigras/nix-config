@@ -7,7 +7,6 @@
 {
   imports =
     [
-      # (import ../nix).impermanence-sys
       ../core
 
       # Include the results of the hardware scan.

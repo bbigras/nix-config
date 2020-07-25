@@ -7,8 +7,6 @@
 {
   imports =
     [
-      # (import ../nix).impermanence-sys
-
       ../core
       # ../dev
 
