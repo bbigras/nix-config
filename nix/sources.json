@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "865555cd9480aad25eea3edfd3128a531aa893de",
-        "sha256": "06bxc1pjqyj5kvd6ai3365kvv5jhfzqr3i45panb095dibv8yz9k",
+        "rev": "cafe816fc93acd5953548085fff988f45671a72c",
+        "sha256": "0iax6bnl1jv137ysm9nhx57iff2ysyyyxxfs3wyb9n7ny6vcgdni",
         "type": "tarball",
-        "url": "https://github.com/nix-community/NUR/archive/865555cd9480aad25eea3edfd3128a531aa893de.tar.gz",
+        "url": "https://github.com/nix-community/NUR/archive/cafe816fc93acd5953548085fff988f45671a72c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "emacs-overlay": {
@@ -17,10 +17,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "8f3874b039be6d37ca652db02ca71cab980f8882",
-        "sha256": "1fxwh5mavsi16zxfqyab91ir9lbj3sx7q3gzakdjhvj2n30v4xz2",
+        "rev": "e3965068c18690eecee8287f138a22843f90277a",
+        "sha256": "13rr3vpy9inyvs19q8y3ddsvhb943kfyzvfnprdc0kdvcg3yks7f",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/8f3874b039be6d37ca652db02ca71cab980f8882.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/e3965068c18690eecee8287f138a22843f90277a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
@@ -29,10 +29,10 @@
         "homepage": "https://rycee.gitlab.io/home-manager/",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "3f1be6935903c61065f7036f312f574585c9cfe8",
-        "sha256": "0mx38bxnhg1k55rnyidrzngds0wgvxq05qdh3v2basrwdfa153db",
+        "rev": "7b73f840712de88093f6c056e3c658e114ca0b3c",
+        "sha256": "1f4q0sapfm77gzph00rzcppv9kpnwhb856n9n27ff14f6ri59ci3",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/3f1be6935903c61065f7036f312f574585c9cfe8.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/7b73f840712de88093f6c056e3c658e114ca0b3c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nix-matrix-yggdrasil": {
