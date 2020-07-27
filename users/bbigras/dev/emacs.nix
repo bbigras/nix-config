@@ -850,14 +850,6 @@ in
         '';
       };
 
-      macro-math = {
-        enable = true;
-        bindKeyMap = {
-          "C-x ~" = "macro-math-eval-and-round-region";
-          "C-x =" = "macro-math-eval-region";
-        };
-      };
-
       literate-calc-mode = {
         enable = true;
       };
