@@ -34,7 +34,7 @@
         },
         {
           "name": "Build",
-          "run": "nix-build"
+          "run": "nix run -f . nix-build-uncached -c nix-build-uncached"
         }
       ]
     }
