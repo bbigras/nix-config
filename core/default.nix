@@ -101,5 +101,10 @@ in
     stateVersion = "20.09";
   };
 
+  fonts.fonts = with pkgs; [
+    fira-code
+    fira-code-symbols
+  ];
+
   time.timeZone = "America/Montreal";
 }
