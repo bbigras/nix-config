@@ -141,6 +141,9 @@ in
       restic
 
       # exa gist gopass  weechat
+
+      # utils
+      file
     ];
   };
 
