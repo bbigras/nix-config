@@ -53,199 +53,199 @@ in
     recommendedGcSettings = true;
 
     prelude = ''
-          (setq custom-file (expand-file-name (concat "custom-" (system-name) ".el") "~/Dropbox/emacs"))
-          (load custom-file)
+                (setq custom-file (expand-file-name (concat "custom-" (system-name) ".el") "~/Dropbox/emacs"))
+                (load custom-file)
 
-          (setq auth-sources '((:source "~/.authinfo.gpg")))
-          (setq max-lisp-eval-depth 10000)
-          (setq max-specpdl-size 13000)
-          (delete-selection-mode 1)
-          (setq org-directory "~/Dropbox/org-mode")
+                (setq auth-sources '((:source "~/.authinfo.gpg")))
+                (setq max-lisp-eval-depth 10000)
+                (setq max-specpdl-size 13000)
+                (delete-selection-mode 1)
+                (setq org-directory "~/Dropbox/org-mode")
 
-                ;; Disable startup message.
-                (setq inhibit-startup-message t
-                      inhibit-startup-echo-area-message (user-login-name))
+                      ;; Disable startup message.
+                      (setq inhibit-startup-message t
+                            inhibit-startup-echo-area-message (user-login-name))
 
-                (setq initial-major-mode 'fundamental-mode
-                      initial-scratch-message nil)
+                      (setq initial-major-mode 'fundamental-mode
+                            initial-scratch-message nil)
 
-                ;; Disable some GUI distractions.
-                (tool-bar-mode -1)
-                (scroll-bar-mode -1)
-                (menu-bar-mode -1)
-                (blink-cursor-mode 0)
+                      ;; Disable some GUI distractions.
+                      (tool-bar-mode -1)
+                      (scroll-bar-mode -1)
+                      (menu-bar-mode -1)
+                      (blink-cursor-mode 0)
 
-                ;; Set up fonts early.
-                (set-face-attribute 'default
-                                    nil
-                                    :height 140
-                                    :family "Fira Code")
-                (set-face-attribute 'variable-pitch
-                                    nil
-                                    :family "DejaVu Sans")
+                      ;; Set up fonts early.
+                      (set-face-attribute 'default
+                                          nil
+                                          :height 140
+                                          :family "Fira Code")
+                      (set-face-attribute 'variable-pitch
+                                          nil
+                                          :family "DejaVu Sans")
 
-                ;; Set frame title.
-                (setq frame-title-format
-                      '("" invocation-name ": "(:eval
-                                                (if (buffer-file-name)
-                                                    (abbreviate-file-name (buffer-file-name))
-                                                  "%b"))))
+                      ;; Set frame title.
+                      (setq frame-title-format
+                            '("" invocation-name ": "(:eval
+                                                      (if (buffer-file-name)
+                                                          (abbreviate-file-name (buffer-file-name))
+                                                        "%b"))))
 
-                ;; Accept 'y' and 'n' rather than 'yes' and 'no'.
-                (defalias 'yes-or-no-p 'y-or-n-p)
+                      ;; Accept 'y' and 'n' rather than 'yes' and 'no'.
+                      (defalias 'yes-or-no-p 'y-or-n-p)
 
-                ;; Don't want to move based on visual line.
-                (setq line-move-visual nil)
+                      ;; Don't want to move based on visual line.
+                      (setq line-move-visual nil)
 
-                ;; Stop creating backup and autosave files.
-                (setq make-backup-files nil
-                      auto-save-default nil)
+                      ;; Stop creating backup and autosave files.
+                      (setq make-backup-files nil
+                            auto-save-default nil)
 
-                ;; Always show line and column number in the mode line.
-                (line-number-mode)
-                (column-number-mode)
+                      ;; Always show line and column number in the mode line.
+                      (line-number-mode)
+                      (column-number-mode)
 
-                ;; Enable some features that are disabled by default.
-                (put 'narrow-to-region 'disabled nil)
+                      ;; Enable some features that are disabled by default.
+                      (put 'narrow-to-region 'disabled nil)
 
-                ;; Typically, I only want spaces when pressing the TAB key. I also
-                ;; want 4 of them.
-                (setq-default indent-tabs-mode nil
-                              tab-width 4
-                              c-basic-offset 4)
+                      ;; Typically, I only want spaces when pressing the TAB key. I also
+                      ;; want 4 of them.
+                      (setq-default indent-tabs-mode nil
+                                    tab-width 4
+                                    c-basic-offset 4)
 
-                ;; Trailing white space are banned!
-                (setq-default show-trailing-whitespace t)
+                      ;; Trailing white space are banned!
+                      (setq-default show-trailing-whitespace t)
 
-                ;; Make a reasonable attempt at using one space sentence separation.
-                (setq sentence-end "[.?!][]\"')}]*\\($\\|[ \t]\\)[ \t\n]*"
-                      sentence-end-double-space nil)
+                      ;; Make a reasonable attempt at using one space sentence separation.
+                      (setq sentence-end "[.?!][]\"')}]*\\($\\|[ \t]\\)[ \t\n]*"
+                            sentence-end-double-space nil)
 
-                ;; I typically want to use UTF-8.
-                (prefer-coding-system 'utf-8)
+                      ;; I typically want to use UTF-8.
+                      (prefer-coding-system 'utf-8)
 
-                ;; Nicer handling of regions.
-                (transient-mark-mode 1)
+                      ;; Nicer handling of regions.
+                      (transient-mark-mode 1)
 
-                ;; Make moving cursor past bottom only scroll a single line rather
-                ;; than half a page.
-                (setq scroll-step 1
-                      scroll-conservatively 5)
+                      ;; Make moving cursor past bottom only scroll a single line rather
+                      ;; than half a page.
+                      (setq scroll-step 1
+                            scroll-conservatively 5)
 
-                ;; Enable highlighting of current line.
-                (global-hl-line-mode 1)
+                      ;; Enable highlighting of current line.
+                      (global-hl-line-mode 1)
 
-                ;; Improved handling of clipboard in GNU/Linux and otherwise.
-                (setq select-enable-clipboard t
-                      select-enable-primary t
-                      save-interprogram-paste-before-kill t)
+                      ;; Improved handling of clipboard in GNU/Linux and otherwise.
+                      (setq select-enable-clipboard t
+                            select-enable-primary t
+                            save-interprogram-paste-before-kill t)
 
-                ;; Pasting with middle click should insert at point, not where the
-                ;; click happened.
-                (setq mouse-yank-at-point t)
+                      ;; Pasting with middle click should insert at point, not where the
+                      ;; click happened.
+                      (setq mouse-yank-at-point t)
 
-                ;; Enable a few useful commands that are initially disabled.
-                (put 'upcase-region 'disabled nil)
-                (put 'downcase-region 'disabled nil)
+                      ;; Enable a few useful commands that are initially disabled.
+                      (put 'upcase-region 'disabled nil)
+                      (put 'downcase-region 'disabled nil)
 
-          ;;      (setq custom-file (locate-user-emacs-file "custom.el"))
-          ;;      (load custom-file)
+                ;;      (setq custom-file (locate-user-emacs-file "custom.el"))
+                ;;      (load custom-file)
 
-                ;; When finding file in non-existing directory, offer to create the
-                ;; parent directory.
-                (defun with-buffer-name-prompt-and-make-subdirs ()
-                  (let ((parent-directory (file-name-directory buffer-file-name)))
-                    (when (and (not (file-exists-p parent-directory))
-                               (y-or-n-p (format "Directory `%s' does not exist! Create it? " parent-directory)))
-                      (make-directory parent-directory t))))
+                      ;; When finding file in non-existing directory, offer to create the
+                      ;; parent directory.
+                      (defun with-buffer-name-prompt-and-make-subdirs ()
+                        (let ((parent-directory (file-name-directory buffer-file-name)))
+                          (when (and (not (file-exists-p parent-directory))
+                                     (y-or-n-p (format "Directory `%s' does not exist! Create it? " parent-directory)))
+                            (make-directory parent-directory t))))
 
-                (add-to-list 'find-file-not-found-functions #'with-buffer-name-prompt-and-make-subdirs)
+                      (add-to-list 'find-file-not-found-functions #'with-buffer-name-prompt-and-make-subdirs)
 
-                ;; Don't want to complete .hi files.
-                (add-to-list 'completion-ignored-extensions ".hi")
+                      ;; Don't want to complete .hi files.
+                      (add-to-list 'completion-ignored-extensions ".hi")
 
-                ;; Shouldn't highlight trailing spaces in terminal mode.
-                (add-hook 'term-mode (lambda () (setq show-trailing-whitespace nil)))
-                (add-hook 'term-mode-hook (lambda () (setq show-trailing-whitespace nil)))
+                      ;; Shouldn't highlight trailing spaces in terminal mode.
+                      (add-hook 'term-mode (lambda () (setq show-trailing-whitespace nil)))
+                      (add-hook 'term-mode-hook (lambda () (setq show-trailing-whitespace nil)))
 
-                ;; https://github.com/emacs-lsp/lsp-mode#performance
-                (setq read-process-output-max (* 1024 1024)) ;; 1mb
-                (setq lsp-prefer-capf t)
+                      ;; https://github.com/emacs-lsp/lsp-mode#performance
+                      (setq read-process-output-max (* 1024 1024)) ;; 1mb
+                      (setq lsp-prefer-capf t)
 
-          (defun indent-between-pair (&rest _ignored)
-            (newline)
-            (indent-according-to-mode)
-            (forward-line -1)
-            (indent-according-to-mode))
+                (defun indent-between-pair (&rest _ignored)
+                  (newline)
+                  (indent-according-to-mode)
+                  (forward-line -1)
+                  (indent-according-to-mode))
 
-          (defun add-newline-at-end-if-none ()
-      "Add a newline at the end of the buffer if there isn't any."
-      (save-excursion
-        (save-restriction
-          (goto-char (1- (point-max)))
-          (if (not (looking-at "\n"))
-          (progn
-            (goto-char (point-max))
-            (insert "\n"))))))
+                (defun add-newline-at-end-if-none ()
+            "Add a newline at the end of the buffer if there isn't any."
+            (save-excursion
+              (save-restriction
+                (goto-char (1- (point-max)))
+                (if (not (looking-at "\n"))
+                (progn
+                  (goto-char (point-max))
+                  (insert "\n"))))))
 
-(defun fira-code-mode--make-alist (list)
-  "Generate prettify-symbols alist from LIST."
-  (let ((idx -1))
-    (mapcar
-     (lambda (s)
-       (setq idx (1+ idx))
-       (let* ((code (+ #Xe100 idx))
-          (width (string-width s))
-          (prefix ())
-          (suffix '(?\s (Br . Br)))
-          (n 1))
-     (while (< n width)
-       (setq prefix (append prefix '(?\s (Br . Bl))))
-       (setq n (1+ n)))
-     (cons s (append prefix suffix (list (decode-char 'ucs code))))))
-     list)))
+      (defun fira-code-mode--make-alist (list)
+        "Generate prettify-symbols alist from LIST."
+        (let ((idx -1))
+          (mapcar
+           (lambda (s)
+             (setq idx (1+ idx))
+             (let* ((code (+ #Xe100 idx))
+                (width (string-width s))
+                (prefix ())
+                (suffix '(?\s (Br . Br)))
+                (n 1))
+           (while (< n width)
+             (setq prefix (append prefix '(?\s (Br . Bl))))
+             (setq n (1+ n)))
+           (cons s (append prefix suffix (list (decode-char 'ucs code))))))
+           list)))
 
-(defconst fira-code-mode--ligatures
-  '("www" "**" "***" "**/" "*>" "*/" "\\\\" "\\\\\\"
-    "{-" "[]" "::" ":::" ":=" "!!" "!=" "!==" "-}"
-    "--" "---" "-->" "->" "->>" "-<" "-<<" "-~"
-    "#{" "#[" "##" "###" "####" "#(" "#?" "#_" "#_("
-    ".-" ".=" ".." "..<" "..." "?=" "??" ";;" "/*"
-    "/**" "/=" "/==" "/>" "//" "///" "&&" "||" "||="
-    "|=" "|>" "^=" "$>" "++" "+++" "+>" "=:=" "=="
-    "===" "==>" "=>" "=>>" "<=" "=<<" "=/=" ">-" ">="
-    ">=>" ">>" ">>-" ">>=" ">>>" "<*" "<*>" "<|" "<|>"
-    "<$" "<$>" "<!--" "<-" "<--" "<->" "<+" "<+>" "<="
-    "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<" "<~"
-    "<~~" "</" "</>" "~@" "~-" "~=" "~>" "~~" "~~>" "%%"
-    "x" ":" "+" "+" "*"))
+      (defconst fira-code-mode--ligatures
+        '("www" "**" "***" "**/" "*>" "*/" "\\\\" "\\\\\\"
+          "{-" "[]" "::" ":::" ":=" "!!" "!=" "!==" "-}"
+          "--" "---" "-->" "->" "->>" "-<" "-<<" "-~"
+          "#{" "#[" "##" "###" "####" "#(" "#?" "#_" "#_("
+          ".-" ".=" ".." "..<" "..." "?=" "??" ";;" "/*"
+          "/**" "/=" "/==" "/>" "//" "///" "&&" "||" "||="
+          "|=" "|>" "^=" "$>" "++" "+++" "+>" "=:=" "=="
+          "===" "==>" "=>" "=>>" "<=" "=<<" "=/=" ">-" ">="
+          ">=>" ">>" ">>-" ">>=" ">>>" "<*" "<*>" "<|" "<|>"
+          "<$" "<$>" "<!--" "<-" "<--" "<->" "<+" "<+>" "<="
+          "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<" "<~"
+          "<~~" "</" "</>" "~@" "~-" "~=" "~>" "~~" "~~>" "%%"
+          "x" ":" "+" "+" "*"))
 
-(defvar fira-code-mode--old-prettify-alist)
+      (defvar fira-code-mode--old-prettify-alist)
 
-(defun fira-code-mode--enable ()
-  "Enable Fira Code ligatures in current buffer."
-  (setq-local fira-code-mode--old-prettify-alist prettify-symbols-alist)
-  (setq-local prettify-symbols-alist (append (fira-code-mode--make-alist fira-code-mode--ligatures) fira-code-mode--old-prettify-alist))
-  (prettify-symbols-mode t))
+      (defun fira-code-mode--enable ()
+        "Enable Fira Code ligatures in current buffer."
+        (setq-local fira-code-mode--old-prettify-alist prettify-symbols-alist)
+        (setq-local prettify-symbols-alist (append (fira-code-mode--make-alist fira-code-mode--ligatures) fira-code-mode--old-prettify-alist))
+        (prettify-symbols-mode t))
 
-(defun fira-code-mode--disable ()
-  "Disable Fira Code ligatures in current buffer."
-  (setq-local prettify-symbols-alist fira-code-mode--old-prettify-alist)
-  (prettify-symbols-mode -1))
+      (defun fira-code-mode--disable ()
+        "Disable Fira Code ligatures in current buffer."
+        (setq-local prettify-symbols-alist fira-code-mode--old-prettify-alist)
+        (prettify-symbols-mode -1))
 
-(define-minor-mode fira-code-mode
-  "Fira Code ligatures minor mode"
-  :lighter " Fira Code"
-  (setq-local prettify-symbols-unprettify-at-point 'right-edge)
-  (if fira-code-mode
-      (fira-code-mode--enable)
-    (fira-code-mode--disable)))
+      (define-minor-mode fira-code-mode
+        "Fira Code ligatures minor mode"
+        :lighter " Fira Code"
+        (setq-local prettify-symbols-unprettify-at-point 'right-edge)
+        (if fira-code-mode
+            (fira-code-mode--enable)
+          (fira-code-mode--disable)))
 
-(defun fira-code-mode--setup ()
-  "Setup Fira Code Symbols"
-  (set-fontset-font t '(#Xe100 . #Xe16f) "Fira Code Symbol"))
+      (defun fira-code-mode--setup ()
+        "Setup Fira Code Symbols"
+        (set-fontset-font t '(#Xe100 . #Xe16f) "Fira Code Symbol"))
 
-(provide 'fira-code-mode)
+      (provide 'fira-code-mode)
 
     '';
 
