@@ -35,6 +35,18 @@
         "url": "https://github.com/rycee/home-manager/archive/2e7935767f2bc49ec45cd7a92289a208882c1797.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "neuron": {
+        "branch": "master",
+        "description": "Future-proof and simple-to-use notes system based on Zettelkasten.",
+        "homepage": "https://neuron.zettel.page",
+        "owner": "srid",
+        "repo": "neuron",
+        "rev": "a7f343e596d6cb14485cb6a08435d365aa51e8d0",
+        "sha256": "0y61knak6c17zlfhsb1cyy465ni0j6kz1cwzi232ppgwba05ldd9",
+        "type": "tarball",
+        "url": "https://github.com/srid/neuron/archive/a7f343e596d6cb14485cb6a08435d365aa51e8d0.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "nix-matrix-yggdrasil": {
         "branch": "master",
         "description": null,

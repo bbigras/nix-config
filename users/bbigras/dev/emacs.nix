@@ -1405,6 +1405,8 @@ in
         hook = [ "(flycheck-mode . flycheck-plantuml-setup)" ];
       };
 
+      neuron-mode.enable = true;
+
       projectile = {
         enable = true;
         diminish = [ "projectile-mode" ];

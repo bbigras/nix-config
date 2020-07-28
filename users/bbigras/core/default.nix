@@ -2,6 +2,8 @@
 let
   nix-matrix-yggdrasil_src = (import ../../../nix).nix-matrix-yggdrasil;
   nix-matrix-yggdrasil = import nix-matrix-yggdrasil_src { };
+
+  neuron = (import (import ../../../nix).neuron { });
 in
 {
   imports = [
@@ -146,6 +148,8 @@ in
 
       # utils
       file
+
+      neuron
     ];
   };
 
