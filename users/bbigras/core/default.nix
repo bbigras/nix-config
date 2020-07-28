@@ -148,6 +148,7 @@ in
 
       # utils
       file
+      tcpdump
 
       neuron
     ];
