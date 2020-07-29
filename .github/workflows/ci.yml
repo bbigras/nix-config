@@ -13,6 +13,10 @@
           "uses": "actions/checkout@v2"
         },
         {
+          "name": "Make more space",
+          "run": "sudo rm -rf /opt /usr/local || true &"
+        },
+        {
           "name": "Nix",
           "uses": "cachix/install-nix-action@v10",
           "with": {
