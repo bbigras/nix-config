@@ -1152,6 +1152,9 @@ in
                 org-use-fast-todo-selection t
                 org-adapt-indentation nil)
 
+          ;; for using org-habits with Orgzly
+          (setq org-log-into-drawer "LOGBOOK")
+
           ;;(setq org-tag-alist rah-org-tag-alist)
 
           ;; Refiling should include not only the current org buffer but
