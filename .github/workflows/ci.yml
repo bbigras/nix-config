@@ -28,8 +28,7 @@
           "uses": "cachix/cachix-action@v6",
           "with": {
             "name": "bbigras-nix-config",
-            "signingKey": "'${{ secrets.CACHIX_SIGNING_KEY }}'",
-            "extraPullNames": "nix-community,nix-matrix-yggdrasil,eigenvalue,srid"
+            "signingKey": "'${{ secrets.CACHIX_SIGNING_KEY }}'"
           }
         },
         {
