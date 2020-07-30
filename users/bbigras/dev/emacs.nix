@@ -1152,9 +1152,6 @@ in
                 org-use-fast-todo-selection t
                 org-adapt-indentation nil)
 
-          ;; for using org-habits with Orgzly
-          (setq org-log-into-drawer "LOGBOOK")
-
           ;;(setq org-tag-alist rah-org-tag-alist)
 
           ;; Refiling should include not only the current org buffer but
@@ -1212,12 +1209,22 @@ in
 
       nginx-mode.enable = true;
 
-      org-super-agenda = {
+      # org-super-agenda = {
+      #   enable = true;
+      #   after = [ "org" ];
+      #   config = ''
+      #     (org-super-agenda-mode t)
+      #     (setq org-super-agenda-groups '((:auto-parent t)))
+      #   '';
+      # };
+
+      org-habit = {
         enable = true;
         after = [ "org" ];
+        # defer = true;
         config = ''
-          (org-super-agenda-mode t)
-          (setq org-super-agenda-groups '((:auto-parent t)))
+          ;; for using with Orgzly
+          (setq org-log-into-drawer "LOGBOOK")
         '';
       };
 
