@@ -73,7 +73,7 @@ in
       # websocat
 
       # notes
-      # joplin-desktop
+      joplin-desktop
 
       # media
       handbrake
