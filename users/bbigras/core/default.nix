@@ -104,7 +104,7 @@ in
       # youtube-dl
       wireshark
       dnsutils
-      riot-desktop
+      element-desktop
       # oneshot
 
       # nix
