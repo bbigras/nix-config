@@ -4,6 +4,10 @@ let
   nix-matrix-yggdrasil = import nix-matrix-yggdrasil_src { };
 
   neuron = (import (import ../../../nix).neuron { });
+
+  my_cdda = pkgs.cataclysm-dda.withMods (mods: with mods; [
+    tileset.UndeadPeople
+  ]);
 in
 {
   imports = [
@@ -151,6 +155,8 @@ in
       tcpdump
 
       neuron
+
+      my_cdda
     ];
   };
 
