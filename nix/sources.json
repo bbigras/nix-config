@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "863eb9ffc68741b33e4d0b552107f8e55d27cc80",
-        "sha256": "1ickanq47l9jakx3hm744qsfc9pa4g0y3vb880mrnzmgj8r3avrc",
+        "rev": "342e35dd6d35fa6307c8e67736664d0b4c70b0e3",
+        "sha256": "143p2as5l3dkh8w07csclm6lqxl9amxjmkz15r5xh4g0ashi1rp8",
         "type": "tarball",
-        "url": "https://github.com/nix-community/NUR/archive/863eb9ffc68741b33e4d0b552107f8e55d27cc80.tar.gz",
+        "url": "https://github.com/nix-community/NUR/archive/342e35dd6d35fa6307c8e67736664d0b4c70b0e3.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "emacs-overlay": {
@@ -17,10 +17,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "d915b9db83c10cbdc5e395ad9dd62719715f4910",
-        "sha256": "10xf42nvfv6jc4m32c8ya2xa8yyzvw4kv0pkm7xfmblm38sa16x0",
+        "rev": "14440fbf1e29a1bf83382391a64249be7da705c5",
+        "sha256": "1jc616wildd532a63da73zyifixs0cfia7an4p1hkg9zy25l81l5",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/d915b9db83c10cbdc5e395ad9dd62719715f4910.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/14440fbf1e29a1bf83382391a64249be7da705c5.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
@@ -29,10 +29,10 @@
         "homepage": "https://rycee.gitlab.io/home-manager/",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "bb6eb9b13e3d40a22633fb80cbc75347af5bed3c",
-        "sha256": "0pz0f1igj0rcnzyqjqh43sdvrb9vgwqwfwifg0rl90sbqgcmxpf4",
+        "rev": "79a2320fd0930f904a605c1d84f87e8af9dbd606",
+        "sha256": "1zs341si7jz018s2v5s42wrpk9zkqizliam1iqnyp5x2khw7l96c",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/bb6eb9b13e3d40a22633fb80cbc75347af5bed3c.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/79a2320fd0930f904a605c1d84f87e8af9dbd606.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "neuron": {
