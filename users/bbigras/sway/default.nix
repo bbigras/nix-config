@@ -32,6 +32,7 @@
       # zoom-us
 
       firefox-wayland
+      nwg-launchers
     ];
   };
 
