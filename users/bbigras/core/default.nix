@@ -157,6 +157,9 @@ in
       neuron
 
       my_cdda
+
+      tmux
+      dust
     ];
   };
 
