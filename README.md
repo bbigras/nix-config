@@ -5,9 +5,3 @@ WIP
 This is heavily based on https://github.com/lovesegfault/nix-config. Many files were copied directly from that repo.
 
 Note that the license should include lovesegfault's copyright on many files. Not sure how to sort that yet.
-
-format:
-
-```sh
-find . -name '*.nix' -exec nixpkgs-fmt {} \;
-```
