@@ -183,6 +183,7 @@ in
   };
 
   home.sessionVariables = {
+    BROWSER = "firefox";
     # BROWSER = "${pkgs.google-chrome}/bin/google-chrome-stable";
     # ALTERNATE_EDITOR = "";
     # EDITOR = "emacsclient -t"; # $EDITOR opens in terminal
