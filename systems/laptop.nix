@@ -3,7 +3,9 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, lib, ... }:
-
+let
+  zen = (import (import ../nix).zen { });
+in
 {
   imports =
     [
@@ -23,7 +25,7 @@
     ];
 
   hardware.brillo.enable = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = zen.linuxPackages_zen;
   boot.kernel.sysctl = {
     "kernel.sysrq" = 1;
     # "fs.inotify.max_user_watches" = 524288;

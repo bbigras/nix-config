@@ -3,7 +3,9 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
+let
+  zen = (import (import ../nix).zen { });
+in
 {
   imports =
     [
@@ -28,7 +30,7 @@
       ../users/bbigras
     ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = zen.linuxPackages_zen;
   boot.loader.grub.useOSProber = true;
   # hardware.enableRedistributableFirmware = true;
   networking.hostName = "desktop"; # Define your hostname.
