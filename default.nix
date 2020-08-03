@@ -20,5 +20,12 @@ nixus ({ ... }: {
       host = "laptop";
       configuration = ./systems/laptop.nix;
     };
+
+    # work
+    work = { ... }: {
+      enabled = true;
+      host = "work";
+      configuration = ./systems/work.nix;
+    };
   };
 })
