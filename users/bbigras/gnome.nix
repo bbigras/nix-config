@@ -3,7 +3,6 @@
   home = {
     # stateVersion = "20.03";
     packages = with pkgs; [
-      latest.firefox-nightly-bin
       flameshot
       peek
       gnomeExtensions.mpris-indicator-button
@@ -15,6 +14,11 @@
       gnome3.gnome-tweaks
       tilix
     ];
+  };
+
+  programs.firefox = {
+    enable = true;
+    package = pkgs.latest.firefox-nightly-bin;
   };
 
   gtk = {
