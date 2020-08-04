@@ -28,7 +28,7 @@ in
       ../gnome.nix
 
       ../users/bbigras
-    ];
+    ] ++ (if builtins.pathExists ../secrets/at_home.nix then [ ../secrets/at_home.nix ] else [ ]);
 
   boot.kernelPackages = zen.linuxPackages_zen;
   boot.loader.grub.useOSProber = true;

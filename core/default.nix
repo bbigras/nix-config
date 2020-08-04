@@ -16,7 +16,7 @@ in
     ./sudo.nix
     ./tailscale.nix
     ./zerotier.nix
-  ] ++ (if builtins.pathExists ../secrets/default.nix then [ ../secrets ] else [ ]);
+  ];
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.extraModulePackages = [ config.boot.kernelPackages.exfat-nofuse ];

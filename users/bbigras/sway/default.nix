@@ -6,7 +6,7 @@
     ./sway.nix
     ./swaylock.nix
     ./waybar.nix
-  ] ++ (if builtins.pathExists ../../../secrets/bbigras/sway.nix then [ ../../../secrets/bbigras/sway.nix ] else [ ]);
+  ];
 
   home = {
     file.".icons/default".source = "${pkgs.gnome3.adwaita-icon-theme}/share/icons/Adwaita";

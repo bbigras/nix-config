@@ -22,7 +22,7 @@ in
       ../sway/trusted.nix
 
       ../users/bbigras
-    ] ++ (if builtins.pathExists ../secrets/work.nix then [ ../secrets/work.nix ] else [ ]);
+    ] ++ (if builtins.pathExists ../secrets/at_work.nix then [ ../secrets/at_work.nix ] else [ ]);
 
   boot.kernelPackages = zen.linuxPackages_zen;
   boot.kernel.sysctl = {

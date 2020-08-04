@@ -22,7 +22,7 @@ in
       ../sway/trusted.nix
 
       ../users/bbigras
-    ];
+    ] ++ (if builtins.pathExists ../secrets/at_home.nix then [ ../secrets/at_home.nix ] else [ ]);
 
   hardware.brillo.enable = true;
   boot.kernelPackages = zen.linuxPackages_zen;

@@ -19,7 +19,7 @@ rec {
       imports = [
         ./core
         ./dev
-      ] ++ (if builtins.pathExists ../../secrets/bbigras/default.nix then [ ../../secrets/bbigras ] else [ ]);
+      ];
     }
     (mkIf config.programs.sway.enable {
       imports = [
