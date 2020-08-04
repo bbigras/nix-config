@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "4da2c0f80a8c0d86ca552334cb63328c3686fc74",
-        "sha256": "0bxgqvgbvrmqzz4ynr9kdrnximblpv2y9kas27zb5rbmm6vhb82s",
+        "rev": "dd4e135cd94a2678e1e7e29cef4d3015b4870c70",
+        "sha256": "0ll5059ixabk9m6ycgjypihmw8w5iv77k1jlyn69a6i6cimiaipa",
         "type": "tarball",
-        "url": "https://github.com/nix-community/NUR/archive/4da2c0f80a8c0d86ca552334cb63328c3686fc74.tar.gz",
+        "url": "https://github.com/nix-community/NUR/archive/dd4e135cd94a2678e1e7e29cef4d3015b4870c70.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "emacs-overlay": {
@@ -17,10 +17,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "cad51cd94611acd77fe87b6b5310b8e0b8450057",
-        "sha256": "1jhvpryd5gh7ydraxk40007pshnbhf9ka8y9bckmbq3xia8xs493",
+        "rev": "a415f627441992ec0963b55f86e87e2dcfa52c54",
+        "sha256": "1nr5611xskm05mf7lsxnyia6znriqfi7zwcf6ccnkg62czgr7f0b",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/cad51cd94611acd77fe87b6b5310b8e0b8450057.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/a415f627441992ec0963b55f86e87e2dcfa52c54.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
@@ -29,10 +29,10 @@
         "homepage": "https://rycee.gitlab.io/home-manager/",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "152769aed96d4d6f005ab40daf03ec4f5102c763",
-        "sha256": "10svwspmsf46rijzsh0h9nmz1mq2998wcml8yp36mwksgi8695pc",
+        "rev": "9c0fe3957bb91128d5d3599e289fe9344a293ece",
+        "sha256": "0rjnqi9fhw758b0nfi8z8xi4xszv9xkm5z1ggavfakr58h9v92sq",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/152769aed96d4d6f005ab40daf03ec4f5102c763.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/9c0fe3957bb91128d5d3599e289fe9344a293ece.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "neuron": {
@@ -41,10 +41,10 @@
         "homepage": "https://neuron.zettel.page",
         "owner": "srid",
         "repo": "neuron",
-        "rev": "cf1dfa8b28ad6e9d011d46015bfd80f1fb6c2552",
-        "sha256": "1angvdga4ycml942q2x6y0r502p7bbqjfhp9ha5hf37kzhx8i0xk",
+        "rev": "b400d90d59f6a4fd32e832569bc9bd212fe2ae45",
+        "sha256": "0pbhv8qzw35gw8fsi54bfg11x8p7clc3yd6c1v7sfp3yl37hf3a9",
         "type": "tarball",
-        "url": "https://github.com/srid/neuron/archive/cf1dfa8b28ad6e9d011d46015bfd80f1fb6c2552.tar.gz",
+        "url": "https://github.com/srid/neuron/archive/b400d90d59f6a4fd32e832569bc9bd212fe2ae45.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nix-matrix-yggdrasil": {
@@ -53,10 +53,10 @@
         "homepage": null,
         "owner": "bbigras",
         "repo": "nix-matrix-yggdrasil",
-        "rev": "5a9d90b8feb8c86cbacba8cd382aae76e1efbd9d",
-        "sha256": "179gm21awbpgg3vyr99891r1vd70l1haxw9i3w3jf3bpzwrrs731",
+        "rev": "6a90108fef396810375e1188bf09f8c54a4a3017",
+        "sha256": "0y51gz4v9inx6ayrca8dgvfhs0ddwqv1c8zbhnhy5gl6p6gw56nl",
         "type": "tarball",
-        "url": "https://github.com/bbigras/nix-matrix-yggdrasil/archive/5a9d90b8feb8c86cbacba8cd382aae76e1efbd9d.tar.gz",
+        "url": "https://github.com/bbigras/nix-matrix-yggdrasil/archive/6a90108fef396810375e1188bf09f8c54a4a3017.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixos-hardware": {
