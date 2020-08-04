@@ -33,4 +33,7 @@
 
   services.gpg-agent.pinentryFlavor = "gnome3";
   services.flameshot.enable = true;
+  services.rsibreak.enable = true;
+  services.unclutter.enable = true;
+  services.gnome-keyring.enable = true;
 }
