@@ -44,8 +44,6 @@
     useDHCP = false;
   };
 
-  services.pipewire.enable = true;
-
   xdg.portal = {
     enable = true;
     gtkUsePortal = true;
