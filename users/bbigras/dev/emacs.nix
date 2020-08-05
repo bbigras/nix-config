@@ -247,6 +247,17 @@ in
 
       (provide 'fira-code-mode)
 
+      (defun rah-prog-mode-setup ()
+        ;; Use a bit wider fill column width in programming modes
+        ;; since we often work with indentation to start with.
+        (setq fill-column 80))
+
+      (add-hook 'prog-mode-hook #'rah-prog-mode-setup)
+
+      (defun rah-sort-lines-ignore-case ()
+        (interactive)
+        (let ((sort-fold-case t))
+          (call-interactively 'sort-lines)))
     '';
 
     usePackage = {
@@ -893,8 +904,11 @@ in
 
       avy = {
         enable = true;
-        extraConfig = ''
-          :bind* ("C-c SPC" . avy-goto-word-or-subword-1)
+        bind = {
+          "M-j" = "avy-goto-word-or-subword-1";
+        };
+        config = ''
+          (setq avy-all-windows t)
         '';
       };
 
@@ -953,6 +967,7 @@ in
       lsp-mode = {
         enable = true;
         command = [ "lsp" ];
+        after = [ "flycheck" ];
         bind = {
           "C-c r r" = "lsp-rename";
           "C-c r f" = "lsp-format-buffer";
@@ -966,8 +981,13 @@ in
           };
         };
         config = ''
-          (setq lsp-eldoc-render-all nil)
-          (setq lsp-headerline-breadcrumb-enable t)
+                    (setq
+                       lsp-diagnostic-package :flycheck
+                       lsp-headerline-breadcrumb-enable t)
+
+          ;; lsp-eldoc-render-all nil
+          ;;lsp-modeline-code-actions-enable nil
+
         '';
         #                 lsp-prefer-flymake nil
         # (setq lsp-enable-semantic-highlighting t)
@@ -1023,10 +1043,11 @@ in
       dap-mode = {
         enable = true;
         after = [ "lsp-mode" "posframe" ];
-        command = [ "dap-mode" ];
+        command = [ "dap-mode" "dap-auto-configure-mode" ];
+
         # hook = [ "(dap-stopped-hook . (lambda (arg) (call-interactively #'dap-hydra)))" ];
         config = ''
-          (dap-mode t)
+          (dap-auto-configure-mode)
           (dap-ui-mode t)
           ;; enables mouse hover support
           (dap-tooltip-mode 1)
@@ -1677,6 +1698,11 @@ in
           (define-key org-mode-map (kbd "C-c C-r") verb-command-map)
           (setq verb-trim-body-end "[ \t\n\r]+")
         '';
+      };
+
+      visual-fill-column = {
+        enable = true;
+        command = [ "visual-fill-column-mode" ];
       };
 
       vterm = {
