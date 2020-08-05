@@ -1,4 +1,7 @@
 { pkgs, ... }:
+let
+  dconf2nix = (import (import ../../nix).dconf2nix);
+in
 {
   home = {
     # stateVersion = "20.03";
@@ -12,6 +15,7 @@
       # gnomeExtensions.gsconnect # kde connect
       gnome3.gnome-tweaks
       tilix
+      dconf2nix
     ];
   };
 
