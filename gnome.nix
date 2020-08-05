@@ -8,9 +8,6 @@
     qgnomeplatform
     qt5.qtwayland
     # mon
-
-    # gnome3.gnome-shell-extension-appindicator-32
-    gnomeExtensions.appindicator
   ];
 
   qt5 = {
@@ -32,15 +29,20 @@
   #   };
   # };
 
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.displayManager.gdm.wayland = false;
-  services.xserver.desktopManager.gnome3.enable = true;
+  services = {
+    xserver = {
+      enable = true;
+      layout = "ca";
+      xkbVariant = "fr";
+      displayManager.gdm.enable = true;
+      displayManager.gdm.wayland = false;
+      desktopManager.gnome3.enable = true;
+    };
 
-  # Running ancient applications
-  services.dbus.packages = with pkgs; [ gnome2.GConf ];
+    dbus.packages = [ pkgs.gnome3.dconf ];
+    udev.packages = [ pkgs.gnome3.gnome-settings-daemon ];
 
-  # Systray Icons
-  # environment.systemPackages = [ gnome-shell-extension-appindicator-32 ];
-  services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
-
+    # Running ancient applications
+    # services.dbus.packages = with pkgs; [ gnome2.GConf ];
+  };
 }

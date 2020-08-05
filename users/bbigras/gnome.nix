@@ -7,15 +7,21 @@ in
     # stateVersion = "20.03";
     packages = with pkgs; [
       peek
-      gnomeExtensions.mpris-indicator-button
-      gnomeExtensions.paperwm
-      gnomeExtensions.dash-to-dock
-      gnomeExtensions.caffeine
-      gnomeExtensions.clipboard-indicator
-      # gnomeExtensions.gsconnect # kde connect
-      gnome3.gnome-tweaks
+
+      gnome3.eog # image viewer
+      # gnome3.gnome-tweaks
+      gnome3.gnome-tweak-tool
       tilix
       dconf2nix
+
+      # extensions
+      gnomeExtensions.appindicator
+      gnomeExtensions.caffeine
+      gnomeExtensions.clipboard-indicator
+      gnomeExtensions.dash-to-dock
+      # gnomeExtensions.gsconnect # kde connect
+      gnomeExtensions.mpris-indicator-button
+      gnomeExtensions.paperwm
     ];
   };
 
