@@ -53,10 +53,10 @@
         "homepage": "https://neuron.zettel.page",
         "owner": "srid",
         "repo": "neuron",
-        "rev": "a2b02020a890540182b7cdb623daf371454da8a0",
-        "sha256": "0gjzykfxbrf3pxf0jjgsbin8frf5nsbzvpwkdig5757wk2sby6af",
+        "rev": "5bae2803423da94dd24fa0765b3a8440f90755bb",
+        "sha256": "1ibx46z4v0hwr5m8hiiaa0f1k5n6lyyq4014zvxxksxb2maah6ja",
         "type": "tarball",
-        "url": "https://github.com/srid/neuron/archive/a2b02020a890540182b7cdb623daf371454da8a0.tar.gz",
+        "url": "https://github.com/srid/neuron/archive/5bae2803423da94dd24fa0765b3a8440f90755bb.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nix-matrix-yggdrasil": {
