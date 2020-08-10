@@ -23,7 +23,7 @@ nixus ({ ... }: {
 
     # work
     work = { ... }: {
-      enabled = true;
+      enabled = false;
       hasFastConnection = true;
       host = "work";
       configuration = ./systems/work.nix;
