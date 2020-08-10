@@ -76,16 +76,17 @@ in
     config = {
       Listen = [ "tcp://0.0.0.0:9977" ];
       Peers = [
-        "tls://104.248.15.125:32337"
-        # "tcp://10.147.19.133:9977"
+        "tcp://64.112.177.94:1617"
+        "tcp://64.112.180.77:1617"
+        "tcp://50.236.201.218:56088"
       ];
       LinkLocalTCPPort = 9988;
       denyDhcpcdInterfaces = [ "tap*" ];
-      # SessionFirewall = {
-      #   Enable = true;
-      #   AllowFromDirect = false;
-      #   AllowFromRemote = false;
-      # };
+      SessionFirewall = {
+        Enable = true;
+        AllowFromDirect = false;
+        AllowFromRemote = false;
+      };
     };
   };
 
