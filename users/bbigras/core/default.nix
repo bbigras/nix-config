@@ -42,10 +42,28 @@ in
 
   programs.fish = {
     enable = true;
+    promptInit = ''
+      eval (direnv hook fish)
+      any-nix-shell fish --info-right | source
+    '';
     shellAliases = {
       cat = "${pkgs.bat}/bin/bat";
       ls = "${pkgs.exa}/bin/exa";
     };
+    shellInit = ''
+      set -x FZF_DEFAULT_OPTS "--preview='bat {} --color=always'" \n
+      set -x SKIM_DEFAULT_COMMAND "rg --files || fd || find ."
+
+      set -g theme_display_date no
+      set -g theme_nerd_fonts yes
+      set -g theme_display_git_master_branch no
+      set -g theme_nerd_fonts yes
+      set -g theme_newline_cursor yes
+      set -g theme_color_scheme solarized
+
+      bind \t accept-autosuggestion
+      set fish_greeting
+    '';
   };
 
   programs.ssh = {
@@ -160,6 +178,8 @@ in
 
       tmux
       dust
+
+      any-nix-shell # fish support for nix shell
     ];
   };
 
