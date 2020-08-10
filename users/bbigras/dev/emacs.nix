@@ -540,7 +540,7 @@ in
       };
 
       org-roam = {
-        enable = true;
+        enable = false;
         after = [ "org" "org-element" "emacsql" "emacsql-sqlite" ];
         hook = [ "(after-init . org-roam-mode)" ];
         config = ''
