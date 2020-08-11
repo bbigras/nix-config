@@ -31,6 +31,7 @@ in
   programs.ssh.startAgent = true;
   programs.wireshark.enable = true;
   services.fwupd.enable = true; # TODO: check if needed
+  users.mutableUsers = false;
 
   programs.gnupg.agent = {
     enable = true;
