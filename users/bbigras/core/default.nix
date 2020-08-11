@@ -179,6 +179,7 @@ in
 
       tmux
       dust
+      compsize
 
       any-nix-shell # fish support for nix shell
       asciinema # record the terminal
