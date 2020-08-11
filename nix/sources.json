@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "40564e3520b0e961ef4658f8eeb57669a8253954",
-        "sha256": "13q3p8jy9301wapp2ymbmjjk3m22dgzwgbjr9bg7k832cgz9dh81",
+        "rev": "2151d6cd1f9ccd64dfafeeb3cc8953f339183e10",
+        "sha256": "01qdawlpc0qpl9328w77jif6hr7gi3qwa7fmshb29spqhqv0n3my",
         "type": "tarball",
-        "url": "https://github.com/nix-community/NUR/archive/40564e3520b0e961ef4658f8eeb57669a8253954.tar.gz",
+        "url": "https://github.com/nix-community/NUR/archive/2151d6cd1f9ccd64dfafeeb3cc8953f339183e10.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "dconf2nix": {
@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "b5b63076de639b23561c1a6de6f0c79da44b0857",
-        "sha256": "0pv525dy8cxgbh06l0llsxy77j7ka8f10gz3p65nbrc3111v72rl",
+        "rev": "aa199d5e708914d7cad2b5019b0d73d1adedb93d",
+        "sha256": "0i6fd5k1hf5a64w2b2rq90jpzw07sipgi39fq2yh8qnpq6v2yhr8",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/b5b63076de639b23561c1a6de6f0c79da44b0857.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/aa199d5e708914d7cad2b5019b0d73d1adedb93d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
@@ -47,16 +47,28 @@
         "url": "https://github.com/rycee/home-manager/archive/223e3c38a13fb45726c7a9d97e2612ae53ab4f98.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "impermanence": {
+        "branch": "master",
+        "description": "Modules to help you handle persistent state on systems with ephemeral root storage [maintainer=@talyz]",
+        "homepage": "",
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "rev": "8fc761e8c348db5c31a53ae125ce29b23abfd872",
+        "sha256": "007pap1lzai967cvp615rjnxgcxz39n55p3p6phssjv1ngfcv00d",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/impermanence/archive/8fc761e8c348db5c31a53ae125ce29b23abfd872.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "neuron": {
         "branch": "master",
         "description": "Future-proof and simple-to-use notes system based on Zettelkasten.",
         "homepage": "https://neuron.zettel.page",
         "owner": "srid",
         "repo": "neuron",
-        "rev": "c4f17226ac35b3f0ee0b4fc2d2430c7b110b162d",
-        "sha256": "0pkbmmdc07d14pwnwgirsyxjf1sn138gmczyrhgp82bxdqgpihw1",
+        "rev": "d14b4426444eefdd63e4cde048ed7cb05a2886c1",
+        "sha256": "0rpw80h8axkdm4fnl6ciqz9ln5sc4nlvls277837id88q7lndafn",
         "type": "tarball",
-        "url": "https://github.com/srid/neuron/archive/c4f17226ac35b3f0ee0b4fc2d2430c7b110b162d.tar.gz",
+        "url": "https://github.com/srid/neuron/archive/d14b4426444eefdd63e4cde048ed7cb05a2886c1.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nix-matrix-yggdrasil": {
@@ -65,10 +77,10 @@
         "homepage": null,
         "owner": "bbigras",
         "repo": "nix-matrix-yggdrasil",
-        "rev": "76d2cd997f2245df08efc16270c802940415486a",
-        "sha256": "0hfxmlw5i071v1q8bfm0jx42wspbqf1l0xgzgdsq3b8yasg6xybf",
+        "rev": "4bbf8ddb5a2a31a6aff465c693c3d2ae369bc650",
+        "sha256": "0l8d9whakc3fgmynv7777riiskm64vkn5m93jq89q52smc76rcjf",
         "type": "tarball",
-        "url": "https://github.com/bbigras/nix-matrix-yggdrasil/archive/76d2cd997f2245df08efc16270c802940415486a.tar.gz",
+        "url": "https://github.com/bbigras/nix-matrix-yggdrasil/archive/4bbf8ddb5a2a31a6aff465c693c3d2ae369bc650.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixos-hardware": {
