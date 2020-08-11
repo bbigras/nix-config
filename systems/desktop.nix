@@ -38,6 +38,8 @@ in
   time.hardwareClockInLocalTime = true;
   users.users.bbigras.packages = [ pkgs.retroarchBare ];
 
+  networking.networkmanager.enable = false;
+
   services.xserver = {
     autorun = true;
     displayManager.hiddenUsers = [ "builder" ];
