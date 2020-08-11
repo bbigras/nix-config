@@ -127,7 +127,7 @@ in
       wireshark
       dnsutils
       element-desktop
-      # oneshot
+      oneshot
 
       # nix
       cachix
