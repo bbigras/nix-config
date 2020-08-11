@@ -14,6 +14,7 @@ in
 
       (import ../nix).cpu_intel
       (import ../nix).ssd
+      (import ((import ../nix).impermanence + "/nixos.nix"))
 
       # Include the results of the hardware scan.
       ../hardware/hardware-configuration-desktop.nix
@@ -90,6 +91,26 @@ in
   #   # openFirewall = true;
   #   enableWebUI = true;
   # };
+
+  environment.persistence."/persist" = {
+    directories = [
+      "/var/lib/zerotier-one"
+      "/var/lib/tailscale"
+      #     # "/var/log"
+      #     "/var/lib/bluetooth"
+      #     "/var/lib/systemd/coredump"
+      #     "/etc/NetworkManager/system-connections"
+    ];
+    files = [
+      "/etc/machine-id"
+      # "/etc/nix/id_rsa"
+
+      "/etc/ssh/ssh_host_ed25519_key"
+      "/etc/ssh/ssh_host_ed25519_key.pub"
+      "/etc/ssh/ssh_host_rsa_key"
+      "/etc/ssh/ssh_host_rsa_key.pub"
+    ];
+  };
 
   # Note `lib.mkBefore` is used instead of `lib.mkAfter` here.
   boot.initrd.postDeviceCommands = pkgs.lib.mkBefore ''
