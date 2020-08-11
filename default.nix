@@ -1,7 +1,7 @@
 { pkgs ? null }:
 let
   sources = import ./nix;
-  nixus = import sources.nixus;
+  nixus = import sources.nixus { };
   nixos-hardware = import sources.nixos-hardware;
   nixpkgs = if pkgs == null then sources.nixpkgs else pkgs;
 in
