@@ -11,6 +11,8 @@ in
     [
       ../core
 
+      (import ((import ../nix).impermanence + "/nixos.nix"))
+
       # Include the results of the hardware scan.
       ../hardware/hardware-configuration-laptop.nix
       ../hardware/efi.nix
