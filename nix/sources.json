@@ -11,18 +11,6 @@
         "url": "https://github.com/nix-community/NUR/archive/bdade0fccdb7937936417875b5f1aee248a785d0.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "dconf2nix": {
-        "branch": "master",
-        "description": ":feet: Convert Dconf files (Gnome Shell) to Nix, as expected by Home Manager.",
-        "homepage": "",
-        "owner": "gvolpe",
-        "repo": "dconf2nix",
-        "rev": "10fe8128d858bec49109dc28fe018387718f265b",
-        "sha256": "1hwvaz2sxnpzbwjr6yzmrf0xxgjl7d00d8f7n32vsbrsminshijg",
-        "type": "tarball",
-        "url": "https://github.com/gvolpe/dconf2nix/archive/10fe8128d858bec49109dc28fe018387718f265b.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "emacs-overlay": {
         "branch": "master",
         "description": "Bleeding edge emacs overlay [maintainer=@adisbladis] ",

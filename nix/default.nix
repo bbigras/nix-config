@@ -2,7 +2,7 @@ let
   sources = import ./sources.nix;
 in
 {
-  inherit (sources) nixpkgs nixus nix-matrix-yggdrasil NUR nixpkgs-mozilla emacs-overlay neuron zen dconf2nix impermanence;
+  inherit (sources) nixpkgs nixus nix-matrix-yggdrasil NUR nixpkgs-mozilla emacs-overlay neuron zen impermanence;
   home-manager = sources.home-manager + "/nixos";
   lib = sources.nixpkgs + "/lib";
   cpu_intel = sources.nixos-hardware + "/common/cpu/intel";

@@ -1,7 +1,4 @@
-{ pkgs, ... }:
-let
-  dconf2nix = (import (import ../../nix).dconf2nix);
-in
+{ pkgs, config, ... }:
 {
   home = {
     # stateVersion = "20.03";
@@ -12,7 +9,6 @@ in
       # gnome3.gnome-tweaks
       gnome3.gnome-tweak-tool
       tilix
-      dconf2nix
 
       # extensions
       gnomeExtensions.appindicator
