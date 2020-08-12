@@ -151,6 +151,117 @@ in
   # DISK_APM_LEVEL_ON_AC="255 254"
   # DISK_APM_LEVEL_ON_BAT="128 127"
 
+  environment.persistence."/persist" = {
+    directories = [
+      "/etc/NetworkManager/system-connections"
+      "/var/lib/tailscale"
+      "/var/lib/zerotier-one"
+      "/var/log"
+      #     "/var/lib/bluetooth"
+      #     "/var/lib/systemd/coredump"
+    ];
+    files = [
+      "/etc/machine-id"
+      "/etc/ssh/ssh_host_ed25519_key"
+      "/etc/ssh/ssh_host_ed25519_key.pub"
+      "/etc/ssh/ssh_host_rsa_key"
+      "/etc/ssh/ssh_host_rsa_key.pub"
+      # "/etc/nix/id_rsa"
+    ];
+  };
+
+  home-manager.users.bbigras = { ... }: {
+    imports = [ (import ((import ../nix).impermanence + "/home-manager.nix")) ];
+    home.persistence."/persist/home/bbigras" = {
+      directories = [
+        ".cache/lorri"
+        ".cache/mozilla"
+        ".cache/restic"
+        ".cache/tealdeer"
+        ".cargo"
+        ".config/Bitwarden CLI"
+        ".config/discord"
+        ".dropbox-dist"
+        ".dropbox-hm"
+        ".gnupg/private-keys-v1.d"
+        ".local/share/direnv"
+        ".local/share/keyrings"
+        ".local/share/remmina"
+        ".local/share/zoxide"
+        ".mozilla"
+        "Documents"
+        "Downloads"
+        "Maildir"
+        "Music"
+        "Pictures"
+        "Videos"
+        "dev"
+        "matrix-p2p"
+        "tmp"
+        # ".nixops"
+        # ".ssh"
+        # "VirtualBox VMs"
+      ];
+      files = [
+        ".authinfo.gpg"
+        ".cache/swaymenu-history.txt"
+        ".config/cachix/cachix.dhall"
+        ".config/remmina/remmina.pref"
+        ".gnupg/pubring.kbx"
+        ".gnupg/random_seed"
+        ".gnupg/sshcontrol"
+        ".gnupg/trustdb.gpg"
+        ".local/share/fish/fish_history"
+        ".notmuch-config"
+        ".ssh/id_ed25519"
+        ".ssh/id_ed25519.pub"
+       # ".cache/cargo/credentials"
+       # ".config/dconf"
+       # ".local/share/keyrings"
+      ];
+    };
+  };
+
+  # Note `lib.mkBefore` is used instead of `lib.mkAfter` here.
+  boot.initrd.postDeviceCommands = pkgs.lib.mkBefore ''
+    mkdir -p /mnt
+
+    # We first mount the btrfs root to /mnt
+    # so we can manipulate btrfs subvolumes.
+    mount -o subvol=/ /dev/mapper/enc /mnt
+
+    # While we're tempted to just delete /root and create
+    # a new snapshot from /root-blank, /root is already
+    # populated at this point with a number of subvolumes,
+    # which makes `btrfs subvolume delete` fail.
+    # So, we remove them first.
+    #
+    # /root contains subvolumes:
+    # - /root/var/lib/portables
+    # - /root/var/lib/machines
+    #
+    # I suspect these are related to systemd-nspawn, but
+    # since I don't use it I'm not 100% sure.
+    # Anyhow, deleting these subvolumes hasn't resulted
+    # in any issues so far, except for fairly
+    # benign-looking errors from systemd-tmpfiles.
+    btrfs subvolume list -o /mnt/root |
+    cut -f9 -d' ' |
+    while read subvolume; do
+      echo "deleting /$subvolume subvolume..."
+      btrfs subvolume delete "/mnt/$subvolume"
+    done &&
+    echo "deleting /root subvolume..." &&
+    btrfs subvolume delete /mnt/root
+
+    echo "restoring blank /root subvolume..."
+    btrfs subvolume snapshot /mnt/root-blank /mnt/root
+
+    # Once we're done rolling back to a blank snapshot,
+    # we can unmount /mnt and continue on the boot process.
+    umount /mnt
+  '';
+
   home-manager.verbose = true;
   environment.etc."restic-pw-id".text = ''
     BW_ID=873078f3-3587-40ed-8ecc-aba30019a273
