@@ -17,10 +17,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "0638a7c20b371a12bb80e138775b15b4f86811c9",
-        "sha256": "1lnk28bvsirv1fis3v29gn852n9rdrmig70zb0hvncpa25b32gnr",
+        "rev": "787ca42ba5b88684b0099699fc37ee3d75ec079a",
+        "sha256": "06hdb2hcin9yhcap4399h54lvcs6rv955bbkmwzxywrkbrhyikx0",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/0638a7c20b371a12bb80e138775b15b4f86811c9.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/787ca42ba5b88684b0099699fc37ee3d75ec079a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
@@ -65,10 +65,10 @@
         "homepage": null,
         "owner": "bbigras",
         "repo": "nix-matrix-yggdrasil",
-        "rev": "4bbf8ddb5a2a31a6aff465c693c3d2ae369bc650",
-        "sha256": "0l8d9whakc3fgmynv7777riiskm64vkn5m93jq89q52smc76rcjf",
+        "rev": "75d2ab53600212b640720c603a5d2be7b9f48fd4",
+        "sha256": "0k9lkv81vqdbl1377zp8d526k2f8y5c7rdd5n4z7cnlzqpx9qx54",
         "type": "tarball",
-        "url": "https://github.com/bbigras/nix-matrix-yggdrasil/archive/4bbf8ddb5a2a31a6aff465c693c3d2ae369bc650.tar.gz",
+        "url": "https://github.com/bbigras/nix-matrix-yggdrasil/archive/75d2ab53600212b640720c603a5d2be7b9f48fd4.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixos-hardware": {
