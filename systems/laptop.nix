@@ -65,16 +65,6 @@ in
       };
     };
   };
-  services.snapper = {
-    filters = "/nix";
-    configs.home = {
-      subvolume = "/home";
-      extraConfig = ''
-        TIMELINE_CREATE="yes"
-        ALLOW_USERS="bbigras"
-      '';
-    };
-  };
 
   fileSystems."/" =
     {
