@@ -14,39 +14,27 @@
   boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/779232c6-776b-4d0a-b52a-f6d26a40508e";
+    { device = "/dev/disk/by-uuid/8e2cf716-7b2f-4c87-a895-1ea6d84d5f65";
       fsType = "btrfs";
-      options = [ "subvol=@" ];
+      options = [ "subvol=root" ];
     };
 
-  boot.initrd.luks.devices."nixenc".device = "/dev/disk/by-uuid/05d1d84d-c607-455e-86f8-2be50d95a623";
+  boot.initrd.luks.devices."enc".device = "/dev/disk/by-uuid/87fca72e-96e6-43a7-a017-37ddd6a2d3de";
 
   fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/779232c6-776b-4d0a-b52a-f6d26a40508e";
+    { device = "/dev/disk/by-uuid/8e2cf716-7b2f-4c87-a895-1ea6d84d5f65";
       fsType = "btrfs";
-      options = [ "subvol=@nix" ];
-    };
-
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/779232c6-776b-4d0a-b52a-f6d26a40508e";
-      fsType = "btrfs";
-      options = [ "subvol=@home" ];
+      options = [ "subvol=nix" ];
     };
 
   fileSystems."/persist" =
-    { device = "/dev/disk/by-uuid/779232c6-776b-4d0a-b52a-f6d26a40508e";
+    { device = "/dev/disk/by-uuid/8e2cf716-7b2f-4c87-a895-1ea6d84d5f65";
       fsType = "btrfs";
-      options = [ "subvol=@persist" ];
-    };
-
-  fileSystems."/snapshot" =
-    { device = "/dev/disk/by-uuid/779232c6-776b-4d0a-b52a-f6d26a40508e";
-      fsType = "btrfs";
-      options = [ "subvol=@snapshot" ];
+      options = [ "subvol=persist" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/03D9-0EBB";
+    { device = "/dev/disk/by-uuid/5E57-78A0";
       fsType = "vfat";
     };
 

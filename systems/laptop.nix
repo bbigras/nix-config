@@ -68,37 +68,24 @@ in
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-uuid/779232c6-776b-4d0a-b52a-f6d26a40508e";
+      device = "/dev/disk/by-uuid/8e2cf716-7b2f-4c87-a895-1ea6d84d5f65";
       fsType = "btrfs";
-      options = [ "subvol=@,compress=zstd,noatime" ];
-    };
-
-  fileSystems."/home" =
-    {
-      device = "/dev/disk/by-uuid/779232c6-776b-4d0a-b52a-f6d26a40508e";
-      fsType = "btrfs";
-      options = [ "subvol=@home,compress=zstd,noatime" ];
+      options = [ "subvol=root,compress=zstd,noatime" ];
     };
 
   fileSystems."/nix" =
     {
-      device = "/dev/disk/by-uuid/779232c6-776b-4d0a-b52a-f6d26a40508e";
+      device = "/dev/disk/by-uuid/8e2cf716-7b2f-4c87-a895-1ea6d84d5f65";
       fsType = "btrfs";
-      options = [ "subvol=@nix,compress=zstd,noatime" ];
+      options = [ "subvol=nix,compress=zstd,noatime" ];
     };
 
   fileSystems."/persist" =
     {
-      device = "/dev/disk/by-uuid/779232c6-776b-4d0a-b52a-f6d26a40508e";
+      device = "/dev/disk/by-uuid/8e2cf716-7b2f-4c87-a895-1ea6d84d5f65";
       fsType = "btrfs";
-      options = [ "subvol=@persist,compress=zstd,noatime" ];
-    };
-
-  fileSystems."/snapshot" =
-    {
-      device = "/dev/disk/by-uuid/779232c6-776b-4d0a-b52a-f6d26a40508e";
-      fsType = "btrfs";
-      options = [ "subvol=@snapshot,compress=zstd,noatime" ];
+      options = [ "subvol=persist,compress=zstd,noatime" ];
+      neededForBoot = true;
     };
 
   # systemd.user.services.mpris-proxy = {
