@@ -11,6 +11,18 @@
         "url": "https://github.com/nix-community/NUR/archive/53d46abb6335432c52fec29e19f1fcc1c454943e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "crate2nix": {
+        "branch": "master",
+        "description": "nix build file generator for rust crates",
+        "homepage": "",
+        "owner": "kolloch",
+        "repo": "crate2nix",
+        "rev": "602223cdd990f17edb7bd8587a44b9ba76f8e886",
+        "sha256": "1jvhi0crlgr570365w024xysx3myflaj0yqk8hx4nz6agvrpb0hc",
+        "type": "tarball",
+        "url": "https://github.com/kolloch/crate2nix/archive/602223cdd990f17edb7bd8587a44b9ba76f8e886.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "emacs-overlay": {
         "branch": "master",
         "description": "Bleeding edge emacs overlay [maintainer=@adisbladis] ",
