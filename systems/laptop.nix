@@ -179,6 +179,7 @@ in
         "dev"
         "matrix-p2p"
         "tmp"
+        "src"
         # ".nixops"
         # ".ssh"
         # "VirtualBox VMs"
@@ -192,13 +193,13 @@ in
         ".gnupg/random_seed"
         ".gnupg/sshcontrol"
         ".gnupg/trustdb.gpg"
-        ".local/share/fish/fish_history"
+        #".local/share/fish/fish_history"
         ".notmuch-config"
         ".ssh/id_ed25519"
         ".ssh/id_ed25519.pub"
-       # ".cache/cargo/credentials"
-       # ".config/dconf"
-       # ".local/share/keyrings"
+        # ".cache/cargo/credentials"
+        # ".config/dconf"
+        # ".local/share/keyrings"
       ];
     };
   };
