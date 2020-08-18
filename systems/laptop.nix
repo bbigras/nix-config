@@ -153,7 +153,6 @@ in
     imports = [ (import ((import ../nix).impermanence + "/home-manager.nix")) ];
     home.persistence."/persist/home/bbigras" = {
       directories = [
-        ".cache/lorri"
         ".cache/mozilla"
         ".cache/restic"
         ".cache/tealdeer"

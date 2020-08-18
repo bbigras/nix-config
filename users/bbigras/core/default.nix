@@ -20,7 +20,10 @@ in
   programs.bat.enable = true;
   programs.broot.enable = true;
   programs.command-not-found.enable = true;
-  programs.direnv.enable = true;
+  programs.direnv = {
+    enable = true;
+    enableNixDirenvIntegration = true;
+  };
   programs.fzf.enable = true;
   programs.htop.enable = true;
   programs.jq.enable = true;
@@ -29,7 +32,6 @@ in
   programs.zoxide.enable = true;
 
   services.dropbox.enable = true;
-  services.lorri.enable = true;
   services.spotifyd.enable = true;
 
   programs.alacritty = {
