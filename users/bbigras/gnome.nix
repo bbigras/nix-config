@@ -31,6 +31,15 @@
     };
   };
 
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs; [
+      # obs-ndi
+      # obs-wlrobs
+      obs-v4l2sink
+    ];
+  };
+
   programs.firefox = {
     enable = true;
     package = pkgs.latest.firefox-nightly-bin;
