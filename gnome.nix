@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
   imports = [ ];
 
   environment.systemPackages = with pkgs; [
@@ -9,6 +9,8 @@
     qt5.qtwayland
     # mon
   ];
+
+  boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
 
   qt5 = {
     enable = false;
