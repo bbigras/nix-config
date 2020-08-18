@@ -177,7 +177,22 @@ in
       tcpdump
 
       neuron
+
+      # rust
       crate2nix
+      cargo
+      cargo-audit
+      cargo-outdated
+      # cargo-asm
+      # cargo-bloat
+      # cargo-crev
+      cargo-expand
+      cargo-flamegraph
+      # cargo-fuzz
+      cargo-geiger
+      cargo-sweep
+      cargo-tarpaulin
+      cargo-udeps
 
       my_cdda
 
