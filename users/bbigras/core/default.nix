@@ -166,7 +166,9 @@ in
       # dejavu_fonts
       font-awesome
 
+      # backup
       restic
+      kopia
 
       # exa gist gopass  weechat
 
