@@ -136,6 +136,9 @@ in
       "/var/lib/tailscale"
       "/var/lib/zerotier-one"
       "/var/log"
+      "/var/lib/docker"
+      "/var/lib/libvirt"
+      # "/var/cache/libvirt"
       #     "/var/lib/bluetooth"
       #     "/var/lib/systemd/coredump"
     ];

@@ -97,7 +97,10 @@ in
       "/var/lib/zerotier-one"
       "/var/lib/tailscale"
       "/var/lib/jellyfin"
+      "/var/lib/docker"
+      "/var/lib/libvirt"
       # "/var/cache/jellyfin"
+      # "/var/cache/libvirt"
 
       #     # "/var/log"
       #     "/var/lib/bluetooth"
