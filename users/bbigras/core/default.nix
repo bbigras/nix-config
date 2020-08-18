@@ -202,6 +202,8 @@ in
       dust
       compsize
 
+      jellyfin-mpv-shim
+
       any-nix-shell # fish support for nix shell
       asciinema # record the terminal
       # docker-compose # docker manager
