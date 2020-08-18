@@ -18,6 +18,11 @@ in
     ./zerotier.nix
   ];
 
+  nix.extraOptions = ''
+    keep-outputs = true
+    keep-derivations = true
+  '';
+
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.extraModulePackages = [ config.boot.kernelPackages.exfat-nofuse ];
   environment.etc."nixos/configuration.nix".source = dummyConfig;
