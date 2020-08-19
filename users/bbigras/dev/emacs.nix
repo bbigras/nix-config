@@ -307,6 +307,13 @@ in
         config = "(load-theme 'base16-tomorrow-night t)";
       };
 
+      browse-at-remote = {
+        enable = true;
+        bind = {
+          "C-c g g" = "browse-at-remote";
+        };
+      };
+
       # From https://github.com/mlb-/emacs.d/blob/a818e80f7790dffa4f6a775987c88691c4113d11/init.el#L472-L482
       compile = {
         enable = true;
