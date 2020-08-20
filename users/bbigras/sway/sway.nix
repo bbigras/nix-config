@@ -106,7 +106,7 @@
       output = {
         "*" = {
           scale = "2";
-          bg = "~/Downloads/molly.png fit";
+          # bg = "~/Downloads/molly.png fit";
         };
         # "*" = { bg = "~/.wall fill"; };
         # "Unknown 0x32EB 0x00000000" = {
