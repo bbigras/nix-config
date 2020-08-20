@@ -11,12 +11,14 @@ nixus ({ ... }: {
     # Personal
     desktop = { ... }: {
       enabled = true;
+      hasFastConnection = true;
       host = "desktop";
       configuration = ./systems/desktop.nix;
     };
 
     laptop = { ... }: {
       enabled = true;
+      hasFastConnection = true;
       host = "laptop";
       configuration = ./systems/laptop.nix;
     };
@@ -24,7 +26,6 @@ nixus ({ ... }: {
     # work
     work = { ... }: {
       enabled = true;
-      hasFastConnection = true;
       host = "work";
       configuration = ./systems/work.nix;
     };
