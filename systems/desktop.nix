@@ -162,7 +162,7 @@ in
     BW_ID=ca6ebfdf-1d09-4631-9531-ab3d004496c8
   '';
 
-  services.jellyfin.enable = true;
+  # services.jellyfin.enable = true;
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
