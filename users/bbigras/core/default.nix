@@ -206,7 +206,7 @@ in
 
       any-nix-shell # fish support for nix shell
       asciinema # record the terminal
-      # docker-compose # docker manager
+      docker-compose # docker manager
       ncdu # disk space info (a better du)
       prettyping # a nicer ping
       rnix-lsp # nix lsp server
