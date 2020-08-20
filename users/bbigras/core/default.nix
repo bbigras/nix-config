@@ -203,6 +203,9 @@ in
       compsize
 
       jellyfin-mpv-shim
+      freecad
+      pv
+      rclone
 
       any-nix-shell # fish support for nix shell
       asciinema # record the terminal
