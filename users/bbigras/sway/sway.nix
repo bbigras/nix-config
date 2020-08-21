@@ -43,34 +43,9 @@
       };
 
       input = {
-        "1:1:AT_Translated_Set_2_keyboard" = {
+        "*" = {
           xkb_layout = "ca";
-          # xkb_numlock = "enabled";
-          repeat_rate = "70";
         };
-        "1739:30381:DLL0665:01_06CB:76AD_Touchpad" = {
-          # dwt = "enabled";
-          # tap = "enabled";
-          # natural_scroll = "enabled";
-          # middle_emulation = "enabled";
-
-          accel_profile = "adaptive";
-          click_method = "button_areas";
-          dwt = "disabled";
-          natural_scroll = "enabled";
-          scroll_method = "two_finger";
-          tap = "enabled";
-        };
-
-        # "2:7:SynPS/2_Synaptics_TouchPad" = {
-        #   accel_profile = "adaptive";
-        #   click_method = "button_areas";
-        #   dwt = "disabled";
-        #   natural_scroll = "enabled";
-        #   scroll_method = "two_finger";
-        #   tap = "enabled";
-        # };
-
       };
 
       keybindings = lib.mkOptionDefault {
@@ -103,33 +78,6 @@
 
       modifier = "Mod4";
 
-      output = {
-        "*" = {
-          scale = "2";
-          # bg = "~/Downloads/molly.png fit";
-        };
-        # "*" = { bg = "~/.wall fill"; };
-        # "Unknown 0x32EB 0x00000000" = {
-        #   position = "0,0";
-        #   mode = "3840x2160@60Hz";
-        #   scale = "2";
-        #   subpixel = "rgb";
-        # };
-        # "Goldstar Company Ltd LG Ultra HD 0x00000B08" = {
-        #   position = "1920,0";
-        #   mode = "3840x2160@60Hz";
-        #   scale = "2";
-        #   subpixel = "rgb";
-        # };
-        # "Dell Inc. DELL U2518D 0WG2J7C4A2AL" = {
-        #   position = "1920,0";
-        #   mode = "3840x2160@60Hz";
-        #   scale = "2";
-        #   subpixel = "rgb";
-        #   transform = "90";
-        # };
-      };
-
       startup = [ ];
 
       terminal = "${pkgs.alacritty}/bin/alacritty";
@@ -149,6 +97,14 @@
           ];
       };
     };
+
+    #     extraConfig = ''
+    # workspace 1 output HDMI-A-2
+    # workspace 1 output VGA-1
+
+    # output HDMI-A-2 pos 0 0 res 1680x1050
+    # output VGA-1 pos 1680 0 res 1680x1050
+    # '';
 
     extraSessionCommands = ''
       export ECORE_EVAS_ENGINE=wayland_egl

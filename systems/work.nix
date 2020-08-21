@@ -47,6 +47,18 @@ in
     BW_ID=zzz
   '';
 
+  home-manager.users.bbigras = {
+    wayland.windowManager.sway = {
+      config = {
+        input = {
+          "1118:1974:Microsoft_Comfort_Curve_Keyboard_3000" = {
+            xkb_numlock = "enabled";
+          };
+        };
+      };
+    };
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
