@@ -132,6 +132,7 @@ in
       dnsutils
       element-desktop
       oneshot
+      tailscale
 
       # nix
       cachix
