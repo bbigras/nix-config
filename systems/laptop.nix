@@ -154,6 +154,37 @@ in
 
   home-manager.users.bbigras = { ... }: {
     imports = [ (import ((import ../nix).impermanence + "/home-manager.nix")) ];
+
+    wayland.windowManager.sway = {
+      config = {
+        input = {
+          "1:1:AT_Translated_Set_2_keyboard" = {
+            repeat_rate = "70";
+          };
+          "1739:30381:DLL0665:01_06CB:76AD_Touchpad" = {
+            # dwt = "enabled";
+            # tap = "enabled";
+            # natural_scroll = "enabled";
+            # middle_emulation = "enabled";
+
+            accel_profile = "adaptive";
+            click_method = "button_areas";
+            dwt = "disabled";
+            natural_scroll = "enabled";
+            scroll_method = "two_finger";
+            tap = "enabled";
+          };
+        };
+
+        output = {
+          "*" = {
+            scale = "2";
+            # bg = "~/Downloads/molly.png fit";
+          };
+        };
+      };
+    };
+
     home.persistence."/persist/home/bbigras" = {
       directories = [
         ".cache/mozilla"
@@ -249,38 +280,6 @@ in
   environment.etc."restic-pw-id".text = ''
     BW_ID=873078f3-3587-40ed-8ecc-aba30019a273
   '';
-
-  home-manager.users.bbigras = {
-    wayland.windowManager.sway = {
-      config = {
-        input = {
-          "1:1:AT_Translated_Set_2_keyboard" = {
-            repeat_rate = "70";
-          };
-          "1739:30381:DLL0665:01_06CB:76AD_Touchpad" = {
-            # dwt = "enabled";
-            # tap = "enabled";
-            # natural_scroll = "enabled";
-            # middle_emulation = "enabled";
-
-            accel_profile = "adaptive";
-            click_method = "button_areas";
-            dwt = "disabled";
-            natural_scroll = "enabled";
-            scroll_method = "two_finger";
-            tap = "enabled";
-          };
-        };
-
-        output = {
-          "*" = {
-            scale = "2";
-            # bg = "~/Downloads/molly.png fit";
-          };
-        };
-      };
-    };
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
