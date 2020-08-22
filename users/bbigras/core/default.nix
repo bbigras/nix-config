@@ -197,7 +197,9 @@ in
       cargo-tarpaulin
       cargo-udeps
 
+      # games
       my_cdda
+      dwarf-fortress-packages.dwarf-fortress-full
 
       tmux
       dust
