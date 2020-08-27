@@ -397,9 +397,14 @@ in
         };
       };
 
-      direnv = {
+      envrc = {
         enable = true;
-        command = [ "direnv-mode" "direnv-update-environment" ];
+        after = [ "lsp-mode" "lsp-rust" ];
+        config = ''
+          (envrc-global-mode)
+          (with-eval-after-load 'envrc
+            (define-key envrc-mode-map (kbd "C-c e") 'envrc-command-map))
+        '';
       };
 
       docker-tramp.enable = true;
@@ -979,13 +984,6 @@ in
         '';
         #                 lsp-prefer-flymake nil
         # (setq lsp-enable-semantic-highlighting t)
-        hook = [
-          ''
-            (web-mode . (lambda ()
-                           (direnv-update-environment)
-                           (lsp)))
-          ''
-        ];
       };
 
       expand-region = {
@@ -1004,13 +1002,6 @@ in
           (setf (lsp--client-priority (gethash 'rust-analyzer lsp-clients)) 100)
           (setq lsp-disabled-clients '(rls))
         '';
-        hook = [
-          ''
-            (rustic-mode . (lambda ()
-                           (direnv-update-environment)
-                           (lsp)))
-          ''
-        ];
       };
 
       lsp-treemacs = {
