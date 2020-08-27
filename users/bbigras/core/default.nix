@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   nix-matrix-yggdrasil_src = (import ../../../nix).nix-matrix-yggdrasil;
-  nix-matrix-yggdrasil = import nix-matrix-yggdrasil_src { };
+  nix-matrix-yggdrasil = import nix-matrix-yggdrasil_src;
 
   neuron = (import (import ../../../nix).neuron { });
   crate2nix = (import (import ../../../nix).crate2nix { });
