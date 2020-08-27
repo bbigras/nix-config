@@ -13,7 +13,7 @@
   programs.emacs = {
     enable = true;
     # package = pkgs.emacsGit;
-    package = pkgs.emacsGcc;
+    package = pkgs.emacsGccPgtk;
     init.enable = true;
   };
 }

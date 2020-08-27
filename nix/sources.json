@@ -35,6 +35,18 @@
         "url": "https://github.com/nix-community/emacs-overlay/archive/374d8b952271a19549dd6fb3ce3c4afb697f5d7a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "emacs-pgtk-nativecomp-overlay": {
+        "branch": "master",
+        "description": "nix overlay for emacs with native compilation and pgtk, based on emacs-overlay and cachix templates",
+        "homepage": "",
+        "owner": "mjlbach",
+        "repo": "emacs-pgtk-nativecomp-overlay",
+        "rev": "07664970302f58f4160b851525919f453f6ad690",
+        "sha256": "0zyddpzcakzdlizpm75zyzqvw3178cjdb9i91wnzc0gv6dqbsln9",
+        "type": "tarball",
+        "url": "https://github.com/mjlbach/emacs-pgtk-nativecomp-overlay/archive/07664970302f58f4160b851525919f453f6ad690.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "home-manager": {
         "branch": "master",
         "description": "Manage a user environment using Nix",

@@ -53,6 +53,7 @@ in
       "https://srid.cachix.org" # for neuron
       "https://nixiosk.cachix.org"
       "https://niv.cachix.org"
+      "https://mjlbach.cachix.org"
     ];
     binaryCachePublicKeys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
@@ -62,6 +63,7 @@ in
       "srid.cachix.org-1:MTQ6ksbfz3LBMmjyPh0PLmos+1x+CdtJxA/J2W+PQxI="
       "nixiosk.cachix.org-1:pyzRzjCUhw0r+moXnSklZwwI/gFk+Z+A2ofmEhOf7Sc="
       "niv.cachix.org-1:X32PCg2e/zAm3/uD1ScqW2z/K0LtDyNV7RdaxIuLgQM="
+      "mjlbach.cachix.org-1:dR0V90mvaPbXuYria5mXvnDtFibKYqYc2gtl9MWSkqI="
     ];
     nixPath = [
       "nixos-config=${dummyConfig}"
@@ -75,6 +77,7 @@ in
     overlays = [
       (import (import ../nix).nixpkgs-mozilla)
       (import (import ../nix).emacs-overlay)
+      (import (import ../nix).emacs-pgtk-nativecomp-overlay)
       (import ../overlays/ffmpeg.nix)
       (import ../overlays/mkSecret.nix)
     ];
