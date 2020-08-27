@@ -981,6 +981,12 @@ in
           ;; lsp-eldoc-render-all nil
           ;;lsp-modeline-code-actions-enable nil
 
+          (add-to-list 'lsp-language-id-configuration '(nix-mode . "nix"))
+          (lsp-register-client
+           (make-lsp-client :new-connection (lsp-stdio-connection '("rnix-lsp"))
+                            :major-modes '(nix-mode)
+                            :server-id 'nix))
+
         '';
         #                 lsp-prefer-flymake nil
         # (setq lsp-enable-semantic-highlighting t)

@@ -144,6 +144,7 @@ in
       nix-update
       nixpkgs-fmt
       nixos-shell
+      rnix-lsp
 
       # cool cli tools
       fd
