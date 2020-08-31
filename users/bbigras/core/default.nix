@@ -23,12 +23,12 @@ in
     enable = true;
     enableNixDirenvIntegration = true;
   };
-  programs.fzf.enable = true;
   programs.htop.enable = true;
   programs.jq.enable = true;
   programs.starship.enable = true;
   programs.vscode.enable = true;
   programs.zoxide.enable = true;
+  programs.mcfly.enable = true;
 
   services.dropbox.enable = true;
   services.spotifyd.enable = true;

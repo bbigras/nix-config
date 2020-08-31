@@ -75,6 +75,7 @@ in
       (import (import ../nix).emacs-overlay)
       (import ../overlays/ffmpeg.nix)
       (import ../overlays/mkSecret.nix)
+      (import ../overlays/mcfly.nix)
     ];
   };
 
