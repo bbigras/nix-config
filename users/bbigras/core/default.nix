@@ -22,6 +22,21 @@ in
   programs.direnv = {
     enable = true;
     enableNixDirenvIntegration = true;
+    stdlib = ''
+      layout_postgres() {
+        export PGDATA="$(direnv_layout_dir)/postgres"
+        export PGHOST="$PGDATA"
+
+        if [[ ! -d "$PGDATA" ]]; then
+          initdb
+          cat >> "$PGDATA/postgresql.conf" <<-EOF
+            listen_addresses = ''\'''\'
+            unix_socket_directories = ''\'$PGHOST''\'
+          EOF
+          echo "CREATE DATABASE $USER;" | postgres --single -E postgres
+        fi
+      }
+    '';
   };
   programs.htop.enable = true;
   programs.jq.enable = true;
