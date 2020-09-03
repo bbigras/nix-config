@@ -1086,6 +1086,10 @@ in
         # after = [ "dap-mode" ];
       };
 
+      frog-jump-buffer = {
+        enable = true;
+      };
+
       markdown-mode = {
         enable = true;
         mode = [
