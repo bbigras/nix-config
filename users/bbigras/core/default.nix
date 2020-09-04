@@ -29,10 +29,10 @@ in
 
         if [[ ! -d "$PGDATA" ]]; then
           initdb
-          cat >> "$PGDATA/postgresql.conf" <<-EOF
-            listen_addresses = ''\'''\'
-            unix_socket_directories = ''\'$PGHOST''\'
-          EOF
+          cat >> "$PGDATA/postgresql.conf" <<EOF
+listen_addresses = ''\'''\'
+unix_socket_directories = ''\'$PGHOST''\'
+EOF
           echo "CREATE DATABASE $USER;" | postgres --single -E postgres
         fi
       }
