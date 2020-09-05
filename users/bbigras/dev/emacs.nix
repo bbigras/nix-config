@@ -1367,6 +1367,7 @@ in
         hook = [
           # Yasnippet interferes with tab completion in ansi-term.
           "(term-mode . (lambda () (yas-minor-mode -1)))"
+          "(yas-minor-mode-hook . (lambda () (yas-activate-extra-mode 'fundamental-mode)))"
         ];
         config = "(yas-global-mode 1)";
       };
