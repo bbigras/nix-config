@@ -1352,6 +1352,11 @@ in
         command = [ "org-tree-slide-mode" ];
       };
 
+      org-variable-pitch = {
+        enable = true;
+        hook = [ "(org-mode . org-variable-pitch-minor-mode)" ];
+      };
+
       # Set up yasnippet. Defer it for a while since I don't generally
       # need it immediately.
       yasnippet = {
