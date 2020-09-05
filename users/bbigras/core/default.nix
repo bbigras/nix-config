@@ -245,7 +245,7 @@ EOF
     };
 
     Service = {
-      ExecStart = "${nix-matrix-yggdrasil}/bin/dendrite-demo-yggdrasil -peer tcp://127.0.0.1:9977";
+      ExecStart = "${nix-matrix-yggdrasil}/bin/dendrite-demo-yggdrasil -peer tcp://64.112.177.94:1617";
       WorkingDirectory = "/home/bbigras/matrix-p2p";
       Restart = "on-failure";
       PrivateTmp = true;
