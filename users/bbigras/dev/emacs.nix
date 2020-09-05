@@ -1160,7 +1160,8 @@ in
           ;; Some general stuff.
           (setq org-reverse-note-order t
                 org-use-fast-todo-selection t
-                org-adapt-indentation nil)
+                org-adapt-indentation nil
+                org-hide-emphasis-markers t)
 
           ;;(setq org-tag-alist rah-org-tag-alist)
 
