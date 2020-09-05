@@ -193,6 +193,7 @@ EOF
       # utils
       file
       tcpdump
+      strace
 
       neuron
 
