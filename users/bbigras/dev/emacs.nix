@@ -1336,9 +1336,9 @@ in
         '';
       };
 
-      org-bullets = {
+      org-superstar = {
         enable = true;
-        hook = [ "(org-mode . org-bullets-mode)" ];
+        hook = [ "(org-mode . org-superstar-mode)" ];
       };
 
       org-edna = {
