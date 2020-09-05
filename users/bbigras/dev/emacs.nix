@@ -269,6 +269,17 @@ in
           ''"\\.txt\\'"''
           ''"\\.adoc\\'"''
         ];
+        hook = [
+          ''
+            (adoc-mode . (lambda ()
+                           (visual-line-mode)
+                           (visual-fill-column-mode)
+                           (variable-pitch-mode)))
+          ''
+        ];
+        config = ''
+          (set-face-background 'markup-verbatim-face nil)
+        '';
       };
 
       mark-thing-at = {
