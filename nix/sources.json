@@ -36,15 +36,15 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
-        "branch": "master",
+        "branch": "fix_mcfly",
         "description": "Manage a user environment using Nix",
         "homepage": "https://rycee.gitlab.io/home-manager/",
-        "owner": "rycee",
+        "owner": "bbigras",
         "repo": "home-manager",
-        "rev": "41b1af808f1de69c31f3fd164d5274154ee782e4",
-        "sha256": "1m3nww8fq4874jcpkgni1vy5zzhpg9wvbqp04x76x0dwahbkx8l6",
+        "rev": "aab3f1c1741af81c9b11a0166950b665cec7c75f",
+        "sha256": "0nyz84ss3cijvzhpkgwh58nd5466758k2sg2hlmgg4q4s8mkrkn4",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/41b1af808f1de69c31f3fd164d5274154ee782e4.tar.gz",
+        "url": "https://github.com/bbigras/home-manager/archive/aab3f1c1741af81c9b11a0166950b665cec7c75f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "impermanence": {
