@@ -8,7 +8,7 @@
       gnome3.eog # image viewer
       # gnome3.gnome-tweaks
       gnome3.gnome-tweak-tool
-      tilix
+      # tilix
 
       # extensions
       gnomeExtensions.appindicator
