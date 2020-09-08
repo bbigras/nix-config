@@ -122,7 +122,7 @@ EOF
       mediainfo
 
       # games
-      lutris
+      # lutris
 
       # comm
       discord
