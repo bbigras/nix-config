@@ -1084,18 +1084,6 @@ in
         '';
       };
 
-      dap-firefox = {
-        enable = true;
-        config = lib.mkForce "";
-        # after = [ "dap-mode" ];
-      };
-
-      dap-chrome = {
-        enable = true;
-        config = lib.mkForce "";
-        # after = [ "dap-mode" ];
-      };
-
       dap-lldb = {
         enable = true;
         config = lib.mkForce "";
