@@ -124,6 +124,10 @@ EOF
       # games
       # lutris
 
+      # twitch
+      streamlink
+      chatterino2
+
       # comm
       discord
 
