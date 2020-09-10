@@ -140,6 +140,8 @@ EOF
       wrangler # cloudflare workers
       tcpdump
 
+      networkmanager_dmenu
+
       # net
       croc
       ffsend
