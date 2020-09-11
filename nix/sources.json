@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "29b0680f24a5069b6f252cda02f7b80ec23da85f",
-        "sha256": "12iskh4f48cw315a29w3n2lk7xkg0sqyj7qa4770nyv4dxa459ya",
+        "rev": "0203edf25f65038a832b24e0b0f2a1230e7028cd",
+        "sha256": "1rzy1nbar7kfy5rx65qddm0cav1gnh489lcamfxg58v2jmi0fcyg",
         "type": "tarball",
-        "url": "https://github.com/nix-community/NUR/archive/29b0680f24a5069b6f252cda02f7b80ec23da85f.tar.gz",
+        "url": "https://github.com/nix-community/NUR/archive/0203edf25f65038a832b24e0b0f2a1230e7028cd.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "crate2nix": {
@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "d57eabf41dcab90ef17612f7727c4276e3767aa7",
-        "sha256": "1x9y1nb4k1qcw8rx7h32vdzdsqrh2h0cfh1nczn9n96anq1jjbnj",
+        "rev": "1677075e7d32dd3ed259cdc59001b89e44faafd2",
+        "sha256": "1xa9yh208zp210nnd1p5nf8a116282sgms303mc1ksry6mh06plw",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/d57eabf41dcab90ef17612f7727c4276e3767aa7.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/1677075e7d32dd3ed259cdc59001b89e44faafd2.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
@@ -77,10 +77,10 @@
         "homepage": null,
         "owner": "bbigras",
         "repo": "nix-matrix-yggdrasil",
-        "rev": "f271b297148fbf1eb0b35a7e96236cd24277e700",
-        "sha256": "03lr70q1j2cyyfsdlq74xvkd9dj1plh04ss44j51az3nm9c59w9y",
+        "rev": "5ae473ed1046a3e10cedb8e9ce55717b05885156",
+        "sha256": "0lzwzp60knn265w90wx3741x9ydixxnqxmk6axv02pb3zwiigvw2",
         "type": "tarball",
-        "url": "https://github.com/bbigras/nix-matrix-yggdrasil/archive/f271b297148fbf1eb0b35a7e96236cd24277e700.tar.gz",
+        "url": "https://github.com/bbigras/nix-matrix-yggdrasil/archive/5ae473ed1046a3e10cedb8e9ce55717b05885156.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixos-hardware": {
