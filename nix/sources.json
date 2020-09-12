@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "83c5773a7ea7ab81234200ea8c9f0f6234756a08",
-        "sha256": "0w1l3xvb5yqpqnm6df3i81ps2mgqdrd075z9bmsa5pi4952vdi0v",
+        "rev": "21bcbd246088e1fee7f484e8d7a3e3135350d905",
+        "sha256": "0im2rzxr8j3jqq42g3r1nq91vl2hj9hn5imclypyx2q9ckcp3dnd",
         "type": "tarball",
-        "url": "https://github.com/nix-community/NUR/archive/83c5773a7ea7ab81234200ea8c9f0f6234756a08.tar.gz",
+        "url": "https://github.com/nix-community/NUR/archive/21bcbd246088e1fee7f484e8d7a3e3135350d905.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "crate2nix": {
@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "92d0791b08f37221799bfb6a263755b35a72fddb",
-        "sha256": "19nh90svs4wvakvsfgnv4lwjg3xvj9j0frvdr1zbkjxfmgjzaxbh",
+        "rev": "803499225b3be1ab7bc8a3251886a7ee90d56b6d",
+        "sha256": "0ypp0xrda06y34ry1254b5hxdbrv6av7xkx3qsh0x9acw51qsypa",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/92d0791b08f37221799bfb6a263755b35a72fddb.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/803499225b3be1ab7bc8a3251886a7ee90d56b6d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
@@ -65,10 +65,10 @@
         "homepage": "https://neuron.zettel.page",
         "owner": "srid",
         "repo": "neuron",
-        "rev": "85104ec5e25a151b5a93a4a4da1251a8cc9c7342",
-        "sha256": "1j3xaxzhssbxmasbiw4ps70ksh149arkhhlk1qj0j1g0bv9xricw",
+        "rev": "6d5bb217c0cb36335c46506f7cb65f869b22e3f5",
+        "sha256": "0wk2wby7r04n9vr1cvz9v3hax5j688j2p4n6g54q9f7lgr51wfbx",
         "type": "tarball",
-        "url": "https://github.com/srid/neuron/archive/85104ec5e25a151b5a93a4a4da1251a8cc9c7342.tar.gz",
+        "url": "https://github.com/srid/neuron/archive/6d5bb217c0cb36335c46506f7cb65f869b22e3f5.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nix-matrix-yggdrasil": {
@@ -77,10 +77,10 @@
         "homepage": null,
         "owner": "bbigras",
         "repo": "nix-matrix-yggdrasil",
-        "rev": "ce9e29a9e1801bd222ac4f6b6292e7abda19c0e2",
-        "sha256": "1spz8chb4m6600hfhj5khpszf1s75h0r3fpy4f6zh27m2is59pm9",
+        "rev": "4f37fe9800f925a4b674e28927c00dd46b5f1788",
+        "sha256": "04c9b31v0l97yq6ll2g3jg0v53gyb0z0cafs2d97hrcr53mh94fc",
         "type": "tarball",
-        "url": "https://github.com/bbigras/nix-matrix-yggdrasil/archive/ce9e29a9e1801bd222ac4f6b6292e7abda19c0e2.tar.gz",
+        "url": "https://github.com/bbigras/nix-matrix-yggdrasil/archive/4f37fe9800f925a4b674e28927c00dd46b5f1788.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixos-hardware": {
