@@ -1452,6 +1452,9 @@ in
         config = ''
           (setq projectile-enable-caching t
                 projectile-completion-system 'ivy)
+          (push "vendor" projectile-globally-ignored-directories)
+          (push ".yarn" projectile-globally-ignored-directories)
+          (push ".direnv" projectile-globally-ignored-directories)
           (projectile-mode 1)
         '';
       };
