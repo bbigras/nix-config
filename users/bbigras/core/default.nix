@@ -15,6 +15,10 @@ in
     ./email.nix
   ];
 
+  programs.tmux = {
+    enable = true;
+    tmuxp.enable = true;
+  };
   programs.aria2.enable = true;
   programs.bat.enable = true;
   programs.broot.enable = true;
@@ -108,7 +112,6 @@ EOF
       remmina
 
       # espeak
-      tmuxinator
       # socat
       # websocat
 
@@ -223,7 +226,6 @@ EOF
       my_cdda
       dwarf-fortress-packages.dwarf-fortress-full
 
-      tmux
       dust
       compsize
 
