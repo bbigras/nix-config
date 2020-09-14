@@ -138,6 +138,7 @@ EOF
       gitAndTools.git-absorb
       gitAndTools.gitui
       gitAndTools.hub
+      gitAndTools.git-machete
       gist
       colordiff
       wrangler # cloudflare workers
