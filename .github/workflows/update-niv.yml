@@ -10,10 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - run: sudo rm -rf /opt /usr/local || true &
     - uses: cachix/install-nix-action@v10
-      with: 
+      with:
         skip_adding_nixpkgs_channel: true
     - run: GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} nix-shell --run "niv update"
+    - uses: cachix/cachix-action@v6
+      with:
+        name: bbigras-nix-config
+        signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
+    - run: cachix use nix-community; cachix use nix-matrix-yggdrasil; cachix use eigenvalue; cachix use srid
+    - run: NIXPKGS_ALLOW_UNFREE=1 nix run '((import (import ./nix/sources.nix).nixpkgs {}).nix-build-uncached)' -c nix-build-uncached
+    - run: nix-shell --run "echo OK"
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v3
       with:
