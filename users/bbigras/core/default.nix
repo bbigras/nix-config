@@ -4,6 +4,7 @@ let
 
   neuron = (import (import ../../../nix).neuron { });
   crate2nix = (import (import ../../../nix).crate2nix { });
+  manix = (import (import ../../../nix).manix { });
 
   my_cdda = pkgs.cataclysm-dda.withMods (mods: with mods; [
     tileset.UndeadPeople
@@ -169,6 +170,7 @@ EOF
       nixpkgs-fmt
       nixos-shell
       rnix-lsp
+      manix
 
       # cool cli tools
       fd
