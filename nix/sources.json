@@ -101,10 +101,10 @@
         "homepage": null,
         "owner": "bbigras",
         "repo": "nix-matrix-yggdrasil",
-        "rev": "20dce4d49003f826dcc14c8851d665f24ae496ce",
-        "sha256": "0n482dbc8vr30sfp8df018088kp2vmq801n7ihdv4bn9l1rllfn9",
+        "rev": "40d0921f7c8c0c3a5388713b25f6d998d93c260c",
+        "sha256": "174c3yd00chr8x0554dxf1hqkvwf936z9cwr1d3nlrqm0si5ykfg",
         "type": "tarball",
-        "url": "https://github.com/bbigras/nix-matrix-yggdrasil/archive/20dce4d49003f826dcc14c8851d665f24ae496ce.tar.gz",
+        "url": "https://github.com/bbigras/nix-matrix-yggdrasil/archive/40d0921f7c8c0c3a5388713b25f6d998d93c260c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixos-hardware": {
