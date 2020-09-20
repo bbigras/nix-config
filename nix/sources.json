@@ -59,18 +59,6 @@
         "url": "https://github.com/nix-community/impermanence/archive/2c5aded3c24c159328957d228acfd9d37adbf49e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "manix": {
-        "branch": "master",
-        "description": "A fast CLI documentation searcher for Nix.",
-        "homepage": null,
-        "owner": "mlvzk",
-        "repo": "manix",
-        "rev": "5d033e12798d4f29e43042467025a256b63f0f71",
-        "sha256": "1mxvc0vdfyzc8mhargdzj8ipl51jh05w773xhl6rysfg3qfzcgps",
-        "type": "tarball",
-        "url": "https://github.com/mlvzk/manix/archive/5d033e12798d4f29e43042467025a256b63f0f71.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "neuron": {
         "branch": "master",
         "description": "Future-proof and simple-to-use notes system based on Zettelkasten.",

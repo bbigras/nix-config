@@ -4,7 +4,6 @@ let
 
   neuron = (import (import ../../../nix).neuron { });
   crate2nix = (import (import ../../../nix).crate2nix { });
-  manix = (import (import ../../../nix).manix { inherit pkgs; });
 
   my_cdda = pkgs.cataclysm-dda.withMods (mods: with mods; [
     tileset.UndeadPeople
