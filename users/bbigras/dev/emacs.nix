@@ -745,15 +745,6 @@ in
         };
       };
 
-      easy-kill = {
-        enable = true;
-        config = ''
-          (global-set-key [remap kill-ring-save] #'easy-kill)
-          (global-set-key [remap mark-sexp] #'easy-mark)
-        '';
-
-      };
-
       all-the-icons = {
         enable = true;
       };
@@ -1683,6 +1674,13 @@ in
       vterm = {
         enable = true;
         command = [ "vterm" ];
+      };
+
+      whole-line-or-region = {
+        enable = true;
+        config = ''
+          (whole-line-or-region-global-mode t)
+        '';
       };
 
     };
