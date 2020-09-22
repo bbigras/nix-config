@@ -18,10 +18,7 @@
         },
         {
           "name": "Nix",
-          "uses": "cachix/install-nix-action@v11",
-          "with": {
-            "skip_adding_nixpkgs_channel": true
-          }
+          "uses": "cachix/install-nix-action@v11"
         },
         {
           "name": "Cachix",
