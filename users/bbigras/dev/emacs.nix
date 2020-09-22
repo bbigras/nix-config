@@ -2,6 +2,22 @@
 let
   nurpkgs = (import (import ../../../nix).nixpkgs { });
   nurNoPkgs = (import (import ../../../nix).NUR) { inherit pkgs nurpkgs; };
+
+  neuron-mode = epkgs: epkgs.trivialBuild rec {
+    pname = "neuron-mode";
+    version = "2020-09-22";
+
+    dontBuild = true;
+
+    src = pkgs.fetchFromGitHub {
+      owner = "felko";
+      repo = pname;
+      rev = "f7bfb7685787eb68691beb11466182de3427a8da";
+      sha256 = "1wvi1apnsxmlc93lnhgkrvxcb9b3d13sr722lzwjr0sv1vjp8gnq";
+    };
+
+    # packageRequires = [ epkgs.async ];
+  };
 in
 {
   imports = [ nurNoPkgs.repos.rycee.hmModules.emacs-init ];
@@ -1349,7 +1365,10 @@ in
         hook = [ "(flycheck-mode . flycheck-plantuml-setup)" ];
       };
 
-      neuron-mode.enable = true;
+      neuron-mode = {
+        enable = true;
+        package = neuron-mode;
+      };
 
       selectrum = {
         enable = true;
