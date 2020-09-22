@@ -738,35 +738,6 @@ in
 
       };
 
-      ivy = {
-        enable = true;
-        demand = true;
-        diminish = [ "ivy-mode" ];
-        command = [ "ivy-mode" ];
-        config = ''
-          (setq ivy-use-virtual-buffers t
-                ivy-use-selectable-prompt t
-                ivy-count-format "%d/%d "
-                ivy-virtual-abbreviate 'full)
-
-          (ivy-mode 1)
-        '';
-      };
-
-      ivy-posframe = {
-        enable = true;
-        config = ''
-          ;; display at `ivy-posframe-style'
-          (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
-          ;; (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
-          ;; (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-center)))
-          ;; (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-bottom-left)))
-          ;; (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-bottom-left)))
-          ;; (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-top-center)))
-          (ivy-posframe-mode 1)
-        '';
-      };
-
       all-the-icons = {
         enable = true;
       };
@@ -775,62 +746,6 @@ in
         enable = true;
         after = [ "all-the-icons" ];
         hook = [ "(dired-mode-hook . all-the-icons-dired-mode)" ];
-      };
-
-      ivy-rich = {
-        enable = true;
-        after = [ "ivy" "all-the-icons" ];
-        config = ''
-          (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
-
-          (ivy-rich-mode 1)
-        '';
-      };
-
-
-      # (defun ivy-rich-switch-buffer-icon (candidate)
-      #   (with-current-buffer
-      #       (get-buffer candidate)
-      #     (let ((icon (all-the-icons-icon-for-mode major-mode)))
-      #       (if (symbolp icon)
-      #           (all-the-icons-icon-for-mode 'fundamental-mode)
-      #         icon))))
-
-      # (setq ivy-rich-display-transformers-list
-      #       '(ivy-switch-buffer
-      #         (:columns
-      #          ((ivy-rich-switch-buffer-icon (:width 2))
-      #           (ivy-rich-candidate (:width 30))
-      #           (ivy-rich-switch-buffer-size (:width 7))
-      #           (ivy-rich-switch-buffer-indicators (:width 4 :face error :align right))
-      #           (ivy-rich-switch-buffer-major-mode (:width 12 :face warning))
-      #           (ivy-rich-switch-buffer-project (:width 15 :face success))
-      #           (ivy-rich-switch-buffer-path (:width (lambda (x) (ivy-rich-switch-buffer-shorten-path x (ivy-rich-minibuffer-width 0.3))))))
-      #          :predicate
-      #          (lambda (cand) (get-buffer cand)))))
-
-
-      ivy-hydra = {
-        enable = true;
-        defer = true;
-        after = [ "ivy" "hydra" ];
-      };
-
-      ivy-xref = {
-        enable = true;
-        after = [ "ivy" "xref" ];
-        command = [ "ivy-xref-show-xrefs" ];
-        config = ''
-          (setq xref-show-xrefs-function #'ivy-xref-show-xrefs)
-        '';
-      };
-
-      swiper = {
-        enable = true;
-        command = [ "swiper" "swiper-all" "swiper-isearch" ];
-        bind = {
-          "C-s" = "swiper-isearch";
-        };
       };
 
       # Lets counsel do prioritization. A fork of smex.
@@ -882,7 +797,6 @@ in
           "C-x g" = "magit-status";
         };
         config = ''
-          (setq magit-completing-read-function 'ivy-completing-read)
           (add-to-list 'git-commit-style-convention-checks
                        'overlong-summary-line)
         '';
@@ -1033,11 +947,6 @@ in
       lsp-treemacs = {
         enable = true;
         after = [ "lsp-mode" "treemacs" ];
-      };
-
-      lsp-ivy = {
-        enable = true;
-        after = [ "lsp-mode" "ivy" ];
       };
 
       # pour dap-mode
@@ -1442,6 +1351,46 @@ in
 
       neuron-mode.enable = true;
 
+      selectrum = {
+        enable = true;
+        config = ''
+          (selectrum-mode +1)
+        '';
+      };
+
+      prescient = {
+        enable = true;
+        config = ''
+          ;; to save your command history on disk, so the sorting gets more
+          ;; intelligent over time
+          (prescient-persist-mode +1)
+        '';
+      };
+
+      selectrum-prescient = {
+        enable = true;
+        after = [ "prescient" "selectrum" ];
+        config = ''
+          ;; to make sorting and filtering more intelligent
+          (selectrum-prescient-mode +1)
+        '';
+      };
+
+      company-prescient = {
+        enable = true;
+        after = [ "prescient" "company" ];
+        config = ''
+          (company-prescient-mode +1)
+        '';
+      };
+
+      ctrlf = {
+        enable = true;
+        config = ''
+          (ctrlf-mode +1)
+        '';
+      };
+
       projectile = {
         enable = true;
         diminish = [ "projectile-mode" ];
@@ -1450,8 +1399,8 @@ in
           "C-c p" = "projectile-command-map";
         };
         config = ''
-          (setq projectile-enable-caching t
-                projectile-completion-system 'ivy)
+          (setq projectile-completion-system 'default)
+          (setq projectile-enable-caching t)
           (push "vendor" projectile-globally-ignored-directories)
           (push ".yarn" projectile-globally-ignored-directories)
           (push ".direnv" projectile-globally-ignored-directories)
