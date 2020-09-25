@@ -125,7 +125,7 @@ EOF
       mediainfo
 
       # games
-      # lutris
+      lutris
 
       # twitch
       streamlink
