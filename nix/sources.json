@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "5e6c5deca9fd7ef8c2151ec9b2c55c7fd3fa380f",
-        "sha256": "0f6zfld7pxy9dx3426yddfk9xx1ma2h9wdw31kw31d4w35cbmzcp",
+        "rev": "6163ae68a8535ac375fcc47cbda1a0aa15afdfc7",
+        "sha256": "05l3wbl6f3rxn0rsy481fva3j08xplpzabbfr1z2ghd89sdnggim",
         "type": "tarball",
-        "url": "https://github.com/nix-community/NUR/archive/5e6c5deca9fd7ef8c2151ec9b2c55c7fd3fa380f.tar.gz",
+        "url": "https://github.com/nix-community/NUR/archive/6163ae68a8535ac375fcc47cbda1a0aa15afdfc7.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "crate2nix": {
@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "4f13fd55e6839c207a1e5dc7d71bfccc8b08ebc4",
-        "sha256": "0n44ynw7m2hqynxjqcg76izfqd1zsq72apw7bg49h3qaq20nq4m6",
+        "rev": "4ae245ce817bcd017de987022e1b179635b21b67",
+        "sha256": "002ijwijvsrhwb6ws2dhrgvyw7l68ibiczrpvb62d29ylpwnn9l1",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/4f13fd55e6839c207a1e5dc7d71bfccc8b08ebc4.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/4ae245ce817bcd017de987022e1b179635b21b67.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "emacs-pgtk-nativecomp-overlay": {
@@ -77,10 +77,10 @@
         "homepage": "https://neuron.zettel.page",
         "owner": "srid",
         "repo": "neuron",
-        "rev": "2b226ef43e0d7b57eff8bbd5f4851a257115d2a9",
-        "sha256": "14apb8yi59xgaamhk21yd2xb3y30q3qcw39qhzcxwfd1ik19x3qb",
+        "rev": "2b939da87f064a15092c5780db4e8fc95a760255",
+        "sha256": "0zc78y4vv4jc5v5jgigb5pyhb3jw13l2g4n1f31abl8l0v99f7cg",
         "type": "tarball",
-        "url": "https://github.com/srid/neuron/archive/2b226ef43e0d7b57eff8bbd5f4851a257115d2a9.tar.gz",
+        "url": "https://github.com/srid/neuron/archive/2b939da87f064a15092c5780db4e8fc95a760255.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "niv": {
@@ -137,10 +137,10 @@
         "homepage": null,
         "owner": "mozilla",
         "repo": "nixpkgs-mozilla",
-        "rev": "efda5b357451dbb0431f983cca679ae3cd9b9829",
-        "sha256": "11wqrg86g3qva67vnk81ynvqyfj0zxk83cbrf0p9hsvxiwxs8469",
+        "rev": "9f3df31ebb32ac97e385e07edd954fbf027ca242",
+        "sha256": "1swds7y664m04m1grjhypvslxzzwhiby4xqlc0aml62gbyi88jya",
         "type": "tarball",
-        "url": "https://github.com/mozilla/nixpkgs-mozilla/archive/efda5b357451dbb0431f983cca679ae3cd9b9829.tar.gz",
+        "url": "https://github.com/mozilla/nixpkgs-mozilla/archive/9f3df31ebb32ac97e385e07edd954fbf027ca242.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixus": {
