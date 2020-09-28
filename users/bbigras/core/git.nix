@@ -8,6 +8,12 @@
     ignores = [ "*~" "*.swp" ];
 
     delta.enable = true;
+    delta.options = {
+      line-numbers = true;
+      side-by-side = true;
+      whitespace-error-style = "22 reverse";
+      syntax-theme = "ansi-dark";
+    };
     aliases = {
       st = "status";
       co = "checkout";
