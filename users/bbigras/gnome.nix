@@ -42,7 +42,11 @@
 
   programs.firefox = {
     enable = true;
-    package = pkgs.latest.firefox-nightly-bin;
+    package = pkgs.firefox.override {
+      cfg = {
+        enableFXCastBridge = true;
+      };
+    };
   };
 
   gtk = {
