@@ -31,7 +31,7 @@
       wl-clipboard
       # zoom-us
 
-      # firefox
+      latest.firefox-nightly-bin
       nwg-launchers
     ];
   };
