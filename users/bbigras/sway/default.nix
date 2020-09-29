@@ -31,7 +31,7 @@
       wl-clipboard
       # zoom-us
 
-      firefox
+      # firefox
       nwg-launchers
     ];
   };
