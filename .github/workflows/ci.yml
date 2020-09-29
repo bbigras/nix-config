@@ -34,7 +34,7 @@
         },
         {
           "name": "Build",
-          "run": "NIXPKGS_ALLOW_UNFREE=1 nix-build"
+          "run": "NIXPKGS_ALLOW_UNFREE=1 nix run '((import (import ./nix/sources.nix).nixpkgs {}).nix-build-uncached)' -c nix-build-uncached"
         }
       ]
     }
