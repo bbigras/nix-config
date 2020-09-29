@@ -8,6 +8,8 @@ let
   my_cdda = pkgs.cataclysm-dda.withMods (mods: with mods; [
     tileset.UndeadPeople
   ]);
+
+  my_dwarf_fortress = pkgs.dwarf-fortress-packages.dwarf-fortress-full.override { theme = "vettlingr"; enableIntro = false; };
 in
 {
   imports = [
@@ -226,7 +228,7 @@ EOF
 
       # games
       my_cdda
-      dwarf-fortress-packages.dwarf-fortress-full
+      my_dwarf_fortress
 
       dust
       compsize
