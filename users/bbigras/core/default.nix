@@ -24,6 +24,20 @@ in
   programs.aria2.enable = true;
   programs.bat.enable = true;
   programs.broot.enable = true;
+  programs.pet = {
+    enable = true;
+    snippets = [
+      {
+        command = "curl ifconfig.co";
+        description = "get my public ip";
+        output = "127.0.0.1";
+      }
+      {
+        command = "echo | openssl s_client -connect example.com:443 2>/dev/null |openssl x509 -dates -noout";
+        description = "Show expiration date of SSL certificate";
+      }
+    ];
+  };
   programs.command-not-found.enable = true;
   programs.direnv = {
     enable = true;
