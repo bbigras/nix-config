@@ -432,6 +432,8 @@ in
           (with-eval-after-load 'envrc
             (define-key envrc-mode-map (kbd "C-c e") 'envrc-command-map))
 
+          (setq lsp-restart 'auto-restart)
+
           (push "[/\\\\]vendor$" lsp-file-watch-ignored)
           (push "[/\\\\]\\.yarn$" lsp-file-watch-ignored)
           (push "[/\\\\]\\.direnv$" lsp-file-watch-ignored)
