@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:
 with lib;
-rec {
+{
   users.users.bbigras = {
     createHome = true;
     extraGroups = [ "wheel" ]

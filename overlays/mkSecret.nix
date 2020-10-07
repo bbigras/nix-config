@@ -1,4 +1,4 @@
-self: super:
+self: _super:
 with builtins; with self.lib;
 {
   mkSecret = { file, ... }@args:

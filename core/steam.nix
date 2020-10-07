@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }: {
+{ pkgs, ... }: {
   # https://github.com/NixOS/nixpkgs/issues/45492
   # Set limits for esync.
   systemd.extraConfig = "DefaultLimitNOFILE=1048576";

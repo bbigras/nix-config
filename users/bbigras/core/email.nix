@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ ... }: {
   accounts.email.accounts.bbigras = {
     primary = true;
     flavor = "gmail.com";

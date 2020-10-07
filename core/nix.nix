@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ ... }: {
   nix = {
     allowedUsers = [ "@wheel" ];
     daemonIONiceLevel = 5;

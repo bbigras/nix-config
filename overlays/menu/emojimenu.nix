@@ -1,4 +1,4 @@
-self: super:
+_self: super:
 let
   emoji_json = super.fetchurl {
     name = "emojis.json";

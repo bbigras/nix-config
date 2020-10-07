@@ -1,4 +1,4 @@
-self: super:
+_self: super:
 let
   grim = "${super.grim}/bin/grim";
   notify-send = "${super.libnotify}/bin/notify-send";
