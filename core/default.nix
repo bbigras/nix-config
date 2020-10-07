@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 let
   dummyConfig = pkgs.writeText "configuration.nix" ''
     assert builtins.trace "This is a dummy config, use nixus!" false;
@@ -80,7 +80,6 @@ in
       (import (import ../nix).nixpkgs-mozilla)
       (import (import ../nix).emacs-overlay)
       (import (import ../nix).emacs-pgtk-nativecomp-overlay)
-      (import ../overlays/ffmpeg.nix)
       (import ../overlays/mkSecret.nix)
     ];
   };
