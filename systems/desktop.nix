@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 let
   zen = (import (import ../nix).zen { });
 in
@@ -40,6 +40,14 @@ in
   users.users.bbigras.packages = [ pkgs.retroarchBare ];
 
   networking.networkmanager.enable = false;
+
+  systemd.network.enable = true;
+  systemd.network.networks = {
+    lan = {
+      DHCP = "yes";
+      matchConfig.Name = "enp3s0";
+    };
+  };
 
   services.xserver = {
     autorun = true;

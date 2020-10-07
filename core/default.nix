@@ -32,6 +32,8 @@ in
   nix.maxJobs = "auto";
   nixpkgs.localSystem.system = "x86_64-linux";
 
+  networking.useDHCP = false;
+
   programs.fish.enable = true;
   programs.ssh.startAgent = true;
   programs.wireshark.enable = true;
