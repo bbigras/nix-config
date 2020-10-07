@@ -1,5 +1,6 @@
-{ pkgs ? import <nixpkgs> { } }:
-
+let
+  pkgs = import (import ./nix).nixpkgs { };
+in
 pkgs.mkShell {
   buildInputs = with pkgs; [
     cachix
@@ -9,4 +10,6 @@ pkgs.mkShell {
     # keep this line if you use bash
     pkgs.bashInteractive
   ];
+
+  shellHook = "${(import ./.).preCommitChecks.shellHook}";
 }
