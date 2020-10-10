@@ -1,20 +1,13 @@
-{ super }:
-let
-  alacritty = "${super.alacritty}/bin/alacritty";
-  fzf = "${super.fzf}/bin/fzf";
-  gopass = "${super.gopass}/bin/gopass";
-  notify-send = "${super.libnotify}/bin/notify-send";
-  rg = "${super.ripgrep}/bin/rg";
-  wl-copy = "${super.wl-clipboard}/bin/wl-copy";
-in
-''
+{ pkgs, name, filter, terminal, getter }:
+pkgs.writeScriptBin name ''
+  #!${pkgs.stdenv.shell}
   gopassmenu_path="$(readlink -f "$0")"
   gopassmenu_fifo="/tmp/gopassmenu_fifo"
   gopassmenu_lock="/tmp/gopassmenu_lock"
 
   function gopassmenu_lock() {
       if [[ -f "$gopassmenu_lock" ]]; then
-          ${notify-send} "✖️ gopassmenu already running"
+          ${pkgs.libnotify}/bin/notify-send "✖️ gopassmenu already running"
           exit 1
       else
           touch "$gopassmenu_lock"
@@ -28,14 +21,14 @@ in
   }
 
   function gopassmenu_window() {
-      name="$(${gopass} ls -f | ${rg} "$GOPASS_FILTER" | ${fzf})"
+      name="$(${pkgs.gopass}/bin/gopass ls -f | ${pkgs.ripgrep}/bin/rg "${filter}" | ${pkgs.fzf}/bin/fzf)"
       echo "$name" > "$gopassmenu_fifo"
   }
 
   function gopassmenu_backend() {
       gopassmenu_lock
       export GOPASSMENU_BEHAVE_AS_WINDOW=1
-      ${alacritty} -d 55 18 -t gopassmenu -e "$gopassmenu_path"
+      ${terminal} -t ${name} -e "$gopassmenu_path"
 
       name="$(cat "$gopassmenu_fifo")"
       rm -f "$gopassmenu_fifo"
@@ -44,8 +37,8 @@ in
           exit 1
       fi
 
-      local password="$(gopass_get "$name")"
-      ${wl-copy} -o "$password"
+      local password="$(${getter})"
+      ${pkgs.wl-clipboard}/bin/wl-copy -o "$password"
       gopassmenu_unlock
   }
 

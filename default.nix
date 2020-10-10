@@ -8,7 +8,7 @@ in
       nix-linter = {
         enable = true;
         excludes = [
-          # "overlays/menu/default.nix"
+          "overlays/menu/default.nix"
         ];
       };
       nixpkgs-fmt.enable = true;
