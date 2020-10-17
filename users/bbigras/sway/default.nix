@@ -33,6 +33,7 @@
 
       firefox-wayland
       nwg-launchers
+      swappy
     ];
   };
 
