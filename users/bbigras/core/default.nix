@@ -194,7 +194,6 @@ EOF
       dust
       procs
       hyperfine
-      ytop
       pwgen
       httpie
 
