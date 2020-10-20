@@ -39,7 +39,7 @@ in
     # pkgs.hunspellDicts.fr-moderne
     pkgs.aspellDicts.en-computers
     pkgs.aspellDicts.en
-    pkgs.aspellDicts.en-science
+    # pkgs.aspellDicts.en-science
     pkgs.aspellDicts.fr
     pkgs.hunspellDicts.en-ca
 
