@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "050b5bc760679f939fc4c4b2a67577231611cd84",
-        "sha256": "08b9z3sdm9mwfgz636mvpmx0q2859g12wnl4wrsfcv8k8gzg1fcn",
+        "rev": "706f1df12532edbcba1f7da4160b84df40fa29e0",
+        "sha256": "16w326p6jbaz0r726ppdbrdgn47cd0p7vr81968rl82ynwlfr2br",
         "type": "tarball",
-        "url": "https://github.com/nix-community/NUR/archive/050b5bc760679f939fc4c4b2a67577231611cd84.tar.gz",
+        "url": "https://github.com/nix-community/NUR/archive/706f1df12532edbcba1f7da4160b84df40fa29e0.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "crate2nix": {
@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "b6372dea2a7e1e33ecad8b90b7d26fdc15729697",
-        "sha256": "1paiylp6vyg57959rzw2p88fa29kf7z2nmqfvg73r9kfgmpxcclb",
+        "rev": "68f4e16ed32c477ecc619a528ba1445738b407f9",
+        "sha256": "07lbj371fzd4wl0qy9rjrlcqag7kjad99klv4xpgmz0nq7ipf74i",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/b6372dea2a7e1e33ecad8b90b7d26fdc15729697.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/68f4e16ed32c477ecc619a528ba1445738b407f9.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "emacs-pgtk-nativecomp-overlay": {
@@ -113,10 +113,10 @@
         "homepage": null,
         "owner": "bbigras",
         "repo": "nix-matrix-yggdrasil",
-        "rev": "549eaed6b652e218f6cee061444998f83ad04d42",
-        "sha256": "1ik6k0qslzrfnyw6jfp64k7jllamifaf56hpf3qkppi93h209lh8",
+        "rev": "a59f6ac1216718102c4cfaa30888d41f904c4e8e",
+        "sha256": "00zc0nz7dq528ywjjqsj2gvsdifzdy89pa8wg34rq3l4wyw3xckp",
         "type": "tarball",
-        "url": "https://github.com/bbigras/nix-matrix-yggdrasil/archive/549eaed6b652e218f6cee061444998f83ad04d42.tar.gz",
+        "url": "https://github.com/bbigras/nix-matrix-yggdrasil/archive/a59f6ac1216718102c4cfaa30888d41f904c4e8e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nix-pre-commit-hooks": {
@@ -149,10 +149,10 @@
         "homepage": "",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5265d49a36bb5a18c85e6817b338b456acc3b8cc",
-        "sha256": "0cab38mj3f5ip0hld6wqwxsg4lj6d285kw71d2c8mnk2nk5bk4q6",
+        "rev": "007126eef72271480cb7670e19e501a1ad2c1ff2",
+        "sha256": "1rfvw560vp2wn3dxdhqn1rk1fgk0ak9lnqm2dqpnsrkl4b8ay9mq",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/5265d49a36bb5a18c85e6817b338b456acc3b8cc.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/007126eef72271480cb7670e19e501a1ad2c1ff2.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-mozilla": {
