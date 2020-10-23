@@ -153,9 +153,9 @@ EOF
       # dev
       gitAndTools.git-absorb
       gitAndTools.gitui
-      gitAndTools.hub
       gitAndTools.git-machete
       gist
+      gitAndTools.gh
       colordiff
       wrangler # cloudflare workers
       tcpdump
