@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "706f1df12532edbcba1f7da4160b84df40fa29e0",
-        "sha256": "16w326p6jbaz0r726ppdbrdgn47cd0p7vr81968rl82ynwlfr2br",
+        "rev": "bb5e6db5349781136939bc24d891d4c7315ef566",
+        "sha256": "13frpvrl70zh3afiqclcbm2ypm27gykh5w8wp35m8a5c3a6012ny",
         "type": "tarball",
-        "url": "https://github.com/nix-community/NUR/archive/706f1df12532edbcba1f7da4160b84df40fa29e0.tar.gz",
+        "url": "https://github.com/nix-community/NUR/archive/bb5e6db5349781136939bc24d891d4c7315ef566.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "crate2nix": {
@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "68f4e16ed32c477ecc619a528ba1445738b407f9",
-        "sha256": "07lbj371fzd4wl0qy9rjrlcqag7kjad99klv4xpgmz0nq7ipf74i",
+        "rev": "49a39e9306716abde804341f68b749795afb7714",
+        "sha256": "1xc5f41w04qbjg22nx91lxcmp1im8s8r71qna949jgy6f54nnb9f",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/68f4e16ed32c477ecc619a528ba1445738b407f9.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/49a39e9306716abde804341f68b749795afb7714.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "emacs-pgtk-nativecomp-overlay": {
@@ -65,10 +65,10 @@
         "homepage": "https://rycee.gitlab.io/home-manager/",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "dc5239b5cef1f52fbf9c136529954282ee717866",
-        "sha256": "008mymdaqm2ymv3w9hki1jg4kwyiji5g6cj15hvv5qgdh6ng09zr",
+        "rev": "9bf1f40af124573a54fd208b1f539eb694ef31a6",
+        "sha256": "03rf762b2c9lb0ngnq1jsr2fxjw3vmrbhhpb13g8pwrpkf15646l",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/dc5239b5cef1f52fbf9c136529954282ee717866.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/9bf1f40af124573a54fd208b1f539eb694ef31a6.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "impermanence": {
