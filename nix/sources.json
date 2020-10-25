@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "bb5e6db5349781136939bc24d891d4c7315ef566",
-        "sha256": "13frpvrl70zh3afiqclcbm2ypm27gykh5w8wp35m8a5c3a6012ny",
+        "rev": "2966748fdaba36b0c40f5b4899a3cb1c94781a38",
+        "sha256": "1maki40amnvlz006dgqgkgxrxsdxalhi0jmz7nisknhblniyp4dc",
         "type": "tarball",
-        "url": "https://github.com/nix-community/NUR/archive/bb5e6db5349781136939bc24d891d4c7315ef566.tar.gz",
+        "url": "https://github.com/nix-community/NUR/archive/2966748fdaba36b0c40f5b4899a3cb1c94781a38.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "crate2nix": {
@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "49a39e9306716abde804341f68b749795afb7714",
-        "sha256": "1xc5f41w04qbjg22nx91lxcmp1im8s8r71qna949jgy6f54nnb9f",
+        "rev": "7b5dea6b1493fd3b065878364f0bfc5aa4363306",
+        "sha256": "1whnlgh54isvz6c636y01crpg3hc289pd8rfwj9b7l2dnxidp6w2",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/49a39e9306716abde804341f68b749795afb7714.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/7b5dea6b1493fd3b065878364f0bfc5aa4363306.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "emacs-pgtk-nativecomp-overlay": {
@@ -41,10 +41,10 @@
         "homepage": "",
         "owner": "mjlbach",
         "repo": "emacs-pgtk-nativecomp-overlay",
-        "rev": "67f9a1e8b80fbaf28e8921f4282c443f832ee0a6",
-        "sha256": "0bdbc7k5sx6p1sj7akqxpvs2aqpab64admxbnqfpvm3s5ss5l5n5",
+        "rev": "76fdb81c0f8d1ed33780db609ef8da3329129b4c",
+        "sha256": "19nri2257ad8gkankylcxhzv2mvzwhlqdz8x3vlzw9qp5wnfmk3v",
         "type": "tarball",
-        "url": "https://github.com/mjlbach/emacs-pgtk-nativecomp-overlay/archive/67f9a1e8b80fbaf28e8921f4282c443f832ee0a6.tar.gz",
+        "url": "https://github.com/mjlbach/emacs-pgtk-nativecomp-overlay/archive/76fdb81c0f8d1ed33780db609ef8da3329129b4c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "gitignore": {
@@ -149,10 +149,10 @@
         "homepage": "",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "007126eef72271480cb7670e19e501a1ad2c1ff2",
-        "sha256": "1rfvw560vp2wn3dxdhqn1rk1fgk0ak9lnqm2dqpnsrkl4b8ay9mq",
+        "rev": "bd017760509492a1774b0ea2fc5c1bbb4b2d98af",
+        "sha256": "0rd7dc677s76vham7mjfc7286lfigi0ynx32ls14ffi7xwy9js42",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/007126eef72271480cb7670e19e501a1ad2c1ff2.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/bd017760509492a1774b0ea2fc5c1bbb4b2d98af.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-mozilla": {
