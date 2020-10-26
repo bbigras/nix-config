@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "2966748fdaba36b0c40f5b4899a3cb1c94781a38",
-        "sha256": "1maki40amnvlz006dgqgkgxrxsdxalhi0jmz7nisknhblniyp4dc",
+        "rev": "0f97a0afe1764f686d6fe0735c123548e023248f",
+        "sha256": "0lymbnx3p0khs8jck2gwwg4c2ssbk8acmk6vmlnim9zv5mhksffr",
         "type": "tarball",
-        "url": "https://github.com/nix-community/NUR/archive/2966748fdaba36b0c40f5b4899a3cb1c94781a38.tar.gz",
+        "url": "https://github.com/nix-community/NUR/archive/0f97a0afe1764f686d6fe0735c123548e023248f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "crate2nix": {
@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "7b5dea6b1493fd3b065878364f0bfc5aa4363306",
-        "sha256": "1whnlgh54isvz6c636y01crpg3hc289pd8rfwj9b7l2dnxidp6w2",
+        "rev": "da1f4f7400affb377fb26da04fa7ef366f442690",
+        "sha256": "16dlp4zcyykgayy273crlrhsqvf92q4q4xhlbfqd41klghk1b0m6",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/7b5dea6b1493fd3b065878364f0bfc5aa4363306.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/da1f4f7400affb377fb26da04fa7ef366f442690.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "emacs-pgtk-nativecomp-overlay": {
@@ -41,10 +41,10 @@
         "homepage": "",
         "owner": "mjlbach",
         "repo": "emacs-pgtk-nativecomp-overlay",
-        "rev": "76fdb81c0f8d1ed33780db609ef8da3329129b4c",
-        "sha256": "19nri2257ad8gkankylcxhzv2mvzwhlqdz8x3vlzw9qp5wnfmk3v",
+        "rev": "c865f941937f51d434b37d2fc217f5b7488220ff",
+        "sha256": "0pi26qmvjy8cirmdnkzxa67b4bzqvv4sqn760q11dhzgykc3i5nr",
         "type": "tarball",
-        "url": "https://github.com/mjlbach/emacs-pgtk-nativecomp-overlay/archive/76fdb81c0f8d1ed33780db609ef8da3329129b4c.tar.gz",
+        "url": "https://github.com/mjlbach/emacs-pgtk-nativecomp-overlay/archive/c865f941937f51d434b37d2fc217f5b7488220ff.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "gitignore": {
@@ -65,10 +65,10 @@
         "homepage": "https://rycee.gitlab.io/home-manager/",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "9bf1f40af124573a54fd208b1f539eb694ef31a6",
-        "sha256": "03rf762b2c9lb0ngnq1jsr2fxjw3vmrbhhpb13g8pwrpkf15646l",
+        "rev": "abaebf3b346c4bef500c5bd2fdebbed109261a0c",
+        "sha256": "1gcv2ni4nsicpmi4ain568msvgxch8cj04fxf6qgvhdklmh2y84k",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/9bf1f40af124573a54fd208b1f539eb694ef31a6.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/abaebf3b346c4bef500c5bd2fdebbed109261a0c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "impermanence": {
@@ -137,10 +137,10 @@
         "homepage": "",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "e8c5f886b05178367c6a86903921c1e934303075",
-        "sha256": "0kk6j18p6wl1ziv4dnr54c3g5g80zykv1c78i6qxwpvk7gvfszlx",
+        "rev": "3cffbd596197a99d10d8113860c9ddf5566c2ef3",
+        "sha256": "0bgk09ggvq3psx3f6kl9cvfv8ng54gjvddwmfii2k6zy934rg042",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixos-hardware/archive/e8c5f886b05178367c6a86903921c1e934303075.tar.gz",
+        "url": "https://github.com/NixOS/nixos-hardware/archive/3cffbd596197a99d10d8113860c9ddf5566c2ef3.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -149,10 +149,10 @@
         "homepage": "",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "bd017760509492a1774b0ea2fc5c1bbb4b2d98af",
-        "sha256": "0rd7dc677s76vham7mjfc7286lfigi0ynx32ls14ffi7xwy9js42",
+        "rev": "5d0e2dedd5594cdf3ebbda8bc61310e227235a9c",
+        "sha256": "1npc0viqm99gbj1q6vfqj4j4gz8jg5s6c6iiv3j01z2dbimwqyab",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/bd017760509492a1774b0ea2fc5c1bbb4b2d98af.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/5d0e2dedd5594cdf3ebbda8bc61310e227235a9c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-mozilla": {
