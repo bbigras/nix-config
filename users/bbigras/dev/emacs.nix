@@ -388,14 +388,6 @@ in
         };
       };
 
-      beacon = {
-        enable = true;
-        command = [ "beacon-mode" ];
-        diminish = [ "beacon-mode" ];
-        defer = 1;
-        config = "(beacon-mode 1)";
-      };
-
       calc = {
         enable = true;
         command = [ "calc" ];
@@ -442,10 +434,7 @@ in
 
       docker-tramp.enable = true;
 
-      dockerfile-mode = {
-        enable = true;
-        mode = [ ''"Dockerfile\\'"'' ];
-      };
+      dockerfile-mode.enable = true;
 
       doom-modeline = {
         enable = true;
@@ -918,7 +907,6 @@ in
         };
         config = ''
                     (setq
-                       lsp-diagnostic-package :flycheck
                        lsp-headerline-breadcrumb-enable t)
 
           ;; lsp-eldoc-render-all nil
@@ -1018,11 +1006,9 @@ in
 
       markdown-mode = {
         enable = true;
-        mode = [
-          ''"\\.mdwn\\'"''
-          ''"\\.markdown\\'"''
-          ''"\\.md\\'"''
-        ];
+        config = ''
+          (setq markdown-command "${pkgs.pandoc}/bin/pandoc")
+        '';
       };
 
       pandoc-mode = {
@@ -1038,7 +1024,6 @@ in
 
       nix-mode = {
         enable = true;
-        mode = [ ''"\\.nix\\'"'' ];
         hook = [ "(nix-mode . subword-mode)" ];
       };
 
@@ -1090,15 +1075,6 @@ in
                 org-hide-emphasis-markers t)
 
           ;;(setq org-tag-alist rah-org-tag-alist)
-
-          ;; Refiling should include not only the current org buffer but
-          ;; also the standard org files. Further, set up the refiling to
-          ;; be convenient with IDO. Follows norang's setup quite closely.
-          (setq org-refile-targets '((nil :maxlevel . 2)
-                                     (org-agenda-files :maxlevel . 2))
-                org-refile-use-outline-path t
-                org-outline-path-complete-in-steps nil
-                org-refile-allow-creating-parent-nodes 'confirm)
 
           ;; Add some todo keywords.
           (setq org-todo-keywords
@@ -1263,6 +1239,21 @@ in
         '';
       };
 
+      org-refile = {
+        enable = true;
+        after = [ "org" ];
+        config = ''
+          ;; Refiling should include not only the current org buffer but
+          ;; also the standard org files. Further, set up the refiling to
+          ;; be convenient with IDO. Follows norang's setup quite closely.
+          (setq org-refile-targets '((nil :maxlevel . 2)
+                                     (org-agenda-files :maxlevel . 2))
+                org-refile-use-outline-path t
+                org-outline-path-complete-in-steps nil
+                org-refile-allow-creating-parent-nodes 'confirm)
+        '';
+      };
+
       org-superstar = {
         enable = true;
         hook = [ "(org-mode . org-superstar-mode)" ];
@@ -1277,11 +1268,6 @@ in
       org-tree-slide = {
         enable = true;
         command = [ "org-tree-slide-mode" ];
-      };
-
-      org-variable-pitch = {
-        enable = true;
-        hook = [ "(org-mode . org-variable-pitch-minor-mode)" ];
       };
 
       # Set up yasnippet. Defer it for a while since I don't generally
@@ -1538,10 +1524,7 @@ in
         '';
       };
 
-      yaml-mode = {
-        enable = true;
-        mode = [ ''"\\.yaml\\'"'' ];
-      };
+      yaml-mode.enable = true;
 
       wc-mode = {
         enable = true;
