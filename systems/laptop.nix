@@ -37,7 +37,10 @@ in
   networking = {
     dhcpcd.enable = false;
     hostName = "laptop"; # Define your hostname.
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      dns = "systemd-resolved";
+    };
     useDHCP = false;
   };
 

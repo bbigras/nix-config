@@ -41,11 +41,24 @@ in
 
   networking.networkmanager.enable = false;
 
-  systemd.network.enable = true;
-  systemd.network.networks = {
-    lan = {
-      DHCP = "yes";
-      matchConfig.Name = "enp3s0";
+  systemd.network = {
+    enable = true;
+    networks = {
+      lan = {
+        DHCP = "yes";
+        matchConfig.Name = "enp3s0";
+        # domains = [ "~." ];
+        dhcpV4Config = { UseDNS = false; };
+        dns = [
+          # https://developers.cloudflare.com/1.1.1.1/dns-over-tls
+          "1.1.1.1#cloudflare-dns.com"
+          "1.0.0.1#cloudflare-dns.com"
+        ];
+        networkConfig = {
+          # DNSSEC = true;
+          DNSOverTLS = true;
+        };
+      };
     };
   };
 

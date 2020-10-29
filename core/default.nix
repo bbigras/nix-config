@@ -106,8 +106,17 @@ in
     };
   };
 
+  # networking.resolvconf.useLocalResolver ?
+
+  services.resolved = {
+    enable = true;
+    dnssec = "false";
+    # dnssec = "allow-downgrade";
+    # DNSOverTLS=yes
+    llmnr = "false";
+  };
+
   # services = {
-  #   resolved.enable = lib.mkForce false;
   #   dbus.socketActivated = true;
   # };
 
