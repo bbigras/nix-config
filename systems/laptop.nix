@@ -40,6 +40,9 @@ in
     networkmanager = {
       enable = true;
       dns = "systemd-resolved";
+      # dns = "none";
+      unmanaged = [ "tailscale0" ];
+      # wifi.backend = "iwd";
     };
     useDHCP = false;
   };
@@ -209,7 +212,7 @@ in
         ".gnupg/random_seed"
         ".gnupg/sshcontrol"
         ".gnupg/trustdb.gpg"
-        ".local/share/fish/fish_history"
+        # ".local/share/fish/fish_history"
         ".mcfly/history.db"
         ".notmuch-config"
         ".ssh/id_ed25519"
