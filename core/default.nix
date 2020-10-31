@@ -4,6 +4,20 @@ let
     assert builtins.trace "This is a dummy config, use nixus!" false;
     {}
   '';
+  url = "https://github.com/bbigras/nixpkgs/archive/4e6f5a305492be4d373f4a05e49b238a812f5dc6.tar.gz";
+  mypkgs = (import (builtins.fetchTarball url)) { };
+
+  configFile = pkgs.writeText "chrony.conf" ''
+    server time.cloudflare.com iburst nts
+
+    initstepslew 1000 time.cloudflare.com
+
+    driftfile /var/lib/chrony/chrony.drift
+    keyfile /var/lib/chrony/chrony.keys
+
+    ntsdumpdir /var/lib/chrony/nts
+  '';
+
 in
 {
   imports = [
@@ -23,10 +37,56 @@ in
     keep-derivations = true
   '';
 
+  # ---
+  users.groups.chrony.gid = 61;
+
+  users.users.chrony =
+    {
+      uid = 61;
+      group = "chrony";
+      description = "chrony daemon user";
+      home = "/var/lib/chrony";
+    };
+
+  services.timesyncd.enable = false;
+
+  systemd.services.systemd-timedated.environment = { SYSTEMD_TIMEDATED_NTP_SERVICES = "chronyd.service"; };
+
+  systemd.tmpfiles.rules = [
+    "d /var/lib/chrony 0755 chrony chrony - -"
+    "f /var/lib/chrony/chrony.keys 0640 chrony chrony -"
+  ];
+
+  systemd.services.chronyd =
+    {
+      description = "chrony NTP daemon";
+
+      wantedBy = [ "multi-user.target" ];
+      wants = [ "time-sync.target" ];
+      before = [ "time-sync.target" ];
+      after = [ "network.target" ];
+      conflicts = [ "ntpd.service" "systemd-timesyncd.service" ];
+
+      path = [ pkgs.chrony ];
+
+      unitConfig.ConditionCapability = "CAP_SYS_TIME";
+      serviceConfig =
+        {
+          Type = "simple";
+          ExecStart = "${pkgs.chrony}/bin/chronyd -n -m -u chrony -f ${configFile}";
+
+          ProtectHome = "yes";
+          ProtectSystem = "full";
+          PrivateTmp = "yes";
+        };
+
+    };
+  # ---
+
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.extraModulePackages = [ config.boot.kernelPackages.exfat-nofuse ];
   environment.etc."nixos/configuration.nix".source = dummyConfig;
-  environment.systemPackages = with pkgs; [ ntfs3g ];
+  environment.systemPackages = with pkgs; [ ntfs3g chrony ];
   home-manager.useGlobalPkgs = true;
   i18n.defaultLocale = "fr_CA.UTF-8";
   nix.maxJobs = "auto";
@@ -78,6 +138,9 @@ in
 
   nixpkgs = {
     config.allowUnfree = true;
+    config.packageOverrides = _pkgs: {
+      chrony = mypkgs.chrony;
+    };
     overlays = [
       (import (import ../nix).nixpkgs-mozilla)
       (import (import ../nix).emacs-overlay)
