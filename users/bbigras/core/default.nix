@@ -260,25 +260,6 @@ EOF
     ];
   };
 
-  systemd.user.services.matrix-yggdrasil = {
-    Unit = {
-      Description = "matrix-yggdrasil";
-    };
-
-    Install = {
-      WantedBy = [ "default.target" ];
-    };
-
-    Service = {
-      ExecStart = "${nix-matrix-yggdrasil}/bin/dendrite-demo-yggdrasil -peer tcp://64.112.177.94:1617";
-      WorkingDirectory = "/home/bbigras/matrix-p2p";
-      Restart = "on-failure";
-      PrivateTmp = true;
-      ProtectSystem = "full";
-      Nice = 10;
-    };
-  };
-
   home.sessionVariables = {
     BROWSER = "firefox";
     # BROWSER = "${pkgs.google-chrome}/bin/google-chrome-stable";
