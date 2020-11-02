@@ -4,7 +4,10 @@ let
   nurNoPkgs = (import (import ../../../nix).NUR) { inherit pkgs nurpkgs; };
 in
 {
-  imports = [ nurNoPkgs.repos.rycee.hmModules.emacs-init ];
+  imports = [
+    nurNoPkgs.repos.rycee.hmModules.emacs-notmuch
+    nurNoPkgs.repos.rycee.hmModules.emacs-init
+  ];
 
   home.packages = [
     pkgs.emacs-all-the-icons-fonts
