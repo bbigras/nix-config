@@ -826,7 +826,8 @@ in
         command = [ "global-undo-tree-mode" ];
         config = ''
           (setq undo-tree-visualizer-relative-timestamps t
-                undo-tree-visualizer-timestamps t)
+                undo-tree-visualizer-timestamps t
+                undo-tree-enable-undo-in-region t)
           (global-undo-tree-mode)
         '';
       };
