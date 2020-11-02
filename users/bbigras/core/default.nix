@@ -86,6 +86,7 @@ EOF
     shellAliases = {
       cat = "${pkgs.bat}/bin/bat";
       ls = "${pkgs.exa}/bin/exa";
+      less = ''${pkgs.bat}/bin/bat --paging=always --pager "${pkgs.less}/bin/less -RF"'';
     };
     shellInit = ''
       set -x FZF_DEFAULT_OPTS "--preview='bat {} --color=always'" \n
