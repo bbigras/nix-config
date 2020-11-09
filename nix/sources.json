@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "6cbd445555c1e308539be37474bed2b77c57411e",
-        "sha256": "1l0rsf6pkcy4zisih9pl1zf2bq08ap5b9fhyclwkr40m933nw7l0",
+        "rev": "fd60c97092c8f0da4e337d92e52e646753e9e945",
+        "sha256": "0cgnplyygcn5m0zgrgpml4izm8ln41ncaaz71p8nwcqrwggw6mgs",
         "type": "tarball",
-        "url": "https://github.com/nix-community/NUR/archive/6cbd445555c1e308539be37474bed2b77c57411e.tar.gz",
+        "url": "https://github.com/nix-community/NUR/archive/fd60c97092c8f0da4e337d92e52e646753e9e945.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "crate2nix": {
@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "b0d97c066553d199972daa2f36611abb79c6dabe",
-        "sha256": "1yxkk7giram4glm3w1n3dgf9bm6ai4fccm33w0hv29smc1xr7j2c",
+        "rev": "ef29d6b8c54c23142ad8c9b6e3e14e7432e0b27c",
+        "sha256": "1rhdlvsvw9pcb2z4qsdihhmiaz62ahb49jjraa1r1kf7pifmgbhz",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/b0d97c066553d199972daa2f36611abb79c6dabe.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/ef29d6b8c54c23142ad8c9b6e3e14e7432e0b27c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "emacs-pgtk-nativecomp-overlay": {
@@ -41,10 +41,10 @@
         "homepage": "",
         "owner": "mjlbach",
         "repo": "emacs-pgtk-nativecomp-overlay",
-        "rev": "3403b0928f68104aae8fd249791cb97b1af514f2",
-        "sha256": "1axihbvf151mx3l1754c07qhxn5ivwk3md4330ads4gyfsvq0jgc",
+        "rev": "0bcc0e90559729b493b61aacc15775eee2553bd4",
+        "sha256": "1dq3rfxlkfiaj31vvzm33aimivrjwavsiwmw95vc6q664v2a79dp",
         "type": "tarball",
-        "url": "https://github.com/mjlbach/emacs-pgtk-nativecomp-overlay/archive/3403b0928f68104aae8fd249791cb97b1af514f2.tar.gz",
+        "url": "https://github.com/mjlbach/emacs-pgtk-nativecomp-overlay/archive/0bcc0e90559729b493b61aacc15775eee2553bd4.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "gitignore": {
