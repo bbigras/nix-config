@@ -64,7 +64,7 @@ in
                       (set-face-attribute 'default
                                           nil
                                           :height 140
-                                          :family "Fira Code")
+                                          :family "Fira Code Retina")
                       (set-face-attribute 'variable-pitch
                                           nil
                                           :family "DejaVu Sans")
