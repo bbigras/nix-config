@@ -1534,7 +1534,7 @@ in
 
       dired = {
         enable = true;
-        defer = true;
+        command = [ "dired" "dired-jump" ];
         config = ''
           (put 'dired-find-alternate-file 'disabled nil)
           ;; Use the system trash can.
@@ -1558,25 +1558,24 @@ in
         '';
       };
 
-      dired-hide-dotfiles = {
-        enable = true;
-        after = [ "dired" ];
-        hook = [ "(dired-mode . dired-hide-dotfiles-mode)" ];
-        bindLocal = {
-          dired-mode-map = {
-            "H" = "dired-hide-dotfiles-mode";
-          };
-        };
-      };
-
       dired-single = {
         enable = true;
         after = [ "dired" ];
       };
 
+      # Hide hidden files when opening a dired buffer. But allow showing them by
+      # pressing `.`.
       dired-x = {
         enable = true;
-        after = [ "dired" ];
+        # after = [ "dired" ];
+        hook = [ "(dired-mode . dired-omit-mode)" ];
+        bindLocal.dired-mode-map = {
+          "." = "dired-omit-mode";
+        };
+        config = ''
+          (setq dired-omit-verbose nil
+                dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
+        '';
       };
 
       recentf = {
