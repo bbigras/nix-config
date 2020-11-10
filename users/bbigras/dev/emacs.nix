@@ -1558,6 +1558,22 @@ in
         '';
       };
 
+      dired-hide-dotfiles = {
+        enable = true;
+        after = [ "dired" ];
+        hook = [ "(dired-mode . dired-hide-dotfiles-mode)" ];
+        bindLocal = {
+          dired-mode-map = {
+            "H" = "dired-hide-dotfiles-mode";
+          };
+        };
+      };
+
+      dired-single = {
+        enable = true;
+        after = [ "dired" ];
+      };
+
       dired-x = {
         enable = true;
         after = [ "dired" ];
