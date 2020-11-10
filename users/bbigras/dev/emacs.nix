@@ -727,8 +727,8 @@ in
 
       all-the-icons-dired = {
         enable = true;
-        after = [ "all-the-icons" ];
-        hook = [ "(dired-mode-hook . all-the-icons-dired-mode)" ];
+        after = [ "dired" "all-the-icons" ];
+        hook = [ "(dired-mode . all-the-icons-dired-mode)" ];
       };
 
       # Lets counsel do prioritization. A fork of smex.
