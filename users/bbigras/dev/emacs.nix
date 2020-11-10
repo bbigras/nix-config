@@ -1539,6 +1539,8 @@ in
           (put 'dired-find-alternate-file 'disabled nil)
           ;; Use the system trash can.
           (setq delete-by-moving-to-trash t)
+          (setq dired-dwim-target t)
+          (setq dired-listing-switches "-agho --group-directories-first")
         '';
       };
 
