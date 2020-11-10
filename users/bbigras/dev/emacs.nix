@@ -659,6 +659,7 @@ in
       # Remember where we where in a previously visited file. Built-in.
       saveplace = {
         enable = true;
+        defer = 1;
         config = ''
           (setq-default save-place t)
           (setq save-place-file (locate-user-emacs-file "places"))
@@ -668,7 +669,7 @@ in
       # More helpful buffer names. Built-in.
       uniquify = {
         enable = true;
-        defer = 2;
+        defer = 5;
         config = ''
           (setq uniquify-buffer-name-style 'post-forward)
         '';
@@ -686,7 +687,7 @@ in
         enable = true;
         command = [ "which-key-mode" ];
         diminish = [ "which-key-mode" ];
-        defer = 2;
+        defer = 3;
         config = "(which-key-mode)";
       };
 
@@ -695,6 +696,7 @@ in
       # commands C-c <left> and C-c <right>.
       winner = {
         enable = true;
+        defer = 2;
         config = "(winner-mode 1)";
       };
 
@@ -824,7 +826,7 @@ in
 
       undo-tree = {
         enable = true;
-        demand = true;
+        defer = 1;
         diminish = [ "undo-tree-mode" ];
         command = [ "global-undo-tree-mode" ];
         config = ''
@@ -1260,7 +1262,7 @@ in
       # need it immediately.
       yasnippet = {
         enable = true;
-        defer = 1;
+        defer = 3;
         diminish = [ "yas-minor-mode" ];
         command = [ "yas-global-mode" "yas-minor-mode" ];
         hook = [
@@ -1279,7 +1281,7 @@ in
 
       smartparens = {
         enable = true;
-        defer = 1;
+        defer = 3;
         diminish = [ "smartparens-mode" ];
         command = [ "smartparens-global-mode" "show-smartparens-global-mode" ];
         bindLocal = {
@@ -1302,7 +1304,6 @@ in
       fill-column-indicator = {
         enable = true;
         command = [ "fci-mode" ];
-        defer = 1;
       };
 
       flycheck = {
