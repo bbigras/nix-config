@@ -1389,6 +1389,12 @@ in
           (push ".direnv" projectile-globally-ignored-directories)
           (projectile-mode 1)
         '';
+
+        init = ''
+          (when (file-directory-p "~/dev")
+          (setq projectile-project-search-path '("~/dev")))
+          ;;(setq projectile-switch-project-action #'projectile-dired)
+        '';
       };
 
       plantuml-mode = {
