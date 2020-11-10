@@ -1273,9 +1273,8 @@ in
         config = "(yas-global-mode 1)";
       };
 
-      # Doesn't seem to work, complains about # in go snippets.
       yasnippet-snippets = {
-        enable = false;
+        enable = true;
         after = [ "yasnippet" ];
       };
 
