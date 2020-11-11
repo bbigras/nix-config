@@ -5,7 +5,6 @@
       systemd-boot.enable = true;
       timeout = lib.mkDefault 2;
     };
-    tmpOnTmpfs = true;
   };
   console.earlySetup = true;
 }
