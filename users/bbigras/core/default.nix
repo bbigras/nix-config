@@ -2,7 +2,6 @@
 let
   nix-matrix-yggdrasil = (import (import ../../../nix).nix-matrix-yggdrasil);
 
-  neuron = (import (import ../../../nix).neuron { });
   crate2nix = (import (import ../../../nix).crate2nix { });
 
   my_cdda = pkgs.cataclysm-dda.withMods (mods: with mods; [
@@ -228,8 +227,6 @@ EOF
       file
       tcpdump
       strace
-
-      neuron
 
       # rust
       crate2nix

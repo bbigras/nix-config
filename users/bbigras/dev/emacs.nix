@@ -1330,10 +1330,6 @@ in
         hook = [ "(flycheck-mode . flycheck-plantuml-setup)" ];
       };
 
-      neuron-mode = {
-        enable = true;
-      };
-
       selectrum = {
         enable = true;
         config = ''

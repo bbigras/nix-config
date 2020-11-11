@@ -30,7 +30,7 @@
         },
         {
           "name": "add extra cachix caches",
-          "run": "cachix use nix-community; cachix use nix-matrix-yggdrasil; cachix use eigenvalue; cachix use srid; cachix use mjlbach; cachix use pre-commit-hooks"
+          "run": "cachix use nix-community; cachix use nix-matrix-yggdrasil; cachix use eigenvalue; cachix use mjlbach; cachix use pre-commit-hooks"
         },
         {
           "name": "Build",

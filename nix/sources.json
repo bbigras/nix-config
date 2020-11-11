@@ -83,18 +83,6 @@
         "url": "https://github.com/nix-community/impermanence/archive/4b3000b9bec3a3ce4d5bb7d79abfdd267b5f42ea.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "neuron": {
-        "branch": "master",
-        "description": "Future-proof and simple-to-use notes system based on Zettelkasten.",
-        "homepage": "https://neuron.zettel.page",
-        "owner": "srid",
-        "repo": "neuron",
-        "rev": "aa81be155af28b8af880f615362260203068f1b6",
-        "sha256": "1i845gza28sf979c6z0n4xglcbq22ljl2a0szxkvajnzygn8swkb",
-        "type": "tarball",
-        "url": "https://github.com/srid/neuron/archive/aa81be155af28b8af880f615362260203068f1b6.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "niv": {
         "branch": "master",
         "description": "Easy dependency management for Nix projects",

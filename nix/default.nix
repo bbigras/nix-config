@@ -2,7 +2,7 @@ let
   sources = import ./sources.nix;
 in
 rec {
-  inherit (sources) nixpkgs nix-matrix-yggdrasil NUR nixpkgs-mozilla emacs-overlay neuron zen impermanence crate2nix emacs-pgtk-nativecomp-overlay;
+  inherit (sources) nixpkgs nix-matrix-yggdrasil NUR nixpkgs-mozilla emacs-overlay zen impermanence crate2nix emacs-pgtk-nativecomp-overlay;
   home-manager = sources.home-manager + "/nixos";
   lib = import (nixpkgs + "/lib");
   gitignoreSource = (import sources.gitignore { inherit lib; }).gitignoreSource;

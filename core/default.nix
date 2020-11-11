@@ -112,7 +112,6 @@ in
       "https://nix-matrix-yggdrasil.cachix.org"
       "https://eigenvalue.cachix.org" # for crate2nix
       "https://bbigras-nix-config.cachix.org"
-      "https://srid.cachix.org" # for neuron
       "https://nixiosk.cachix.org"
       "https://niv.cachix.org"
       "https://mjlbach.cachix.org"
@@ -123,7 +122,6 @@ in
       "nix-matrix-yggdrasil.cachix.org-1:zxDWWJFEiOxpvKHP8qoi2HS4CtHxUPPQtoWz9D66m9g="
       "eigenvalue.cachix.org-1:ykerQDDa55PGxU25CETy9wF6uVDpadGGXYrFNJA3TUs="
       "bbigras-nix-config.cachix.org-1:aXL6Q9Oi0jyF79YAKRu17iVNk9HY0p23OZX7FA8ulhU="
-      "srid.cachix.org-1:MTQ6ksbfz3LBMmjyPh0PLmos+1x+CdtJxA/J2W+PQxI="
       "nixiosk.cachix.org-1:pyzRzjCUhw0r+moXnSklZwwI/gFk+Z+A2ofmEhOf7Sc="
       "niv.cachix.org-1:X32PCg2e/zAm3/uD1ScqW2z/K0LtDyNV7RdaxIuLgQM="
       "mjlbach.cachix.org-1:dR0V90mvaPbXuYria5mXvnDtFibKYqYc2gtl9MWSkqI="
