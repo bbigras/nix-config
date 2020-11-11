@@ -129,8 +129,8 @@ EOF
       remmina
 
       # espeak
-      # socat
-      # websocat
+      socat
+      websocat
 
       # notes
       joplin-desktop
@@ -197,6 +197,13 @@ EOF
       hyperfine
       pwgen
       httpie
+      rage
+      navi # cheat sheet
+      sd # find & replace
+      pastel # color tool
+      eva # calc
+      bandwhich
+      dogdns
 
       # Android
       # android-studio
