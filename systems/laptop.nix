@@ -182,6 +182,8 @@ in
         ".config/syncthing"
         ".wrangler/config"
         ".cache/.wrangler"
+        ".cache/wine"
+        ".cache/winetricks"
         ".npm/_cacache/index-v5"
         ".npm/_cacache/content-v2"
         ".dropbox-dist"
