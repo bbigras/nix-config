@@ -575,6 +575,14 @@ in
         ];
       };
 
+      elcord = {
+        enable = true;
+        config = ''
+          (setq elcord-display-buffer-details nil)
+          (elcord-mode)
+        '';
+      };
+
       org-tempo = {
         enable = true;
         package = "org";
