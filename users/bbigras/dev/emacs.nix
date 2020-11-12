@@ -563,6 +563,18 @@ in
         };
       };
 
+      rainbow-mode = {
+        enable = true;
+        defer = 1;
+        hook = [
+          ''(org-mode
+         emacs-lisp-mode
+         web-mode
+         typescript-mode
+         js2-mode)''
+        ];
+      };
+
       org-tempo = {
         enable = true;
         package = "org";
