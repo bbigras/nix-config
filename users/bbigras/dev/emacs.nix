@@ -424,6 +424,13 @@ in
 
       dockerfile-mode.enable = true;
 
+      alert = {
+        enable = true;
+        config = ''
+          (setq alert-default-style 'notifications)
+        '';
+      };
+
       doom-modeline = {
         enable = true;
         hook = [ "(after-init . doom-modeline-mode)" ];
