@@ -42,7 +42,7 @@
 
   programs.firefox = {
     enable = true;
-    package = pkgs.latest.firefox-nightly-bin;
+    package = pkgs.firefox-wayland;
   };
 
   gtk = {
