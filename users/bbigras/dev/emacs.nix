@@ -355,7 +355,10 @@ in
 
       ws-butler = {
         enable = true;
-        hook = [ "(prog-mode . ws-butler-mode)" ];
+        hook = [
+          "(text-mode . ws-butler-mode)"
+          "(prog-mode . ws-butler-mode)"
+        ];
       };
 
       centaur-tabs = {
