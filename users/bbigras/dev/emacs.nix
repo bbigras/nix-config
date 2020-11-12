@@ -822,6 +822,11 @@ in
         '';
       };
 
+      magit-todos = {
+        enable = true;
+        defer = 1;
+      };
+
       forge = {
         enable = true;
         after = [ "magit" ];
