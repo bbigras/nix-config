@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "619a7a9ccef88d412fa58e5345b671fbc41fe9f9",
-        "sha256": "0xn1k7l4mnsca2jhyilmsqddk0p13f9kh7xw8rfh4k9kda4a6f06",
+        "rev": "2d533c05fa08d8cea230eb00abb02cce68a595ce",
+        "sha256": "0bgr8b3mpadk7blpxym2ji2cw9l3gksbd658f07va164bmzlja58",
         "type": "tarball",
-        "url": "https://github.com/nix-community/NUR/archive/619a7a9ccef88d412fa58e5345b671fbc41fe9f9.tar.gz",
+        "url": "https://github.com/nix-community/NUR/archive/2d533c05fa08d8cea230eb00abb02cce68a595ce.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "crate2nix": {
@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "4277a15e921da9a8ebd6a042bc5b4a78b977af98",
-        "sha256": "0idmck73wm5yx91p41wyiwix70lvgcilf76q2gijvhj7rxivcp61",
+        "rev": "b0890071037a95f18f1ec8c9118955a67a5179cf",
+        "sha256": "1riq89zsijy0h341cwq1ammidalgscaxr5mkmig5vf57ga828w4p",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/4277a15e921da9a8ebd6a042bc5b4a78b977af98.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/b0890071037a95f18f1ec8c9118955a67a5179cf.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "emacs-pgtk-nativecomp-overlay": {
@@ -113,10 +113,10 @@
         "homepage": "",
         "owner": "cachix",
         "repo": "pre-commit-hooks.nix",
-        "rev": "ff137b7c39681b2eeeaa9bbbf86a03891099ae46",
-        "sha256": "0a8ivc1xgxlf3w9m740z9z3cgdb0hfh0yx4nd3nli8dmaxr55cms",
+        "rev": "431227b41d0aaa83fabdee6611e145b7d9bd150b",
+        "sha256": "0ff24n8i3mfw0jw5r5lsgvbahmh88zhi3qsk9yxrb8x82jprgzsy",
         "type": "tarball",
-        "url": "https://github.com/cachix/pre-commit-hooks.nix/archive/ff137b7c39681b2eeeaa9bbbf86a03891099ae46.tar.gz",
+        "url": "https://github.com/cachix/pre-commit-hooks.nix/archive/431227b41d0aaa83fabdee6611e145b7d9bd150b.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixos-hardware": {
