@@ -179,6 +179,7 @@ in
         ".cargo"
         ".config/Bitwarden CLI"
         ".config/discord"
+        ".config/syncthing"
         ".wrangler/config"
         ".cache/.wrangler"
         ".npm/_cacache/index-v5"

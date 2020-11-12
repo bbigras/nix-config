@@ -66,6 +66,7 @@ EOF
 
   services.dropbox.enable = true;
   services.spotifyd.enable = true;
+  services.syncthing.enable = true;
 
   programs.alacritty = {
     enable = true;
@@ -166,7 +167,6 @@ EOF
       croc
       ffsend
       qbittorrent
-      syncthing
       # youtube-dl
       wireshark
       dnsutils
