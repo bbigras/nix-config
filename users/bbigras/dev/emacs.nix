@@ -583,6 +583,13 @@ in
         '';
       };
 
+      mastodon = {
+        enable = true;
+        config = ''
+          (setq mastodon-instance-url "https://mastodon.social")
+        '';
+      };
+
       org-tempo = {
         enable = true;
         package = "org";
