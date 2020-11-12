@@ -590,6 +590,11 @@ in
         '';
       };
 
+      rainbow-delimiters = {
+        enable = true;
+        hook = [ "(prog-mode . rainbow-delimiters-mode)" ];
+      };
+
       org-tempo = {
         enable = true;
         package = "org";
