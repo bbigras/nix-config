@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "2d533c05fa08d8cea230eb00abb02cce68a595ce",
-        "sha256": "0bgr8b3mpadk7blpxym2ji2cw9l3gksbd658f07va164bmzlja58",
+        "rev": "e5b756335a513be6d40910c240cef97ff2b4a555",
+        "sha256": "0b6wi149zxwdxl54cs0npxvx94s487i152ibhcxmlrdg7k5xk83i",
         "type": "tarball",
-        "url": "https://github.com/nix-community/NUR/archive/2d533c05fa08d8cea230eb00abb02cce68a595ce.tar.gz",
+        "url": "https://github.com/nix-community/NUR/archive/e5b756335a513be6d40910c240cef97ff2b4a555.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "crate2nix": {
@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "b0890071037a95f18f1ec8c9118955a67a5179cf",
-        "sha256": "1riq89zsijy0h341cwq1ammidalgscaxr5mkmig5vf57ga828w4p",
+        "rev": "b788d5db645cf268a52a4b80bdb2ce31625e602f",
+        "sha256": "1rk66amjxqc1dmkra69b7v2w7263q27ciyfkyr7szhj1cf2yh47a",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/b0890071037a95f18f1ec8c9118955a67a5179cf.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/b788d5db645cf268a52a4b80bdb2ce31625e602f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "emacs-pgtk-nativecomp-overlay": {
@@ -41,10 +41,10 @@
         "homepage": "",
         "owner": "mjlbach",
         "repo": "emacs-pgtk-nativecomp-overlay",
-        "rev": "f97cb29353f3cead29d14b2e71126e14917a689f",
-        "sha256": "0q79vk09ryvczky9ik7lgsbahgv2brv7gxxn6wvw0j5m9jp81d8d",
+        "rev": "cc85699bcc4d29be2c3a78cf2b73d7cbdc5396d5",
+        "sha256": "15jmfbi3mh5vpr3z2hf9242kw0l3lb885h3lxy8p1gfb3f1lcsaf",
         "type": "tarball",
-        "url": "https://github.com/mjlbach/emacs-pgtk-nativecomp-overlay/archive/f97cb29353f3cead29d14b2e71126e14917a689f.tar.gz",
+        "url": "https://github.com/mjlbach/emacs-pgtk-nativecomp-overlay/archive/cc85699bcc4d29be2c3a78cf2b73d7cbdc5396d5.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "gitignore": {
@@ -101,10 +101,10 @@
         "homepage": null,
         "owner": "bbigras",
         "repo": "nix-matrix-yggdrasil",
-        "rev": "028824baaca1a82070824316be80f1ae566011d5",
-        "sha256": "0ch2kg3nw61vimqw2scgss7s874lggiw4a1mvm3cv9x737b8061h",
+        "rev": "9ef0c1de11f873b34380f0df030547a580dfb971",
+        "sha256": "0fdb9clb8lk5flwzn7z2zyzb0k8vwh4p3mniw3q1s9r64wyg838i",
         "type": "tarball",
-        "url": "https://github.com/bbigras/nix-matrix-yggdrasil/archive/028824baaca1a82070824316be80f1ae566011d5.tar.gz",
+        "url": "https://github.com/bbigras/nix-matrix-yggdrasil/archive/9ef0c1de11f873b34380f0df030547a580dfb971.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nix-pre-commit-hooks": {
@@ -137,10 +137,10 @@
         "homepage": "",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "b839d4a8557adc80e522f674529e586ab2a88d23",
-        "sha256": "1yr68sj0wx78fw4xi0swhlwbmqbznd5c1klmshqrrdclnr45agcd",
+        "rev": "a371c1071161104d329f6a85d922fd92b7cbab63",
+        "sha256": "1k5wa16wyb1byk5xfjlq4m518gsw6g1kypx4xb09k3inni13p0r4",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/b839d4a8557adc80e522f674529e586ab2a88d23.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/a371c1071161104d329f6a85d922fd92b7cbab63.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-mozilla": {
