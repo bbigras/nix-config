@@ -1128,6 +1128,7 @@ in
           ;; Add some todo keywords.
           (setq org-todo-keywords
                 '((sequence "TODO(t)"
+                            "NEXT"
                             "STARTED(s!)"
                             "WAITING(w@/!)"
                             "DELEGATED(@!)"
