@@ -1,5 +1,6 @@
 let
   sources = import ./nix;
+  pkgs = import sources.nixpkgs { };
 in
 {
   preCommitChecks = sources.nix-pre-commit-hooks.run {
@@ -49,4 +50,6 @@ in
       };
     };
   };
+
+  test = pkgs.nixosTest ./test.nix;
 }

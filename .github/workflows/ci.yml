@@ -18,7 +18,10 @@
         },
         {
           "name": "Nix",
-          "uses": "cachix/install-nix-action@v12"
+          "uses": "cachix/install-nix-action@v12",
+          "with": {
+            "extra_nix_config": "system-features = nixos-test benchmark big-parallel kvm"
+          }
         },
         {
           "name": "Cachix",
