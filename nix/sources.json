@@ -143,6 +143,18 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/2deeb58f49480f468adca6b08291322de4dbce6b.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "nixpkgs-cdda-mods": {
+        "branch": "master",
+        "description": "Nixpkgs overlay for Cataclysm: DDA mods, soundpacks, and tilesets.",
+        "homepage": "",
+        "owner": "mnacamura",
+        "repo": "nixpkgs-cdda-mods",
+        "rev": "6ca4456ec69541381fb9902a4d690e4891d4de89",
+        "sha256": "0aq9krds7iidyim8lm4abn2jzjfzqr3wqcz486m2fjy99bxzacxq",
+        "type": "tarball",
+        "url": "https://github.com/mnacamura/nixpkgs-cdda-mods/archive/6ca4456ec69541381fb9902a4d690e4891d4de89.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "nixpkgs-mozilla": {
         "branch": "master",
         "description": "mozilla related nixpkgs (extends nixos/nixpkgs repo)",

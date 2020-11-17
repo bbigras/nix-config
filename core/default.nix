@@ -143,6 +143,7 @@ in
       (import (import ../nix).nixpkgs-mozilla)
       (import (import ../nix).emacs-overlay)
       (import (import ../nix).emacs-pgtk-nativecomp-overlay)
+      (import (import ../nix/sources.nix).nixpkgs-cdda-mods)
       (import ../overlays/mkSecret.nix)
     ];
   };
