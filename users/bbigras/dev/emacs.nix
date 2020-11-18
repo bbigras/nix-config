@@ -697,7 +697,7 @@ in
 
       which-key = {
         enable = true;
-        command = [ "which-key-mode" ];
+        command = [ "which-key-mode" "which-key-add-major-mode-key-based-replacements" ];
         diminish = [ "which-key-mode" ];
         defer = 3;
         config = "(which-key-mode)";
@@ -1282,7 +1282,7 @@ in
         enable = true;
         defer = 3;
         diminish = [ "yas-minor-mode" ];
-        command = [ "yas-global-mode" "yas-minor-mode" ];
+        command = [ "yas-global-mode" "yas-minor-mode" "yas-expand-snippet" ];
         hook = [
           # Yasnippet interferes with tab completion in ansi-term.
           "(term-mode . (lambda () (yas-minor-mode -1)))"
@@ -1391,7 +1391,7 @@ in
       projectile = {
         enable = true;
         diminish = [ "projectile-mode" ];
-        command = [ "projectile-mode" ];
+        command = [ "projectile-mode" "projectile-project-root" ];
         bindKeyMap = {
           "C-c p" = "projectile-command-map";
         };
@@ -1427,7 +1427,8 @@ in
       company = {
         enable = true;
         diminish = [ "company-mode" ];
-        hook = [ "(after-init . global-company-mode)" ];
+        command = [ "company-mode" "company-doc-buffer" "global-company-mode" ];
+        defer = 1;
         extraConfig = ''
           :bind (:map company-mode-map
                       ([remap completion-at-point] . company-complete-common)
