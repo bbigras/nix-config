@@ -446,6 +446,16 @@ in
         hook = [ "prog-mode" ];
       };
 
+      gcmh = {
+        enable = true;
+        defer = 1;
+        command = [ "gcmh-mode" ];
+        config = ''
+          (setq gcmh-verbose t)
+          (gcmh-mode)
+        '';
+      };
+
       ggtags = {
         enable = true;
         defer = true;
