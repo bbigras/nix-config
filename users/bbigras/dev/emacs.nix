@@ -238,6 +238,7 @@ in
         (setq fill-column 80))
 
       (add-hook 'prog-mode-hook #'rah-prog-mode-setup)
+      (add-hook 'prog-mode-hook #'fira-code-mode)
 
       (defun rah-sort-lines-ignore-case ()
         (interactive)
