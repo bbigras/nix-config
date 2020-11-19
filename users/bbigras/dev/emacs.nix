@@ -532,14 +532,6 @@ in
         };
       };
 
-      default-text-scale = {
-        enable = true;
-        defer = 1;
-        config = ''
-          (default-text-scale-mode)
-        '';
-      };
-
       rainbow-mode = {
         enable = true;
         defer = 1;
