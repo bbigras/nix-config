@@ -920,6 +920,16 @@ in
         # (setq lsp-enable-semantic-highlighting t)
       };
 
+      lsp-modeline = {
+        enable = true;
+        after = [ "lsp-mode" ];
+      };
+
+      lsp-headerline = {
+        enable = true;
+        after = [ "lsp-mode" ];
+      };
+
       expand-region = {
         enable = true;
         config = ''
@@ -938,53 +948,33 @@ in
         '';
       };
 
-      lsp-treemacs = {
-        enable = true;
-        after = [ "lsp-mode" "treemacs" ];
-      };
+      # lsp-treemacs = {
+      #   enable = true;
+      #   after = [ "lsp-mode" "treemacs" ];
+      # };
 
       # pour dap-mode
-      posframe = {
-        enable = true;
-      };
+      # posframe = {
+      #   enable = true;
+      # };
 
       dap-mode = {
         enable = true;
-        after = [ "lsp-mode" "posframe" ];
+        after = [ "lsp-mode" "dap-ui" ];
         command = [ "dap-mode" "dap-auto-configure-mode" ];
-
-        # hook = [ "(dap-stopped-hook . (lambda (arg) (call-interactively #'dap-hydra)))" ];
         config = ''
           (dap-auto-configure-mode)
-          (dap-ui-mode t)
-          ;; enables mouse hover support
-          (dap-tooltip-mode 1)
-          ;; use tooltips for mouse hover
-          ;; if it is not enabled `dap-mode' will use the minibuffer.
-          (tooltip-mode 1)
-          ;; displays floating panel with debug buttons
-          ;; requies emacs 26+
-          ;;(dap-ui-controls-mode 1)
-
-          (add-hook 'dap-stopped-hook
-                    (lambda (arg) (call-interactively #'dap-hydra)))
-
-          (dap-register-debug-template
-            "Chrome Browse URL"
-            (list :type "chrome"
-                  :cwd nil
-                  :mode "url"
-                  :request "launch"
-                  :webRoot nil
-                  :url nil
-                  :runtimeExecutable "/home/bbigras/.nix-profile/bin/google-chrome-stable"
-                  :name "Chrome Browse URL"))
         '';
+      };
+
+      dap-mouse = {
+        enable = true;
+        command = [ "dap-tooltip-mode" ];
       };
 
       dap-ui = {
         enable = true;
-        after = [ "dap-mode" ];
+        # after = [ "dap-mode" ];
         command = [ "dap-ui-mode" ];
         config = ''
           (dap-ui-mode t)
@@ -993,8 +983,8 @@ in
 
       dap-lldb = {
         enable = true;
-        config = lib.mkForce "";
-        # after = [ "dap-mode" ];
+        # config = lib.mkForce "";
+        after = [ "dap-mode" ];
       };
 
       frog-jump-buffer = {
