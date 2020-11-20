@@ -1451,17 +1451,27 @@ in
         config = ''
           (setq company-idle-delay 0.0
                 company-minimum-prefix-length 1
-                company-show-numbers t)
+                company-show-numbers t
+                company-tooltip-maximum-width 100
+                company-tooltip-minimum-width 20
+                ; Allow me to keep typing even if company disapproves.
+                company-require-match nil)
+
+          (global-company-mode)
         '';
       };
 
       company-box = {
         enable = true;
         hook = [ "(company-mode . company-box-mode)" ];
+        config = ''
+          (setq company-box-icons-alist 'company-box-icons-all-the-icons)
+        '';
       };
 
       company-yasnippet = {
         enable = true;
+        after = [ "company" "yasnippet" ];
         bind = {
           "M-/" = "company-yasnippet";
         };
