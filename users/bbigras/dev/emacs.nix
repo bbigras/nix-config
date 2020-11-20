@@ -38,6 +38,8 @@ in
     recommendedGcSettings = true;
 
     prelude = ''
+                (require 'cl)
+
                 (setq custom-file (expand-file-name (concat "custom-" (system-name) ".el") "~/Dropbox/emacs"))
                 (load custom-file)
 
