@@ -49,6 +49,41 @@ in
                 (delete-selection-mode 1)
                 (setq org-directory "~/Dropbox/org-mode")
 
+                ;; Keep transient cruft out of ~/.emacs.d/
+                (setq user-emacs-directory "~/.cache/emacs/"
+                      backup-directory-alist `(("." . ,(expand-file-name "backups" user-emacs-directory)))
+                      url-history-file (expand-file-name "url/history" user-emacs-directory)
+                      auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" user-emacs-directory)
+                      projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-emacs-directory))
+
+                ;; Keep customization settings in a temporary file (thanks Ambrevar!)
+                (setq custom-file
+                      (if (boundp 'server-socket-dir)
+                          (expand-file-name "custom.el" server-socket-dir)
+                        (expand-file-name (format "emacs-custom-%s.el" (user-uid)) temporary-file-directory)))
+                (load custom-file t)
+
+                ;; Set up the visible bell
+                (setq visible-bell t)
+
+                (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+                (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+                (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+                (setq scroll-step 1) ;; keyboard scroll one line at a timesetq use-dialog-box nil) ; Disable dialog boxes since they weren't working in Mac OSX
+
+                (set-frame-parameter (selected-frame) 'alpha '(90 . 90))
+                (add-to-list 'default-frame-alist '(alpha . (90 . 90)))
+                (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
+                (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+                (set-face-attribute 'default nil :font "Fira Code Retina" :height 220)
+
+                ;; Set the fixed pitch face
+                (set-face-attribute 'fixed-pitch nil :font "Fira Code Retina" :height 200)
+
+                ;; Set the variable pitch face
+                (set-face-attribute 'variable-pitch nil :font "Cantarell" :height 245 :weight 'regular)
+
                       ;; Disable startup message.
                       (setq inhibit-startup-message t
                             inhibit-startup-echo-area-message (user-login-name))
