@@ -221,6 +221,24 @@ in
         (interactive)
         (let ((sort-fold-case t))
           (call-interactively 'sort-lines)))
+
+      (defun efs/presentation-setup ()
+        ;; Hide the mode line
+        (hide-mode-line-mode 1)
+
+        ;; Display images inline
+        (org-display-inline-images) ;; Can also use org-startup-with-inline-images
+
+        ;; Scale the text.  The next line is for basic scaling:
+        (setq text-scale-mode-amount 3)
+        (text-scale-mode 1))
+
+      (defun efs/presentation-end ()
+        ;; Show the mode line again
+        (hide-mode-line-mode 0)
+
+        ;; Turn off text scale mode (or use the next line if you didn't use text-scale-mode)
+        (text-scale-mode 0))
     '';
 
     usePackage = {
@@ -1285,9 +1303,17 @@ in
         config = "(org-edna-mode)";
       };
 
+      hide-mode-line = {
+        enable = true;
+      };
+
       org-tree-slide = {
         enable = true;
         command = [ "org-tree-slide-mode" ];
+        hook = [
+          "(org-tree-slide-play . efs/presentation-setup)"
+          "(org-tree-slide-stop . efs/presentation-end)"
+        ];
       };
 
       # Set up yasnippet. Defer it for a while since I don't generally
