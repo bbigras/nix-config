@@ -4,9 +4,6 @@ let
     assert builtins.trace "This is a dummy config, use nixus!" false;
     {}
   '';
-  url = "https://github.com/bbigras/nixpkgs/archive/4e6f5a305492be4d373f4a05e49b238a812f5dc6.tar.gz";
-  mypkgs = (import (builtins.fetchTarball url)) { };
-
   configFile = pkgs.writeText "chrony.conf" ''
     server time.cloudflare.com iburst nts
 
@@ -136,9 +133,6 @@ in
 
   nixpkgs = {
     config.allowUnfree = true;
-    config.packageOverrides = _pkgs: {
-      chrony = mypkgs.chrony;
-    };
     overlays = [
       (import (import ../nix).nixpkgs-mozilla)
       (import (import ../nix).emacs-overlay)
