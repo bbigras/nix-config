@@ -47,6 +47,18 @@
         "url": "https://github.com/mjlbach/emacs-pgtk-nativecomp-overlay/archive/c074f53c98c263813b00a142cb7e73b02e6a464f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "explain-pause-mode": {
+        "branch": "master",
+        "description": "top, but for Emacs.",
+        "homepage": "",
+        "owner": "lastquestion",
+        "repo": "explain-pause-mode",
+        "rev": "2356c8c3639cbeeb9751744dbe737267849b4b51",
+        "sha256": "0frnfwqal9mrnrz6q4v7vcai26ahaw81894arff1yjw372pfgv7v",
+        "type": "tarball",
+        "url": "https://github.com/lastquestion/explain-pause-mode/archive/2356c8c3639cbeeb9751744dbe737267849b4b51.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "gitignore": {
         "branch": "master",
         "description": "Nix function for filtering local git sources",
