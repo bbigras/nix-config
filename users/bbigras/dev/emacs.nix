@@ -45,6 +45,23 @@ in
     enable = true;
     recommendedGcSettings = true;
 
+    earlyInit = ''
+      ;; Disable some GUI distractions. We set these manually to avoid starting
+      ;; the corresponding minor modes.
+      (push '(menu-bar-lines . 0) default-frame-alist)
+      (push '(tool-bar-lines . nil) default-frame-alist)
+      (push '(vertical-scroll-bars . nil) default-frame-alist)
+      (blink-cursor-mode 0)
+
+      ;; Set up fonts early.
+      (set-face-attribute 'default
+                          nil
+                          :height 140
+                          :family "Fira Code Retina")
+      (set-face-attribute 'fixed-pitch nil :font "Fira Code Retina" :height 200)
+      (set-face-attribute 'variable-pitch nil :font "Cantarell" :height 245 :weight 'regular)
+    '';
+
     prelude = ''
                 (require 'cl)
 
@@ -84,35 +101,12 @@ in
                 (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
                 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-                (set-face-attribute 'default nil :font "Fira Code Retina" :height 220)
-
-                ;; Set the fixed pitch face
-                (set-face-attribute 'fixed-pitch nil :font "Fira Code Retina" :height 200)
-
-                ;; Set the variable pitch face
-                (set-face-attribute 'variable-pitch nil :font "Cantarell" :height 245 :weight 'regular)
-
                       ;; Disable startup message.
                       (setq inhibit-startup-message t
                             inhibit-startup-echo-area-message (user-login-name))
 
                       (setq initial-major-mode 'fundamental-mode
                             initial-scratch-message nil)
-
-                      ;; Disable some GUI distractions.
-                      (tool-bar-mode -1)
-                      (scroll-bar-mode -1)
-                      (menu-bar-mode -1)
-                      (blink-cursor-mode 0)
-
-                      ;; Set up fonts early.
-                      (set-face-attribute 'default
-                                          nil
-                                          :height 140
-                                          :family "Fira Code Retina")
-                      (set-face-attribute 'variable-pitch
-                                          nil
-                                          :family "DejaVu Sans")
 
                       ;; Set frame title.
                       (setq frame-title-format
