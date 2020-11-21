@@ -2,6 +2,24 @@
 let
   nurpkgs = (import (import ../../../nix).nixpkgs { });
   nurNoPkgs = (import (import ../../../nix).NUR) { inherit pkgs nurpkgs; };
+
+  explain-pause-mode = epkgs: epkgs.trivialBuild {
+    pname = "explain-pause-mode";
+    version = "v0.0.1";
+
+    # dontBuild = true;
+
+    src = pkgs.fetchFromGitHub {
+      owner = "lastquestion";
+      repo = "explain-pause-mode";
+      # rev = "v${version}";
+      # rev = "v0.0.1";
+      rev = "326adce9350b990e0e9992aed15294a042fbd5c4";
+      sha256 = "0b23k33mc18w3zfpg8fd9h81ahb6gqg5vy7fazishkw9f44n6xds";
+    };
+
+    # packageRequires = [ epkgs.async ];
+  };
 in
 {
   imports = [
@@ -244,6 +262,7 @@ in
     usePackage = {
       explain-pause-mode = {
         enable = false;
+        package = explain-pause-mode;
         config = "(explain-pause-mode t)";
       };
 
