@@ -60,6 +60,9 @@ in
                           :family "Fira Code Retina")
       (set-face-attribute 'fixed-pitch nil :font "Fira Code Retina" :height 200)
       (set-face-attribute 'variable-pitch nil :font "Cantarell" :height 245 :weight 'regular)
+
+      ;; needed for autoloads
+      (setq package-enable-at-startup t)
     '';
 
     prelude = ''
@@ -971,16 +974,6 @@ in
         '';
         #                 lsp-prefer-flymake nil
         # (setq lsp-enable-semantic-highlighting t)
-      };
-
-      lsp-modeline = {
-        enable = true;
-        after = [ "lsp-mode" ];
-      };
-
-      lsp-headerline = {
-        enable = true;
-        after = [ "lsp-mode" ];
       };
 
       expand-region = {
