@@ -86,6 +86,7 @@ in
   networking.firewall.allowedTCPPorts = [
     9977
     9988
+    8096 # jellyfin
   ];
   #   22000
   #   6680
