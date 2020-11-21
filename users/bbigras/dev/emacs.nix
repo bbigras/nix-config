@@ -251,7 +251,7 @@ in
 
     usePackage = {
       explain-pause-mode = {
-        enable = false;
+        enable = true;
         package = explain-pause-mode;
         config = "(explain-pause-mode t)";
       };
