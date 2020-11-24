@@ -613,13 +613,6 @@ in
         '';
       };
 
-      mastodon = {
-        enable = true;
-        config = ''
-          (setq mastodon-instance-url "https://mastodon.social")
-        '';
-      };
-
       rainbow-delimiters = {
         enable = true;
         hook = [ "(prog-mode . rainbow-delimiters-mode)" ];
