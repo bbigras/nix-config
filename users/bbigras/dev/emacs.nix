@@ -460,11 +460,6 @@ in
         '';
       };
 
-      editorconfig = {
-        enable = true;
-        config = "(editorconfig-mode 1)";
-      };
-
       diff-hl = {
         enable = true;
         config = "(global-diff-hl-mode)";
