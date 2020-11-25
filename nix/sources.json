@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "3f88285cec790201c90daedb35a7cbd08401ffc5",
-        "sha256": "0xj09m8lmbirszd6yqkms9ndr4sz99653imgvin13jrx7s7ppgrn",
+        "rev": "b9415efadb509c766935f0546c06b1762a06acd8",
+        "sha256": "1jkwjhmnmyglfdn20js99k1fa77jh6xya91s21s5k32a66xd64kq",
         "type": "tarball",
-        "url": "https://github.com/nix-community/NUR/archive/3f88285cec790201c90daedb35a7cbd08401ffc5.tar.gz",
+        "url": "https://github.com/nix-community/NUR/archive/b9415efadb509c766935f0546c06b1762a06acd8.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "crate2nix": {
@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "2d794b22623b6c2c111bc213898c4bcbb84d8013",
-        "sha256": "0cdcxb0d7na71ps3c0f65fr3zw8r94sa3h1nvwy5x6gr8ciac3s8",
+        "rev": "f96d012337ddf7cae2bef8c3e72a3e8af57f37d7",
+        "sha256": "09mg11m6dw8jc6bhdg6glwm6pfq1z5r53kgcllzqkr39i1c5a0cs",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/2d794b22623b6c2c111bc213898c4bcbb84d8013.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/f96d012337ddf7cae2bef8c3e72a3e8af57f37d7.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "emacs-pgtk-nativecomp-overlay": {
@@ -161,10 +161,10 @@
         "homepage": "",
         "owner": "mnacamura",
         "repo": "nixpkgs-cdda-mods",
-        "rev": "ca433278b3783214c27137fca3bba703640fa645",
-        "sha256": "1wha74vr9xxl5gdx2dyakmz9icr371050cpj6ra4vsh4b9ng6z00",
+        "rev": "27497c207ce27d7d20dd553b89093def891cd558",
+        "sha256": "1nix2i8xlcirzw6v54v0l5hqi4r2j9rd19f8mp0ls1f9112mkq39",
         "type": "tarball",
-        "url": "https://github.com/mnacamura/nixpkgs-cdda-mods/archive/ca433278b3783214c27137fca3bba703640fa645.tar.gz",
+        "url": "https://github.com/mnacamura/nixpkgs-cdda-mods/archive/27497c207ce27d7d20dd553b89093def891cd558.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-mozilla": {
