@@ -1,20 +1,16 @@
 { pkgs, lib, ... }:
 let
-  nurpkgs = (import (import ../../../nix).nixpkgs { });
-  nurNoPkgs = (import (import ../../../nix).NUR) { inherit pkgs nurpkgs; };
-
-  explain-pause-mode = epkgs: epkgs.trivialBuild {
-    pname = "explain-pause-mode";
-    version = "git";
-    # dontBuild = true;
-    src = (import ../../../nix/sources.nix).explain-pause-mode;
-    # packageRequires = [ epkgs.async ];
-  };
+  # explain-pause-mode = epkgs: epkgs.trivialBuild {
+  #   pname = "explain-pause-mode";
+  #   version = "git";
+  #   # dontBuild = true;
+  #   src = (import ../../../nix/sources.nix).explain-pause-mode;
+  #   # packageRequires = [ epkgs.async ];
+  # };
 in
 {
   imports = [
-    nurNoPkgs.repos.rycee.hmModules.emacs-notmuch
-    nurNoPkgs.repos.rycee.hmModules.emacs-init
+    # pkgs.nur.repos.rycee.hmModules.emacs-init
   ];
 
   home.packages = [
@@ -224,11 +220,11 @@ in
     '';
 
     usePackage = {
-      explain-pause-mode = {
-        enable = true;
-        package = explain-pause-mode;
-        config = "(explain-pause-mode t)";
-      };
+      # explain-pause-mode = {
+      #   enable = true;
+      #   package = explain-pause-mode;
+      #   config = "(explain-pause-mode t)";
+      # };
 
       abbrev = {
         enable = true;

@@ -2,32 +2,33 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports =
     [
-      ../core
-      # ../dev
-
-      (import ../nix).cpu_intel
-      (import ../nix).ssd
-      (import ((import ../nix).impermanence + "/nixos.nix"))
+      ../../core
 
       # Include the results of the hardware scan.
-      ../hardware/hardware-configuration-desktop.nix
-      ../hardware/efi.nix
+      ../../hardware/hardware-configuration-desktop.nix
+      ../../hardware/efi.nix
 
-      ../dev/qemu.nix
-      ../dev/virt-manager.nix
+      inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+      inputs.nixos-hardware.nixosModules.common-cpu-intel
 
-      # ../configuration_common.nix
+      ../../dev/qemu.nix
+      ../../dev/virt-manager.nix
+
       # ./aarch64.nix
 
-      ../gnome.nix
+      ../../gnome.nix
 
-      ../users/bbigras
-    ] ++ (if builtins.pathExists ../secrets/at_home.nix then [ ../secrets/at_home.nix ] else [ ]);
+      ../../users/bbigras
+    ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ]);
+
+  home-manager.useGlobalPkgs = true;
+
+  nixpkgs.config.allowUnfree = true;
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.loader.grub.useOSProber = true;
@@ -184,11 +185,5 @@
 
   services.earlyoom.enable = true;
   services.jellyfin.enable = true;
-
-  # This value determines the NixOS release with which your system is to be
-  # compatible, in order to avoid breaking some software such as database
-  # servers. You should change this only after NixOS release notes say you
-  # should.
-  system.stateVersion = "20.09"; # Did you read the comment?
 
 }

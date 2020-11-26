@@ -18,7 +18,6 @@ let
 in
 {
   imports = [
-    (import (import ../nix).home-manager)
     ./adb.nix
     ./docker.nix
     ./nix.nix
@@ -84,7 +83,6 @@ in
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.extraModulePackages = [ config.boot.kernelPackages.exfat-nofuse ];
-  environment.etc."nixos/configuration.nix".source = dummyConfig;
   environment.systemPackages = with pkgs; [ ntfs3g chrony ];
   home-manager.useGlobalPkgs = true;
   i18n.defaultLocale = "fr_CA.UTF-8";
@@ -112,7 +110,6 @@ in
       "https://eigenvalue.cachix.org" # for crate2nix
       "https://bbigras-nix-config.cachix.org"
       "https://nixiosk.cachix.org"
-      "https://niv.cachix.org"
       "https://mjlbach.cachix.org"
       "https://pre-commit-hooks.cachix.org"
     ];
@@ -122,26 +119,13 @@ in
       "eigenvalue.cachix.org-1:ykerQDDa55PGxU25CETy9wF6uVDpadGGXYrFNJA3TUs="
       "bbigras-nix-config.cachix.org-1:aXL6Q9Oi0jyF79YAKRu17iVNk9HY0p23OZX7FA8ulhU="
       "nixiosk.cachix.org-1:pyzRzjCUhw0r+moXnSklZwwI/gFk+Z+A2ofmEhOf7Sc="
-      "niv.cachix.org-1:X32PCg2e/zAm3/uD1ScqW2z/K0LtDyNV7RdaxIuLgQM="
       "mjlbach.cachix.org-1:dR0V90mvaPbXuYria5mXvnDtFibKYqYc2gtl9MWSkqI="
       "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
-    ];
-    nixPath = [
-      "nixos-config=${dummyConfig}"
-      "nixpkgs=/run/current-system/nixpkgs"
-      "nixpkgs-overlays=/run/current-system/overlays"
     ];
   };
 
   nixpkgs = {
     config.allowUnfree = true;
-    overlays = [
-      (import (import ../nix).nixpkgs-mozilla)
-      (import (import ../nix).emacs-overlay)
-      (import (import ../nix).emacs-pgtk-nativecomp-overlay)
-      (import (import ../nix/sources.nix).nixpkgs-cdda-mods)
-      (import ../overlays/mkSecret.nix)
-    ];
   };
 
   # networking.resolvconf.useLocalResolver ?
@@ -164,11 +148,6 @@ in
   # };
 
   system = {
-    extraSystemBuilderCmds = ''
-      ln -sv ${pkgs.path} $out/nixpkgs
-      ln -sv ${../overlays} $out/overlays
-    '';
-
     stateVersion = "20.09";
   };
 

@@ -3,8 +3,8 @@
 WIP
 
 # Features
-- deploy with nixus
-- pin dependendies with niv
+- flakes
+- deploy with deploy-rs
 - use the zen Linux kernel
 - use nixos-hardware for laptop
 - BTRFS on all system

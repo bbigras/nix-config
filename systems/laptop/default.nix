@@ -2,27 +2,26 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports =
     [
-      ../core
-
-      (import ((import ../nix).impermanence + "/nixos.nix"))
+      ../../core
 
       # Include the results of the hardware scan.
-      ../hardware/hardware-configuration-laptop.nix
-      ../hardware/efi.nix
-      ../hardware/bluetooth.nix
+      ../../hardware/hardware-configuration-laptop.nix
+      ../../hardware/efi.nix
+      ../../hardware/bluetooth.nix
+      inputs.nixos-hardware.nixosModules.dell-xps-13-9343
 
-      (import ../nix).xps-13-9343
+      ../../sway
+      ../../sway/trusted.nix
 
-      ../sway
-      ../sway/trusted.nix
+      ../../users/bbigras
+    ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ]);
 
-      ../users/bbigras
-    ] ++ (if builtins.pathExists ../secrets/at_home.nix then [ ../secrets/at_home.nix ] else [ ]);
+  home-manager.useGlobalPkgs = true;
 
   hardware.brillo.enable = true;
   # boot.kernelPackages = pkgs.linuxPackages_zen;
@@ -137,7 +136,9 @@
   };
 
   home-manager.users.bbigras = { ... }: {
-    imports = [ (import ((import ../nix).impermanence + "/home-manager.nix")) ];
+    imports = [
+      "${inputs.impermanence}/home-manager.nix"
+    ];
 
     wayland.windowManager.sway = {
       config = {

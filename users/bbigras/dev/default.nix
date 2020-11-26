@@ -1,5 +1,8 @@
 { pkgs, ... }: {
-  imports = [ ./emacs.nix ];
+  imports = [
+    # pkgs.nur.repos.rycee.hmModules.emacs-init
+    ./emacs.nix
+  ];
 
   home.extraOutputsToInstall = [ "doc" "info" "devdoc" ];
 
