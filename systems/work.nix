@@ -3,9 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { pkgs, ... }:
-let
-  zen = (import (import ../nix).zen { });
-in
+
 {
   imports =
     [
@@ -24,7 +22,7 @@ in
       ../users/bbigras
     ] ++ (if builtins.pathExists ../secrets/at_work.nix then [ ../secrets/at_work.nix ] else [ ]);
 
-  boot.kernelPackages = zen.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.kernel.sysctl = {
     "kernel.sysrq" = 1;
     # "fs.inotify.max_user_watches" = 524288;

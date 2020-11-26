@@ -190,17 +190,5 @@
         "type": "tarball",
         "url": "https://github.com/Infinisil/nixus/archive/2127516f68ce6f900b38289985377559e69aab88.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
-    "zen": {
-        "branch": "zen-kernel-init",
-        "description": "Nix Packages collection",
-        "homepage": null,
-        "owner": "Atemu",
-        "repo": "nixpkgs",
-        "rev": "83451174b826146cedbc31d98f16c870a0dd0c45",
-        "sha256": "0b6fn7saq02grm05q9a2q7a63y18ix78y7rpwkq139xgis4jkhd4",
-        "type": "tarball",
-        "url": "https://github.com/Atemu/nixpkgs/archive/83451174b826146cedbc31d98f16c870a0dd0c45.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
