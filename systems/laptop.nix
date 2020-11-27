@@ -25,7 +25,7 @@
     ] ++ (if builtins.pathExists ../secrets/at_home.nix then [ ../secrets/at_home.nix ] else [ ]);
 
   hardware.brillo.enable = true;
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  # boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.kernel.sysctl = {
     "kernel.sysrq" = 1;
     # "fs.inotify.max_user_watches" = 524288;
