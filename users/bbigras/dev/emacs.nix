@@ -58,8 +58,8 @@ in
                           nil
                           :height 140
                           :family "Fira Code Retina")
-      (set-face-attribute 'fixed-pitch nil :font "Fira Code Retina" :height 200)
-      (set-face-attribute 'variable-pitch nil :font "Cantarell" :height 245 :weight 'regular)
+      (set-face-attribute 'fixed-pitch nil :font "Fira Code Retina" :height 100)
+      (set-face-attribute 'variable-pitch nil :font "Cantarell" :height 150 :weight 'regular)
     '';
 
     prelude = ''
