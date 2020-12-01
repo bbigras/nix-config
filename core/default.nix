@@ -144,26 +144,6 @@ in
     ];
   };
 
-  services.yggdrasil = {
-    enable = true;
-    openMulticastPort = true;
-    config = {
-      Listen = [ "tcp://0.0.0.0:9977" ];
-      Peers = [
-        "tcp://64.112.177.94:1617"
-        "tcp://64.112.180.77:1617"
-        "tcp://50.236.201.218:56088"
-      ];
-      LinkLocalTCPPort = 9988;
-      denyDhcpcdInterfaces = [ "tap*" ];
-      SessionFirewall = {
-        Enable = true;
-        AllowFromDirect = false;
-        AllowFromRemote = false;
-      };
-    };
-  };
-
   # networking.resolvconf.useLocalResolver ?
 
   services.resolved = {
