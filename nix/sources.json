@@ -107,18 +107,6 @@
         "url": "https://github.com/nmattia/niv/archive/ba57d5a29b4e0f2085917010380ef3ddc3cf380f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "nix-matrix-yggdrasil": {
-        "branch": "master",
-        "description": null,
-        "homepage": null,
-        "owner": "bbigras",
-        "repo": "nix-matrix-yggdrasil",
-        "rev": "f16b5554216ffccc7a8430c9804e4f7bcf228aab",
-        "sha256": "07i7qhd1n3i9ckq8wdlharrxcpmmm91vj13l87566jb3yfbmmv81",
-        "type": "tarball",
-        "url": "https://github.com/bbigras/nix-matrix-yggdrasil/archive/f16b5554216ffccc7a8430c9804e4f7bcf228aab.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "nix-pre-commit-hooks": {
         "branch": "master",
         "description": "Seamless integration of https://pre-commit.com git hooks with Nix.",

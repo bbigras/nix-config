@@ -1,7 +1,5 @@
 { config, lib, pkgs, ... }:
 let
-  nix-matrix-yggdrasil = (import (import ../../../nix).nix-matrix-yggdrasil);
-
   crate2nix = (import (import ../../../nix).crate2nix { });
 
   my_cdda = pkgs.cataclysm-dda.withMods (mods: with mods; [
