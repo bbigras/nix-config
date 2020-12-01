@@ -284,6 +284,9 @@ in
         '';
       };
 
+      # Save and restore frames and windows with their buffers in Emacs
+      burly.enable = true;
+
       mark-thing-at = {
         enable = true;
         #         config = ''
@@ -1154,6 +1157,9 @@ in
         '';
       };
 
+      org-ql.enable = true;
+      org-sidebar.enable = true;
+
       nginx-mode.enable = true;
 
       # org-super-agenda = {
@@ -1696,6 +1702,8 @@ in
         enable = true;
         defer = true;
       };
+
+      terraform-mode.enable = true;
 
       treemacs = {
         enable = true;
