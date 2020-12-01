@@ -578,6 +578,7 @@ in
         hook = [ "(after-init . org-roam-mode)" ];
         config = ''
           (setq org-roam-directory "~/Dropbox/org-mode/notes")
+          (setq org-roam-graph-executable "${pkgs.graphviz}/bin/dot")
         '';
         bind = {
           "C-c n l" = "org-roam";
