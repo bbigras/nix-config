@@ -52,8 +52,6 @@ in
   testScript = ''
     server.start()
     server.wait_for_unit("multi-user.target")
-    server.succeed("sudo -u bbigras mkdir -p /home/bbigras/Dropbox/emacs")
-    server.succeed("sudo -u bbigras touch /home/bbigras/Dropbox/emacs/custom-server.el")
     server.succeed("helloWorld")
   '';
 }
