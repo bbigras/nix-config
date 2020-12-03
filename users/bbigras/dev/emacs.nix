@@ -21,16 +21,6 @@ in
     pkgs.samba # pour tramp
 
     # emacs
-    pkgs.ispell
-    pkgs.aspell
-    pkgs.hunspell
-    pkgs.hunspellDicts.fr-any
-    # pkgs.hunspellDicts.fr-moderne
-    pkgs.aspellDicts.en-computers
-    pkgs.aspellDicts.en
-    # pkgs.aspellDicts.en-science
-    pkgs.aspellDicts.fr
-    pkgs.hunspellDicts.en-ca
   ];
 
   programs.emacs.init = {
@@ -676,11 +666,6 @@ in
         '';
       };
 
-      ispell = {
-        enable = true;
-        defer = 1;
-      };
-
       js = {
         enable = true;
         mode = [
@@ -695,12 +680,6 @@ in
       notifications = {
         enable = true;
         command = [ "notifications-notify" ];
-      };
-
-      auto-dictionary = {
-        enable = true;
-        after = [ "flyspell" ];
-        config = "(add-hook 'flyspell-mode-hook (lambda () (auto-dictionary-mode 1)))";
       };
 
       # Remember where we where in a previously visited file. Built-in.
