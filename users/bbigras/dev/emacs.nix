@@ -1029,6 +1029,7 @@ in
         enable = true;
         # config = lib.mkForce "";
         after = [ "dap-mode" ];
+        package = "dap-mode";
         config = ''
           (setq dap-lldb-debug-program "${pkgs.lldb}/bin/lldb-vscode")
         '';
