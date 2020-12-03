@@ -9,6 +9,6 @@ rec {
   cpu_intel = sources.nixos-hardware + "/common/cpu/intel";
   ssd = sources.nixos-hardware + "/common/pc/ssd";
   xps-13-9343 = sources.nixos-hardware + "/dell/xps/13-9343";
-  nix-pre-commit-hooks = import sources.nix-pre-commit-hooks;
+  nix-pre-commit-hooks = (import (sources.nix-pre-commit-hooks + "/nix") { inherit nixpkgs; }).packages;
   nixus = import sources.nixus { };
 }
