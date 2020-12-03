@@ -933,7 +933,7 @@ in
       lsp-mode = {
         enable = true;
         command = [ "lsp" ];
-        after = [ "flycheck" ];
+        after = [ "company" "flycheck" ];
         bind = {
           "C-c r r" = "lsp-rename";
           "C-c r f" = "lsp-format-buffer";
@@ -1004,7 +1004,7 @@ in
 
       dap-mode = {
         enable = true;
-        after = [ "lsp-mode" "dap-ui" ];
+        after = [ "lsp-mode" ];
         command = [ "dap-mode" "dap-auto-configure-mode" ];
         config = ''
           (dap-auto-configure-mode)
@@ -1018,7 +1018,7 @@ in
 
       dap-ui = {
         enable = true;
-        # after = [ "dap-mode" ];
+        after = [ "dap-mode" ];
         command = [ "dap-ui-mode" ];
         config = ''
           (dap-ui-mode t)
