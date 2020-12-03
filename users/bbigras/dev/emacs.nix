@@ -19,8 +19,6 @@ in
 
   home.packages = [
     pkgs.samba # pour tramp
-
-    # emacs
   ];
 
   programs.emacs.init = {
