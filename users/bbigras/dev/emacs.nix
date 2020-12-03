@@ -18,10 +18,6 @@ in
   ];
 
   home.packages = [
-    pkgs.emacs-all-the-icons-fonts
-
-    pkgs.pandoc # pour org-web-tools
-
     pkgs.fantasque-sans-mono
     pkgs.xclip
     pkgs.samba # pour tramp
@@ -37,8 +33,6 @@ in
     # pkgs.aspellDicts.en-science
     pkgs.aspellDicts.fr
     pkgs.hunspellDicts.en-ca
-
-    pkgs.sqlite # org-roam
   ];
 
   programs.emacs.init = {
@@ -587,6 +581,7 @@ in
           "C-c n i" = "org-roam-insert";
           "C-c n g" = "org-roam-graph";
         };
+        extraPackages = [ pkgs.sqlite ];
       };
 
       rainbow-mode = {
@@ -779,6 +774,7 @@ in
 
       all-the-icons = {
         enable = true;
+        extraPackages = [ pkgs.emacs-all-the-icons-fonts ];
       };
 
       all-the-icons-dired = {
@@ -1089,6 +1085,7 @@ in
       org-web-tools = {
         enable = true;
         after = [ "org" ];
+        extraPackages = [ pkgs.pandoc ];
       };
 
       org = {
