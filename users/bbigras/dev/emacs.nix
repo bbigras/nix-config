@@ -582,7 +582,7 @@ in
         '';
         bind = {
           "C-c n l" = "org-roam";
-          "C-c n t" = "org-roam-dailies-today";
+          "C-c n t" = "org-roam-dailies-find-today";
           "C-c n f" = "org-roam-find-file";
           "C-c n i" = "org-roam-insert";
           "C-c n g" = "org-roam-graph";
