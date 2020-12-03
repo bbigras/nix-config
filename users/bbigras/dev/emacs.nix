@@ -18,8 +18,6 @@ in
   ];
 
   home.packages = [
-    pkgs.fantasque-sans-mono
-    pkgs.xclip
     pkgs.samba # pour tramp
 
     # emacs
