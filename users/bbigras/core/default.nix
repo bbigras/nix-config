@@ -236,7 +236,7 @@ EOF
       cargo-expand
       cargo-flamegraph
       # cargo-fuzz
-      cargo-geiger
+      # cargo-geiger
       cargo-sweep
       cargo-tarpaulin
       cargo-udeps
