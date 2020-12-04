@@ -3,7 +3,7 @@ name: Update flakes
 on:
   schedule:
     # every day at 8am UTC
-    - cron:  '0 8 * * mon,wed,fri'
+    - cron:  '0 15 * * mon,wed,fri'
 
 jobs:
   update-dependencies:
