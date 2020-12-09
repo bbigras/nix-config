@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "consult": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1607502368,
+        "narHash": "sha256-Azf1wYLVUePO8xzA44mfnpR4QjncEbDQ666erdftKx4=",
+        "owner": "minad",
+        "repo": "consult",
+        "rev": "dadc87fe73a93d2ecc34a0f82636729e8fe2dcd7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "minad",
+        "repo": "consult",
+        "type": "github"
+      }
+    },
     "deploy-rs": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -105,6 +121,22 @@
         "type": "github"
       }
     },
+    "marginalia": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1607494743,
+        "narHash": "sha256-Ji9aqSq6TgQoTbZCAqmQgaZBLpISqJMNlEfHH0Z1sTg=",
+        "owner": "minad",
+        "repo": "marginalia",
+        "rev": "31ba78b6c65be172aae2dde9bc0e6e91e229b082",
+        "type": "github"
+      },
+      "original": {
+        "owner": "minad",
+        "repo": "marginalia",
+        "type": "github"
+      }
+    },
     "naersk": {
       "inputs": {
         "nixpkgs": [
@@ -190,11 +222,13 @@
     },
     "root": {
       "inputs": {
+        "consult": "consult",
         "deploy-rs": "deploy-rs",
         "emacs-overlay": "emacs-overlay",
         "explain-pause-mode": "explain-pause-mode",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
+        "marginalia": "marginalia",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-cdda-mods": "nixpkgs-cdda-mods",

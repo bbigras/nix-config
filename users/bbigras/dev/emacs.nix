@@ -752,25 +752,37 @@
         command = [ "amx-initialize" ];
       };
 
-      counsel = {
+      consult = {
         enable = true;
+        package = pkgs.consult;
         bind = {
-          "C-x C-d" = "counsel-dired-jump";
-          "C-x C-f" = "counsel-find-file";
-          "C-x C-M-f" = "counsel-fzf";
-          "C-x C-r" = "counsel-recentf";
-          "C-x C-y" = "counsel-yank-pop";
-          "M-x" = "counsel-M-x";
+          "C-c o" = "consult-outline";
+          "C-x b" = "consult-buffer";
+          "C-x 4 b" = "consult-buffer-other-window";
+          "C-x 5 b" = "consult-buffer-other-frame";
+          "C-x r x" = "consult-register";
+          "C-x r b" = "consult-bookmark";
+          "M-g o" = "consult-outline";
+          "M-g m" = "consult-mark";
+          "M-g l" = "consult-line";
+          "M-s m" = "consult-multi-occur";
+          "M-y" = "consult-yank-pop";
+          "<help> a" = "consult-apropos";
         };
-        diminish = [ "counsel-mode" ];
-        config =
-          let
-            fd = "${pkgs.fd}/bin/fd";
-            fzf = "${pkgs.fzf}/bin/fzf";
-          in
-          ''
-            (setq counsel-fzf-cmd "${fd} --type f | ${fzf} -f \"%s\"")
-          '';
+        init = ''
+          (fset 'multi-occur #'consult-multi-occur)
+        '';
+        config = ''
+          (consult-preview-mode)
+        '';
+      };
+
+      marginalia = {
+        enable = true;
+        package = pkgs.marginalia;
+        config = ''
+          (marginalia-mode)
+        '';
       };
 
       nyan-mode = {
