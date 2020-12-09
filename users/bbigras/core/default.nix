@@ -248,7 +248,6 @@ EOF
       compsize
 
       jellyfin-mpv-shim
-      freecad
       pv
       rclone
 
