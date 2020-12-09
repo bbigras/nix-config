@@ -1,13 +1,5 @@
 { pkgs, lib, ... }:
-let
-  # explain-pause-mode = epkgs: epkgs.trivialBuild {
-  #   pname = "explain-pause-mode";
-  #   version = "git";
-  #   # dontBuild = true;
-  #   src = (import ../../../nix/sources.nix).explain-pause-mode;
-  #   # packageRequires = [ epkgs.async ];
-  # };
-in
+
 {
   imports = [
     # pkgs.nur.repos.rycee.hmModules.emacs-init
@@ -220,11 +212,11 @@ in
     '';
 
     usePackage = {
-      # explain-pause-mode = {
-      #   enable = true;
-      #   package = explain-pause-mode;
-      #   config = "(explain-pause-mode t)";
-      # };
+      explain-pause-mode = {
+        enable = true;
+        package = pkgs.explain-pause-mode;
+        config = "(explain-pause-mode t)";
+      };
 
       abbrev = {
         enable = true;

@@ -18,7 +18,6 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     #   mjlbach/emacs-pgtk-nativecomp-overlay
-    #   lastquestion/explain-pause-mode
     #   cachix/pre-commit-hooks.nix
     #   mnacamura/nixpkgs-cdda-mods
     #   mozilla/nixpkgs-mozilla
@@ -27,9 +26,15 @@
       url = "github:mnacamura/nixpkgs-cdda-mods";
       flake = false;
     };
+
+    explain-pause-mode = {
+      url = "github:lastquestion/explain-pause-mode";
+      flake = false;
+    };
+
   };
 
-  outputs = { self, nixpkgs, impermanence, nixos-hardware, deploy-rs, home-manager, nur, nixpkgs-cdda-mods, emacs-overlay, ... }@inputs:
+  outputs = { self, nixpkgs, impermanence, nixos-hardware, deploy-rs, home-manager, nur, nixpkgs-cdda-mods, emacs-overlay, explain-pause-mode, ... }@inputs:
     let
       inherit (nixpkgs.lib) nixosSystem filterAttrs const recursiveUpdate optionalAttrs;
       inherit (builtins) readDir mapAttrs;
@@ -48,6 +53,13 @@
                   nur.overlay
                   (import "${nixpkgs-cdda-mods}")
                   emacs-overlay.overlay
+                  (self: super: {
+                    explain-pause-mode = epkgs: epkgs.trivialBuild {
+                      pname = "explain-pause-mode";
+                      version = "git";
+                      src = inputs.explain-pause-mode;
+                    };
+                  })
                 ];
               })
               ./lib/home.nix
