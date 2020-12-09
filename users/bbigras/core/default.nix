@@ -226,7 +226,6 @@ EOF
       strace
 
       # rust
-      crate2nix
       cargo
       cargo-audit
       cargo-outdated
