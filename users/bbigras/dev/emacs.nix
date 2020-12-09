@@ -846,8 +846,13 @@
 
       avy = {
         enable = true;
+        # avy-org-goto-heading-timer
+        # avy-goto-char-timer
+        # avy-org-refile-as-child
+        # avy-goto-word-or-subword-1
         bind = {
-          "M-j" = "avy-goto-word-or-subword-1";
+          # "M-j"
+          "C-:" = "avy-goto-char-timer";
         };
         config = ''
           (setq avy-all-windows t)
