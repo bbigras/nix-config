@@ -5,7 +5,7 @@
   services.openssh = {
     enable = true;
     startWhenNeeded = true;
-    # openFirewall = false;
+    openFirewall = false;
     challengeResponseAuthentication = false;
     permitRootLogin = lib.mkDefault "no";
     extraConfig = ''
