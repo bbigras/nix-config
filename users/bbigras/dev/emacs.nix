@@ -754,7 +754,6 @@
 
       consult = {
         enable = true;
-        package = pkgs.consult;
         bind = {
           "C-c o" = "consult-outline";
           "C-x b" = "consult-buffer";
@@ -779,7 +778,6 @@
 
       marginalia = {
         enable = true;
-        package = pkgs.marginalia;
         config = ''
           (marginalia-mode)
         '';

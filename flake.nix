@@ -31,20 +31,9 @@
       url = "github:lastquestion/explain-pause-mode";
       flake = false;
     };
-
-    consult = {
-      url = "github:minad/consult";
-      flake = false;
-    };
-
-    marginalia = {
-      url = "github:minad/marginalia";
-      flake = false;
-    };
-
   };
 
-  outputs = { self, nixpkgs, impermanence, nixos-hardware, deploy-rs, home-manager, nur, nixpkgs-cdda-mods, emacs-overlay, explain-pause-mode, consult, marginalia, ... }@inputs:
+  outputs = { self, nixpkgs, impermanence, nixos-hardware, deploy-rs, home-manager, nur, nixpkgs-cdda-mods, emacs-overlay, explain-pause-mode, ... }@inputs:
     let
       inherit (nixpkgs.lib) nixosSystem filterAttrs const recursiveUpdate optionalAttrs;
       inherit (builtins) readDir mapAttrs;
@@ -68,16 +57,6 @@
                       pname = "explain-pause-mode";
                       version = "git";
                       src = inputs.explain-pause-mode;
-                    };
-                    consult = epkgs: epkgs.trivialBuild {
-                      pname = "consult";
-                      version = "git";
-                      src = inputs.consult;
-                    };
-                    marginalia = epkgs: epkgs.trivialBuild {
-                      pname = "marginalia";
-                      version = "git";
-                      src = inputs.marginalia;
                     };
                   })
                 ];
