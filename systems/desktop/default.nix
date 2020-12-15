@@ -24,9 +24,13 @@
       ../../gnome.nix
 
       ../../users/bbigras
-    ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ]);
+    ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ])
+    ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/desktop.nix") then [ (builtins.getEnv "PWD" + "/secrets/desktop.nix") ] else [ ]);
 
   home-manager.useGlobalPkgs = true;
+
+  sops.secrets.restic-desktop-password.sopsFile = ./restic-desktop.yaml;
+  sops.secrets.restic-desktop-creds.sopsFile = ./restic-desktop.yaml;
 
   nixpkgs.config.allowUnfree = true;
 

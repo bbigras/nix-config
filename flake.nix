@@ -3,6 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:rycee/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,7 +37,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, impermanence, nixos-hardware, deploy-rs, home-manager, nur, nixpkgs-cdda-mods, emacs-overlay, explain-pause-mode, ... }@inputs:
+  outputs = { self, nixpkgs, impermanence, nixos-hardware, deploy-rs, home-manager, nur, nixpkgs-cdda-mods, emacs-overlay, explain-pause-mode, sops-nix, ... }@inputs:
     let
       inherit (nixpkgs.lib) nixosSystem filterAttrs const recursiveUpdate optionalAttrs;
       inherit (builtins) readDir mapAttrs;
@@ -47,6 +51,7 @@
             [
               impermanence.nixosModules.impermanence
               home-manager.nixosModules.home-manager
+              sops-nix.nixosModules.sops
               ({
                 nixpkgs.overlays = [
                   nur.overlay
@@ -103,7 +108,19 @@
                 # (terraformFor pkgs)
                 pkgs.nixUnstable
                 pkgs.nix-build-uncached
+                pkgs.sops
+                sops-nix.packages.${system}.ssh-to-pgp
               ];
+
+            sopsPGPKeyDirs = [
+              "./keys/hosts"
+              "./keys/users"
+            ];
+
+            nativeBuildInputs = [
+              (pkgs.callPackage sops-nix { }).sops-pgp-hook
+            ];
+
           })
         deploy-rs.defaultPackage;
 
