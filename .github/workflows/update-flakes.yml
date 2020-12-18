@@ -34,3 +34,4 @@ jobs:
         commit-message: "[automation] update flakes dependencies"
         title: "[automation] update flakes dependencies"
         branch: "automation/update-flakes-dependencies"
+        delete-branch: true
