@@ -780,6 +780,7 @@
         enable = true;
         config = ''
           (marginalia-mode)
+          (setq marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light))
         '';
       };
 
