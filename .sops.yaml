@@ -5,7 +5,7 @@ keys:
   - &work 1d848bac4d07e12426f76ce9eac9bb416ff96587
 
 creation_rules:
-  - path_regex: systems/desktop/restic-desktop.yaml
+  - path_regex: hosts/desktop/restic-desktop.yaml
     key_groups:
       - pgp:
         - *bbigras
