@@ -63,6 +63,10 @@ in
         hostname = "work";
         profiles.system.path = mkPath "work" "x86_64-linux";
       };
+      vps = {
+        hostname = "vps";
+        profiles.system.path = mkPath "vps" "x86_64-linux";
+      };
     };
   };
 
