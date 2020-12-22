@@ -81,7 +81,6 @@ in
   environment.systemPackages = with pkgs; [ ntfs3g chrony ];
   home-manager.useGlobalPkgs = true;
   i18n.defaultLocale = "fr_CA.UTF-8";
-  nix.maxJobs = "auto";
   nixpkgs.localSystem.system = "x86_64-linux";
 
   networking.useDHCP = false;
