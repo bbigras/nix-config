@@ -44,14 +44,6 @@
     XDG_CURRENT_DESKTOP = "sway";
   };
 
-  programs.obs-studio = {
-    enable = true;
-    plugins = with pkgs; [
-      #obs-ndi
-      obs-wlrobs
-    ];
-  };
-
   gtk = {
     enable = true;
     gtk2.extraConfig = "gtk-application-prefer-dark-theme = true";
