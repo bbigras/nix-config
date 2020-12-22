@@ -17,6 +17,7 @@ repos:
     files: "\\.nix$"
     language: system
     description: "Nix code formatter"
+    exclude: "hardware/hardware-.*[.]nix$"
     id: nixpkgs-fmt
   - name: nix-linter
     entry: nix-linter
