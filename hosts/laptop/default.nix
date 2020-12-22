@@ -19,13 +19,17 @@
       ../../sway/trusted.nix
 
       ../../users/bbigras
-    ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ]);
+    ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ])
+    ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/laptop.nix") then [ (builtins.getEnv "PWD" + "/secrets/laptop.nix") ] else [ ]);
 
   home-manager.useGlobalPkgs = true;
 
   environment.systemPackages = with pkgs; [
     iwd
   ];
+
+  sops.secrets.restic-laptop-password.sopsFile = ./restic-laptop.yaml;
+  sops.secrets.restic-laptop-creds.sopsFile = ./restic-laptop.yaml;
 
   hardware.brillo.enable = true;
   # boot.kernelPackages = pkgs.linuxPackages_zen;

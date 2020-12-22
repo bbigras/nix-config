@@ -10,3 +10,8 @@ creation_rules:
       - pgp:
         - *bbigras
         - *desktop
+  - path_regex: hosts/laptop/restic-laptop.yaml
+    key_groups:
+      - pgp:
+        - *bbigras
+        - *laptop
