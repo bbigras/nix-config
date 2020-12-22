@@ -22,7 +22,7 @@ repos:
   - name: nix-linter
     entry: nix-linter
     files: "\\.nix$"
-    exclude: "flake.nix|menu/default.nix"
+    exclude: "flake.nix|menu/default.nix|hardware/hardware-.*[.]nix$"
     language: system
     description: "Nix code linter"
     id: nix-linter

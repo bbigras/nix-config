@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 let
   my_cdda = pkgs.cataclysm-dda.withMods (mods: with mods; [
     tileset.UndeadPeople

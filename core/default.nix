@@ -1,9 +1,5 @@
 { pkgs, ... }:
 let
-  dummyConfig = pkgs.writeText "configuration.nix" ''
-    assert builtins.trace "This is a dummy config, use nixus!" false;
-    {}
-  '';
   configFile = pkgs.writeText "chrony.conf" ''
     server time.cloudflare.com iburst nts
 
