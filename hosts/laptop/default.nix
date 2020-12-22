@@ -23,6 +23,10 @@
 
   home-manager.useGlobalPkgs = true;
 
+  environment.systemPackages = with pkgs; [
+    iwd
+  ];
+
   hardware.brillo.enable = true;
   # boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.kernel.sysctl = {
@@ -32,16 +36,13 @@
   };
 
   networking = {
+    useNetworkd = true;
     dhcpcd.enable = false;
     hostName = "laptop"; # Define your hostname.
-    networkmanager = {
-      enable = true;
-      dns = "systemd-resolved";
-      # dns = "none";
-      unmanaged = [ "tailscale0" ];
-      # wifi.backend = "iwd";
-    };
+    networkmanager.enable = false;
+    wireless.iwd.enable = true;
     useDHCP = false;
+    interfaces.wlp2s0.useDHCP = true;
   };
 
   xdg.portal = {
@@ -113,7 +114,7 @@
 
   environment.persistence."/persist" = {
     directories = [
-      "/etc/NetworkManager/system-connections"
+      "/var/lib/iwd"
       "/var/lib/tailscale"
       "/var/lib/zerotier-one"
       "/var/log"
