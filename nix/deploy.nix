@@ -59,6 +59,10 @@ in
         hostname = "laptop";
         profiles.system.path = mkPath "laptop" "x86_64-linux";
       };
+      work = {
+        hostname = "work";
+        profiles.system.path = mkPath "work" "x86_64-linux";
+      };
     };
   };
 
