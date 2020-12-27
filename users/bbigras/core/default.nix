@@ -56,7 +56,6 @@ EOF
   };
   programs.htop.enable = true;
   programs.jq.enable = true;
-  programs.starship.enable = true;
   programs.vscode.enable = true;
   programs.zoxide.enable = true;
   programs.mcfly.enable = true;
@@ -71,34 +70,38 @@ EOF
       env = {
         TERM = "xterm-256color";
       };
+      font.normal.family = "MesloLGS NF";
     };
   };
 
-  programs.fish = {
+  programs.zsh = {
     enable = true;
-    promptInit = ''
-      eval (direnv hook fish)
-      any-nix-shell fish --info-right | source
+    enableAutosuggestions = true;
+    enableCompletion = true;
+    enableVteIntegration = true;
+    # dirHashes = {
+    #   docs = "$HOME/Documents";
+    #   vids = "$HOME/Videos";
+    #   dl = "$HOME/Downloads";
+    # };
+    prezto = {
+      enable = true;
+      prompt.theme = "powerlevel10k";
+    };
+    initExtraFirst = ''
+      if [[ -r "''${XDG_CACHE_HOME:-''$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+        source "''${XDG_CACHE_HOME:-''$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+      fi
     '';
+    initExtra = ''
+      [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+    '';
+
     shellAliases = {
       cat = "${pkgs.bat}/bin/bat";
       ls = "${pkgs.exa}/bin/exa";
       less = ''${pkgs.bat}/bin/bat --paging=always --pager "${pkgs.less}/bin/less -RF"'';
     };
-    shellInit = ''
-      set -x FZF_DEFAULT_OPTS "--preview='bat {} --color=always'" \n
-      set -x SKIM_DEFAULT_COMMAND "rg --files || fd || find ."
-
-      set -g theme_display_date no
-      set -g theme_nerd_fonts yes
-      set -g theme_display_git_master_branch no
-      set -g theme_nerd_fonts yes
-      set -g theme_newline_cursor yes
-      set -g theme_color_scheme solarized
-
-      bind \t accept-autosuggestion
-      set fish_greeting
-    '';
   };
 
   programs.ssh = {
@@ -251,7 +254,6 @@ EOF
       pv
       rclone
 
-      any-nix-shell # fish support for nix shell
       asciinema # record the terminal
       docker-compose # docker manager
       ncdu # disk space info (a better du)

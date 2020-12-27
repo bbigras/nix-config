@@ -23,6 +23,8 @@ in
     ./zerotier.nix
   ];
 
+  environment.pathsToLink = [ "/share/zsh" ];
+
   nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
@@ -85,7 +87,7 @@ in
 
   networking.useDHCP = false;
 
-  programs.fish.enable = true;
+  programs.zsh.enable = true;
   programs.ssh.startAgent = true;
   programs.wireshark.enable = true;
   services.fwupd.enable = true; # TODO: check if needed
@@ -148,6 +150,7 @@ in
   fonts.fonts = with pkgs; [
     fira-code
     fira-code-symbols
+    (callPackage ../meslo-lgs-nf.nix { })
   ];
 
   sound.enable = true;
