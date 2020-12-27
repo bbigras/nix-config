@@ -11,7 +11,7 @@ with lib;
       ++ optionals config.virtualisation.libvirtd.enable [ "libvirtd" ]
       ++ optionals config.virtualisation.kvmgt.enable [ "kvm" ];
     isNormalUser = true;
-    shell = mkIf config.programs.fish.enable pkgs.fish;
+    shell = mkIf config.programs.zsh.enable pkgs.zsh;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP2Eo0xWZ1VPs5iHlDd3j+O+3I1qx4VqDaXpkL6phB6Z bbigras@desktop"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE6LFIPxHhM18nw6Sp8xPVG2GGPNcTSrNwTQAoNIyA0r bbigras@laptop"

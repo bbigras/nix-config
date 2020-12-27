@@ -3,21 +3,6 @@
     enable = true;
     settings = {
       env.TERM = "xterm-256color";
-      font = {
-        normal = {
-          family = "Iosevka";
-          style = "Regular";
-        };
-        bold = {
-          family = "Iosevka";
-          style = "Bold";
-        };
-        italic = {
-          family = "Iosevka";
-          style = "Italic";
-        };
-        size = 10;
-      };
       colors = {
         primary = {
           background = "0x0A0E14";
