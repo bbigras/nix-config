@@ -259,6 +259,11 @@ EOF
       ncdu # disk space info (a better du)
       prettyping # a nicer ping
       rnix-lsp # nix lsp server
+
+      the-powder-toy
+      dragon-drop
+      feh # light-weight image viewer
+      killall
     ];
   };
 
