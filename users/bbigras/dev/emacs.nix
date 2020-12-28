@@ -1398,7 +1398,7 @@
 
       company-prescient = {
         enable = true;
-        after = [ "prescient" "company" ];
+        after = [ "company" ];
         config = ''
           (company-prescient-mode +1)
         '';
