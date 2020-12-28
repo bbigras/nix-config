@@ -27,6 +27,7 @@
       core = {
         excludesfile = "~/.gitignore";
       };
+      pull.ff = "only";
     };
   };
 }
