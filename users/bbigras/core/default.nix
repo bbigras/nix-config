@@ -250,6 +250,7 @@ in
       dragon-drop
       feh # light-weight image viewer
       killall
+      ghidra-bin
     ];
   };
 
