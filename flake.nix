@@ -2,7 +2,10 @@
   description = "bbigras's NixOS config";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixos-hardware.url = "nixos-hardware";
+    nur.url = "nur";
+
     flake-utils.url = "github:numtide/flake-utils";
 
     sops-nix = {
@@ -13,7 +16,6 @@
       url = "github:rycee/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nur.url = "github:nix-community/NUR";
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs = {
@@ -24,7 +26,6 @@
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     impermanence.url = "github:nix-community/impermanence";
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     nixpkgs-cdda-mods = {
       url = "github:mnacamura/nixpkgs-cdda-mods";

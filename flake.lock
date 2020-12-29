@@ -153,9 +153,8 @@
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
-        "repo": "nixos-hardware",
-        "type": "github"
+        "id": "nixos-hardware",
+        "type": "indirect"
       }
     },
     "nixpkgs": {
@@ -168,10 +167,9 @@
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
+        "id": "nixpkgs",
         "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
+        "type": "indirect"
       }
     },
     "nixpkgs-cdda-mods": {
@@ -192,17 +190,16 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1609241843,
-        "narHash": "sha256-okm/9okaDbvp9MWHg0TXBnQMwjOKT/uBSM+C+lskhyU=",
+        "lastModified": 1609279219,
+        "narHash": "sha256-rfXPb69fXkMkNgl180YM03X/6gfM4OPOwk6Lrw/jAmA=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "610061334c36ed377e4fec902355d7cc4fb21d1f",
+        "rev": "c86ea1430bbdbeeadeed3fa8c79c4dbc2747e1f6",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
-        "repo": "NUR",
-        "type": "github"
+        "id": "nur",
+        "type": "indirect"
       }
     },
     "root": {
