@@ -53,7 +53,7 @@
   fonts.fonts = with pkgs; [
     fira-code
     fira-code-symbols
-    (callPackage ../meslo-lgs-nf.nix { })
+    meslo-lgs-nf
   ];
 
   sound.enable = true;
