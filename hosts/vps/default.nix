@@ -37,6 +37,4 @@
   };
 
   services.openssh.openFirewall = false;
-
-  system.stateVersion = "20.09";
 }

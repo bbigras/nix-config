@@ -22,8 +22,6 @@
     ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ])
     ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/laptop.nix") then [ (builtins.getEnv "PWD" + "/secrets/laptop.nix") ] else [ ]);
 
-  home-manager.useGlobalPkgs = true;
-
   environment.systemPackages = with pkgs; [
     iwd
   ];
@@ -273,17 +271,4 @@
     # we can unmount /mnt and continue on the boot process.
     umount /mnt
   '';
-
-  home-manager.verbose = true;
-  environment.etc."restic-pw-id".text = ''
-    BW_ID=873078f3-3587-40ed-8ecc-aba30019a273
-  '';
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "20.09"; # Did you read the comment?
 }

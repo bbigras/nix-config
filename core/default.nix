@@ -1,150 +1,53 @@
 { pkgs, ... }:
-let
-  configFile = pkgs.writeText "chrony.conf" ''
-    server time.cloudflare.com iburst nts
 
-    initstepslew 1000 time.cloudflare.com
-
-    driftfile /var/lib/chrony/chrony.drift
-    keyfile /var/lib/chrony/chrony.keys
-
-    ntsdumpdir /var/lib/chrony/nts
-  '';
-in
 {
   imports = [
     ./adb.nix
+    ./chronyd.nix
     ./docker.nix
     ./nix.nix
     ./openssh.nix
+    ./pipewire.nix
     ./steam.nix
     ./sudo.nix
+    ./systemd-resolved.nix
     ./tailscale.nix
     ./zerotier.nix
   ];
 
-  environment.pathsToLink = [ "/share/zsh" ];
-
-  nix.package = pkgs.nixFlakes;
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-    keep-outputs = true
-    keep-derivations = true
-  '';
-
-  # ---
-  users.groups.chrony.gid = 61;
-
-  users.users.chrony =
-    {
-      uid = 61;
-      group = "chrony";
-      description = "chrony daemon user";
-      home = "/var/lib/chrony";
-    };
-
-  services.timesyncd.enable = false;
-
-  systemd.services.systemd-timedated.environment = { SYSTEMD_TIMEDATED_NTP_SERVICES = "chronyd.service"; };
-
-  systemd.tmpfiles.rules = [
-    "d /var/lib/chrony 0755 chrony chrony - -"
-    "f /var/lib/chrony/chrony.keys 0640 chrony chrony -"
-  ];
-
-  systemd.services.chronyd =
-    {
-      description = "chrony NTP daemon";
-
-      wantedBy = [ "multi-user.target" ];
-      wants = [ "time-sync.target" ];
-      before = [ "time-sync.target" ];
-      after = [ "network.target" ];
-      conflicts = [ "ntpd.service" "systemd-timesyncd.service" ];
-
-      path = [ pkgs.chrony ];
-
-      unitConfig.ConditionCapability = "CAP_SYS_TIME";
-      serviceConfig =
-        {
-          Type = "simple";
-          ExecStart = "${pkgs.chrony}/bin/chronyd -n -m -u chrony -f ${configFile}";
-
-          ProtectHome = "yes";
-          ProtectSystem = "full";
-          PrivateTmp = "yes";
-        };
-
-    };
-  # ---
-
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.extraModulePackages = [ config.boot.kernelPackages.exfat-nofuse ];
-  environment.systemPackages = with pkgs; [ ntfs3g chrony ];
+
+  environment = {
+    pathsToLink = [ "/share/zsh" ];
+    systemPackages = with pkgs; [ ntfs3g ];
+  };
+
   home-manager.useGlobalPkgs = true;
   i18n.defaultLocale = "fr_CA.UTF-8";
-  nixpkgs.localSystem.system = "x86_64-linux";
 
   networking.useDHCP = false;
 
-  programs.zsh.enable = true;
-  programs.ssh.startAgent = true;
-  programs.wireshark.enable = true;
-  services.fwupd.enable = true; # TODO: check if needed
+  programs = {
+    gnupg.agent = {
+      enable = true;
+      #   enableSSHSupport = true;
+      pinentryFlavor = "gnome3";
+    };
+    ssh.startAgent = true;
+    wireshark.enable = true;
+    zsh.enable = true;
+  };
+
+  services = {
+    fwupd.enable = true; # TODO: check if needed
+  };
+
   users.mutableUsers = false;
-
-  programs.gnupg.agent = {
-    enable = true;
-    #   enableSSHSupport = true;
-    pinentryFlavor = "gnome3";
-  };
-
-  nix = {
-    binaryCaches = [
-      "https://nix-community.cachix.org"
-      "https://nix-matrix-yggdrasil.cachix.org"
-      "https://eigenvalue.cachix.org" # for crate2nix
-      "https://bbigras-nix-config.cachix.org"
-      "https://nixiosk.cachix.org"
-      "https://mjlbach.cachix.org"
-      "https://pre-commit-hooks.cachix.org"
-    ];
-    binaryCachePublicKeys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "nix-matrix-yggdrasil.cachix.org-1:zxDWWJFEiOxpvKHP8qoi2HS4CtHxUPPQtoWz9D66m9g="
-      "eigenvalue.cachix.org-1:ykerQDDa55PGxU25CETy9wF6uVDpadGGXYrFNJA3TUs="
-      "bbigras-nix-config.cachix.org-1:aXL6Q9Oi0jyF79YAKRu17iVNk9HY0p23OZX7FA8ulhU="
-      "nixiosk.cachix.org-1:pyzRzjCUhw0r+moXnSklZwwI/gFk+Z+A2ofmEhOf7Sc="
-      "mjlbach.cachix.org-1:dR0V90mvaPbXuYria5mXvnDtFibKYqYc2gtl9MWSkqI="
-      "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
-    ];
-  };
 
   nixpkgs = {
     config.allowUnfree = true;
-  };
-
-  # networking.resolvconf.useLocalResolver ?
-
-  services.resolved = {
-    enable = true;
-    dnssec = "false";
-    # dnssec = "allow-downgrade";
-    # DNSOverTLS=yes
-    llmnr = "false";
-
-    extraConfig = ''
-      DNS=1.1.1.1#cloudflare-dns.com 1.0.0.1#cloudflare-dns.com
-      DNSOverTLS=true
-    '';
-  };
-
-  # services = {
-  #   dbus.socketActivated = true;
-  # };
-
-  system = {
-    stateVersion = "20.09";
+    localSystem.system = "x86_64-linux";
   };
 
   fonts.fonts = with pkgs; [
@@ -154,14 +57,7 @@ in
   ];
 
   sound.enable = true;
-  security.rtkit.enable = true;
-  hardware.pulseaudio.enable = false;
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-    alsa.enable = true;
-    jack.enable = true;
-  };
-
   time.timeZone = "America/Montreal";
+
+  system.stateVersion = "20.09";
 }

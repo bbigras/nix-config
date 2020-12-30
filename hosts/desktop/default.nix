@@ -27,12 +27,8 @@
     ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ])
     ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/desktop.nix") then [ (builtins.getEnv "PWD" + "/secrets/desktop.nix") ] else [ ]);
 
-  home-manager.useGlobalPkgs = true;
-
   sops.secrets.restic-desktop-password.sopsFile = ./restic-desktop.yaml;
   sops.secrets.restic-desktop-creds.sopsFile = ./restic-desktop.yaml;
-
-  nixpkgs.config.allowUnfree = true;
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.loader.grub.useOSProber = true;
@@ -183,11 +179,6 @@
     umount /mnt
   '';
 
-  environment.etc."restic-pw-id".text = ''
-    BW_ID=ca6ebfdf-1d09-4631-9531-ab3d004496c8
-  '';
-
   services.earlyoom.enable = true;
   services.jellyfin.enable = true;
-
 }
