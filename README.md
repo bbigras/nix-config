@@ -10,7 +10,7 @@ WIP
 - BTRFS on all system
 - impermanence
   - full disk "wipe" on laptop
-  - all expect /home wipe on desktop
+  - all except /home wipe on desktop
 - Full disk encryption on laptop
 - [emacs-init module](https://gitlab.com/rycee/nur-expressions/blob/master/hm-modules/emacs-init.nix) for home-manager. See `users/bbigras/dev/emacs.nix`
 - overlays
