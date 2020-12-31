@@ -13,7 +13,7 @@
       ../../hardware/hardware-configuration-desktop.nix
       ../../hardware/efi.nix
 
-      inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
+      inputs.nixos-hardware.nixosModules.common-pc-ssd
       inputs.nixos-hardware.nixosModules.common-cpu-intel
 
       ../../dev/qemu.nix
