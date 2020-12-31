@@ -124,6 +124,7 @@
       "/var/lib/libvirt"
       "/home/bbigras/.dropbox-dist"
       "/home/bbigras/.dropbox-hm"
+      "/root/.cache/restic"
       # "/var/cache/libvirt"
       #     "/var/lib/bluetooth"
       #     "/var/lib/systemd/coredump"

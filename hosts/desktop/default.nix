@@ -120,6 +120,7 @@
       "/var/lib/jellyfin"
       "/var/lib/docker"
       "/var/lib/libvirt"
+      "/root/.cache/restic"
       # "/var/cache/jellyfin"
       # "/var/cache/libvirt"
 
