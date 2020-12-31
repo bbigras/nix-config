@@ -1,9 +1,10 @@
 { config, lib, pkgs, ... }:
 with lib;
 {
+  users.users.gdm.extraGroups = [ "audio" ];
   users.users.bbigras = {
     createHome = true;
-    extraGroups = [ "wheel" ]
+    extraGroups = [ "wheel" "audio" ]
       ++ optionals config.virtualisation.docker.enable [ "docker" ]
       ++ optionals config.programs.wireshark.enable [ "wireshark" ]
       ++ optionals config.programs.sway.enable [ "input" "video" ]
