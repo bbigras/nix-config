@@ -126,6 +126,7 @@ in
       vlc
       gimp
       mediainfo
+      pavucontrol
 
       # games
       # lutris
