@@ -16,6 +16,7 @@
       inputs.nixos-hardware.nixosModules.common-pc
       inputs.nixos-hardware.nixosModules.common-pc-ssd
       inputs.nixos-hardware.nixosModules.common-cpu-intel
+      inputs.nixos-hardware.nixosModules.common-gpu-nvidia
 
       ../../dev/qemu.nix
       ../../dev/virt-manager.nix
@@ -62,11 +63,12 @@
     };
   };
 
+  hardware.nvidia.prime.offload.enable = false;
+
   services.xserver = {
     autorun = true;
     displayManager.hiddenUsers = [ "builder" ];
     enable = true;
-    videoDrivers = [ "nvidia" ];
   };
 
   boot.kernel.sysctl = {
