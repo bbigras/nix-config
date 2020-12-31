@@ -99,6 +99,10 @@ in
       ls = "${pkgs.exa}/bin/exa";
       less = ''${pkgs.bat}/bin/bat --paging=always --pager "${pkgs.less}/bin/less -RF"'';
     };
+
+    initExtra = ''
+      ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
+    '';
   };
 
   programs.ssh = {
