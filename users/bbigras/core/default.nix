@@ -234,7 +234,6 @@ in
       my_cdda
       my_dwarf_fortress
 
-      dust
       compsize
 
       jellyfin-mpv-shim
