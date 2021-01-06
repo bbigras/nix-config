@@ -6,6 +6,13 @@
     nixos-hardware.url = "nixos-hardware";
     nur.url = "nur";
 
+    nixpkgs-chrony = {
+      type = "github";
+      owner = "ctem";
+      repo = "nixpkgs";
+      ref = "feature/chrony";
+    };
+
     flake-utils.url = "github:numtide/flake-utils";
 
     sops-nix = {

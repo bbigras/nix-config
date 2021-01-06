@@ -188,6 +188,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-chrony": {
+      "locked": {
+        "lastModified": 1609931105,
+        "narHash": "sha256-7Me7SngyFn0f4bbSNXxbsSMSEzyi4RnHJQcxASo5naw=",
+        "owner": "ctem",
+        "repo": "nixpkgs",
+        "rev": "54778551d6029e5ffdb6c530915477095a3f564f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ctem",
+        "ref": "feature/chrony",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nur": {
       "locked": {
         "lastModified": 1609906485,
@@ -213,6 +229,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-cdda-mods": "nixpkgs-cdda-mods",
+        "nixpkgs-chrony": "nixpkgs-chrony",
         "nur": "nur",
         "sops-nix": "sops-nix"
       }
