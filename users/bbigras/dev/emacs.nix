@@ -753,15 +753,24 @@
       consult = {
         enable = true;
         bind = {
-          "C-c o" = "consult-outline";
+          "C-x M-:" = "consult-complex-command";
+          "C-c h" = "consult-history";
+          "C-c m" = "consult-mode-command";
           "C-x b" = "consult-buffer";
           "C-x 4 b" = "consult-buffer-other-window";
           "C-x 5 b" = "consult-buffer-other-frame";
           "C-x r x" = "consult-register";
           "C-x r b" = "consult-bookmark";
-          "M-g o" = "consult-outline";
-          "M-g m" = "consult-mark";
-          "M-g l" = "consult-line";
+          "M-g g" = "consult-goto-line";
+          "M-g M-g" = "consult-goto-line";
+          "M-g o" = "consult-outline"; # "M-s o" is a good alternative.
+          "M-g l" = "consult-line"; # "M-s l" is a good alternative.
+          "M-g m" = "consult-mark"; # I recommend to bind Consult navigation
+          "M-g k" = "consult-global-mark"; # commands under the "M-g" prefix.
+          "M-g r" = "consult-git-grep"; # or consult-grep, consult-ripgrep
+          "M-g f" = "consult-find"; # or consult-locate, my-fdfind
+          "M-g i" = "consult-project-imenu"; # or consult-imenu
+          "M-g e" = "consult-error";
           "M-s m" = "consult-multi-occur";
           "M-y" = "consult-yank-pop";
           "<help> a" = "consult-apropos";
@@ -770,8 +779,25 @@
           (fset 'multi-occur #'consult-multi-occur)
         '';
         config = ''
-          (consult-preview-mode)
+          (setq consult-narrow-key "<")
+
+          (autoload 'projectile-project-root "projectile")
+          (setq consult-project-root-function #'projectile-project-root)
         '';
+      };
+
+      consult-selectrum = {
+        enable = true;
+        after = [ "selectrum" ];
+      };
+
+      consult-flycheck = {
+        enable = true;
+        bindLocal = {
+          flycheck-command-map = {
+            "!" = "consult-flycheck";
+          };
+        };
       };
 
       marginalia = {
