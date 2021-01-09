@@ -236,7 +236,6 @@ in
 
       compsize
 
-      jellyfin-mpv-shim
       pv
       rclone
 

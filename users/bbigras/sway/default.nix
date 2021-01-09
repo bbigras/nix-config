@@ -2,7 +2,6 @@
   imports = [
     ./alacritty.nix
     ./mako.nix
-    ./mpv.nix
     ./sway.nix
     ./swaylock.nix
     ./waybar.nix
