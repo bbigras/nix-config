@@ -88,7 +88,6 @@
   networking.firewall.allowedTCPPorts = [
     9977
     9988
-    8096 # jellyfin
   ];
   #   22000
   #   6680
@@ -120,11 +119,9 @@
     directories = [
       "/var/lib/zerotier-one"
       "/var/lib/tailscale"
-      "/var/lib/jellyfin"
       "/var/lib/docker"
       "/var/lib/libvirt"
       "/root/.cache/restic"
-      # "/var/cache/jellyfin"
       # "/var/cache/libvirt"
 
       #     # "/var/log"
@@ -184,5 +181,4 @@
   '';
 
   services.earlyoom.enable = true;
-  services.jellyfin.enable = true;
 }
