@@ -143,6 +143,22 @@
         "type": "github"
       }
     },
+    "nix-on-droid": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1610249798,
+        "narHash": "sha256-oQiFDzUrb6XciGkt+kaT3POZ/j1/zKglBtvLnouFQFQ=",
+        "owner": "bbigras",
+        "repo": "nix-on-droid",
+        "rev": "5a933bdeed51ca328f9f92ec24da3d0c065c4b28",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bbigras",
+        "repo": "nix-on-droid",
+        "type": "github"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1609915993,
@@ -226,6 +242,7 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
+        "nix-on-droid": "nix-on-droid",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-cdda-mods": "nixpkgs-cdda-mods",

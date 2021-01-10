@@ -8,11 +8,14 @@
 , nixpkgs-cdda-mods
 , emacs-overlay
 , nixpkgs-chrony
+, nix-on-droid
 , ...
 }@inputs:
 let
   inherit (nixpkgs.lib) pathExists optionalAttrs;
   inherit (builtins) attrNames mapAttrs readDir;
+
+  nix_on_droid_config = import ../nix-on-droid.nix;
 
   overlays = [
     nur.overlay
@@ -72,6 +75,18 @@ in
       vps = {
         hostname = "vps";
         profiles.system.path = mkPath "vps" "x86_64-linux";
+      };
+      pixel2 = {
+        hostname = "pixel2";
+
+        profiles.system.path = deploy-rs.lib.aarch64-linux.activate.custom
+          (
+            (import (nix-on-droid + "/modules") {
+              pkgs = nixpkgs;
+              config = nix_on_droid_config;
+              home-manager-src = home-manager;
+            }).activationPackage
+          ) "./activate";
       };
     };
   };

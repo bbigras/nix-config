@@ -39,6 +39,11 @@
       flake = false;
     };
 
+    nix-on-droid = {
+      url = "github:bbigras/nix-on-droid";
+      flake = false;
+    };
+
     explain-pause-mode = {
       url = "github:lastquestion/explain-pause-mode";
       flake = false;
