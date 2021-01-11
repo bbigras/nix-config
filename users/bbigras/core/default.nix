@@ -178,7 +178,7 @@ in
       fd
       hexyl
       zenith
-      dust
+      # dust
       procs
       hyperfine
       pwgen
