@@ -44,7 +44,7 @@ jobs:
           nix develop -c cachix use nix-on-droid
       - id: get-hosts
         run: |
-          echo "::set-output name=matrix::$(nix eval --impure --json .#deploy.nodes | jq -c '{ host: keys }')"
+          echo "::set-output name=matrix::$(nix eval --substituters https://nix-on-droid.cachix.org --trusted-public-keys nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU= --impure --json .#deploy.nodes | jq -c '{ host: keys }')"
 
   build-host:
     runs-on: ubuntu-latest
