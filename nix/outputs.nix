@@ -24,7 +24,7 @@
 
     packages =
       let
-        hostDrvs = mapAttrs (_: v: v.profiles.system.path) self.deploy.nodes;
+        hostDrvs = mapAttrs (_: v: if v.profiles ? system then v.profiles.system.path else v.profiles.nix-on-droid.path) self.deploy.nodes;
       in
       hostDrvs // {
         hostsCombined = pkgs.linkFarmFromDrvs "nix-config" (attrValues hostDrvs);

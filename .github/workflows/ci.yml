@@ -34,7 +34,7 @@ jobs:
           extra_nix_config: "experimental-features = nix-command flakes"
       - id: get-hosts
         run: |
-          echo "::set-output name=matrix::$(nix eval --json .#deploy.nodes | jq -c '{ host: keys }')"
+          echo "::set-output name=matrix::$(nix eval --impure --json .#deploy.nodes | jq -c '{ host: keys }')"
 
   build-host:
     runs-on: ubuntu-latest
@@ -58,7 +58,8 @@ jobs:
         run: |
           nix develop -c cachix use nix-community \
           nix develop -c cachix use eigenvalue \
-          nix develop -c cachix use mjlbach
+          nix develop -c cachix use mjlbach \
+          nix develop -c cachix use nix-on-droid
       - name: nix-build
         run: |
           nix run nixpkgs#nix-build-uncached -- \
@@ -83,6 +84,7 @@ jobs:
         run: |
           nix develop -c cachix use nix-community \
           nix develop -c cachix use eigenvalue \
-          nix develop -c cachix use mjlbach
+          nix develop -c cachix use mjlbach \
+          nix develop -c cachix use nix-on-droid
       - name: check-flake
         run: "nix flake check"

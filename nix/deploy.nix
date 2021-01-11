@@ -53,6 +53,11 @@ let
     };
 
   mkPath = name: system: deploy-rs.lib.${system}.activate.nixos (mkHost name system);
+  pixel2 = (import (nix-on-droid + "/modules") {
+    pkgs = nixpkgs.legacyPackages."aarch64-linux";
+    config = nix_on_droid_config;
+    home-manager-src = home-manager;
+  }).activationPackage;
 in
 {
   deploy = {
@@ -86,14 +91,11 @@ in
         sshUser = "nix-on-droid";
         user = "nix-on-droid";
 
-        profiles.system.path = deploy-rs.lib.aarch64-linux.activate.custom
+        profiles.nix-on-droid.path = deploy-rs.lib.aarch64-linux.activate.custom
           (
-            (import (nix-on-droid + "/modules") {
-              pkgs = nixpkgs.legacyPackages."aarch64-linux";
-              config = nix_on_droid_config;
-              home-manager-src = home-manager;
-            }).activationPackage
-          ) "./activate";
+            pixel2
+          )
+          (pixel2 + "/activate");
       };
     };
   };

@@ -9,21 +9,23 @@
     vim # or some other editor, e.g. nano or neovim
 
     # Some common stuff that people expect to have
-    #diffutils
-    #findutils
-    #utillinux
-    #tzdata
-    #hostname
-    #man
-    #gnugrep
-    #gnupg
-    #gnused
-    #gnutar
-    #bzip2
-    #gzip
-    #xz
-    #zip
-    #unzip
+    diffutils
+    findutils
+    utillinux
+    tzdata
+    hostname
+    man
+    gnugrep
+    gnupg
+    gnused
+    gnutar
+    bzip2
+    gzip
+    xz
+    zip
+    unzip
+
+    procps
   ];
 
   # Backup etc files instead of failing to activate generation if a file already exists in /etc
@@ -36,7 +38,7 @@
   #   nix-channel --add https://github.com/rycee/home-manager/archive/release-20.09.tar.gz home-manager
   #   nix-channel --update
   # you can configure home-manager in here like
-  /*home-manager.config =
+  home-manager.config =
     { pkgs, ... }:
     {
       # Read the changelog before changing this value
@@ -49,7 +51,7 @@
       programs = {
         bash.enable = true;
         ssh.enable = true;
-        # tmux.enable = true;
+        tmux.enable = true;
         starship.enable = true;
       };
 
@@ -61,7 +63,7 @@
         # prettyping
       ];
 
-    };*/
+    };
 }
 
 # vim: ft=nix
