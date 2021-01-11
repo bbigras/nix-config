@@ -79,10 +79,17 @@ in
       pixel2 = {
         hostname = "pixel2";
 
+        autoRollback = false;
+        magicRollback = false;
+
+        # to prevent using sudo
+        sshUser = "nix-on-droid";
+        user = "nix-on-droid";
+
         profiles.system.path = deploy-rs.lib.aarch64-linux.activate.custom
           (
             (import (nix-on-droid + "/modules") {
-              pkgs = nixpkgs;
+              pkgs = nixpkgs.legacyPackages."aarch64-linux";
               config = nix_on_droid_config;
               home-manager-src = home-manager;
             }).activationPackage

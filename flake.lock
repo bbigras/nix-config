@@ -146,11 +146,11 @@
     "nix-on-droid": {
       "flake": false,
       "locked": {
-        "lastModified": 1610249798,
-        "narHash": "sha256-oQiFDzUrb6XciGkt+kaT3POZ/j1/zKglBtvLnouFQFQ=",
+        "lastModified": 1610393623,
+        "narHash": "sha256-8fOZtdHVBzDeH/sm7VC6VLwWAFRL4NuA6mYGKVEGrPs=",
         "owner": "bbigras",
         "repo": "nix-on-droid",
-        "rev": "5a933bdeed51ca328f9f92ec24da3d0c065c4b28",
+        "rev": "f5e52ee2f3cf1e57f9d561fa3bc37c0a2d48525e",
         "type": "github"
       },
       "original": {
