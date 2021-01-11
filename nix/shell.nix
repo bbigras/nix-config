@@ -14,7 +14,7 @@
   buildInputs = [
     cachix
     nix-build-uncached
-    nix-linter
+    #nix-linter
     nixpkgs-fmt
     pre-commit
     sops
