@@ -15,8 +15,6 @@ let
   inherit (nixpkgs.lib) pathExists optionalAttrs;
   inherit (builtins) attrNames mapAttrs readDir;
 
-  nix_on_droid_config = import ../nix-on-droid.nix;
-
   overlays = [
     nur.overlay
     (import "${nixpkgs-cdda-mods}")
@@ -55,7 +53,7 @@ let
   mkPath = name: system: deploy-rs.lib.${system}.activate.nixos (mkHost name system);
   pixel2 = (import (nix-on-droid + "/modules") {
     pkgs = nixpkgs.legacyPackages."aarch64-linux";
-    config = nix_on_droid_config;
+    config = ../hosts/pixel2;
     home-manager-src = home-manager;
   }).activationPackage;
 in
@@ -92,9 +90,7 @@ in
         user = "nix-on-droid";
 
         profiles.nix-on-droid.path = deploy-rs.lib.aarch64-linux.activate.custom
-          (
-            pixel2
-          )
+          pixel2
           (pixel2 + "/activate");
       };
     };
