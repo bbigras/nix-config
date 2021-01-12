@@ -79,20 +79,20 @@ in
         hostname = "vps";
         profiles.system.path = mkPath "vps" "x86_64-linux";
       };
-      pixel2 = {
-        hostname = "pixel2";
+      # pixel2 = {
+      #   hostname = "pixel2";
 
-        autoRollback = false;
-        magicRollback = false;
+      #   autoRollback = false;
+      #   magicRollback = false;
 
-        # to prevent using sudo
-        sshUser = "nix-on-droid";
-        user = "nix-on-droid";
+      #   # to prevent using sudo
+      #   sshUser = "nix-on-droid";
+      #   user = "nix-on-droid";
 
-        profiles.nix-on-droid.path = deploy-rs.lib.aarch64-linux.activate.custom
-          pixel2
-          (pixel2 + "/activate");
-      };
+      #   profiles.nix-on-droid.path = deploy-rs.lib.aarch64-linux.activate.custom
+      #     pixel2
+      #     (pixel2 + "/activate");
+      # };
     };
   };
 
