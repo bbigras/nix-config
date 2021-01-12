@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 
 {
   build.arch = "aarch64";
@@ -24,8 +24,6 @@
     xz
     zip
     unzip
-
-    procps
   ];
 
   # Backup etc files instead of failing to activate generation if a file already exists in /etc
@@ -49,20 +47,45 @@
 
       # insert home-manager config
       programs = {
-        bash.enable = true;
+        command-not-found.enable = true;
+        mcfly.enable = true;
+        zsh = {
+          enable = true;
+          enableAutosuggestions = true;
+          enableCompletion = true;
+          plugins = [
+            {
+              name = "powerlevel10k";
+              src = pkgs.zsh-powerlevel10k;
+              file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+            }
+            {
+              name = "powerlevel10k-config";
+              src = lib.cleanSource ../../users/bbigras/core/p10k-config;
+              file = "p10k.zsh";
+            }
+          ];
+          shellAliases = {
+            cat = "${pkgs.bat}/bin/bat";
+            ls = "${pkgs.exa}/bin/exa";
+            less = ''${pkgs.bat}/bin/bat --paging=always --pager "${pkgs.less}/bin/less -RF"'';
+          };
+        };
         ssh.enable = true;
         tmux.enable = true;
-        starship.enable = true;
       };
 
       home.packages = with pkgs; [
-        eternal-terminal
-        mosh
         croc
-        #dogdns
-        # prettyping
+        dogdns
+        eternal-terminal
+        meslo-lgs-nf
+        mosh
+        neofetch
+        prettyping
       ];
 
+      fonts.fontconfig.enable = true;
     };
 }
 
