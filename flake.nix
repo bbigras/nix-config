@@ -40,8 +40,13 @@
     };
 
     nix-on-droid = {
-      url = "github:bbigras/nix-on-droid";
-      flake = false;
+      # url = "/home/bbigras/src/nix-on-droid";
+      url = "github:bbigras/nix-on-droid/pixel2";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
 
     explain-pause-mode = {

@@ -144,17 +144,28 @@
       }
     },
     "nix-on-droid": {
-      "flake": false,
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
       "locked": {
-        "lastModified": 1610424851,
-        "narHash": "sha256-QM5oMk6EbV1gwx72YQOqJFuJeiURcrW/D7vs1BTZxvQ=",
+        "lastModified": 1610551847,
+        "narHash": "sha256-5X02ReR/8hl2TqSt5VNBO89GUQZZlv9RVf5TZl9L5Bo=",
         "owner": "bbigras",
         "repo": "nix-on-droid",
-        "rev": "4cf178a68c0aa5eab7442a29c766bf6f1b2e72a6",
+        "rev": "c8851a5d302990aafd0ddd215268ba86fe617d29",
         "type": "github"
       },
       "original": {
         "owner": "bbigras",
+        "ref": "pixel2",
         "repo": "nix-on-droid",
         "type": "github"
       }

@@ -51,11 +51,7 @@ let
     };
 
   mkPath = name: system: deploy-rs.lib.${system}.activate.nixos (mkHost name system);
-  pixel2 = (import (nix-on-droid + "/modules") {
-    pkgs = nixpkgs.legacyPackages."aarch64-linux";
-    config = ../hosts/pixel2;
-    home-manager-src = home-manager;
-  }).activationPackage;
+  pixel2 = (nix-on-droid.lib.aarch64-linux.nix-on-droid ../hosts/pixel2 ).activationPackage;
 in
 {
   deploy = {
