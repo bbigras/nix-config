@@ -83,6 +83,7 @@
         mosh
         neofetch
         prettyping
+        vault
       ];
 
       fonts.fontconfig.enable = true;

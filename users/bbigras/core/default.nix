@@ -190,6 +190,7 @@ in
       eva # calc
       bandwhich
       dogdns
+      vault
 
       # Android
       # android-studio
