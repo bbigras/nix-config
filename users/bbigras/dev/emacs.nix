@@ -1,5 +1,8 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
+let
+  pcfg = config.programs.emacs.init.usePackage;
+in
 {
   imports = [
     # pkgs.nur.repos.rycee.hmModules.emacs-init
@@ -997,11 +1000,6 @@
         # (setq lsp-enable-semantic-highlighting t)
       };
 
-      lsp-modeline = {
-        enable = true;
-        after = [ "lsp-mode" ];
-      };
-
       lsp-headerline = {
         enable = true;
         after = [ "lsp-mode" ];
@@ -1038,24 +1036,16 @@
       dap-mode = {
         enable = true;
         after = [ "lsp-mode" ];
-        command = [ "dap-mode" "dap-auto-configure-mode" ];
-        config = ''
-          (dap-auto-configure-mode)
-        '';
       };
 
       dap-mouse = {
         enable = true;
-        command = [ "dap-tooltip-mode" ];
+        hook = [ ''(dap-mode . dap-tooltip-mode)'' ];
       };
 
       dap-ui = {
         enable = true;
-        after = [ "dap-mode" ];
-        command = [ "dap-ui-mode" ];
-        config = ''
-          (dap-ui-mode t)
-        '';
+        hook = [ ''(dap-mode . dap-ui-mode)'' ];
       };
 
       dap-lldb = {
@@ -1097,6 +1087,7 @@
 
       notmuch = {
         enable = true;
+        command = [ "notmuch" "notmuch-show-tag" "notmuch-search-tag" "notmuch-tree-tag" ];
         config = ''
           (setq notmuch-search-oldest-first nil)
         '';
@@ -1122,6 +1113,7 @@
 
       org = {
         enable = true;
+        package = epkgs: epkgs.org-plus-contrib;
         bind = {
           "C-c c" = "org-capture";
           "C-c a" = "org-agenda";
@@ -1188,6 +1180,11 @@
           ;; https://old.reddit.com/r/orgmode/comments/hg8qik/weird_joined_lines_bug/fw73kml/
           (add-hook 'org-capture-prepare-finalize-hook 'add-newline-at-end-if-none)
         '';
+      };
+
+      ol-notmuch = {
+        enable = pcfg.org.enable && pcfg.notmuch.enable;
+        after = [ "notmuch" "org" ];
       };
 
       org-ql.enable = true;
