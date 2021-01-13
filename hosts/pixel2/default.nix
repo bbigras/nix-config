@@ -2,6 +2,7 @@
 
 {
   build.arch = "aarch64";
+  # user.shell = "${pkgs.zsh}/bin/zsh";
 
   # Simply install just the packages
   environment.packages = with pkgs; [
@@ -42,47 +43,49 @@
       # Read the changelog before changing this value
       home.stateVersion = "20.09";
 
+      imports = [] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/pixel2.nix") then [ (builtins.getEnv "PWD" + "/secrets/pixel2.nix") ] else [ ]);
+
       # Use the same overlays as the system packages
-      nixpkgs.overlays = config.nixpkgs.overlays;
+      # nixpkgs.overlays = config.nixpkgs.overlays;
 
       # insert home-manager config
       programs = {
-        command-not-found.enable = true;
-        mcfly.enable = true;
-        zsh = {
+        aria2.enable = true;
+        bash = {
           enable = true;
-          enableAutosuggestions = true;
-          enableCompletion = true;
-          plugins = [
-            {
-              name = "powerlevel10k";
-              src = pkgs.zsh-powerlevel10k;
-              file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-            }
-            {
-              name = "powerlevel10k-config";
-              src = lib.cleanSource ../../users/bbigras/core/p10k-config;
-              file = "p10k.zsh";
-            }
-          ];
           shellAliases = {
             cat = "${pkgs.bat}/bin/bat";
             ls = "${pkgs.exa}/bin/exa";
             less = ''${pkgs.bat}/bin/bat --paging=always --pager "${pkgs.less}/bin/less -RF"'';
           };
         };
+        bat.enable = true;
+        command-not-found.enable = true;
+        git.enable = true;
+        jq.enable = true;
+        mcfly.enable = true;
         ssh.enable = true;
+        starship.enable = true;
         tmux.enable = true;
       };
 
       home.packages = with pkgs; [
+        cachix
         croc
         dogdns
         eternal-terminal
-        meslo-lgs-nf
+        fd
+        # meslo-lgs-nf
         mosh
         neofetch
+        oneshot
+        pwgen
+        #rage
+        httpie
         prettyping
+        # tab-rs
+        ripgrep
+        tealdeer
         vault
       ];
 
