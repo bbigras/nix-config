@@ -78,9 +78,6 @@ in
       pixel2 = {
         hostname = "pixel2";
 
-        autoRollback = false;
-        magicRollback = false;
-
         # to prevent using sudo
         sshUser = "nix-on-droid";
         user = "nix-on-droid";
