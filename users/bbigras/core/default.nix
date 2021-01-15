@@ -190,7 +190,10 @@ in
       eva # calc
       bandwhich
       dogdns
+
       vault
+      awscli2
+      terraform_0_14
 
       # Android
       # android-studio
