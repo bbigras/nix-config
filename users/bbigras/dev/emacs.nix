@@ -497,6 +497,8 @@ in
         ];
       };
 
+      hcl-mode.enable = true;
+
       org-download = {
         enable = true;
         after = [ "org" ];
