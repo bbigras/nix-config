@@ -271,6 +271,7 @@ in
       ghidra-bin
 
       unar
+      tab-rs
     ];
   };
 
