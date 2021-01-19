@@ -19,13 +19,6 @@ let
     nur.overlay
     (import "${nixpkgs-cdda-mods}")
     emacs-overlay.overlay
-    (_self: _super: {
-      explain-pause-mode = epkgs: epkgs.trivialBuild {
-        pname = "explain-pause-mode";
-        version = "git";
-        src = inputs.explain-pause-mode;
-      };
-    })
   ];
 
   mkHost = name: system:

@@ -48,11 +48,6 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-
-    explain-pause-mode = {
-      url = "github:lastquestion/explain-pause-mode";
-      flake = false;
-    };
   };
 
   # FIXME: I can't η-reduce this for some reason

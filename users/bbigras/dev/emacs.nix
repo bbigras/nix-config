@@ -213,12 +213,6 @@ in
     '';
 
     usePackage = {
-      explain-pause-mode = {
-        enable = true;
-        package = pkgs.explain-pause-mode;
-        config = "(explain-pause-mode t)";
-      };
-
       abbrev = {
         enable = true;
         diminish = [ "abbrev-mode" ];
