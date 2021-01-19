@@ -265,6 +265,8 @@ in
       feh # light-weight image viewer
       killall
       ghidra-bin
+
+      unar
     ];
   };
 
