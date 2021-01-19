@@ -13,6 +13,17 @@ in
     ./email.nix
   ];
 
+  systemd.user.services.node-red = {
+    Unit = {
+      Description = "node-red";
+      After = [ "network.target" ];
+    };
+
+    Service = {
+      ExecStart = "${pkgs.nodePackages.node-red}/bin/node-red";
+     };
+  };
+
   programs.tmux = {
     enable = true;
     tmuxp.enable = true;
