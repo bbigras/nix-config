@@ -162,6 +162,7 @@ in
       colordiff
       wrangler # cloudflare workers
       tcpdump
+      radicle-upstream
 
       networkmanager_dmenu
 
