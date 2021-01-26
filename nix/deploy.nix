@@ -7,7 +7,6 @@
 , nur
 , nixpkgs-cdda-mods
 , emacs-overlay
-, nixpkgs-chrony
 , nix-on-droid
 , ...
 }@inputs:
@@ -30,11 +29,6 @@ let
         impermanence.nixosModules.impermanence
         home-manager.nixosModules.home-manager
         sops-nix.nixosModules.sops
-
-        ({
-          imports = [ (nixpkgs-chrony + "/nixos/modules/services/networking/ntp/chrony.nix") ];
-          disabledModules = [ "services/networking/ntp/chrony.nix" ];
-        })
 
         ../lib/home.nix
 
