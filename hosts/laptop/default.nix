@@ -44,7 +44,7 @@
     networkmanager.enable = false;
     wireless.iwd.enable = true;
     useDHCP = false;
-    interfaces.wlp2s0.useDHCP = true;
+    interfaces.eth0.useDHCP = true;
   };
 
   xdg.portal = {
