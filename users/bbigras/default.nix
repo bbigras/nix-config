@@ -10,6 +10,7 @@ with lib;
       ++ optionals config.programs.sway.enable [ "input" "video" ]
       ++ optionals config.networking.networkmanager.enable [ "networkmanager" ]
       ++ optionals config.virtualisation.libvirtd.enable [ "libvirtd" ]
+      ++ optionals config.services.flatpak.enable [ "flatpak" ]
       ++ optionals config.virtualisation.kvmgt.enable [ "kvm" ];
     isNormalUser = true;
     shell = mkIf config.programs.zsh.enable pkgs.zsh;

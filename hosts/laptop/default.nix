@@ -120,6 +120,7 @@
       "/var/lib/tailscale"
       "/var/lib/zerotier-one"
       "/var/log"
+      "/var/lib/flatpak"
       "/var/lib/docker"
       "/var/lib/libvirt"
       "/home/bbigras/.dropbox-dist"

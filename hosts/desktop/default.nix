@@ -142,6 +142,7 @@ in
     directories = [
       "/var/lib/zerotier-one"
       "/var/lib/tailscale"
+      "/var/lib/flatpak"
       "/var/lib/docker"
       "/var/lib/libvirt"
       "/root/.cache/restic"
