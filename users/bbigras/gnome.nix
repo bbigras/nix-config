@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   home = {
-    # stateVersion = "20.03";
     packages = with pkgs; [
       peek
 
@@ -37,9 +36,11 @@
     platformTheme = "gnome";
   };
 
-  services.gpg-agent.pinentryFlavor = "gnome3";
-  services.flameshot.enable = true;
-  services.rsibreak.enable = true;
-  services.unclutter.enable = true;
-  services.gnome-keyring.enable = true;
+  services = {
+    flameshot.enable = true;
+    gnome-keyring.enable = true;
+    gpg-agent.pinentryFlavor = "gnome3";
+    rsibreak.enable = true;
+    unclutter.enable = true;
+  };
 }

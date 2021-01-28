@@ -41,29 +41,41 @@ in
     ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ])
     ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/desktop.nix") then [ (builtins.getEnv "PWD" + "/secrets/desktop.nix") ] else [ ]);
 
-  boot.binfmt.registrations.aarch64 = {
-    interpreter = "${qemu-aarch64-static}/bin/qemu-aarch64-static";
-    magicOrExtension = ''\x7fELF\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\xb7\x00'';
-    mask = ''\xff\xff\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\x00\xff\xfe\xff\xff\xff'';
+  nix = {
+    extraOptions = ''
+      extra-platforms = aarch64-linux
+      trusted-users = bbigras
+    '';
+    sandboxPaths = [ "/run/binfmt/aarch64=${qemu-aarch64-static}/bin/qemu-aarch64-static" ];
   };
-  nix.extraOptions = ''
-    extra-platforms = aarch64-linux
-    trusted-users = bbigras
-  '';
-  nix.sandboxPaths = [ "/run/binfmt/aarch64=${qemu-aarch64-static}/bin/qemu-aarch64-static" ];
 
-  sops.secrets.restic-desktop-password.sopsFile = ./restic-desktop.yaml;
-  sops.secrets.restic-desktop-creds.sopsFile = ./restic-desktop.yaml;
+  boot = {
+    binfmt.registrations.aarch64 = {
+      interpreter = "${qemu-aarch64-static}/bin/qemu-aarch64-static";
+      magicOrExtension = ''\x7fELF\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\xb7\x00'';
+      mask = ''\xff\xff\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\x00\xff\xfe\xff\xff\xff'';
+    };
+    kernelPackages = pkgs.linuxPackages_zen;
+    loader.grub.useOSProber = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
-  boot.loader.grub.useOSProber = true;
+    kernel.sysctl = {
+      "kernel.sysrq" = 1;
+      # "fs.inotify.max_user_watches" = 524288;
+      # "vm.swappiness" = 1;
+    };
+  };
+
+  sops.secrets = {
+    restic-desktop-password.sopsFile = ./restic-desktop.yaml;
+    restic-desktop-creds.sopsFile = ./restic-desktop.yaml;
+  };
+
   # hardware.enableRedistributableFirmware = true;
   networking.hostName = "desktop"; # Define your hostname.
+  networking.networkmanager.enable = false;
   programs.thefuck.enable = true;
   time.hardwareClockInLocalTime = true;
   users.users.bbigras.packages = [ pkgs.retroarchBare ];
-
-  networking.networkmanager.enable = false;
 
   systemd.network = {
     enable = true;
@@ -92,12 +104,6 @@ in
     autorun = true;
     displayManager.hiddenUsers = [ "builder" ];
     enable = true;
-  };
-
-  boot.kernel.sysctl = {
-    "kernel.sysrq" = 1;
-    # "fs.inotify.max_user_watches" = 524288;
-    # "vm.swappiness" = 1;
   };
 
   fileSystems."/media/gamedisk" =

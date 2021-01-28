@@ -21,100 +21,106 @@ in
 
     Service = {
       ExecStart = "${pkgs.nodePackages.node-red}/bin/node-red";
-     };
+    };
   };
 
-  programs.tmux = {
-    enable = true;
-    tmuxp.enable = true;
-  };
-  programs.aria2.enable = true;
-  programs.bat.enable = true;
-  programs.broot.enable = true;
-  programs.pet = {
-    enable = true;
-    snippets = [
-      {
-        command = "curl ifconfig.co";
-        description = "get my public ip";
-        output = "127.0.0.1";
-      }
-      {
-        command = "echo | openssl s_client -connect example.com:443 2>/dev/null |openssl x509 -dates -noout";
-        description = "Show expiration date of SSL certificate";
-      }
-    ];
-  };
-  programs.command-not-found.enable = true;
-  programs.direnv = {
-    enable = true;
-    enableNixDirenvIntegration = true;
-    stdlib = builtins.readFile ./direnv.cfg;
-  };
-  programs.htop.enable = true;
-  programs.jq.enable = true;
-  programs.vscode.enable = true;
-  programs.zoxide.enable = true;
-  programs.mcfly.enable = true;
-
-  services.dropbox.enable = true;
-  services.spotifyd.enable = true;
-  services.syncthing.enable = true;
-
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      env = {
-        TERM = "xterm-256color";
+  programs = {
+    alacritty = {
+      enable = true;
+      settings = {
+        env = {
+          TERM = "xterm-256color";
+        };
+        font.normal.family = "MesloLGS NF";
       };
-      font.normal.family = "MesloLGS NF";
     };
+
+    aria2.enable = true;
+    bat.enable = true;
+    broot.enable = true;
+    command-not-found.enable = true;
+    direnv = {
+      enable = true;
+      enableNixDirenvIntegration = true;
+      stdlib = builtins.readFile ./direnv.cfg;
+    };
+    htop.enable = true;
+    jq.enable = true;
+    mcfly.enable = true;
+    pet = {
+      enable = true;
+      snippets = [
+        {
+          command = "curl ifconfig.co";
+          description = "get my public ip";
+          output = "127.0.0.1";
+        }
+        {
+          command = "echo | openssl s_client -connect example.com:443 2>/dev/null |openssl x509 -dates -noout";
+          description = "Show expiration date of SSL certificate";
+        }
+      ];
+    };
+
+    ssh = {
+      enable = true;
+      controlMaster = "auto";
+      controlPersist = "10m";
+      hashKnownHosts = true;
+
+      extraOptionOverrides = {
+        AddKeysToAgent = "confirm";
+        VerifyHostKeyDNS = "ask";
+      };
+    };
+
+    tmux = {
+      enable = true;
+      tmuxp.enable = true;
+    };
+    vscode.enable = true;
+    zoxide.enable = true;
+
+    zsh = {
+      enable = true;
+      enableAutosuggestions = true;
+      enableCompletion = true;
+      enableVteIntegration = true;
+      # dirHashes = {
+      #   docs = "$HOME/Documents";
+      #   vids = "$HOME/Videos";
+      #   dl = "$HOME/Downloads";
+      # };
+      plugins = [
+        {
+          name = "powerlevel10k";
+          src = pkgs.zsh-powerlevel10k;
+          file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+        }
+        {
+          name = "powerlevel10k-config";
+          src = lib.cleanSource ./p10k-config;
+          file = "p10k.zsh";
+        }
+      ];
+
+      shellAliases = {
+        cat = "${pkgs.bat}/bin/bat";
+        ls = "${pkgs.exa}/bin/exa";
+        less = ''${pkgs.bat}/bin/bat --paging=always --pager "${pkgs.less}/bin/less -RF"'';
+      };
+
+      initExtra = ''
+        ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
+      '';
+    };
+
   };
 
-  programs.zsh = {
-    enable = true;
-    enableAutosuggestions = true;
-    enableCompletion = true;
-    enableVteIntegration = true;
-    # dirHashes = {
-    #   docs = "$HOME/Documents";
-    #   vids = "$HOME/Videos";
-    #   dl = "$HOME/Downloads";
-    # };
-    plugins = [
-      {
-        name = "powerlevel10k";
-        src = pkgs.zsh-powerlevel10k;
-        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-      }
-      {
-        name = "powerlevel10k-config";
-        src = lib.cleanSource ./p10k-config;
-        file = "p10k.zsh";
-      }
-    ];
-
-    shellAliases = {
-      cat = "${pkgs.bat}/bin/bat";
-      ls = "${pkgs.exa}/bin/exa";
-      less = ''${pkgs.bat}/bin/bat --paging=always --pager "${pkgs.less}/bin/less -RF"'';
-    };
-
-    initExtra = ''
-      ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
-    '';
-  };
-
-  programs.ssh = {
-    enable = true;
-    controlMaster = "auto";
-    controlPersist = "10m";
-    hashKnownHosts = true;
-
-    extraOptionOverrides = {
-      AddKeysToAgent = "confirm";
-      VerifyHostKeyDNS = "ask";
-    };
+  services = {
+    dropbox.enable = true;
+    spotifyd.enable = true;
+    syncthing.enable = true;
   };
 
   home = {

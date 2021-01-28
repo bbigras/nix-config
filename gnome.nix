@@ -1,6 +1,4 @@
 { pkgs, config, ... }: {
-  imports = [ ];
-
   environment.systemPackages = with pkgs; [
     adwaita-qt
     gnome3.adwaita-icon-theme
@@ -17,8 +15,6 @@
     platformTheme = "gnome";
     style = "adwaita";
   };
-
-  # nixpkgs.overlays = [];
 
   # xdg = {
   #   autostart.enable = false;
