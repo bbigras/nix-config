@@ -279,6 +279,7 @@ in
 
       unar
       tab-rs
+      barrier
     ];
   };
 
