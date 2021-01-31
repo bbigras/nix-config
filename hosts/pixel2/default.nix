@@ -43,7 +43,7 @@
       # Read the changelog before changing this value
       home.stateVersion = "20.09";
 
-      imports = [] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/pixel2.nix") then [ (builtins.getEnv "PWD" + "/secrets/pixel2.nix") ] else [ ]);
+      imports = [ ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/pixel2.nix") then [ (builtins.getEnv "PWD" + "/secrets/pixel2.nix") ] else [ ]);
 
       # Use the same overlays as the system packages
       # nixpkgs.overlays = config.nixpkgs.overlays;

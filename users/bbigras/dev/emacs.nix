@@ -1,5 +1,4 @@
 { pkgs, lib, config, ... }:
-
 let
   pcfg = config.programs.emacs.init.usePackage;
 in
