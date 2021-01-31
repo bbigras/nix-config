@@ -48,31 +48,39 @@
         };
       };
 
-      keybindings = lib.mkOptionDefault {
-        "${modifier}+Return" = "exec ${terminal}";
-        "${modifier}+d" = "exec ${menu}";
-        "${modifier}+m" = "exec ${pkgs.emojimenu}/bin/emojimenu";
-        "${modifier}+o" = "exec ${pkgs.otpmenu}/bin/otpmenu";
-        "${modifier}+p" = "exec ${pkgs.passmenu}/bin/passmenu";
-        "${modifier}+q" = "exec ${pkgs.swaylock}/bin/swaylock -f";
-        "Mod1+Tab" = " workspace next";
-        "Mod4+Tab" = " workspace prev";
-        "Mod4+comma" = " workspace prev";
-        "Mod4+period" = " workspace next";
-        # "Print" = "exec ${pkgs.prtsc}/bin/prtsc";
-        "Print" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy";
-        "Mod1+Print" = "exec ${pkgs.grim}/bin/grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d-%H%M%S_grim.png')";
-        "XF86AudioLowerVolume" = "exec ${pkgs.ponymix}/bin/ponymix decrease 1";
-        "XF86AudioMicMute" = "exec ${pkgs.ponymix}/bin/ponymix -t source toggle";
-        "XF86AudioMute" = "exec ${pkgs.ponymix}/bin/ponymix -t sink toggle";
-        "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
-        "XF86AudioPause" = "exec ${pkgs.playerctl}/bin/playerctl pause";
-        "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play";
-        "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
-        "XF86AudioRaiseVolume" = "exec ${pkgs.ponymix}/bin/ponymix increase 1";
-        "XF86MonBrightnessDown" = "exec ${pkgs.brillo}/bin/brillo -e -U 10";
-        "XF86MonBrightnessUp" = "exec ${pkgs.brillo}/bin/brillo -e -A 10";
-      };
+      keybindings =
+        let
+          execSpawn = cmd: "exec ${pkgs.spawn}/bin/spawn ${cmd}";
+        in
+        lib.mkOptionDefault {
+          # normal ones
+          "${modifier}+Return" = execSpawn "${terminal}";
+          "${modifier}+d" = "exec ${terminal} -t swaymenu -e ${pkgs.sway-launcher-desktop}/bin/sway-launcher-desktop";
+          "${modifier}+m" = execSpawn "${pkgs.emojimenu}/bin/emojimenu";
+          "${modifier}+o" = execSpawn "${pkgs.screenocr}/bin/screenocr";
+          "${modifier}+t" = execSpawn "${pkgs.otpmenu}/bin/otpmenu";
+          "${modifier}+p" = execSpawn "${pkgs.passmenu}/bin/passmenu";
+          "${modifier}+q" = execSpawn "${pkgs.swaylock}/bin/swaylock -f";
+
+          "Mod1+Tab" = " workspace next";
+          "Mod4+Tab" = " workspace prev";
+          "Mod4+comma" = " workspace prev";
+          "Mod4+period" = " workspace next";
+          # "Print" = "exec ${pkgs.prtsc}/bin/prtsc";
+          "Print" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy";
+          "Mod1+Print" = "exec ${pkgs.grim}/bin/grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d-%H%M%S_grim.png')";
+          "XF86AudioLowerVolume" = "exec ${pkgs.ponymix}/bin/ponymix decrease 1";
+          "XF86AudioMicMute" = "exec ${pkgs.ponymix}/bin/ponymix -t source toggle";
+          "XF86AudioMute" = "exec ${pkgs.ponymix}/bin/ponymix -t sink toggle";
+          "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
+          "XF86AudioPause" = "exec ${pkgs.playerctl}/bin/playerctl pause";
+          "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play";
+          "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
+          "XF86AudioRaiseVolume" = "exec ${pkgs.ponymix}/bin/ponymix increase 1";
+
+          "XF86MonBrightnessDown" = "exec ${pkgs.brillo}/bin/brillo -e -U 10";
+          "XF86MonBrightnessUp" = "exec ${pkgs.brillo}/bin/brillo -e -A 10";
+        };
 
       menu = "${terminal} -d 55 18 -t swaymenu -e ${pkgs.swaymenu}/bin/swaymenu";
 
@@ -89,9 +97,10 @@
             makeMenuWindow = "floating enable, border pixel 5, sticky enable";
           in
           [
-            { command = makeMenuWindow; criteria = { app_id = "Alacritty"; title = "swaymenu"; }; }
-            { command = makeMenuWindow; criteria = { app_id = "Alacritty"; title = "gopassmenu"; }; }
-            { command = makeMenuWindow; criteria = { app_id = "Alacritty"; title = "emojimenu"; }; }
+            { command = makeMenuWindow; criteria.title = "emojimenu"; }
+            { command = makeMenuWindow; criteria.title = "otpmenu"; }
+            { command = makeMenuWindow; criteria.title = "passmenu"; }
+            { command = makeMenuWindow; criteria.title = "swaymenu"; }
             { command = "floating enable"; criteria.app_id = "imv"; }
             { command = "floating enable, sticky enable"; criteria = { app_id = "firefox"; title = "Picture-in-Picture"; }; }
           ];

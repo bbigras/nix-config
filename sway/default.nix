@@ -22,6 +22,8 @@
   };
 
   nixpkgs.overlays = [
+    (import ../overlays/spawn.nix)
+    (import ../overlays/screenocr.nix)
     (import ../overlays/menu)
     (import ../overlays/prtsc.nix)
   ];
