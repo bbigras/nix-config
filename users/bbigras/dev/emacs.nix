@@ -538,11 +538,10 @@ in
 
       org-roam = {
         enable = true;
-        after = [ "org" "org-element" "emacsql" "emacsql-sqlite" ];
+        after = [ "org" "org-element" "emacsql" ];
         hook = [ "(after-init . org-roam-mode)" ];
         config = ''
           (setq org-roam-directory "~/Dropbox/org-mode/notes")
-          (setq org-roam-graph-executable "${pkgs.graphviz}/bin/dot")
         '';
         bind = {
           "C-c n l" = "org-roam";
@@ -551,7 +550,6 @@ in
           "C-c n i" = "org-roam-insert";
           "C-c n g" = "org-roam-graph";
         };
-        extraPackages = [ pkgs.sqlite ];
       };
 
       rainbow-mode = {
@@ -731,10 +729,7 @@ in
         };
       };
 
-      all-the-icons = {
-        enable = true;
-        extraPackages = [ pkgs.emacs-all-the-icons-fonts ];
-      };
+      all-the-icons.enable = true;
 
       all-the-icons-dired = {
         enable = true;
@@ -1048,9 +1043,6 @@ in
         # config = lib.mkForce "";
         after = [ "dap-mode" ];
         package = "dap-mode";
-        config = ''
-          (setq dap-lldb-debug-program "${pkgs.lldb}/bin/lldb-vscode")
-        '';
       };
 
       frog-jump-buffer = {
