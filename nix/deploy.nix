@@ -7,7 +7,6 @@
 , nur
 , nixpkgs-cdda-mods
 , emacs-overlay
-, nix-on-droid
 , ...
 }@inputs:
 let
@@ -38,7 +37,6 @@ let
     };
 
   mkPath = name: system: deploy-rs.lib.${system}.activate.nixos (mkHost name system);
-  pixel2 = (nix-on-droid.lib.aarch64-linux.nix-on-droid { config = ../hosts/pixel2; }).activationPackage;
 in
 {
   deploy = {
@@ -61,17 +59,6 @@ in
       vps = {
         hostname = "vps";
         profiles.system.path = mkPath "vps" "x86_64-linux";
-      };
-      pixel2 = {
-        hostname = "pixel2";
-
-        # to prevent using sudo
-        sshUser = "nix-on-droid";
-        user = "nix-on-droid";
-
-        profiles.nix-on-droid.path = deploy-rs.lib.aarch64-linux.activate.custom
-          pixel2
-          (pixel2 + "/activate");
       };
     };
   };

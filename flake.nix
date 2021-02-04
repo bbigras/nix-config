@@ -31,16 +31,6 @@
       url = "github:mnacamura/nixpkgs-cdda-mods";
       flake = false;
     };
-
-    nix-on-droid = {
-      # url = "/home/bbigras/src/nix-on-droid";
-      url = "github:bbigras/nix-on-droid/pixel2";
-      inputs = {
-        flake-utils.follows = "flake-utils";
-        home-manager.follows = "home-manager";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
   };
 
   # FIXME: I can't η-reduce this for some reason
