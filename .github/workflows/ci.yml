@@ -38,9 +38,9 @@ jobs:
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
       - name: add extra cachix caches
         run: |
-          nix develop -c cachix use nix-community \
-          nix develop -c cachix use eigenvalue \
-          nix develop -c cachix use mjlbach \
+          nix develop -c cachix use nix-community && \
+          nix develop -c cachix use eigenvalue && \
+          nix develop -c cachix use mjlbach && \
           nix develop -c cachix use nix-on-droid
       - id: get-hosts
         run: |
@@ -66,9 +66,9 @@ jobs:
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
       - name: add extra cachix caches
         run: |
-          nix develop -c cachix use nix-community \
-          nix develop -c cachix use eigenvalue \
-          nix develop -c cachix use mjlbach \
+          nix develop -c cachix use nix-community && \
+          nix develop -c cachix use eigenvalue && \
+          nix develop -c cachix use mjlbach && \
           nix develop -c cachix use nix-on-droid
       - name: nix-build
         run: |
@@ -92,9 +92,9 @@ jobs:
           signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
       - name: add extra cachix caches
         run: |
-          nix develop -c cachix use nix-community \
-          nix develop -c cachix use eigenvalue \
-          nix develop -c cachix use mjlbach \
+          nix develop -c cachix use nix-community && \
+          nix develop -c cachix use eigenvalue && \
+          nix develop -c cachix use mjlbach && \
           nix develop -c cachix use nix-on-droid
       - name: check-flake
         run: "nix flake check"
