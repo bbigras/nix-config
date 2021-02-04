@@ -8,7 +8,7 @@
     ./nix.nix
     ./openssh.nix
     ./pipewire.nix
-    ./steam.nix
+    # ./steam.nix
     ./sudo.nix
     ./systemd-resolved.nix
     ./tailscale.nix
