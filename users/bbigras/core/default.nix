@@ -182,6 +182,7 @@ in
       element-desktop
       oneshot
       tailscale
+      ht-rust
 
       # nix
       cachix
@@ -204,7 +205,6 @@ in
       procs
       hyperfine
       pwgen
-      httpie
       rage
       navi # cheat sheet
       sd # find & replace
