@@ -29,6 +29,8 @@
   sops.secrets.restic-laptop-password.sopsFile = ./restic-laptop.yaml;
   sops.secrets.restic-laptop-creds.sopsFile = ./restic-laptop.yaml;
 
+  services.auto-cpufreq.enable = true;
+
   hardware.brillo.enable = true;
   # boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.kernel.sysctl = {
@@ -111,7 +113,13 @@
   services = {
     # fstrim.enable = true;
     # fwupd.enable = true;
-    tlp.enable = true;
+    tlp = {
+      enable = true;
+      extraConfig = ''
+        CPU_BOOST_ON_AC=0
+        CPU_BOOST_ON_BAT=0
+      '';
+    };
   };
 
   environment.persistence."/persist" = {
