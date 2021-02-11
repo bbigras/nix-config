@@ -280,6 +280,7 @@ in
       unar
       tab-rs
       barrier
+      dbeaver
     ];
   };
 
