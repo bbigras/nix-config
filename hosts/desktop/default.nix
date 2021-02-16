@@ -210,5 +210,6 @@ in
     umount /mnt
   '';
 
+  services.espanso.enable = true;
   services.earlyoom.enable = true;
 }
