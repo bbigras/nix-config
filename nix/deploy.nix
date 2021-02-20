@@ -17,6 +17,7 @@ let
     nur.overlay
     (import "${nixpkgs-cdda-mods}")
     emacs-overlay.overlay
+    (import ../overlays/nix-zsh-completions.nix)
   ];
 
   mkHost = name: system:
