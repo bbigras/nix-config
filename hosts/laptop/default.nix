@@ -115,10 +115,10 @@
     # fwupd.enable = true;
     tlp = {
       enable = true;
-      extraConfig = ''
-        CPU_BOOST_ON_AC=0
-        CPU_BOOST_ON_BAT=0
-      '';
+      settings = {
+        CPU_BOOST_ON_AC = 0;
+        CPU_BOOST_ON_BAT = 0;
+      };
     };
   };
 
