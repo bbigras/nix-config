@@ -113,13 +113,7 @@
   services = {
     # fstrim.enable = true;
     # fwupd.enable = true;
-    tlp = {
-      enable = true;
-      settings = {
-        CPU_BOOST_ON_AC = 0;
-        CPU_BOOST_ON_BAT = 0;
-      };
-    };
+    tlp.enable = true;
   };
 
   environment.persistence."/persist" = {
