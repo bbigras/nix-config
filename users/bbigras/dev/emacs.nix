@@ -306,6 +306,13 @@ in
         ];
       };
 
+      crux = {
+        enable = true;
+        bind = {
+          "C-c d" = "crux-duplicate-current-line-or-region";
+        };
+      };
+
       prettier-js = {
         enable = true;
         after = [ "web-mode" ];
