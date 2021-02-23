@@ -1,8 +1,23 @@
-{ ... }: {
+{ pkgs, ... }: {
   programs.alacritty = {
     enable = true;
     settings = {
       env.TERM = "xterm-256color";
+      font = {
+        normal = {
+          family = "Iosevka";
+          style = "Regular";
+        };
+        bold = {
+          family = "Iosevka";
+          style = "Bold";
+        };
+        italic = {
+          family = "Iosevka";
+          style = "Italic";
+        };
+        size = 12;
+      };
       colors = {
         primary = {
           background = "0x0A0E14";
@@ -30,54 +45,7 @@
         };
       };
       mouse.url.modifiers = "Control";
-      # shell.program = "${pkgs.bash}/bin/bash";
-      key_bindings = [
-        {
-          key = "V";
-          mods = "Control|Shift";
-          action = "Paste";
-        }
-        {
-          key = "C";
-          mods = "Control|Shift";
-          action = "Copy";
-        }
-        {
-          key = "Insert";
-          mods = "Shift";
-          action = "PasteSelection";
-        }
-        {
-          key = "Key0";
-          mods = "Control";
-          action = "ResetFontSize";
-        }
-        {
-          key = "Equals";
-          mods = "Control";
-          action = "IncreaseFontSize";
-        }
-        {
-          key = "Add";
-          mods = "Control";
-          action = "IncreaseFontSize";
-        }
-        {
-          key = "Subtract";
-          mods = "Control";
-          action = "DecreaseFontSize";
-        }
-        {
-          key = "Minus";
-          mods = "Control";
-          action = "DecreaseFontSize";
-        }
-        {
-          key = "Return";
-          mods = "Alt";
-          action = "ToggleFullscreen";
-        }
-      ];
+      shell.program = "${pkgs.zsh}/bin/zsh";
     };
   };
 }

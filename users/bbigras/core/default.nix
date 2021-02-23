@@ -31,7 +31,7 @@ in
         env = {
           TERM = "xterm-256color";
         };
-        font.normal.family = "MesloLGS NF";
+        font.normal.family = lib.mkDefault "MesloLGS NF";
       };
     };
 
