@@ -163,6 +163,7 @@ in
       gitAndTools.git-absorb
       gitAndTools.gitui
       gitAndTools.git-machete
+      git-filter-repo
       gist
       gitAndTools.gh
       colordiff
