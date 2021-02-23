@@ -306,10 +306,25 @@ in
         ];
       };
 
+      # https://github.com/bbatsov/crux
       crux = {
         enable = true;
         bind = {
           "C-c d" = "crux-duplicate-current-line-or-region";
+          "C-c M-d" = "crux-duplicate-and-comment-current-line-or-region";
+
+          # "C-k" = "crux-smart-kill-line";
+          "C-k" = "crux-kill-and-join-forward";
+
+          "C-S-RET" = "crux-smart-open-line-above";
+          "S-RET" = "crux-smart-open-line";
+          "C-x 4 t" = "crux-transpose-windows";
+          "C-c D" = "crux-delete-file-and-buffer";
+          # "C-c r" = "crux-rename-file-and-buffer";
+          "C-c TAB" = "crux-indent-rigidly-and-copy-to-clipboard";
+          # "Super-j" = "crux-top-join-line";
+          # "C-Backspace" = "crux-kill-line-backwards";
+          "M-o" = "crux-other-window-or-switch-buffer";
         };
       };
 
