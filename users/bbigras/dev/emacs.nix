@@ -761,6 +761,8 @@ in
         hook = [ "(dired-mode . all-the-icons-dired-mode)" ];
       };
 
+      counsel.enable = true;
+
       consult = {
         enable = true;
         bind = {
