@@ -761,12 +761,6 @@ in
         hook = [ "(dired-mode . all-the-icons-dired-mode)" ];
       };
 
-      # Lets counsel do prioritization. A fork of smex.
-      amx = {
-        enable = true;
-        command = [ "amx-initialize" ];
-      };
-
       consult = {
         enable = true;
         bind = {
