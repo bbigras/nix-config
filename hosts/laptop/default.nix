@@ -230,7 +230,6 @@
         ".ssh/id_ed25519"
         ".ssh/id_ed25519.pub"
         ".ssh/known_hosts"
-        ".zsh_history"
         # ".cache/cargo/credentials"
         # ".config/dconf"
         # ".local/share/keyrings"
