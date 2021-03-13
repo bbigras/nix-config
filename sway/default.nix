@@ -18,7 +18,7 @@
   qt5 = {
     enable = true;
     platformTheme = "gnome";
-    style = "adwaita";
+    style = "adwaita-dark";
   };
 
   nixpkgs.overlays = [
@@ -28,13 +28,14 @@
   ];
 
   xdg = {
-    autostart.enable = false;
+    autostart.enable = true;
     icons.enable = true;
     menus.enable = true;
     mime.enable = true;
     portal = {
       enable = true;
-      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+      gtkUsePortal = true;
+      extraPortals = with pkgs; [ xdg-desktop-portal-gtk xdg-desktop-portal-wlr ];
     };
   };
 }

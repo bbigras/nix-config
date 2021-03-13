@@ -50,8 +50,12 @@
   };
 
   qt = {
-    enable = false;
+    enable = true;
     platformTheme = "gnome";
+    style = {
+      name = "adwaita";
+      package = pkgs.adwaita-qt;
+    };
   };
 
   programs.zsh.profileExtra = ''
