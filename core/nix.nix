@@ -25,6 +25,7 @@
       "https://nixiosk.cachix.org"
       "https://mjlbach.cachix.org"
       "https://pre-commit-hooks.cachix.org"
+      "https://bbigras-dev.cachix.org"
     ];
     binaryCachePublicKeys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
@@ -34,6 +35,7 @@
       "nixiosk.cachix.org-1:pyzRzjCUhw0r+moXnSklZwwI/gFk+Z+A2ofmEhOf7Sc="
       "mjlbach.cachix.org-1:dR0V90mvaPbXuYria5mXvnDtFibKYqYc2gtl9MWSkqI="
       "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
+      "bbigras-dev.cachix.org-1:7JrfmXK/0cXRCzguretr0wlWtY2zp/mkp/HwMwIJzCw="
     ];
   };
 }
