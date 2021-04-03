@@ -404,10 +404,6 @@ in
           (envrc-global-mode)
           (with-eval-after-load 'envrc
             (define-key envrc-mode-map (kbd "C-c e") 'envrc-command-map))
-
-          (push "[/\\\\]vendor$" lsp-file-watch-ignored)
-          (push "[/\\\\]\\.yarn$" lsp-file-watch-ignored)
-          (push "[/\\\\]\\.direnv$" lsp-file-watch-ignored)
         '';
       };
 
@@ -1001,6 +997,10 @@ in
            (make-lsp-client :new-connection (lsp-stdio-connection '("rnix-lsp"))
                             :major-modes '(nix-mode)
                             :server-id 'nix))
+          (push "[/\\\\]vendor$" lsp-file-watch-ignored)
+          (push "[/\\\\]\\.yarn$" lsp-file-watch-ignored)
+          (push "[/\\\\]\\.direnv$" lsp-file-watch-ignored)
+          (push "[/\\\\]\\.next$" lsp-file-watch-ignored)
 
         '';
         #                 lsp-prefer-flymake nil
