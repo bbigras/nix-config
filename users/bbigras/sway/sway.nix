@@ -3,29 +3,37 @@
     enable = true;
     config = rec {
       bars = [ ];
-      colors = {
-        focused = {
-          border = "#30535F";
-          background = "#30535F";
-          text = "#F0BC8D";
-          childBorder = "#A43C0F";
-          indicator = "#A43C0F";
+
+      colors =
+        let
+          foreground_focused = "#E6B450";
+          border_focused = "#273747";
+          foreground_inactive = "#B3B1AD";
+          border_inactive = "#0A0E14";
+        in
+        {
+          focused = {
+            border = border_focused;
+            background = border_focused;
+            text = foreground_focused;
+            childBorder = border_focused;
+            indicator = border_focused;
+          };
+          unfocused = {
+            border = border_inactive;
+            background = border_inactive;
+            text = foreground_inactive;
+            childBorder = border_inactive;
+            indicator = border_inactive;
+          };
+          focusedInactive = {
+            border = border_inactive;
+            background = border_inactive;
+            text = foreground_inactive;
+            childBorder = border_inactive;
+            indicator = border_inactive;
+          };
         };
-        unfocused = {
-          border = "#00122A";
-          background = "#00122A";
-          text = "#F0BC8D";
-          childBorder = "#A43C0F";
-          indicator = "#A43C0F";
-        };
-        urgent = {
-          border = "#A43C0F";
-          background = "#A43C0F";
-          text = "#000000";
-          childBorder = "#A43C0F";
-          indicator = "#A43C0F";
-        };
-      };
 
       floating = {
         inherit modifier;
@@ -34,18 +42,12 @@
 
       focus.followMouse = false;
 
-      fonts = [ "FontAwesome 8" "Iosevka 8" ];
+      fonts = [ "FontAwesome 10" "Iosevka 10" ];
 
-      gaps = {
+      gaps = lib.mkIf (pkgs.hostPlatform.system == "x86_64-linux") {
         inner = 10;
         outer = 5;
         smartBorders = "on";
-      };
-
-      input = {
-        "*" = {
-          xkb_layout = "ca";
-        };
       };
 
       keybindings =
@@ -53,6 +55,27 @@
           execSpawn = cmd: "exec ${pkgs.spawn}/bin/spawn ${cmd}";
         in
         lib.mkOptionDefault {
+          # fancy workspace names
+          "${modifier}+1" = "workspace 0:α";
+          "${modifier}+2" = "workspace 1:β";
+          "${modifier}+3" = "workspace 2:γ";
+          "${modifier}+4" = "workspace 3:δ";
+          "${modifier}+5" = "workspace 4:ε";
+          "${modifier}+6" = "workspace 5:ζ";
+          "${modifier}+7" = "workspace 6:η";
+          "${modifier}+8" = "workspace 7:θ";
+          "${modifier}+9" = "workspace 8:ι";
+          "${modifier}+0" = "workspace 9:κ";
+          "${modifier}+Shift+1" = "move container to workspace 0:α";
+          "${modifier}+Shift+2" = "move container to workspace 1:β";
+          "${modifier}+Shift+3" = "move container to workspace 2:γ";
+          "${modifier}+Shift+4" = "move container to workspace 3:δ";
+          "${modifier}+Shift+5" = "move container to workspace 4:ε";
+          "${modifier}+Shift+6" = "move container to workspace 5:ζ";
+          "${modifier}+Shift+7" = "move container to workspace 6:η";
+          "${modifier}+Shift+8" = "move container to workspace 7:θ";
+          "${modifier}+Shift+9" = "move container to workspace 8:ι";
+          "${modifier}+Shift+0" = "move container to workspace 9:κ";
           # normal ones
           "${modifier}+Return" = execSpawn "${terminal}";
           "${modifier}+d" = "exec ${terminal} -t swaymenu -e ${pkgs.sway-launcher-desktop}/bin/sway-launcher-desktop";
@@ -61,34 +84,32 @@
           "${modifier}+t" = execSpawn "${pkgs.otpmenu}/bin/otpmenu";
           "${modifier}+p" = execSpawn "${pkgs.passmenu}/bin/passmenu";
           "${modifier}+q" = execSpawn "${pkgs.swaylock}/bin/swaylock -f";
-
           "Mod1+Tab" = " workspace next";
           "Mod4+Tab" = " workspace prev";
           "Mod4+comma" = " workspace prev";
           "Mod4+period" = " workspace next";
-          # "Print" = "exec ${pkgs.prtsc}/bin/prtsc";
-          "Print" = "exec ${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy";
-          "Mod1+Print" = "exec ${pkgs.grim}/bin/grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d-%H%M%S_grim.png')";
-          "XF86AudioLowerVolume" = "exec ${pkgs.ponymix}/bin/ponymix decrease 1";
-          "XF86AudioMicMute" = "exec ${pkgs.ponymix}/bin/ponymix -t source toggle";
-          "XF86AudioMute" = "exec ${pkgs.ponymix}/bin/ponymix -t sink toggle";
-          "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
-          "XF86AudioPause" = "exec ${pkgs.playerctl}/bin/playerctl pause";
-          "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play";
-          "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
-          "XF86AudioRaiseVolume" = "exec ${pkgs.ponymix}/bin/ponymix increase 1";
-
-          "XF86MonBrightnessDown" = "exec ${pkgs.brillo}/bin/brillo -e -U 10";
-          "XF86MonBrightnessUp" = "exec ${pkgs.brillo}/bin/brillo -e -A 10";
+          "Print" = execSpawn "${pkgs.screenshot}/bin/screenshot";
+          "XF86AudioLowerVolume" = execSpawn "${pkgs.ponymix}/bin/ponymix decrease 1";
+          "XF86AudioMicMute" = execSpawn "${pkgs.ponymix}/bin/ponymix -t source toggle";
+          "XF86AudioMute" = execSpawn "${pkgs.ponymix}/bin/ponymix -t sink toggle";
+          "XF86AudioNext" = execSpawn "${pkgs.playerctl}/bin/playerctl next";
+          "XF86AudioPause" = execSpawn "${pkgs.playerctl}/bin/playerctl pause";
+          "XF86AudioPlay" = execSpawn "${pkgs.playerctl}/bin/playerctl play";
+          "XF86AudioPrev" = execSpawn "${pkgs.playerctl}/bin/playerctl previous";
+          "XF86AudioRaiseVolume" = execSpawn "${pkgs.ponymix}/bin/ponymix increase 1";
+          "XF86MonBrightnessDown" = execSpawn "${pkgs.brillo}/bin/brillo -e -U 0.5";
+          "XF86MonBrightnessUp" = execSpawn "${pkgs.brillo}/bin/brillo -e -A 0.5";
         };
 
-      menu = "${terminal} -d 55 18 -t swaymenu -e ${pkgs.swaymenu}/bin/swaymenu";
+      modifier = if pkgs.hostPlatform.system == "aarch64-linux" then "Mod1" else "Mod4";
 
-      modifier = "Mod4";
+      output = { "*" = { bg = "~/.wall fill"; }; };
 
-      startup = [ ];
-
-      terminal = "${pkgs.alacritty}/bin/alacritty";
+      terminal =
+        if pkgs.hostPlatform.system == "aarch64-linux" then
+          "${pkgs.termite}/bin/termite"
+        else
+          "${pkgs.alacritty}/bin/alacritty";
 
       window = {
         border = 0;
@@ -107,23 +128,18 @@
       };
     };
 
-    #     extraConfig = ''
-    # workspace 1 output HDMI-A-2
-    # workspace 1 output VGA-1
-
-    # output HDMI-A-2 pos 0 0 res 1680x1050
-    # output VGA-1 pos 1680 0 res 1680x1050
-    # '';
-
     extraSessionCommands = ''
       export ECORE_EVAS_ENGINE=wayland_egl
       export ELM_ENGINE=wayland_egl
       export MOZ_ENABLE_WAYLAND=1
+      export QT_QPA_PLATFORM=xcb
       export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
       export QT_WAYLAND_FORCE_DPI=physical
       export SDL_VIDEODRIVER=wayland
+      export WLR_DRM_DEVICES=/dev/dri/card0 sway
       export _JAVA_AWT_WM_NONREPARENTING=1
       export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.xrender=true"
+      export XDG_CURRENT_DESKTOP="sway"
     '';
 
     systemdIntegration = true;

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   imports = [
     ./alacritty.nix
     ./mako.nix
@@ -47,6 +47,10 @@
     enable = true;
     gtk2.extraConfig = "gtk-application-prefer-dark-theme = true";
     gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
+    theme = {
+      package = pkgs.ayu-theme-gtk;
+      name = "Ayu-Dark";
+    };
   };
 
   qt = {
@@ -61,8 +65,17 @@
   programs.zsh.profileExtra = ''
     # If running from tty1 start sway
     if [ "$(tty)" = "/dev/tty1" ]; then
-        systemctl --user import-environment
-        exec sway -d >& /tmp/sway.log
+      systemctl --user unset-environment \
+        SWAYSOCK \
+        I3SOCK \
+        WAYLAND_DISPLAY \
+        DISPLAY \
+        IN_NIX_SHELL \
+        __HM_SESS_VARS_SOURCED \
+        GPG_TTY \
+        NIX_PATH \
+        SHLVL
+      exec env --unset=SHLVL systemd-cat -t sway -- sway
     fi
   '';
 
@@ -93,20 +106,6 @@
         WantedBy = [ "sway-session.target" ];
       };
     };
-    mute = {
-      Unit = {
-        Description = "mute";
-        PartOf = [ "graphical-session.target" ];
-      };
-      Service = {
-        Type = "oneshot";
-        ExecStartPre = "${pkgs.ponymix}/bin/ponymix --source mute";
-        ExecStart = "${pkgs.ponymix}/bin/ponymix --sink mute";
-      };
-      Install = {
-        WantedBy = [ "sway-session.target" ];
-      };
-    };
     polkit = {
       Unit = {
         Description = "polkit-gnome";
@@ -123,7 +122,7 @@
         WantedBy = [ "sway-session.target" ];
       };
     };
-    redshift = {
+    redshift = lib.mkIf (pkgs.hostPlatform.system == "x86_64-linux") {
       Unit = {
         Description = "redshift";
         Documentation = [ "man:redshift(1)" ];
@@ -148,28 +147,12 @@
       Service = {
         Type = "simple";
         ExecStart = ''
-          ${pkgs.swayidle}/bin/swayidle -d -w \
+          ${pkgs.swayidle}/bin/swayidle -w \
             timeout 300 '${pkgs.swaylock}/bin/swaylock' \
-            timeout 600 '${pkgs.sway}/bin/swaymsg "output * dpms off"' \
-              resume '${pkgs.sway}/bin/swaymsg "output * dpms on"' \
+            timeout 600 'swaymsg "output * dpms off"' \
+              resume 'swaymsg "output * dpms on"' \
             before-sleep '${pkgs.swaylock}/bin/swaylock'
         '';
-        RestartSec = 3;
-        Restart = "always";
-      };
-      Install = {
-        WantedBy = [ "sway-session.target" ];
-      };
-    };
-    waybar = {
-      Unit = {
-        Description = "waybar";
-        Documentation = [ "https://github.com/Alexays/Waybar/wiki" ];
-        PartOf = [ "graphical-session.target" ];
-      };
-      Service = {
-        Type = "simple";
-        ExecStart = "${(pkgs.waybar.override { pulseSupport = true; })}/bin/waybar";
         RestartSec = 3;
         Restart = "always";
       };

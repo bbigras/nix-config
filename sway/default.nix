@@ -22,7 +22,10 @@
   };
 
   nixpkgs.overlays = [
+    (import ../overlays/write-sane-shell-script-bin.nix)
     (import ../overlays/spawn.nix)
+    (import ../overlays/ayu-theme-gtk.nix)
+    (import ../overlays/screenshot.nix)
     (import ../overlays/screenocr.nix)
     (import ../overlays/menu)
   ];
