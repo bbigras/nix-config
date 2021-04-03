@@ -234,6 +234,7 @@
         # ".cache/cargo/credentials"
         # ".config/dconf"
         # ".local/share/keyrings"
+        ".wall"
       ];
     };
   };
