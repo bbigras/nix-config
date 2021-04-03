@@ -966,13 +966,48 @@ in
       lsp-ui-flycheck = {
         enable = true;
         command = [ "lsp-flycheck-enable" ];
-        after = [ "flycheck" "lsp-ui" ];
+        #   after = [ "flycheck" "lsp-ui" ];
+      };
+
+      helm = {
+        enable = true;
+        # diminish = [ "helm-mode" ];
+        config = ''
+          (require 'helm-config)
+          (helm-mode 1)
+        '';
+        # (helm-mode 1)
+      };
+
+      # helm-xref = {
+      #   enable = true;
+      #   command = [ "helm-xref" ];
+      #   after = [ "helm" ];
+      # };
+
+      helm-lsp = {
+        enable = true;
+        command = [ "helm-lsp-workspace-symbol" ];
+        # after = [ "helm" "lsp" ];
+        #         config = ''
+        # (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol)
+        # '';
+      };
+
+      lsp-modeline = {
+        enable = true;
       };
 
       lsp-mode = {
         enable = true;
         command = [ "lsp" ];
-        after = [ "company" "flycheck" ];
+        after = [
+          "company"
+          "flycheck"
+        ];
+        hook = [
+          "(prog-mode . lsp)"
+        ];
         bind = {
           "C-c r r" = "lsp-rename";
           "C-c r f" = "lsp-format-buffer";
@@ -1002,6 +1037,7 @@ in
           (push "[/\\\\]\\.direnv$" lsp-file-watch-ignored)
           (push "[/\\\\]\\.next$" lsp-file-watch-ignored)
           (setq lsp-eslint-server-command '("node" "${pkgs.vscode-extensions.dbaeumer.vscode-eslint}/share/vscode/extensions/dbaeumer.vscode-eslint/server/out/eslintServer.js" "--stdio"))
+          (setq create-lockfiles nil) ;; lock files will kill `npm start'
 
         '';
         #                 lsp-prefer-flymake nil
