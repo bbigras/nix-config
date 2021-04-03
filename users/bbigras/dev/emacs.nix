@@ -335,9 +335,6 @@ in
         after = [ "web-mode" ];
         config = ''
           (add-hook 'web-mode-hook #'prettier-js-mode)
-
-          (setq prettier-js-command "yarn"
-                prettier-js-args (list "prettier"))
         '';
       };
 
