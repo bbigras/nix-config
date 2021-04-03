@@ -152,6 +152,7 @@
         input = {
           "1:1:AT_Translated_Set_2_keyboard" = {
             repeat_rate = "70";
+            xkb_layout = "ca";
           };
           "1739:30381:DLL0665:01_06CB:76AD_Touchpad" = {
             # dwt = "enabled";
