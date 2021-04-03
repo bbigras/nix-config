@@ -1001,6 +1001,7 @@ in
           (push "[/\\\\]\\.yarn$" lsp-file-watch-ignored)
           (push "[/\\\\]\\.direnv$" lsp-file-watch-ignored)
           (push "[/\\\\]\\.next$" lsp-file-watch-ignored)
+          (setq lsp-eslint-server-command '("node" "${pkgs.vscode-extensions.dbaeumer.vscode-eslint}/share/vscode/extensions/dbaeumer.vscode-eslint/server/out/eslintServer.js" "--stdio"))
 
         '';
         #                 lsp-prefer-flymake nil
