@@ -5,7 +5,14 @@
     userName = "Bruno Bigras";
     userEmail = "bigras.bruno@gmail.com";
 
-    ignores = [ "*~" "*.swp" ];
+    ignores = [
+      "*~"
+      "*.swp"
+      ".direnv/"
+      # exclude nix-build result
+      "result"
+      "result-*"
+    ];
 
     delta.enable = true;
     delta.options = {
@@ -24,9 +31,6 @@
     };
 
     extraConfig = {
-      core = {
-        excludesfile = "~/.gitignore";
-      };
       pull.ff = "only";
     };
   };
