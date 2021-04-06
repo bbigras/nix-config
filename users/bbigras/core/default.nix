@@ -77,6 +77,7 @@ in
     tmux = {
       enable = true;
       tmuxp.enable = true;
+      terminal = "screen-256color";
     };
     vscode.enable = true;
     zoxide.enable = true;
