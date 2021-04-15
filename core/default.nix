@@ -30,6 +30,11 @@
 
   services.flatpak.enable = true;
 
+  services.ipfs = {
+    enable = true;
+    gatewayAddress = "/ip4/127.0.0.1/tcp/8085";
+  };
+
   programs = {
     gnupg.agent = {
       enable = true;

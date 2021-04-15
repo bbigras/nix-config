@@ -151,6 +151,7 @@ in
       "/var/lib/flatpak"
       "/var/lib/docker"
       "/var/lib/libvirt"
+      "/var/lib/ipfs"
       "/root/.cache/restic"
       # "/var/cache/libvirt"
 
