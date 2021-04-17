@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 with lib;
 {
-  users.users.gdm.extraGroups = [ "audio" ];
   users.users.bbigras = {
     createHome = true;
     extraGroups = [ "wheel" "audio" ]

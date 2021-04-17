@@ -27,6 +27,8 @@
   #   };
   # };
 
+  users.users.gdm.extraGroups = [ "audio" ];
+
   services = {
     xserver = {
       enable = true;
