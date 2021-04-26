@@ -44,6 +44,10 @@ in
       enableNixDirenvIntegration = true;
       stdlib = builtins.readFile ./direnv.cfg;
     };
+    exa = {
+      enable = true;
+      enableAliases = true;
+    };
     htop.enable = true;
     jq.enable = true;
     mcfly.enable = true;
@@ -131,7 +135,6 @@ in
 
       shellAliases = {
         cat = "${pkgs.bat}/bin/bat";
-        ls = "${pkgs.exa}/bin/exa";
         less = ''${pkgs.bat}/bin/bat --paging=always --pager "${pkgs.less}/bin/less -RF"'';
       };
 
@@ -287,7 +290,7 @@ in
       restic
       kopia
 
-      # exa gist gopass  weechat
+      # gist gopass  weechat
 
       # utils
       file
