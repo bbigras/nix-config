@@ -599,6 +599,8 @@ in
         package = "org";
       };
 
+      graphql-mode.enable = true;
+
       hydra = {
         enable = true;
         # after = [ "org-tempo" ];
