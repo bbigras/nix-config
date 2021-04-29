@@ -337,6 +337,7 @@ in
       tab-rs
       barrier
       dbeaver
+      obsidian
     ];
   };
 
