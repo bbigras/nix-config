@@ -89,16 +89,16 @@
           "Mod4+comma" = " workspace prev";
           "Mod4+period" = " workspace next";
           "Print" = execSpawn "${pkgs.screenshot}/bin/screenshot";
-          "XF86AudioLowerVolume" = execSpawn "${pkgs.ponymix}/bin/ponymix decrease 1";
+          "XF86AudioLowerVolume" = execSpawn "${pkgs.ponymix}/bin/ponymix decrease 10";
           "XF86AudioMicMute" = execSpawn "${pkgs.ponymix}/bin/ponymix -t source toggle";
           "XF86AudioMute" = execSpawn "${pkgs.ponymix}/bin/ponymix -t sink toggle";
           "XF86AudioNext" = execSpawn "${pkgs.playerctl}/bin/playerctl next";
           "XF86AudioPause" = execSpawn "${pkgs.playerctl}/bin/playerctl pause";
           "XF86AudioPlay" = execSpawn "${pkgs.playerctl}/bin/playerctl play";
           "XF86AudioPrev" = execSpawn "${pkgs.playerctl}/bin/playerctl previous";
-          "XF86AudioRaiseVolume" = execSpawn "${pkgs.ponymix}/bin/ponymix increase 1";
-          "XF86MonBrightnessDown" = execSpawn "${pkgs.brillo}/bin/brillo -e -U 0.5";
-          "XF86MonBrightnessUp" = execSpawn "${pkgs.brillo}/bin/brillo -e -A 0.5";
+          "XF86AudioRaiseVolume" = execSpawn "${pkgs.ponymix}/bin/ponymix increase 10";
+          "XF86MonBrightnessDown" = execSpawn "${pkgs.brillo}/bin/brillo -e -U 10";
+          "XF86MonBrightnessUp" = execSpawn "${pkgs.brillo}/bin/brillo -e -A 10";
         };
 
       modifier = if pkgs.hostPlatform.system == "aarch64-linux" then "Mod1" else "Mod4";
