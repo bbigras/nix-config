@@ -354,5 +354,25 @@ in
     GOPATH = "$HOME/go";
   };
 
+  systemd.user.services.nix-matrix-pinecone = {
+    Unit = {
+      Description = "nix-matrix-pinecone";
+      After = [ "network.target" ];
+    };
+
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+
+    Service = {
+      ExecStart = "${pkgs.nix-matrix-pinecone}/bin/dendrite-demo-pinecone -peer wss://pinecone.matrix.org/public -listen :5977";
+      WorkingDirectory = "/home/bbigras/matrix-p2p";
+      Restart = "on-failure";
+      PrivateTmp = true;
+      ProtectSystem = "full";
+      Nice = 10;
+    };
+  };
+
   home.language.base = "fr_CA.UTF-8";
 }

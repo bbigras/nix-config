@@ -31,6 +31,11 @@
       url = "github:mnacamura/nixpkgs-cdda-mods";
       flake = false;
     };
+
+    nix-matrix-pinecone = {
+      url = "github:bbigras/nix-matrix-pinecone";
+      flake = false;
+    };
   };
 
   # FIXME: I can't η-reduce this for some reason

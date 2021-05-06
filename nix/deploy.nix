@@ -6,6 +6,7 @@
 , sops-nix
 , nur
 , nixpkgs-cdda-mods
+, nix-matrix-pinecone
 , emacs-overlay
 , ...
 }@inputs:
@@ -13,11 +14,17 @@ let
   inherit (nixpkgs.lib) pathExists optionalAttrs;
   inherit (builtins) attrNames mapAttrs readDir;
 
+  pkg_pinecone = import nix-matrix-pinecone;
+
   overlays = [
     nur.overlay
     (import "${nixpkgs-cdda-mods}")
     emacs-overlay.overlay
     (import ../overlays/nix-zsh-completions.nix)
+
+    (self: super: {
+      nix-matrix-pinecone = pkg_pinecone.main;
+    })
   ];
 
   mkHost = name: system:
