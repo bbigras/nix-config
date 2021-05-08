@@ -40,7 +40,6 @@ jobs:
       - name: add extra cachix caches
         run: |
           nix develop -c cachix use nix-community && \
-          nix develop -c cachix use eigenvalue && \
           nix develop -c cachix use mjlbach && \
           nix develop -c cachix use nix-on-droid
       - id: get-hosts
@@ -69,7 +68,6 @@ jobs:
       - name: add extra cachix caches
         run: |
           nix develop -c cachix use nix-community && \
-          nix develop -c cachix use eigenvalue && \
           nix develop -c cachix use mjlbach && \
           nix develop -c cachix use nix-on-droid
       - name: nix-build

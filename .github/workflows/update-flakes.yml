@@ -21,7 +21,7 @@ jobs:
         with:
           name: bbigras-nix-config
           signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
-      - run: cachix use nix-community; cachix use nix-matrix-pinecone; cachix use eigenvalue; cachix use mjlbach; cachix use pre-commit-hooks
+      - run: cachix use nix-community; cachix use nix-matrix-pinecone; cachix use mjlbach; cachix use pre-commit-hooks
       - run: git config --global user.email "noreply@github.com"
       - run: git config --global user.name "GitHub"
       - run: nix flake update --impure --commit-lock-file
