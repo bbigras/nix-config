@@ -36,6 +36,11 @@
       url = "github:bbigras/nix-matrix-pinecone";
       flake = false;
     };
+
+    nix-direnv = {
+      url = "github:nix-community/nix-direnv/760ce16e6c5336dc816e4112dcc8ddcdcadd7e51";
+      flake = false;
+    };
   };
 
   # FIXME: I can't η-reduce this for some reason

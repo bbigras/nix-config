@@ -8,6 +8,7 @@
 , nixpkgs-cdda-mods
 , nix-matrix-pinecone
 , emacs-overlay
+, nix-direnv
 , ...
 }@inputs:
 let
@@ -15,6 +16,7 @@ let
   inherit (builtins) attrNames mapAttrs readDir;
 
   pkg_pinecone = import nix-matrix-pinecone;
+  nix-direnv2 = import nix-direnv { };
 
   overlays = [
     nur.overlay
@@ -24,6 +26,10 @@ let
 
     (self: super: {
       nix-matrix-pinecone = pkg_pinecone.main;
+    })
+
+    (self: super: {
+      nix-direnv = nix-direnv2;
     })
   ];
 
