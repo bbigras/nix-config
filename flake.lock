@@ -1,9 +1,27 @@
 {
   "nodes": {
+    "dendrite": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1620388110,
+        "narHash": "sha256-9yu7C8YcDuZDeWZnEq/yAF3F8R+KSI7WFD5oRI9oDL4=",
+        "owner": "matrix-org",
+        "repo": "dendrite",
+        "rev": "81d60d54488a2e4b4bbcdbab0f7e01f780e5fbe8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "matrix-org",
+        "repo": "dendrite",
+        "type": "github"
+      }
+    },
     "deploy-rs": {
       "inputs": {
         "flake-compat": "flake-compat",
-        "naersk": "naersk",
+        "naersk": [
+          "naersk"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -27,11 +45,11 @@
     },
     "emacs-overlay": {
       "locked": {
-        "lastModified": 1620470822,
-        "narHash": "sha256-w/aj0MdNd3vAYQfIzDbW1wJjHd6XGqhDHYK4SogDIZg=",
+        "lastModified": 1620499786,
+        "narHash": "sha256-Z2qYHZYcCgUd8YURWKEbaQRlH5aBwp7TQMqMU8MWhU8=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "58d86bc075f30b1cfc8f40269adfa04c4c41e524",
+        "rev": "c30763fa3d800911ee57c4cdaf558b416e4c5780",
         "type": "github"
       },
       "original": {
@@ -113,16 +131,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1610392286,
-        "narHash": "sha256-3wFl5y+4YZO4SgRYK8WE7JIS3p0sxbgrGaQ6RMw+d98=",
+        "lastModified": 1620316130,
+        "narHash": "sha256-sU0VS5oJS1FsHsZsLELAXc7G2eIelVuucRw+q5B1x9k=",
         "owner": "nmattia",
         "repo": "naersk",
-        "rev": "d7bfbad3304fd768c0f93a4c3b50976275e6d4be",
+        "rev": "a3f40fe42cc6d267ff7518fa3199e99ff1444ac4",
         "type": "github"
       },
       "original": {
         "owner": "nmattia",
-        "ref": "master",
         "repo": "naersk",
         "type": "github"
       }
@@ -145,13 +162,21 @@
       }
     },
     "nix-matrix-pinecone": {
-      "flake": false,
+      "inputs": {
+        "dendrite": "dendrite",
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
       "locked": {
-        "lastModified": 1620400326,
-        "narHash": "sha256-d5BDzGCQ+UhM00+Kse8l3SadQBQ4GclmaQaVzZB097A=",
+        "lastModified": 1620509899,
+        "narHash": "sha256-bnlGbBXEkwoZ95XIAbgPsoqWxAQLZxVA1Vt7CJ1hyOU=",
         "owner": "bbigras",
         "repo": "nix-matrix-pinecone",
-        "rev": "f88f0bc3c16d6d7e93f1ce013a38d3ec029d0a83",
+        "rev": "e063c46f170df8d0b73a61d810d87398679e2448",
         "type": "github"
       },
       "original": {
@@ -207,16 +232,39 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1620492717,
-        "narHash": "sha256-iDtPzBV9xk/YUQIhf318HNd8fIcbhnP4DU+Q2Bh2HFQ=",
+        "lastModified": 1620496605,
+        "narHash": "sha256-KQeI18wMDQT2hWS4UuyBy10TGsdK7GJTEMvvbpQOrWU=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "3615bffc4318ed2c50483ccfd988fa9647d55eeb",
+        "rev": "3be47fb54fdb2d3b3a9e59aea90955481b4dc865",
         "type": "github"
       },
       "original": {
         "id": "nur",
         "type": "indirect"
+      }
+    },
+    "pre-commit-hooks": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1619976063,
+        "narHash": "sha256-2tjVP95+qR1UzL8/UeV/xRJu7S2fRB7rf7enZedbrik=",
+        "owner": "cachix",
+        "repo": "pre-commit-hooks.nix",
+        "rev": "09fb9e425111878b58223852e87ed85e8a189e0d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cachix",
+        "repo": "pre-commit-hooks.nix",
+        "type": "github"
       }
     },
     "root": {
@@ -226,12 +274,14 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
+        "naersk": "naersk",
         "nix-direnv": "nix-direnv",
         "nix-matrix-pinecone": "nix-matrix-pinecone",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-cdda-mods": "nixpkgs-cdda-mods",
         "nur": "nur",
+        "pre-commit-hooks": "pre-commit-hooks",
         "sops-nix": "sops-nix"
       }
     },

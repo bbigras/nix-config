@@ -24,6 +24,13 @@
   };
 
   home-manager.useGlobalPkgs = true;
+
+  home-manager.users.bbigras = { ... }: {
+    imports = [
+      pkgs.nur.repos.rycee.hmModules.emacs-init
+    ];
+  };
+
   i18n.defaultLocale = "fr_CA.UTF-8";
 
   networking.useDHCP = false;

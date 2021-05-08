@@ -1,0 +1,32 @@
+name: update flakes
+on:
+  schedule:
+    - cron:  '* */6 * * *'
+  workflow_dispatch:
+jobs:
+  update-flakes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: cachix/install-nix-action@v13
+        with:
+          install_url: https://nixos-nix-install-tests.cachix.org/serve/sp832rai317zyw7ikhlzv454zh9qr3dv/install
+          install_options: '--tarball-url-prefix https://nixos-nix-install-tests.cachix.org/serve'
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+      - uses: cachix/cachix-action@v10
+        with:
+          name: bbigras-nix-config
+          signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
+      - run: git config --global user.email "noreply@github.com"
+      - run: git config --global user.name "GitHub"
+      - name: Update flakes
+        run: nix flake update --commit-lock-file
+      - uses: peter-evans/create-pull-request@v3
+        with:
+          branch: flake-update
+          commit-message: "flake: update"
+          delete-branch: true
+          title: "flake: update"

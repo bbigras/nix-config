@@ -2,30 +2,45 @@
   description = "bbigras's NixOS config";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
-    nixos-hardware.url = "nixos-hardware";
-    nur.url = "nur";
-
-    flake-utils.url = "github:numtide/flake-utils";
-
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    home-manager = {
-      url = "github:rycee/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs = {
+        naersk.follows = "naersk";
         nixpkgs.follows = "nixpkgs";
         utils.follows = "flake-utils";
       };
     };
 
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    flake-utils.url = "github:numtide/flake-utils";
+
+    home-manager = {
+      url = "github:rycee/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     impermanence.url = "github:nix-community/impermanence";
+
+    naersk = {
+      url = "github:nmattia/naersk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixpkgs.url = "nixpkgs/nixos-unstable";
+
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixos-hardware.url = "nixos-hardware";
+    nur.url = "nur";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
 
     nixpkgs-cdda-mods = {
       url = "github:mnacamura/nixpkgs-cdda-mods";
@@ -34,7 +49,10 @@
 
     nix-matrix-pinecone = {
       url = "github:bbigras/nix-matrix-pinecone";
-      flake = false;
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
     };
 
     nix-direnv = {
