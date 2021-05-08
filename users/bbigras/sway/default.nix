@@ -1,6 +1,6 @@
 { pkgs, lib, ... }: {
   imports = [
-    ./alacritty.nix
+    ./foot.nix
     ./mako.nix
     ./sway.nix
     ./swaylock.nix
