@@ -6,26 +6,6 @@ on:
       - try
       - flake-update
 jobs:
-  lints:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - uses: cachix/install-nix-action@v13
-        with:
-          install_url: https://nixos-nix-install-tests.cachix.org/serve/sp832rai317zyw7ikhlzv454zh9qr3dv/install
-          install_options: '--tarball-url-prefix https://nixos-nix-install-tests.cachix.org/serve'
-          extra_nix_config: |
-            experimental-features = nix-command flakes
-      - uses: cachix/cachix-action@v10
-        with:
-          name: bbigras-nix-config
-          signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
-      - name: lints
-        run: |
-          nix develop -c nixpkgs-fmt --check . || exit 1
-
   get-hosts:
     runs-on: ubuntu-latest
     outputs:
