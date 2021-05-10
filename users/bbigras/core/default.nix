@@ -38,7 +38,6 @@ in
     aria2.enable = true;
     bat.enable = true;
     broot.enable = true;
-    command-not-found.enable = true;
     direnv = {
       enable = true;
       enableNixDirenvIntegration = true;
@@ -51,6 +50,7 @@ in
     htop.enable = true;
     jq.enable = true;
     mcfly.enable = true;
+    nix-index.enable = true;
     pet = {
       enable = true;
       snippets = [
@@ -242,7 +242,6 @@ in
 
       # nix
       cachix
-      nix-index
       nix-prefetch
       nix-prefetch-scripts
       nix-prefetch-github
