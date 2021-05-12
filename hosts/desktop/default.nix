@@ -43,7 +43,7 @@ in
 
   nix = {
     extraOptions = ''
-      extra-platforms = aarch64-linux
+      extra-platforms = aarch64-linux i686-linux
       trusted-users = bbigras
     '';
     sandboxPaths = [ "/run/binfmt/aarch64=${qemu-aarch64-static}/bin/qemu-aarch64-static" ];
