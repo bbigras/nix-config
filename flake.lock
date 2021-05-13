@@ -144,23 +144,6 @@
         "type": "github"
       }
     },
-    "nix-direnv": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1620230949,
-        "narHash": "sha256-HseMIeg8/iaoNVqDFrQoLRpgdyiHp6en/7l+rLN+sNs=",
-        "owner": "nix-community",
-        "repo": "nix-direnv",
-        "rev": "760ce16e6c5336dc816e4112dcc8ddcdcadd7e51",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nix-direnv",
-        "rev": "760ce16e6c5336dc816e4112dcc8ddcdcadd7e51",
-        "type": "github"
-      }
-    },
     "nix-matrix-pinecone": {
       "inputs": {
         "dendrite": "dendrite",
@@ -302,7 +285,6 @@
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "naersk": "naersk",
-        "nix-direnv": "nix-direnv",
         "nix-matrix-pinecone": "nix-matrix-pinecone",
         "nix-on-droid": "nix-on-droid",
         "nixos-hardware": "nixos-hardware",
