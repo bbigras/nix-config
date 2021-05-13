@@ -55,12 +55,15 @@
           enable = true;
           shellAliases = {
             cat = "${pkgs.bat}/bin/bat";
-            ls = "${pkgs.exa}/bin/exa";
             less = ''${pkgs.bat}/bin/bat --paging=always --pager "${pkgs.less}/bin/less -RF"'';
           };
         };
         bat.enable = true;
         command-not-found.enable = true;
+        exa = {
+          enable = true;
+          enableAliases = true;
+        };
         git = {
           enable = true;
           delta.enable = true;
