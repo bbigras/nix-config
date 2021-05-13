@@ -24,7 +24,7 @@
     };
 
     packages = {
-      hosts = joinDrvs "hosts" (mapAttrs (_: v: v.profiles.system.path) self.deploy.nodes);
+      hosts = joinDrvs "hosts" (mapAttrs (_: v: if builtins.hasAttr "system" v.profiles then v.profiles.system.path else v.profiles.nix-on-droid.path) self.deploy.nodes);
     };
 
     devShell = pkgs.callPackage ./shell.nix {
