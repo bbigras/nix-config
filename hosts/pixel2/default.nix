@@ -90,6 +90,7 @@
           tmuxp.enable = true;
           terminal = "screen-256color";
         };
+        zoxide.enable = true;
       };
 
       home.packages = with pkgs; [
