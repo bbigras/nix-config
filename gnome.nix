@@ -36,7 +36,7 @@
       xkbVariant = "fr";
       displayManager.gdm.enable = true;
       displayManager.gdm.wayland = false;
-      desktopManager.gnome3.enable = true;
+      desktopManager.gnome.enable = true;
     };
 
     dbus.packages = [ pkgs.gnome3.dconf ];

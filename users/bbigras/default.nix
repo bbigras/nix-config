@@ -33,7 +33,7 @@ with lib;
       ];
     }
     )
-    (mkIf config.services.xserver.desktopManager.gnome3.enable {
+    (mkIf config.services.xserver.desktopManager.gnome.enable {
       imports = [
         ./gnome.nix
       ];
