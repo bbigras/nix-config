@@ -89,7 +89,6 @@
         cachix
         croc
         dogdns
-        eternal-terminal
         fd
         # meslo-lgs-nf
         mosh
