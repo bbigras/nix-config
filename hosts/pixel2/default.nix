@@ -85,7 +85,11 @@
         mcfly.enable = true;
         ssh.enable = true;
         starship.enable = true;
-        tmux.enable = true;
+        tmux = {
+          enable = true;
+          tmuxp.enable = true;
+          terminal = "screen-256color";
+        };
       };
 
       home.packages = with pkgs; [
