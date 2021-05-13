@@ -104,7 +104,7 @@
         oneshot
         pwgen
         #rage
-        httpie
+        ht-rust
         prettyping
         # tab-rs
         ripgrep
