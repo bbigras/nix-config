@@ -238,6 +238,7 @@
         # ".local/share/keyrings"
         ".wall"
       ];
+      allowOther = false;
     };
   };
 
