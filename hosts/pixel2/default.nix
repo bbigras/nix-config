@@ -1,8 +1,8 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   build.arch = "aarch64";
-  user.shell = "${pkgs.zsh}/bin/zsh";
+  # user.shell = "${pkgs.zsh}/bin/zsh";
 
   # Simply install just the packages
   environment.packages = with pkgs; [
@@ -51,6 +51,13 @@
       # insert home-manager config
       programs = {
         aria2.enable = true;
+        bash = {
+          enable = true;
+          shellAliases = {
+            cat = "${pkgs.bat}/bin/bat";
+            less = ''${pkgs.bat}/bin/bat --paging=always --pager "${pkgs.less}/bin/less -RF"'';
+          };
+        };
         bat.enable = true;
         command-not-found.enable = true;
         exa = {
@@ -83,85 +90,6 @@
           tmuxp.enable = true;
           terminal = "screen-256color";
         };
-
-        zsh = {
-          enable = true;
-          enableAutosuggestions = true;
-          enableCompletion = true;
-          enableVteIntegration = true;
-          plugins = [
-            {
-              name = "zsh-autosuggestions";
-              src = pkgs.zsh-autosuggestions;
-            }
-            {
-              name = "zsh-syntax-highlighting";
-              src = pkgs.zsh-syntax-highlighting;
-            }
-            {
-              name = "zsh-history-substring-search";
-              src = pkgs.zsh-history-substring-search;
-            }
-            {
-              name = "zsh-completions";
-              src = pkgs.zsh-completions;
-            }
-            # {
-            #   name = "async";
-            #   src = pkgs.zsh-async;
-            # }
-            {
-              name = "powerlevel10k";
-              src = pkgs.zsh-powerlevel10k;
-              file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-            }
-            {
-              name = "powerlevel10k-config";
-              src = lib.cleanSource ../../users/bbigras/core/p10k-config;
-              file = "p10k.zsh";
-            }
-            {
-              name = "zsh-you-should-use";
-              src = pkgs.zsh-you-should-use;
-            }
-          ];
-
-          shellAliases = {
-            cat = "${pkgs.bat}/bin/bat";
-            less = ''${pkgs.bat}/bin/bat --paging=always --pager "${pkgs.less}/bin/less -RF"'';
-          };
-
-          initExtra = ''
-            ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
-          '';
-
-          initExtraFirst = ''
-            DIRSTACKSIZE=10
-            setopt   notify globdots correct cdablevars autolist
-            setopt   correctall autocd recexact longlistjobs
-            setopt   autoresume
-            setopt   rcquotes mailwarning
-            unsetopt bgnice
-            setopt   autopushd pushdminus pushdsilent pushdtohome pushdignoredups
-            setopt COMPLETE_IN_WORD    # Complete from both ends of a word.
-            setopt ALWAYS_TO_END       # Move cursor to the end of a completed word.
-            setopt AUTO_MENU           # Show completion menu on a successive tab press.
-            setopt AUTO_LIST           # Automatically list choices on ambiguous completion.
-            setopt EXTENDED_GLOB       # Needed for file modification glob modifiers with compinit
-            unsetopt AUTO_PARAM_SLASH    # If completed parameter is a directory, do not add a trailing slash.
-            unsetopt MENU_COMPLETE     # Do not autoselect the first completion entry.
-            unsetopt FLOW_CONTROL      # Disable start/stop characters in shell editor.
-          '';
-
-          localVariables = {
-            # This way, C-w deletes words (path elements)
-            WORDCHARS = "*?_-.[]~&;!#$%^(){}<>";
-
-            ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE = "fg=8";
-          };
-
-        };
-
         zoxide.enable = true;
       };
 
