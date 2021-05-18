@@ -1,6 +1,5 @@
 { pkgs, lib, ... }: {
   imports = [
-    ./foot.nix
     ./mako.nix
     ./sway.nix
     ./swaylock.nix
@@ -78,6 +77,23 @@
       exec env --unset=SHLVL systemd-cat -t sway -- sway
     fi
   '';
+
+  programs.foot = {
+    enable = true;
+    # server.enable = true;
+    settings = {
+      main = {
+        term = "xterm-256color";
+
+        font = "Fira Code:size=8";
+        dpi-aware = "yes";
+      };
+
+      mouse = {
+        hide-when-typing = "yes";
+      };
+    };
+  };
 
   services.gpg-agent.pinentryFlavor = "gnome3";
 
