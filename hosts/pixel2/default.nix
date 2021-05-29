@@ -4,6 +4,11 @@
   build.arch = "aarch64";
   # user.shell = "${pkgs.zsh}/bin/zsh";
 
+  user = {
+    gid = 10202;
+    uid = 10202;
+  };
+
   # Simply install just the packages
   environment.packages = with pkgs; [
     # User-facing stuff that you really really want to have

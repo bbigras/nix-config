@@ -181,16 +181,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1611038095,
-        "narHash": "sha256-JANxTwLqzBQcDYcJX7Uhs+NaTVde40801t0DA6Z3ong=",
-        "owner": "bbigras",
+        "lastModified": 1622161517,
+        "narHash": "sha256-bApAMlsNe+JZRIMKKM3O9SdMAzq0TezoG5hzUP4ufVU=",
+        "owner": "t184256",
         "repo": "nix-on-droid",
-        "rev": "818cd49fbb7358ecd0be637c8060d8bfee2dbd3a",
+        "rev": "36df7dac110a85f18e30611cecaf8ee95855bc22",
         "type": "github"
       },
       "original": {
-        "owner": "bbigras",
-        "ref": "pixel2",
+        "owner": "t184256",
         "repo": "nix-on-droid",
         "type": "github"
       }

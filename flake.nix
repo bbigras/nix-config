@@ -56,8 +56,7 @@
     };
 
     nix-on-droid = {
-      # url = "/home/bbigras/src/nix-on-droid";
-      url = "github:bbigras/nix-on-droid/pixel2";
+      url = "github:t184256/nix-on-droid";
       inputs = {
         flake-utils.follows = "flake-utils";
         home-manager.follows = "home-manager";
