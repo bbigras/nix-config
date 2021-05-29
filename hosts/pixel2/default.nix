@@ -21,6 +21,7 @@
     tzdata
     hostname
     man
+    gawk
     gnugrep
     gnupg
     gnused
