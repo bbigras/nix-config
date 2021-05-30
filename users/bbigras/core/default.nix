@@ -337,6 +337,7 @@ in
       barrier
       dbeaver
       obsidian
+      cloudflared
     ];
   };
 
