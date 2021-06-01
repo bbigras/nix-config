@@ -8,6 +8,8 @@ let
   inherit (builtins) attrNames readDir;
   inherit (inputs) nixpkgs impermanence home-manager sops-nix emacs-overlay nixpkgs-cdda-mods nur nix-matrix-pinecone;
 
+  nix-matrix-pinecone2 = nix-matrix-pinecone.defaultPackage."${system}";
+
   config = {
     allowUnfree = true;
     allowAliases = true;
@@ -21,7 +23,7 @@ let
     nur.overlay
 
     (_self: _super: {
-      inherit nix-matrix-pinecone;
+      nix-matrix-pinecone = nix-matrix-pinecone2;
     })
   ];
 in
