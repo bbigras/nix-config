@@ -338,6 +338,7 @@ in
       dbeaver
       obsidian
       cloudflared
+      tmate
     ];
   };
 
