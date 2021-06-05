@@ -13,6 +13,7 @@
     ./systemd-resolved.nix
     ./tailscale.nix
     ./zerotier.nix
+    ./nix-matrix-pinecone.nix
   ];
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
