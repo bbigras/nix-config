@@ -340,6 +340,7 @@ in
       cloudflared
       tmate
       zerotierone
+      josm
     ];
   };
 
