@@ -339,6 +339,7 @@ in
       obsidian
       cloudflared
       tmate
+      zerotierone
     ];
   };
 
