@@ -1754,6 +1754,10 @@ in
         '';
       };
 
+      go-mode = {
+        enable = true;
+      };
+
       # sendmail = {
       #   enable = false;
       #   mode = [
