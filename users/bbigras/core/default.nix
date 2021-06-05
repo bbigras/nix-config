@@ -341,6 +341,10 @@ in
       tmate
       zerotierone
       josm
+
+      # Go
+      go
+      gopls
     ];
   };
 
