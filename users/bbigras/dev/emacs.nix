@@ -794,9 +794,33 @@ in
         '';
       };
 
-      consult-selectrum = {
+      consult-lsp = {
         enable = true;
-        after = [ "selectrum" ];
+        after = [ "lsp-mode" ];
+        bind = { };
+        config = ''
+          (define-key lsp-mode-map [remap xref-find-apropos] #'consult-lsp-symbols)
+        '';
+      };
+
+      affe = {
+        enable = true;
+        after = [ "orderless" ];
+        config = ''
+          ;; Configure Orderless
+          (setq affe-regexp-function #'orderless-pattern-compiler
+                affe-highlight-function #'orderless-highlight-matches)
+
+          ;; Manual preview key for `affe-grep'
+          (consult-customize affe-grep :preview-key (kbd "M-."))
+        '';
+      };
+
+      corfu = {
+        enable = true;
+        config = ''
+          (corfu-global-mode)
+        '';
       };
 
       consult-flycheck = {
@@ -820,28 +844,28 @@ in
         enable = true;
         bind = {
           "C-S-a" = "embark-act";
+          "C-h B" = "embark-bindings";
         };
-        config = ''
-          ;; For Selectrum users:
-          (defun current-candidate+category ()
-            (when selectrum-active-p
-              (cons (selectrum--get-meta 'category)
-                    (selectrum-get-current-candidate))))
-
-          (add-hook 'embark-target-finders #'current-candidate+category)
-
-          (defun current-candidates+category ()
-            (when selectrum-active-p
-              (cons (selectrum--get-meta 'category)
-                    (selectrum-get-current-candidates
-                     ;; Pass relative file names for dired.
-                     minibuffer-completing-file-name))))
-
-          (add-hook 'embark-candidate-collectors #'current-candidates+category)
-
-          ;; No unnecessary computation delay after injection.
-          (add-hook 'embark-setup-hook 'selectrum-set-selected-candidate)
+        init = ''
+          ;; Optionally replace the key help with a completing-read interface
+          (setq prefix-help-command #'embark-prefix-help-command)
         '';
+        config = ''
+          ;; Hide the mode line of the Embark live/completions buffers
+          (add-to-list 'display-buffer-alist
+                       '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+                         nil
+                         (window-parameters (mode-line-format . none))))
+        '';
+      };
+
+      embark-consult = {
+        enable = true;
+        after = [ "embark" "consult" ];
+        hook = [
+          "(embark-collect-mode . consult-preview-at-point-mode)"
+          # "(prog-mode . lsp)"
+        ];
       };
 
       nyan-mode = {
@@ -1463,10 +1487,46 @@ in
         hook = [ "(flycheck-mode . flycheck-plantuml-setup)" ];
       };
 
-      selectrum = {
+      vertico = {
         enable = true;
+        # init = "(vertico-mode)";
         config = ''
-          (selectrum-mode +1)
+          (vertico-mode)
+        '';
+      };
+
+      orderless = {
+        enable = true;
+        init = ''
+          (setq completion-styles '(orderless)
+                  completion-category-defaults nil
+                  completion-category-overrides '((file (styles . (partial-completion)))))
+        '';
+      };
+
+      savehist = {
+        enable = true;
+        init = "(savehist-mode)";
+      };
+
+      emacs = {
+        enable = true;
+        init = ''
+          ;; Add prompt indicator to `completing-read-multiple'.
+          (defun crm-indicator (args)
+            (cons (concat "[CRM] " (car args)) (cdr args)))
+          (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
+
+          ;; Grow and shrink minibuffer
+          ;;(setq resize-mini-windows t)
+
+          ;; Do not allow the cursor in the minibuffer prompt
+          (setq minibuffer-prompt-properties
+                '(read-only t cursor-intangible t face minibuffer-prompt))
+          (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+
+          ;; Enable recursive minibuffers
+          (setq enable-recursive-minibuffers t)
         '';
       };
 
@@ -1476,15 +1536,6 @@ in
           ;; to save your command history on disk, so the sorting gets more
           ;; intelligent over time
           (prescient-persist-mode +1)
-        '';
-      };
-
-      selectrum-prescient = {
-        enable = true;
-        after = [ "prescient" "selectrum" ];
-        config = ''
-          ;; to make sorting and filtering more intelligent
-          (selectrum-prescient-mode +1)
         '';
       };
 
