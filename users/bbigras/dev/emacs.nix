@@ -995,31 +995,6 @@ in
         #   after = [ "flycheck" "lsp-ui" ];
       };
 
-      helm = {
-        enable = true;
-        # diminish = [ "helm-mode" ];
-        config = ''
-          (require 'helm-config)
-          (helm-mode 1)
-        '';
-        # (helm-mode 1)
-      };
-
-      # helm-xref = {
-      #   enable = true;
-      #   command = [ "helm-xref" ];
-      #   after = [ "helm" ];
-      # };
-
-      helm-lsp = {
-        enable = true;
-        command = [ "helm-lsp-workspace-symbol" ];
-        # after = [ "helm" "lsp" ];
-        #         config = ''
-        # (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol)
-        # '';
-      };
-
       lsp-modeline = {
         enable = true;
       };
