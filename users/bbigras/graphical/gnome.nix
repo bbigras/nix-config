@@ -20,21 +20,16 @@
     ];
   };
 
-  programs.firefox = {
-    enable = true;
-    package = pkgs.firefox;
-  };
-
   gtk = {
     enable = true;
     gtk2.extraConfig = "gtk-application-prefer-dark-theme = true";
     gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
   };
 
-  qt = {
-    enable = false;
-    platformTheme = "gnome";
-  };
+  # qt = {
+  #   enable = false;
+  #   platformTheme = "gnome";
+  # };
 
   services = {
     flameshot.enable = true;

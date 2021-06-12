@@ -2,8 +2,7 @@
   imports = [
     ./boot-silent.nix
     ./fonts.nix
-    ./location.nix
-    ./sway.nix
+    ./gnome.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -12,7 +11,7 @@
     hicolor-icon-theme
     qgnomeplatform
     qt5.qtwayland
-    # mon
+    spawn
   ];
 
   qt5 = {
@@ -20,6 +19,18 @@
     platformTheme = "gnome";
     style = "adwaita-dark";
   };
+
+  environment.etc."sway/config.d/gtk.conf".text = ''
+    exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+    exec hash dbus-update-activation-environment 2>/dev/null && \
+      dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+  '';
+
+  # services.redshift = {
+  #   enable = true;
+  #   package = pkgs.redshift-wlr;
+  #   extraOptions = [ "-v" ];
+  # };
 
   xdg = {
     autostart.enable = true;

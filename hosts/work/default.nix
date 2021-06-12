@@ -12,8 +12,9 @@
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       inputs.nixos-hardware.nixosModules.common-cpu-intel
 
-      ../../sway
-      ../../sway/trusted.nix
+      ../../graphical
+      ../../graphical/sway.nix
+      ../../graphical/trusted.nix
 
       ../../users/bbigras
     ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_work.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_work.nix") ] else [ ]);

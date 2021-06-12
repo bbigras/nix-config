@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   programs.waybar = {
     enable = true;
-    package = pkgs.waybar.override { pulseSupport = true; withMediaPlayer = true; };
+    package = pkgs.waybar.override { pulseSupport = true; };
     settings = [{
       gtk-layer-shell = true;
       layer = "top";
@@ -97,7 +97,7 @@
       * {
         border: none;
         border-radius: 0;
-        font-family: Iosevka, FontAwesome5Free;
+        font-family: Hack, FontAwesome5Free;
         font-size: 13px;
         min-height: 0;
       }
@@ -159,6 +159,6 @@
         background-color: #273747;
       }
     '';
-    systemd.enable = true;
+    systemd.enable = false;
   };
 }
