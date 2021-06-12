@@ -15,8 +15,9 @@
       ../../hardware/bluetooth.nix
       inputs.nixos-hardware.nixosModules.dell-xps-13-9343
 
-      ../../sway
-      ../../sway/trusted.nix
+      ../../graphical
+      ../../graphical/sway.nix
+      ../../graphical/trusted.nix
 
       ../../users/bbigras
     ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ])
@@ -236,7 +237,7 @@
         # ".cache/cargo/credentials"
         # ".config/dconf"
         # ".local/share/keyrings"
-        ".wall"
+        ".local/share/wall.png"
       ];
       allowOther = false;
     };

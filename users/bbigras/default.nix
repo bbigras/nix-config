@@ -29,12 +29,14 @@ with lib;
     }
     (mkIf config.programs.sway.enable {
       imports = [
-        ./sway
+        ./graphical
+        ./graphical/sway
       ];
     }
     )
     (mkIf config.services.xserver.desktopManager.gnome.enable {
       imports = [
+        ./graphical
         ./gnome.nix
       ];
     }
