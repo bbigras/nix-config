@@ -39,7 +39,7 @@
   services.flatpak.enable = true;
 
   services.ipfs = {
-    enable = true;
+    enable = false;
     gatewayAddress = "/ip4/127.0.0.1/tcp/8085";
   };
 
