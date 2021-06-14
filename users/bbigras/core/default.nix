@@ -40,7 +40,10 @@ in
     broot.enable = true;
     direnv = {
       enable = true;
-      enableNixDirenvIntegration = true;
+      nix-direnv = {
+        enable = true;
+        enableFlakes = true;
+      };
       stdlib = builtins.readFile ./direnv.cfg;
     };
     exa = {
