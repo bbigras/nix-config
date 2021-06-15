@@ -2,6 +2,8 @@
   description = "bbigras's NixOS config";
 
   inputs = {
+    nixpkgs.url = "nixpkgs/nixos-unstable";
+
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs = {
@@ -24,8 +26,6 @@
       url = "github:nmattia/naersk";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nixpkgs.url = "nixpkgs/nixos-unstable";
 
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
