@@ -6,9 +6,9 @@
 let
   inherit (nixpkgs.lib) pathExists optionalAttrs mapAttrs' nameValuePair;
   inherit (builtins) attrNames readDir;
-  inherit (inputs) nixpkgs impermanence home-manager sops-nix emacs-overlay nixpkgs-cdda-mods nur nix-matrix-pinecone;
+  inherit (inputs) nixpkgs impermanence home-manager sops-nix emacs-overlay nixpkgs-cdda-mods nur dendrite-demo-pinecone;
 
-  nix-matrix-pinecone2 = nix-matrix-pinecone.defaultPackage."${system}";
+  dendrite-demo-pinecone2 = dendrite-demo-pinecone.defaultPackage."${system}";
 
   config = {
     allowUnfree = true;
@@ -23,7 +23,7 @@ let
     nur.overlay
 
     (_self: _super: {
-      nix-matrix-pinecone = nix-matrix-pinecone2;
+      dendrite-demo-pinecone = dendrite-demo-pinecone2;
     })
   ];
 in

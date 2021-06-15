@@ -9,14 +9,14 @@
     60606 # matrix-pinecone ipv6 multicast
   ];
 
-  systemd.services."nix-matrix-pinecone" = {
+  systemd.services."dendrite-demo-pinecone" = {
     enable = true;
-    script = "${pkgs.nix-matrix-pinecone}/bin/dendrite-demo-pinecone -peer wss://pinecone.matrix.org/public -listen :5977";
+    script = "${pkgs.dendrite-demo-pinecone}/bin/dendrite-demo-pinecone -peer wss://pinecone.matrix.org/public -listen :5977";
 
     serviceConfig = {
       DynamicUser = true;
-      StateDirectory = "nix-matrix-pinecone";
-      WorkingDirectory = "%S/nix-matrix-pinecone";
+      StateDirectory = "dendrite-demo-pinecone";
+      WorkingDirectory = "%S/dendrite-demo-pinecone";
     };
 
     wantedBy = [ "multi-user.target" ];

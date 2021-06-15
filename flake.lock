@@ -16,9 +16,34 @@
         "type": "github"
       }
     },
+    "dendrite-demo-pinecone": {
+      "inputs": {
+        "dendrite": "dendrite",
+        "flake-compat": "flake-compat",
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1623774373,
+        "narHash": "sha256-ZKI7LM4VVAIOskZLFSak2hpde2wPOmoISbQEY461iHM=",
+        "owner": "bbigras",
+        "repo": "dendrite-demo-pinecone",
+        "rev": "b62fdf92edc4eb65c85555b93a0e3083cfbac637",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bbigras",
+        "repo": "dendrite-demo-pinecone",
+        "type": "github"
+      }
+    },
     "deploy-rs": {
       "inputs": {
-        "flake-compat": "flake-compat",
+        "flake-compat": "flake-compat_2",
         "naersk": [
           "naersk"
         ],
@@ -160,31 +185,6 @@
         "type": "github"
       }
     },
-    "nix-matrix-pinecone": {
-      "inputs": {
-        "dendrite": "dendrite",
-        "flake-compat": "flake-compat_2",
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1623766110,
-        "narHash": "sha256-rQyfgjwVUzxMsGNti0UICqxdOEjGp1t4JxbErP39gfY=",
-        "owner": "bbigras",
-        "repo": "nix-matrix-pinecone",
-        "rev": "9aa20dbb33a43f6c53099081681ceabf4b60c345",
-        "type": "github"
-      },
-      "original": {
-        "owner": "bbigras",
-        "repo": "nix-matrix-pinecone",
-        "type": "github"
-      }
-    },
     "nix-on-droid": {
       "inputs": {
         "flake-utils": [
@@ -295,13 +295,13 @@
     },
     "root": {
       "inputs": {
+        "dendrite-demo-pinecone": "dendrite-demo-pinecone",
         "deploy-rs": "deploy-rs",
         "emacs-overlay": "emacs-overlay",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "naersk": "naersk",
-        "nix-matrix-pinecone": "nix-matrix-pinecone",
         "nix-on-droid": "nix-on-droid",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",

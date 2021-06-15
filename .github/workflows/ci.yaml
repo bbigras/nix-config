@@ -53,7 +53,7 @@ jobs:
         with:
           name: bbigras-nix-config
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
-          extraPullNames: nix-community,nix-matrix-pinecone,mjlbach,pre-commit-hooks
+          extraPullNames: nix-community,dendrite-demo-pinecone,mjlbach,pre-commit-hooks
       - name: nix build
         run: |
           cachix watch-exec bbigras-nix-config nix -- run nixpkgs#nix-build-uncached -- \

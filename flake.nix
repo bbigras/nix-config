@@ -47,8 +47,8 @@
       flake = false;
     };
 
-    nix-matrix-pinecone = {
-      url = "github:bbigras/nix-matrix-pinecone";
+    dendrite-demo-pinecone = {
+      url = "github:bbigras/dendrite-demo-pinecone";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
