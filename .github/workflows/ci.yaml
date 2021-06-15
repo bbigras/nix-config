@@ -6,17 +6,39 @@ on:
       - try
       - flake-update
 jobs:
-  get-hosts:
+  lints:
+    name: Lint
     runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.get-hosts.outputs.matrix }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.3.4
         with:
           fetch-depth: 0
       - uses: cachix/install-nix-action@v13
         with:
-          install_url: https://nixos-nix-install-tests.cachix.org/serve/sp832rai317zyw7ikhlzv454zh9qr3dv/install
+          install_url: https://nixos-nix-install-tests.cachix.org/serve/ipa0c64h689jb4ys6hxsky2r8xpld0hv/install
+          install_options: '--tarball-url-prefix https://nixos-nix-install-tests.cachix.org/serve'
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+      - uses: cachix/cachix-action@v10
+        with:
+          name: bbigras-nix-config
+          signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
+      - name: lints
+        run: |
+          nix develop -c nixpkgs-fmt --check . || exit 1
+
+  get-hosts:
+    name: Get hosts
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.get-hosts.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v2.3.4
+        with:
+          fetch-depth: 0
+      - uses: cachix/install-nix-action@v13
+        with:
+          install_url: https://nixos-nix-install-tests.cachix.org/serve/ipa0c64h689jb4ys6hxsky2r8xpld0hv/install
           install_options: '--tarball-url-prefix https://nixos-nix-install-tests.cachix.org/serve'
           extra_nix_config: |
             experimental-features = nix-command flakes
@@ -29,18 +51,19 @@ jobs:
           echo "::set-output name=matrix::$(nix eval --json .#deploy.nodes | jq -c '{ host: keys }')"
 
   build-host:
+    name: Build ${{ matrix.host }}
     runs-on: ubuntu-latest
     needs: get-hosts
     strategy:
       fail-fast: false
       matrix: ${{ fromJson(needs.get-hosts.outputs.matrix) }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.3.4
         with:
           fetch-depth: 0
       - uses: cachix/install-nix-action@v13
         with:
-          install_url: https://nixos-nix-install-tests.cachix.org/serve/sp832rai317zyw7ikhlzv454zh9qr3dv/install
+          install_url: https://nixos-nix-install-tests.cachix.org/serve/ipa0c64h689jb4ys6hxsky2r8xpld0hv/install
           install_options: '--tarball-url-prefix https://nixos-nix-install-tests.cachix.org/serve'
           extra_nix_config: |
             experimental-features = nix-command flakes
@@ -48,7 +71,7 @@ jobs:
         with:
           name: bbigras-nix-config
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
-      - name: nix-build
+      - name: nix build
         run: |
           nix run nixpkgs#nix-build-uncached -- \
             -A hosts.${{ matrix.host }}
