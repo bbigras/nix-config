@@ -121,16 +121,6 @@ in
         #   src = pkgs.zsh-async;
         # }
         {
-          name = "powerlevel10k";
-          src = pkgs.zsh-powerlevel10k;
-          file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-        }
-        {
-          name = "powerlevel10k-config";
-          src = lib.cleanSource ./p10k-config;
-          file = "p10k.zsh";
-        }
-        {
           name = "zsh-you-should-use";
           src = pkgs.zsh-you-should-use;
         }
@@ -143,6 +133,10 @@ in
 
       initExtra = ''
         ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
+        if [[ "$TERM" != 'dumb' && -z "$INSIDE_EMACS" ]]; then
+          source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+          [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+        fi
       '';
 
       initExtraFirst = ''
