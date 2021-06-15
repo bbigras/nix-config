@@ -28,3 +28,15 @@ This is heavily based on https://github.com/lovesegfault/nix-config. Many files 
 Note that the license should include lovesegfault's copyright on many files. Not sure how to sort that yet.
 
 My emacs.nix is a copy of [rycee's](https://gitlab.com/rycee/configurations/-/commits/master/user/emacs.nix) with some of my changes. So he has some copyright claim on that file.
+
+## Build one host
+
+```sh
+nix build .#hosts.desktop --impure
+```
+
+## Deploy one host
+
+```sh
+deploy -s .#pixel2 -- --impure
+```
