@@ -37,6 +37,9 @@ jobs:
       fail-fast: false
       matrix: ${{ fromJson(needs.get-hosts.outputs.matrix) }}
     steps:
+      - name: "Make more space"
+        run: |
+          sudo rm -rf /opt /usr/local || true &
       - uses: actions/checkout@v2.3.4
         with:
           fetch-depth: 0
