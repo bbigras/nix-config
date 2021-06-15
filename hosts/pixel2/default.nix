@@ -116,6 +116,10 @@
         ripgrep
         tealdeer
         vault
+        kubernetes
+        kubernetes-helm
+        k9s
+        kubie
       ];
 
       fonts.fontconfig.enable = true;
