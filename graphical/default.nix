@@ -2,7 +2,6 @@
   imports = [
     ./boot-silent.nix
     ./fonts.nix
-    ./gnome.nix
   ];
 
   environment.systemPackages = with pkgs; [
