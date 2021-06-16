@@ -28,11 +28,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1623849828,
-        "narHash": "sha256-zyECjf2cLJ7WPyskZHglrocVS4WflyCB2m6ty2uLQz0=",
+        "lastModified": 1623868048,
+        "narHash": "sha256-d42jBt2wQ5FTZ2qhXhoG+8utM/SHVepvWrDTl5WI2l4=",
         "owner": "bbigras",
         "repo": "dendrite-demo-pinecone",
-        "rev": "e3a7f00bba4d1e25afb4cac4b8e450fd1ec52174",
+        "rev": "4e7d1185320cdc55a5270ae819fce4217bacb5bd",
         "type": "github"
       },
       "original": {
@@ -70,11 +70,11 @@
     },
     "emacs-overlay": {
       "locked": {
-        "lastModified": 1623835636,
-        "narHash": "sha256-EH83YC+EBrttCY0VK5SRETCsRuiHCjENqtGRlqrWKvE=",
+        "lastModified": 1623867986,
+        "narHash": "sha256-20fWJX5Nc3SOKXJSXCIu5b3Arzh82tsoDTTLBWcpAOU=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "09b557553d5d9d3a468670a4b0d30776de73107d",
+        "rev": "8827230e69c6091270392c2585dd8662abf25710",
         "type": "github"
       },
       "original": {
