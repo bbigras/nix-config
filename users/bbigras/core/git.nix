@@ -32,6 +32,7 @@
 
     extraConfig = {
       pull.ff = "only";
+      merge.conflictstyle = "diff3";
     };
   };
 }
