@@ -36,6 +36,13 @@
   # Backup etc files instead of failing to activate generation if a file already exists in /etc
   environment.etcBackupExtension = ".bak";
 
+  environment.etc = {
+    "tmp-sshd".text = ''
+      HostKey /data/data/com.termux.nix/files/home/ssh_host_ed25519_key
+      Port 8022
+    '';
+  };
+
   # Read the changelog before changing this value
   system.stateVersion = "20.09";
 
@@ -62,6 +69,7 @@
           shellAliases = {
             cat = "${pkgs.bat}/bin/bat";
             less = ''${pkgs.bat}/bin/bat --paging=always --pager "${pkgs.less}/bin/less -RF"'';
+            ssh-server = "${pkgs.openssh}/bin/sshd -dD -f /etc/tmp-sshd";
           };
         };
         bat.enable = true;
