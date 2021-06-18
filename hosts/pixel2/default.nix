@@ -65,6 +65,8 @@
         VAULT_ADDR = "http://100.118.252.12:8200";
       };
 
+      home.language.base = "fr_CA.UTF-8";
+
       # insert home-manager config
       programs = {
         aria2.enable = true;
