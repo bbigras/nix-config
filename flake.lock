@@ -28,16 +28,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1624074454,
-        "narHash": "sha256-wOlGDOXbFD2sg8ajgZ+Nje61CkEaWR5prSxET7UmBrg=",
+        "lastModified": 1624039719,
+        "narHash": "sha256-3olH52PuoeDkH5NbQRDkP1diDcJXU1vjPS8vmqz9dIY=",
         "owner": "bbigras",
         "repo": "dendrite-demo-pinecone",
-        "rev": "ec8a1952135e9b500cc008c5719973212557eeac",
+        "rev": "2e344f974f67c63f7383c3bd58e61ca5e2fd4b9c",
         "type": "github"
       },
       "original": {
         "owner": "bbigras",
         "repo": "dendrite-demo-pinecone",
+        "rev": "2e344f974f67c63f7383c3bd58e61ca5e2fd4b9c",
         "type": "github"
       }
     },

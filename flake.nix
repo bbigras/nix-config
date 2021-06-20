@@ -48,7 +48,7 @@
     };
 
     dendrite-demo-pinecone = {
-      url = "github:bbigras/dendrite-demo-pinecone";
+      url = "github:bbigras/dendrite-demo-pinecone/2e344f974f67c63f7383c3bd58e61ca5e2fd4b9c";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
