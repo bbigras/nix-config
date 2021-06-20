@@ -7,7 +7,6 @@
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs = {
-        naersk.follows = "naersk";
         nixpkgs.follows = "nixpkgs";
         utils.follows = "flake-utils";
       };
@@ -21,11 +20,6 @@
     };
 
     impermanence.url = "github:nix-community/impermanence";
-
-    naersk = {
-      url = "github:nmattia/naersk";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
