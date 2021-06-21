@@ -79,7 +79,7 @@
             cat = "${pkgs.bat}/bin/bat";
             less = ''${pkgs.bat}/bin/bat --paging=always --pager "${pkgs.less}/bin/less -RF"'';
             vault-login = "${pkgs.vault}/bin/vault login -method=oidc -path=/oidc-google";
-            vault-ssh = "${pkgs.vault}/bin/vault ssh -mount-point=ssh-client-signer -mode=ca -role=my-role";
+            vssh = "${pkgs.vault}/bin/vault ssh -mount-point=ssh-client-signer -mode=ca -role=my-role";
             ssh-server = "${pkgs.openssh}/bin/sshd -dD -f /etc/tmp-sshd";
           };
         };
