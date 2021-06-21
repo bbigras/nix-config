@@ -50,6 +50,9 @@
   #   nix-channel --add https://github.com/rycee/home-manager/archive/release-20.09.tar.gz home-manager
   #   nix-channel --update
   # you can configure home-manager in here like
+
+  home-manager.useGlobalPkgs = true;
+
   home-manager.config =
     { pkgs, ... }:
     {
