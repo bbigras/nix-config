@@ -107,6 +107,7 @@
           };
         };
         jq.enable = true;
+        htop.enable = true;
         mcfly.enable = true;
         ssh.enable = true;
         starship.enable = true;
