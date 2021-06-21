@@ -50,7 +50,7 @@
     };
 
     nix-on-droid = {
-      url = "github:t184256/nix-on-droid";
+      url = "github:t184256/nix-on-droid/df4173c9345bc7419f5f173b4f3bb38fd4a05d1c";
       inputs = {
         flake-utils.follows = "flake-utils";
         home-manager.follows = "home-manager";
