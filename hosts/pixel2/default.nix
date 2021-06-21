@@ -86,6 +86,10 @@
         };
         bat.enable = true;
         command-not-found.enable = true;
+        emacs = {
+          enable = true;
+          package = pkgs.emacs-nox;
+        };
         exa = {
           enable = true;
           enableAliases = true;
