@@ -33,6 +33,7 @@
     extraConfig = {
       pull.ff = "only";
       merge.conflictstyle = "diff3";
+      credential.helper = "${pkgs.gitAndTools.gitFull}/bin/git-credential-libsecret";
     };
   };
 }
