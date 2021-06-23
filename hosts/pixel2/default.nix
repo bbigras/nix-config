@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   build.arch = "aarch64";
-  # user.shell = "${pkgs.zsh}/bin/zsh";
+  user.shell = "${pkgs.zsh}/bin/zsh";
 
   user = {
     gid = 10202;
@@ -32,6 +32,7 @@
     zip
     unzip
     dnsutils
+    which
   ];
 
   # Backup etc files instead of failing to activate generation if a file already exists in /etc
@@ -60,6 +61,12 @@
       # Read the changelog before changing this value
       home.stateVersion = "20.09";
 
+      home.file.".zshenv".text = ''
+        typeset -U path cdpath fpath manpath
+        # Set PATH for both interactive and non-interactive shell
+        path+=($HOME/.nix-profile/bin /etc/profiles/per-user/$USER/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin)
+      '';
+
       imports = [ ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/pixel2.nix") then [ (builtins.getEnv "PWD" + "/secrets/pixel2.nix") ] else [ ]);
 
       # Use the same overlays as the system packages
@@ -74,16 +81,6 @@
       # insert home-manager config
       programs = {
         aria2.enable = true;
-        bash = {
-          enable = true;
-          shellAliases = {
-            cat = "${pkgs.bat}/bin/bat";
-            less = ''${pkgs.bat}/bin/bat --paging=always --pager "${pkgs.less}/bin/less -RF"'';
-            vault-login = "${pkgs.vault}/bin/vault login -method=oidc -path=/oidc-google";
-            vssh = "${pkgs.vault}/bin/vault ssh -mount-point=ssh-client-signer -mode=ca -role=my-role";
-            ssh-server = "${pkgs.openssh}/bin/sshd -dD -f /etc/tmp-sshd";
-          };
-        };
         bat.enable = true;
         command-not-found.enable = true;
         emacs = {
@@ -115,13 +112,99 @@
         htop.enable = true;
         mcfly.enable = true;
         ssh.enable = true;
-        starship.enable = true;
         tmux = {
           enable = true;
           tmuxp.enable = true;
           terminal = "screen-256color";
         };
         zoxide.enable = true;
+
+        zsh = {
+          enable = true;
+          enableAutosuggestions = true;
+          enableCompletion = true;
+          enableVteIntegration = true;
+          # dirHashes = {
+          #   docs = "$HOME/Documents";
+          #   vids = "$HOME/Videos";
+          #   dl = "$HOME/Downloads";
+          # };
+          plugins = [
+            {
+              name = "zsh-autosuggestions";
+              src = pkgs.zsh-autosuggestions;
+            }
+            {
+              name = "zsh-syntax-highlighting";
+              src = pkgs.zsh-syntax-highlighting;
+            }
+            {
+              name = "zsh-history-substring-search";
+              src = pkgs.zsh-history-substring-search;
+            }
+            {
+              name = "zsh-completions";
+              src = pkgs.zsh-completions;
+            }
+            {
+              name = "powerlevel10k-config";
+              src = lib.cleanSource ../../users/bbigras/core/p10k-config;
+              file = "p10k.zsh";
+            }
+            # {
+            #   name = "async";
+            #   src = pkgs.zsh-async;
+            # }
+            {
+              name = "zsh-you-should-use";
+              src = pkgs.zsh-you-should-use;
+            }
+          ];
+
+          shellAliases = {
+            cat = "${pkgs.bat}/bin/bat";
+            less = ''${pkgs.bat}/bin/bat --paging=always --pager "${pkgs.less}/bin/less -RF"'';
+            vault-login = "${pkgs.vault}/bin/vault login -method=oidc -path=/oidc-google";
+            vssh = "${pkgs.vault}/bin/vault ssh -mount-point=ssh-client-signer -mode=ca -role=my-role -private-key-path=~/.ssh/id_ed25519 -public-key-path=~/.ssh/id_ed25519.pub";
+            ssh-server = "${pkgs.openssh}/bin/sshd -dD -f /etc/tmp-sshd";
+          };
+
+          initExtra = ''
+            ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
+            if [[ "$TERM" != 'dumb' && -z "$INSIDE_EMACS" ]]; then
+              source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
+              [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+            fi
+          '';
+
+          initExtraFirst = ''
+            DIRSTACKSIZE=10
+            setopt   notify globdots correct cdablevars autolist
+            setopt   correctall autocd recexact longlistjobs
+            setopt   autoresume
+            setopt   rcquotes mailwarning
+            unsetopt bgnice
+            setopt   autopushd pushdminus pushdsilent pushdtohome pushdignoredups
+            setopt COMPLETE_IN_WORD    # Complete from both ends of a word.
+            setopt ALWAYS_TO_END       # Move cursor to the end of a completed word.
+            setopt AUTO_MENU           # Show completion menu on a successive tab press.
+            setopt AUTO_LIST           # Automatically list choices on ambiguous completion.
+            setopt EXTENDED_GLOB       # Needed for file modification glob modifiers with compinit
+            unsetopt AUTO_PARAM_SLASH    # If completed parameter is a directory, do not add a trailing slash.
+            unsetopt MENU_COMPLETE     # Do not autoselect the first completion entry.
+            unsetopt FLOW_CONTROL      # Disable start/stop characters in shell editor.
+          '';
+
+          localVariables = {
+            # This way, C-w deletes words (path elements)
+            WORDCHARS = "*?_-.[]~&;!#$%^(){}<>";
+
+            ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE = "fg=8";
+          };
+
+        };
+
+
       };
 
       home.packages = with pkgs; [
