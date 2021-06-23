@@ -28,17 +28,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1624039719,
-        "narHash": "sha256-3olH52PuoeDkH5NbQRDkP1diDcJXU1vjPS8vmqz9dIY=",
+        "lastModified": 1624484354,
+        "narHash": "sha256-RTTQzc+HvqsrzW4CSIRoz6P7ClTRwjQlTs7s0sDap6A=",
         "owner": "bbigras",
         "repo": "dendrite-demo-pinecone",
-        "rev": "2e344f974f67c63f7383c3bd58e61ca5e2fd4b9c",
+        "rev": "c42265141a183f5fd578eaa971a6cff5b4f0c111",
         "type": "github"
       },
       "original": {
         "owner": "bbigras",
         "repo": "dendrite-demo-pinecone",
-        "rev": "2e344f974f67c63f7383c3bd58e61ca5e2fd4b9c",
         "type": "github"
       }
     },
@@ -198,17 +197,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1624283888,
+        "lastModified": 1624482326,
         "narHash": "sha256-4FETieK86e2BFmWPr/EFJOIikLXCATuREDtJ3FIRc6I=",
         "owner": "t184256",
         "repo": "nix-on-droid",
-        "rev": "df4173c9345bc7419f5f173b4f3bb38fd4a05d1c",
+        "rev": "0ca6f890773758ad2a5929584d45801946e5619f",
         "type": "github"
       },
       "original": {
         "owner": "t184256",
         "repo": "nix-on-droid",
-        "rev": "df4173c9345bc7419f5f173b4f3bb38fd4a05d1c",
         "type": "github"
       }
     },

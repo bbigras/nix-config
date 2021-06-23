@@ -42,7 +42,7 @@
     };
 
     dendrite-demo-pinecone = {
-      url = "github:bbigras/dendrite-demo-pinecone/2e344f974f67c63f7383c3bd58e61ca5e2fd4b9c";
+      url = "github:bbigras/dendrite-demo-pinecone";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
@@ -50,7 +50,7 @@
     };
 
     nix-on-droid = {
-      url = "github:t184256/nix-on-droid/df4173c9345bc7419f5f173b4f3bb38fd4a05d1c";
+      url = "github:t184256/nix-on-droid";
       inputs = {
         flake-utils.follows = "flake-utils";
         home-manager.follows = "home-manager";
