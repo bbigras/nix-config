@@ -116,6 +116,11 @@ in
           name = "zsh-completions";
           src = pkgs.zsh-completions;
         }
+        {
+          name = "powerlevel10k-config";
+          src = lib.cleanSource ./p10k-config;
+          file = "p10k.zsh";
+        }
         # {
         #   name = "async";
         #   src = pkgs.zsh-async;
