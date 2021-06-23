@@ -1508,6 +1508,11 @@ in
         init = "(savehist-mode)";
       };
 
+      kubernetes = {
+        enable = true;
+        command = [ "kubernetes-overview" ];
+      };
+
       emacs = {
         enable = true;
         init = ''
