@@ -85,6 +85,5 @@ jobs:
           extraPullNames: nix-community,dendrite-demo-pinecone,mjlbach,pre-commit-hooks,nix-on-droid
       - name: nix build
         run: |
-          cachix watch-exec bbigras-nix-config nix -- run nixpkgs#nix-build-uncached -- \
-            --option system aarch64-linux --extra-platforms aarch64-linux \
+          cachix watch-exec bbigras-nix-config nix-build -- --option system aarch64-linux --extra-platforms aarch64-linux \
             -A hosts.pixel2
