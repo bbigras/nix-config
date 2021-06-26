@@ -68,8 +68,7 @@ jobs:
       - name: "Make more space"
         run: |
           sudo rm -rf /opt /usr/local || true &
-      - run: |
-          sudo apt -y install qemu-user-static
+      - uses: docker/setup-qemu-action@v1
       - uses: actions/checkout@v2.3.4
         with:
           fetch-depth: 0
@@ -87,4 +86,5 @@ jobs:
       - name: nix build
         run: |
           cachix watch-exec bbigras-nix-config nix -- run nixpkgs#nix-build-uncached -- \
+            --option system aarch64-linux --extra-platforms aarch64-linux \
             -A hosts.pixel2
