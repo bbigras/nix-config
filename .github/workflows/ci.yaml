@@ -27,7 +27,7 @@ jobs:
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
       - id: get-hosts
         run: |
-          echo "::set-output name=matrix::$(nix eval --json -f ./nix/hosts.nix | jq -c '{ host: keys }')"
+          echo "::set-output name=matrix::$(nix eval --json -f ./nix/hosts.nix | jq -c 'keys | . += ["pixel2"] | { host: . }')"
 
   build-host:
     name: Build ${{ matrix.host }}
@@ -40,35 +40,8 @@ jobs:
       - name: "Make more space"
         run: |
           sudo rm -rf /opt /usr/local || true &
-      - uses: actions/checkout@v2.3.4
-        with:
-          fetch-depth: 0
-      - uses: cachix/install-nix-action@v13
-        with:
-          install_url: https://nixos-nix-install-tests.cachix.org/serve/ipa0c64h689jb4ys6hxsky2r8xpld0hv/install
-          install_options: '--tarball-url-prefix https://nixos-nix-install-tests.cachix.org/serve'
-          extra_nix_config: |
-            experimental-features = nix-command flakes
-      - uses: cachix/cachix-action@v10
-        with:
-          name: bbigras-nix-config
-          signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
-          extraPullNames: nix-community,dendrite-demo-pinecone,mjlbach,pre-commit-hooks
-      - name: nix build
-        run: |
-          cachix watch-exec bbigras-nix-config nix -- run nixpkgs#nix-build-uncached -- \
-            -A hosts.${{ matrix.host }}
-
-  build-pixel2:
-    name: Build Pixel 2
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-    steps:
-      - name: "Make more space"
-        run: |
-          sudo rm -rf /opt /usr/local || true &
       - uses: docker/setup-qemu-action@v1
+        if: ${{ matrix.host == 'pixel2' }}
       - uses: actions/checkout@v2.3.4
         with:
           fetch-depth: 0
@@ -85,5 +58,7 @@ jobs:
           extraPullNames: nix-community,dendrite-demo-pinecone,mjlbach,pre-commit-hooks,nix-on-droid
       - name: nix build
         run: |
-          cachix watch-exec bbigras-nix-config nix-build -- --option system aarch64-linux --extra-platforms aarch64-linux \
-            -A hosts.pixel2
+          cachix watch-exec bbigras-nix-config nix -- run nixpkgs#nix-build-uncached \
+          -build-flags '--extra-platforms aarch64-linux' \
+          -- \
+            -A hosts.${{ matrix.host }}
