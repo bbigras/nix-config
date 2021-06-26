@@ -123,7 +123,6 @@
           enable = true;
           enableAutosuggestions = true;
           enableCompletion = true;
-          enableVteIntegration = true;
           # dirHashes = {
           #   docs = "$HOME/Documents";
           #   vids = "$HOME/Videos";
