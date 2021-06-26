@@ -59,6 +59,6 @@ jobs:
       - name: nix build
         run: |
           cachix watch-exec bbigras-nix-config nix -- run nixpkgs#nix-build-uncached \
-          -build-flags '--extra-platforms aarch64-linux' \
           -- \
+          -build-flags '--extra-platforms aarch64-linux' \
             -A hosts.${{ matrix.host }}
