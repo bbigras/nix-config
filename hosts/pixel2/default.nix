@@ -213,7 +213,7 @@
         fd
         # meslo-lgs-nf
         mosh
-        neofetch
+        (neofetch.override { x11Support = false; })
         oneshot
         pwgen
         #rage
