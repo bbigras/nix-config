@@ -227,6 +227,7 @@
         kubernetes-helm
         k9s
         kubie
+        kubectl
       ];
     };
 }
