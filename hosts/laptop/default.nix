@@ -30,8 +30,6 @@
   sops.secrets.restic-laptop-password.sopsFile = ./restic-laptop.yaml;
   sops.secrets.restic-laptop-creds.sopsFile = ./restic-laptop.yaml;
 
-  services.auto-cpufreq.enable = true;
-
   hardware.brillo.enable = true;
   # boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.kernel.sysctl = {
