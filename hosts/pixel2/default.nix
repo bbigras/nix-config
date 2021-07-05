@@ -228,8 +228,6 @@
         k9s
         kubie
       ];
-
-      fonts.fontconfig.enable = true;
     };
 }
 
