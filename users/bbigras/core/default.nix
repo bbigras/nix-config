@@ -11,6 +11,7 @@ in
   imports = [
     ./git.nix
     ./email.nix
+    ./xdg.nix
   ];
 
   systemd.user.services.node-red = {
