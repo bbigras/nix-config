@@ -265,7 +265,6 @@ in
       rage
       navi # cheat sheet
       sd # find & replace
-      pastel # color tool
       eva # calc
       bandwhich
       dogdns
