@@ -21,7 +21,7 @@
 
   environment = {
     pathsToLink = [ "/share/zsh" ];
-    systemPackages = with pkgs; [ ntfs3g ];
+    systemPackages = with pkgs; [ ntfs3g foot.terminfo ];
   };
 
   home-manager.useGlobalPkgs = true;
