@@ -1,5 +1,11 @@
 { pkgs, ... }:
 
+let
+  dummyConfig = pkgs.writeText "configuration.nix" ''
+    assert builtins.trace "This is a dummy config, use deploy-rs!" false;
+    { }
+  '';
+in
 {
   imports = [
     ./adb.nix
@@ -20,6 +26,7 @@
   # boot.extraModulePackages = [ config.boot.kernelPackages.exfat-nofuse ];
 
   environment = {
+    etc."nixos/configuration.nix".source = dummyConfig;
     pathsToLink = [ "/share/zsh" ];
     systemPackages = with pkgs; [ ntfs3g foot.terminfo ];
   };
