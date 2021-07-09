@@ -21,7 +21,7 @@ WIP
 - sway for 2 machines, gnome + paperwm for 1 machine not supporting sway
 - NTS (secure NTP) with chronyd
 - split-dns with systemd-resolved (might be set in my privates files)
-- tailscale and zerotier
+- tailscale
 
 This is heavily based on https://github.com/lovesegfault/nix-config. Many files were copied directly from that repo.
 

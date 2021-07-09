@@ -147,7 +147,6 @@ in
 
   environment.persistence."/persist" = {
     directories = [
-      "/var/lib/zerotier-one"
       "/var/lib/tailscale"
       "/var/lib/flatpak"
       "/var/lib/docker"

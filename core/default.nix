@@ -18,7 +18,6 @@ in
     ./sudo.nix
     ./systemd-resolved.nix
     ./tailscale.nix
-    ./zerotier.nix
     ./dendrite-demo-pinecone.nix
   ];
 

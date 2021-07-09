@@ -119,7 +119,6 @@
     directories = [
       "/var/lib/iwd"
       "/var/lib/tailscale"
-      "/var/lib/zerotier-one"
       "/var/log"
       "/var/lib/flatpak"
       "/var/lib/docker"

@@ -340,7 +340,6 @@ in
       obsidian
       cloudflared
       tmate
-      zerotierone
       josm
 
       # Go
