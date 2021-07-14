@@ -1,6 +1,5 @@
 { pkgs, ... }: {
   imports = [
-    ./greetd.nix
   ];
 
   programs.sway = {
