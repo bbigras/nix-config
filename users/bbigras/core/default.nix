@@ -284,9 +284,6 @@ in
       # pour Laptop
       powerstat
 
-      # dejavu_fonts
-      font-awesome
-
       # backup
       restic
       kopia
