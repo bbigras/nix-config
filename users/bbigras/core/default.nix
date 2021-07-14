@@ -343,6 +343,13 @@ in
       # Go
       go
       gopls
+
+      # kubernetes
+      k3s
+      k9s
+      kubectl
+      # istioctl
+      kubernetes-helm
     ];
   };
 
