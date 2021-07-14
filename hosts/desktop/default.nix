@@ -37,6 +37,7 @@ in
 
       ../../graphical
       ../../graphical/gnome.nix
+      ../../graphical/trusted.nix
 
       ../../users/bbigras
     ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ])
