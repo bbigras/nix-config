@@ -176,6 +176,7 @@ in
 
   services = {
     dropbox.enable = true;
+    kdeconnect.enable = true;
     spotifyd.enable = true;
     syncthing.enable = true;
   };
