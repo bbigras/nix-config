@@ -89,6 +89,7 @@ in
     };
     vscode.enable = true;
     zoxide.enable = true;
+    nushell.enable = true;
 
     zsh = {
       enable = true;

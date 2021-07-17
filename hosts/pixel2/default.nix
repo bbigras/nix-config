@@ -111,6 +111,7 @@
         jq.enable = true;
         htop.enable = true;
         mcfly.enable = true;
+        nushell.enable = true;
         ssh.enable = true;
         tmux = {
           enable = true;
