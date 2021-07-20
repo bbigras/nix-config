@@ -1,15 +1,17 @@
 restic-desktop-creds: ENC[AES256_GCM,data:7K9h4nBuGE6e97zVTcU5ZaL7eRMNM4JCApD/VTsuzKSSVs9NzEZMn2m2wRxwRm/TbFXnXI//fkoyvPDDBuNI1RNVJV9ldt22Z6Giu6fh2v4jhG0Xm0WVDqyTj91E/hR5ARfFaV5M,iv:BzBk4b8vvQ03afsxPh0Nx9bInwrZ37HiPKnzizCoFFE=,tag:lE7HCK1z7b9N2cALKC7pgQ==,type:str]
 restic-desktop-password: ENC[AES256_GCM,data:xAT8XyLuS140UPHY1OIi2t0H7yFu3vssnSIghWbuv0A=,iv:Y6noLetiUkYXJwFdbVL4MdEvYC0kvo174eWgW9gNumc=,tag:9fVQgqxtJhgm8FSuItcLag==,type:str]
+yggdrasil-conf: ENC[AES256_GCM,data:Pbyy+f6/MZbr6aNGT80JAQ/ve6BwkeNVyLm11onQfessxIZ6Eab9LN32XdHxzrMEKK9CqLrTj5iOsdMa1x5zFotZDPwMZXbFyBwON1RmXgeu6Adwmdy9Vjhjb+wyQmWdhFoLI8cWdewDqpwcsKd4aOWdBxkRBslqNkWzsd/b84OwjGX+h/mth0v771SEQlYw/owID4fv4VJi0GOE6ZIyupMizfLTIe3y3FwzRCaqVbfx+/r2Sh8mtFakrhy9FBtKKHo8OJp1R8woDWN5YU+gHVbfAzC6CTZthFLPNcBGUilihC6vYllNQ3AsSHJ7D773IJIQYtwAN1Oxxf70TCjUIXC2TswDawFPRsrna770vmJMBfA1t3YFUo2CL2dV9yjKQL4DmWDftJMs/1ITfUZV9CI4pRP+uxri0G6mmz7bPD/QX5jMGGT84LqbwIJCUChhscboWzM8jxZu19CNj4sESGM3+/Jc0Bz2IiPyxlC8ckFrHBhWDdyvV6h64HwoWnaCQ9aFmey5y/hiaFKKB9/GCwGls/SFYg7L6wyGKiPq+pf2cEkvAOgbgA6DzguBz6sHrxbA1KT9S5OHiPHlyh1JhileHbu2g4DuMnbYhW9JfUreTk67+DPgpSoRsqMZvmQxu9a+fuzQHQ8/CCzC6eCV0YAhY1LZMMEl51XyCoPyak8jbEA6CJSPFTdH9m7DbmVKpyk0lLPJketa/H4HdTnDqT4+S4qCyAA+zKoggBtaR9UUTx1x/fXDl0ckoQ3AY/GDf0JzmlK97K6sGZgEkyqmoTbImkSt/eI1GVlsOZBBRtW2ANGaP5VzM5O5Uv1E3KOQ6ZmP5D0FHjSb1aEYp6hO3DTgfU42RfYz8HQmZRsAG4YTGkMFgM5LaY36T6hJ38a3vZwYaGeA82R+phlCGZVk,iv:lUWFYDdb9P2HDK2ula1OXTdCQpfZUjIZyqaBAiLGVOI=,tag:XGuZS3AweYPlnFcQKVFO4A==,type:str]
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
-    lastmodified: '2020-12-15T16:55:59Z'
-    mac: ENC[AES256_GCM,data:ES2wXHNp4MyVIvIbzACxxmOy0bE/JcbygEPPss9Qmk9YvB1wqB7uF7J8+P2VVU8VfsUSOQC8VddEglX+s6tqSbXBOIE0R+Lo8akS+vrnp70qsQLOJUBGK2PySaRDhrKE6TH5eV6aO+abUp/6igw2KE4M43WgqegZMgWMVUhu9ZY=,iv:wUPGxO7hEgbZF1HJkuDmu6D1M5mJNL4THhQszL1jZMc=,tag:DtLEMghL9Z/sB92C0wn7eg==,type:str]
+    age: []
+    lastmodified: "2021-07-19T23:43:05Z"
+    mac: ENC[AES256_GCM,data:fFVTurt/R/m+AWNJyHLyZldecX7QL8aIr1b54r5VwReptdFgiY7/iPRKPNBGjR/l/ZUk8aazY4eF+y+UkbzVH09WXeQOwuRW5bAVQGXYASwPs66blcU+yytIvJZtnRxnYabJkoyKDv4ZPTMkaEOgUK8yTZD4FLUErbNznnTyxBU=,iv:hGqWRa+lYn83sd5IjpmnxN5XPKR8eWEZy07zZegNRSY=,tag:z2ebsK0VUIxy4UF8S+J9tw==,type:str]
     pgp:
-    -   created_at: '2020-12-15T15:19:48Z'
-        enc: |-
+        - created_at: "2020-12-15T15:19:48Z"
+          enc: |-
             -----BEGIN PGP MESSAGE-----
 
             wcFMA8H6RU5N2dv2ARAAK1sym0E+qgMxF265Xodf9W8BPpLQvroEHjrYDzuFo0vi
@@ -28,9 +30,9 @@ sops:
             yB0A
             =7G7Y
             -----END PGP MESSAGE-----
-        fp: 6C1E9EE5072B435ECBFB0C8545A837FF4235EEF3
-    -   created_at: '2020-12-15T15:19:48Z'
-        enc: |
+          fp: 6C1E9EE5072B435ECBFB0C8545A837FF4235EEF3
+        - created_at: "2020-12-15T15:19:48Z"
+          enc: |
             -----BEGIN PGP MESSAGE-----
 
             hQIMA+woFLwLq6JMARAAzAxb+hjrOCaOFglrbLeEnELMW2hKskDUpdHAe1zRcqRr
@@ -48,6 +50,6 @@ sops:
             u1BFiArlCHyQEh3XVR+0DqQCrloZtxgY3uzDSnafi59U
             =jE7z
             -----END PGP MESSAGE-----
-        fp: 044d18dc13bcddbbb441d6dfec2814bc0baba24c
+          fp: 044d18dc13bcddbbb441d6dfec2814bc0baba24c
     unencrypted_suffix: _unencrypted
-    version: 3.6.1
+    version: 3.7.1

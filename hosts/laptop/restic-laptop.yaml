@@ -1,15 +1,17 @@
 restic-laptop-creds: ENC[AES256_GCM,data:gkdV8MQQ/56l/whmxFMXisNRPm7PxzWbYsNIOHngZx6gZwTlQ7t3P7yEXDEXAqVkg5VVf4drontDzSHK0bYLdim91rP1UL0br50EzSWtwKgV/GuwKtpaY+MOp+6aN8QBz2/k5frE,iv:lL/UvzzSU4BTFWALt0V4Tpogxp90EpU7Igi9A3WwfV0=,tag:Alnxgoq4kfcDQIGYCMf9oA==,type:str]
 restic-laptop-password: ENC[AES256_GCM,data:YjtnGfiUj803fvSxSOFHfK+pbEsRfxZ2mu8GBs+k37A=,iv:JshlDId8UlDww7q3CBpIWa1dsBXC48Uwo0XDfCO07Xc=,tag:km69hDxtF8FR6kNFpzvsqA==,type:str]
+yggdrasil-conf: ENC[AES256_GCM,data:mtVnI/ILLtCtz9AkM/FGcepp83fvGBvN4XMazBORIYy6czOQCC+3ktZ+ZYa7QHNTXF8QXcnjDBKSh8iI0sfgXYBLsutQphCIC4+nD7WPP7I5q8K4XIIpyh8Unxsx/vrq0AStE1VDvlzUJb+fE02eB/aZ9g+XKElLE9DjsLi1s7KkeLw4IcZV+XKU8ld7FHwX6lD6jOwku1BhitrGUsT5IgvnKeT1CthVsZdzVtde23ex/ijiORKrvjKolnqN2P00zzzbsQC2XcYJ98fdqmln4zI7Njx5xi0XHpGnY6KvhdbQJJ3QSkYvpcCEgxHV99q6CXyiIduoo9zb3Er0yH69a748buhIZxe5nNtLvdVA8gWDmE21xTP53pd932FF7yO53sJvbW5BeP+pL2dbrZvhLDnXf5yIngvRqec208BxhJj6gVsJu3GlALiaV0PsREuvssH6TkwjD37kQ7lC5Ts1+oGvkXaGT1xNyPu80V2TFOyKWJ7naAWGaBDc4a3vBGNQTtlmkn1R/wYnISO7xhx7/qvwUPY3cayuIQZXol6jkKWJjBTLbT5A0XSCV8tmt0SNv/hiM511Df3SvESq42kD8f6/StKcIf5lwSnPscx32QB/xH7w3dewygKgtaZ0GKwON1+L1AiJcdkfL1K87fIHfNzcFj1M/fsAiMksLg5hF/Bx/ubFTzZzDvPtDgDxMvnqeAYzPfQbR0V+III758vMgwnMa5gXm26JXtCZXyqkPn9OFqsIc8Ud6E4lUnQuzLYXKZqG0dUkVJdE5PHtlBAaUVJ/wrn8TQ49Tq6mnIdsQJ+mkJa4fONoiiosbiR1fVVUm1GrVK1qGXxWWXRGebUHC2qQBWbSnKffvF1BOARSQK8mRhHnTZCxzviUnf75YgCPKA23iZhp5bbqolx9vaXk,iv:+Ycqf2l0hu7ilyULHCL9mNexxAywZFL/GTWkgnLtRmE=,tag:8mh/p9ENwDdHGIXNItcLKA==,type:str]
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
-    lastmodified: '2020-12-22T18:44:41Z'
-    mac: ENC[AES256_GCM,data:e+WpCKU3V/OzGjl7W+pJqFuxr5zMLunzli7oNCsG5IZJmlGaLK/cx8Jt9mw8dzaUvFtjheFuqbhUagJWgsOzoXvoFZD9eWwVxE5U8N6o420Ysv8BkDI8X36yhutYd39WFkV/i3nyWOVpFXugMzXUEbx814TEHF8OXkAzp19vZ6Y=,iv:J5S9R0UjmAL3TLL/RbY38tLOINBFMJG/W8uaZElREb8=,tag:kNKtQ/IDOOYHePXqWS1SnQ==,type:str]
+    age: []
+    lastmodified: "2021-07-20T00:15:06Z"
+    mac: ENC[AES256_GCM,data:bDDbjIXaQ5ZT5MuAlBySnh5IRDnAipWh2eoHPwcDKOvnGfJOgmjuctKpZoUp4cLxBfyt1Zgav9v0yq4BSUE6cFwFHtX4mtbvFWnknHdkRsOMPUGmptPzGN3h6fGcJnTaCOZAjFqKzXpeXVW4XDDch8RJmR+sEkqlWTjhq+Ngiq4=,iv:KozgpfuWjatIXHaMoabw1Bw7qwGTNXVLEVt46hTz+08=,tag:gwfsLAlJWSrosi2KBaPeWA==,type:str]
     pgp:
-    -   created_at: '2020-12-22T18:38:37Z'
-        enc: |
+        - created_at: "2020-12-22T18:38:37Z"
+          enc: |
             -----BEGIN PGP MESSAGE-----
 
             hQIMA+woFLwLq6JMAQ//S+fPTGoQk4dbNvyPOB+0VDg+PPsUGuExUyy+dXDM2vgi
@@ -27,9 +29,9 @@ sops:
             TQXia1QQTlQscK+OXNn/pQXmAArMukaTrBsRYb2pv1+h
             =Ciyt
             -----END PGP MESSAGE-----
-        fp: 044D18DC13BCDDBBB441D6DFEC2814BC0BABA24C
-    -   created_at: '2020-12-22T18:38:37Z'
-        enc: |
+          fp: 044D18DC13BCDDBBB441D6DFEC2814BC0BABA24C
+        - created_at: "2020-12-22T18:38:37Z"
+          enc: |
             -----BEGIN PGP MESSAGE-----
 
             hQIMA6HxiEwXaxLDARAAvgevZB9CMAB1SM5skzkkWVyi6dLuh2bovlLHd+AfvN31
@@ -47,9 +49,9 @@ sops:
             IBc67EPeUo6BeR2uwaVJytxdaeZ3RjZ5epyPFVcfib7h
             =L4Cv
             -----END PGP MESSAGE-----
-        fp: 044563484DE3F8A04EAB2FA2A1F1884C176B12C3
-    -   created_at: '2020-12-22T18:38:37Z'
-        enc: |
+          fp: 044563484DE3F8A04EAB2FA2A1F1884C176B12C3
+        - created_at: "2020-12-22T18:38:37Z"
+          enc: |
             -----BEGIN PGP MESSAGE-----
 
             hQIMA+rJu0Fv+WWHARAAw+u9BSSp+AaCcLFLMvmZk4FOnPuoVP+mLUrgzx48kWNf
@@ -67,9 +69,9 @@ sops:
             z3DHRlf16LZTMTln12g173uB5P4Xl8RHAw/M4y3O2vcP
             =q9OF
             -----END PGP MESSAGE-----
-        fp: 1D848BAC4D07E12426F76CE9EAC9BB416FF96587
-    -   created_at: '2020-12-22T18:38:37Z'
-        enc: |-
+          fp: 1D848BAC4D07E12426F76CE9EAC9BB416FF96587
+        - created_at: "2020-12-22T18:38:37Z"
+          enc: |-
             -----BEGIN PGP MESSAGE-----
 
             wcFMA8H6RU5N2dv2ARAAnW/DHmYdwNOcI5HpkrPChVyH5q9UaUUaEAJzpXmvMvdg
@@ -88,9 +90,9 @@ sops:
             x4IA
             =7fao
             -----END PGP MESSAGE-----
-        fp: 6C1E9EE5072B435ECBFB0C8545A837FF4235EEF3
-    -   created_at: '2020-12-22T18:38:37Z'
-        enc: |
+          fp: 6C1E9EE5072B435ECBFB0C8545A837FF4235EEF3
+        - created_at: "2020-12-22T18:38:37Z"
+          enc: |
             -----BEGIN PGP MESSAGE-----
 
             hQIMA+woFLwLq6JMAQ/+I4wmJnbqb9WK46cbFAA81w+yGt3F0p3c8XkNKM0fYex2
@@ -108,9 +110,9 @@ sops:
             L5zOxGFQlnYoKFeZ/3YZaUbN+7ONZ/oqPgXr5hHs6881
             =mtH8
             -----END PGP MESSAGE-----
-        fp: 044D18DC13BCDDBBB441D6DFEC2814BC0BABA24C
-    -   created_at: '2020-12-22T18:38:37Z'
-        enc: |
+          fp: 044D18DC13BCDDBBB441D6DFEC2814BC0BABA24C
+        - created_at: "2020-12-22T18:38:37Z"
+          enc: |
             -----BEGIN PGP MESSAGE-----
 
             hQIMA6HxiEwXaxLDARAAkb439KNNEHvFjSPkqpntMcjhc7htnVQz2KgksTArLEbL
@@ -128,9 +130,9 @@ sops:
             oCpmiaRe74FwNGT4xZBWAbU7qOkM6UE7qz8+ORpuyFdK
             =dv/r
             -----END PGP MESSAGE-----
-        fp: 044563484DE3F8A04EAB2FA2A1F1884C176B12C3
-    -   created_at: '2020-12-22T18:38:37Z'
-        enc: |
+          fp: 044563484DE3F8A04EAB2FA2A1F1884C176B12C3
+        - created_at: "2020-12-22T18:38:37Z"
+          enc: |
             -----BEGIN PGP MESSAGE-----
 
             hQIMA+rJu0Fv+WWHAQ/+MUOhA3F+LGIIxjeXWrWMzPN1B3b7ZA6mu/xmaUbrMbih
@@ -148,9 +150,9 @@ sops:
             BNIpHQl+Hm/sqNxLordZijd3eyuZuUZy/B8V6sxEElx/
             =tbIU
             -----END PGP MESSAGE-----
-        fp: 1D848BAC4D07E12426F76CE9EAC9BB416FF96587
-    -   created_at: '2020-12-22T18:38:37Z'
-        enc: |-
+          fp: 1D848BAC4D07E12426F76CE9EAC9BB416FF96587
+        - created_at: "2020-12-22T18:38:37Z"
+          enc: |-
             -----BEGIN PGP MESSAGE-----
 
             wcFMA8H6RU5N2dv2ARAAayz51hjFadG/R/fxBGtLarGtjzFPM+sW67qcWApOyW2W
@@ -169,6 +171,6 @@ sops:
             uDwA
             =EiKs
             -----END PGP MESSAGE-----
-        fp: 6C1E9EE5072B435ECBFB0C8545A837FF4235EEF3
+          fp: 6C1E9EE5072B435ECBFB0C8545A837FF4235EEF3
     unencrypted_suffix: _unencrypted
-    version: 3.6.1
+    version: 3.7.1

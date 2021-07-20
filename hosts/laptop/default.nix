@@ -29,6 +29,12 @@
 
   sops.secrets.restic-laptop-password.sopsFile = ./restic-laptop.yaml;
   sops.secrets.restic-laptop-creds.sopsFile = ./restic-laptop.yaml;
+  sops.secrets.yggdrasil-conf.sopsFile = ./restic-laptop.yaml;
+
+  services.yggdrasil = {
+    enable = true;
+    configFile = config.sops.secrets.yggdrasil-conf.path;
+  };
 
   hardware.brillo.enable = true;
   # boot.kernelPackages = pkgs.linuxPackages_zen;

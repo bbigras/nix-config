@@ -70,6 +70,12 @@ in
   sops.secrets = {
     restic-desktop-password.sopsFile = ./restic-desktop.yaml;
     restic-desktop-creds.sopsFile = ./restic-desktop.yaml;
+    yggdrasil-conf.sopsFile = ./restic-desktop.yaml;
+  };
+
+  services.yggdrasil = {
+    enable = true;
+    configFile = config.sops.secrets.yggdrasil-conf.path;
   };
 
   # hardware.enableRedistributableFirmware = true;
