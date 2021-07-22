@@ -273,7 +273,6 @@ in
       dogdns
 
       vault
-      awscli2
       terraform_0_14
 
       # Android
