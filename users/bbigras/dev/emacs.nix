@@ -1074,6 +1074,10 @@ in
         after = [ "lsp-mode" ];
       };
 
+      lsp-eslint = {
+        enable = true;
+      };
+
       expand-region = {
         enable = true;
         config = ''
