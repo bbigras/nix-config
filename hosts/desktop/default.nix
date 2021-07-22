@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, inputs, ... }:
+{ pkgs, config, inputs, ... }:
 let
   qemu-aarch64-static = pkgs.stdenv.mkDerivation {
     name = "qemu-aarch64-static";
