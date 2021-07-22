@@ -34,6 +34,10 @@
       pull.ff = "only";
       merge.conflictstyle = "diff3";
       credential.helper = "${pkgs.gitAndTools.gitFull}/bin/git-credential-libsecret";
+      diff.tool = "diffsitter";
+      difftool.prompt = false;
+      difftool.difftastic.cmd = "/home/bbigras/.cargo/bin/difftastic \"$LOCAL\" \"$REMOTE\"";
+      difftool.diffsitter.cmd = "/home/bbigras/.cargo/bin/diffsitter \"$LOCAL\" \"$REMOTE\"";
     };
   };
 }
