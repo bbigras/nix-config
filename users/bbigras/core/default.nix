@@ -340,6 +340,7 @@ in
       cloudflared
       tmate
       josm
+      ntp
 
       # Go
       go
