@@ -19,6 +19,7 @@ in
     ./systemd-resolved.nix
     ./tailscale.nix
     ./dendrite-demo-pinecone.nix
+    ./yggdrasil.nix
   ];
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;

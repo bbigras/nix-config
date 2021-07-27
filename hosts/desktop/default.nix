@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, config, inputs, ... }:
+{ pkgs, inputs, ... }:
 let
   qemu-aarch64-static = pkgs.stdenv.mkDerivation {
     name = "qemu-aarch64-static";
@@ -71,11 +71,6 @@ in
     restic-desktop-password.sopsFile = ./restic-desktop.yaml;
     restic-desktop-creds.sopsFile = ./restic-desktop.yaml;
     yggdrasil-conf.sopsFile = ./restic-desktop.yaml;
-  };
-
-  services.yggdrasil = {
-    enable = true;
-    configFile = config.sops.secrets.yggdrasil-conf.path;
   };
 
   # hardware.enableRedistributableFirmware = true;
