@@ -10,6 +10,9 @@ let
 
   dendrite-demo-pinecone2 = dendrite-demo-pinecone.defaultPackage."${system}";
 
+  pkgs = import nixpkgs { };
+  pkg-yggmail = pkgs.callPackage ../yggmail { };
+
   config = {
     allowUnfree = true;
     allowAliases = true;
@@ -25,6 +28,10 @@ let
 
     (_self: _super: {
       dendrite-demo-pinecone = dendrite-demo-pinecone2;
+    })
+
+    (_self: _super: {
+      yggmail = pkg-yggmail;
     })
   ];
 in
