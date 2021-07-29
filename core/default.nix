@@ -20,7 +20,6 @@ in
     ./tailscale.nix
     ./dendrite-demo-pinecone.nix
     ./yggdrasil.nix
-    ../yggmail/yggmail.nix
   ];
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
