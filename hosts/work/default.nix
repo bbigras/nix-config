@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, lib, ... }:
 
 {
   imports =
@@ -37,6 +37,8 @@
     enable = true;
     drivers = with pkgs; [ postscript-lexmark hplip ];
   };
+
+  services.yggdrasil.enable = lib.mkForce false;
 
   home-manager.users.bbigras = {
     wayland.windowManager.sway = {
