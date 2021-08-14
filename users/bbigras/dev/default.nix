@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ ... }: {
   imports = [
     # pkgs.nur.repos.rycee.hmModules.emacs-init
     ./emacs.nix
@@ -16,6 +16,5 @@
   programs.emacs = {
     enable = true;
     init.enable = true;
-    package = pkgs.emacsGcc;
   };
 }
