@@ -352,6 +352,8 @@ in
       kubectl
       # istioctl
       kubernetes-helm
+
+      nomad
     ];
   };
 
