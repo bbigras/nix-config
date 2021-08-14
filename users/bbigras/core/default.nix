@@ -180,6 +180,7 @@ in
     kdeconnect.enable = true;
     spotifyd.enable = true;
     syncthing.enable = true;
+    easyeffects.enable = true;
   };
 
   home = {
