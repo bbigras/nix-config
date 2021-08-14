@@ -553,22 +553,6 @@ in
         '';
       };
 
-      org-roam = {
-        enable = true;
-        after = [ "org" "org-element" "emacsql" ];
-        hook = [ "(after-init . org-roam-mode)" ];
-        config = ''
-          (setq org-roam-directory "~/Dropbox/org-mode/notes")
-        '';
-        bind = {
-          "C-c n l" = "org-roam";
-          "C-c n t" = "org-roam-dailies-find-today";
-          "C-c n f" = "org-roam-find-file";
-          "C-c n i" = "org-roam-insert";
-          "C-c n g" = "org-roam-graph";
-        };
-      };
-
       rainbow-mode = {
         enable = true;
         defer = 1;
