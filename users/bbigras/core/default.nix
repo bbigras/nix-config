@@ -367,6 +367,7 @@ in
       kubernetes-helm
 
       nomad
+      hyperspace-cli
     ];
   };
 
