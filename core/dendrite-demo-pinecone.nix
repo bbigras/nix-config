@@ -11,7 +11,7 @@
 
   systemd.services."dendrite-demo-pinecone" = {
     enable = true;
-    script = "${pkgs.dendrite-demo-pinecone}/bin/dendrite-demo-pinecone -peer wss://pinecone.matrix.org/public -listen :5977";
+    script = "${pkgs.dendrite-demo-pinecone}/bin/dendrite-demo-pinecone -peer ws://100.118.252.12:63998/ws -listen :5977";
 
     serviceConfig = {
       DynamicUser = true;
