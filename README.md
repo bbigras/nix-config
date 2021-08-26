@@ -19,7 +19,6 @@ WIP
   - emacs-pgtk-nativecomp-overlay
   - nixpkgs-cdda-mods
 - sway for 2 machines, gnome + paperwm for 1 machine not supporting sway
-- NTS (secure NTP) with chronyd
 - split-dns with systemd-resolved (might be set in my privates files)
 - tailscale
 

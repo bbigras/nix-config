@@ -9,7 +9,6 @@ in
 {
   imports = [
     ./adb.nix
-    ./chronyd.nix
     ./docker.nix
     ./nix.nix
     ./openssh.nix
@@ -63,6 +62,7 @@ in
 
   services = {
     fwupd.enable = true; # TODO: check if needed
+    timesyncd.enable = true;
   };
 
   users.mutableUsers = false;
