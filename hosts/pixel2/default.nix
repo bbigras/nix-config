@@ -229,6 +229,7 @@
         k9s
         kubie
         kubectl
+        nomad
       ];
     };
 }
