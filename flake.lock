@@ -66,6 +66,22 @@
         "type": "github"
       }
     },
+    "emacs-ement": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1629865301,
+        "narHash": "sha256-/udHVZTLPA5z3PnmsQhrV11L7Wxu2+9m/wqfZhKyWY4=",
+        "owner": "alphapapa",
+        "repo": "ement.el",
+        "rev": "c4fff828a5542a61e9fee961b0307e253b0508bc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alphapapa",
+        "repo": "ement.el",
+        "type": "github"
+      }
+    },
     "emacs-overlay": {
       "locked": {
         "lastModified": 1629912403,
@@ -78,6 +94,22 @@
       "original": {
         "owner": "nix-community",
         "repo": "emacs-overlay",
+        "type": "github"
+      }
+    },
+    "emacs-plz": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1629652573,
+        "narHash": "sha256-8kn9ax1AVF6f9iCTqvVeJZihs03pYAhLjUDooG/ubxY=",
+        "owner": "alphapapa",
+        "repo": "plz.el",
+        "rev": "7e456638a651bab3a814e3ea81742dd917509cbb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alphapapa",
+        "repo": "plz.el",
         "type": "github"
       }
     },
@@ -296,7 +328,9 @@
       "inputs": {
         "dendrite-demo-pinecone": "dendrite-demo-pinecone",
         "deploy-rs": "deploy-rs",
+        "emacs-ement": "emacs-ement",
         "emacs-overlay": "emacs-overlay",
+        "emacs-plz": "emacs-plz",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "impermanence": "impermanence",

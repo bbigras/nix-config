@@ -584,6 +584,22 @@ in
         package = "org";
       };
 
+      plz = {
+        enable = true;
+        config = ''
+          (setq plz-curl-program "${pkgs.curl}/bin/curl")
+        '';
+      };
+
+      ement = {
+        enable = true;
+        package = epkgs: pkgs.emacsPackages.ement;
+        config = ''
+          (require 'ement-room-list)
+          (add-hook 'ement-room-mode-hook (lambda () (setq show-trailing-whitespace nil)))
+        '';
+      };
+
       graphql-mode.enable = true;
 
       hydra = {

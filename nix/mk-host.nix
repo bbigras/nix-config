@@ -26,6 +26,30 @@ let
     (_self: _super: {
       dendrite-demo-pinecone = dendrite-demo-pinecone2;
     })
+
+    (self: super: {
+      emacsPackages = super.emacsPackages // {
+        plz = super.emacsPackages.trivialBuild {
+          pname = "plz";
+          version = "git";
+          src = inputs.emacs-plz;
+        };
+      };
+    })
+
+    (self: super: {
+      emacsPackages = super.emacsPackages // {
+        ement = super.emacsPackages.trivialBuild {
+          pname = "ement";
+          version = "git";
+          packageRequires = [
+            super.emacsPackages.plz
+            super.emacsPackages.ts
+          ];
+          src = inputs.emacs-ement;
+        };
+      };
+    })
   ];
 in
 nixpkgs.lib.nixosSystem {

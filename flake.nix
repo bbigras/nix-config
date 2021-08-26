@@ -41,6 +41,16 @@
       flake = false;
     };
 
+    emacs-plz = {
+      url = "github:alphapapa/plz.el";
+      flake = false;
+    };
+
+    emacs-ement = {
+      url = "github:alphapapa/ement.el";
+      flake = false;
+    };
+
     dendrite-demo-pinecone = {
       url = "github:bbigras/dendrite-demo-pinecone";
       inputs = {

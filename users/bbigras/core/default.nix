@@ -181,6 +181,20 @@ in
     spotifyd.enable = true;
     syncthing.enable = true;
     easyeffects.enable = true;
+    pantalaimon = {
+      enable = true;
+      settings = {
+        Default = {
+          # LogLevel = "Debug";
+          SSL = true;
+        };
+        local-matrix = {
+          Homeserver = "https://matrix.org";
+          ListenAddress = "127.0.0.1";
+          ListenPort = 8008;
+        };
+      };
+    };
   };
 
   home = {
