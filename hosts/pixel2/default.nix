@@ -230,6 +230,7 @@
         kubie
         kubectl
         nomad
+        hyperspace-cli
       ];
     };
 }
