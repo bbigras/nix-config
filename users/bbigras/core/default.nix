@@ -250,7 +250,6 @@ in
       # net
       croc
       webwormhole
-      ffsend
       qbittorrent
       # youtube-dl
       wireshark
