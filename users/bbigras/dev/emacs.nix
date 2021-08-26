@@ -399,6 +399,7 @@ in
 
       envrc = {
         enable = true;
+        command = [ "envrc-mode" ];
         after = [ "lsp-mode" "lsp-rust" ];
         config = ''
           (envrc-global-mode)
@@ -1726,6 +1727,10 @@ in
         command = [ "dired" "dired-jump" ];
         config = ''
           (put 'dired-find-alternate-file 'disabled nil)
+
+          ;; Be smart about choosing file targets.
+          (setq dired-dwim-target t)
+
           ;; Use the system trash can.
           (setq delete-by-moving-to-trash t)
           (setq dired-dwim-target t)
