@@ -368,6 +368,7 @@ in
 
       nomad
       hyperspace-cli
+      anytype
     ];
   };
 
