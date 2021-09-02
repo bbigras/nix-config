@@ -69,11 +69,11 @@
     "emacs-ement": {
       "flake": false,
       "locked": {
-        "lastModified": 1630194923,
-        "narHash": "sha256-hTbNZQgzKVyQrF5plD4tfShobfOFH8T0L5Y8y6PcD8Q=",
+        "lastModified": 1630542080,
+        "narHash": "sha256-iqMB0jyPL6PjiNSp228OcxUMlDTN/osZmn2jGcof3AY=",
         "owner": "alphapapa",
         "repo": "ement.el",
-        "rev": "8b56a0ddf049311457e557f0db285ff01237434e",
+        "rev": "b18a121a793e89ed745df5183b4147d43d6e330e",
         "type": "github"
       },
       "original": {
@@ -289,11 +289,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1630512189,
-        "narHash": "sha256-jjBzvbUQADo69ze8swK3kJR2nwkVRZZyXIuQEKFrsKI=",
+        "lastModified": 1630540353,
+        "narHash": "sha256-i1MjDEFZbHc5vPdT94csiu+0+zAAjcED9UDIOPmmDzg=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "b69dc26833f662998b1351f5ea3cc7f0cc278872",
+        "rev": "3303dab631dc1b98fec83e62c1fb96789a4866a4",
         "type": "github"
       },
       "original": {
