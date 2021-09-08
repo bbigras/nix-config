@@ -3,11 +3,11 @@
     "dendrite": {
       "flake": false,
       "locked": {
-        "lastModified": 1630079430,
-        "narHash": "sha256-Crbibbeg5KIdyTHpDAgFrTOyTrCqxIPfDqlfhpDUv8o=",
+        "lastModified": 1631023634,
+        "narHash": "sha256-9F8OGefn1B5sqCuX7gBOu+VI+Lp9coOR1P+l+o6y7zE=",
         "owner": "matrix-org",
         "repo": "dendrite",
-        "rev": "51b119107c972007f5a1bc626758a6229ece14db",
+        "rev": "7dc8fb1fe780888d5758bf665949e9e09d21e56a",
         "type": "github"
       },
       "original": {
@@ -28,11 +28,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1630088969,
-        "narHash": "sha256-onP/LhI+Qq5RAyTeK21q/XZt2RGvSw/vOw/vWUhnql8=",
+        "lastModified": 1631109390,
+        "narHash": "sha256-U/363sxw5UuhECGepOIxsfvIszQyfFfrVIUYjmLR7tU=",
         "owner": "bbigras",
         "repo": "dendrite-demo-pinecone",
-        "rev": "60a49145cd340fd26db978015c436dcc20b85ed1",
+        "rev": "7c4a434635f7476e91995865f42f5b172001b8f8",
         "type": "github"
       },
       "original": {
@@ -289,11 +289,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1631104394,
-        "narHash": "sha256-VfLZSxoj+TXbvwlqG7Ap8ejAOpZHiqIryFMOBbc6Jac=",
+        "lastModified": 1631120282,
+        "narHash": "sha256-E0J/0EZ0zFQLReO1GJMzZorKOpMeRlKRxySpJo1kduc=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "71c8aaf416fd7fd68e6037362950cc1bcdb72422",
+        "rev": "8a7141464440cb6bb80a27f4d3b4b96d3afb3ef9",
         "type": "github"
       },
       "original": {
