@@ -285,6 +285,17 @@ in
         config = "(load-theme 'base16-tomorrow-night t)";
       };
 
+      dogears = {
+        enable = true;
+        bind = {
+          "M-g d" = "dogears-go";
+          "M-g M-b" = "dogears-back";
+          "M-g M-f" = "dogears-forward";
+          "M-g M-d" = "dogears-list";
+          "M-g M-D" = "dogears-sidebar";
+        };
+      };
+
       browse-at-remote = {
         enable = true;
         bind = {
