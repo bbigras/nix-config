@@ -370,6 +370,9 @@ in
       hyperspace-cli
       anytype
       pueue
+
+      # perf
+      sysstat
     ];
   };
 
