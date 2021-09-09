@@ -200,7 +200,6 @@
         ".npm/_cacache/content-v2"
         ".gnupg/private-keys-v1.d"
         ".local/share/direnv"
-        ".local/share/flatpak"
         ".local/share/keyrings"
         ".local/share/remmina"
         ".local/share/zoxide"
