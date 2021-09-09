@@ -16,6 +16,6 @@
   programs.emacs = {
     enable = true;
     init.enable = true;
-    package = pkgs.emacsGcc;
+    package = pkgs.emacsPgtkGcc;
   };
 }
