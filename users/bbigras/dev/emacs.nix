@@ -341,6 +341,10 @@ in
         };
       };
 
+      svelte-mode = {
+        enable = true;
+      };
+
       prettier-js = {
         enable = true;
         after = [ "web-mode" ];
