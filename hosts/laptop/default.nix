@@ -247,6 +247,28 @@
     };
   };
 
+  services.btrbk = {
+    instances = {
+      home = {
+        onCalendar = "hourly";
+        settings = {
+          timestamp_format = "long";
+          snapshot_preserve = "48h";
+          snapshot_preserve_min = "18h";
+          volume = {
+            "/mnt/btr_pool" = {
+              subvolume = {
+                persist = {
+                  snapshot_create = "always";
+                };
+              };
+            };
+          };
+        };
+      };
+    };
+  };
+
   # Note `lib.mkBefore` is used instead of `lib.mkAfter` here.
   boot.initrd.postDeviceCommands = pkgs.lib.mkBefore ''
     mkdir -p /mnt

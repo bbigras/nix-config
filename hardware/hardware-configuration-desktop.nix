@@ -45,6 +45,17 @@
       neededForBoot = true;
     };
 
+  fileSystems."/mnt/btr_pool" =
+    {
+      device = "/dev/disk/by-uuid/407550f2-645a-41e6-9e35-ee3394f41e60";
+      fsType = "btrfs";
+      options = [
+        "subvolid=5"
+        # "compress=zstd"
+        "noatime"
+      ];
+    };
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/5E29-41EB";
       fsType = "vfat";

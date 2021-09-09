@@ -217,4 +217,26 @@ in
 
   services.espanso.enable = true;
   services.earlyoom.enable = true;
+
+  services.btrbk = {
+    instances = {
+      home = {
+        onCalendar = "hourly";
+        settings = {
+          timestamp_format = "long";
+          snapshot_preserve = "48h";
+          snapshot_preserve_min = "18h";
+          volume = {
+            "/mnt/btr_pool" = {
+              subvolume = {
+                home = {
+                  snapshot_create = "always";
+                };
+              };
+            };
+          };
+        };
+      };
+    };
+  };
 }

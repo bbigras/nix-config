@@ -33,6 +33,17 @@
       options = [ "subvol=persist" ];
     };
 
+  fileSystems."/mnt/btr_pool" =
+    {
+      device = "/dev/disk/by-uuid/8e2cf716-7b2f-4c87-a895-1ea6d84d5f65";
+      fsType = "btrfs";
+      options = [
+        "subvolid=5"
+        # "compress=zstd"
+        "noatime"
+      ];
+    };
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/5E57-78A0";
       fsType = "vfat";
