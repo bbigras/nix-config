@@ -147,6 +147,8 @@ in
   #   enableWebUI = true;
   # };
 
+  environment.systemPackages = with pkgs; [ linuxPackages_zen.bcc ];
+
   environment.persistence."/persist" = {
     directories = [
       "/var/lib/tailscale"

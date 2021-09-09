@@ -39,6 +39,8 @@
     # "vm.swappiness" = 1;
   };
 
+  environment.systemPackages = with pkgs; [ linuxPackages.bcc ];
+
   networking = {
     useNetworkd = true;
     dhcpcd.enable = false;
