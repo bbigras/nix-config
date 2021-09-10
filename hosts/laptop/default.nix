@@ -25,6 +25,7 @@
 
   environment.systemPackages = with pkgs; [
     iwd
+    linuxPackages.bcc
   ];
 
   sops.secrets.restic-laptop-password.sopsFile = ./restic-laptop.yaml;
@@ -38,8 +39,6 @@
     # "fs.inotify.max_user_watches" = 524288;
     # "vm.swappiness" = 1;
   };
-
-  environment.systemPackages = with pkgs; [ linuxPackages.bcc ];
 
   networking = {
     useNetworkd = true;
