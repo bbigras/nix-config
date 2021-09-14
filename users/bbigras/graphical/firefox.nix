@@ -77,6 +77,7 @@
           "privacy.donottrackheader.enabled" = true;
           "privacy.donottrackheader.value" = 1;
           "privacy.firstparty.isolate" = true;
+          # "privacy.resistFingerprinting" = true;
           # "signon.rememberSignons" = false;
           "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
           "widget.content.gtk-theme-override" = "Adwaita:light";
