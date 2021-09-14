@@ -57,7 +57,7 @@
           "experiments.activeExperiment" = false;
           "experiments.enabled" = false;
           "experiments.supported" = false;
-          "extensions.pocket.enabled" = false;
+          "extensions.pocket.enabled" = true;
           "fission.autostart" = true;
           "general.smoothScroll" = false;
           "geo.enabled" = false;
