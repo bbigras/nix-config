@@ -241,8 +241,6 @@ in
       tcpdump
       radicle-upstream
 
-      networkmanager_dmenu
-
       # net
       croc
       webwormhole
