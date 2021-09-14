@@ -248,7 +248,6 @@ in
       # youtube-dl
       wireshark
       dnsutils
-      element-desktop
       oneshot
       tailscale
       ht-rust
