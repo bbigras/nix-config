@@ -212,9 +212,6 @@ in
       socat
       websocat
 
-      # notes
-      joplin-desktop
-
       # media
       handbrake
       vlc
