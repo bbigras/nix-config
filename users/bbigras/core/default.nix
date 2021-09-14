@@ -87,7 +87,6 @@ in
       tmuxp.enable = true;
       terminal = "screen-256color";
     };
-    vscode.enable = true;
     zoxide.enable = true;
     nushell.enable = true;
 
