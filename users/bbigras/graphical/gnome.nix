@@ -20,6 +20,16 @@
     ];
   };
 
+  programs.mpv = {
+    enable = true;
+    config = {
+      profile = "gpu-hq";
+      # gpu-context = "wayland";
+      vo = "gpu";
+      hwdec = "auto";
+    };
+  };
+
   gtk = {
     enable = true;
     gtk2.extraConfig = "gtk-application-prefer-dark-theme = true";
