@@ -6,7 +6,7 @@
 let
   inherit (nixpkgs.lib) pathExists optionalAttrs mapAttrs' nameValuePair;
   inherit (builtins) attrNames readDir;
-  inherit (inputs) nixpkgs impermanence home-manager sops-nix emacs-overlay nixpkgs-cdda-mods nur dendrite-demo-pinecone;
+  inherit (inputs) nixpkgs impermanence home-manager sops-nix emacs-overlay nur dendrite-demo-pinecone;
 
   dendrite-demo-pinecone2 = dendrite-demo-pinecone.defaultPackage."${system}";
 
@@ -19,7 +19,6 @@ let
   overlays = map
     (f: import (./overlays + "/${f}"))
     (attrNames (optionalAttrs (pathExists ./overlays) (readDir ./overlays))) ++ [
-    (import "${nixpkgs-cdda-mods}")
     emacs-overlay.overlay
     nur.overlay
 

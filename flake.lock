@@ -271,22 +271,6 @@
         "type": "indirect"
       }
     },
-    "nixpkgs-cdda-mods": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1606936503,
-        "narHash": "sha256-AgHrXe8uLfgL80pM2ChAw+bKoFP3F7I4afbVWYLedLA=",
-        "owner": "mnacamura",
-        "repo": "nixpkgs-cdda-mods",
-        "rev": "3687304810023d17a8f31e6ffa76c5646f1e7dd8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mnacamura",
-        "repo": "nixpkgs-cdda-mods",
-        "type": "github"
-      }
-    },
     "nur": {
       "locked": {
         "lastModified": 1631986566,
@@ -337,7 +321,6 @@
         "nix-on-droid": "nix-on-droid",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-cdda-mods": "nixpkgs-cdda-mods",
         "nur": "nur",
         "pre-commit-hooks": "pre-commit-hooks",
         "sops-nix": "sops-nix"

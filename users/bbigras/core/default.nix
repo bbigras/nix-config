@@ -1,10 +1,5 @@
 { pkgs, lib, ... }:
 let
-  my_cdda = pkgs.cataclysm-dda.withMods (mods: with mods; [
-    tileset.UndeadPeople
-    soundpack.Otopack
-  ]);
-
   my_dwarf_fortress = pkgs.dwarf-fortress-packages.dwarf-fortress-full.override { theme = "vettlingr"; enableIntro = false; };
 in
 {
@@ -319,7 +314,6 @@ in
       cargo-udeps
 
       # games
-      my_cdda
       my_dwarf_fortress
 
       compsize

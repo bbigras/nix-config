@@ -36,11 +36,6 @@
     nur.url = "nur";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 
-    nixpkgs-cdda-mods = {
-      url = "github:mnacamura/nixpkgs-cdda-mods";
-      flake = false;
-    };
-
     emacs-plz = {
       url = "github:alphapapa/plz.el";
       flake = false;
