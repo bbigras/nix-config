@@ -218,7 +218,7 @@ in
       # lutris
 
       # twitch
-      streamlink
+      # streamlink
       chatterino2
 
       # comm
