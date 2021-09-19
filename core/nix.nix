@@ -10,7 +10,7 @@
     # };
     trustedUsers = [ "root" "@wheel" ];
 
-    package = pkgs.nixFlakes;
+    package = pkgs.nixUnstable;
     extraOptions = ''
       experimental-features = nix-command flakes ca-derivations ca-references
       keep-outputs = true
