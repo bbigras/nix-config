@@ -26,7 +26,7 @@ let
       dendrite-demo-pinecone = dendrite-demo-pinecone2;
     })
 
-    (self: super: {
+    (_self: super: {
       emacsPackages = super.emacsPackages // {
         plz = super.emacsPackages.trivialBuild {
           pname = "plz";
@@ -40,7 +40,7 @@ let
       };
     })
 
-    (self: super: {
+    (_self: super: {
       emacsPackages = super.emacsPackages // {
         defmacro-gensym = super.emacsPackages.trivialBuild {
           pname = "defmacro-gensym";
@@ -55,7 +55,7 @@ let
       };
     })
 
-    (self: super: {
+    (_self: super: {
       emacsPackages = super.emacsPackages // {
         ement-extras = super.emacsPackages.trivialBuild {
           pname = "ement-extras";
@@ -79,7 +79,7 @@ let
       };
     })
 
-    (self: super: {
+    (_self: super: {
       emacsPackages = super.emacsPackages // {
         ement = super.emacsPackages.trivialBuild {
           pname = "ement";

@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, config, ... }:
 let
   pcfg = config.programs.emacs.init.usePackage;
 in
@@ -609,7 +609,7 @@ in
 
       ement = {
         enable = true;
-        package = epkgs: pkgs.emacsPackages.ement;
+        package = _epkgs: pkgs.emacsPackages.ement;
         config = ''
           (require 'ement-room-list)
           (add-hook 'ement-room-mode-hook (lambda () (setq show-trailing-whitespace nil)))
@@ -619,7 +619,7 @@ in
 
       ement-extras = {
         enable = true;
-        package = epkgs: pkgs.emacsPackages.ement-extras;
+        package = _epkgs: pkgs.emacsPackages.ement-extras;
         after = [ "ement" ];
         # custom = ''
         #   (ement-extras-keep-user-id-history 'ement-extras-user-id-history)
