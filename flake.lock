@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "defmacro-gensym": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1630492056,
+        "narHash": "sha256-GQb623kK8GqRt2fCV/zLEZE/cwk/2O/VqplO/gX8fEM=",
+        "owner": "akater",
+        "repo": "defmacro-gensym",
+        "rev": "593ca165faf29ee479f0b53e948f72792ff63d2e",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "akater",
+        "repo": "defmacro-gensym",
+        "type": "gitlab"
+      }
+    },
     "dendrite": {
       "flake": false,
       "locked": {
@@ -80,6 +96,23 @@
         "owner": "alphapapa",
         "repo": "ement.el",
         "type": "github"
+      }
+    },
+    "emacs-ement-extras": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1631406733,
+        "narHash": "sha256-b2WYafuFIcjwob0BxpWSN8Qf5dHzLwjysvtiP0t9nRg=",
+        "owner": "akater",
+        "repo": "emacs-ement-extras",
+        "rev": "ceced08df0a8e7b07e78d6ef6fc3bd581c750eaf",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "akater",
+        "ref": "release",
+        "repo": "emacs-ement-extras",
+        "type": "gitlab"
       }
     },
     "emacs-overlay": {
@@ -310,9 +343,11 @@
     },
     "root": {
       "inputs": {
+        "defmacro-gensym": "defmacro-gensym",
         "dendrite-demo-pinecone": "dendrite-demo-pinecone",
         "deploy-rs": "deploy-rs",
         "emacs-ement": "emacs-ement",
+        "emacs-ement-extras": "emacs-ement-extras",
         "emacs-overlay": "emacs-overlay",
         "emacs-plz": "emacs-plz",
         "flake-utils": "flake-utils",

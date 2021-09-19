@@ -32,6 +32,49 @@ let
           pname = "plz";
           version = "git";
           src = inputs.emacs-plz;
+
+          postPatch = ''
+            substituteInPlace ./plz.el --replace 'plz-curl-program "curl"' 'plz-curl-program "${super.curl}/bin/curl"'
+          '';
+        };
+      };
+    })
+
+    (self: super: {
+      emacsPackages = super.emacsPackages // {
+        defmacro-gensym = super.emacsPackages.trivialBuild {
+          pname = "defmacro-gensym";
+          version = "git";
+          src = inputs.defmacro-gensym;
+          buildPhase = ''
+            runHook preBuild
+            make default
+            runHook postBuild
+          '';
+        };
+      };
+    })
+
+    (self: super: {
+      emacsPackages = super.emacsPackages // {
+        ement-extras = super.emacsPackages.trivialBuild {
+          pname = "ement-extras";
+          version = "git";
+          src = inputs.emacs-ement-extras;
+
+          packageRequires = [
+            super.emacsPackages.plz
+            super.emacsPackages.ement
+            super.emacsPackages.defmacro-gensym
+            #super.emacsPackages.ts
+          ];
+
+          buildPhase = ''
+            runHook preBuild
+            make all
+            rm *.el
+            runHook postBuild
+          '';
         };
       };
     })
@@ -44,6 +87,7 @@ let
           packageRequires = [
             super.emacsPackages.plz
             super.emacsPackages.ts
+            super.emacsPackages.cl-lib
           ];
           src = inputs.emacs-ement;
         };
