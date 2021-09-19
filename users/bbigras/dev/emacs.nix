@@ -585,6 +585,7 @@ in
         enable = true;
         config = ''
           (setq elcord-display-buffer-details nil)
+          (setq elcord-quiet t)
           (elcord-mode)
         '';
       };
