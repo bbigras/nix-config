@@ -353,7 +353,7 @@ in
       kubernetes-helm
 
       nomad
-      hyperspace-cli
+      #hyperspace-cli
       anytype
       pueue
 
