@@ -200,6 +200,7 @@
         ".gnupg/private-keys-v1.d"
         ".local/share/direnv"
         ".local/share/keyrings"
+        ".local/share/pantalaimon"
         ".local/share/remmina"
         ".local/share/zoxide"
         ".local/share/Steam"
