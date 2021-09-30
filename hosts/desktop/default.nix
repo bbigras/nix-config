@@ -67,6 +67,8 @@ in
     };
   };
 
+  powerManagement.cpuFreqGovernor = "performance";
+
   sops.secrets = {
     restic-desktop-password.sopsFile = ./restic-desktop.yaml;
     restic-desktop-creds.sopsFile = ./restic-desktop.yaml;
