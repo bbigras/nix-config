@@ -3,11 +3,11 @@
     "defmacro-gensym": {
       "flake": false,
       "locked": {
-        "lastModified": 1630492056,
-        "narHash": "sha256-GQb623kK8GqRt2fCV/zLEZE/cwk/2O/VqplO/gX8fEM=",
+        "lastModified": 1633097939,
+        "narHash": "sha256-Tgssw3o4SsHWzcQ1t+ODpcZSbnml8Rkk8rs70blcnlk=",
         "owner": "akater",
         "repo": "defmacro-gensym",
-        "rev": "593ca165faf29ee479f0b53e948f72792ff63d2e",
+        "rev": "b9cfc75ce0872db39a6d205cfd27669037ffd191",
         "type": "gitlab"
       },
       "original": {
@@ -284,11 +284,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1633086458,
-        "narHash": "sha256-NHccp42ZPYUSiFKTAWOjqTQv2q5mBz0GAeJKh5i5QJg=",
+        "lastModified": 1633114116,
+        "narHash": "sha256-D7hFje6qSrkcz/eL4pQeF8RItJrJ8+Sl5mIDMUTxj5Y=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "e514365e94d704bc64d25f9a43f0b4a402d062fb",
+        "rev": "04110b9b8ec46432d4e6618d0ec2f4d09a372dd2",
         "type": "github"
       },
       "original": {
