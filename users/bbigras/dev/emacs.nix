@@ -711,62 +711,44 @@ in
         hook = [ "(dired-mode . all-the-icons-dired-mode)" ];
       };
 
-      counsel.enable = true;
-
       consult = {
         enable = true;
         bind = {
-          "C-c h" = "consult-history";
-          "C-c m" = "consult-mode-command";
-          "C-c b" = "consult-bookmark";
-          "C-c k" = "consult-kmacro";
-          # C-x bindings (ctl-x-map);
-          "C-x M-:" = "consult-complex-command"; # orig. repeat-complex-command
-          "C-x b" = "consult-buffer"; # orig. switch-to-buffer
-          "C-x 4 b" = "consult-buffer-other-window"; # orig. switch-to-buffer-other-window
-          "C-x 5 b" = "consult-buffer-other-frame"; # orig. switch-to-buffer-other-frame
-          # Custom M-# bindings for fast register access
-          "M-#" = "consult-register-load";
-          "M-'" = "consult-register-store"; # orig. abbrev-prefix-mark (unrelated)
-          "C-M-#" = "consult-register";
-          # Other custom bindings
-          "M-y" = "consult-yank-pop"; # orig. yank-pop
-          "<help> a" = "consult-apropos"; # orig. apropos-command
-          # M-g bindings (goto-map)
-          "M-g e" = "consult-compile-error";
-          "M-g f" = "consult-flymake"; # Alternative: consult-flycheck
-          "M-g g" = "consult-goto-line"; # orig. goto-line
-          "M-g M-g" = "consult-goto-line"; # orig. goto-line
-          "M-g o" = "consult-outline";
-          "M-g m" = "consult-mark";
-          "M-g k" = "consult-global-mark";
-          "M-g i" = "consult-imenu";
-          "M-g I" = "consult-project-imenu";
-          # M-s bindings (search-map)
+          "C-s" = "consult-line";
+          "C-x b" = "consult-buffer";
+          "M-g M-g" = "consult-goto-line";
+          "M-g g" = "consult-goto-line";
           "M-s f" = "consult-find";
-          "M-s L" = "consult-locate";
-          # "M-s g" = "consult-grep";
-          "M-s G" = "consult-git-grep";
           "M-s r" = "consult-ripgrep";
-          "M-s l" = "consult-line";
-          "M-s m" = "consult-multi-occur";
-          "M-s k" = "consult-keep-lines";
-          "M-s u" = "consult-focus-lines";
-          # Isearch integration
-          "M-s e" = "consult-isearch";
-          # :map isearch-mode-map
-          #"M-e" = "consult-isearch";                 # orig. isearch-edit-string
-          #"M-s e" = "consult-isearch";               # orig. isearch-edit-string
-          #"M-s l" = "consult-line";                 # required by consult-line to detect isearch
+          "M-y" = "consult-yank-pop";
         };
-        init = ''
-          (fset 'multi-occur #'consult-multi-occur)
-        '';
         config = ''
-          (setq consult-narrow-key "<")
-
-          (autoload 'projectile-project-root "projectile")
           (setq consult-project-root-function #'projectile-project-root)
+
+          (defvar rah/consult-line-map
+            (let ((map (make-sparse-keymap)))
+              (define-key map "\C-s" #'vertico-next)
+              map))
+
+          (consult-customize
+            consult-line
+              :history t ;; disable history
+              :keymap rah/consult-line-map
+            consult-buffer consult-find consult-ripgrep
+              :preview-key (kbd "M-.")
+            consult-theme
+              :preview-key '(:debounce 1 any)
+          )
+        '';
+      };
+
+      consult-xref = {
+        enable = true;
+        after = [ "consult" "xref" ];
+        command = [ "consult-xref" ];
+        init = ''
+          (setq xref-show-definitions-function #'consult-xref
+                xref-show-xrefs-function #'consult-xref)
         '';
       };
 
@@ -1181,12 +1163,6 @@ in
           (unbind-key "C-c SPC" org-mode-map)
           (unbind-key "C-c w" org-mode-map)
 
-          (define-advice org-set-tags-command (:around (fn &rest args) my-counsel-tags)
-            "Forward to `counsel-org-tag' unless given non-nil arguments."
-            (if (remq nil args)
-                (apply fn args)
-              (counsel-org-tag)))
-
           (setq org-image-actual-width 400)
           (setq org-extend-today-until 4)
           (setq org-export-backends (quote (ascii html icalendar latex md odt)))
@@ -1433,7 +1409,7 @@ in
 
       vertico = {
         enable = true;
-        command = [ "vertico-mode" "vertico-next" ];
+        command = [ "vertico-mode" ];
         init = "(vertico-mode)";
         config = ''
           (setq vertico-cycle t)
@@ -1444,14 +1420,17 @@ in
         enable = true;
         init = ''
           (setq completion-styles '(orderless)
-                  completion-category-defaults nil
-                  completion-category-overrides '((file (styles . (partial-completion)))))
+                read-file-name-completion-ignore-case t)
         '';
       };
 
       savehist = {
         enable = true;
         init = "(savehist-mode)";
+        config = ''
+          (setq history-delete-duplicates t
+                history-length 100)
+        '';
       };
 
       kubernetes = {
