@@ -315,6 +315,7 @@ in
 
       # games
       my_dwarf_fortress
+      starsector
 
       compsize
 
