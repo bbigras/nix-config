@@ -912,6 +912,7 @@ in
         '';
         config = ''
           (setq marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light))
+          (define-key minibuffer-local-completion-map (kbd "M-A") #'marginalia-cycle)
         '';
       };
 
