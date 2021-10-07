@@ -896,8 +896,10 @@ in
         bind = {
           "M-A" = "marginalia-cycle";
         };
-        config = ''
+        init = ''
           (marginalia-mode)
+        '';
+        config = ''
           (setq marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light))
         '';
       };
