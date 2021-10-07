@@ -853,6 +853,17 @@ in
         '';
       };
 
+      consult-dir = {
+        enable = true;
+        bind = {
+          "C-x C-d" = "consult-dir";
+        };
+        config = ''
+          (define-key minibuffer-local-completion-map (kbd "C-x C-d") #'consult-dir)
+          (define-key minibuffer-local-completion-map (kbd "C-x C-j") #'consult-dir-jump-file)
+        '';
+      };
+
       consult-lsp = {
         enable = true;
         after = [ "lsp-mode" ];
