@@ -14,6 +14,7 @@ in
   programs.emacs.init = {
     enable = true;
     recommendedGcSettings = true;
+    packageQuickstart = false;
 
     earlyInit = ''
       ;; Disable some GUI distractions. We set these manually to avoid starting
@@ -30,6 +31,15 @@ in
                           :family "Fira Code Retina")
       (set-face-attribute 'fixed-pitch nil :font "Fira Code Retina" :height 100)
       (set-face-attribute 'variable-pitch nil :font "Cantarell" :height 150 :weight 'regular)
+
+      ;; Configure color theme and modeline in early init to avoid flashing
+      ;; during start.
+      (require 'base16-theme)
+      (load-theme 'base16-tomorrow-night t)
+
+      (require 'doom-modeline)
+      (setq doom-modeline-buffer-file-name-style 'truncate-except-project)
+      (doom-modeline-mode)
     '';
 
     prelude = ''
@@ -83,6 +93,9 @@ in
                                                           (abbreviate-file-name (buffer-file-name))
                                                         "%b"))))
 
+      ;; Make sure the mouse cursor is visible at all times.
+      (set-face-background 'mouse "#ffffff")
+
                       ;; Accept 'y' and 'n' rather than 'yes' and 'no'.
                       (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -109,9 +122,8 @@ in
                       ;; Trailing white space are banned!
                       (setq-default show-trailing-whitespace t)
 
-                      ;; Make a reasonable attempt at using one space sentence separation.
-                      (setq sentence-end "[.?!][]\"')}]*\\($\\|[ \t]\\)[ \t\n]*"
-                            sentence-end-double-space nil)
+                      ;; Use one space to end sentences.
+                      (setq sentence-end-double-space nil)
 
                       ;; I typically want to use UTF-8.
                       (prefer-coding-system 'utf-8)
@@ -214,7 +226,6 @@ in
     usePackage = {
       abbrev = {
         enable = true;
-        diminish = [ "abbrev-mode" ];
         command = [ "abbrev-mode" ];
       };
 
@@ -244,14 +255,12 @@ in
 
       autorevert = {
         enable = true;
-        diminish = [ "auto-revert-mode" ];
         command = [ "auto-revert-mode" ];
       };
 
       # back-button = {
       #   enable = true;
       #   defer = 1;
-      #   diminish = [ "back-button-mode" ];
       #   command = [ "back-button-mode" ];
       #   config = ''
       #     (back-button-mode 1)
@@ -263,7 +272,7 @@ in
 
       base16-theme = {
         enable = true;
-        config = "(load-theme 'base16-tomorrow-night t)";
+        extraConfig = ":disabled";
       };
 
       dogears = {
@@ -404,10 +413,7 @@ in
 
       doom-modeline = {
         enable = true;
-        hook = [ "(after-init . doom-modeline-mode)" ];
-        config = ''
-          (setq doom-modeline-buffer-file-name-style 'truncate-except-project)
-        '';
+        extraConfig = ":disabled";
       };
 
       drag-stuff = {
@@ -433,7 +439,6 @@ in
 
       eldoc = {
         enable = true;
-        diminish = [ "eldoc-mode" ];
         command = [ "eldoc-mode" ];
       };
 
@@ -463,7 +468,7 @@ in
         defer = 1;
         command = [ "gcmh-mode" ];
         config = ''
-          (setq gcmh-verbose t)
+          (setq gcmh-idle-delay 'auto)
           (gcmh-mode)
         '';
       };
@@ -662,7 +667,6 @@ in
       which-key = {
         enable = true;
         command = [ "which-key-mode" "which-key-add-major-mode-key-based-replacements" ];
-        diminish = [ "which-key-mode" ];
         defer = 3;
         config = "(which-key-mode)";
       };
@@ -817,16 +821,10 @@ in
 
       marginalia = {
         enable = true;
-        bind = {
-          "M-A" = "marginalia-cycle";
-        };
-        init = ''
-          (marginalia-mode)
-        '';
-        config = ''
-          (setq marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light))
-          (define-key minibuffer-local-completion-map (kbd "M-A") #'marginalia-cycle)
-        '';
+        command = [ "marginalia-mode" ];
+        after = [ "vertico" ];
+        defer = 1;
+        config = "(marginalia-mode)";
       };
 
       embark = {
@@ -927,7 +925,6 @@ in
       undo-tree = {
         enable = true;
         defer = 1;
-        diminish = [ "undo-tree-mode" ];
         command = [ "global-undo-tree-mode" ];
         config = ''
           (setq undo-tree-visualizer-relative-timestamps t
@@ -1370,7 +1367,6 @@ in
       yasnippet = {
         enable = true;
         defer = 3;
-        diminish = [ "yas-minor-mode" ];
         command = [ "yas-global-mode" "yas-minor-mode" "yas-expand-snippet" ];
         hook = [
           # Yasnippet interferes with tab completion in ansi-term.
@@ -1388,7 +1384,6 @@ in
       smartparens = {
         enable = true;
         defer = 3;
-        diminish = [ "smartparens-mode" ];
         command = [ "smartparens-global-mode" "show-smartparens-global-mode" ];
         bindLocal = {
           smartparens-mode-map = {
@@ -1414,7 +1409,6 @@ in
 
       flycheck = {
         enable = true;
-        diminish = [ "flycheck-mode" ];
         command = [ "global-flycheck-mode" ];
         defer = 1;
         bind = {
@@ -1439,9 +1433,10 @@ in
 
       vertico = {
         enable = true;
-        # init = "(vertico-mode)";
+        command = [ "vertico-mode" "vertico-next" ];
+        init = "(vertico-mode)";
         config = ''
-          (vertico-mode)
+          (setq vertico-cycle t)
         '';
       };
 
@@ -1509,9 +1504,30 @@ in
         '';
       };
 
+      popper = {
+        enable = true;
+        bind = {
+          "C-`" = "popper-toggle-latest";
+          "M-`" = "popper-cycle";
+          "C-M-`" = "popper-toggle-type";
+        };
+        command = [ "popper-mode" "popper-group-by-projectile" ];
+        config = ''
+          (setq popper-reference-buffers
+                  '("Output\\*$"
+                    "\\*Async Shell Command\\*"
+                    "\\*Buffer List\\*"
+                    "\\*Flycheck errors\\*"
+                    "\\*Messages\\*"
+                    compilation-mode
+                    help-mode)
+                popper-group-function #'popper-group-by-projectile)
+          (popper-mode)
+        '';
+      };
+
       projectile = {
         enable = true;
-        diminish = [ "projectile-mode" ];
         command = [ "projectile-mode" "projectile-project-root" ];
         bindKeyMap = {
           "C-c p" = "projectile-command-map";
@@ -1547,7 +1563,6 @@ in
 
       company = {
         enable = true;
-        diminish = [ "company-mode" ];
         command = [ "company-mode" "company-doc-buffer" "global-company-mode" ];
         defer = 1;
         extraConfig = ''
@@ -1587,7 +1602,9 @@ in
       company-dabbrev = {
         enable = true;
         after = [ "company" ];
-        command = [ "company-dabbrev" ];
+        bind = {
+          "C-M-/" = "company-dabbrev";
+        };
         config = ''
           (setq company-dabbrev-downcase nil
                 company-dabbrev-ignore-case t)
@@ -1722,6 +1739,11 @@ in
                 recentf-max-menu-items 20
                 recentf-max-saved-items 500
                 recentf-exclude '("COMMIT_MSG" "COMMIT_EDITMSG"))
+
+          ;; Save the file list every 10 minutes.
+          (run-at-time nil (* 10 60) 'recentf-save-list)
+
+          (recentf-mode)
         '';
       };
 
