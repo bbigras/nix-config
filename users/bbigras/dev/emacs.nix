@@ -1033,6 +1033,10 @@ in
         '';
       };
 
+      lsp-svelte = {
+        enable = true;
+      };
+
       # lsp-treemacs = {
       #   enable = true;
       #   after = [ "lsp-mode" "treemacs" ];
