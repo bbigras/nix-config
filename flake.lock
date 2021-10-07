@@ -100,11 +100,11 @@
     "emacs-ement-extras": {
       "flake": false,
       "locked": {
-        "lastModified": 1633383390,
-        "narHash": "sha256-7MY4jtkv825uz9vhXoV0vDtDFzib68uVjXeo2Aw63KA=",
+        "lastModified": 1633559977,
+        "narHash": "sha256-O8ZA6Hhw+w90XHHX4gIYzXuN2KqpxYPDksN3qPiKFAM=",
         "owner": "akater",
         "repo": "emacs-ement-extras",
-        "rev": "6db77c43b5dc3df871a7532848daf9faac53b4a0",
+        "rev": "0183edad38371b997dadd90a1516c98a788bb8d3",
         "type": "gitlab"
       },
       "original": {
@@ -284,11 +284,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1633541952,
-        "narHash": "sha256-tgw/0iUvLtfPPTn2jyAxiedcTKpCNWdOmmDsHjVuVzY=",
+        "lastModified": 1633567334,
+        "narHash": "sha256-EKOnXuKId080BTT6i27DdYwjAOmKswOONi9qgZG6w1c=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "d403bc2d03a622840a306b3cbb19a13b0edc9a1c",
+        "rev": "c95d7b37a3e3659d87ebf68d11926d3fa5b27529",
         "type": "github"
       },
       "original": {
