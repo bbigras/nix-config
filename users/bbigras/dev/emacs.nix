@@ -907,7 +907,8 @@ in
       embark = {
         enable = true;
         bind = {
-          "C-S-a" = "embark-act";
+          "C-." = "embark-act";
+          "C-;" = "embark-dwim";
           "C-h B" = "embark-bindings";
         };
         init = ''
