@@ -227,25 +227,6 @@ in
         '';
       };
 
-      adoc-mode = {
-        enable = true;
-        mode = [
-          ''"\\.txt\\'"''
-          ''"\\.adoc\\'"''
-        ];
-        hook = [
-          ''
-            (adoc-mode . (lambda ()
-                           (visual-line-mode)
-                           (visual-fill-column-mode)
-                           (variable-pitch-mode)))
-          ''
-        ];
-        config = ''
-          (set-face-background 'markup-verbatim-face nil)
-        '';
-      };
-
       # Save and restore frames and windows with their buffers in Emacs
       burly.enable = true;
 
@@ -386,19 +367,6 @@ in
         '';
       };
 
-      cc-mode = {
-        enable = true;
-        defer = true;
-        hook = [
-          ''
-            (c-mode-common . (lambda ()
-                               (subword-mode)
-
-                               (c-set-offset 'arglist-intro '++)))
-          ''
-        ];
-      };
-
       deadgrep = {
         enable = true;
         bind = {
@@ -485,13 +453,6 @@ in
         ];
       };
 
-      etags = {
-        enable = true;
-        defer = true;
-        # Avoid spamming reload requests of TAGS files.
-        config = "(setq tags-revert-without-query t)";
-      };
-
       fira-code-mode = {
         enable = true;
         hook = [ "prog-mode" ];
@@ -507,32 +468,7 @@ in
         '';
       };
 
-      ggtags = {
-        enable = true;
-        defer = true;
-        diminish = [ "ggtags-mode" ];
-        command = [ "ggtags-mode" ];
-      };
-
-      groovy-mode = {
-        enable = true;
-        mode = [
-          ''"\\.gradle\\'"''
-          ''"\\.groovy\\'"''
-          ''"Jenkinsfile\\'"''
-        ];
-      };
-
       hcl-mode.enable = true;
-
-      org-download = {
-        enable = true;
-        after = [ "org" ];
-        hook = [ "('dired-mode-hook 'org-download-enable)" ];
-        config = ''
-          (setq org-download-screenshot-method "xclip")
-        '';
-      };
 
       emacsql = {
         enable = true;
@@ -555,20 +491,6 @@ in
       #       '';
       #     };
 
-      deft = {
-        enable = true;
-        after = [ "org" ];
-        bind = {
-          "C-c n d" = "deft";
-        };
-        config = ''
-          (setq deft-recursive t)
-          (setq deft-use-filter-string-for-filename t)
-          (setq deft-default-extension "org")
-          (setq deft-directory "~/Dropbox/org-mode/notes/")
-        '';
-      };
-
       rainbow-mode = {
         enable = true;
         defer = 1;
@@ -579,15 +501,6 @@ in
          typescript-mode
          js2-mode)''
         ];
-      };
-
-      elcord = {
-        enable = true;
-        config = ''
-          (setq elcord-display-buffer-details nil)
-          (setq elcord-quiet t)
-          (elcord-mode)
-        '';
       };
 
       rainbow-delimiters = {
@@ -945,14 +858,6 @@ in
         ];
       };
 
-      nyan-mode = {
-        enable = true;
-        command = [ "nyan-mode" ];
-        config = ''
-          (setq nyan-wavy-trail t)
-        '';
-      };
-
       string-inflection = {
         enable = true;
         bind = {
@@ -1221,17 +1126,6 @@ in
       ripgrep = {
         enable = true;
         command = [ "ripgrep-regexp" ];
-      };
-
-      # html export
-      htmlize = {
-        enable = true;
-      };
-
-      org-web-tools = {
-        enable = true;
-        after = [ "org" ];
-        extraPackages = [ pkgs.pandoc ];
       };
 
       org = {
@@ -1709,15 +1603,6 @@ in
         '';
       };
 
-      company-cabal = {
-        enable = true;
-        after = [ "company" ];
-        command = [ "company-cabal" ];
-        config = ''
-          (add-to-list 'company-backends 'company-cabal)
-        '';
-      };
-
       company-restclient = {
         enable = true;
         after = [ "company" "restclient" ];
@@ -1730,12 +1615,6 @@ in
       protobuf-mode = {
         enable = true;
         mode = [ ''"'\\.proto\\'"'' ];
-      };
-
-      python = {
-        enable = true;
-        mode = [ ''("\\.py\\'" . python-mode)'' ];
-        hook = [ "ggtags-mode" ];
       };
 
       restclient = {
@@ -1753,11 +1632,6 @@ in
         bind = {
           "C-c f t" = "transpose-frame";
         };
-      };
-
-      tt-mode = {
-        enable = true;
-        mode = [ ''"\\.tt\\'"'' ];
       };
 
       smart-tabs-mode = {
