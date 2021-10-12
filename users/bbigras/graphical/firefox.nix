@@ -61,7 +61,7 @@
           "fission.autostart" = true;
           "general.smoothScroll" = false;
           "geo.enabled" = false;
-          "gfx.webrender.all" = true;
+          "gfx.webrender.all" = true; # for fission
           # "layout.css.devPixelsPerPx" = "1.5";
           # "layout.css.devPixelsPerPx"
           "media.navigator.enabled" = false;
