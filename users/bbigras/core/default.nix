@@ -273,6 +273,7 @@ in
       eva # calc
       bandwhich
       dogdns
+      btop
 
       vault
       terraform_0_14
