@@ -23,7 +23,6 @@
       imv
       # mbk
       # prusa-slicer
-      shotwell
       # signal-desktop
       # slack
       # spotify
