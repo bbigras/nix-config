@@ -1017,6 +1017,9 @@ in
         };
       };
 
+      sudo-edit.enable = true;
+      vlf.enable = true;
+
       embark-consult = {
         enable = true;
         after = [ "embark" "consult" ];
