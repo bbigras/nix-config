@@ -1120,6 +1120,8 @@ in
         command = [ "ripgrep-regexp" ];
       };
 
+      wgrep.enable = true;
+
       org = {
         enable = true;
         package = epkgs: epkgs.org-plus-contrib;
