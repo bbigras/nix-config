@@ -99,6 +99,10 @@
           }
         '';
       };
+      travail = {
+        isDefault = false;
+        id = 1;
+      };
     };
   };
 }
