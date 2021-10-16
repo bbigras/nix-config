@@ -764,6 +764,14 @@ in
         '';
       };
 
+      "0x0" = {
+        enable = true;
+        after = [ "embark" ];
+        config = ''
+          (define-key embark-region-map (kbd "U") '0x0-dwim)
+        '';
+      };
+
       consult-lsp = {
         enable = true;
         after = [ "lsp-mode" ];
