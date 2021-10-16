@@ -13,10 +13,6 @@
       gnomeExtensions.appindicator
       gnomeExtensions.caffeine
       gnomeExtensions.clipboard-indicator
-      gnomeExtensions.dash-to-dock
-      # gnomeExtensions.gsconnect # kde connect
-      gnomeExtensions.mpris-indicator-button
-      gnomeExtensions.paperwm
     ];
   };
 
