@@ -1711,6 +1711,15 @@ in
           (push "vendor" projectile-globally-ignored-directories)
           (push ".yarn" projectile-globally-ignored-directories)
           (push ".direnv" projectile-globally-ignored-directories)
+          (push "node_modules" projectile-globally-ignored-directories)
+          (push ".dropbox-hm" projectile-globally-ignored-directories)
+          (push ".cargo" projectile-globally-ignored-directories)
+          (push ".idea" projectile-globally-ignored-directories)
+          (push "~/" projectile-ignored-projects)
+
+          ;;(setq projectile-ignored-projects
+          ;;'("~/" "test"))
+
           (projectile-mode 1)
         '';
 
