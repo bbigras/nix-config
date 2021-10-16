@@ -13,8 +13,9 @@ in
 
   programs.emacs.init = {
     enable = true;
-    recommendedGcSettings = true;
     packageQuickstart = false;
+    recommendedGcSettings = true;
+    usePackageVerbose = false;
 
     earlyInit = ''
       ;; Disable some GUI distractions. We set these manually to avoid starting
