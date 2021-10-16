@@ -778,6 +778,10 @@ in
         '';
       };
 
+      consult-imenu = {
+        enable = true;
+      };
+
       consult-xref = {
         enable = true;
         after = [ "consult" "xref" ];
