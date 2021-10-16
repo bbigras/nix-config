@@ -874,7 +874,147 @@ in
                        '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
                          nil
                          (window-parameters (mode-line-format . none))))
+
+          (defun embark-magit-status (file)
+            "Run `magit-status` on repo containing the embark target."
+            (interactive "GFile: ")
+            (magit-status (locate-dominating-file file ".git")))
+
+          (defun embark-target-this-buffer-file ()
+            (cons 'this-buffer-file (or (buffer-file-name) (buffer-name))))
+
+          (add-to-list 'embark-target-finders #'embark-target-this-buffer-file 'append)
+
+          (add-to-list 'embark-keymap-alist '(this-buffer-file . this-buffer-file-map))
+
+          (embark-define-keymap this-buffer-file-map
+                "Commands to act on current file or buffer."
+                ("l" load-file)
+                ("b" byte-compile-file)
+                ("S" sudo-find-file)
+                ("r" rename-file-and-buffer)
+                ("d" diff-buffer-with-file)
+                ("=" ediff-buffers)
+                ("C-=" ediff-files)
+                ("!" shell-command)
+                ("&" async-shell-command)
+                ("x" consult-file-externally)
+                ("c" copy-file)
+                ("k" kill-buffer)
+                ("z" bury-buffer)
+                ("|" embark-shell-command-on-buffer)
+                ("g" revert-buffer))
+
+          ;; ------------------------------------------------------------
+
+          ; whichkey
+          (defun embark-which-key-indicator ()
+            "An embark indicator that displays keymaps using which-key.
+          The which-key help message will show the type and value of the
+          current target followed by an ellipsis if there are further
+          targets."
+            (lambda (&optional keymap targets prefix)
+              (if (null keymap)
+                  (which-key--hide-popup-ignore-command)
+                (which-key--show-keymap
+                 (if (eq (caar targets) 'embark-become)
+                     "Become"
+                   (format "Act on %s '%s'%s"
+                           (plist-get (car targets) :type)
+                           (embark--truncate-target (plist-get (car targets) :target))
+                           (if (cdr targets) "…" "")))
+                 (if prefix
+                     (pcase (lookup-key keymap prefix 'accept-default)
+                       ((and (pred keymapp) km) km)
+                       (_ (key-binding prefix 'accept-default)))
+                   keymap)
+                 nil nil t))))
+
+          (setq embark-indicators
+            '(embark-which-key-indicator
+              embark-highlight-indicator
+              embark-isearch-highlight-indicator))
+
+          ; Colorize the current Vertico candidate differently when acting
+          (defun embark-vertico-indicator ()
+            (let ((fr face-remapping-alist))
+              (lambda (&optional keymap _targets prefix)
+                (when (bound-and-true-p vertico--input)
+                  (setq-local face-remapping-alist
+                              (if keymap
+                                  (cons '(vertico-current . embark-target) fr)
+                                fr))))))
+
+          (add-to-list 'embark-indicators #'embark-vertico-indicator)
+
+          ; Automatically resizing auto-updating Embark Collect buffers to fit their contents
+          (add-hook 'embark-collect-post-revert-hook
+                    (defun resize-embark-collect-window (&rest _)
+                      (when (memq embark-collect--kind '(:live :completions))
+                        (fit-window-to-buffer (get-buffer-window)
+                                              (floor (frame-height) 2) 1))))
+
+          ; Switch between candidates and actions like in Helm
+          (defun with-minibuffer-keymap (keymap)
+            (lambda (fn &rest args)
+              (minibuffer-with-setup-hook
+                  (lambda ()
+                    (use-local-map
+                     (make-composed-keymap keymap (current-local-map))))
+                (apply fn args))))
+
+          (defvar embark-completing-read-prompter-map
+            (let ((map (make-sparse-keymap)))
+              (define-key map (kbd "<tab>") 'abort-recursive-edit)
+              map))
+
+          (advice-add 'embark-completing-read-prompter :around
+                      (with-minibuffer-keymap embark-completing-read-prompter-map))
+          (define-key vertico-map (kbd "<tab>") 'embark-act-with-completing-read)
+
+            (defun embark-act-with-completing-read (&optional arg)
+              (interactive "P")
+              (let* ((embark-prompter 'embark-completing-read-prompter)
+                     (act (propertize "Act" 'face 'highlight))
+                     (embark-indicator (lambda (_keymap targets) nil)))
+                (embark-act arg)))
+
+          ; Show the current Embark target types in the modeline
+          (defvar embark--target-mode-timer nil)
+          (defvar embark--target-mode-string "")
+
+          (defun embark--target-mode-update ()
+            (setq embark--target-mode-string
+                  (if-let (targets (embark--targets))
+                      (format "[%s%s] "
+                              (propertize (symbol-name (plist-get (car targets) :type)) 'face 'bold)
+                              (mapconcat (lambda (x) (format ", %s" (plist-get x :type)))
+                                         (cdr targets)
+                                         ""))
+                    "")))
+
+          (define-minor-mode embark-target-mode
+            "Shows the current targets in the modeline."
+            :global t
+            (setq mode-line-misc-info (assq-delete-all 'embark-target-mode mode-line-misc-info))
+            (when embark--target-mode-timer
+              (cancel-timer embark--target-mode-timer)
+              (setq embark--target-mode-timer nil))
+            (when embark-target-mode
+              (push '(embark-target-mode (:eval embark--target-mode-string)) mode-line-misc-info)
+              (setq embark--target-mode-timer
+                    (run-with-idle-timer 0.1 t #'embark--target-mode-update))))
         '';
+
+        bindLocal = {
+          minibuffer-local-completion-map = {
+            "M-o" = "embark-act";
+          };
+          embark-file-map = {
+            "s" = "sudo-edit";
+            "l" = "vlf";
+          };
+        };
       };
 
       embark-consult = {
