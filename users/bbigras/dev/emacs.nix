@@ -1426,9 +1426,6 @@ in
         enable = true;
         command = [ "vertico-mode" ];
         init = "(vertico-mode)";
-        config = ''
-          (setq vertico-cycle t)
-        '';
       };
 
       orderless = {
