@@ -1546,6 +1546,9 @@ in
 
       ace-window = {
         enable = true;
+        config = ''
+          (setq aw-dispatch-always t)
+        '';
         extraConfig = ''
           :bind* (("C-c w" . ace-window)
                   ("M-o" . ace-window))
