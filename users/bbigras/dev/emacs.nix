@@ -476,14 +476,6 @@ in
 
       hcl-mode.enable = true;
 
-      emacsql = {
-        enable = true;
-      };
-
-      emacsql-sqlite = {
-        enable = true;
-      };
-
       #     org-journal = {
       #       enable = true;
       #       bind = {
