@@ -732,6 +732,49 @@ in
             consult-theme
               :preview-key '(:debounce 1 any)
           )
+
+          (defvar consult--fd-command nil)
+          (defun consult--fd-builder (input)
+            (unless consult--fd-command
+              (setq consult--fd-command
+                    (if (eq 0 (call-process-shell-command "fdfind"))
+                        "fdfind"
+                      "fd")))
+            (pcase-let* ((`(,arg . ,opts) (consult--command-split input))
+                         (`(,re . ,hl) (funcall consult--regexp-compiler
+                                                arg 'extended)))
+              (when re
+                (list :command (append
+                                (list consult--fd-command
+                                      "--color=never" "--full-path"
+                                      (consult--join-regexps re 'extended))
+                                opts)
+                      :highlight hl))))
+
+          (defun consult-fd (&optional dir initial)
+            (interactive "P")
+            (let* ((prompt-dir (consult--directory-prompt "Fd" dir))
+                   (default-directory (cdr prompt-dir)))
+              (find-file (consult--find (car prompt-dir) #'consult--fd-builder initial))))
+
+          ;; Do not preview EXWM windows or Tramp buffers
+          ;; ---------------------------------------------------------------------------
+          (defun consult-buffer-state-no-tramp ()
+            "Buffer state function that doesn't preview Tramp buffers."
+            (let ((orig-state (consult--buffer-state))
+                  (filter (lambda (cand restore)
+                            (if (or restore
+                                    (let ((buffer (get-buffer cand)))
+                                      (and buffer
+                                           (not (file-remote-p (buffer-local-value 'default-directory buffer))))))
+                                cand
+                              nil))))
+              (lambda (cand restore)
+                (funcall orig-state (funcall filter cand restore) restore))))
+
+          (setq consult--source-buffer
+                (plist-put consult--source-buffer :state #'consult-buffer-state-no-tramp))
+          ;; ---------------------------------------------------------------------------
         '';
       };
 
