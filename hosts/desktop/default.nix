@@ -8,8 +8,8 @@ let
     name = "qemu-aarch64-static";
 
     src = builtins.fetchurl {
-      url = "https://github.com/multiarch/qemu-user-static/releases/download/v5.2.0-2/qemu-aarch64-static";
-      sha256 = "0v1c8nchf5s7db11spixp2gsp94018ig7nz2ha1f4bngr0bgbk92";
+      url = "https://github.com/multiarch/qemu-user-static/releases/download/v6.1.0-6/qemu-aarch64-static";
+      sha256 = "0c41s036iazrxn2ff86cvry51kj4fc0ygi7pway4z42ax0f46vm4";
     };
 
     dontUnpack = true;
