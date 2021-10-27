@@ -9,17 +9,6 @@ in
     ./xdg.nix
   ];
 
-  systemd.user.services.node-red = {
-    Unit = {
-      Description = "node-red";
-      After = [ "network.target" ];
-    };
-
-    Service = {
-      ExecStart = "${pkgs.nodePackages.node-red}/bin/node-red";
-    };
-  };
-
   programs = {
     alacritty = {
       enable = true;
