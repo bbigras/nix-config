@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, inputs, ... }:
+{ config, pkgs, inputs, ... }:
 let
   qemu-aarch64-static = pkgs.stdenv.mkDerivation {
     name = "qemu-aarch64-static";
@@ -28,7 +28,6 @@ in
       inputs.nixos-hardware.nixosModules.common-pc
       inputs.nixos-hardware.nixosModules.common-pc-ssd
       inputs.nixos-hardware.nixosModules.common-cpu-intel
-      inputs.nixos-hardware.nixosModules.common-gpu-nvidia
 
       ../../dev/qemu.nix
       ../../dev/virt-manager.nix
@@ -75,6 +74,9 @@ in
     yggdrasil-conf.sopsFile = ./restic-desktop.yaml;
   };
 
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
+
   # hardware.enableRedistributableFirmware = true;
   networking.hostName = "desktop"; # Define your hostname.
   networking.networkmanager.enable = false;
@@ -102,8 +104,6 @@ in
       };
     };
   };
-
-  hardware.nvidia.prime.offload.enable = false;
 
   services.xserver = {
     autorun = true;
