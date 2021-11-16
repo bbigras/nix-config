@@ -4,11 +4,17 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
+      flake = false;
+    };
+
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         utils.follows = "flake-utils";
+        flake-compat.follows = "flake-compat";
       };
     };
 
@@ -61,6 +67,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "flake-utils";
+        flake-compat.follows = "flake-compat";
       };
     };
 
