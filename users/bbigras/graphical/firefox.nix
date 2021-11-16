@@ -39,6 +39,8 @@
           # "browser.download.dir" = "${config.home.homeDirectory}/download";
           "browser.safebrowsing.appRepURL" = "";
           "browser.safebrowsing.malware.enabled" = false;
+          "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons" = false;
+          "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features" = false;
           "browser.newtabpage.activity-stream.showSponsored" = false;
           "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
 
