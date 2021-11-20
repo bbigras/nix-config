@@ -1,8 +1,8 @@
 { pkgs, ... }: {
   nix = {
     allowedUsers = [ "@wheel" ];
-    daemonIONiceLevel = 5;
-    daemonNiceLevel = 10;
+    daemonCPUSchedPolicy = "batch";
+    daemonIOSchedPriority = 5;
     # nrBuildUsers = config.nix.maxJobs * 2;
     # optimise = {
     #   automatic = true;
