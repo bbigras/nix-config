@@ -1,13 +1,18 @@
 { pkgs, inputs, lib, ... }:
 
+let
+  nurNoPkgs = import inputs.nur { pkgs = null; nurpkgs = pkgs; };
+in
 {
   imports =
     [
       ../../core
+      ../../dev
 
       # Include the results of the hardware scan.
       ../../hardware/hardware-configuration-work.nix
       ../../hardware/efi.nix
+      ../../hardware/sound-pipewire.nix
 
       inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
       inputs.nixos-hardware.nixosModules.common-cpu-intel
@@ -24,6 +29,13 @@
     "kernel.sysrq" = 1;
     # "fs.inotify.max_user_watches" = 524288;
     # "vm.swappiness" = 1;
+  };
+
+  home-manager.users.bbigras = {
+    imports = [
+      ../../users/bbigras/trusted
+      nurNoPkgs.repos.rycee.hmModules.emacs-init
+    ];
   };
 
   environment.systemPackages = with pkgs; [ linuxPackages_zen.bcc ];

@@ -1,6 +1,7 @@
 { pkgs, ... }: {
-  imports = [
-  ];
+  environment.sessionVariables = {
+    LIBSEAT_BACKEND = "logind";
+  };
 
   programs.sway = {
     enable = true;

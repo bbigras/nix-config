@@ -2,7 +2,7 @@
   fonts = {
     enableDefaultFonts = false;
     enableGhostscriptFonts = false;
-    fontDir.enable = true;
+    fontDir.enable = false;
     fontconfig = {
       defaultFonts = {
         sansSerif = [ "IBM Plex Sans" ];
@@ -38,8 +38,10 @@
     fonts = with pkgs; [
       (nerdfonts.override { fonts = [ "Hack" ]; })
       ibm-plex
+      noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
+      noto-fonts-extra
     ];
   };
 }

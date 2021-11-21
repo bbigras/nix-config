@@ -1,38 +1,55 @@
-{ deploy-rs
+{ self
+, deploy-rs
+, home-manager
+, impermanence
+, nixpkgs
+, ragenix
+, templates
+, sops-nix
 , ...
 }@inputs:
 let
-  inherit (builtins) elemAt mapAttrs;
+  inherit (nixpkgs.lib) mapAttrs' nameValuePair nixosSystem;
 
-  mkHost = name: system: import ./mk-host.nix { inherit inputs name system; };
+  genModules = hostName: system: [
+    # ragenix.nixosModules.age
+    impermanence.nixosModules.impermanence
+    home-manager.nixosModules.home-manager
+    sops-nix.nixosModules.sops
 
-  mkPath = name: system: deploy-rs.lib.${system}.activate.nixos (mkHost name system);
-  pixel2 = (inputs.nix-on-droid.lib.aarch64-linux.nix-on-droid { config = ../hosts/pixel2; }).activationPackage;
+    {
+      nixpkgs = {
+        localSystem.system = system;
+        inherit (self.nixpkgs.${system}) overlays config;
+      };
+
+      nix.registry = {
+        templates.flake = templates;
+        nixpkgs.flake = nixpkgs;
+      };
+
+      networking.hosts = mapAttrs' (n: v: nameValuePair v.address [ n ]) (import ./hosts.nix);
+    }
+
+    (../hosts + "/${hostName}")
+  ];
+
+  mkHost = hostName: system: nixpkgs.lib.nixosSystem {
+    modules = genModules hostName system;
+    specialArgs.inputs = inputs;
+  };
+
+  mkActivation = hostName: localSystem:
+    deploy-rs.lib.${localSystem}.activate.nixos (mkHost hostName localSystem);
 in
 {
-  deploy = {
-    autoRollback = true;
-    magicRollback = true;
-    user = "root";
-
-    nodes = (mapAttrs
-      (n: v: {
-        inherit (v) hostname;
-        profiles.system.path = mkPath n v.system;
-      })
-      (import ./hosts.nix)) //
-    {
-      pixel2 = {
-        hostname = "pixel2";
-
-        # to prevent using sudo
-        sshUser = "nix-on-droid";
-        user = "nix-on-droid";
-
-        profiles.nix-on-droid.path = deploy-rs.lib.aarch64-linux.activate.custom
-          pixel2
-          (pixel2 + "/activate");
-      };
-    };
-  };
+  autoRollback = true;
+  magicRollback = true;
+  user = "root";
+  nodes = builtins.mapAttrs
+    (host: info: {
+      hostname = info.address;
+      profiles.system.path = mkActivation host info.localSystem;
+    })
+    (import ./hosts.nix);
 }

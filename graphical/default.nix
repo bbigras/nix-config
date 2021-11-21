@@ -2,11 +2,12 @@
   imports = [
     ./boot-silent.nix
     ./fonts.nix
+    # ./greetd.nix
   ];
 
   environment.systemPackages = with pkgs; [
     adwaita-qt
-    gnome3.adwaita-icon-theme
+    gnome.adwaita-icon-theme
     hicolor-icon-theme
     qgnomeplatform
     qt5.qtwayland
@@ -25,20 +26,27 @@
       dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
   '';
 
-  # services.redshift = {
-  #   enable = true;
-  #   package = pkgs.redshift-wlr;
-  #   extraOptions = [ "-v" ];
-  # };
+  programs.dconf.enable = true;
+
+  services = {
+    dbus.packages = with pkgs; [ dconf ];
+    # redshift = {
+    #   enable = true;
+    #   package = pkgs.redshift-wlr;
+    #   extraOptions = [ "-v" ];
+    # };
+  };
 
   xdg = {
     autostart.enable = true;
     icons.enable = true;
     menus.enable = true;
     mime.enable = true;
-    portal = {
-      enable = true;
-      gtkUsePortal = true;
-    };
+    # portal = {
+    #   enable = true;
+    #   extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+    #   gtkUsePortal = true;
+    #   wlr.enable = true;
+    # };
   };
 }

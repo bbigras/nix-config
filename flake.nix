@@ -13,12 +13,12 @@
       url = "github:serokell/deploy-rs";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        utils.follows = "flake-utils";
+        utils.follows = "utils";
         flake-compat.follows = "flake-compat";
       };
     };
 
-    flake-utils.url = "github:numtide/flake-utils";
+    utils.url = "github:numtide/flake-utils";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -30,11 +30,17 @@
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
+      inputs.flake-utils.follows = "utils";
     };
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    ragenix = {
+      url = "github:yaxitech/ragenix";
+      inputs.flake-utils.follows = "utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -66,21 +72,46 @@
       url = "github:bbigras/dendrite-demo-pinecone";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
+        flake-utils.follows = "utils";
         flake-compat.follows = "flake-compat";
       };
     };
 
+    gitignore = {
+      url = "github:hercules-ci/gitignore.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    templates.url = "github:NixOS/templates";
+
     nix-on-droid = {
       url = "github:t184256/nix-on-droid";
       inputs = {
-        flake-utils.follows = "flake-utils";
+        flake-utils.follows = "utils";
         home-manager.follows = "home-manager";
         nixpkgs.follows = "nixpkgs";
       };
     };
   };
 
-  # FIXME: I can't η-reduce this for some reason
-  outputs = args: import ./nix/outputs.nix args;
+  outputs = { self, nixpkgs, utils, ... }@inputs:
+    {
+      deploy = import ./nix/deploy.nix inputs;
+      overlay = import ./nix/overlay.nix inputs;
+    }
+    // utils.lib.eachDefaultSystem (system: {
+      checks = import ./nix/checks.nix inputs system;
+
+      devShell = import ./nix/dev-shell.nix inputs system;
+
+      nixpkgs = import nixpkgs {
+        inherit system;
+        overlays = [ self.overlay ];
+        config.allowUnfree = true;
+      };
+
+      packages.hosts = import ./nix/join-host-drvs.nix inputs system;
+
+      defaultPackage = self.packages.${system}.hosts;
+    });
 }

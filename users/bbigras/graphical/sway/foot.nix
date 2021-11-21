@@ -6,11 +6,11 @@
         dpi-aware = "yes";
         font = "monospace:size=8, emoji";
         notify = "${pkgs.libnotify}/bin/notify-send -a foot -i foot \${title} \${body}";
-        term = "xterm-256color";
       };
       mouse.hide-when-typing = "yes";
       scrollback.lines = 32768;
       url.launch = "${pkgs.xdg-utils}/bin/xdg-open \${url}";
+      tweak.grapheme-shaping = "yes";
       colors = {
         foreground = "B3B1AD";
         background = "0A0E14";

@@ -4,15 +4,20 @@
 
 { pkgs, inputs, ... }:
 
+let
+  nurNoPkgs = import inputs.nur { pkgs = null; nurpkgs = pkgs; };
+in
 {
   imports =
     [
       ../../core
+      ../../dev
 
       # Include the results of the hardware scan.
       ../../hardware/hardware-configuration-laptop.nix
       ../../hardware/efi.nix
       ../../hardware/bluetooth.nix
+      ../../hardware/sound-pipewire.nix
       inputs.nixos-hardware.nixosModules.dell-xps-13-9343
 
       ../../graphical
@@ -50,12 +55,12 @@
     interfaces.eth0.useDHCP = true;
   };
 
-  xdg.portal = {
-    enable = true;
-    gtkUsePortal = true;
-    extraPortals = with pkgs;
-      [ xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
-  };
+  # xdg.portal = {
+  #   enable = true;
+  #   gtkUsePortal = true;
+  #   extraPortals = with pkgs;
+  #     [ xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
+  # };
 
   services.acpid = {
     enable = true;
@@ -145,7 +150,8 @@
 
   home-manager.users.bbigras = { ... }: {
     imports = [
-      "${inputs.impermanence}/home-manager.nix"
+      ../../users/bbigras/trusted
+      nurNoPkgs.repos.rycee.hmModules.emacs-init
     ];
 
     wayland.windowManager.sway = {

@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 let
   qemu-aarch64-static = pkgs.stdenv.mkDerivation {
     name = "qemu-aarch64-static";
@@ -15,11 +15,15 @@ let
     dontUnpack = true;
     installPhase = "install -D -m 0755 $src $out/bin/qemu-aarch64-static";
   };
+
+  nurNoPkgs = import inputs.nur { pkgs = null; nurpkgs = pkgs; };
 in
 {
   imports =
     [
       ../../core
+      ../../dev
+      ../../dev/virt-manager.nix
 
       # Include the results of the hardware scan.
       ../../hardware/hardware-configuration-desktop.nix
@@ -29,8 +33,8 @@ in
       inputs.nixos-hardware.nixosModules.common-pc-ssd
       inputs.nixos-hardware.nixosModules.common-cpu-intel
 
-      ../../dev/qemu.nix
-      ../../dev/virt-manager.nix
+      ../../hardware/sound-pipewire.nix
+      ../../hardware/nvidia.nix
 
       # ./aarch64.nix
 
@@ -39,10 +43,13 @@ in
       ../../graphical/trusted.nix
 
       ../../users/bbigras
+
+      ./hass-podman.nix
     ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ])
     ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/desktop.nix") then [ (builtins.getEnv "PWD" + "/secrets/desktop.nix") ] else [ ]);
 
   nix = {
+    systemFeatures = [ "benchmark" "nixos-test" "big-parallel" "kvm" ];
     extraOptions = ''
       extra-platforms = aarch64-linux i686-linux
       trusted-users = bbigras
@@ -66,6 +73,13 @@ in
     };
   };
 
+  home-manager.users.bbigras = {
+    imports = [
+      ../../users/bbigras/trusted
+      nurNoPkgs.repos.rycee.hmModules.emacs-init
+    ];
+  };
+
   powerManagement.cpuFreqGovernor = "performance";
 
   sops.secrets = {
@@ -73,9 +87,6 @@ in
     restic-desktop-creds.sopsFile = ./restic-desktop.yaml;
     yggdrasil-conf.sopsFile = ./restic-desktop.yaml;
   };
-
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
 
   # hardware.enableRedistributableFirmware = true;
   networking.hostName = "desktop"; # Define your hostname.

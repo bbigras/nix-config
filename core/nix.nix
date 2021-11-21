@@ -1,22 +1,6 @@
-{ pkgs, ... }: {
+{ config, ... }: {
   nix = {
     allowedUsers = [ "@wheel" ];
-    daemonCPUSchedPolicy = "batch";
-    daemonIOSchedPriority = 5;
-    # nrBuildUsers = config.nix.maxJobs * 2;
-    # optimise = {
-    #   automatic = true;
-    #   dates = [ "01:10" "12:10" ];
-    # };
-    trustedUsers = [ "root" "@wheel" ];
-
-    package = pkgs.nixUnstable;
-    extraOptions = ''
-      experimental-features = nix-command flakes ca-derivations ca-references
-      keep-outputs = true
-      keep-derivations = true
-    '';
-
     binaryCaches = [
       "https://nix-community.cachix.org"
       "https://dendrite-demo-pinecone.cachix.org"
@@ -37,5 +21,20 @@
       "cache.ngi0.nixos.org-1:KqH5CBLNSyX184S9BKZJo1LxrxJ9ltnY2uAs5c/f1MA="
       "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU="
     ];
+    daemonCPUSchedPolicy = "batch";
+    daemonIOSchedPriority = 5;
+    distributedBuilds = true;
+    extraOptions = ''
+      builders-use-substitutes = true
+      experimental-features = nix-command flakes recursive-nix
+      flake-registry = /etc/nix/registry.json
+    '';
+    # nrBuildUsers = config.nix.maxJobs * 2;
+    optimise = {
+      automatic = false;
+      dates = [ "03:00" ];
+    };
+    systemFeatures = [ "recursive-nix" ];
+    trustedUsers = [ "root" "@wheel" ];
   };
 }
