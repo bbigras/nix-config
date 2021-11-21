@@ -39,7 +39,7 @@ in
 
     home-manager.useGlobalPkgs = true;
     home-manager.users.bbigras = { pkgs, ... }: {
-      imports = [ ./users/bbigras/dev/emacs.nix ];
+      # imports = [ ./users/bbigras/dev/emacs.nix ];
 
       programs.emacs = {
         enable = true;

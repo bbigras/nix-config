@@ -1,187 +1,19 @@
-{ pkgs, lib, ... }:
-let
-  my_dwarf_fortress = pkgs.dwarf-fortress-packages.dwarf-fortress-full.override { theme = "vettlingr"; enableIntro = false; };
-in
-{
+{ pkgs, ... }: {
   imports = [
+    ./btop.nix
     ./git.nix
-    ./email.nix
+    ./htop.nix
+    ./emacs.nix
+    ./tmux.nix
     ./xdg.nix
+    ./zsh.nix
   ];
 
-  programs = {
-    alacritty = {
-      enable = true;
-      settings = {
-        env = {
-          TERM = "xterm-256color";
-        };
-        font.normal.family = lib.mkDefault "MesloLGS NF";
-      };
-    };
-
-    aria2.enable = true;
-    bat.enable = true;
-    broot.enable = true;
-    direnv = {
-      enable = true;
-      nix-direnv = {
-        enable = true;
-      };
-      stdlib = builtins.readFile ./direnv.cfg;
-    };
-    exa = {
-      enable = true;
-      enableAliases = true;
-    };
-    htop.enable = true;
-    jq.enable = true;
-    mcfly.enable = true;
-    nix-index.enable = true;
-    pet = {
-      enable = true;
-      snippets = [
-        {
-          command = "curl ifconfig.co";
-          description = "get my public ip";
-          output = "127.0.0.1";
-        }
-        {
-          command = "echo | openssl s_client -connect example.com:443 2>/dev/null |openssl x509 -dates -noout";
-          description = "Show expiration date of SSL certificate";
-        }
-      ];
-    };
-
-    ssh = {
-      enable = true;
-      controlMaster = "auto";
-      controlPersist = "10m";
-      hashKnownHosts = true;
-
-      extraOptionOverrides = {
-        AddKeysToAgent = "confirm";
-        VerifyHostKeyDNS = "ask";
-      };
-    };
-
-    tmux = {
-      enable = true;
-      tmuxp.enable = true;
-      terminal = "screen-256color";
-    };
-    zoxide.enable = true;
-    nushell.enable = true;
-
-    zsh = {
-      enable = true;
-      enableAutosuggestions = true;
-      enableCompletion = true;
-      enableVteIntegration = true;
-      # dirHashes = {
-      #   docs = "$HOME/Documents";
-      #   vids = "$HOME/Videos";
-      #   dl = "$HOME/Downloads";
-      # };
-      plugins = [
-        {
-          name = "zsh-autosuggestions";
-          src = pkgs.zsh-autosuggestions;
-        }
-        {
-          name = "zsh-syntax-highlighting";
-          src = pkgs.zsh-syntax-highlighting;
-        }
-        {
-          name = "zsh-history-substring-search";
-          src = pkgs.zsh-history-substring-search;
-        }
-        {
-          name = "zsh-completions";
-          src = pkgs.zsh-completions;
-        }
-        {
-          name = "powerlevel10k-config";
-          src = lib.cleanSource ./p10k-config;
-          file = "p10k.zsh";
-        }
-        # {
-        #   name = "async";
-        #   src = pkgs.zsh-async;
-        # }
-        {
-          name = "zsh-you-should-use";
-          src = pkgs.zsh-you-should-use;
-        }
-      ];
-
-      shellAliases = {
-        cat = "${pkgs.bat}/bin/bat";
-        less = ''${pkgs.bat}/bin/bat --paging=always --pager "${pkgs.less}/bin/less -RF"'';
-      };
-
-      initExtra = ''
-        ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
-        if [[ "$TERM" != 'dumb' && -z "$INSIDE_EMACS" ]]; then
-          source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-          [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-        fi
-      '';
-
-      initExtraFirst = ''
-        DIRSTACKSIZE=10
-        setopt   notify globdots correct cdablevars autolist
-        setopt   correctall autocd recexact longlistjobs
-        setopt   autoresume
-        setopt   rcquotes mailwarning
-        unsetopt bgnice
-        setopt   autopushd pushdminus pushdsilent pushdtohome pushdignoredups
-        setopt COMPLETE_IN_WORD    # Complete from both ends of a word.
-        setopt ALWAYS_TO_END       # Move cursor to the end of a completed word.
-        setopt AUTO_MENU           # Show completion menu on a successive tab press.
-        setopt AUTO_LIST           # Automatically list choices on ambiguous completion.
-        setopt EXTENDED_GLOB       # Needed for file modification glob modifiers with compinit
-        unsetopt AUTO_PARAM_SLASH    # If completed parameter is a directory, do not add a trailing slash.
-        unsetopt MENU_COMPLETE     # Do not autoselect the first completion entry.
-        unsetopt FLOW_CONTROL      # Disable start/stop characters in shell editor.
-      '';
-
-      localVariables = {
-        # This way, C-w deletes words (path elements)
-        WORDCHARS = "*?_-.[]~&;!#$%^(){}<>";
-
-        ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE = "fg=8";
-      };
-
-    };
-
-  };
-
-  services = {
-    dropbox.enable = true;
-    kdeconnect.enable = true;
-    spotifyd.enable = true;
-    syncthing.enable = true;
-    easyeffects.enable = true;
-    pantalaimon = {
-      enable = true;
-      settings = {
-        Default = {
-          # LogLevel = "Debug";
-          SSL = true;
-        };
-        local-matrix = {
-          Homeserver = "https://matrix.org";
-          ListenAddress = "127.0.0.1";
-          ListenPort = 8009;
-        };
-      };
-    };
-  };
-
   home = {
-    stateVersion = "20.03";
+    stateVersion = "21.05";
     packages = with pkgs; [
+      kalker # calc
+
       mosh
       neofetch
 
@@ -303,7 +135,7 @@ in
       cargo-udeps
 
       # games
-      my_dwarf_fortress
+      # my_dwarf_fortress
       starsector
 
       compsize
@@ -349,21 +181,63 @@ in
 
       # perf
       sysstat
+
     ];
   };
 
-  home.sessionVariables = {
-    BROWSER = "firefox";
-    # BROWSER = "${pkgs.google-chrome}/bin/google-chrome-stable";
-    # ALTERNATE_EDITOR = "";
-    # EDITOR = "emacsclient -t"; # $EDITOR opens in terminal
-    # VISUAL = "emacsclient -c -a emacs"; # $VISUAL opens in GUI mode
-    # EDITOR = "emacs";
-    # GS_OPTIONS = "-sPAPERSIZE=letter";
-    # ASPELL_CONF = "data-dir /home/bbigras/.nix-profile/lib/aspell";
-    # RUSTC_WRAPPER = "${pkgs.sccache}/bin/sccache";
-    GOPATH = "$HOME/go";
+  programs = {
+    aria2.enable = true;
+    bat.enable = true;
+    exa = {
+      enable = true;
+      enableAliases = true;
+    };
+    jq.enable = true;
+    mcfly.enable = true;
+    fzf.enable = true;
+    gpg.enable = true;
+
+    ssh = {
+      enable = true;
+      controlMaster = "auto";
+      controlPersist = "10m";
+      hashKnownHosts = true;
+
+      extraOptionOverrides = {
+        AddKeysToAgent = "confirm";
+        VerifyHostKeyDNS = "ask";
+      };
+    };
+
+    zoxide.enable = true;
+    nushell.enable = true;
+  };
+
+  services = {
+    dropbox.enable = true;
+    # kdeconnect.enable = true;
+    # spotifyd.enable = true;
+    syncthing.enable = true;
+    easyeffects.enable = true;
+    pantalaimon = {
+      enable = true;
+      settings = {
+        Default = {
+          # LogLevel = "Debug";
+          SSL = true;
+        };
+        local-matrix = {
+          Homeserver = "https://matrix.org";
+          ListenAddress = "127.0.0.1";
+          ListenPort = 8009;
+        };
+      };
+    };
   };
 
   home.language.base = "fr_CA.UTF-8";
+
+  systemd.user.startServices = "sd-switch";
+
+  xdg.configFile."nixpkgs/config.nix".text = "{ allowUnfree = true; }";
 }

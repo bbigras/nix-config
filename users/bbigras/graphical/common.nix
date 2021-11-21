@@ -46,7 +46,7 @@ let
       size = 10.0;
     };
 
-    gaps = lib.mkIf (pkgs.hostPlatform.system == "x86_64-linux") {
+    gaps = {
       inner = 10;
       outer = 5;
       smartBorders = "on";

@@ -1,9 +1,10 @@
 { pkgs, ... }: {
   programs.git = {
     enable = true;
-    package = pkgs.gitAndTools.gitFull;
-    userName = "Bruno Bigras";
+    package = pkgs.gitFull;
+    lfs.enable = false;
     userEmail = "bigras.bruno@gmail.com";
+    userName = "Bruno Bigras";
 
     ignores = [
       "*~"
@@ -14,13 +15,16 @@
       "result-*"
     ];
 
-    delta.enable = true;
-    delta.options = {
-      line-numbers = true;
-      side-by-side = true;
-      whitespace-error-style = "22 reverse";
-      syntax-theme = "ansi-dark";
+    delta = {
+      enable = true;
+      options = {
+        line-numbers = true;
+        side-by-side = true;
+        whitespace-error-style = "22 reverse";
+        syntax-theme = "ansi-dark";
+      };
     };
+
     aliases = {
       st = "status";
       co = "checkout";
@@ -31,11 +35,17 @@
     };
 
     extraConfig = {
+      # core.pager = "${pkgs.delta}/bin/delta --dark";
+      difftool.prompt = true;
+      github.user = "bbigras";
+      mergetool.prompt = true;
+      init.defaultBranch = "master";
+      #
       pull.ff = "only";
       merge.conflictstyle = "diff3";
       credential.helper = "${pkgs.gitAndTools.gitFull}/bin/git-credential-libsecret";
       diff.tool = "diffsitter";
-      difftool.prompt = false;
+      # difftool.prompt = false;
       difftool.difftastic.cmd = "/home/bbigras/.cargo/bin/difftastic \"$LOCAL\" \"$REMOTE\"";
       difftool.diffsitter.cmd = "/home/bbigras/.cargo/bin/diffsitter \"$LOCAL\" \"$REMOTE\"";
     };

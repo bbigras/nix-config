@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-
+{ config, pkgs, ... }:
 let
   dummyConfig = pkgs.writeText "configuration.nix" ''
     assert builtins.trace "This is a dummy config, use deploy-rs!" false;
@@ -8,69 +7,68 @@ let
 in
 {
   imports = [
-    ./adb.nix
-    ./docker.nix
+    ./aspell.nix
     ./nix.nix
     ./openssh.nix
-    ./pipewire.nix
-    # ./steam.nix
-    ./sudo.nix
-    ./systemd-resolved.nix
-    ./tailscale.nix
-    ./dendrite-demo-pinecone.nix
-    ./yggdrasil.nix
+    ./resolved.nix
+    ./tmux.nix
+    ./xdg.nix
+    ./zsh.nix
   ];
 
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
-  # boot.extraModulePackages = [ config.boot.kernelPackages.exfat-nofuse ];
+  boot.kernelParams = [ "log_buf_len=10M" ];
 
   environment = {
     etc."nixos/configuration.nix".source = dummyConfig;
-    pathsToLink = [ "/share/zsh" ];
-    systemPackages = with pkgs; [ ntfs3g foot.terminfo ];
+    systemPackages = with pkgs; [ ntfs3g foot.terminfo btop ];
   };
 
-  home-manager.useGlobalPkgs = true;
-
-  home-manager.users.bbigras = { ... }: {
-    imports = [
-      pkgs.nur.repos.rycee.hmModules.emacs-init
-    ];
+  home-manager = {
+    useGlobalPkgs = true;
+    verbose = true;
   };
 
   i18n.defaultLocale = "fr_CA.UTF-8";
 
-  networking.useDHCP = false;
+  networking = {
+    firewall = {
+      trustedInterfaces = [ "tailscale0" ];
+      allowedUDPPorts = [ config.services.tailscale.port ];
+    };
+    useDHCP = false;
+    useNetworkd = true;
+    wireguard.enable = true;
+  };
+
+  nix.nixPath = [
+    "nixos-config=${dummyConfig}"
+    "nixpkgs=/run/current-system/nixpkgs"
+    "nixpkgs-overlays=/run/current-system/overlays"
+  ];
+
+  nixpkgs.config.allowUnfree = true;
+
+  security.sudo = {
+    enable = true;
+    wheelNeedsPassword = false;
+  };
+
+  services.tailscale.enable = true;
+
+  system = {
+    extraSystemBuilderCmds = ''
+      ln -sv ${pkgs.path} $out/nixpkgs
+      ln -sv ${../nix/overlays} $out/overlays
+    '';
+
+    stateVersion = "21.05";
+  };
+
+  systemd.enableUnifiedCgroupHierarchy = true;
+
+  time.timeZone = "America/Montreal";
 
   services.flatpak.enable = true;
-
-  services.ipfs = {
-    enable = false;
-    gatewayAddress = "/ip4/127.0.0.1/tcp/8085";
-  };
-
-  programs = {
-    gnupg.agent = {
-      enable = true;
-      #   enableSSHSupport = true;
-      pinentryFlavor = "gnome3";
-    };
-    ssh.startAgent = true;
-    wireshark.enable = true;
-    zsh.enable = true;
-  };
-
-  services = {
-    fwupd.enable = true; # TODO: check if needed
-    timesyncd.enable = true;
-  };
-
-  users.mutableUsers = false;
-
-  nixpkgs = {
-    config.allowUnfree = true;
-    localSystem.system = "x86_64-linux";
-  };
 
   fonts.fonts = with pkgs; [
     fira-code
@@ -78,8 +76,6 @@ in
     meslo-lgs-nf
   ];
 
-  sound.enable = true;
-  time.timeZone = "America/Montreal";
 
-  system.stateVersion = "20.09";
+  users.mutableUsers = true;
 }

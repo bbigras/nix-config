@@ -3,7 +3,7 @@ let
     { gopass
     , libnotify
     , ripgrep
-    , writeSaneShellScriptBin
+    , writeShellApplication
 
     , displayCmd
     , yankCmd
@@ -11,16 +11,16 @@ let
     , clearCmd
     , extraInputs ? [ ]
     }:
-    writeSaneShellScriptBin {
+    writeShellApplication {
       name = "passmenu";
 
-      buildInputs = [
+      runtimeInputs = [
         gopass
         libnotify
         ripgrep
       ] ++ extraInputs;
 
-      src = ''
+      text = ''
         password_list="$(gopass ls -f | rg "^(misc|hosts|websites)/.*$")"
         password_name="$(${displayCmd} <<< "$password_list")"
         password="$(gopass show --password "$password_name")"
@@ -43,20 +43,20 @@ let
       '';
     };
 in
-self: _: {
-  passmenu-wayland = self.callPackage passmenu {
+final: _: {
+  passmenu-wayland = final.callPackage passmenu {
     displayCmd = ''wofi --cache-file="$XDG_CACHE_HOME/wofi/passmenu" -p pass --show dmenu'';
     yankCmd = "wl-copy --trim-newline";
     pasteCmd = "wl-paste";
     clearCmd = "wl-copy --clear";
-    extraInputs = with self; [ wl-clipboard wofi ];
+    extraInputs = with final; [ wl-clipboard wofi ];
   };
 
-  passmenu-x11 = self.callPackage passmenu {
+  passmenu-x11 = final.callPackage passmenu {
     displayCmd = ''rofi -cache-dir "$XDG_CACHE_HOME/rofi/passmenu" -p pass -dmenu'';
     yankCmd = "xclip -in -rmlastnl -selection clipboard";
     pasteCmd = "xclip -out -selection clipboard 2>&1";
     clearCmd = ''xclip -in -selection clipboard <<< ""'';
-    extraInputs = with self; [ rofi xclip ];
+    extraInputs = with final; [ rofi xclip ];
   };
 }

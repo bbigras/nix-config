@@ -3,31 +3,29 @@
     ./alacritty.nix
     ./common.nix
     ./firefox.nix
-    # ./mpv.nix
-    # ./redshift.nix
+    ./mpv.nix
+    ./redshift.nix
+    ./mime.nix
   ];
 
   home = {
-    # file.".icons/default".source = "${pkgs.gnome3.adwaita-icon-theme}/share/icons/Adwaita";
-
     packages = with pkgs; [
       libnotify
-      # lollypop
+      lollypop
       pavucontrol
       pinentry-gnome
-      # speedcrunch
+      speedcrunch
     ] ++ lib.optionals (pkgs.hostPlatform.system == "x86_64-linux") [
       discord
-      # gnome.evince
-      # gnome.gnome-calendar
-      imv
-      # mbk
-      # prusa-slicer
-      # signal-desktop
-      # slack
-      # spotify
-      # thunderbird
-      # zoom-us
+      element-desktop
+      gnome.evince
+      gnome.gnome-calendar
+      mbk
+      obsidian
+      shotwell
+      signal-desktop
+      thunderbird
+      zoom-us
     ];
 
     sessionVariables = {
@@ -76,24 +74,10 @@
         WantedBy = [ "graphical-session.target" ];
       };
     };
-    # evolution-alarm-notify = {
-    #   Unit = {
-    #     Description = "evolution-alarm-notify";
-    #     PartOf = [ "graphical-session.target" ];
-    #   };
-    #   Service = {
-    #     ExecStart = "${pkgs.gnome.evolution-data-server}/libexec/evolution-data-server/evolution-alarm-notify";
-    #     RestartSec = 3;
-    #     Restart = "always";
-    #   };
-    #   Install = {
-    #     WantedBy = [ "graphical-session.target" ];
-    #   };
-    # };
   };
 
   xsession.pointerCursor = {
-    package = pkgs.gnome3.adwaita-icon-theme;
+    package = pkgs.gnome.adwaita-icon-theme;
     name = "Adwaita";
   };
 }

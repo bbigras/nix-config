@@ -1,18 +1,18 @@
 {
   desktop = {
-    system = "x86_64-linux";
-    hostname = "desktop";
+    localSystem = "x86_64-linux";
+    address = "desktop";
   };
   laptop = {
-    system = "x86_64-linux";
-    hostname = "laptop";
+    localSystem = "x86_64-linux";
+    address = "laptop";
   };
   work = {
-    system = "x86_64-linux";
-    hostname = "work";
+    localSystem = "x86_64-linux";
+    address = "work";
   };
   # vps = {
-  #   system = "x86_64-linux";
-  #   hostname = "vps";
+  #   localSystem = "x86_64-linux";
+  #   address = "vps";
   # };
 }
