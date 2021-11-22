@@ -166,6 +166,7 @@ in
 
   environment.persistence."/persist" = {
     directories = [
+      "/var/lib/sonarr"
       "/var/lib/tailscale"
       "/var/lib/flatpak"
       "/var/lib/docker"
@@ -254,4 +255,6 @@ in
       };
     };
   };
+
+  services.sonarr.enable = true;
 }
