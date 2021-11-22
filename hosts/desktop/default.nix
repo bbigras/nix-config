@@ -94,6 +94,8 @@ in
   time.hardwareClockInLocalTime = true;
   users.users.bbigras.packages = [ pkgs.retroarchBare ];
 
+  services.jellyfin.enable = true;
+
   systemd.network = {
     enable = true;
     networks = {
