@@ -236,6 +236,7 @@ in
         ".gnupg/random_seed"
         ".gnupg/sshcontrol"
         ".gnupg/trustdb.gpg"
+        ".kube/config"
         # ".local/share/fish/fish_history"
         ".mcfly/history.db"
         ".zsh_history"
