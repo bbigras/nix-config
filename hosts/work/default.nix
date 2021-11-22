@@ -54,6 +54,10 @@ in
 
   services.yggdrasil.enable = lib.mkForce false;
 
+  networking = {
+    hostName = "bbigras-work";
+  };
+
   home-manager.users.bbigras = {
     wayland.windowManager.sway = {
       config = {
