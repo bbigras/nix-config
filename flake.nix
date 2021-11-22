@@ -9,6 +9,15 @@
       flake = false;
     };
 
+    peerix = {
+      url = "github:cid-chan/peerix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "utils";
+        flake-compat.follows = "flake-compat";
+      };
+    };
+
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs = {

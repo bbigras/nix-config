@@ -347,6 +347,32 @@
         "type": "indirect"
       }
     },
+    "peerix": {
+      "inputs": {
+        "flake-compat": [
+          "flake-compat"
+        ],
+        "flake-utils": [
+          "utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1637002926,
+        "narHash": "sha256-Iix+XcgkspoV+iVC4wvbX6jZhoThC8dn0RSNUc+Z448=",
+        "owner": "cid-chan",
+        "repo": "peerix",
+        "rev": "4ada6bfb74ab46740adce091271e3bd7c8ade827",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cid-chan",
+        "repo": "peerix",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-utils": [
@@ -414,6 +440,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nur": "nur",
+        "peerix": "peerix",
         "pre-commit-hooks": "pre-commit-hooks",
         "ragenix": "ragenix",
         "sops-nix": "sops-nix",

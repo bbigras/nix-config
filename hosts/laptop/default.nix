@@ -215,6 +215,7 @@
         "Videos"
         "dev"
         "matrix-p2p"
+        "peerix"
         "tmp"
         "src"
         # ".nixops"

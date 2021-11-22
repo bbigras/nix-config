@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 let
   dummyConfig = pkgs.writeText "configuration.nix" ''
     assert builtins.trace "This is a dummy config, use deploy-rs!" false;
@@ -14,7 +14,15 @@ in
     ./tmux.nix
     ./xdg.nix
     ./zsh.nix
+    inputs.peerix.nixosModules.peerix
   ];
+
+  services.peerix = {
+    enable = true;
+    openFirewall = true;
+    privateKeyFile = "/home/bbigras/peerix/secret-key-file";
+    publicKeyFile = "/home/bbigras/peerix/public-key-file";
+  };
 
   boot.kernelParams = [ "log_buf_len=10M" ];
 
