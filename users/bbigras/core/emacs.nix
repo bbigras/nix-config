@@ -28,10 +28,9 @@ in
         ;; Set up fonts early.
         (set-face-attribute 'default
                             nil
-                            :height 100
-                            :family "Fira Code")
-        (set-face-attribute 'fixed-pitch nil :font "Fira Code" :height 100)
-        ;;(set-face-attribute 'fixed-pitch nil :font "Fira Code Retina" :height 100)
+                            :height 140
+                            :family "Source Code Pro")
+        (set-face-attribute 'fixed-pitch nil :font "Source Code Pro" :height 100)
         (set-face-attribute 'variable-pitch nil :font "Cantarell" :height 150 :weight 'regular)
 
         ;; Configure color theme and modeline in early init to avoid flashing
