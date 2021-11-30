@@ -27,7 +27,7 @@ jobs:
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
       - id: get-hosts
         run: |
-          echo "::set-output name=matrix::$(nix eval --json -f ./nix/hosts.nix | jq -c 'keys | . += ["pixel2"] | { host: . }')"
+          echo "::set-output name=matrix::$(nix eval --json -f ./nix/hosts.nix | jq -c 'keys | . += [] | { host: . }')"
 
   build-host:
     name: Build ${{ matrix.host }}
