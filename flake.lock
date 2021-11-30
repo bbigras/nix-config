@@ -64,14 +64,15 @@
         ],
         "nixpkgs": [
           "nixpkgs"
-        ]
+        ],
+        "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1638211156,
-        "narHash": "sha256-dUPl3dre+gIw1tUv+T9Wa8tbmJWonAvuc/XX1gUzD8w=",
+        "lastModified": 1638300932,
+        "narHash": "sha256-pYkWG0SEE9HP3p7RdqNXBruswUdFcSyPtmiKMLQRhmg=",
         "owner": "bbigras",
         "repo": "dendrite-demo-pinecone",
-        "rev": "5d1ddd8eec9ee16111f52aa5d2cb710a21a7eb11",
+        "rev": "80e502adffe05f97996744f5ef92fe2ab30fd9ae",
         "type": "github"
       },
       "original": {
@@ -335,11 +336,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1638295345,
-        "narHash": "sha256-0OSh3gWyZJV4r7ZkFqJERVEDEavCVKOXhG1mJNm20dM=",
+        "lastModified": 1638301072,
+        "narHash": "sha256-RSaF8r3piC7JcdEKK0Bdy6zX966AIR7sfISTuOZ1qOA=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "41b231201105d4053ea1dd1bc0b3edd29cb05302",
+        "rev": "d627ce3e015abb77fc7d9d19c42777d67fd38ad8",
         "type": "github"
       },
       "original": {
@@ -348,6 +349,31 @@
       }
     },
     "pre-commit-hooks": {
+      "inputs": {
+        "flake-utils": [
+          "dendrite-demo-pinecone",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "dendrite-demo-pinecone",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1637745948,
+        "narHash": "sha256-DmQG1bZk24eS+BAHwnHPyYIadMLKbq0d1b//iapYIPU=",
+        "owner": "cachix",
+        "repo": "pre-commit-hooks.nix",
+        "rev": "c3b4f94350b0e59c2546fa85890cc70d03616b9c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cachix",
+        "repo": "pre-commit-hooks.nix",
+        "type": "github"
+      }
+    },
+    "pre-commit-hooks_2": {
       "inputs": {
         "flake-utils": [
           "utils"
@@ -414,7 +440,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nur": "nur",
-        "pre-commit-hooks": "pre-commit-hooks",
+        "pre-commit-hooks": "pre-commit-hooks_2",
         "ragenix": "ragenix",
         "sops-nix": "sops-nix",
         "templates": "templates",
