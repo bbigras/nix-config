@@ -74,6 +74,7 @@
         nixpkgs.follows = "nixpkgs";
         flake-utils.follows = "utils";
         flake-compat.follows = "flake-compat";
+        pre-commit-hooks.follows = "pre-commit-hooks";
       };
     };
 

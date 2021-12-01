@@ -65,7 +65,9 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "pre-commit-hooks": "pre-commit-hooks"
+        "pre-commit-hooks": [
+          "pre-commit-hooks"
+        ]
       },
       "locked": {
         "lastModified": 1638300932,
@@ -351,31 +353,6 @@
     "pre-commit-hooks": {
       "inputs": {
         "flake-utils": [
-          "dendrite-demo-pinecone",
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "dendrite-demo-pinecone",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1637745948,
-        "narHash": "sha256-DmQG1bZk24eS+BAHwnHPyYIadMLKbq0d1b//iapYIPU=",
-        "owner": "cachix",
-        "repo": "pre-commit-hooks.nix",
-        "rev": "c3b4f94350b0e59c2546fa85890cc70d03616b9c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cachix",
-        "repo": "pre-commit-hooks.nix",
-        "type": "github"
-      }
-    },
-    "pre-commit-hooks_2": {
-      "inputs": {
-        "flake-utils": [
           "utils"
         ],
         "nixpkgs": [
@@ -440,7 +417,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nur": "nur",
-        "pre-commit-hooks": "pre-commit-hooks_2",
+        "pre-commit-hooks": "pre-commit-hooks",
         "ragenix": "ragenix",
         "sops-nix": "sops-nix",
         "templates": "templates",
