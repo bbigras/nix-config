@@ -120,7 +120,7 @@ in
   services = {
     # fstrim.enable = true;
     # fwupd.enable = true;
-    tlp.enable = true;
+    #tlp.enable = true;
   };
 
   environment.persistence."/persist" = {
