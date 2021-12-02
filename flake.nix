@@ -1,5 +1,13 @@
 {
   description = "bbigras's NixOS config";
+  nixConfig.substituters = [
+    "https://bbigras-nix-config.cachix.org"
+    "https://nix-community.cachix.org"
+    "https://dendrite-demo-pinecone.cachix.org"
+    "https://pre-commit-hooks.cachix.org"
+    # "https://cache.ngi0.nixos.org"
+    "https://nix-on-droid.cachix.org"
+  ];
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
