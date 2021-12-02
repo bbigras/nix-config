@@ -13,6 +13,7 @@ in
     ./resolved.nix
     ./tmux.nix
     ./xdg.nix
+    ./yggdrasil.nix
     ./zsh.nix
   ];
 
