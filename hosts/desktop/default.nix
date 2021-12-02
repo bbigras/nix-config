@@ -96,6 +96,11 @@ in
 
   services.jellyfin.enable = true;
 
+  services.ipfs = {
+    enable = true;
+    gatewayAddress = "/ip4/127.0.0.1/tcp/8085";
+  };
+
   systemd.network = {
     enable = true;
     networks = {
