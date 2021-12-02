@@ -55,14 +55,6 @@ in
     interfaces.eth0.useDHCP = true;
   };
 
-  xdg.portal = {
-    enable = true;
-    gtkUsePortal = true;
-    wlr.enable = true;
-    # extraPortals = with pkgs;
-    #   [ xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
-  };
-
   services.acpid = {
     enable = true;
     handlers = {
