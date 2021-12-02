@@ -69,7 +69,7 @@ in
 
   time.timeZone = "America/Montreal";
 
-  services.flatpak.enable = false;
+  services.flatpak.enable = true;
 
   fonts.fonts = with pkgs; [
     fira-code
