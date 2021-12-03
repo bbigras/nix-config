@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, lib, ... }:
 
 let
   nurNoPkgs = import inputs.nur { pkgs = null; nurpkgs = pkgs; };
@@ -112,7 +112,7 @@ in
   services = {
     # fstrim.enable = true;
     # fwupd.enable = true;
-    #tlp.enable = true;
+    tlp.enable = lib.mkForce false;
   };
 
   environment.persistence."/persist" = {
