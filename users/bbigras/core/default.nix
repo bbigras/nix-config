@@ -182,6 +182,7 @@
       # perf
       sysstat
 
+      ventoy-bin
     ];
   };
 
