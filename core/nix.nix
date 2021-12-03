@@ -27,7 +27,6 @@
     extraOptions = ''
       builders-use-substitutes = true
       experimental-features = nix-command flakes recursive-nix
-      flake-registry = /etc/nix/registry.json
     '';
     # nrBuildUsers = config.nix.maxJobs * 2;
     optimise = {
