@@ -98,7 +98,7 @@ in
 
   services.ipfs = {
     enable = true;
-    gatewayAddress = "/ip4/127.0.0.1/tcp/8085";
+    gatewayAddress = "/ip4/127.0.0.1/tcp/8080";
   };
 
   systemd.network = {
