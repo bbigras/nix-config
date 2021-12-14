@@ -1764,8 +1764,8 @@ in
                         ([remap complete-symbol] . company-complete-common))
           '';
           config = ''
-            (setq company-idle-delay 0.0
-                  company-minimum-prefix-length 1
+            (setq company-idle-delay 0.2
+                  company-minimum-prefix-length 3
                   company-show-numbers t
                   company-tooltip-maximum-width 100
                   company-tooltip-minimum-width 20
