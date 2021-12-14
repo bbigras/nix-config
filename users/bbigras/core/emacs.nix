@@ -401,12 +401,6 @@ in
         envrc = {
           enable = true;
           command = [ "envrc-mode" ];
-          after = [ "lsp-mode" "lsp-rust" ];
-          config = ''
-            (envrc-global-mode)
-            (with-eval-after-load 'envrc
-              (define-key envrc-mode-map (kbd "C-c e") 'envrc-command-map))
-          '';
         };
 
         docker-tramp.enable = true;
