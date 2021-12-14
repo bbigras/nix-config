@@ -1956,6 +1956,7 @@ in
           enable = true;
           config = ''
             (setq rustic-lsp-server 'rust-analyzer)
+            (setq rustic-cargo-bin "cargo")
           '';
         };
 
