@@ -168,6 +168,10 @@
       go
       gopls
 
+      # remote
+      anydesk
+      zoom-us
+      teams
       # kubernetes
       k9s
       kubectl
