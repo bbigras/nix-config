@@ -167,6 +167,7 @@ in
   # };
 
   environment.systemPackages = with pkgs; [ linuxPackages_zen.bcc ];
+  virtualisation.docker.enable = true;
 
   environment.persistence."/persist" = {
     directories = [
