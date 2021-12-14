@@ -222,6 +222,12 @@ in
 
           ;; Turn off text scale mode (or use the next line if you didn't use text-scale-mode)
           (text-scale-mode 0))
+
+         (defun rah-lsp ()
+                 (interactive)
+                 (envrc-mode)
+                 (lsp))
+
       '';
 
       usePackage = {
@@ -1224,12 +1230,7 @@ in
         lsp-rust = {
           enable = true;
           defer = true;
-          after = [ "lsp-mode" "rustic" ];
-          config = lib.mkForce ''
-            (setq lsp-rust-server 'rust-analyzer)
-            (setf (lsp--client-priority (gethash 'rust-analyzer lsp-clients)) 100)
-            (setq lsp-disabled-clients '(rls))
-          '';
+          hook = [ "(rust-mode . rah-lsp)" ];
         };
 
         lsp-svelte = {
