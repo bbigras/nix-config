@@ -44,151 +44,151 @@ in
       '';
 
       prelude = ''
-                  (require 'cl)
+        (require 'cl)
 
-                  (setq custom-file (expand-file-name (concat "custom-" (system-name) ".el") "~/Dropbox/emacs"))
-                  (load custom-file)
+        (setq custom-file (expand-file-name (concat "custom-" (system-name) ".el") "~/Dropbox/emacs"))
+        (load custom-file)
 
-                  (setq auth-sources '((:source "~/.authinfo.gpg")))
-                  (setq max-lisp-eval-depth 10000)
-                  (setq max-specpdl-size 13000)
-                  (delete-selection-mode 1)
-                  (setq org-directory "~/Dropbox/org-mode")
+        (setq auth-sources '((:source "~/.authinfo.gpg")))
+        (setq max-lisp-eval-depth 10000)
+        (setq max-specpdl-size 13000)
+        (delete-selection-mode 1)
+        (setq org-directory "~/Dropbox/org-mode")
 
-                  ;; Keep transient cruft out of ~/.emacs.d/
-                  (setq user-emacs-directory "~/.cache/emacs/"
-                        backup-directory-alist `(("." . ,(expand-file-name "backups" user-emacs-directory)))
-                        url-history-file (expand-file-name "url/history" user-emacs-directory)
-                        auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" user-emacs-directory)
-                        projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-emacs-directory))
+        ;; Keep transient cruft out of ~/.emacs.d/
+        (setq user-emacs-directory "~/.cache/emacs/"
+              backup-directory-alist `(("." . ,(expand-file-name "backups" user-emacs-directory)))
+              url-history-file (expand-file-name "url/history" user-emacs-directory)
+              auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" user-emacs-directory)
+              projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-emacs-directory))
 
-                  ;; Keep customization settings in a temporary file (thanks Ambrevar!)
-                  (setq custom-file
-                        (if (boundp 'server-socket-dir)
-                            (expand-file-name "custom.el" server-socket-dir)
-                          (expand-file-name (format "emacs-custom-%s.el" (user-uid)) temporary-file-directory)))
-                  (load custom-file t)
+        ;; Keep customization settings in a temporary file (thanks Ambrevar!)
+        (setq custom-file
+              (if (boundp 'server-socket-dir)
+                  (expand-file-name "custom.el" server-socket-dir)
+                (expand-file-name (format "emacs-custom-%s.el" (user-uid)) temporary-file-directory)))
+        (load custom-file t)
 
-                  ;; Set up the visible bell
-                  (setq visible-bell t)
+        ;; Set up the visible bell
+        (setq visible-bell t)
 
-                  (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
-                  (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-                  (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-                  (setq scroll-step 1) ;; keyboard scroll one line at a timesetq use-dialog-box nil) ; Disable dialog boxes since they weren't working in Mac OSX
+        (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+        (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+        (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+        (setq scroll-step 1) ;; keyboard scroll one line at a timesetq use-dialog-box nil) ; Disable dialog boxes since they weren't working in Mac OSX
 
-                  (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
-                  (add-to-list 'default-frame-alist '(fullscreen . maximized))
+        (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
+        (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-                        ;; Disable startup message.
-                        (setq inhibit-startup-message t
-                              inhibit-startup-echo-area-message (user-login-name))
+        ;; Disable startup message.
+        (setq inhibit-startup-message t
+              inhibit-startup-echo-area-message (user-login-name))
 
-                        (setq initial-major-mode 'fundamental-mode
-                              initial-scratch-message nil)
+        (setq initial-major-mode 'fundamental-mode
+              initial-scratch-message nil)
 
-                        ;; Set frame title.
-                        (setq frame-title-format
-                              '("" invocation-name ": "(:eval
-                                                        (if (buffer-file-name)
-                                                            (abbreviate-file-name (buffer-file-name))
-                                                          "%b"))))
+        ;; Set frame title.
+        (setq frame-title-format
+              '("" invocation-name ": "(:eval
+                                        (if (buffer-file-name)
+                                            (abbreviate-file-name (buffer-file-name))
+                                          "%b"))))
 
         ;; Make sure the mouse cursor is visible at all times.
         (set-face-background 'mouse "#ffffff")
 
-                        ;; Accept 'y' and 'n' rather than 'yes' and 'no'.
-                        (defalias 'yes-or-no-p 'y-or-n-p)
+        ;; Accept 'y' and 'n' rather than 'yes' and 'no'.
+        (defalias 'yes-or-no-p 'y-or-n-p)
 
-                        ;; Don't want to move based on visual line.
-                        (setq line-move-visual nil)
+        ;; Don't want to move based on visual line.
+        (setq line-move-visual nil)
 
-                        ;; Stop creating backup and autosave files.
-                        (setq make-backup-files nil
-                              auto-save-default nil)
+        ;; Stop creating backup and autosave files.
+        (setq make-backup-files nil
+              auto-save-default nil)
 
-                        ;; Always show line and column number in the mode line.
-                        (line-number-mode)
-                        (column-number-mode)
+        ;; Always show line and column number in the mode line.
+        (line-number-mode)
+        (column-number-mode)
 
-                        ;; Enable some features that are disabled by default.
-                        (put 'narrow-to-region 'disabled nil)
+        ;; Enable some features that are disabled by default.
+        (put 'narrow-to-region 'disabled nil)
 
-                        ;; Typically, I only want spaces when pressing the TAB key. I also
-                        ;; want 4 of them.
-                        (setq-default indent-tabs-mode nil
-                                      tab-width 4
-                                      c-basic-offset 4)
+        ;; Typically, I only want spaces when pressing the TAB key. I also
+        ;; want 4 of them.
+        (setq-default indent-tabs-mode nil
+                      tab-width 4
+                      c-basic-offset 4)
 
-                        ;; Trailing white space are banned!
-                        (setq-default show-trailing-whitespace t)
+        ;; Trailing white space are banned!
+        (setq-default show-trailing-whitespace t)
 
-                        ;; Use one space to end sentences.
-                        (setq sentence-end-double-space nil)
+        ;; Use one space to end sentences.
+        (setq sentence-end-double-space nil)
 
-                        ;; I typically want to use UTF-8.
-                        (prefer-coding-system 'utf-8)
+        ;; I typically want to use UTF-8.
+        (prefer-coding-system 'utf-8)
 
-                        ;; Nicer handling of regions.
-                        (transient-mark-mode 1)
+        ;; Nicer handling of regions.
+        (transient-mark-mode 1)
 
-                        ;; Make moving cursor past bottom only scroll a single line rather
-                        ;; than half a page.
-                        (setq scroll-step 1
-                              scroll-conservatively 5)
+        ;; Make moving cursor past bottom only scroll a single line rather
+        ;; than half a page.
+        (setq scroll-step 1
+              scroll-conservatively 5)
 
-                        ;; Enable highlighting of current line.
-                        (global-hl-line-mode 1)
+        ;; Enable highlighting of current line.
+        (global-hl-line-mode 1)
 
-                        ;; Improved handling of clipboard in GNU/Linux and otherwise.
-                        (setq select-enable-clipboard t
-                              select-enable-primary t
-                              save-interprogram-paste-before-kill t)
+        ;; Improved handling of clipboard in GNU/Linux and otherwise.
+        (setq select-enable-clipboard t
+              select-enable-primary t
+              save-interprogram-paste-before-kill t)
 
-                        ;; Pasting with middle click should insert at point, not where the
-                        ;; click happened.
-                        (setq mouse-yank-at-point t)
+        ;; Pasting with middle click should insert at point, not where the
+        ;; click happened.
+        (setq mouse-yank-at-point t)
 
-                        ;; Enable a few useful commands that are initially disabled.
-                        (put 'upcase-region 'disabled nil)
-                        (put 'downcase-region 'disabled nil)
+        ;; Enable a few useful commands that are initially disabled.
+        (put 'upcase-region 'disabled nil)
+        (put 'downcase-region 'disabled nil)
 
-                  ;;      (setq custom-file (locate-user-emacs-file "custom.el"))
-                  ;;      (load custom-file)
+        ;;      (setq custom-file (locate-user-emacs-file "custom.el"))
+        ;;      (load custom-file)
 
-                        ;; When finding file in non-existing directory, offer to create the
-                        ;; parent directory.
-                        (defun with-buffer-name-prompt-and-make-subdirs ()
-                          (let ((parent-directory (file-name-directory buffer-file-name)))
-                            (when (and (not (file-exists-p parent-directory))
-                                       (y-or-n-p (format "Directory `%s' does not exist! Create it? " parent-directory)))
-                              (make-directory parent-directory t))))
+        ;; When finding file in non-existing directory, offer to create the
+        ;; parent directory.
+        (defun with-buffer-name-prompt-and-make-subdirs ()
+          (let ((parent-directory (file-name-directory buffer-file-name)))
+            (when (and (not (file-exists-p parent-directory))
+                       (y-or-n-p (format "Directory `%s' does not exist! Create it? " parent-directory)))
+              (make-directory parent-directory t))))
 
-                        (add-to-list 'find-file-not-found-functions #'with-buffer-name-prompt-and-make-subdirs)
+        (add-to-list 'find-file-not-found-functions #'with-buffer-name-prompt-and-make-subdirs)
 
-                        ;; Don't want to complete .hi files.
-                        (add-to-list 'completion-ignored-extensions ".hi")
+        ;; Don't want to complete .hi files.
+        (add-to-list 'completion-ignored-extensions ".hi")
 
-                        ;; Shouldn't highlight trailing spaces in terminal mode.
-                        (add-hook 'term-mode (lambda () (setq show-trailing-whitespace nil)))
-                        (add-hook 'term-mode-hook (lambda () (setq show-trailing-whitespace nil)))
+        ;; Shouldn't highlight trailing spaces in terminal mode.
+        (add-hook 'term-mode (lambda () (setq show-trailing-whitespace nil)))
+        (add-hook 'term-mode-hook (lambda () (setq show-trailing-whitespace nil)))
 
-                        ;; https://github.com/emacs-lsp/lsp-mode#performance
-                        (setq read-process-output-max (* 1024 1024)) ;; 1mb
-                        (setq lsp-prefer-capf t)
+        ;; https://github.com/emacs-lsp/lsp-mode#performance
+        (setq read-process-output-max (* 1024 1024)) ;; 1mb
+        (setq lsp-prefer-capf t)
 
-                  (defun indent-between-pair (&rest _ignored)
-                    (newline)
-                    (indent-according-to-mode)
-                    (forward-line -1)
-                    (indent-according-to-mode))
+        (defun indent-between-pair (&rest _ignored)
+          (newline)
+          (indent-according-to-mode)
+          (forward-line -1)
+          (indent-according-to-mode))
 
-                  (defun add-newline-at-end-if-none ()
-              "Add a newline at the end of the buffer if there isn't any."
-              (save-excursion
-                (save-restriction
-                  (goto-char (1- (point-max)))
-                  (if (not (looking-at "\n"))
+        (defun add-newline-at-end-if-none ()
+          "Add a newline at the end of the buffer if there isn't any."
+          (save-excursion
+            (save-restriction
+              (goto-char (1- (point-max)))
+              (if (not (looking-at "\n"))
                   (progn
                     (goto-char (point-max))
                     (insert "\n"))))))
@@ -223,11 +223,180 @@ in
           ;; Turn off text scale mode (or use the next line if you didn't use text-scale-mode)
           (text-scale-mode 0))
 
-         (defun rah-lsp ()
-                 (interactive)
-                 (envrc-mode)
-                 (lsp))
+        (defmacro with-no-messages (&rest body) (declare (indent 0)) `(progn (advice-add 'message :around #'ignore) (unwind-protect (cl-locally ,@body) (advice-remove 'message #'ignore))))
 
+        ;; Keep transient cruft out of ~/.emacs.d/
+        (setq user-emacs-directory "~/.cache/emacs/"
+              backup-directory-alist `(("." . ,(expand-file-name "backups" user-emacs-directory)))
+              url-history-file (expand-file-name "url/history" user-emacs-directory)
+              auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" user-emacs-directory)
+              projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-emacs-directory))
+
+        ;; Keep customization settings in a temporary file (thanks Ambrevar!)
+        (setq custom-file
+              (if (boundp 'server-socket-dir)
+                  (expand-file-name "custom.el" server-socket-dir)
+                (expand-file-name (format "emacs-custom-%s.el" (user-uid)) temporary-file-directory)))
+        (load custom-file t)
+
+        ;; Set up the visible bell
+        (setq visible-bell t)
+
+        (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+        (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+        (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+        (setq scroll-step 1) ;; keyboard scroll one line at a timesetq use-dialog-box nil) ; Disable dialog boxes since they weren't working in Mac OSX
+
+        (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
+        (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+        ;; Disable startup message.
+        (setq inhibit-startup-message t
+              inhibit-startup-echo-area-message (user-login-name))
+
+        (setq initial-major-mode 'fundamental-mode
+              initial-scratch-message nil)
+
+        ;; Set frame title.
+        (setq frame-title-format
+              '("" invocation-name ": "(:eval
+                                        (if (buffer-file-name)
+                                            (abbreviate-file-name (buffer-file-name))
+                                          "%b"))))
+
+        ;; Make sure the mouse cursor is visible at all times.
+        (set-face-background 'mouse "#ffffff")
+
+        ;; Accept 'y' and 'n' rather than 'yes' and 'no'.
+        (defalias 'yes-or-no-p 'y-or-n-p)
+
+        ;; Don't want to move based on visual line.
+        (setq line-move-visual nil)
+
+        ;; Stop creating backup and autosave files.
+        (setq make-backup-files nil
+              auto-save-default nil)
+
+        ;; Always show line and column number in the mode line.
+        (line-number-mode)
+        (column-number-mode)
+
+        ;; Enable some features that are disabled by default.
+        (put 'narrow-to-region 'disabled nil)
+
+        ;; Typically, I only want spaces when pressing the TAB key. I also
+        ;; want 4 of them.
+        (setq-default indent-tabs-mode nil
+                      tab-width 4
+                      c-basic-offset 4)
+
+        ;; Trailing white space are banned!
+        (setq-default show-trailing-whitespace t)
+
+        ;; Use one space to end sentences.
+        (setq sentence-end-double-space nil)
+
+        ;; I typically want to use UTF-8.
+        (prefer-coding-system 'utf-8)
+
+        ;; Nicer handling of regions.
+        (transient-mark-mode 1)
+
+        ;; Make moving cursor past bottom only scroll a single line rather
+        ;; than half a page.
+        (setq scroll-step 1
+              scroll-conservatively 5)
+
+        ;; Enable highlighting of current line.
+        (global-hl-line-mode 1)
+
+        ;; Improved handling of clipboard in GNU/Linux and otherwise.
+        (setq select-enable-clipboard t
+              select-enable-primary t
+              save-interprogram-paste-before-kill t)
+
+        ;; Pasting with middle click should insert at point, not where the
+        ;; click happened.
+        (setq mouse-yank-at-point t)
+
+        ;; Enable a few useful commands that are initially disabled.
+        (put 'upcase-region 'disabled nil)
+        (put 'downcase-region 'disabled nil)
+
+        ;;      (setq custom-file (locate-user-emacs-file "custom.el"))
+        ;;      (load custom-file)
+
+        ;; When finding file in non-existing directory, offer to create the
+        ;; parent directory.
+        (defun with-buffer-name-prompt-and-make-subdirs ()
+          (let ((parent-directory (file-name-directory buffer-file-name)))
+            (when (and (not (file-exists-p parent-directory))
+                       (y-or-n-p (format "Directory `%s' does not exist! Create it? " parent-directory)))
+              (make-directory parent-directory t))))
+
+        (add-to-list 'find-file-not-found-functions #'with-buffer-name-prompt-and-make-subdirs)
+
+        ;; Don't want to complete .hi files.
+        (add-to-list 'completion-ignored-extensions ".hi")
+
+        ;; Shouldn't highlight trailing spaces in terminal mode.
+        (add-hook 'term-mode (lambda () (setq show-trailing-whitespace nil)))
+        (add-hook 'term-mode-hook (lambda () (setq show-trailing-whitespace nil)))
+
+        ;; https://github.com/emacs-lsp/lsp-mode#performance
+        (setq read-process-output-max (* 1024 1024)) ;; 1mb
+        (setq lsp-prefer-capf t)
+
+        (defun indent-between-pair (&rest _ignored)
+          (newline)
+          (indent-according-to-mode)
+          (forward-line -1)
+          (indent-according-to-mode))
+
+        (defun add-newline-at-end-if-none ()
+          "Add a newline at the end of the buffer if there isn't any."
+          (save-excursion
+            (save-restriction
+              (goto-char (1- (point-max)))
+              (if (not (looking-at "\n"))
+                  (progn
+                    (goto-char (point-max))
+                    (insert "\n"))))))
+
+        (defun rah-prog-mode-setup ()
+          ;; Use a bit wider fill column width in programming modes
+          ;; since we often work with indentation to start with.
+          (setq fill-column 80))
+
+        (add-hook 'prog-mode-hook #'rah-prog-mode-setup)
+
+        (defun rah-sort-lines-ignore-case ()
+          (interactive)
+          (let ((sort-fold-case t))
+            (call-interactively 'sort-lines)))
+
+        (defun efs/presentation-setup ()
+          ;; Hide the mode line
+          (hide-mode-line-mode 1)
+
+          ;; Display images inline
+          (org-display-inline-images) ;; Can also use org-startup-with-inline-images
+
+          ;; Scale the text.  The next line is for basic scaling:
+          (setq text-scale-mode-amount 3)
+          (text-scale-mode 1))
+
+        (defun efs/presentation-end ()
+          ;; Show the mode line again
+          (hide-mode-line-mode 0)
+
+          ;; Turn off text scale mode (or use the next line if you didn't use text-scale-mode)
+          (text-scale-mode 0))
+
+        (defun rah-lsp ()
+          (interactive)
+          (envrc-mode)
+          (lsp))
       '';
 
       usePackage = {
