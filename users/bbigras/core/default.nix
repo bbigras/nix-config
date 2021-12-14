@@ -197,6 +197,8 @@
     mcfly.enable = true;
     fzf.enable = true;
     gpg.enable = true;
+    navi.enable = true;
+    sqls.enable = true;
 
     ssh = {
       enable = true;
@@ -244,6 +246,7 @@
         };
       };
     };
+    gromit-mpx.enable = true;
   };
 
   home.language.base = "fr_CA.UTF-8";
