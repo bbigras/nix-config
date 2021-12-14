@@ -1168,47 +1168,29 @@ in
         lsp-mode = {
           enable = true;
           command = [ "lsp" ];
-          after = [
-            "company"
-            "flycheck"
-          ];
-          hook = [
-            "(prog-mode . lsp)"
-          ];
-          bind = {
-            "C-c r r" = "lsp-rename";
-            "C-c r f" = "lsp-format-buffer";
-            "C-c r g" = "lsp-format-region";
-            "C-c r a" = "lsp-execute-code-action";
-            "C-c f r" = "lsp-find-references";
-          };
+          after = [ "company" "flycheck" ];
+          hook = [ "(lsp-mode . lsp-enable-which-key-integration)" ];
           bindLocal = {
             lsp-mode-map = {
-              "C-=" = "lsp-extend-selection";
+              "C-c r r" = "lsp-rename";
+              "C-c r f" = "lsp-format-buffer";
+              "C-c r g" = "lsp-format-region";
+              "C-c r a" = "lsp-execute-code-action";
+              "C-c f r" = "lsp-find-references";
             };
           };
-          config = ''
-                      (setq
-                         lsp-headerline-breadcrumb-enable t)
-
-            ;; lsp-eldoc-render-all nil
-            ;;lsp-modeline-code-actions-enable nil
-
-            (add-to-list 'lsp-language-id-configuration '(nix-mode . "nix"))
-            (lsp-register-client
-             (make-lsp-client :new-connection (lsp-stdio-connection '("rnix-lsp"))
-                              :major-modes '(nix-mode)
-                              :server-id 'nix))
-            (push "[/\\\\]vendor$" lsp-file-watch-ignored)
-            (push "[/\\\\]\\.yarn$" lsp-file-watch-ignored)
-            (push "[/\\\\]\\.direnv$" lsp-file-watch-ignored)
-            (push "[/\\\\]\\.next$" lsp-file-watch-ignored)
-            (setq lsp-eslint-server-command '("node" "${pkgs.vscode-extensions.dbaeumer.vscode-eslint}/share/vscode/extensions/dbaeumer.vscode-eslint/server/out/eslintServer.js" "--stdio"))
-            (setq create-lockfiles nil) ;; lock files will kill `npm start'
-
+          init = ''
+            (setq lsp-keymap-prefix "C-c l")
           '';
-          #                 lsp-prefer-flymake nil
-          # (setq lsp-enable-semantic-highlighting t)
+          config = ''
+            (setq lsp-diagnostics-provider :flycheck
+                  lsp-eldoc-render-all nil
+                  lsp-headerline-breadcrumb-enable nil
+                  lsp-modeline-code-actions-enable nil
+                  lsp-modeline-diagnostics-enable nil
+                  lsp-modeline-workspace-status-enable nil)
+            (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
+          '';
         };
 
         lsp-headerline = {
