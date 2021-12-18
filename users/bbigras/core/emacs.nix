@@ -23,7 +23,6 @@ in
         (push '(menu-bar-lines . 0) default-frame-alist)
         (push '(tool-bar-lines . nil) default-frame-alist)
         (push '(vertical-scroll-bars . nil) default-frame-alist)
-        (blink-cursor-mode 0)
 
         ;; Set up fonts early.
         (set-face-attribute 'default
@@ -44,48 +43,15 @@ in
       '';
 
       prelude = ''
-        (require 'cl)
-
-        (setq custom-file (expand-file-name (concat "custom-" (system-name) ".el") "~/Dropbox/emacs"))
-        (load custom-file)
-
-        (setq auth-sources '((:source "~/.authinfo.gpg")))
-        (setq max-lisp-eval-depth 10000)
-        (setq max-specpdl-size 13000)
-        (delete-selection-mode 1)
-        (setq org-directory "~/Dropbox/org-mode")
-
-        ;; Keep transient cruft out of ~/.emacs.d/
-        (setq user-emacs-directory "~/.cache/emacs/"
-              backup-directory-alist `(("." . ,(expand-file-name "backups" user-emacs-directory)))
-              url-history-file (expand-file-name "url/history" user-emacs-directory)
-              auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" user-emacs-directory)
-              projectile-known-projects-file (expand-file-name "projectile-bookmarks.eld" user-emacs-directory))
-
-        ;; Keep customization settings in a temporary file (thanks Ambrevar!)
-        (setq custom-file
-              (if (boundp 'server-socket-dir)
-                  (expand-file-name "custom.el" server-socket-dir)
-                (expand-file-name (format "emacs-custom-%s.el" (user-uid)) temporary-file-directory)))
-        (load custom-file t)
-
-        ;; Set up the visible bell
-        (setq visible-bell t)
-
-        (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
-        (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-        (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-        (setq scroll-step 1) ;; keyboard scroll one line at a timesetq use-dialog-box nil) ; Disable dialog boxes since they weren't working in Mac OSX
-
-        (set-frame-parameter (selected-frame) 'fullscreen 'maximized)
-        (add-to-list 'default-frame-alist '(fullscreen . maximized))
-
         ;; Disable startup message.
-        (setq inhibit-startup-message t
+        (setq inhibit-startup-screen t
               inhibit-startup-echo-area-message (user-login-name))
 
         (setq initial-major-mode 'fundamental-mode
               initial-scratch-message nil)
+
+        ;; Don't blink the cursor.
+        (setq blink-cursor-mode nil)
 
         ;; Set frame title.
         (setq frame-title-format
@@ -106,6 +72,9 @@ in
         ;; Stop creating backup and autosave files.
         (setq make-backup-files nil
               auto-save-default nil)
+
+        ;; Default is 4k, which is too low for LSP.
+        (setq read-process-output-max (* 1024 1024))
 
         ;; Always show line and column number in the mode line.
         (line-number-mode)
@@ -153,8 +122,8 @@ in
         (put 'upcase-region 'disabled nil)
         (put 'downcase-region 'disabled nil)
 
-        ;;      (setq custom-file (locate-user-emacs-file "custom.el"))
-        ;;      (load custom-file)
+        ;;(setq custom-file (locate-user-emacs-file "custom.el"))
+        ;;(load custom-file)
 
         ;; When finding file in non-existing directory, offer to create the
         ;; parent directory.
@@ -169,29 +138,15 @@ in
         ;; Don't want to complete .hi files.
         (add-to-list 'completion-ignored-extensions ".hi")
 
+        (defun rah-disable-trailing-whitespace-mode ()
+          (setq show-trailing-whitespace nil))
+
         ;; Shouldn't highlight trailing spaces in terminal mode.
-        (add-hook 'term-mode (lambda () (setq show-trailing-whitespace nil)))
-        (add-hook 'term-mode-hook (lambda () (setq show-trailing-whitespace nil)))
+        (add-hook 'term-mode #'rah-disable-trailing-whitespace-mode)
+        (add-hook 'term-mode-hook #'rah-disable-trailing-whitespace-mode)
 
-        ;; https://github.com/emacs-lsp/lsp-mode#performance
-        (setq read-process-output-max (* 1024 1024)) ;; 1mb
-        (setq lsp-prefer-capf t)
-
-        (defun indent-between-pair (&rest _ignored)
-          (newline)
-          (indent-according-to-mode)
-          (forward-line -1)
-          (indent-according-to-mode))
-
-        (defun add-newline-at-end-if-none ()
-          "Add a newline at the end of the buffer if there isn't any."
-          (save-excursion
-            (save-restriction
-              (goto-char (1- (point-max)))
-              (if (not (looking-at "\n"))
-                  (progn
-                    (goto-char (point-max))
-                    (insert "\n"))))))
+        ;; Ignore trailing white space in compilation mode.
+        (add-hook 'compilation-mode-hook #'rah-disable-trailing-whitespace-mode)
 
         (defun rah-prog-mode-setup ()
           ;; Use a bit wider fill column width in programming modes
@@ -200,35 +155,25 @@ in
 
         (add-hook 'prog-mode-hook #'rah-prog-mode-setup)
 
-        (defun rah-sort-lines-ignore-case ()
-          (interactive)
-          (let ((sort-fold-case t))
-            (call-interactively 'sort-lines)))
-
-        (defun efs/presentation-setup ()
-          ;; Hide the mode line
-          (hide-mode-line-mode 1)
-
-          ;; Display images inline
-          (org-display-inline-images) ;; Can also use org-startup-with-inline-images
-
-          ;; Scale the text.  The next line is for basic scaling:
-          (setq text-scale-mode-amount 3)
-          (text-scale-mode 1))
-
-        (defun efs/presentation-end ()
-          ;; Show the mode line again
-          (hide-mode-line-mode 0)
-
-          ;; Turn off text scale mode (or use the next line if you didn't use text-scale-mode)
-          (text-scale-mode 0))
-
-        (defmacro with-no-messages (&rest body) (declare (indent 0)) `(progn (advice-add 'message :around #'ignore) (unwind-protect (cl-locally ,@body) (advice-remove 'message #'ignore))))
-
         (defun rah-lsp ()
           (interactive)
           (envrc-mode)
           (lsp))
+
+        ;(defun rah-sort-lines-ignore-case ()
+        ;  (interactive)
+        ;  (let ((sort-fold-case t))
+        ;    (call-interactively 'sort-lines)))
+
+        ;; MY STUFF
+        (setq auth-sources '((:source "~/.authinfo.gpg")))
+        ;;(setq max-lisp-eval-depth 10000)
+        ;;(setq max-specpdl-size 13000)
+        ;;(delete-selection-mode 1)
+
+        (setq org-directory "~/Dropbox/org-mode")
+        (setq custom-file (expand-file-name (concat "custom-" (system-name) ".el") "~/Dropbox/emacs"))
+        (load custom-file)
       '';
 
       usePackage = {
