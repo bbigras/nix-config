@@ -570,6 +570,9 @@ in
         envrc = {
           enable = true;
           command = [ "envrc-mode" ];
+          config = ''
+            (envrc-global-mode)
+          '';
         };
 
         docker-tramp.enable = true;
