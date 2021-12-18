@@ -1881,6 +1881,17 @@ in
         #   ];
         # };
 
+        # sqlformat = {
+        #   enable = true;
+        #   hook = [
+        #     "(sql-mode-hook . sqlformat-on-save-mode)"
+        #   ];
+        #   config = ''
+        #     (setq sqlformat-command "${pkgs.sqlfluff}/bin/sqlfluff")
+        #     (setq sqlformat-args '("fix" "-f" "-"))
+        #   '';
+        # };
+
         systemd = {
           enable = true;
           defer = true;
