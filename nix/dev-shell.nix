@@ -19,6 +19,7 @@ mkShell {
     nixpkgs-fmt
     pre-commit
     rnix-lsp
+    sops
     # stylua
   ] ++ lib.optionals (stdenv.hostPlatform.isLinux) [ sumneko-lua-language-server ];
 
