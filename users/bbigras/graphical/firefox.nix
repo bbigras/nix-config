@@ -77,7 +77,7 @@
           "device.sensors.orientation.enabled" = false;
           "device.sensors.proximity.enabled" = false;
           "dom.battery.enabled" = false;
-          "dom.event.clipboardevents.enabled" = false;
+          "dom.event.clipboardevents.enabled" = true;
           "dom.webaudio.enabled" = false;
           "experiments.activeExperiment" = false;
           "experiments.enabled" = false;
