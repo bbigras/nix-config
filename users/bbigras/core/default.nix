@@ -251,6 +251,7 @@
       };
     };
     gromit-mpx.enable = true;
+    systembus-notify.enable = true;
   };
 
   home.language.base = "fr_CA.UTF-8";
