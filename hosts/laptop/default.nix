@@ -201,6 +201,7 @@ in
         ".local/share/keyrings"
         ".local/share/pantalaimon"
         ".local/share/remmina"
+        ".local/share/task"
         ".local/share/zoxide"
         ".local/share/Steam"
         ".mozilla"
