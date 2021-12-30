@@ -237,7 +237,7 @@
     syncthing.enable = true;
     easyeffects.enable = true;
     pantalaimon = {
-      enable = true;
+      enable = false;
       settings = {
         Default = {
           # LogLevel = "Debug";
