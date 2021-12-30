@@ -1,6 +1,7 @@
 {
   description = "bbigras's NixOS config";
   nixConfig.substituters = [
+    "https://cache.nixos.org"
     "https://bbigras-nix-config.cachix.org"
     # "https://cache.ngi0.nixos.org"
     "https://dendrite-demo-pinecone.cachix.org"
@@ -9,6 +10,7 @@
     "https://pre-commit-hooks.cachix.org"
   ];
   nixConfig.trusted-public-keys = [
+    "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     "bbigras-nix-config.cachix.org-1:aXL6Q9Oi0jyF79YAKRu17iVNk9HY0p23OZX7FA8ulhU="
     # "cache.ngi0.nixos.org-1:KqH5CBLNSyX184S9BKZJo1LxrxJ9ltnY2uAs5c/f1MA="
     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
