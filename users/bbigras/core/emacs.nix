@@ -169,7 +169,7 @@ in
         (setq auth-sources '((:source "~/.authinfo.gpg")))
         ;;(setq max-lisp-eval-depth 10000)
         ;;(setq max-specpdl-size 13000)
-        ;;(delete-selection-mode 1)
+        (delete-selection-mode 1)
 
         (setq org-directory "~/Dropbox/org-mode")
         (setq custom-file (expand-file-name (concat "custom-" (system-name) ".el") "~/Dropbox/emacs"))
