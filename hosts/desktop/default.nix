@@ -98,7 +98,13 @@ in
 
   services.ipfs = {
     enable = true;
+    enableGC = true;
+    localDiscovery = true;
     gatewayAddress = "/ip4/127.0.0.1/tcp/8080";
+    extraFlags = [
+      "--enable-pubsub-experiment"
+      "--enable-namesys-pubsub"
+    ];
   };
 
   systemd.network = {
