@@ -1196,13 +1196,13 @@ in
           hook = [ "(nix-mode . subword-mode)" ];
         };
 
-        notmuch = {
-          enable = true;
-          command = [ "notmuch" "notmuch-show-tag" "notmuch-search-tag" "notmuch-tree-tag" ];
-          config = ''
-            (setq notmuch-search-oldest-first nil)
-          '';
-        };
+        #notmuch = {
+        #  enable = true;
+        #  command = [ "notmuch" "notmuch-show-tag" "notmuch-search-tag" "notmuch-tree-tag" ];
+        #  config = ''
+        #    (setq notmuch-search-oldest-first nil)
+        #  '';
+        #};
 
         # Use ripgrep for fast text search in projects. I usually use
         # this through Projectile.
