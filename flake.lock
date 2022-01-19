@@ -142,6 +142,23 @@
         "type": "gitlab"
       }
     },
+    "emacs-hass": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1642116831,
+        "narHash": "sha256-bcNkhLlXz+xVZTtP2fZmE03n2z35f3jjr1pC/k1cgrY=",
+        "owner": "purplg",
+        "repo": "hass",
+        "rev": "df8ef03c11ed2c6424fd07f55ee75a4901d0decc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "purplg",
+        "ref": "dashboard",
+        "repo": "hass",
+        "type": "github"
+      }
+    },
     "emacs-overlay": {
       "locked": {
         "lastModified": 1642587497,

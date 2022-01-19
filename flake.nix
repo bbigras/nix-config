@@ -28,6 +28,11 @@
       flake = false;
     };
 
+    emacs-hass = {
+      url = "github:purplg/hass/dashboard";
+      flake = false;
+    };
+
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs = {

@@ -9,6 +9,7 @@
 , defmacro-gensym
 , emacs-ement-extras
 , emacs-ement
+, emacs-hass
 , ...
 }:
 
@@ -30,6 +31,20 @@ composeManyExtensions (localOverlays ++ [
   # (_self: _super: {
   #   dendrite-demo-pinecone = dendrite-demo-pinecone2;
   # })
+
+  (_self: super: {
+    emacsPackages = super.emacsPackages // {
+      hass222 = super.emacsPackages.trivialBuild {
+        pname = "hass";
+        version = "git";
+        src = emacs-hass;
+
+        packageRequires = [
+          super.emacsPackages.request
+        ];
+      };
+    };
+  })
 
   (_self: super: {
     emacsPackages = super.emacsPackages // {

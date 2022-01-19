@@ -462,6 +462,25 @@ in
           package = "org";
         };
 
+        hass = {
+          enable = true;
+          package = _epkgs: pkgs.emacsPackages.hass222;
+          config = ''
+                        (require 'hass-dash)
+                        (hass-setup)
+
+            (setq hass-dash-layout
+             '(("Group One" . (
+             ("light.signify_netherlands_b_v_lwa003_0a1edf08_level_on_off" :name "Living Room Light" :service "light.toggle")
+             ("scene.salon_100")
+             ("scene.salon_min")
+             ("scene.salon_off")
+             ("scene.salon_relax")
+             ("automation.bruno_arrivee")
+            ))))
+          '';
+        };
+
         plz = {
           enable = true;
           config = ''
