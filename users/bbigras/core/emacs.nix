@@ -264,6 +264,7 @@ in
           ];
         };
 
+        gnuplot.enable = true;
         copy-as-format.enable = true;
 
         # https://github.com/bbatsov/crux
