@@ -170,6 +170,8 @@ in
         ;;(setq max-lisp-eval-depth 10000)
         ;;(setq max-specpdl-size 13000)
         (delete-selection-mode 1)
+        (setq compilation-scroll-output t)
+        ;;(setq compilation-scroll-output 'first-error)
 
         (setq org-directory "~/Dropbox/org-mode")
         (setq custom-file (expand-file-name (concat "custom-" (system-name) ".el") "~/Dropbox/emacs"))
