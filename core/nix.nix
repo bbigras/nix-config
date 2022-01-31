@@ -1,6 +1,5 @@
 { config, pkgs, ... }: {
   nix = {
-    allowedUsers = [ "@wheel" ];
     daemonCPUSchedPolicy = "batch";
     daemonIOSchedPriority = 5;
     distributedBuilds = true;
@@ -14,7 +13,10 @@
       dates = [ "03:00" ];
     };
     package = pkgs.nixUnstable;
-    systemFeatures = [ "recursive-nix" ];
-    trustedUsers = [ "root" "@wheel" ];
+    settings = {
+      system-features = [ "recursive-nix" ];
+      trusted-users = [ "root" "@wheel" ];
+      allowed-users = [ "@wheel" ];
+    };
   };
 }

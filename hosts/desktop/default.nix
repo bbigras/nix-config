@@ -48,12 +48,14 @@ in
     ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/desktop.nix") then [ (builtins.getEnv "PWD" + "/secrets/desktop.nix") ] else [ ]);
 
   nix = {
-    systemFeatures = [ "benchmark" "nixos-test" "big-parallel" "kvm" ];
     extraOptions = ''
       extra-platforms = aarch64-linux i686-linux
       trusted-users = bbigras
     '';
     sandboxPaths = [ "/run/binfmt/aarch64=${qemu-aarch64-static}/bin/qemu-aarch64-static" ];
+    settings = {
+      system-features = [ "benchmark" "nixos-test" "big-parallel" "kvm" ];
+    };
   };
 
   boot = {
