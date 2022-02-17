@@ -158,7 +158,6 @@
       tab-rs
       barrier
       dbeaver
-      obsidian
       cloudflared
       tmate
       josm

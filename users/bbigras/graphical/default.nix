@@ -21,7 +21,6 @@
       gnome.evince
       gnome.gnome-calendar
       mbk
-      obsidian
       shotwell
       signal-desktop
       thunderbird
