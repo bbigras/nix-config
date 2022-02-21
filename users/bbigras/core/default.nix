@@ -226,6 +226,7 @@
         report.active.labels = [ "ID" "Started" "Age" "Priority" "Project" "Due" "Description" ];
       };
     };
+    zellij.enable = true;
   };
 
   services = {
