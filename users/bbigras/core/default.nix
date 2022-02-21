@@ -68,6 +68,7 @@
 
       # nix
       cachix
+      comma
       nix-prefetch
       nix-prefetch-scripts
       nix-prefetch-github
