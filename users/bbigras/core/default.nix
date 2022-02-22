@@ -21,6 +21,7 @@
       tealdeer
 
       google-chrome
+      remmina
 
       # espeak
       socat
