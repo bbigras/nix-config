@@ -5,7 +5,7 @@ let
 in
 {
   home.packages = with pkgs; [
-    smbclient # for tramp
+    samba # for tramp
   ];
   programs.emacs = {
     enable = true;
