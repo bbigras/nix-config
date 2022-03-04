@@ -21,7 +21,14 @@ in
 
   environment = {
     etc."nixos/configuration.nix".source = dummyConfig;
-    systemPackages = with pkgs; [ ntfs3g foot.terminfo btop ];
+    systemPackages = with pkgs; [
+      ntfs3g
+      foot.terminfo
+      btop
+      minikube
+      docker-machine-kvm2
+      solo2-cli
+    ];
   };
 
   home-manager = {
@@ -71,6 +78,9 @@ in
   time.timeZone = "America/Montreal";
 
   services.flatpak.enable = true;
+  services.udev.packages = [
+    pkgs.solo2-cli
+  ];
 
   fonts.fonts = with pkgs; [
     fira-code
