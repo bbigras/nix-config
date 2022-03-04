@@ -15,6 +15,7 @@ in
     ./xdg.nix
     ./yggdrasil.nix
     ./zsh.nix
+    ./solo2.nix
   ];
 
   boot.kernelParams = [ "log_buf_len=10M" ];
@@ -27,7 +28,6 @@ in
       btop
       minikube
       docker-machine-kvm2
-      solo2-cli
     ];
   };
 
@@ -78,9 +78,6 @@ in
   time.timeZone = "America/Montreal";
 
   services.flatpak.enable = true;
-  services.udev.packages = [
-    pkgs.solo2-cli
-  ];
 
   fonts.fonts = with pkgs; [
     fira-code
