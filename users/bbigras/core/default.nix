@@ -45,6 +45,7 @@
       discord
 
       # dev
+      bfg-repo-cleaner
       gitAndTools.git-absorb
       gitAndTools.gitui
       gitAndTools.git-machete
