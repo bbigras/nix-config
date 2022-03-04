@@ -48,6 +48,7 @@ in
   ];
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [ "electron-13.6.9" ];
 
   security.sudo = {
     enable = true;
