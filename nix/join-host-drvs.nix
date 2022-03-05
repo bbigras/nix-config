@@ -7,7 +7,7 @@ with self.nixpkgs.${system};
 let
   inherit (lib) concatMapStrings escapeShellArg mapAttrs mapAttrsToList;
 
-  hostDrvs = mapAttrs (_: host: host.profiles.system.path) self.deploy.nodes;
+  hostDrvs = mapAttrs (_: host: if builtins.hasAttr "system" host.profiles then host.profiles.system.path else host.profiles.nix-on-droid.path) self.deploy.nodes;
 
   hostEntries = mapAttrsToList
     (name: path: { inherit name path; })

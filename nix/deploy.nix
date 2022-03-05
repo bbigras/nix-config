@@ -41,6 +41,18 @@ let
 
   mkActivation = hostName: localSystem:
     deploy-rs.lib.${localSystem}.activate.nixos (mkHost hostName localSystem);
+
+  pkgs_arch64 = import nixpkgs {
+    system = "aarch64-linux";
+    # localSystem.system = "aarch64-linux";
+    inherit (self.nixpkgs."aarch64-linux") overlays config;
+  };
+
+  pixel2 = (inputs.nix-on-droid.lib.nixOnDroidConfiguration {
+    system = "aarch64-linux";
+    pkgs = pkgs_arch64;
+    config = ../hosts/pixel2;
+  }).activationPackage;
 in
 {
   autoRollback = true;
@@ -51,5 +63,18 @@ in
       hostname = info.address;
       profiles.system.path = mkActivation host info.localSystem;
     })
-    (import ./hosts.nix);
+    (import ./hosts.nix) //
+  {
+    pixel2 = {
+      hostname = "pixel2";
+
+      # to prevent using sudo
+      sshUser = "nix-on-droid";
+      user = "nix-on-droid";
+
+      profiles.nix-on-droid.path = deploy-rs.lib.aarch64-linux.activate.custom
+        pixel2
+        (pixel2 + "/activate");
+    };
+  };
 }
