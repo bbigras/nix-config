@@ -5,8 +5,8 @@
   user.shell = "${pkgs.zsh}/bin/zsh";
 
   user = {
-    gid = 10202;
-    uid = 10202;
+    gid = 10382;
+    uid = 10382;
   };
 
   # Simply install just the packages
