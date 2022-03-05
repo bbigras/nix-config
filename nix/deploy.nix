@@ -48,10 +48,10 @@ let
     inherit (self.nixpkgs."aarch64-linux") overlays config;
   };
 
-  pixel2 = (inputs.nix-on-droid.lib.nixOnDroidConfiguration {
+  pixel6 = (inputs.nix-on-droid.lib.nixOnDroidConfiguration {
     system = "aarch64-linux";
     pkgs = pkgs_arch64;
-    config = ../hosts/pixel2;
+    config = ../hosts/pixel6;
   }).activationPackage;
 in
 {
@@ -65,16 +65,16 @@ in
     })
     (import ./hosts.nix) //
   {
-    pixel2 = {
-      hostname = "pixel2";
+    pixel6 = {
+      hostname = "pixel6";
 
       # to prevent using sudo
       sshUser = "nix-on-droid";
       user = "nix-on-droid";
 
       profiles.nix-on-droid.path = deploy-rs.lib.aarch64-linux.activate.custom
-        pixel2
-        (pixel2 + "/activate");
+        pixel6
+        (pixel6 + "/activate");
     };
   };
 }

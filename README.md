@@ -36,5 +36,5 @@ nix build .#hosts.desktop --impure
 ## Deploy one host
 
 ```sh
-deploy -s .#pixel2 -- --impure
+deploy -s .#pixel6 -- --impure
 ```
