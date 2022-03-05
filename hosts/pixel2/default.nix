@@ -193,6 +193,9 @@
             unsetopt AUTO_PARAM_SLASH    # If completed parameter is a directory, do not add a trailing slash.
             unsetopt MENU_COMPLETE     # Do not autoselect the first completion entry.
             unsetopt FLOW_CONTROL      # Disable start/stop characters in shell editor.
+
+            mkdir -p ~/.termux
+            cp -n "${pkgs.meslo-lgs-nf}/share/fonts/truetype/MesloLGS NF Regular.ttf" ~/.termux/font.ttf
           '';
 
           localVariables = {
@@ -212,7 +215,6 @@
         croc
         dogdns
         fd
-        # meslo-lgs-nf
         mosh
         (neofetch.override { x11Support = false; })
         oneshot
