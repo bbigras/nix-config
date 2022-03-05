@@ -52,8 +52,8 @@ in
       extra-platforms = aarch64-linux i686-linux
       trusted-users = bbigras
     '';
-    sandboxPaths = [ "/run/binfmt/aarch64=${qemu-aarch64-static}/bin/qemu-aarch64-static" ];
     settings = {
+      extra-sandbox-paths = [ "/run/binfmt/aarch64=${qemu-aarch64-static}/bin/qemu-aarch64-static" ];
       system-features = [ "benchmark" "nixos-test" "big-parallel" "kvm" ];
     };
   };

@@ -3,7 +3,7 @@
 
   services.openssh = {
     enable = true;
-    challengeResponseAuthentication = false;
+    kbdInteractiveAuthentication = false;
     permitRootLogin = lib.mkDefault "no";
     startWhenNeeded = true;
     openFirewall = false;
