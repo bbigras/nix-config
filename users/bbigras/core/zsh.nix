@@ -56,6 +56,7 @@
     shellAliases = {
       cat = "${pkgs.bat}/bin/bat";
       less = ''${pkgs.bat}/bin/bat --paging=always --pager "${pkgs.less}/bin/less -RF"'';
+      j = "${pkgs.just}/bin/just";
     };
     plugins = [
       {
