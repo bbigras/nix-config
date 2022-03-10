@@ -235,6 +235,7 @@
         pwgen
         #rage
         ht-rust
+        openssh
         prettyping
         # tab-rs
         ripgrep
