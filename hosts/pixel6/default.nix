@@ -130,6 +130,7 @@
           terminal = "screen-256color";
         };
         zoxide.enable = true;
+        zellij.enable = true;
 
         zsh = {
           enable = true;
