@@ -113,7 +113,17 @@
         htop.enable = true;
         mcfly.enable = true;
         nushell.enable = true;
-        ssh.enable = true;
+        ssh = {
+          enable = true;
+          # controlMaster = "auto";
+          # controlPersist = "10m";
+          hashKnownHosts = true;
+
+          extraOptionOverrides = {
+            AddKeysToAgent = "confirm";
+            VerifyHostKeyDNS = "ask";
+          };
+        };
         tmux = {
           enable = true;
           tmuxp.enable = true;
