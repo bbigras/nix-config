@@ -6,6 +6,7 @@
     kbdInteractiveAuthentication = false;
     permitRootLogin = lib.mkDefault "no";
     startWhenNeeded = true;
-    openFirewall = false;
+    openFirewall = true;
+    passwordAuthentication = false;
   };
 }
