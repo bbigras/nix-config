@@ -91,6 +91,7 @@
           enable = true;
           enableAliases = true;
         };
+        just.enable = true;
         git = {
           enable = true;
           delta.enable = true;
@@ -167,6 +168,8 @@
             vault-login = "${pkgs.vault}/bin/vault login -method=oidc -path=/oidc-google";
             vssh = "${pkgs.vault}/bin/vault ssh -mount-point=ssh-client-signer -mode=ca -role=my-role -private-key-path=~/.ssh/id_ed25519 -public-key-path=~/.ssh/id_ed25519.pub";
             ssh-server = "${pkgs.openssh}/bin/sshd -dD -f /etc/tmp-sshd";
+            j = "${pkgs.just}/bin/just";
+            ".j" = "${pkgs.just}/bin/just --justfile ~/.user.justfile";
           };
 
           initExtra = ''
