@@ -246,7 +246,6 @@
         k9s
         kubie
         kubectl
-        nomad
         #hyperspace-cli
       ];
     };
