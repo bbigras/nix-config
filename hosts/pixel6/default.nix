@@ -67,7 +67,7 @@
         path+=($HOME/.nix-profile/bin /etc/profiles/per-user/$USER/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin)
       '';
 
-      imports = [ ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/pixel6.nix") then [ (builtins.getEnv "PWD" + "/secrets/pixel2.nix") ] else [ ]);
+      imports = [ ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/pixel6.nix") then [ (builtins.getEnv "PWD" + "/secrets/pixel6.nix") ] else [ ]);
 
       # Use the same overlays as the system packages
       # nixpkgs.overlays = config.nixpkgs.overlays;
