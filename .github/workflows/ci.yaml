@@ -27,7 +27,7 @@ jobs:
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
       - id: get-hosts
         run: |
-          echo "::set-output name=matrix::$(nix eval --json -f ./nix/hosts.nix | jq -c 'keys | . += ["pixel2"] | { host: . }')"
+          echo "::set-output name=matrix::$(nix eval --json -f ./nix/hosts.nix | jq -c 'keys | . += ["pixel6"] | { host: . }')"
 
   build-host:
     name: Build ${{ matrix.host }}
@@ -41,7 +41,7 @@ jobs:
         run: |
           sudo rm -rf /opt /usr/local || true &
       - uses: docker/setup-qemu-action@v1
-        if: ${{ matrix.host == 'pixel2' }}
+        if: ${{ matrix.host == 'pixel6' }}
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
