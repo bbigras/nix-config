@@ -12,6 +12,9 @@ in
   };
 
   environment.systemPackages = [ nvidia_x11 ];
+  environment.variables = {
+    VDPAU_DRIVER = "nvidia";
+  };
 
   hardware = {
     nvidia.package = nvidia_x11;
