@@ -2,26 +2,30 @@
 
 system:
 
-with self.nixpkgs.${system};
+with self.legacyPackages.${system};
 
 mkShell {
   name = "nix-config";
 
   nativeBuildInputs = [
-    # (luajit.withPackages (p: with p; [ luacheck ]))
-    # act
-    # ragenix
+    # Nix
     cachix
     deploy-rs.deploy-rs
-    jq
     nix-build-uncached
     nix-linter
     nixpkgs-fmt
-    pre-commit
     rnix-lsp
-    sops
-    # stylua
-  ] ++ lib.optionals (stdenv.hostPlatform.isLinux) [ sumneko-lua-language-server ];
+
+    # GitHub Actions
+    act
+    actionlint
+    python3Packages.pyflakes
+    shellcheck
+
+    # Misc
+    jq
+    pre-commit
+  ];
 
   shellHook = ''
     ${self.checks.${system}.pre-commit-check.shellHook}

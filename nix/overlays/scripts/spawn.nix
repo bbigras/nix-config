@@ -12,11 +12,9 @@ final: _: {
 
         text = ''
           [ "$#" -ge 1 ] || exit 1
-          read -ra cmd <<<"$*"
-          program="''${cmd[0]}"
-          name="$(basename "$program")"
+          pname="$(basename "$1")"
           uuid="$(uuidgen)"
-          exec systemd-run --user --scope --unit "run-$name-$uuid" "''${cmd[@]}"
+          exec systemd-run --user --scope --unit "spawn-$pname-$uuid" "$@"
         '';
       }
     )

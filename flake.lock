@@ -287,6 +287,21 @@
         "type": "github"
       }
     },
+    "nixgl": {
+      "locked": {
+        "lastModified": 1644013836,
+        "narHash": "sha256-8J6HqBr8+JlZzjyMV8FrCS6ZI6rHo1pTMPilSBf6TaE=",
+        "owner": "guibou",
+        "repo": "nixgl",
+        "rev": "17658df1e17a64bc23ee5c93cfa9e8b663a4ac81",
+        "type": "github"
+      },
+      "original": {
+        "owner": "guibou",
+        "repo": "nixgl",
+        "type": "github"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1648141026,
@@ -393,6 +408,7 @@
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "nix-on-droid": "nix-on-droid",
+        "nixgl": "nixgl",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nur": "nur",

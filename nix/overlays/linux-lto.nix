@@ -1,17 +1,19 @@
 final:
 let
-  inherit (final) lib;
+  inherit (final) lib linuxKernel;
+  inherit (lib.kernel) yes no;
 
-  stdenvLLVM =
+  cfg = config: kernel: kernel.override {
+    argsOverride.kernelPatches = kernel.kernelPatches;
+    argsOverride.structuredExtraConfig = kernel.structuredExtraConfig // config;
+  };
+
+  llvm = kernel:
     let
-      hostLLVM = final.buildPackages.llvmPackages_12.override {
-        bootBintools = null;
-        bootBintoolsNoLibc = null;
-      };
-      buildLLVM = final.llvmPackages_12.override {
-        bootBintools = null;
-        bootBintoolsNoLibc = null;
-      };
+      llvmPackages = "llvmPackages_13";
+      noBintools = { bootBintools = null; bootBintoolsNoLibc = null; };
+      hostLLVM = final.pkgsBuildHost.${llvmPackages}.override noBintools;
+      buildLLVM = final.pkgsBuildBuild.${llvmPackages}.override noBintools;
 
       mkLLVMPlatform = platform: platform // {
         useLLVM = true;
@@ -34,62 +36,53 @@ let
           ];
         };
       };
-
       stdenvClangUseLLVM = final.overrideCC hostLLVM.stdenv hostLLVM.clangUseLLVM;
-
       stdenvPlatformLLVM = stdenvClangUseLLVM.override (old: {
         hostPlatform = mkLLVMPlatform old.hostPlatform;
         buildPlatform = mkLLVMPlatform old.buildPlatform;
       });
-    in
-    stdenvPlatformLLVM // {
-      passthru = (stdenvPlatformLLVM.passthru or { }) // { llvmPackages = buildLLVM; };
-    };
-
-  linuxLTOFor = { kernel, extraConfig ? { } }:
-    let
-      inherit (lib.kernel) yes no;
-      stdenv = stdenvLLVM;
-      buildPackages = final.buildPackages // { inherit stdenv; };
+      stdenv = stdenvPlatformLLVM;
     in
     kernel.override {
-      inherit stdenv buildPackages;
-      argsOverride.structuredExtraConfig = kernel.structuredExtraConfig // {
-        LTO_CLANG_FULL = yes;
-        LTO_NONE = no;
-        # XXX: https://www.mail-archive.com/linux-kernel@vger.kernel.org/msg2519405.html
-        DEBUG_INFO = lib.mkForce no;
-      } // extraConfig;
+      inherit stdenv;
+      buildPackages = final.buildPackages // { inherit stdenv; };
+      argsOverride.kernelPatches = kernel.kernelPatches;
+      argsOverride.structuredExtraConfig = kernel.structuredExtraConfig;
     };
 
-  linuxLTOPackagesFor = args: (final.linuxKernel.packagesFor (linuxLTOFor args)).extend (
-    kFinal: kPrev: {
-      zfs = kPrev.zfs.overrideAttrs (old: {
-        patches = (old.patches or [ ]) ++ [
-          (final.fetchpatch {
-            url = "https://gist.githubusercontent.com/lovesegfault/a41e7341a1b614395a49f55418aa2397/raw/dff399698e6446d7a926d79b5474f1a6409388b0/gistfile0.txt";
-            sha256 = "sha256-y4iDE/LB74W088FO7SOgErkAqnSiUulYfPP68Q8ewfA=";
-          })
-        ];
+  fullLTO = kernel:
+    cfg
+      { LTO_NONE = no; LTO_CLANG_FULL = yes; }
+      (llvm kernel);
 
-        meta.broken = kFinal.kernel.kernelOlder "3.10";
-      });
-    }
-  );
+  patch = patches: kernel: kernel.override {
+    argsOverride.kernelPatches = kernel.kernelPatches ++ patches;
+    argsOverride.structuredExtraConfig = kernel.structuredExtraConfig;
+  };
+
+  patches = {
+    graysky = {
+      name = "more-uarches-for-kernel-5.15";
+      patch = final.fetchpatch {
+        name = "more-uarches-for-kernel-5.15";
+        url = "https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/9c9c7e817dd2718566ec95f7742b162ab125316f/more-uarches-for-kernel-5.15%2B.patch";
+        sha256 = "sha256-WSN+1t8Leodt7YRosuDF7eiSL5/8PYseXzxquf0LtP8=";
+      };
+    };
+  };
+
+  inherit (linuxKernel) kernels packagesFor;
 in
-_: rec {
-  linuxPackages_xanmod_lto_ivybridge = linuxLTOPackagesFor {
-    kernel = final.linuxKernel.kernels.linux_xanmod;
-    extraConfig = { MIVYBRIDGE = lib.kernel.yes; };
-  };
+_: {
+  linuxPackages_latest_lto_skylake = packagesFor
+    (cfg
+      { MSKYLAKE = yes; }
+      (patch
+        [ patches.graysky ]
+        (fullLTO kernels.linux_5_16)));
 
-  linuxPackages_xanmod_lto_broadwell = linuxLTOPackagesFor {
-    kernel = final.linuxKernel.kernels.linux_xanmod;
-    extraConfig = { MBROADWELL = lib.kernel.yes; };
-  };
-
-  linuxPackages_xanmod_lto_haswell = linuxLTOPackagesFor {
-    kernel = final.linuxKernel.kernels.linux_xanmod;
-    extraConfig = { MHASWELL = lib.kernel.yes; };
-  };
+  linuxPackages_xanmod_lto_zen3 = packagesFor
+    (cfg
+      { MZEN3 = yes; DEBUG_INFO = lib.mkForce no; }
+      (fullLTO kernels.linux_xanmod));
 }

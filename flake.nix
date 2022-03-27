@@ -21,6 +21,7 @@
   ];
 
   inputs = {
+    nixgl.url = "github:guibou/nixgl";
     nixpkgs.url = "nixpkgs/3c105b417dfa85e4baf6f7b821aa7f3e4c574d44";
 
     flake-compat = {
@@ -119,24 +120,30 @@
     };
   };
 
+
   outputs = { self, nixpkgs, utils, ... }@inputs:
     {
       deploy = import ./nix/deploy.nix inputs;
-      overlay = import ./nix/overlay.nix inputs;
+
+      overlays.default = import ./nix/overlay.nix inputs;
+
+      homeConfigurations = import ./nix/home-manager.nix inputs;
     }
     // utils.lib.eachDefaultSystem (system: {
       checks = import ./nix/checks.nix inputs system;
 
-      devShell = import ./nix/dev-shell.nix inputs system;
+      devShells.default = import ./nix/dev-shell.nix inputs system;
 
-      nixpkgs = import nixpkgs {
-        inherit system;
-        overlays = [ self.overlay ];
-        config.allowUnfree = true;
+      packages = {
+        default = self.packages.${system}.hosts;
+        hosts = import ./nix/build-hosts.nix inputs system;
       };
 
-      packages.hosts = import ./nix/join-host-drvs.nix inputs system;
-
-      defaultPackage = self.packages.${system}.hosts;
+      legacyPackages = import nixpkgs {
+        inherit system;
+        overlays = [ self.overlays.default ];
+        config.allowUnfree = true;
+        config.allowAliases = true;
+      };
     });
 }
