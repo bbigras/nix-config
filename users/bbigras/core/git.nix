@@ -21,7 +21,7 @@
         line-numbers = true;
         side-by-side = true;
         whitespace-error-style = "22 reverse";
-        syntax-theme = "ansi-dark";
+        syntax-theme = "ansi";
       };
     };
 
