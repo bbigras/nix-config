@@ -16,6 +16,7 @@ in
     ./yggdrasil.nix
     ./zsh.nix
     ./solo2.nix
+    ./dendrite-demo-pinecone.nix
   ];
 
   boot.kernelParams = [ "log_buf_len=10M" ];

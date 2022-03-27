@@ -20,6 +20,7 @@ let
     (f: import (./overlays + "/${f}"))
     (attrNames (readDir ./overlays));
   # dendrite-demo-pinecone2 = dendrite-demo-pinecone.defaultPackage."${system}";
+  dendrite-demo-pinecone2 = dendrite-demo-pinecone.defaultPackage."x86_64-linux";
 in
 composeManyExtensions (localOverlays ++ [
   deploy-rs.overlay
@@ -28,9 +29,9 @@ composeManyExtensions (localOverlays ++ [
   emacs-overlay.overlay
   nur.overlay
 
-  # (_self: _super: {
-  #   dendrite-demo-pinecone = dendrite-demo-pinecone2;
-  # })
+  (_self: _super: {
+    dendrite-demo-pinecone = dendrite-demo-pinecone2;
+  })
 
   (_self: super: {
     emacsPackages = super.emacsPackages // {
