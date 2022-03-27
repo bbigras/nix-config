@@ -31,6 +31,8 @@ in
     # "vm.swappiness" = 1;
   };
 
+  virtualisation.docker.enable = true;
+
   home-manager.users.bbigras = {
     imports = [
       ../../users/bbigras/trusted
