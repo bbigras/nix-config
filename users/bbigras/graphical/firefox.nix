@@ -13,7 +13,6 @@
       french-language-pack
       https-everywhere
       i-dont-care-about-cookies
-      ipfs-companion
       languagetool
       link-cleaner
       linkhints
