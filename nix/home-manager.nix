@@ -31,9 +31,6 @@ let
           nixpkgs.source = nixpkgs;
           overlays.source = ../nix/overlays;
         };
-        configFile."nix/nix.conf".text = ''
-          flake-registry = ${config.xdg.configHome}/nix/registry.json
-        '';
       };
     };
 in
