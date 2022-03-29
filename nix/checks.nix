@@ -12,8 +12,14 @@ with self.legacyPackages.${system};
     {
       src = gitignoreSource ../.;
       hooks = {
-        nixpkgs-fmt.enable = true;
-        nix-linter.enable = true;
+        nixpkgs-fmt = {
+          enable = true;
+          excludes = [ "hardware/*" ];
+        };
+        nix-linter = {
+          enable = true;
+          excludes = [ "hardware/*" ];
+        };
         actionlint = {
           enable = true;
           files = "^.github/workflows/";
