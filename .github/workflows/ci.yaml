@@ -1,64 +1,135 @@
-name: CI
+name: ci
 on:
   push:
     branches:
       - master
       - try
-      - flake-update
+  pull_request:
 jobs:
-  get-hosts:
-    name: Get hosts
+  lints:
     runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.get-hosts.outputs.matrix }}
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
       - uses: cachix/install-nix-action@v16
         with:
-          install_url: https://nixos-nix-install-tests.cachix.org/serve/ipa0c64h689jb4ys6hxsky2r8xpld0hv/install
-          install_options: '--tarball-url-prefix https://nixos-nix-install-tests.cachix.org/serve'
           extra_nix_config: |
-            experimental-features = nix-command flakes
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+            experimental-features = nix-command flakes recursive-nix
       - uses: cachix/cachix-action@v10
         with:
           name: bbigras-nix-config
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
-      - id: get-hosts
+      - name: parse
+        run: nix-instantiate --json --parse ./**/*.nix
+      - name: lints
         run: |
-          echo "::set-output name=matrix::$(nix eval --json -f ./nix/hosts.nix | jq -c 'keys | . += ["pixel6"] | { host: . }')"
+          cachix watch-exec bbigras-nix-config -- \
+            nix build -L --keep-going \
+            .\#checks.x86_64-linux.pre-commit-check
 
-  build-host:
-    name: Build ${{ matrix.host }}
+  build-shell:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: cachix/install-nix-action@v16
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+            experimental-features = nix-command flakes recursive-nix
+      - uses: cachix/cachix-action@v10
+        with:
+          name: bbigras-nix-config
+          signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
+      - name: build-shell
+        run: |
+          cachix watch-exec bbigras-nix-config -- \
+            nix build -L --keep-going \
+            .\#devShells.x86_64-linux.default.inputDerivation
+
+  get-hosts:
+    runs-on: ubuntu-latest
+    outputs:
+      hosts: ${{ steps.get-hosts.outputs.hosts }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: cachix/install-nix-action@v16
+      - id: get-hosts
+        run: echo "::set-output name=hosts::$(nix eval --json -f ./nix/hosts.nix | jq -c 'keys')"
+
+  eval-host:
+    name: eval-${{ matrix.host }}
     runs-on: ubuntu-latest
     needs: get-hosts
     strategy:
       fail-fast: false
-      matrix: ${{ fromJson(needs.get-hosts.outputs.matrix) }}
+      matrix:
+        host: ${{ fromJson(needs.get-hosts.outputs.hosts) }}
     steps:
-      - name: "Make more space"
-        run: |
-          sudo rm -rf /opt /usr/local || true &
-      - uses: docker/setup-qemu-action@v1
-        if: ${{ matrix.host == 'pixel6' }}
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
       - uses: cachix/install-nix-action@v16
         with:
-          install_url: https://nixos-nix-install-tests.cachix.org/serve/ipa0c64h689jb4ys6hxsky2r8xpld0hv/install
-          install_options: '--tarball-url-prefix https://nixos-nix-install-tests.cachix.org/serve'
           extra_nix_config: |
-            experimental-features = nix-command flakes
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+            builders-use-substitutes = true
+            experimental-features = nix-command flakes recursive-nix
       - uses: cachix/cachix-action@v10
         with:
           name: bbigras-nix-config
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
-          extraPullNames: nix-community,dendrite-demo-pinecone,mjlbach,pre-commit-hooks,nix-on-droid
-      - name: nix build
+      - name: eval
+        run: nix-instantiate --eval -A packages.x86_64-linux.hosts.${{ matrix.host }}
+
+  build-host:
+    name: build-${{ matrix.host }}
+    runs-on: ubuntu-latest
+    needs: get-hosts
+    strategy:
+      fail-fast: false
+      matrix:
+        host: ${{ fromJson(needs.get-hosts.outputs.hosts) }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: cachix/install-nix-action@v16
+        with:
+          extra_nix_config: |
+            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+            experimental-features = nix-command flakes recursive-nix
+      - uses: cachix/cachix-action@v10
+        with:
+          name: bbigras-nix-config
+          signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
+      - name: add-mask-overlay
+        run: cp nix/mask-large-drvs.nix nix/overlays/
+      - name: build-host
+        uses: nick-invision/retry@v2
+        with:
+          max_attempts: 2
+          timeout_minutes: 720
+          retry_on: error
+          command: |
+            cachix watch-exec bbigras-nix-config -- \
+              nix run nixpkgs#nix-build-uncached -- \
+                --keep-going \
+                -A packages.x86_64-linux.hosts.${{ matrix.host }}
+
+  check:
+    runs-on: ubuntu-latest
+    needs: [ eval-host, build-host ]
+    if: always()
+    steps:
+      - name: check
         run: |
-          cachix watch-exec bbigras-nix-config nix -- run nixpkgs#nix-build-uncached \
-          -- \
-          -build-flags '--extra-platforms aarch64-linux' \
-            -A hosts.${{ matrix.host }}
+          status_uri="https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs"
+          user_str="admin:${{ secrets.PAT }}"
+          run="$(curl -X GET -s -u "${user_str}" "${status_uri}")"
+          jobs="$(jq '.jobs[]' <<< "${run}")"
+          statuses="$(jq '{job: .name, status: .conclusion}' <<< "${jobs}")"
+          builds="$(jq 'select(.job | contains("build"))' <<< "${statuses}")"
+          failed="$(jq 'select(.status | contains("success") | not)' <<< "${builds}")"
+
+          if [ -z "${failed}" ]; then
+            echo "OK"
+          else
+            echo "FAIL"
+            exit 1
+          fi
