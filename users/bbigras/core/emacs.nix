@@ -357,6 +357,8 @@ in
 
         docker-tramp.enable = true;
 
+        tramp.enable = true;
+
         dockerfile-mode.enable = true;
 
         alert = {
