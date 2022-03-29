@@ -3,7 +3,6 @@
 , home-manager
 , impermanence
 , nixpkgs
-, ragenix
 , templates
 , sops-nix
 , ...

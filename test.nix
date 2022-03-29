@@ -19,7 +19,7 @@ let
 in
 {
   name = "nix-matrix-yggdrasil-test";
-  nodes.server = { ... }: {
+  nodes.server = {
     imports = [
       (import (import ./nix).home-manager)
     ];

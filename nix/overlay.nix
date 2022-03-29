@@ -1,7 +1,6 @@
 { deploy-rs
 , gitignore
 , nixpkgs
-, ragenix
 , emacs-overlay
 , nur
 , dendrite-demo-pinecone

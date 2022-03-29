@@ -1,4 +1,4 @@
-{ config, ... }: {
+{
   nix = {
     settings = {
       allowed-users = [ "@wheel" ];
