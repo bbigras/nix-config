@@ -1,5 +1,6 @@
 { deploy-rs
 , gitignore
+, nixgl
 , nixpkgs
 , emacs-overlay
 , nur
@@ -114,4 +115,5 @@ composeManyExtensions (localOverlays ++ [
     };
   })
 
+  nixgl.overlay
 ])
