@@ -1,4 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+
+let
+  direnv_psql_cfg = ../core/direnv-psql.cfg;
+in
+{
   home = {
     extraOutputsToInstall = [ "doc" "devdoc" ];
     file.gdbinit = {
@@ -23,6 +28,8 @@
                 echo -n "$PWD" | shasum | cut -d ' ' -f 1
             )}"
         }
+
+        source ${direnv_psql_cfg}
       '';
     };
 
