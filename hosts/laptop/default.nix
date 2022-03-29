@@ -24,6 +24,8 @@ in
       ../../graphical/sway.nix
       ../../graphical/trusted.nix
 
+      ../../dev/rust-embeded.nix
+
       ../../users/bbigras
     ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ])
     ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/laptop.nix") then [ (builtins.getEnv "PWD" + "/secrets/laptop.nix") ] else [ ]);
