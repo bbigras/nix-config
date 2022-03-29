@@ -17,12 +17,7 @@
 
     delta = {
       enable = true;
-      options = {
-        line-numbers = true;
-        side-by-side = true;
-        whitespace-error-style = "22 reverse";
-        syntax-theme = "ansi";
-      };
+      options.syntax-theme = "Nord";
     };
 
     aliases = {

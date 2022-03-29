@@ -10,11 +10,19 @@
 
   home = {
     packages = with pkgs; [
+      blueman
+      gammastep
+      gnome.adwaita-icon-theme
+      hicolor-icon-theme
       libnotify
       lollypop
       pavucontrol
       pinentry-gnome
+      qgnomeplatform
+      qt5.qtwayland
+      spawn
       speedcrunch
+      xdg-utils
     ] ++ lib.optionals (pkgs.hostPlatform.system == "x86_64-linux") [
       discord
       element-desktop
@@ -55,9 +63,25 @@
     };
   };
 
-  services.gpg-agent.pinentryFlavor = "gnome3";
+  services = {
+    blueman-applet.enable = true;
+    gpg-agent.pinentryFlavor = "gnome3";
+    gammastep = {
+      enable = true;
+      provider = "geoclue2";
+      tray = true;
+      settings.general = {
+        brightness-day = 1.0;
+        brightness-night = 0.4;
+      };
+    };
+  };
 
   systemd.user.services = {
+    gammastep.Unit = {
+      After = [ "geoclue-agent.service" ];
+      Wants = [ "geoclue-agent.service" ];
+    };
     polkit = {
       Unit = {
         Description = "polkit-gnome";

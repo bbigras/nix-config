@@ -12,8 +12,12 @@
       grim
       imv
       slurp
+      swaybg
+      swayidle
+      swaylock
       wl-clipboard
       wofi
+      xwayland
     ];
   };
 
@@ -80,6 +84,7 @@
         After = [ "graphical-session.target" ];
       };
       Service = {
+        Environment = [ "XDG_CURRENT_DESKTOP=Unity" "GTK_THEME=Hicolor" ];
         ExecStart = "${config.programs.waybar.package}/bin/waybar";
         ExecReload = "kill -SIGUSR2 $MAINPID";
         RestartSec = 3;

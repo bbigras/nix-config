@@ -99,10 +99,16 @@ let
 
     window = {
       border = 0;
-      commands = [{
-        command = "floating enable, sticky enable";
-        criteria.title = "Picture-in-Picture";
-      }];
+      commands = [
+        {
+          command = "floating enable, sticky enable";
+          criteria.title = "Picture-in-Picture";
+        }
+        {
+          command = "floating enable, sticky enable";
+          criteria.title = ".*Sharing Indicator.*";
+        }
+      ];
     };
   };
 in
