@@ -502,6 +502,7 @@ in
           package = _epkgs: pkgs.emacsPackages.ement;
           config = ''
             (require 'ement-room-list)
+            (require 'ement-taxy)
             (add-hook 'ement-room-mode-hook (lambda () (setq show-trailing-whitespace nil)))
           '';
           # (setq ement-save-sessions t)
