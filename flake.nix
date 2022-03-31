@@ -22,7 +22,7 @@
 
   inputs = {
     nixgl.url = "github:guibou/nixgl";
-    nixpkgs.url = "nixpkgs/3c105b417dfa85e4baf6f7b821aa7f3e4c574d44";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
 
     flake-compat = {
       url = "github:edolstra/flake-compat";
