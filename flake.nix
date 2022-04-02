@@ -29,11 +29,6 @@
       flake = false;
     };
 
-    emacs-hass = {
-      url = "github:purplg/hass";
-      flake = false;
-    };
-
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs = {

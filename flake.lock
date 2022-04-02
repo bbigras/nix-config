@@ -142,22 +142,6 @@
         "type": "gitlab"
       }
     },
-    "emacs-hass": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1648905964,
-        "narHash": "sha256-g9opnIPMEnqMpt7moPI9WP5prrYh/ofkSJlN/cLNdOI=",
-        "owner": "purplg",
-        "repo": "hass",
-        "rev": "c6bded14ae4b68194bd9e35428e9973ca144569b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "purplg",
-        "repo": "hass",
-        "type": "github"
-      }
-    },
     "emacs-overlay": {
       "locked": {
         "lastModified": 1648896330,
@@ -399,7 +383,6 @@
         "deploy-rs": "deploy-rs",
         "emacs-ement": "emacs-ement",
         "emacs-ement-extras": "emacs-ement-extras",
-        "emacs-hass": "emacs-hass",
         "emacs-overlay": "emacs-overlay",
         "emacs-plz": "emacs-plz",
         "flake-compat": "flake-compat",

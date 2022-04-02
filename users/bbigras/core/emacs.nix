@@ -469,7 +469,6 @@ in
 
         hass = {
           enable = true;
-          package = _epkgs: pkgs.emacsPackages.hass222;
           config = ''
                         (require 'hass-dash)
                         (hass-setup)
