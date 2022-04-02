@@ -145,16 +145,15 @@
     "emacs-hass": {
       "flake": false,
       "locked": {
-        "lastModified": 1643325429,
-        "narHash": "sha256-/WA2pJRHMl+hrWCXpfHtpOYUPCckHDFt5YbFg1sOrpI=",
+        "lastModified": 1648905964,
+        "narHash": "sha256-g9opnIPMEnqMpt7moPI9WP5prrYh/ofkSJlN/cLNdOI=",
         "owner": "purplg",
         "repo": "hass",
-        "rev": "7820d89dac44d355a6c8fbe950babc0bacac395e",
+        "rev": "c6bded14ae4b68194bd9e35428e9973ca144569b",
         "type": "github"
       },
       "original": {
         "owner": "purplg",
-        "ref": "dashboard",
         "repo": "hass",
         "type": "github"
       }

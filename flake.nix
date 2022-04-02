@@ -30,7 +30,7 @@
     };
 
     emacs-hass = {
-      url = "github:purplg/hass/dashboard";
+      url = "github:purplg/hass";
       flake = false;
     };
 
