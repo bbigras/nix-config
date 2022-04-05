@@ -7,7 +7,7 @@
 let
   nurNoPkgs = import inputs.nur { pkgs = null; nurpkgs = pkgs; };
 in
-{
+rec {
   imports =
     [
       ../../core
@@ -33,7 +33,7 @@ in
 
   environment.systemPackages = with pkgs; [
     iwd
-    linuxPackages.bcc
+    boot.kernelPackages.bcc
   ];
 
   sops.secrets.restic-laptop-password.sopsFile = ./restic-laptop.yaml;
