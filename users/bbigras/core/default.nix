@@ -190,6 +190,7 @@
       sysstat
 
       ventoy-bin
+      docker-credential-helpers
     ];
   };
 
