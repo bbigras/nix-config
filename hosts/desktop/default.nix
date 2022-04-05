@@ -18,7 +18,7 @@ let
 
   nurNoPkgs = import inputs.nur { pkgs = null; nurpkgs = pkgs; };
 in
-{
+rec {
   imports =
     [
       ../../core
@@ -67,7 +67,7 @@ in
       magicOrExtension = ''\x7fELF\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\xb7\x00'';
       mask = ''\xff\xff\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\x00\xff\xfe\xff\xff\xff'';
     };
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_5_16;
     loader.grub.useOSProber = true;
 
     kernel.sysctl = {
@@ -179,7 +179,7 @@ in
   #   enableWebUI = true;
   # };
 
-  environment.systemPackages = with pkgs; [ linuxPackages_zen.bcc ];
+  environment.systemPackages = with pkgs; [ boot.kernelPackages.bcc ];
   virtualisation.docker.enable = true;
 
   environment.persistence."/persist" = {
