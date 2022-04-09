@@ -97,13 +97,4 @@
       report.top.sort=priority-/,project-,description+
     '';
   };
-
-
-  # Workaround https://github.com/nix-community/home-manager/issues/2360
-  xdg.configFile."task/taskrc".target = "task/taskrc_";
-  home.activation = {
-    regenDotTaskRc = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      $DRY_RUN_CMD echo "include ~/.config/task/taskrc_" > ~/.config/task/taskrc
-    '';
-  };
 }
