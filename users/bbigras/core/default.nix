@@ -152,7 +152,7 @@
       prettyping # a nicer ping
       rnix-lsp # nix lsp server
 
-      dragon-drop
+      xdragon
       feh # light-weight image viewer
       killall
       ghidra-bin
