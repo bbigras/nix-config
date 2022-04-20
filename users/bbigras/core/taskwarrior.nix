@@ -1,4 +1,4 @@
-{ ... }: {
+{
   programs.taskwarrior = {
     enable = true;
     colorTheme = "dark-blue-256";
