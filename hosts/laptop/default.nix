@@ -42,7 +42,7 @@ rec {
   sops.secrets.yggdrasil-conf.sopsFile = ./restic-laptop.yaml;
 
   hardware.brillo.enable = true;
-  # boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.kernel.sysctl = {
     "kernel.sysrq" = 1;
     # "fs.inotify.max_user_watches" = 524288;
