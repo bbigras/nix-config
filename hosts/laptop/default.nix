@@ -23,6 +23,7 @@ rec {
       ../../graphical
       ../../graphical/sway.nix
       ../../graphical/trusted.nix
+      ../../dev/virt-manager.nix
 
       ../../dev/rust-embeded.nix
       ../../dev/adb.nix

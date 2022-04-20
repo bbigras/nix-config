@@ -20,6 +20,7 @@ in
       ../../graphical
       ../../graphical/sway.nix
       ../../graphical/trusted.nix
+      ../../dev/virt-manager.nix
 
       ../../users/bbigras
     ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_work.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_work.nix") ] else [ ]);
