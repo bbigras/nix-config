@@ -96,6 +96,7 @@ composeManyExtensions (localOverlays ++ [
           super.emacsPackages.cl-lib
           super.emacsPackages.taxy
           super.emacsPackages.taxy-magit-section
+          super.emacsPackages.svg-lib
         ];
         src = emacs-ement;
       };
