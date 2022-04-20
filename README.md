@@ -1,4 +1,4 @@
-# nix-config ![CI](https://github.com/bbigras/nix-config/workflows/CI/badge.svg)
+# nix-config [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org) [![ci](https://github.com/bbigras/nix-config/actions/workflows/ci.yaml/badge.svg)](https://github.com/bbigras/nix-config/actions/workflows/ci.yaml)
 
 WIP
 
