@@ -2,7 +2,6 @@
   imports = [
     ./btop.nix
     ./git.nix
-    ./htop.nix
     ./emacs.nix
     ./tmux.nix
     ./xdg.nix
