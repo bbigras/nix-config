@@ -29,8 +29,6 @@
       websocat
 
       # media
-      handbrake
-      vlc
       gimp
       mediainfo
       pavucontrol
@@ -56,7 +54,6 @@
       colordiff
       wrangler # cloudflare workers
       tcpdump
-      radicle-upstream
 
       # net
       croc
@@ -79,7 +76,6 @@
       nix-update
       nixpkgs-fmt
       nixos-shell
-      rnix-lsp
       manix
 
       # cool cli tools
@@ -91,15 +87,11 @@
       hyperfine
       pwgen
       rage
-      navi # cheat sheet
       sd # find & replace
       eva # calc
       bandwhich
       dogdns
       btop
-
-      vault
-      terraform_0_14
 
       # Android
       # android-studio
@@ -107,9 +99,6 @@
 
       # security?
       bitwarden-cli
-
-      # pour Laptop
-      powerstat
 
       # backup
       restic
@@ -158,8 +147,6 @@
       ghidra-bin
 
       unar
-      tab-rs
-      barrier
       dbeaver
       obsidian
       cloudflared
@@ -181,7 +168,6 @@
       # istioctl
       kubernetes-helm
 
-      nomad
       #hyperspace-cli
       anytype
       pueue
