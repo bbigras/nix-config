@@ -271,12 +271,15 @@
       }
     },
     "nixgl": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
       "locked": {
-        "lastModified": 1644013836,
-        "narHash": "sha256-8J6HqBr8+JlZzjyMV8FrCS6ZI6rHo1pTMPilSBf6TaE=",
+        "lastModified": 1651078744,
+        "narHash": "sha256-+S/NEzZoTt7EoSOMEUsR/LuNTtzYhbribFaIewNxdCQ=",
         "owner": "guibou",
         "repo": "nixgl",
-        "rev": "17658df1e17a64bc23ee5c93cfa9e8b663a4ac81",
+        "rev": "56f2fbcce7a08c60c98394a64e900d5e9227bcb2",
         "type": "github"
       },
       "original": {
@@ -300,6 +303,20 @@
       }
     },
     "nixpkgs": {
+      "locked": {
+        "lastModified": 1651058742,
+        "narHash": "sha256-oH4vje8RnJVwHD5lon3dTL4LmRKEwONQFOH74oxkta4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d146577610c17d7674a2d3e285fc637c520ad344",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1650920067,
         "narHash": "sha256-iV+7zkBZsHiy4epfcyoiW8lRXdjZXq6h8RfNcaua4Fc=",
@@ -392,7 +409,7 @@
         "nix-on-droid": "nix-on-droid",
         "nixgl": "nixgl",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "nur": "nur",
         "pre-commit-hooks": "pre-commit-hooks",
         "ragenix": "ragenix",
