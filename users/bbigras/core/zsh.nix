@@ -57,6 +57,7 @@
     };
     shellAliases = {
       cat = "${pkgs.bat}/bin/bat";
+      man = "${pkgs.bat-extras.batman}/bin/batman";
       less = ''${pkgs.bat}/bin/bat --paging=always --pager "${pkgs.less}/bin/less -RF"'';
       j = "${pkgs.just}/bin/just";
       ".j" = "${pkgs.just}/bin/just --justfile ~/.user.justfile";
