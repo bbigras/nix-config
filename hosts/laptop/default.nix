@@ -25,7 +25,7 @@ rec {
       ../../graphical/trusted.nix
       ../../dev/virt-manager.nix
 
-      ../../dev/rust-embeded.nix
+      # ../../dev/rust-embeded.nix
       ../../dev/adb.nix
 
       ../../users/bbigras

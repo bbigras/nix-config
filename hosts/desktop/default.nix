@@ -42,7 +42,7 @@ rec {
       ../../graphical/gnome.nix
       ../../graphical/trusted.nix
 
-      ../../dev/rust-embeded.nix
+      # ../../dev/rust-embeded.nix
       ../../dev/adb.nix
 
       ../../users/bbigras
