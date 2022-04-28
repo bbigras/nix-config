@@ -528,6 +528,7 @@ in
         };
 
         graphql-mode.enable = true;
+        graphviz-dot-mode.enable = true;
 
         hydra = {
           enable = true;
