@@ -45,8 +45,7 @@ let
 
   pkgs_arch64 = import nixpkgs {
     system = "aarch64-linux";
-    # localSystem.system = "aarch64-linux";
-    inherit (self.nixpkgs."aarch64-linux") overlays config;
+    inherit (self.legacyPackages."aarch64-linux") overlays config;
   };
 
   pixel6 = (inputs.nix-on-droid.lib.nixOnDroidConfiguration {
@@ -73,7 +72,7 @@ in
       sshUser = "nix-on-droid";
       user = "nix-on-droid";
 
-      profiles.nix-on-droid.path = deploy-rs.lib.aarch64-linux.activate.custom
+      profiles.system.path = deploy-rs.lib.aarch64-linux.activate.custom
         pixel6
         (pixel6 + "/activate");
     };

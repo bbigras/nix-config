@@ -54,7 +54,8 @@ jobs:
       - uses: actions/checkout@v3
       - uses: cachix/install-nix-action@v17
       - id: get-hosts
-        run: echo "::set-output name=hosts::$(nix eval --json -f ./nix/hosts.nix | jq -c 'keys')"
+        run: |
+          echo "::set-output name=hosts::$(nix eval --json -f ./nix/hosts.nix | jq -c 'keys | . += ["pixel6"]')"
 
   eval-host:
     name: eval-${{ matrix.host }}
@@ -88,6 +89,8 @@ jobs:
       matrix:
         host: ${{ fromJson(needs.get-hosts.outputs.hosts) }}
     steps:
+      - uses: docker/setup-qemu-action@v1
+        if: ${{ matrix.host == 'pixel6' }}
       - uses: actions/checkout@v3
       - uses: cachix/install-nix-action@v17
         with:
