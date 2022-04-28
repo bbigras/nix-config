@@ -19,6 +19,7 @@ jobs:
         with:
           name: bbigras-nix-config
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
+          extraPullNames: "dendrite-demo-pinecone,nix-community,nix-on-droid,pre-commit-hooks"
       - name: parse
         run: nix-instantiate --json --parse ./**/*.nix
       - name: lints
@@ -40,6 +41,7 @@ jobs:
         with:
           name: bbigras-nix-config
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
+          extraPullNames: "dendrite-demo-pinecone,nix-community,nix-on-droid,pre-commit-hooks"
       - name: build-shell
         run: |
           cachix watch-exec bbigras-nix-config -- \
@@ -77,6 +79,7 @@ jobs:
         with:
           name: bbigras-nix-config
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
+          extraPullNames: "dendrite-demo-pinecone,nix-community,nix-on-droid,pre-commit-hooks"
       - name: eval
         run: nix-instantiate --eval -A packages.x86_64-linux.hosts.${{ matrix.host }}
 
@@ -101,6 +104,7 @@ jobs:
         with:
           name: bbigras-nix-config
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
+          extraPullNames: "dendrite-demo-pinecone,nix-community,nix-on-droid,pre-commit-hooks"
       - name: add-mask-overlay
         run: cp nix/mask-large-drvs.nix nix/overlays/
       - name: build-host
