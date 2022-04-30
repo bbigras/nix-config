@@ -9,7 +9,7 @@ in
   ];
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsPgtkGcc;
+    package = pkgs.emacsPgtkNativeComp;
     init = {
       enable = true;
 
