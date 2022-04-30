@@ -61,15 +61,12 @@
       # Read the changelog before changing this value
       home.stateVersion = "20.09";
 
-      home.file.".zshenv".text = ''
-        typeset -U path cdpath fpath manpath
-        # Set PATH for both interactive and non-interactive shell
-        path+=($HOME/.nix-profile/bin /etc/profiles/per-user/$USER/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin)
-      '';
-
       imports = [
         ../../users/bbigras/core/atuin.nix
+        ../../users/bbigras/core/git.nix
         ../../users/bbigras/core/taskwarrior.nix
+        ../../users/bbigras/core/tmux.nix
+        ../../users/bbigras/core/zsh.nix
       ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/pixel6.nix") then [ (builtins.getEnv "PWD" + "/secrets/pixel6.nix") ] else [ ]);
 
       # Use the same overlays as the system packages
@@ -91,34 +88,17 @@
         bat.enable = true;
         command-not-found.enable = true;
         emacs = {
-          enable = true;
+          enable = false;
           package = pkgs.emacs-nox;
         };
         exa = {
           enable = true;
           enableAliases = true;
         };
+        fzf.enable = true;
         just.enable = true;
-        git = {
-          enable = true;
-          delta.enable = true;
-          userName = "Bruno Bigras";
-          userEmail = "bigras.bruno@gmail.com";
-          aliases = {
-            st = "status";
-            co = "checkout";
-            ci = "commit";
-            br = "branch";
-            lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
-            recent = "for-each-ref --sort=-committerdate --format='%(committerdate:short): %(refname:short)' refs/heads/";
-          };
-          extraConfig = {
-            pull.ff = "only";
-          };
-        };
         jq.enable = true;
         htop.enable = true;
-        mcfly.enable = true;
         nushell.enable = true;
         ssh = {
           enable = true;
@@ -131,107 +111,12 @@
             VerifyHostKeyDNS = "ask";
           };
         };
-        tmux = {
-          enable = true;
-          tmuxp.enable = true;
-          terminal = "screen-256color";
-        };
         zoxide.enable = true;
         zellij.enable = true;
-
-        zsh = {
-          enable = true;
-          enableAutosuggestions = true;
-          enableCompletion = true;
-          # dirHashes = {
-          #   docs = "$HOME/Documents";
-          #   vids = "$HOME/Videos";
-          #   dl = "$HOME/Downloads";
-          # };
-          plugins = [
-            {
-              name = "zsh-autosuggestions";
-              src = pkgs.zsh-autosuggestions;
-            }
-            {
-              name = "zsh-syntax-highlighting";
-              src = pkgs.zsh-syntax-highlighting;
-            }
-            {
-              name = "zsh-history-substring-search";
-              src = pkgs.zsh-history-substring-search;
-            }
-            {
-              name = "zsh-completions";
-              src = pkgs.zsh-completions;
-            }
-            {
-              name = "powerlevel10k-config";
-              src = lib.cleanSource ../../users/bbigras/core/p10k-config;
-              file = "p10k.zsh";
-            }
-            # {
-            #   name = "async";
-            #   src = pkgs.zsh-async;
-            # }
-            {
-              name = "zsh-you-should-use";
-              src = pkgs.zsh-you-should-use;
-            }
-          ];
-
-          shellAliases = {
-            cat = "${pkgs.bat}/bin/bat";
-            less = ''${pkgs.bat}/bin/bat --paging=always --pager "${pkgs.less}/bin/less -RF"'';
-            vault-login = "${pkgs.vault}/bin/vault login -method=oidc -path=/oidc-google";
-            vssh = "${pkgs.vault}/bin/vault ssh -mount-point=ssh-client-signer -mode=ca -role=my-role -private-key-path=~/.ssh/id_ed25519 -public-key-path=~/.ssh/id_ed25519.pub";
-            ssh-server = "${pkgs.openssh}/bin/sshd -dD -f /etc/tmp-sshd";
-            j = "${pkgs.just}/bin/just";
-            ".j" = "${pkgs.just}/bin/just --justfile ~/.user.justfile";
-          };
-
-          initExtra = ''
-            ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
-            if [[ "$TERM" != 'dumb' && -z "$INSIDE_EMACS" ]]; then
-              source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-              [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-            fi
-          '';
-
-          initExtraFirst = ''
-            DIRSTACKSIZE=10
-            setopt   notify globdots correct cdablevars autolist
-            setopt   correctall autocd recexact longlistjobs
-            setopt   autoresume
-            setopt   rcquotes mailwarning
-            unsetopt bgnice
-            setopt   autopushd pushdminus pushdsilent pushdtohome pushdignoredups
-            setopt COMPLETE_IN_WORD    # Complete from both ends of a word.
-            setopt ALWAYS_TO_END       # Move cursor to the end of a completed word.
-            setopt AUTO_MENU           # Show completion menu on a successive tab press.
-            setopt AUTO_LIST           # Automatically list choices on ambiguous completion.
-            setopt EXTENDED_GLOB       # Needed for file modification glob modifiers with compinit
-            unsetopt AUTO_PARAM_SLASH    # If completed parameter is a directory, do not add a trailing slash.
-            unsetopt MENU_COMPLETE     # Do not autoselect the first completion entry.
-            unsetopt FLOW_CONTROL      # Disable start/stop characters in shell editor.
-
-            mkdir -p ~/.termux
-            cp -n "${pkgs.meslo-lgs-nf}/share/fonts/truetype/MesloLGS NF Regular.ttf" ~/.termux/font.ttf
-          '';
-
-          localVariables = {
-            # This way, C-w deletes words (path elements)
-            WORDCHARS = "*?_-.[]~&;!#$%^(){}<>";
-
-            ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE = "fg=8";
-          };
-
-        };
-
-
       };
 
       home.packages = with pkgs; [
+        kalker
         cachix
         croc
         dogdns
@@ -253,6 +138,8 @@
         k9s
         kubie
         kubectl
+        # socat
+        # websocat
         #hyperspace-cli
       ];
     };
