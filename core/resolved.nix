@@ -11,7 +11,7 @@
     enable = true;
     dnssec = "allow-downgrade";
     extraConfig = ''
-      DNS=1.1.1.1 8.8.8.8
+      DNS=1.1.1.1 1.0.0.1
       Domains=~.
       LLMNR=true
       MulticastDNS=true
