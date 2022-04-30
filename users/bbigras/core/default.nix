@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   imports = [
+    ./atuin.nix
     ./btop.nix
     ./git.nix
     ./emacs.nix
@@ -181,6 +182,10 @@
 
   programs = {
     aria2.enable = true;
+    atuin = {
+      enable = true;
+      settings.auto_sync = true;
+    };
     bat.enable = true;
     exa = {
       enable = true;

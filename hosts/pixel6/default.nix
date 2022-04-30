@@ -68,6 +68,7 @@
       '';
 
       imports = [
+        ../../users/bbigras/core/atuin.nix
         ../../users/bbigras/core/taskwarrior.nix
       ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/pixel6.nix") then [ (builtins.getEnv "PWD" + "/secrets/pixel6.nix") ] else [ ]);
 
@@ -83,6 +84,10 @@
       # insert home-manager config
       programs = {
         aria2.enable = true;
+        atuin = {
+          enable = true;
+          settings.auto_sync = true;
+        };
         bat.enable = true;
         command-not-found.enable = true;
         emacs = {

@@ -201,6 +201,7 @@ rec {
         ".npm/_cacache/index-v5"
         ".npm/_cacache/content-v2"
         ".gnupg/private-keys-v1.d"
+        ".local/share/atuin"
         ".local/share/direnv"
         ".local/share/keyrings"
         ".local/share/pantalaimon"
