@@ -193,7 +193,6 @@
     };
     jq.enable = true;
     just.enable = true;
-    mcfly.enable = true;
     fzf.enable = true;
     gpg.enable = true;
     navi.enable = true;

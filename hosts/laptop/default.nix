@@ -237,7 +237,6 @@ rec {
         ".gnupg/trustdb.gpg"
         ".kube/config"
         # ".local/share/fish/fish_history"
-        ".mcfly/history.db"
         ".zsh_history"
         ".notmuch-config"
         ".ssh/id_ed25519"
