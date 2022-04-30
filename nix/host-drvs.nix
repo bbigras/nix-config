@@ -1,22 +1,9 @@
-{ self
-, deploy-rs
-, nixpkgs
-, nix-on-droid
-, ...
-}:
-let
-  inherit (nixpkgs) lib;
-  hosts = (import ./hosts.nix).all;
+{ self, nix-on-droid, deploy-rs, nixpkgs, ... }:
 
-  genNode = hostName: nixosCfg:
-    let
-      inherit (hosts.${hostName}) address localSystem;
-      activate = deploy-rs.lib.${localSystem}.activate;
-    in
-    {
-      hostname = address;
-      profiles.system.path = activate.nixos nixosCfg;
-    };
+system:
+
+let
+  inherit (self.nixpkgs.${system}) lib linkFarm;
 
   pkgs_arch64 = import nixpkgs {
     system = "aarch64-linux";
@@ -28,12 +15,10 @@ let
     pkgs = pkgs_arch64;
     config = ../hosts/pixel6;
   }).activationPackage;
-in
-{
-  autoRollback = true;
-  magicRollback = true;
-  user = "root";
-  nodes = lib.mapAttrs genNode self.nixosConfigurations // {
+
+  nixosDrvs = lib.mapAttrs (_: nixos: nixos.config.system.build.toplevel) self.nixosConfigurations;
+  homeDrvs = lib.mapAttrs (_: home: home.activationPackage) self.homeConfigurations;
+  deployDrvs = lib.mapAttrs (_: deploy: deploy.profiles.system.path) {
     pixel6 = {
       hostname = "pixel6";
 
@@ -46,4 +31,9 @@ in
         (pixel6 + "/activate");
     };
   };
+
+  hostDrvs = nixosDrvs // homeDrvs // deployDrvs;
+in
+hostDrvs // {
+  all-hosts = linkFarm "all-hosts" (lib.mapAttrsToList (name: path: { inherit name path; }) hostDrvs);
 }

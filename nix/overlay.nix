@@ -1,8 +1,8 @@
 { deploy-rs
-, gitignore
+, emacs-overlay
 , nixgl
 , nixpkgs
-, emacs-overlay
+, ragenix
 , nur
 , dendrite-demo-pinecone
 , emacs-plz
@@ -18,13 +18,13 @@ let
   localOverlays = map
     (f: import (./overlays + "/${f}"))
     (attrNames (readDir ./overlays));
-  # dendrite-demo-pinecone2 = dendrite-demo-pinecone.defaultPackage."${system}";
+
   dendrite-demo-pinecone2 = dendrite-demo-pinecone.defaultPackage."x86_64-linux";
 in
 composeManyExtensions (localOverlays ++ [
   deploy-rs.overlay
-  gitignore.overlay
-  # ragenix.overlay
+  nixgl.overlay
+  ragenix.overlay
   emacs-overlay.overlay
   nur.overlay
 
@@ -103,5 +103,4 @@ composeManyExtensions (localOverlays ++ [
     };
   })
 
-  nixgl.overlay
 ])

@@ -5,12 +5,12 @@
 
 system:
 
-with self.legacyPackages.${system};
+with self.nixpkgs.${system};
 
 {
   pre-commit-check = pre-commit-hooks.lib.${system}.run
     {
-      src = gitignoreSource ../.;
+      src = lib.cleanSource ../.;
       hooks = {
         nixpkgs-fmt = {
           enable = true;
@@ -24,13 +24,7 @@ with self.legacyPackages.${system};
           enable = true;
           files = "^.github/workflows/";
           types = [ "yaml" ];
-          entry =
-            let
-              actionlintBin = "${actionlint}/bin/actionlint";
-              pyflakesBin = "${python3Packages.pyflakes}/bin/pyflakes";
-              shellcheckBin = "${shellcheck}/bin/shellcheck";
-            in
-            "${actionlintBin} -pyflakes ${pyflakesBin} -shellcheck ${shellcheckBin}";
+          entry = "${actionlint}/bin/actionlint";
         };
       };
       settings.nix-linter.checks = [

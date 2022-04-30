@@ -1,7 +1,7 @@
-{ pkgs, inputs, lib, ... }:
+{ lib, pkgs, nur, nixos-hardware, ... }:
 
 let
-  nurNoPkgs = import inputs.nur { pkgs = null; nurpkgs = pkgs; };
+  nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
 in
 {
   imports =
@@ -14,8 +14,8 @@ in
       ../../hardware/efi.nix
       ../../hardware/sound-pipewire.nix
 
-      inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-      inputs.nixos-hardware.nixosModules.common-cpu-intel
+      nixos-hardware.common-pc-laptop-ssd
+      nixos-hardware.common-cpu-intel
 
       ../../graphical
       ../../graphical/sway.nix

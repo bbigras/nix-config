@@ -56,32 +56,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: cachix/install-nix-action@v17
       - id: get-hosts
-        run: |
-          echo "::set-output name=hosts::$(nix eval --json -f ./nix/hosts.nix | jq -c 'keys | . += ["pixel6"]')"
-
-  eval-host:
-    name: eval-${{ matrix.host }}
-    runs-on: ubuntu-latest
-    needs: get-hosts
-    strategy:
-      fail-fast: false
-      matrix:
-        host: ${{ fromJson(needs.get-hosts.outputs.hosts) }}
-    steps:
-      - uses: actions/checkout@v3
-      - uses: cachix/install-nix-action@v17
-        with:
-          extra_nix_config: |
-            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-            builders-use-substitutes = true
-            experimental-features = nix-command flakes recursive-nix
-      - uses: cachix/cachix-action@v10
-        with:
-          name: bbigras-nix-config
-          signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
-          extraPullNames: "dendrite-demo-pinecone,nix-community,nix-on-droid,pre-commit-hooks"
-      - name: eval
-        run: nix-instantiate --eval -A packages.x86_64-linux.hosts.${{ matrix.host }}
+        run: echo "::set-output name=hosts::$(nix eval --json -f ./nix/hosts.nix all | jq -c 'keys | . += ["pixel6"]')"
 
   build-host:
     name: build-${{ matrix.host }}
@@ -105,8 +80,8 @@ jobs:
           name: bbigras-nix-config
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
           extraPullNames: "dendrite-demo-pinecone,nix-community,nix-on-droid,pre-commit-hooks"
-      - name: add-mask-overlay
-        run: cp nix/mask-large-drvs.nix nix/overlays/
+      - name: add-lite-overlay
+        run: sed -i '/.*overlays\.lite/s/#\s*//g' flake.nix
       - name: build-host
         uses: nick-invision/retry@v2
         with:
@@ -118,11 +93,11 @@ jobs:
               nix run nixpkgs#nix-build-uncached -- \
                 --keep-going \
                 -build-flags '--extra-platforms aarch64-linux' \
-                -A packages.x86_64-linux.hosts.${{ matrix.host }}
+                -A packages.x86_64-linux.${{ matrix.host }}
 
   check:
     runs-on: ubuntu-latest
-    needs: [ eval-host, build-host ]
+    needs: [ build-host ]
     if: always()
     steps:
       - name: check

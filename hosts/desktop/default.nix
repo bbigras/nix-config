@@ -2,7 +2,8 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, pkgs, inputs, ... }:
+{ lib, pkgs, nur, nixos-hardware, ... }:
+
 let
   qemu-aarch64-static = pkgs.stdenv.mkDerivation {
     name = "qemu-aarch64-static";
@@ -16,7 +17,7 @@ let
     installPhase = "install -D -m 0755 $src $out/bin/qemu-aarch64-static";
   };
 
-  nurNoPkgs = import inputs.nur { pkgs = null; nurpkgs = pkgs; };
+  nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
 in
 rec {
   imports =
@@ -29,9 +30,9 @@ rec {
       ../../hardware/hardware-configuration-desktop.nix
       ../../hardware/efi.nix
 
-      inputs.nixos-hardware.nixosModules.common-pc
-      inputs.nixos-hardware.nixosModules.common-pc-ssd
-      inputs.nixos-hardware.nixosModules.common-cpu-intel-cpu-only
+      nixos-hardware.common-pc
+      nixos-hardware.common-pc-ssd
+      nixos-hardware.common-cpu-intel-cpu-only
 
       ../../hardware/sound-pipewire.nix
       ../../hardware/nvidia.nix

@@ -104,11 +104,6 @@
       };
     };
 
-    gitignore = {
-      url = "github:hercules-ci/gitignore.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     templates.url = "github:NixOS/templates";
 
     nix-on-droid = {
@@ -121,28 +116,34 @@
     };
   };
 
-
   outputs = { self, nixpkgs, utils, ... }@inputs:
     {
       deploy = import ./nix/deploy.nix inputs;
 
-      overlays.default = import ./nix/overlay.nix inputs;
+      overlays = {
+        default = import ./nix/overlay.nix inputs;
+        lite = import ./nix/mask-large-drvs.nix;
+      };
 
       homeConfigurations = import ./nix/home-manager.nix inputs;
+
+      nixosConfigurations = import ./nix/nixos.nix inputs;
     }
-    // utils.lib.eachDefaultSystem (system: {
+    // utils.lib.eachSystem [ "aarch64-linux" "x86_64-linux" ] (system: {
       checks = import ./nix/checks.nix inputs system;
 
       devShells.default = import ./nix/dev-shell.nix inputs system;
 
       packages = {
-        default = self.packages.${system}.hosts;
-        hosts = import ./nix/build-hosts.nix inputs system;
-      };
+        default = self.packages.${system}.all-hosts;
+      } // (import ./nix/host-drvs.nix inputs system);
 
-      legacyPackages = import nixpkgs {
+      nixpkgs = import nixpkgs {
         inherit system;
-        overlays = [ self.overlays.default ];
+        overlays = [
+          self.overlays.default
+          # self.overlays.lite
+        ];
         config.allowUnfree = true;
         config.allowAliases = true;
       };

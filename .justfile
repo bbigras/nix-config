@@ -1,5 +1,5 @@
 build HOST:
-  nix build ".#hosts.{{HOST}}" --impure
+  nix build ".#{{HOST}}" --impure
 
 deploy HOST:
   deploy -s ".#{{HOST}}" -- --impure

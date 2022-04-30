@@ -1,4 +1,4 @@
-{ config, lib, inputs, pkgs, ... }:
+{ config, impermanence, lib, pkgs, ... }:
 with lib;
 {
   users.users.bbigras = {
@@ -27,7 +27,7 @@ with lib;
 
   home-manager.users.bbigras = {
     imports = [
-      "${inputs.impermanence}/home-manager.nix"
+      impermanence.home-manager.impermanence
       ./core
       ./dev
     ] ++ optionals config.programs.sway.enable [

@@ -2,10 +2,10 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, inputs, lib, ... }:
+{ lib, pkgs, nur, nixos-hardware, ... }:
 
 let
-  nurNoPkgs = import inputs.nur { pkgs = null; nurpkgs = pkgs; };
+  nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
 in
 rec {
   imports =
@@ -18,7 +18,7 @@ rec {
       ../../hardware/efi.nix
       ../../hardware/bluetooth.nix
       ../../hardware/sound-pipewire.nix
-      inputs.nixos-hardware.nixosModules.dell-xps-13-9343
+      nixos-hardware.dell-xps-13-9343
 
       ../../graphical
       ../../graphical/sway.nix
