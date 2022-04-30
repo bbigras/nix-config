@@ -6,7 +6,12 @@
     clock24 = true;
     escapeTime = 0;
     newSession = true;
-    plugins = with pkgs.tmuxPlugins; [ prefix-highlight ];
+    plugins = with pkgs.tmuxPlugins; [
+      copycat
+      extrakto
+      prefix-highlight
+      yank
+    ];
     #secureSocket = false;
     terminal = "tmux-256color";
     historyLimit = 30000;
