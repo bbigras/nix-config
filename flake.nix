@@ -21,7 +21,13 @@
   ];
 
   inputs = {
-    nixgl.url = "github:guibou/nixgl";
+    nixgl = {
+      url = "github:guibou/nixgl";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
     flake-compat = {
