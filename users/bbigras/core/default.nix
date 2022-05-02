@@ -19,7 +19,6 @@
       neofetch
 
       ripgrep
-      tealdeer
 
       google-chrome
       remmina
@@ -209,7 +208,7 @@
         VerifyHostKeyDNS = "ask";
       };
     };
-
+    tealdeer.enable = true;
     zoxide.enable = true;
     nushell.enable = true;
     zellij.enable = true;

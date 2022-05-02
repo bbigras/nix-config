@@ -111,6 +111,7 @@
             VerifyHostKeyDNS = "ask";
           };
         };
+        tealdeer.enable = true;
         zoxide.enable = true;
         zellij.enable = true;
       };
@@ -131,7 +132,6 @@
         prettyping
         # tab-rs
         ripgrep
-        tealdeer
         vault
         kubernetes
         kubernetes-helm
