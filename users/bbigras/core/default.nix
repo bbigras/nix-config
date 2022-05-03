@@ -64,6 +64,7 @@
       oneshot
       tailscale
       ht-rust
+      hyperspace-cli
 
       # nix
       cachix
@@ -167,7 +168,6 @@
       # istioctl
       kubernetes-helm
 
-      #hyperspace-cli
       anytype
       pueue
 

@@ -140,7 +140,7 @@
         kubectl
         # socat
         # websocat
-        #hyperspace-cli
+        hyperspace-cli
       ];
     };
 }
