@@ -176,6 +176,7 @@
 
       ventoy-bin
       docker-credential-helpers
+      freeplane
     ];
   };
 
