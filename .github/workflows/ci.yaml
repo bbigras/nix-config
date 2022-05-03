@@ -92,7 +92,7 @@ jobs:
             cachix watch-exec bbigras-nix-config -- \
               nix run nixpkgs#nix-build-uncached -- \
                 --keep-going \
-                -build-flags '--extra-platforms="aarch64-linux i686-linux"' \
+                -build-flags '--extra-platforms \"aarch64-linux i686-linux\"' \
                 -A packages.x86_64-linux.${{ matrix.host }}
 
   check:
