@@ -38,3 +38,29 @@ nix build .#hosts.desktop --impure
 ```sh
 deploy -s .#pixel6 -- --impure
 ```
+
+## nix-on-droid (first time)
+
+On the phone:
+
+```sh
+nix-shell -p openssh -p which
+
+# get user and group id and put it in hosts/pixel6/default.nix
+id
+
+ssh-keygen -q -N "" -t ed25519 -f ~/ssh_host_ed25519_key
+
+cat <<EOF > tmp-sshd
+HostKey ~/ssh_host_ed25519_key
+Port 8022
+EOF
+
+mkdir -p ~/.ssh
+cat <<EOF > ~/.ssh/authorized_keys
+**my key**
+EOF
+
+# start sshd server to be able to deploy from desktop with deploy-rs
+`which sshd` -dD -f ~/tmp-sshd
+```
