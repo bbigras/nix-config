@@ -177,6 +177,9 @@
       ventoy-bin
       docker-credential-helpers
       freeplane
+
+      prusa-slicer
+      super-slicer
     ];
   };
 
