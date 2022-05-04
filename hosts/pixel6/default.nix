@@ -114,6 +114,11 @@
         tealdeer.enable = true;
         zoxide.enable = true;
         zellij.enable = true;
+        zsh = {
+          shellAliases = {
+            ssh-server = "${pkgs.openssh}/bin/sshd -dD -f /etc/tmp-sshd";
+          };
+        };
       };
 
       home.packages = with pkgs; [
