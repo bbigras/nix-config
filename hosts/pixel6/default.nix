@@ -1,8 +1,5 @@
-{ pkgs, nur, ... }:
+{ pkgs, ... }:
 
-let
-  nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
-in
 {
   build.arch = "aarch64";
   user.shell = "${pkgs.zsh}/bin/zsh";
@@ -65,14 +62,11 @@ in
       home.stateVersion = "20.09";
 
       imports = [
-        nurNoPkgs.repos.rycee.hmModules.emacs-init
-
         ../../users/bbigras/core/atuin.nix
         ../../users/bbigras/core/git.nix
         ../../users/bbigras/core/taskwarrior.nix
         ../../users/bbigras/core/tmux.nix
         ../../users/bbigras/core/zsh.nix
-        ../../users/bbigras/core/emacs.nix
       ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/pixel6.nix") then [ (builtins.getEnv "PWD" + "/secrets/pixel6.nix") ] else [ ]);
 
       # Use the same overlays as the system packages
@@ -93,6 +87,10 @@ in
         };
         bat.enable = true;
         command-not-found.enable = true;
+        emacs = {
+          enable = false;
+          package = pkgs.emacs-nox;
+        };
         exa = {
           enable = true;
           enableAliases = true;

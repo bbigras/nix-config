@@ -1,4 +1,4 @@
-{ self, nix-on-droid, deploy-rs, nixpkgs, nur, ... }:
+{ self, nix-on-droid, deploy-rs, nixpkgs, ... }:
 
 system:
 
@@ -14,9 +14,6 @@ let
     system = "aarch64-linux";
     pkgs = pkgs_arch64;
     config = ../hosts/pixel6;
-    extraSpecialArgs = {
-      inherit nur;
-    };
   }).activationPackage;
 
   nixosDrvs = lib.mapAttrs (_: nixos: nixos.config.system.build.toplevel) self.nixosConfigurations;
