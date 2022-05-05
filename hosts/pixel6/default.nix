@@ -65,7 +65,7 @@
         copyFont =
           let
             font_src = "${pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; }}/share/fonts/truetype/NerdFonts/Fira Code Regular Nerd Font Complete Mono.ttf";
-            # font_src = "${pkgs.meslo-lgs-nf}}/share/fonts/truetype/MesloLGS NF Regular.ttf";
+            # font_src = "${pkgs.meslo-lgs-nf}/share/fonts/truetype/MesloLGS NF Regular.ttf";
             font_dst = "${config.home.homeDirectory}/.termux/font.ttf";
           in
           lib.hm.dag.entryAfter [ "writeBoundary" ] ''
