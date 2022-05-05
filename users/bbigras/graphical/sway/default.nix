@@ -40,7 +40,7 @@
     "image/x-xbitmap" = lib.mkForce "imv.desktop";
   };
 
-  xsession.pointerCursor.size = 24;
+  home.pointerCursor.size = 24;
 
   services.swayidle = {
     enable = true;
