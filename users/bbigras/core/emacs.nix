@@ -737,23 +737,23 @@ in
                      (default-directory (cdr prompt-dir)))
                 (find-file (consult--find (car prompt-dir) #'consult--fd-builder initial))))
 
-            ;; Do not preview EXWM windows or Tramp buffers
-            ;; ---------------------------------------------------------------------------
-            (defun consult-buffer-state-no-tramp ()
-              "Buffer state function that doesn't preview Tramp buffers."
+            ;; see: https://github.com/minad/consult/wiki#do-not-preview-exwm-windows-or-tramp-buffers
+            (defun consult-buffer-state-no-x ()
+              "Buffer state function that doesn't preview X buffers."
               (let ((orig-state (consult--buffer-state))
-                    (filter (lambda (cand restore)
-                              (if (or restore
-                                      (let ((buffer (get-buffer cand)))
-                                        (and buffer
-                                             (not (file-remote-p (buffer-local-value 'default-directory buffer))))))
+                    (filter (lambda (action cand)
+                              (if (or (eq action 'return)
+                    (if cand
+                                          (let ((buffer (get-buffer cand)))
+                    (and buffer
+                                                 (not (eq 'exwm-mode (buffer-local-value 'major-mode buffer)))))))
                                   cand
                                 nil))))
-                (lambda (cand restore)
-                  (funcall orig-state (funcall filter cand restore) restore))))
+                (lambda (action cand)
+                  (funcall orig-state action (funcall filter action cand)))))
 
             (setq consult--source-buffer
-                  (plist-put consult--source-buffer :state #'consult-buffer-state-no-tramp))
+                  (plist-put consult--source-buffer :state #'consult-buffer-state-no-x))
             ;; ---------------------------------------------------------------------------
           '';
         };
