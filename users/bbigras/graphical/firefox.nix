@@ -1,4 +1,6 @@
 { pkgs, ... }: {
+  home.file.".mozilla/native-messaging-hosts/ff2mpv.json".source = "${pkgs.ff2mpv}/lib/mozilla/native-messaging-hosts/ff2mpv.json";
+
   programs.firefox = {
     enable = (pkgs.hostPlatform.system == "x86_64-linux");
     package = pkgs.firefox-bin;
@@ -9,6 +11,7 @@
       bypass-paywalls-clean
       cookies-txt
       facebook-container
+      ff2mpv
       french-dictionary
       french-language-pack
       https-everywhere
