@@ -67,7 +67,7 @@ jobs:
       matrix:
         host: ${{ fromJson(needs.get-hosts.outputs.hosts) }}
     steps:
-      - uses: docker/setup-qemu-action@v1
+      - uses: docker/setup-qemu-action@v2
         if: ${{ matrix.host == 'pixel6' }}
       - uses: actions/checkout@v3
       - uses: cachix/install-nix-action@v17
