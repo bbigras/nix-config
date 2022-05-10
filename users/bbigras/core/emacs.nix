@@ -341,12 +341,6 @@ in
           };
         };
 
-        emojify = {
-          enable = true;
-          command = [ "emojify-mode" ];
-          hook = [ "(after-init . global-emojify-mode)" ];
-        };
-
         envrc = {
           enable = true;
           command = [ "envrc-mode" ];
