@@ -816,7 +816,7 @@ in
         corfu = {
           enable = true;
           config = ''
-            (corfu-global-mode)
+            (global-corfu-mode)
           '';
         };
 
