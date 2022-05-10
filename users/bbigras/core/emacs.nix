@@ -1702,7 +1702,7 @@ in
           config = ''
             (setq company-idle-delay 0.2
                   company-minimum-prefix-length 3
-                  company-show-numbers t
+                  company-show-quick-access t
                   company-tooltip-maximum-width 100
                   company-tooltip-minimum-width 20
                   ; Allow me to keep typing even if company disapproves.
