@@ -202,6 +202,7 @@ rec {
         ".npm/_cacache/content-v2"
         ".gnupg/private-keys-v1.d"
         ".local/share/atuin"
+        ".local/share/df_linux/data/save"
         ".local/share/direnv"
         ".local/share/keyrings"
         ".local/share/pantalaimon"
