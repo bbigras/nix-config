@@ -1565,6 +1565,10 @@ in
           '';
         };
 
+        kubel = {
+          enable = true;
+        };
+
         kubernetes = {
           enable = true;
           command = [ "kubernetes-overview" ];
