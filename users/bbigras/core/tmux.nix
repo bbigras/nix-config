@@ -26,6 +26,14 @@
       bind-key -n M-j select-pane -D
       bind-key -n M-k select-pane -U
       bind-key -n M-l select-pane -R
+
+      # https://waylonwalker.com/tmux-fzf-session-jump/
+      bind C-j display-popup -E "\
+          tmux list-sessions -F '#{?session_attached,,#{session_name}}' |\
+          sed '/^$/d' |\
+          fzf --reverse --header jump-to-session --preview 'tmux capture-pane -pt {}'  |\
+          xargs tmux switch-client -t"
+
       bind r source-file ~/.tmux.conf \; display-message "Config reloaded..."
 
       set -g base-index 0
