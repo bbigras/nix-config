@@ -154,6 +154,7 @@ in
       unar
       dbeaver
       obsidian
+      logseq
       cloudflared
       tmate
       josm
