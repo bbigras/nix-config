@@ -1,4 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+
+let
+  my_dwarf_fortress = pkgs.dwarf-fortress-packages.dwarf-fortress-full.override { theme = "vettlingr"; enableIntro = false; };
+in
+{
   imports = [
     ./atuin.nix
     ./btop.nix
@@ -127,7 +132,7 @@
       cargo-udeps
 
       # games
-      # my_dwarf_fortress
+      my_dwarf_fortress
       starsector
 
       compsize
