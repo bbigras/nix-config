@@ -17,7 +17,7 @@
       difftool.prompt = true;
       github.user = "bbigras";
       init.defaultBranch = "main";
-      merge.conflictstyle = "zdiff3";
+      merge.conflictstyle = "diff3";
       mergetool.prompt = true;
       pull.ff = "only";
       credential.helper = "${pkgs.gitAndTools.gitFull}/bin/git-credential-libsecret";
