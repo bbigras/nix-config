@@ -193,6 +193,11 @@ in
           '';
         };
 
+        adaptive-wrap = {
+          enable = true;
+          command = [ "adaptive-wrap-prefix-mode" ];
+        };
+
         bufler.enable = true;
 
         # Save and restore frames and windows with their buffers in Emacs
@@ -265,7 +270,28 @@ in
         };
 
         gnuplot.enable = true;
-        copy-as-format.enable = true;
+
+        copy-as-format = {
+          enable = true;
+          command = [
+            "copy-as-format"
+            "copy-as-format-asciidoc"
+            "copy-as-format-bitbucket"
+            "copy-as-format-disqus"
+            "copy-as-format-github"
+            "copy-as-format-gitlab"
+            "copy-as-format-hipchat"
+            "copy-as-format-html"
+            "copy-as-format-jira"
+            "copy-as-format-markdown"
+            "copy-as-format-mediawiki"
+            "copy-as-format-org-mode"
+            "copy-as-format-pod"
+            "copy-as-format-rst"
+            "copy-as-format-slack"
+          ];
+        };
+
 
         # https://github.com/bbatsov/crux
         crux = {
@@ -835,7 +861,7 @@ in
           enable = true;
           bind = {
             "C-." = "embark-act";
-            "C-;" = "embark-dwim";
+            "M-." = "embark-dwim";
             "C-h B" = "embark-bindings";
           };
           init = ''
@@ -1052,6 +1078,7 @@ in
             "M-g e" = "avy-goto-word-0";
             "C-c C-j" = "avy-resume";
           };
+          command = [ "avy-process" ];
           config = ''
             (setq avy-all-windows t)
           '';
@@ -1113,6 +1140,12 @@ in
           enable = true;
         };
 
+        lsp-lens = {
+          enable = true;
+          command = [ "lsp-lens--enable" ];
+          after = [ "lsp-mode" ];
+        };
+
         lsp-mode = {
           enable = true;
           command = [ "lsp" ];
@@ -1120,6 +1153,7 @@ in
           hook = [ "(lsp-mode . lsp-enable-which-key-integration)" ];
           bindLocal = {
             lsp-mode-map = {
+              "C-c r l" = "lsp-avy-lens";
               "C-c r r" = "lsp-rename";
               "C-c r f" = "lsp-format-buffer";
               "C-c r g" = "lsp-format-region";
@@ -1136,7 +1170,8 @@ in
                   lsp-headerline-breadcrumb-enable nil
                   lsp-modeline-code-actions-enable nil
                   lsp-modeline-diagnostics-enable nil
-                  lsp-modeline-workspace-status-enable nil)
+                  lsp-modeline-workspace-status-enable nil
+                  lsp-lens-enable t)
             (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
           '';
         };
@@ -1528,7 +1563,8 @@ in
           };
           config = ''
             ;; Only check buffer when mode is enabled or buffer is saved.
-            (setq flycheck-check-syntax-automatically '(mode-enabled save))
+            (setq flycheck-check-syntax-automatically '(mode-enabled save)
+                flycheck-markdown-mdl-executable "${pkgs.mdl}/bin/mdl")
 
             ;; Enable flycheck in all eligible buffers.
             (global-flycheck-mode)
@@ -1672,10 +1708,7 @@ in
           '';
         };
 
-        plantuml-mode = {
-          enable = true;
-          mode = [ ''"\\.puml\\'"'' ];
-        };
+        plantuml-mode.enable = true;
 
         ace-window = {
           enable = true;
@@ -1710,12 +1743,9 @@ in
           '';
         };
 
-        company-box = {
+        company-posframe = {
           enable = true;
-          hook = [ "(company-mode . company-box-mode)" ];
-          config = ''
-            (setq company-box-icons-alist 'company-box-icons-all-the-icons)
-          '';
+          hook = [ "(company-mode . company-posframe-mode)" ];
         };
 
         company-yasnippet = {
