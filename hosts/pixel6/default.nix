@@ -156,6 +156,7 @@
         kdash
         kubie
         kubectl
+        kubectx
         kubelogin-oidc
         # socat
         # websocat
