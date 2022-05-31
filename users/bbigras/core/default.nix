@@ -170,6 +170,7 @@ in
       teams
       # kubernetes
       k9s
+      kdash
       kubectl
       # istioctl
       kubernetes-helm

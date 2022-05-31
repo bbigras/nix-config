@@ -153,6 +153,7 @@
         kubernetes
         kubernetes-helm
         k9s
+        kdash
         kubie
         kubectl
         # socat
