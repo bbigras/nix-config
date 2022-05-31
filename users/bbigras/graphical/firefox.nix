@@ -14,12 +14,10 @@
       ff2mpv
       french-dictionary
       french-language-pack
-      https-everywhere
       i-dont-care-about-cookies
       languagetool
       link-cleaner
       linkhints
-      localcdn
       markdownload
       offline-qr-code-generator
       privacy-badger
