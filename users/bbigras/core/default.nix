@@ -172,6 +172,7 @@ in
       k9s
       kdash
       kubectl
+      kubelogin-oidc
       # istioctl
       kubernetes-helm
 

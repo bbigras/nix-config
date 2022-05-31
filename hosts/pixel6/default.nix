@@ -156,6 +156,7 @@
         kdash
         kubie
         kubectl
+        kubelogin-oidc
         # socat
         # websocat
         hyperspace-cli
