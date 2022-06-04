@@ -102,7 +102,7 @@ rec {
   time.hardwareClockInLocalTime = true;
   users.users.bbigras.packages = [ pkgs.retroarchBare ];
 
-  services.jellyfin.enable = true;
+  services.jellyfin.enable = false;
 
   services.ipfs = {
     enable = true;
