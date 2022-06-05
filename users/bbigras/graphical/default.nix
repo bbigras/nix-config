@@ -64,7 +64,7 @@
   };
 
   services = {
-    blueman-applet.enable = true;
+    blueman-applet.enable = false;
     gpg-agent.pinentryFlavor = "gnome3";
     gammastep = {
       enable = true;
