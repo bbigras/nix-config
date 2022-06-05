@@ -67,7 +67,7 @@
     blueman-applet.enable = false;
     gpg-agent.pinentryFlavor = "gnome3";
     gammastep = {
-      enable = true;
+      enable = false;
       provider = "geoclue2";
       tray = true;
       settings.general = {
