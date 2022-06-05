@@ -14,8 +14,7 @@ with lib;
       ++ optionals config.virtualisation.kvmgt.enable [ "kvm" ]
       ++ optionals config.virtualisation.podman.enable [ "podman" ]
       ++ optionals config.programs.wireshark.enable [ "wireshark" ]
-      ++ optionals config.services.flatpak.enable [ "flatpak" ]
-      ++ optionals config.services.ipfs.enable [ "ipfs" ];
+      ++ optionals config.services.flatpak.enable [ "flatpak" ];
     isNormalUser = true;
     shell = mkIf config.programs.zsh.enable pkgs.zsh;
     openssh.authorizedKeys.keys = [

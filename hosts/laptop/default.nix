@@ -127,7 +127,6 @@ rec {
       "/var/lib/flatpak"
       "/var/lib/docker"
       "/var/lib/libvirt"
-      "/var/lib/ipfs"
       "/home/bbigras/.dropbox-dist"
       "/home/bbigras/.dropbox-hm"
       "/root/.cache/restic"

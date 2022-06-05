@@ -104,17 +104,6 @@ rec {
 
   services.jellyfin.enable = false;
 
-  services.ipfs = {
-    enable = true;
-    enableGC = true;
-    localDiscovery = true;
-    gatewayAddress = "/ip4/127.0.0.1/tcp/8080";
-    extraFlags = [
-      "--enable-pubsub-experiment"
-      "--enable-namesys-pubsub"
-    ];
-  };
-
   systemd.network = {
     enable = true;
     networks = {
@@ -192,7 +181,6 @@ rec {
       "/var/lib/flatpak"
       "/var/lib/docker"
       "/var/lib/libvirt"
-      "/var/lib/ipfs"
       "/root/.cache/restic"
       # "/var/cache/libvirt"
 
