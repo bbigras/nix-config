@@ -247,7 +247,6 @@ in
         };
       };
     };
-    gromit-mpx.enable = true;
     systembus-notify.enable = true;
   };
 
