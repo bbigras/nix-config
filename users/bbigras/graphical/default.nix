@@ -103,5 +103,6 @@
   home.pointerCursor = {
     package = pkgs.gnome.adwaita-icon-theme;
     name = "Adwaita";
+    gtk.enable = true;
   };
 }
