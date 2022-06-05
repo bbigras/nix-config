@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 let
   dummyConfig = pkgs.writeText "configuration.nix" ''
     assert builtins.trace "This is a dummy config, use deploy-rs!" false;
@@ -11,6 +11,7 @@ in
     ./nix.nix
     ./openssh.nix
     ./resolved.nix
+    ./tailscale.nix
     ./tmux.nix
     ./xdg.nix
     ./yggdrasil.nix
@@ -40,10 +41,6 @@ in
   i18n.defaultLocale = "fr_CA.UTF-8";
 
   networking = {
-    firewall = {
-      trustedInterfaces = [ "tailscale0" ];
-      allowedUDPPorts = [ config.services.tailscale.port ];
-    };
     useDHCP = false;
     useNetworkd = true;
     wireguard.enable = true;
@@ -62,9 +59,6 @@ in
     enable = true;
     wheelNeedsPassword = false;
   };
-
-  services.tailscale.enable = true;
-  systemd.services.tailscaled.after = [ "network-online.target" "systemd-resolved.service" ];
 
   system = {
     extraSystemBuilderCmds = ''
