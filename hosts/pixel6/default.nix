@@ -111,7 +111,7 @@
         just.enable = true;
         jq.enable = true;
         htop.enable = true;
-        nushell.enable = true;
+        nushell.enable = false;
         ssh = {
           enable = true;
           # controlMaster = "auto";

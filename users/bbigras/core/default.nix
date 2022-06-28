@@ -223,7 +223,7 @@ in
     };
     tealdeer.enable = true;
     zoxide.enable = true;
-    nushell.enable = true;
+    nushell.enable = false;
     zellij.enable = true;
   };
 
