@@ -462,11 +462,11 @@
         "nixpkgs-22_05": "nixpkgs-22_05"
       },
       "locked": {
-        "lastModified": 1656215886,
-        "narHash": "sha256-67fkBb4GUbuMZTHs08mNycg0hBzboy+5boMD76wLpj4=",
+        "lastModified": 1656399028,
+        "narHash": "sha256-re66+rVHGR3y+0QsaDAwoAHCfoi3BlGV24t2EqRZsAE=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "aff5d8542c9eb566a000302b22fcc10715bc2feb",
+        "rev": "d26947f2d6252e2aae5ffddfe9b38b7c4b94e8f9",
         "type": "github"
       },
       "original": {
