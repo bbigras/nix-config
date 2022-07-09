@@ -176,6 +176,7 @@ in
       kubelogin-oidc
       # istioctl
       kubernetes-helm
+      kind
 
       anytype
       pueue
