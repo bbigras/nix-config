@@ -1173,6 +1173,12 @@ in
                   lsp-modeline-workspace-status-enable nil
                   lsp-lens-enable t)
             (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
+
+            (push "[/\\\\]vendor$" lsp-file-watch-ignored)
+            (push "[/\\\\]\\.yarn$" lsp-file-watch-ignored)
+            (push "[/\\\\]\\.direnv$" lsp-file-watch-ignored)
+            (push "[/\\\\]\\.next$" lsp-file-watch-ignored)
+            (push "[/\\\\]\\result$" lsp-file-watch-ignored)
           '';
         };
 
