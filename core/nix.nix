@@ -13,9 +13,5 @@
       experimental-features = nix-command flakes recursive-nix
     '';
     # nrBuildUsers = config.nix.settings.max-jobs * 2;
-    optimise = {
-      automatic = true;
-      dates = [ "03:00" ];
-    };
   };
 }
