@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   direnv_psql_cfg = ../core/direnv-psql.cfg;
@@ -12,7 +12,14 @@ in
         set auto-load safe-path /
       '';
     };
-    packages = with pkgs; [ git-extras git-lfs ];
+    packages = with pkgs; [
+      # git-lfs
+      nix-update
+      nixpkgs-review
+      tmate
+      upterm
+    ] ++ (lib.optional (!pkgs.stdenv.isDarwin) pkgs.commitizen);
+    shellAliases.gco = lib.mkForce "git cz commit";
   };
 
   programs = {
@@ -39,7 +46,5 @@ in
     };
 
     nix-index.enable = true;
-
-    # zsh.shellAliases.gco = lib.mkForce "git cz";
   };
 }

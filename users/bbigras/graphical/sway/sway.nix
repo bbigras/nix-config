@@ -7,16 +7,13 @@
       keybindings =
         let
           execSpawn = cmd: "exec ${pkgs.spawn}/bin/spawn ${cmd}";
-          modifier = config.wayland.windowManager.sway.config.modifier;
-          terminal = config.wayland.windowManager.sway.config.terminal;
+          inherit (config.wayland.windowManager.sway.config) modifier terminal;
         in
         lib.mkOptionDefault {
           "${modifier}+Return" = execSpawn terminal;
           "${modifier}+d" = execSpawn "${pkgs.drunmenu-wayland}/bin/drunmenu";
           "${modifier}+m" = execSpawn "${pkgs.emojimenu-wayland}/bin/emojimenu";
           "${modifier}+o" = execSpawn "${pkgs.screenocr}/bin/screenocr";
-          "${modifier}+t" = execSpawn "${pkgs.otpmenu-wayland}/bin/otpmenu";
-          "${modifier}+p" = execSpawn "${pkgs.passmenu-wayland}/bin/passmenu";
           "${modifier}+q" = execSpawn "swaylock -f";
           "Print" = execSpawn "${pkgs.screenshot}/bin/screenshot";
         };
@@ -37,6 +34,7 @@
     extraSessionCommands = ''
       export ECORE_EVAS_ENGINE=wayland_egl
       export ELM_ENGINE=wayland_egl
+      # export LIBSEAT_BACKEND="logind"
       export MOZ_ENABLE_WAYLAND=1
       export NIXOS_OZONE_WL=1
       export QT_QPA_PLATFORM=xcb

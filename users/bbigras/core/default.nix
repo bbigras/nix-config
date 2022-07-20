@@ -16,6 +16,7 @@ in
   ];
 
   home = {
+    username = "bbigras";
     stateVersion = "21.05";
     packages = with pkgs; [
       kalker # calc

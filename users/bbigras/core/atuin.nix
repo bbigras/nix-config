@@ -2,7 +2,6 @@
   programs.atuin = {
     enable = true;
   };
-
   programs.bash = {
     bashrcExtra = ''
       export ATUIN_NOBIND="true"

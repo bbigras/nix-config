@@ -12,13 +12,18 @@ with self.nixpkgs.${system};
     {
       src = lib.cleanSource ../.;
       hooks = {
-        nixpkgs-fmt = {
-          enable = true;
-          excludes = [ "hardware/*" ];
+        nix-linter.enable = true;
+        nixpkgs-fmt.enable = true;
+        statix.enable = true;
+        stylua = {
+          enable = false;
+          types = [ "file" "lua" ];
+          entry = "${stylua}/bin/stylua";
         };
-        nix-linter = {
-          enable = true;
-          excludes = [ "hardware/*" ];
+        luacheck = {
+          enable = false;
+          types = [ "file" "lua" ];
+          entry = "${luajitPackages.luacheck}/bin/luacheck --std luajit --globals vim -- ";
         };
         actionlint = {
           enable = true;

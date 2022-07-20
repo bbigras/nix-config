@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
   dummyConfig = pkgs.writeText "configuration.nix" ''
     assert builtins.trace "This is a dummy config, use deploy-rs!" false;
@@ -24,23 +24,28 @@ in
 
   environment = {
     etc."nixos/configuration.nix".source = dummyConfig;
+    pathsToLink = [
+      "/share/zsh"
+    ];
     systemPackages = with pkgs; [
-      ntfs3g
-      foot.terminfo
-      btop
-      minikube
-      docker-machine-kvm2
+      rsync
     ];
   };
 
   home-manager = {
     useGlobalPkgs = true;
+    useUserPackages = true;
     verbose = true;
   };
 
   i18n.defaultLocale = "fr_CA.UTF-8";
 
   networking = {
+    firewall = {
+      checkReversePath = "loose";
+      trustedInterfaces = [ "tailscale0" ];
+      allowedUDPPorts = [ config.services.tailscale.port ];
+    };
     useDHCP = false;
     useNetworkd = true;
     wireguard.enable = true;
@@ -53,11 +58,26 @@ in
   ];
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [ "electron-13.6.9" ];
+
+  programs = {
+    mosh.enable = true;
+    zsh = {
+      enable = true;
+      enableGlobalCompInit = false;
+    };
+  };
 
   security.sudo = {
     enable = true;
     wheelNeedsPassword = false;
+  };
+
+  services = {
+    openssh = {
+      enable = true;
+      permitRootLogin = "no";
+    };
+    tailscale.enable = true;
   };
 
   system = {
@@ -66,21 +86,16 @@ in
       ln -sv ${../nix/overlays} $out/overlays
     '';
 
-    stateVersion = "21.05";
+    stateVersion = "22.05";
   };
-
-  systemd.enableUnifiedCgroupHierarchy = true;
 
   time.timeZone = "America/Montreal";
 
-  services.flatpak.enable = true;
-
-  fonts.fonts = with pkgs; [
-    fira-code
-    fira-code-symbols
-    meslo-lgs-nf
-  ];
-
+  systemd = {
+    enableUnifiedCgroupHierarchy = true;
+    network.wait-online.anyInterface = true;
+    services.tailscaled.after = [ "network-online.target" "systemd-resolved.service" ];
+  };
 
   users.mutableUsers = false;
 }

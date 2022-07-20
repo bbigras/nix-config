@@ -14,7 +14,15 @@ mkShell {
     nix-build-uncached
     nix-linter
     nixpkgs-fmt
+    ragenix
     rnix-lsp
+    statix
+    pre-commit
+
+    # Lua
+    # stylua
+    # (luajit.withPackages (p: with p; [ luacheck ]))
+    # (lib.optional stdenv.hostPlatform.isLinux sumneko-lua-language-server)
 
     # GitHub Actions
     act
@@ -25,6 +33,7 @@ mkShell {
     # Misc
     jq
     pre-commit
+    rage
   ];
 
   shellHook = ''

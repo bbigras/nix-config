@@ -13,7 +13,10 @@
     userEmail = "bigras.bruno@gmail.com";
     userName = "Bruno Bigras";
     extraConfig = {
-      diff.colorMoved = "default";
+      diff = {
+        colorMoved = "default";
+        age.textconv = "${pkgs.rage}/bin/rage -i ~/.ssh/id_ed25519 --decrypt";
+      };
       difftool.prompt = true;
       github.user = "bbigras";
       init.defaultBranch = "main";

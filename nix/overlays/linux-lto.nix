@@ -10,7 +10,7 @@ let
 
   llvm = kernel:
     let
-      llvmPackages = "llvmPackages_13";
+      llvmPackages = "llvmPackages_14";
       noBintools = { bootBintools = null; bootBintoolsNoLibc = null; };
       hostLLVM = final.pkgsBuildHost.${llvmPackages}.override noBintools;
       buildLLVM = final.pkgsBuildBuild.${llvmPackages}.override noBintools;
@@ -73,7 +73,7 @@ let
 
   inherit (linuxKernel) kernels packagesFor;
 
-  latest = kernels.linux_5_17;
+  latest = kernels.linux_5_18;
 in
 _: {
   linuxPackages_latest_lto = packagesFor (fullLTO latest);
@@ -81,6 +81,13 @@ _: {
   linuxPackages_latest_lto_skylake = packagesFor
     (cfg
       { MSKYLAKE = yes; }
+      (patch
+        [ patches.graysky ]
+        (fullLTO latest)));
+
+  linuxPackages_latest_lto_zen3 = packagesFor
+    (cfg
+      { MZEN3 = yes; }
       (patch
         [ patches.graysky ]
         (fullLTO latest)));

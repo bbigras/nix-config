@@ -4,7 +4,6 @@
     ./common.nix
     ./firefox.nix
     ./mpv.nix
-    ./redshift.nix
     ./mime.nix
   ];
 
@@ -36,6 +35,12 @@
       zoom-us
     ];
 
+    pointerCursor = {
+      package = pkgs.gnome.adwaita-icon-theme;
+      name = "Adwaita";
+      gtk.enable = true;
+    };
+
     sessionVariables = {
       MOZ_DBUS_REMOTE = 1;
       MOZ_USE_XINPUT2 = 1;
@@ -64,7 +69,7 @@
   };
 
   services = {
-    blueman-applet.enable = false;
+    blueman-applet.enable = true;
     gpg-agent.pinentryFlavor = "gnome3";
     gammastep = {
       enable = false;
@@ -98,11 +103,5 @@
         WantedBy = [ "graphical-session.target" ];
       };
     };
-  };
-
-  home.pointerCursor = {
-    package = pkgs.gnome.adwaita-icon-theme;
-    name = "Adwaita";
-    gtk.enable = true;
   };
 }

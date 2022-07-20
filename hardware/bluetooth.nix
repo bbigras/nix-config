@@ -12,7 +12,7 @@
     };
   };
 
-  services.blueman.enable = false;
+  services.blueman.enable = true;
 
   hardware.pulseaudio = {
     package = pkgs.pulseaudio.override { bluetoothSupport = true; };
