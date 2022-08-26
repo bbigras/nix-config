@@ -3,6 +3,7 @@
     ./alacritty.nix
     ./common.nix
     ./firefox.nix
+    ./kitty.nix
     ./mpv.nix
     ./mime.nix
   ];
