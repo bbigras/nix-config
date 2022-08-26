@@ -377,7 +377,7 @@ in
 
         docker-tramp.enable = true;
 
-        tramp.enable = true;
+        tramp.enable = false;
 
         dockerfile-mode.enable = true;
 
