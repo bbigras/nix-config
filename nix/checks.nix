@@ -12,7 +12,10 @@ with self.nixpkgs.${system};
     {
       src = lib.cleanSource ../.;
       hooks = {
-        nix-linter.enable = true;
+        nix-linter = {
+          enable = true;
+          excludes = [ "hardware-configuration.*.nix" ];
+        };
         nixpkgs-fmt.enable = true;
         statix.enable = true;
         stylua = {
