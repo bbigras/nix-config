@@ -6,28 +6,6 @@ on:
       - try
   pull_request:
 jobs:
-  lints:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: cachix/install-nix-action@v17
-        with:
-          extra_nix_config: |
-            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-            experimental-features = nix-command flakes recursive-nix
-      - uses: cachix/cachix-action@v10
-        with:
-          name: bbigras-nix-config
-          signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
-          extraPullNames: "dendrite-demo-pinecone,nix-community,nix-on-droid,pre-commit-hooks"
-      - name: parse
-        run: nix-instantiate --json --parse ./**/*.nix
-      - name: lints
-        run: |
-          cachix watch-exec bbigras-nix-config -- \
-            nix build -L --keep-going \
-            .\#checks.x86_64-linux.pre-commit-check
-
   build-shell:
     runs-on: ubuntu-latest
     steps:
