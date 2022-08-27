@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, pkgs, nur, nixos-hardware, ... }:
+{ config, lib, pkgs, nur, nixos-hardware, ... }:
 
 let
   nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
@@ -40,6 +40,7 @@ rec {
   sops.secrets.restic-laptop-password.sopsFile = ./restic-laptop.yaml;
   sops.secrets.restic-laptop-creds.sopsFile = ./restic-laptop.yaml;
   sops.secrets.yggdrasil-conf.sopsFile = ./restic-laptop.yaml;
+  sops.secrets.yggdrasil-conf.owner = config.users.users.yggdrasil.name;
 
   hardware.brillo.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_zen;
