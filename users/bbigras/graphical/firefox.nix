@@ -14,7 +14,6 @@
       ff2mpv
       french-dictionary
       french-language-pack
-      i-dont-care-about-cookies
       languagetool
       link-cleaner
       linkhints
