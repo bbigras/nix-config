@@ -69,8 +69,7 @@ in
       dnsutils
       oneshot
       tailscale
-      ht-rust
-      hyperspace-cli
+      xh
 
       # nix
       cachix
@@ -78,7 +77,7 @@ in
       nix-prefetch
       nix-prefetch-scripts
       nix-prefetch-github
-      nix-review
+      nixpkgs-review
       nix-update
       nixpkgs-fmt
       nixos-shell

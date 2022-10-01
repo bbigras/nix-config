@@ -144,7 +144,7 @@
         oneshot
         pwgen
         #rage
-        ht-rust
+        xh
         openssh
         prettyping
         # tab-rs
@@ -160,7 +160,6 @@
         kubelogin-oidc
         # socat
         # websocat
-        hyperspace-cli
       ];
     };
 }

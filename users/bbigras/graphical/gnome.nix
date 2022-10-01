@@ -4,8 +4,8 @@
     packages = with pkgs; [
       peek
 
-      gnome3.eog # image viewer
-      gnome3.gnome-tweaks
+      gnome.eog # image viewer
+      gnome.gnome-tweaks
       # tilix
 
       # extensions
