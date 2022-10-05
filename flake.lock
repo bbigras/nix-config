@@ -112,11 +112,11 @@
     "emacs-ement": {
       "flake": false,
       "locked": {
-        "lastModified": 1664473341,
-        "narHash": "sha256-LKLmlDsr0ytAgAB7YHs9giGTbGEYLZymluMTiNslz0Y=",
+        "lastModified": 1664999230,
+        "narHash": "sha256-x9er3jpmHf9lqpFVz8q3MKzX7SJKnVN/3QupJWz/5Ko=",
         "owner": "alphapapa",
         "repo": "ement.el",
-        "rev": "fc0add9ca1a91c297d93a8b0b5cf510936d55e91",
+        "rev": "049c4b67c4dd693a22641221863b7d7c9fef4e4d",
         "type": "github"
       },
       "original": {
