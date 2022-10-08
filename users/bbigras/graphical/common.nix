@@ -32,7 +32,7 @@ let
         };
       };
 
-    defaultWorkspace = "workspace number 1";
+    defaultWorkspace = "workspace 1";
 
     floating = {
       inherit modifier;
@@ -50,6 +50,7 @@ let
       inner = 10;
       outer = 5;
       smartBorders = "on";
+      smartGaps = true;
     };
 
     keybindings =

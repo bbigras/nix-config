@@ -10,7 +10,6 @@
 
   home = {
     packages = with pkgs; [
-      blueman
       gammastep
       gnome.adwaita-icon-theme
       hicolor-icon-theme
@@ -21,7 +20,7 @@
       qgnomeplatform
       qt5.qtwayland
       spawn
-      speedcrunch
+      qalculate-gtk
       xdg-utils
     ] ++ lib.optionals (pkgs.hostPlatform.system == "x86_64-linux") [
       discord
@@ -45,6 +44,7 @@
     sessionVariables = {
       MOZ_DBUS_REMOTE = 1;
       MOZ_USE_XINPUT2 = 1;
+      QT_AUTO_SCREEN_SCALE_FACTOR = 1;
       _JAVA_OPTIONS = "-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.xrender=true";
     };
   };
@@ -70,7 +70,6 @@
   };
 
   services = {
-    blueman-applet.enable = true;
     gpg-agent.pinentryFlavor = "gnome3";
     gammastep = {
       enable = false;
@@ -81,14 +80,15 @@
         brightness-night = 0.4;
       };
     };
+    udiskie = {
+      enable = true;
+      automount = false;
+      tray = "auto";
+    };
   };
 
   systemd.user.services = {
-    gammastep.Unit = {
-      After = [ "geoclue-agent.service" ];
-      Wants = [ "geoclue-agent.service" ];
-    };
-    polkit = {
+    polkit-gnome = {
       Unit = {
         Description = "polkit-gnome";
         Documentation = [ "man:polkit(8)" ];
