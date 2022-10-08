@@ -106,7 +106,10 @@ rec {
   time.hardwareClockInLocalTime = true;
   users.users.bbigras.packages = [ pkgs.retroarchBare ];
 
-  services.jellyfin.enable = false;
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+  };
 
   systemd.network = {
     enable = true;
@@ -181,6 +184,7 @@ rec {
   environment.persistence."/persist" = {
     directories = [
       "/var/lib/sonarr"
+      "/var/lib/jellyfin"
       "/var/lib/tailscale"
       "/var/lib/flatpak"
       "/var/lib/docker"
