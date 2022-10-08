@@ -189,6 +189,7 @@ in
       freeplane
       viddy
       streamlink
+      natscli
     ];
   };
 
