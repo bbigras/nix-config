@@ -269,6 +269,8 @@ rec {
     };
   };
 
+  services.fstrim.enable = true;
+
   services.sonarr.enable = true;
 
   services.nebula = {

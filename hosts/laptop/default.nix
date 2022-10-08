@@ -338,4 +338,6 @@ rec {
     # we can unmount /mnt and continue on the boot process.
     umount /mnt
   '';
+
+  services.fstrim.enable = true;
 }
