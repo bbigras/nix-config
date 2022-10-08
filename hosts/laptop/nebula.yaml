@@ -1,0 +1,54 @@
+nebula-ca: ENC[AES256_GCM,data:UMfIJuHJupRFCi6bJ9NinjRprnv0w77zAP1PQ3QwkPoyeGcQOxZ3pTqnlLuIOyoccXoGUOPVSWz/zyBdGDvHbM2+DYRk/rZPp7wuW2IlVSuv/JO1Yx7mxWZn/2kYn2cHgDpCGntXMSxcKYE4Yj9Zee7y5Mr+dfwkDpRYwLUJ1ARlQiUA7i+hm9YFVhby+14LnEIzVfUO6lE0erB7mYR6DtWXDHO759wXXFbUlFppEhDU28YHbCjtEKcFZZJ0XfWIVTOx4yQGq2uwXddHExFEs4uBi7kZrpD/lnH88gWWDcrZM06LQ8N36FnP92zXjPQRjw81+kA4nXggZqM=,iv:3pfExAyaz0yNKIRRvCIcSf2+7JxN9x3YTPnMMr3LCO4=,tag:tw8u4RHrXwOyRb2pfcnfVA==,type:str]
+nebula-cert: ENC[AES256_GCM,data:DI/6uYayLK6//dMxZFcFOAwGf+Re4fKBp82PWwPTQFRbrsmSM9oKYRIcxV+FF+N6ypo8mb66sUMn12+yIysvY5jUx+keJ0KKKy79XXgazVja+kdglXHG+/9Kjo0IrZCWWhrn+IwpchVSVzDbgokaGFxIO/cVwt49naJsa3sv+M+adLnY2w3ilidqXcs5nfGffheqrQdN3O5/bkDITjxmkWY8eMxcR95hjYfJXfPcBp59PwPjBSohl6ymELsAQAJZ1is6mziY/7F4YRaPDhtl08aF7qB8u6Y0N7DCMSboM8oYAKEVS4v764pyzyvAYOfegDZvYZPQqA+VIcKzpn33qZR3TjMbki92oltdPQM57KwWl0CouOrpTU4WKtjIDZe7KHFYHFvAeM8=,iv:8KRuvMucBF75+AZuixLGtdY94bHo309EeyN7N9qp/Po=,tag:oqP83Qp7kfrmEtMK/404/g==,type:str]
+nebula-key: ENC[AES256_GCM,data:LLF418+MUXh3NIBCZ1lyFeSMKufUpIf0i5uUUcxeYMBzEMxBTB2z9LelyCWya5yz9su/XEOTdpis7MtgFWpn2LONUPUqa/ujObEVRrMJksU+KyYDEQ4BEHwgyTeQrZQihP65iv2CRDRRAm8tBGK2r9UOWR+Un4MBv17oyoA6GA==,iv:twVjX90V8N74KE/xJdDp6C2k9h0oCKKGzA9cMzlysNM=,tag:NtWi2LzL8IbjMSJlZVEG4g==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2022-10-08T04:21:36Z"
+    mac: ENC[AES256_GCM,data:QGe2lApoP0qU38GNEF6Cey7KomU7CYVSQVAxqRKPaBlBir0Mh6WFswPLaZGpCdUFCGEAcSHrCh/fEv1SbYDvrjH2l31Z0VsLN4Hy7i1fbVWL5WibEu+uf63YsRUtRvPuaphXwHbnzQPpkezozUwVVvhFNPVsgmHRqU2iEMhYinI=,iv:kep5NcvRJwQpqbD2R9TwvWCCvHukPXm710OXAzcoC0k=,tag:ns+a8ano774gy3t1OUbCeQ==,type:str]
+    pgp:
+        - created_at: "2022-10-08T06:05:41Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            wcFMA8H6RU5N2dv2ARAAshrZhsg2bMj1xqZV3U8oSvhawWyWRL9+EfDUjA6g6FL0
+            pKv2iFFTVkfmTbywm7D0Y3Te0Jx7H/B0CY1VAS9Kd66i8owte0WVMJZrdstJ84vW
+            /4ek1w8F7pD0MOKvSq/gBDGiXnfzWbd8ciwAN/gTzmltk/+tGFXCJRmhjimKiTId
+            DLVfR/PhLzvI747FXQvibMbLZHWTyMUM+GjwO/OUnk376wOTqy6+qQPF3Saz+TKk
+            7dJiy7Huuy1X1bq1gG3L5O2nmnmFhGSSkfXqJxWHpMAnvGv68RQa9c4y7kYFNejO
+            SvGF1uMjh9UKhLvRSrV44ah68H+h1l47+Y2ldyCoczrSM2wqhoGdu3ovFjSU5VOS
+            tIUb5CbnhMd+RHCnwt0d7rPepHm6GRYI3Eewh4QGRkJrz0XzR0yU5zQND33BgpsW
+            AyDxxpt88blgNKtrhXbGUvW2xoqTtwFrwL2mTlsx74K1xd+j8UDCUFyPtcLTl489
+            vQ2U/CHypUbbqdwPCMJGnrYK7zTYV6KevxIHQAr+/LmjTDgKoH3OTMYMJul6krH3
+            CaQ/wB8iisvJOHsM5KG7w1jvotZRZx8HwzB6Ydb5vtmhc0qct3cblLVTT3K5x7mS
+            Fk3AjlUCHltvLfuXiA4ciEwSj0RXQKKMbDJk2u0MW21mEe4TQDaawKci95x0tDXS
+            UQGYvcWxGptxS2MsRlL3DxZvgBj+bzO/F6xsHEj5+Fkua2SBs/JnBavdt/VRtbOK
+            jsPIzfavonYgN7oHMp3Dnv+YLz5KYbv6O6iO8Q3DFukCRQ==
+            =aaIA
+            -----END PGP MESSAGE-----
+          fp: 6C1E9EE5072B435ECBFB0C8545A837FF4235EEF3
+        - created_at: "2022-10-08T06:05:41Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA6HxiEwXaxLDAQ//ZvrF7aVN1DsLasUs9lGqGgLqXS+MguL4b8e3fijRpyNZ
+            ZQeKZwgVVgwzmeOHg5Q3S0HvArGjQvXv+aDFLtKun/4FF/JsWDIIU3plgxKZMgZq
+            gQlvuPbSR+xDKGslrc1LEKP3mbzc/b1kNr6eZEBv+XnG3G86d6OXHWWD5yIk0Arm
+            ixxgCwaVKzazuoEkvGpeppvY2+QNKU1J7FYj1bkBQ4c/39BOJaGnKsANSE52nqHv
+            hrrR0Du8LgMcp+Ekyvjgx+D4FTw3G1GR2L4NemuzR1OVdEcMwHLHJkyLT/vwvkum
+            x9hE65hjdPNGjaxsO6TKi6p20IIcEWJmAfaK+rprlH6wATEXG9Pmij1rBHUdAor1
+            RnO/uzuaibK7oSnd9PJe9XNHgRl74ByXTcKHl/5NzHaPGCydtzVV34bx9mGwAG7d
+            /ViW52XQKOFtXeIwBp1bRNDBrNtJnZfuoa1PAF+6QBzLiOZiBza+SAkOaDnZR0ua
+            KekHRu40z9E3JsKzZEAazBoBpuOqNibScB3PRS2ip4mHv2MV3mpvh2F+MAksqfdC
+            Mt3UpTtic6aF7uvbwIj2tuu1a4IF5HiMyZQyLCD6JAIJxSqweDqVNdC4EAUsZzPP
+            RITH1eg/A9WnyCFTcpIGG16BCnCT/r2togNBDy/pROtG57zp6dK1VU81ts+JMbfS
+            VgF3XLlTu6gUYPhKcCqn0y+Q1edYDRedEpopmz1lx5lqYOKLWYDKiQCnLTm5y/MD
+            bOFYo5Wtp+D8EAMj4uKjxoYWTJBGNEtnriiHn8h/B+eKX7bLB35c
+            =DRco
+            -----END PGP MESSAGE-----
+          fp: 044563484de3f8a04eab2fa2a1f1884c176b12c3
+    unencrypted_suffix: _unencrypted
+    version: 3.7.3

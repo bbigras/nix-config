@@ -1,0 +1,54 @@
+nebula-ca: ENC[AES256_GCM,data:UMfIJuHJupRFCi6bJ9NinjRprnv0w77zAP1PQ3QwkPoyeGcQOxZ3pTqnlLuIOyoccXoGUOPVSWz/zyBdGDvHbM2+DYRk/rZPp7wuW2IlVSuv/JO1Yx7mxWZn/2kYn2cHgDpCGntXMSxcKYE4Yj9Zee7y5Mr+dfwkDpRYwLUJ1ARlQiUA7i+hm9YFVhby+14LnEIzVfUO6lE0erB7mYR6DtWXDHO759wXXFbUlFppEhDU28YHbCjtEKcFZZJ0XfWIVTOx4yQGq2uwXddHExFEs4uBi7kZrpD/lnH88gWWDcrZM06LQ8N36FnP92zXjPQRjw81+kA4nXggZqM=,iv:3pfExAyaz0yNKIRRvCIcSf2+7JxN9x3YTPnMMr3LCO4=,tag:tw8u4RHrXwOyRb2pfcnfVA==,type:str]
+nebula-cert: ENC[AES256_GCM,data:Dmud+oHYWSAVmaWF+gVEmVO6C/JEfriMP95uaTdWjmJazQeYm5gAwb+xfUol3jZrGs+y/ySOwangXq1detGAA9CQpxkQFQ0kRwFQPKJqMv8uewcA4XIdzrPChHAtAwBriMPztXMtiKs4zD59sSZiEMRSgsW2nE4/n8O38QFfEMAoKApWYOcdQkYVx0fCV3z5vKFeQFJaQMRCht+7DB3rNHbIdxJY3KXKfmNm0pURMDWDmVaZiI+3uEGMerPZdDf7g2QXHnInqRtJbm873txSPtCRUlBkVD3Q6oXCGpPmreTwv42B5M6Mo4/nJoE63Zy1XBKbxIdHcB7UD1R8y/0v9jrBIH6CrzCkoHGlgIwOADEdTgjbbfgVaiKgYazdFb7y2Nt15O7opEU=,iv:GIwndGJtRK4224KXhWuwomqQ13Kr6ng+qV58MdHkZ40=,tag:yyQe3Ti90hf38eMoQB7dOw==,type:str]
+nebula-key: ENC[AES256_GCM,data:+BOBjQxDvJDaR0AGiRbnThmit9kpeiIAi23Mg5Lp9SKOG1nUb4F1htmn//NwgPBbTbing+D7/FaFQsp5573cyvc+m9g+2Pvsmsesk+Hknxz+W1CQ7GWvul7b2V75v+e08t/mHy3CFWSRhCJ8tS9OFxuYqJ8M0CndQh1/HGBvnA==,iv:UK6ot3P+WsRKaMgOXkNB6jz5ek3vPPOLCTV8DP+/SU4=,tag:iCis+ajzeLFlmFdBzUiFXA==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2022-10-08T04:09:51Z"
+    mac: ENC[AES256_GCM,data:GvXfU4kdDTLYa0CjLKI812oqz6S0+p1g2DtLfzvzxtwnQZH0QP6rzPjCNndJu84l96zzVl9erBWWYr4hg5h6IzMJOi5b54i6dV9arFH0hxoRheyiU2FMMMxsMnZ6Jo8W/NRs3CqMdUOgBEH3nVBbnLK7fl7owHf73SaJhw4bl28=,iv:pn4jJzA+e9bjum5g4VQ0DQ4a7PASXrRlIn4FN8nLx5s=,tag:c+RJ5QXMNx4T6ksDr8U9Xw==,type:str]
+    pgp:
+        - created_at: "2022-10-08T04:08:14Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            wcFMA8H6RU5N2dv2ARAAt6vuQLPH3Tg1jNFFmXHwYSLOKqkr735FI+D9AI0hCT6v
+            fWe2a2djVdEAtiByJIVZeQkrFmTYXE6kRHOlaJv5DLsND2k/psHj3quGNnwyhs3K
+            EQ0Lg82ediulGD0YL1eceDPtuIk9Nza/BBlQw7drtJBkjUDsiLJOQ1b40KcfewLC
+            U2o1SRPI5C8wEgewKMXX9PGdqOfefQy92UX9ISw4neM/oWlgyRQxeWibS42KnOok
+            n9eb9oOKCaklnEcGNk4d2sQBdB0GKOFMk2CR/CpKJ0e/RUd/t6Cr8/iKf02ow6jm
+            rwO2r4odQuabi9EIHzVMbtkZ+PNvTNPm7huDK9SqdlAbvayfgaDPp5NfSblyV2vQ
+            0/rQGOo0wFmVWOQks8stfye/NTCQ1ZTW1WlM7h7/X2BaXXzzTXm7Xu/BVUROc0wB
+            VvCcrickCTkIFSnwD2X2Im4ko4d3SvG+2/nLgXDyN3Jo3hC9ndC76FVV58D71i67
+            h8LADx2FBJdmINXDIOLzTYP1rS/IcUDGa39TMT7aPD3ePCI6tONk+8TOt2aGuhDL
+            +xC4e2gVHWBJHn4gNUpawJM1XrZXUyciN3C0h2OY6m6GmsakgmR2tMNYFzplSU7e
+            s6chvBB3F9BynVBmG2xucmhvamInHr2D5PnVfPb2Euu4F3HyVI4i6kc5vPYRUdXS
+            UQFqzvDS6bNLsshftuXD/++fBLuSI6AxwUbpXZWTP/YigrJeVAgXvwxDeiaV9xjh
+            /sWoCYTkbs253x+cyRRU91VQ/9kXTclBv365yXUbWsHt0Q==
+            =TKKF
+            -----END PGP MESSAGE-----
+          fp: 6C1E9EE5072B435ECBFB0C8545A837FF4235EEF3
+        - created_at: "2022-10-08T04:08:14Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMA+woFLwLq6JMAQ/9FyRNIb2+DbCrJbjjxR85vQkiFwgN0U2uGwdL9vaB1q0L
+            MLyb1XczFBVtn8hQelhKAeOTjd62JUpyWPkTsivYLQAVv6JRfpv5xQSfeAPQFuHn
+            s6RnXB8L+uhMdPbIvfPMpE2l7Eih8/UjwqfRcwoKmhFoWWwDntFIjI/7aKciaTzE
+            PmeigCSPJooXuEX1zwQiXkRe1xcATs+CG42/y3FjyYFGxe/7CD1ZsC3cGCYM4khX
+            oWi1m0VJFRVnhJyF65EOZmFy+3yRFH8dxsM3e3y9uslGXwk5qjduh6vYBy0ITEYP
+            Ae32+kuEoxcQhH35PQ7XPBO6nQ63w688koUPIpnoWD7fvaGXGXKIvPQEZEr39w5Z
+            cB64zhyqt9IoMb6ujB2no8x/90Sav8VtfGtO1/Bvbo6eBPQMxjKtOpWwPhoibQGF
+            beF5L+sOZOoMw6gcpOfYdCLgXRFlVErWmsILC321Uns+HTMizgmwzSm/kxQHeAzB
+            lhEMsz4kVUZK4ACYmICF8IzEaFDWTvqRTJu2Q5OpFNhZq47XnUR7Voa/eumSVtZN
+            7R0eLHW98B5gXqNb+H40EgJn9B9ZQQu9quLcZMlMWgDhKyuB/GADJ8jXgcq15mlJ
+            w82KaeSPy4MmCdCfjlXBW06k0ZAdtKIZjyMtz7gDCMR+o9HZCDeGlHa0p3Q1wvLS
+            WAFhN21r2EP0N9A6IeIYjAFQoha2egI/nFx4dNYMEFEFvIiqz8lcw1hC/1vvOpwx
+            a93Ncz+mFYb1umDrSolDsHU2EfIiCHnC/1YwxzrRrRgriLcAPrGFp64=
+            =0nFL
+            -----END PGP MESSAGE-----
+          fp: 044d18dc13bcddbbb441d6dfec2814bc0baba24c
+    unencrypted_suffix: _unencrypted
+    version: 3.7.3

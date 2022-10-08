@@ -10,6 +10,16 @@ creation_rules:
       - pgp:
         - *bbigras
         - *desktop
+  - path_regex: hosts/desktop/nebula.yaml
+    key_groups:
+      - pgp:
+        - *bbigras
+        - *desktop
+  - path_regex: hosts/laptop/nebula.yaml
+    key_groups:
+      - pgp:
+        - *bbigras
+        - *laptop
   - path_regex: hosts/laptop/restic-laptop.yaml
     key_groups:
       - pgp:
