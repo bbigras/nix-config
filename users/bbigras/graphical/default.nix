@@ -31,8 +31,6 @@
       obsidian
       shotwell
       signal-desktop
-      thunderbird
-      zoom-us
     ];
 
     pointerCursor = {

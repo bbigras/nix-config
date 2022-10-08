@@ -11,8 +11,6 @@ let
     "ledger-live-desktop"
     "signal-desktop"
     "spotify"
-    "thunderbird"
-    "zoom-us"
   ];
   inherit (prev.lib) listToAttrs makeOverridable nameValuePair;
   nullDrv = final.callPackage
