@@ -26,7 +26,6 @@
       discord
       mbk
       obsidian
-      signal-desktop
     ];
 
     pointerCursor = {
