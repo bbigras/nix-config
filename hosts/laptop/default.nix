@@ -84,6 +84,7 @@ rec {
     };
   };
 
+  services.flatpak.enable = true;
   services.acpid = {
     enable = true;
     handlers = {
