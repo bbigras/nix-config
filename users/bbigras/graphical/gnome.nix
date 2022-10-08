@@ -12,6 +12,7 @@
       gnomeExtensions.appindicator
       gnomeExtensions.caffeine
       gnomeExtensions.clipboard-indicator
+      gnomeExtensions.just-perfection
     ];
   };
 
