@@ -14,7 +14,6 @@
       gnome.adwaita-icon-theme
       hicolor-icon-theme
       libnotify
-      lollypop
       pavucontrol
       pinentry-gnome
       qgnomeplatform
