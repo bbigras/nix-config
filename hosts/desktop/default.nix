@@ -106,6 +106,7 @@ rec {
   time.hardwareClockInLocalTime = true;
   users.users.bbigras.packages = [ pkgs.retroarchBare ];
 
+  services.flatpak.enable = true;
   services.jellyfin = {
     enable = true;
     openFirewall = true;
