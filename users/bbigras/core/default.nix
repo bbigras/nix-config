@@ -188,6 +188,7 @@ in
       docker-credential-helpers
       freeplane
       viddy
+      streamlink
     ];
   };
 
