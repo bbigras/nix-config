@@ -24,8 +24,6 @@
       xdg-utils
     ] ++ lib.optionals (pkgs.hostPlatform.system == "x86_64-linux") [
       discord
-      gnome.evince
-      gnome.gnome-calendar
       mbk
       obsidian
       shotwell
