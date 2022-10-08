@@ -4,11 +4,13 @@ let
   hosts = (import ./hosts.nix).homeManager.all;
 
   genModules = hostName: { homeDirectory, ... }:
-    { config, ... }: {
+    { config, pkgs, ... }: {
       imports = [ (../hosts + "/${hostName}") ];
       nix.registry = {
-        templates.flake = templates;
         nixpkgs.flake = nixpkgs;
+        p.flake = nixpkgs;
+        pkgs.flake = nixpkgs;
+        templates.flake = templates;
       };
 
       home = {
@@ -30,9 +32,9 @@ let
       };
     };
 
-  genConfiguration = hostName: { localSystem, ... }@attrs:
+  genConfiguration = hostName: { hostPlatform, ... }@attrs:
     home-manager.lib.homeManagerConfiguration {
-      pkgs = self.pkgs.${localSystem};
+      pkgs = self.pkgs.${hostPlatform};
       modules = [ (genModules hostName attrs) ];
     };
 in
