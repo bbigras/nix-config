@@ -167,7 +167,6 @@ in
       # remote
       anydesk
       rustdesk
-      zoom-us
       teams
       # kubernetes
       k9s
