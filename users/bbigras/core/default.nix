@@ -167,7 +167,6 @@ in
       # remote
       anydesk
       rustdesk
-      teams
       # kubernetes
       k9s
       kdash
