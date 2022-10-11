@@ -103,7 +103,6 @@ rec {
   networking.hostName = "desktop"; # Define your hostname.
   networking.networkmanager.enable = false;
   programs.thefuck.enable = true;
-  time.hardwareClockInLocalTime = true;
   users.users.bbigras.packages = [ pkgs.retroarchBare ];
 
   services.flatpak.enable = true;
