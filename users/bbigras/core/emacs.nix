@@ -434,6 +434,9 @@ in
         fira-code-mode = {
           enable = true;
           hook = [ "prog-mode" ];
+          config = ''
+            (fira-code-mode-set-font)
+          '';
         };
 
         gcmh = {
