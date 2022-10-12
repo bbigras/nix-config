@@ -1078,7 +1078,12 @@ in
           '';
         };
 
-        hammy.enable = true;
+        hammy = {
+          enable = true;
+          config = ''
+            (hammy-mode 1)
+          '';
+        };
 
         literate-calc-mode = {
           enable = false;
