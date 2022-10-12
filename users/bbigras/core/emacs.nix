@@ -1091,6 +1091,8 @@ in
           '';
         };
 
+        hammy.enable = true;
+
         literate-calc-mode = {
           enable = true;
         };
