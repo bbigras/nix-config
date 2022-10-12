@@ -155,11 +155,6 @@ in
 
         (add-hook 'prog-mode-hook #'rah-prog-mode-setup)
 
-        (defun rah-lsp ()
-          (interactive)
-          (envrc-mode)
-          (lsp))
-
         ;(defun rah-sort-lines-ignore-case ()
         ;  (interactive)
         ;  (let ((sort-fold-case t))
@@ -369,9 +364,10 @@ in
 
         envrc = {
           enable = true;
-          command = [ "envrc-mode" ];
+          defer = 1;
+          command = [ "envrc-global-mode" ];
           config = ''
-            (envrc-global-mode)
+            (envrc-global-mode 1)
           '';
         };
 
@@ -806,15 +802,6 @@ in
           '';
         };
 
-        consult-lsp = {
-          enable = true;
-          after = [ "lsp-mode" ];
-          bind = { };
-          config = ''
-            (define-key lsp-mode-map [remap xref-find-apropos] #'consult-lsp-symbols)
-          '';
-        };
-
         affe = {
           enable = true;
           after = [ "orderless" ];
@@ -1094,98 +1081,7 @@ in
         hammy.enable = true;
 
         literate-calc-mode = {
-          enable = true;
-        };
-
-        lsp-ui = {
-          enable = true;
-          command = [ "lsp-ui-mode" ];
-          bind = {
-            "C-c r d" = "lsp-ui-doc-show";
-            "C-c f s" = "lsp-ui-find-workspace-symbol";
-          };
-          config = ''
-            (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-            (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
-          '';
-          # (setq lsp-ui-doc-enable nil)
-          #lsp-ui-doc-enable nil)
-
-          # (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-          # (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
-
-
-          # (setq lsp-ui-doc-enable t)
-          # (setq lsp-eldoc-hook nil)
-          # (setq lsp-ui-doc-delay 2)
-
-        };
-
-        # (setq lsp-ui-sideline-enable t
-        #       lsp-ui-sideline-show-symbol nil
-        #       lsp-ui-sideline-show-hover nil
-        #       lsp-ui-sideline-show-code-actions nil
-        #       lsp-ui-sideline-update-mode 'point)
-
-        lsp-ui-flycheck = {
-          enable = true;
-          command = [ "lsp-flycheck-enable" ];
-          #   after = [ "flycheck" "lsp-ui" ];
-        };
-
-        lsp-modeline = {
-          enable = true;
-        };
-
-        lsp-lens = {
-          enable = true;
-          command = [ "lsp-lens--enable" ];
-          after = [ "lsp-mode" ];
-        };
-
-        lsp-mode = {
-          enable = true;
-          command = [ "lsp" ];
-          after = [ "company" "flycheck" ];
-          hook = [ "(lsp-mode . lsp-enable-which-key-integration)" ];
-          bindLocal = {
-            lsp-mode-map = {
-              "C-c r l" = "lsp-avy-lens";
-              "C-c r r" = "lsp-rename";
-              "C-c r f" = "lsp-format-buffer";
-              "C-c r g" = "lsp-format-region";
-              "C-c r a" = "lsp-execute-code-action";
-              "C-c f r" = "lsp-find-references";
-            };
-          };
-          init = ''
-            (setq lsp-keymap-prefix "C-c l")
-          '';
-          config = ''
-            (setq lsp-diagnostics-provider :flycheck
-                  lsp-eldoc-render-all nil
-                  lsp-headerline-breadcrumb-enable nil
-                  lsp-modeline-code-actions-enable nil
-                  lsp-modeline-diagnostics-enable nil
-                  lsp-modeline-workspace-status-enable nil
-                  lsp-lens-enable t)
-            (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
-
-            (push "[/\\\\]vendor$" lsp-file-watch-ignored)
-            (push "[/\\\\]\\.yarn$" lsp-file-watch-ignored)
-            (push "[/\\\\]\\.direnv$" lsp-file-watch-ignored)
-            (push "[/\\\\]\\.next$" lsp-file-watch-ignored)
-            (push "[/\\\\]\\result$" lsp-file-watch-ignored)
-          '';
-        };
-
-        lsp-headerline = {
-          enable = true;
-          after = [ "lsp-mode" ];
-        };
-
-        lsp-eslint = {
-          enable = true;
+          enable = false;
         };
 
         expand-region = {
@@ -1193,48 +1089,6 @@ in
           config = ''
             (global-set-key (kbd "C-=") 'er/expand-region)
           '';
-        };
-
-        lsp-rust = {
-          enable = true;
-          defer = true;
-          hook = [ "(rust-mode . rah-lsp)" ];
-        };
-
-        lsp-svelte = {
-          enable = true;
-        };
-
-        # lsp-treemacs = {
-        #   enable = true;
-        #   after = [ "lsp-mode" "treemacs" ];
-        # };
-
-        # pour dap-mode
-        # posframe = {
-        #   enable = true;
-        # };
-
-        dap-mode = {
-          enable = true;
-          after = [ "lsp-mode" ];
-        };
-
-        dap-mouse = {
-          enable = true;
-          hook = [ ''(dap-mode . dap-tooltip-mode)'' ];
-        };
-
-        dap-ui = {
-          enable = true;
-          hook = [ ''(dap-mode . dap-ui-mode)'' ];
-        };
-
-        dap-lldb = {
-          enable = true;
-          # config = lib.mkForce "";
-          after = [ "dap-mode" ];
-          package = "dap-mode";
         };
 
         frog-jump-buffer = {
@@ -1946,6 +1800,7 @@ in
           config = ''
             (setq rustic-lsp-server 'rust-analyzer)
             (setq rustic-cargo-bin "cargo")
+            (setq rustic-lsp-client 'eglot)
           '';
         };
 
@@ -1987,6 +1842,20 @@ in
         };
 
         terraform-mode.enable = true;
+
+        eglot = {
+          enable = true;
+        };
+
+        tree-sitter = {
+          enable = true;
+          config = ''
+            (global-tree-sitter-mode)
+            (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
+          '';
+        };
+
+        tree-sitter-langs.enable = true;
 
         treemacs = {
           enable = true;
