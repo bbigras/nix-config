@@ -13,6 +13,7 @@
       gnomeExtensions.caffeine
       gnomeExtensions.clipboard-indicator
       gnomeExtensions.just-perfection
+      gnomeExtensions.pop-shell
     ];
   };
 
