@@ -520,7 +520,6 @@ in
             (require 'ement-taxy)
             (add-hook 'ement-room-mode-hook (lambda () (setq show-trailing-whitespace nil)))
           '';
-          # (setq ement-save-sessions t)
         };
 
         ement-extras = {
