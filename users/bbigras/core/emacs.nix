@@ -512,10 +512,6 @@ in
           '';
         };
 
-        pomm = {
-          enable = true;
-        };
-
         ement = {
           enable = true;
           package = _epkgs: pkgs.emacsPackages.ement;
