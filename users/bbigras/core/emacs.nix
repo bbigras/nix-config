@@ -375,7 +375,7 @@ in
           '';
         };
 
-        docker-tramp.enable = true;
+        tramp-container.enable = true;
 
         tramp.enable = false;
 
