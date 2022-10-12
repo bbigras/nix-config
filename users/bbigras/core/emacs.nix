@@ -1873,6 +1873,8 @@ in
           };
         };
 
+        inheritenv.enable = true;
+
         treemacs-projectile = {
           enable = true;
           after = [ "treemacs" "projectile" ];
