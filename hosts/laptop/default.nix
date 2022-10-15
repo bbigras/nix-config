@@ -176,6 +176,11 @@ rec {
       nurNoPkgs.repos.rycee.hmModules.emacs-init
     ];
 
+    services.gnome-keyring = {
+      enable = true;
+      components = [ "secrets" ];
+    };
+
     wayland.windowManager.sway = {
       config = {
         input = {
