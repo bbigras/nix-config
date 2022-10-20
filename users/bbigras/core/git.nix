@@ -1,12 +1,10 @@
 { pkgs, ... }: {
   programs.git = {
     enable = true;
-    delta = {
+    difftastic = {
       enable = true;
-      options = {
-        navigate = true;
-        syntax-theme = "Nord";
-      };
+      background = "dark";
+      display = "side-by-side";
     };
     package = pkgs.gitFull;
     lfs.enable = false;
@@ -24,10 +22,6 @@
       mergetool.prompt = true;
       pull.ff = "only";
       credential.helper = "${pkgs.gitAndTools.gitFull}/bin/git-credential-libsecret";
-      diff.tool = "diffsitter";
-      # difftool.prompt = false;
-      difftool.difftastic.cmd = "/home/bbigras/.cargo/bin/difftastic \"$LOCAL\" \"$REMOTE\"";
-      difftool.diffsitter.cmd = "/home/bbigras/.cargo/bin/diffsitter \"$LOCAL\" \"$REMOTE\"";
     };
 
     aliases = {
