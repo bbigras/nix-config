@@ -1212,6 +1212,8 @@ in
           after = [ "notmuch" "org" ];
         };
 
+        rego-mode.enable = true;
+
         org-ql.enable = true;
         org-sidebar.enable = true;
 
