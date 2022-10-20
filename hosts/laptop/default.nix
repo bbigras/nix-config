@@ -66,6 +66,8 @@ rec {
     interfaces.eth0.useDHCP = true;
   };
 
+  virtualisation.docker.enable = true;
+
   services.nebula = {
     networks = {
       bruno = {
