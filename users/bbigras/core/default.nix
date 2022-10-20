@@ -245,6 +245,8 @@ in
           Homeserver = "https://matrix.org";
           ListenAddress = "127.0.0.1";
           ListenPort = 8009;
+          # UseKeyring = false;
+          IgnoreVerification = true;
         };
       };
     };
