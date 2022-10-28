@@ -237,22 +237,20 @@
     },
     "nix-on-droid": {
       "inputs": {
-        "flake-utils": [
-          "utils"
-        ],
         "home-manager": [
           "home-manager"
         ],
         "nixpkgs": [
           "nixpkgs"
-        ]
+        ],
+        "nixpkgs-for-bootstrap": "nixpkgs-for-bootstrap"
       },
       "locked": {
-        "lastModified": 1665517021,
-        "narHash": "sha256-by8E2Ne97i6Ah7dqMRsVaccZ7xO9Cc90Xx+T4ocGegk=",
+        "lastModified": 1666972347,
+        "narHash": "sha256-co1thMrkU5xYnRgLflI/Am83acDW1eB3qGQvIMOeork=",
         "owner": "t184256",
         "repo": "nix-on-droid",
-        "rev": "2ef9a7faa2f59bd26eb250384096c3eb1f76d7e9",
+        "rev": "5772a879a1a7e42ae9b571d8d797234a74bb860a",
         "type": "github"
       },
       "original": {
@@ -303,6 +301,22 @@
         "owner": "NixOS",
         "ref": "release-22.05",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-for-bootstrap": {
+      "locked": {
+        "lastModified": 1656265786,
+        "narHash": "sha256-A9RkoGrxzsmMm0vily18p92Rasb+MbdDMaSnzmywXKw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "cd90e773eae83ba7733d2377b6cdf84d45558780",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "cd90e773eae83ba7733d2377b6cdf84d45558780",
         "type": "github"
       }
     },
