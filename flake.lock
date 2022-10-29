@@ -246,11 +246,11 @@
         "nixpkgs-for-bootstrap": "nixpkgs-for-bootstrap"
       },
       "locked": {
-        "lastModified": 1666972347,
-        "narHash": "sha256-co1thMrkU5xYnRgLflI/Am83acDW1eB3qGQvIMOeork=",
+        "lastModified": 1667040435,
+        "narHash": "sha256-8Bim2PcQqMV7m7BOxXOhIPb4Uv44F5LWlklo9llpznY=",
         "owner": "t184256",
         "repo": "nix-on-droid",
-        "rev": "5772a879a1a7e42ae9b571d8d797234a74bb860a",
+        "rev": "4050f7f992019e6f724a0063017bda06264a12c4",
         "type": "github"
       },
       "original": {
