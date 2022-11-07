@@ -107,7 +107,6 @@
     nix-on-droid = {
       url = "github:t184256/nix-on-droid";
       inputs = {
-        flake-utils.follows = "utils";
         home-manager.follows = "home-manager";
         nixpkgs.follows = "nixpkgs";
       };
