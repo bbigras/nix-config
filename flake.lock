@@ -60,7 +60,7 @@
           "flake-compat"
         ],
         "flake-utils": [
-          "utils"
+          "flake-utils"
         ],
         "nixpkgs": [
           "nixpkgs"
@@ -92,7 +92,7 @@
           "nixpkgs"
         ],
         "utils": [
-          "utils"
+          "flake-utils"
         ]
       },
       "locked": {
@@ -145,7 +145,7 @@
     "emacs-overlay": {
       "inputs": {
         "flake-utils": [
-          "utils"
+          "flake-utils"
         ],
         "nixpkgs": [
           "nixpkgs"
@@ -197,13 +197,28 @@
         "type": "github"
       }
     },
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1667395993,
+        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
         ],
         "utils": [
-          "utils"
+          "flake-utils"
         ]
       },
       "locked": {
@@ -393,7 +408,7 @@
     "pre-commit-hooks": {
       "inputs": {
         "flake-utils": [
-          "utils"
+          "flake-utils"
         ],
         "nixpkgs": [
           "nixpkgs"
@@ -417,7 +432,7 @@
       "inputs": {
         "agenix": "agenix",
         "flake-utils": [
-          "utils"
+          "flake-utils"
         ],
         "nixpkgs": [
           "nixpkgs"
@@ -448,6 +463,7 @@
         "emacs-overlay": "emacs-overlay",
         "emacs-plz": "emacs-plz",
         "flake-compat": "flake-compat",
+        "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "nix-on-droid": "nix-on-droid",
@@ -457,8 +473,7 @@
         "pre-commit-hooks": "pre-commit-hooks",
         "ragenix": "ragenix",
         "sops-nix": "sops-nix",
-        "templates": "templates",
-        "utils": "utils"
+        "templates": "templates"
       }
     },
     "rust-overlay": {
@@ -519,21 +534,6 @@
       "original": {
         "owner": "NixOS",
         "repo": "templates",
-        "type": "github"
-      }
-    },
-    "utils": {
-      "locked": {
-        "lastModified": 1667395993,
-        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
         "type": "github"
       }
     }

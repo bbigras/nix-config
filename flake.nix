@@ -32,17 +32,17 @@
       url = "github:serokell/deploy-rs";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        utils.follows = "utils";
+        utils.follows = "flake-utils";
         flake-compat.follows = "flake-compat";
       };
     };
 
-    utils.url = "github:numtide/flake-utils";
+    flake-utils.url = "github:numtide/flake-utils";
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.utils.follows = "utils";
+      inputs.utils.follows = "flake-utils";
     };
 
     impermanence.url = "github:nix-community/impermanence";
@@ -50,7 +50,7 @@
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "utils";
+      inputs.flake-utils.follows = "flake-utils";
     };
 
     sops-nix = {
@@ -60,7 +60,7 @@
 
     ragenix = {
       url = "github:yaxitech/ragenix";
-      inputs.flake-utils.follows = "utils";
+      inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -69,7 +69,7 @@
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "utils";
+      inputs.flake-utils.follows = "flake-utils";
     };
 
     emacs-plz = {
@@ -96,7 +96,7 @@
       url = "github:bbigras/dendrite-demo-pinecone";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "utils";
+        flake-utils.follows = "flake-utils";
         flake-compat.follows = "flake-compat";
         pre-commit-hooks.follows = "pre-commit-hooks";
       };
@@ -113,33 +113,31 @@
     };
   };
 
-  outputs = { self, nixpkgs, utils, ... }@inputs:
+  outputs = { self, nixpkgs, flake-utils, ... }@inputs:
     {
       deploy = import ./nix/deploy.nix inputs;
 
-      overlays = {
-        default = import ./nix/overlay.nix inputs;
-        lite = import ./nix/mask-large-drvs.nix;
-      };
+      overlays = import ./nix/overlay.nix inputs;
+
+      darwinConfigurations = import ./nix/darwin.nix inputs;
 
       homeConfigurations = import ./nix/home-manager.nix inputs;
 
       nixosConfigurations = import ./nix/nixos.nix inputs;
     }
-    // utils.lib.eachSystem [ "aarch64-linux" "x86_64-linux" ] (system: {
-      checks = import ./nix/checks.nix inputs system;
+    // flake-utils.lib.eachSystem [ "aarch64-darwin" "aarch64-linux" "x86_64-darwin" "x86_64-linux" ] (localSystem: {
+      checks = import ./nix/checks.nix inputs localSystem;
 
-      devShells.default = import ./nix/dev-shell.nix inputs system;
+      devShells.default = import ./nix/dev-shell.nix inputs localSystem;
 
       packages = {
-        default = self.packages.${system}.all-hosts;
-      } // (import ./nix/host-drvs.nix inputs system);
+        default = self.packages.${localSystem}.all;
+      } // (import ./nix/host-drvs.nix inputs localSystem);
 
-      nixpkgs = import nixpkgs {
-        inherit system;
+      pkgs = import nixpkgs {
+        inherit localSystem;
         overlays = [
           self.overlays.default
-          # self.overlays.lite
         ];
         config.allowUnfree = true;
         config.allowAliases = true;
