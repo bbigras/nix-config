@@ -5,6 +5,8 @@
 , nixpkgs
 , ragenix
 , templates
+, sops-nix
+, nur
 , ...
 }:
 let
@@ -33,8 +35,10 @@ let
         home-manager.nixosModules.home-manager
         impermanence.nixosModules.impermanence
         ragenix.nixosModules.age
+        sops-nix.nixosModules.sops
       ];
       specialArgs = {
+        inherit nur;
         impermanence = impermanence.nixosModules;
         nixos-hardware = nixos-hardware.nixosModules;
       };
