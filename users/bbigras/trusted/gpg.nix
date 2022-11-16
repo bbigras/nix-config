@@ -1,4 +1,16 @@
-{
+{ lib, pkgs, ... }: {
+  services.gpg-agent = lib.mkIf pkgs.stdenv.isLinux {
+    enable = true;
+    # enableExtraSocket = true;
+    # enableScDaemon = true;
+    enableSshSupport = true;
+    defaultCacheTtl = 34560000;
+    maxCacheTtl = 34560000;
+    # extraConfig = ''
+    #   extra-socket /run/user/${toString config.home.uid}/gnupg/S.gpg-agent.extra
+    # '';
+  };
+
   programs.gpg.settings = {
     # https://github.com/drduh/config/blob/master/gpg.conf
     # https://www.gnupg.org/documentation/manuals/gnupg/GPG-Configuration-Options.html

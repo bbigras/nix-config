@@ -1,4 +1,4 @@
-final:
+final: _:
 let
   inherit (final) lib linuxKernel;
   inherit (lib.kernel) yes no;
@@ -65,35 +65,40 @@ let
       name = "more-uarches-for-kernel-5.17";
       patch = final.fetchpatch {
         name = "more-uarches-for-kernel-5.17";
-        url = "https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/master/more-uarches-for-kernel-5.17%2B.patch";
-        hash = "sha256-PYrvXEnkC5/KmCVBG+thlOTKD/LxI5cBcn7J4c/mg/0=";
+        url = "https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/e73759c808f500f412dedfd77ca6c1ade43675c9/more-uarches-for-kernel-5.17%2B.patch";
+        hash = "sha256-XOLR4MpyUWIy6ee1uDXGV/f483JjH1Sny+AQpC+baZc=";
       };
     };
   };
 
   inherit (linuxKernel) kernels packagesFor;
 
-  latest = kernels.linux_5_18;
+  zfs = kernels.linux_5_15;
+  latest = kernels.linux_6_0;
 in
-_: {
+{
+  linuxPackages_zfs_lto = packagesFor (fullLTO zfs);
+
   linuxPackages_latest_lto = packagesFor (fullLTO latest);
 
-  linuxPackages_latest_lto_skylake = packagesFor
+  linuxPackages_zfs_lto_skylake = packagesFor
     (cfg
       { MSKYLAKE = yes; }
       (patch
         [ patches.graysky ]
-        (fullLTO latest)));
+        (fullLTO zfs)));
 
-  linuxPackages_latest_lto_zen3 = packagesFor
+  linuxPackages_zfs_lto_zen3 = packagesFor
     (cfg
       { MZEN3 = yes; }
       (patch
         [ patches.graysky ]
-        (fullLTO latest)));
+        (fullLTO zfs)));
 
-  linuxPackages_xanmod_lto_zen3 = packagesFor
+  linuxPackages_latest_lto_zen3 = packagesFor
     (cfg
-      { MZEN3 = yes; DEBUG_INFO = lib.mkForce no; }
-      (fullLTO kernels.linux_xanmod));
+      { MZEN3 = yes; CPU_FREQ_STAT = yes; }
+      (patch
+        [ patches.graysky ]
+        (fullLTO latest)));
 }

@@ -1,10 +1,10 @@
-{ pkgs, ... }: {
+{ lib, pkgs, ... }: {
   programs.foot = {
     enable = true;
     settings = {
       main = {
         dpi-aware = "yes";
-        font = "monospace:size=6, emoji:size=6";
+        font = lib.mkDefault "monospace:size=6, emoji:size=6";
         notify = "${pkgs.libnotify}/bin/notify-send -a foot -i foot \${title} \${body}";
       };
       mouse.hide-when-typing = "yes";

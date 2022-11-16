@@ -4,7 +4,7 @@
     enableAutosuggestions = true;
     enableCompletion = true;
     enableSyntaxHighlighting = true;
-    enableVteIntegration = true;
+    enableVteIntegration = pkgs.stdenv.isLinux;
     autocd = true;
     dotDir = ".config/zsh";
     history = {
@@ -17,7 +17,7 @@
     };
     envExtra = ''
       export LESSHISTFILE="${config.xdg.dataHome}/less_history"
-      # export CARGO_HOME="${config.xdg.cacheHome}/cargo"
+      export CARGO_HOME="${config.xdg.cacheHome}/cargo"
     '';
     initExtra = ''
         if [[ "$TERM" != 'dumb' && -z "$INSIDE_EMACS" ]]; then
@@ -44,7 +44,6 @@
       bindkey "^[[1;3C" forward-word
       bindkey "^[[1;5D" backward-word
       bindkey "^[[1;3D" backward-word
-
       bindkey -s "^O" 'fzf | xargs -r $VISUAL^M'
 
       bindkey -rpM viins '^[^['

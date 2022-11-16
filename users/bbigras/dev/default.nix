@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ lib, pkgs, ... }:
 
 let
   direnv_psql_cfg = ../core/direnv-psql.cfg;
@@ -18,7 +18,7 @@ in
       nixpkgs-review
       tmate
       upterm
-    ] ++ (lib.optional (!pkgs.stdenv.isDarwin) pkgs.commitizen);
+    ];
     shellAliases.gco = lib.mkForce "git cz commit";
   };
 

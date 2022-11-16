@@ -1,11 +1,10 @@
 { lib, pkgs, ... }: {
   imports = [
-    ./alacritty.nix
     ./common.nix
     ./firefox.nix
     ./kitty.nix
-    ./mpv.nix
     ./mime.nix
+    ./mpv.nix
   ];
 
   home = {
@@ -18,6 +17,7 @@
       pinentry-gnome
       qgnomeplatform
       qt5.qtwayland
+      qt6.qtwayland
       spawn
       qalculate-gtk
       xdg-utils
@@ -68,8 +68,8 @@
       provider = "geoclue2";
       tray = true;
       settings.general = {
-        brightness-day = 1.0;
-        brightness-night = 0.4;
+        brightness-day = lib.mkDefault 1.0;
+        brightness-night = lib.mkDefault 0.4;
       };
     };
     udiskie = {

@@ -9,6 +9,7 @@ in
     ./btop.nix
     ./git.nix
     ./emacs.nix
+    ./ssh.nix
     ./tmux.nix
     ./xdg.nix
     ./zsh.nix

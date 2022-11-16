@@ -1,8 +1,8 @@
-{ pkgs, ... }: {
+{ lib, pkgs, ... }: {
   programs.waybar = {
     enable = true;
     package = pkgs.waybar.override { pulseSupport = true; };
-    settings = [{
+    settings.main = {
       gtk-layer-shell = true;
       layer = "top";
       modules-left = [ "sway/workspaces" "sway/mode" ];
@@ -57,8 +57,7 @@
         format-alt = "{ifname}: {ipaddr}/{cidr}";
       };
       temperature = {
-        thermal-zone = 1;
-        critical-threshold = 80;
+        critical-threshold = lib.mkDefault 90;
         format = "{temperatureC}°C {icon}";
         format-icons = [ "" "" "" ];
       };
@@ -87,11 +86,11 @@
         format = "{:%F | %H:%M | %Z}";
       };
       tray = {
-        icon-size = 20;
-        spacing = 5;
+        icon-size = lib.mkDefault 20;
+        spacing = lib.mkDefault 5;
       };
-    }];
-    style = ''
+    };
+    style = lib.mkDefault ''
       * {
         border: none;
         border-radius: 0;
@@ -157,6 +156,10 @@
         background-color: #273747;
       }
     '';
-    systemd.enable = false;
+
+    systemd = {
+      enable = true;
+      target = "sway-session.target";
+    };
   };
 }

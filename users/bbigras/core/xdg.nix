@@ -1,9 +1,9 @@
-{
+{ pkgs, ... }: {
   xdg = {
     enable = true;
-    mimeApps.enable = true;
+    mimeApps.enable = pkgs.stdenv.isLinux;
     userDirs = {
-      enable = true;
+      enable = pkgs.stdenv.isLinux;
       desktop = "$HOME/Bureau";
       documents = "$HOME/Documents";
       download = "$HOME/Téléchargements";

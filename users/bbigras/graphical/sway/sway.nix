@@ -4,6 +4,10 @@
     config = {
       bars = [ ];
 
+      input = {
+        "type:keyboard".xkb_options = "caps:escape";
+      };
+
       keybindings =
         let
           execSpawn = cmd: "exec ${pkgs.spawn}/bin/spawn ${cmd}";
@@ -20,7 +24,7 @@
 
       output = { "*" = { bg = "${config.xdg.dataHome}/wall.png fill"; }; };
 
-      terminal = "${config.programs.foot.package}/bin/foot";
+      terminal = lib.getExe pkgs.foot;
 
       window.commands = [
         { command = "floating enable"; criteria.app_id = "imv"; }
@@ -34,7 +38,7 @@
     extraSessionCommands = ''
       export ECORE_EVAS_ENGINE=wayland_egl
       export ELM_ENGINE=wayland_egl
-      # export LIBSEAT_BACKEND="logind"
+      export LIBSEAT_BACKEND="logind"
       export MOZ_ENABLE_WAYLAND=1
       export NIXOS_OZONE_WL=1
       export QT_QPA_PLATFORM=xcb

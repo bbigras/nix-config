@@ -9,7 +9,10 @@ in
   ];
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsPgtkNativeComp;
+
+    # TODO: use pkgs.emacsPgtkNativeComp with wayland
+    package = pkgs.emacsNativeComp;
+
     init = {
       enable = true;
 
