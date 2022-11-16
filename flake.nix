@@ -119,7 +119,7 @@
 
       overlays = import ./nix/overlay.nix inputs;
 
-      darwinConfigurations = import ./nix/darwin.nix inputs;
+      # darwinConfigurations = import ./nix/darwin.nix inputs;
 
       homeConfigurations = import ./nix/home-manager.nix inputs;
 
