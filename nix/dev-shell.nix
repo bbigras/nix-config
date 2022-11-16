@@ -33,6 +33,7 @@ mkShell {
     jq
     pre-commit
     rage
+    sops
   ];
 
   shellHook = ''
