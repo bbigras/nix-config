@@ -2,17 +2,17 @@ let
   hosts = {
     desktop = {
       type = "nixos";
-      localSystem = "x86_64-linux";
+      hostPlatform = "x86_64-linux";
       address = "desktop";
     };
     laptop = {
       type = "nixos";
-      localSystem = "x86_64-linux";
+      hostPlatform = "x86_64-linux";
       address = "laptop";
     };
     work = {
       type = "nixos";
-      localSystem = "x86_64-linux";
+      hostPlatform = "x86_64-linux";
       address = "bbigras-work";
     };
   };
