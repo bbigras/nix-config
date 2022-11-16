@@ -27,7 +27,7 @@ in
         ;; Set up fonts early.
         (set-face-attribute 'default
                             nil
-                            :height 140
+                            :height 105
                             :family "Source Code Pro")
         (set-face-attribute 'fixed-pitch nil :font "Source Code Pro" :height 100)
         (set-face-attribute 'variable-pitch nil :font "Cantarell" :height 150 :weight 'regular)
