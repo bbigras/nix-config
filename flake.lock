@@ -21,6 +21,26 @@
         "type": "github"
       }
     },
+    "darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1668534244,
+        "narHash": "sha256-8sgzegrEVUZMJUg4jEiC6pokeMPY02BFe49iXnVrXkk=",
+        "owner": "LnL7",
+        "repo": "nix-darwin",
+        "rev": "4182ad42d5fb5001adb1f61bec3a04fae0eecb95",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LnL7",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
     "defmacro-gensym": {
       "flake": false,
       "locked": {
@@ -455,6 +475,7 @@
     },
     "root": {
       "inputs": {
+        "darwin": "darwin",
         "defmacro-gensym": "defmacro-gensym",
         "dendrite-demo-pinecone": "dendrite-demo-pinecone",
         "deploy-rs": "deploy-rs",
