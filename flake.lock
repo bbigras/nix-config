@@ -145,23 +145,6 @@
         "type": "github"
       }
     },
-    "emacs-ement-extras": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1635276173,
-        "narHash": "sha256-rjT5D5K1aXswHMfGfR37TkQKzXcghFy6sxPUt8+xLJw=",
-        "owner": "akater",
-        "repo": "emacs-ement-extras",
-        "rev": "b3ae0336555a9beb19e1f6b01763f7dab1d6fd2c",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "akater",
-        "ref": "release",
-        "repo": "emacs-ement-extras",
-        "type": "gitlab"
-      }
-    },
     "emacs-overlay": {
       "inputs": {
         "flake-utils": [
@@ -480,7 +463,6 @@
         "dendrite-demo-pinecone": "dendrite-demo-pinecone",
         "deploy-rs": "deploy-rs",
         "emacs-ement": "emacs-ement",
-        "emacs-ement-extras": "emacs-ement-extras",
         "emacs-overlay": "emacs-overlay",
         "emacs-plz": "emacs-plz",
         "flake-compat": "flake-compat",

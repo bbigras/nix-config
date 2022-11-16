@@ -521,26 +521,6 @@ in
           '';
         };
 
-        ement-extras = {
-          enable = true;
-          package = _epkgs: pkgs.emacsPackages.ement-extras;
-          after = [ "ement" ];
-          # custom = ''
-          #   (ement-extras-keep-user-id-history 'ement-extras-user-id-history)
-          # '';
-          config = ''
-            (require 'ement-extras-utils)
-            (require 'ement-extras-core)
-            (require 'ement-auth-source)
-            (require 'ement-proxy)
-            (require 'ement-pantalaimon)
-            (ement-proxy-enable)
-            (ement-auth-source-enable)
-            (setq ement-extras-keep-user-id-history 'ement-extras-user-id-history)
-            (setq ement-proxy "http://localhost:8009")
-          '';
-        };
-
         graphql-mode.enable = true;
         graphviz-dot-mode.enable = true;
 

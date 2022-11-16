@@ -82,11 +82,6 @@
       flake = false;
     };
 
-    emacs-ement-extras = {
-      url = "gitlab:akater/emacs-ement-extras/release";
-      flake = false;
-    };
-
     defmacro-gensym = {
       url = "gitlab:akater/defmacro-gensym";
       flake = false;

@@ -6,7 +6,6 @@
 , dendrite-demo-pinecone
 , emacs-plz
 , defmacro-gensym
-, emacs-ement-extras
 , emacs-ement
 , ...
 }:
@@ -59,30 +58,6 @@ localOverlays // {
           buildPhase = ''
             runHook preBuild
             make default
-            runHook postBuild
-          '';
-        };
-      };
-    })
-
-    (_self: super: {
-      emacsPackages = super.emacsPackages // {
-        ement-extras = super.emacsPackages.trivialBuild {
-          pname = "ement-extras";
-          version = "git";
-          src = emacs-ement-extras;
-
-          packageRequires = [
-            super.emacsPackages.plz
-            super.emacsPackages.ement
-            super.emacsPackages.defmacro-gensym
-            #super.emacsPackages.ts
-          ];
-
-          buildPhase = ''
-            runHook preBuild
-            make all
-            rm *.el
             runHook postBuild
           '';
         };
