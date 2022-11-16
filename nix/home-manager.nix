@@ -4,7 +4,7 @@ let
   hosts = (import ./hosts.nix).homeManager.all;
 
   genModules = hostName: { homeDirectory, ... }:
-    { config, pkgs, ... }: {
+    { config, ... }: {
       imports = [ (../hosts + "/${hostName}") ];
       nix.registry = {
         nixpkgs.flake = nixpkgs;
