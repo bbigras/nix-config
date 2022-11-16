@@ -13,7 +13,6 @@ in
     ./tmux.nix
     ./xdg.nix
     ./zsh.nix
-    ./taskwarrior.nix
   ];
 
   home = {

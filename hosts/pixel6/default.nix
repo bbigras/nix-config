@@ -75,7 +75,6 @@
       imports = [
         ../../users/bbigras/core/atuin.nix
         ../../users/bbigras/core/git.nix
-        ../../users/bbigras/core/taskwarrior.nix
         ../../users/bbigras/core/tmux.nix
         ../../users/bbigras/core/zsh.nix
       ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/pixel6.nix") then [ (builtins.getEnv "PWD" + "/secrets/pixel6.nix") ] else [ ]);
