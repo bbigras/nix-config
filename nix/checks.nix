@@ -16,7 +16,10 @@ with self.nixpkgs.${system};
           enable = true;
           excludes = [ "hardware-configuration.*.nix" ];
         };
-        nixpkgs-fmt.enable = true;
+        nixpkgs-fmt = {
+          enable = true;
+          excludes = [ "hardware-configuration.*.nix" ];
+        };
         statix.enable = true;
         stylua = {
           enable = false;
