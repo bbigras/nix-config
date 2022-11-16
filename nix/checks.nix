@@ -5,13 +5,15 @@
 
 system:
 
-with self.nixpkgs.${system};
+with self.pkgs.${system};
 
 {
   pre-commit-check = pre-commit-hooks.lib.${system}.run
     {
       src = lib.cleanSource ../.;
       hooks = {
+        actionlint.enable = true;
+        # luacheck.enable = true;
         nix-linter = {
           enable = true;
           excludes = [ "hardware-configuration.*.nix" ];
@@ -21,22 +23,7 @@ with self.nixpkgs.${system};
           excludes = [ "hardware-configuration.*.nix" ];
         };
         statix.enable = true;
-        stylua = {
-          enable = false;
-          types = [ "file" "lua" ];
-          entry = "${stylua}/bin/stylua";
-        };
-        luacheck = {
-          enable = false;
-          types = [ "file" "lua" ];
-          entry = "${luajitPackages.luacheck}/bin/luacheck --std luajit --globals vim -- ";
-        };
-        actionlint = {
-          enable = true;
-          files = "^.github/workflows/";
-          types = [ "yaml" ];
-          entry = "${actionlint}/bin/actionlint";
-        };
+        # stylua.enable = true;
       };
       settings.nix-linter.checks = [
         "DIYInherit"

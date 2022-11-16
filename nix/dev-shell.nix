@@ -2,7 +2,7 @@
 
 system:
 
-with self.nixpkgs.${system};
+with self.pkgs.${system};
 
 mkShell {
   name = "nix-config";
@@ -17,12 +17,11 @@ mkShell {
     ragenix
     rnix-lsp
     statix
-    pre-commit
 
     # Lua
     # stylua
     # (luajit.withPackages (p: with p; [ luacheck ]))
-    # (lib.optional stdenv.hostPlatform.isLinux sumneko-lua-language-server)
+    # sumneko-lua-language-server
 
     # GitHub Actions
     act
