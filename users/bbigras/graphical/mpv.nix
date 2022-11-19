@@ -1,11 +1,30 @@
+{ pkgs, ... }:
+
 {
   programs.mpv = {
     enable = true;
+    package = pkgs.mpv.override {
+      scripts = with pkgs.mpvScripts; [
+        mpris
+        # sponsorblock
+        thumbnail
+        youtube-quality
+      ];
+    };
+    bindings = {
+      # WHEEL_UP = "seek 10";
+      # WHEEL_DOWN = "seek -10";
+      "Alt+0" = "set window-scale 0.5";
+    };
     config = {
       profile = "gpu-hq";
       #gpu-context = "wayland";
       vo = "gpu";
       hwdec = "auto";
+      force-window = true;
+      # ytdl-format = "bestvideo+bestaudio";
+      # cache-default = 4000000;
+      osc = "no"; # for mpvScripts.thumbnail
     };
   };
 
