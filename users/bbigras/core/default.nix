@@ -211,6 +211,9 @@ in
     navi.enable = true;
     sqls.enable = true;
 
+
+    bashmount.enable = true;
+
     ssh = {
       enable = true;
       controlMaster = "auto";
