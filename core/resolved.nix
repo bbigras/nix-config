@@ -10,9 +10,12 @@
   services.resolved = {
     enable = true;
     dnssec = "allow-downgrade";
+    fallbackDns = [
+      "1.1.1.1"
+      "8.8.8.8"
+    ];
     llmnr = "true";
     extraConfig = ''
-      DNS=1.1.1.1 1.0.0.1
       Domains=~.
       MulticastDNS=true
     '';
