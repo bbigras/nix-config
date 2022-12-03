@@ -106,7 +106,6 @@
           enableAliases = true;
         };
         fzf.enable = true;
-        just.enable = true;
         jq.enable = true;
         htop.enable = true;
         nushell.enable = false;
@@ -137,6 +136,7 @@
         croc
         dogdns
         fd
+        just
         mosh
         (neofetch.override { x11Support = false; })
         oneshot

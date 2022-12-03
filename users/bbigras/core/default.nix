@@ -190,6 +190,7 @@ in
       streamlink
       beets-unstable
       natscli
+      just
     ];
   };
 
@@ -205,7 +206,6 @@ in
       enableAliases = true;
     };
     jq.enable = true;
-    just.enable = true;
     fzf.enable = true;
     gpg.enable = true;
     navi.enable = true;
