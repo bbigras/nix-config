@@ -186,6 +186,7 @@
       streamlink
       beets-unstable
       natscli
+      joplin-desktop
       just
     ];
   };
