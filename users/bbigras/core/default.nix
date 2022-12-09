@@ -188,6 +188,7 @@
       natscli
       joplin-desktop
       just
+      megasync
     ];
   };
 
