@@ -124,6 +124,8 @@
       homeConfigurations = import ./nix/home-manager.nix inputs;
 
       nixosConfigurations = import ./nix/nixos.nix inputs;
+
+      nixondroidConfigurations = import ./nix/nix-on-droid.nix inputs;
     }
     // flake-utils.lib.eachSystem [ "aarch64-darwin" "aarch64-linux" "x86_64-darwin" "x86_64-linux" ] (localSystem: {
       checks = import ./nix/checks.nix inputs localSystem;

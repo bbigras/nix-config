@@ -1,13 +1,11 @@
 { self
 , deploy-rs
 , nixpkgs
-, nix-on-droid
 , ...
 }:
 let
   inherit (nixpkgs) lib;
   hosts = (import ./hosts.nix).all;
-  droidHosts = (import ./hosts.nix).nix-on-droid;
 
   genNode = hostName: nixosCfg:
     let
@@ -20,26 +18,23 @@ let
       profiles.system.path = activate.nixos nixosCfg;
     };
 
-  genNixOnDroid = hostname: nixosCfg:
+  genNixOnDroid = hostName: nixosCfg:
     let
-      pkgs_droid = import nixpkgs {
-        system = nixosCfg.hostPlatform;
-      };
+      inherit (hosts.${hostName}) address hostPlatform remoteBuild;
+      inherit (deploy-rs.lib.${hostPlatform}) activate;
 
-      pixel6 = (nix-on-droid.lib.nixOnDroidConfiguration {
-        pkgs = pkgs_droid;
-        modules = [ (../hosts + "/${hostname}") ];
+      pixel6 = nixosCfg.activationPackage;
 
-      }).activationPackage;
     in
     {
-      inherit hostname;
+      inherit remoteBuild;
+      hostname = address;
 
       # to prevent using sudo
       sshUser = "nix-on-droid";
       user = "nix-on-droid";
 
-      profiles.system.path = deploy-rs.lib.aarch64-linux.activate.custom
+      profiles.system.path = activate.custom
         pixel6
         (pixel6 + "/activate");
     };
@@ -52,5 +47,5 @@ in
   user = "root";
 
   nodes = lib.mapAttrs genNode self.nixosConfigurations //
-    lib.mapAttrs genNixOnDroid droidHosts.all;
+    lib.mapAttrs genNixOnDroid self.nixondroidConfigurations;
 }
