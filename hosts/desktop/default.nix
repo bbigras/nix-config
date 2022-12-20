@@ -94,9 +94,6 @@ rec {
     restic-desktop-creds.sopsFile = ./restic-desktop.yaml;
     yggdrasil-conf.sopsFile = ./restic-desktop.yaml;
     yggdrasil-conf.owner = config.users.users.yggdrasil.name;
-    nebula-ca.sopsFile = ./nebula.yaml;
-    nebula-cert.sopsFile = ./nebula.yaml;
-    nebula-key.sopsFile = ./nebula.yaml;
   };
 
   # hardware.enableRedistributableFirmware = true;
@@ -276,22 +273,4 @@ rec {
   services.fstrim.enable = true;
 
   services.sonarr.enable = true;
-
-  services.nebula = {
-    networks = {
-      bruno = {
-        ca = config.sops.secrets.nebula-ca.path;
-        cert = config.sops.secrets.nebula-cert.path;
-        key = config.sops.secrets.nebula-key.path;
-
-        firewall = {
-          inbound = [{ host = "any"; port = "any"; proto = "any"; }];
-          outbound = [{ host = "any"; port = "any"; proto = "any"; }];
-        };
-
-        lighthouses = [ "10.10.10.1" ];
-        staticHostMap = { "10.10.10.1" = [ "159.203.12.215:4242" ]; };
-      };
-    };
-  };
 }

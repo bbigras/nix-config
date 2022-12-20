@@ -42,12 +42,6 @@ rec {
   sops.secrets.yggdrasil-conf.sopsFile = ./restic-laptop.yaml;
   sops.secrets.yggdrasil-conf.owner = config.users.users.yggdrasil.name;
 
-  sops.secrets = {
-    nebula-ca.sopsFile = ./nebula.yaml;
-    nebula-cert.sopsFile = ./nebula.yaml;
-    nebula-key.sopsFile = ./nebula.yaml;
-  };
-
   hardware.brillo.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.kernel.sysctl = {
@@ -67,24 +61,6 @@ rec {
   };
 
   virtualisation.docker.enable = true;
-
-  services.nebula = {
-    networks = {
-      bruno = {
-        ca = config.sops.secrets.nebula-ca.path;
-        cert = config.sops.secrets.nebula-cert.path;
-        key = config.sops.secrets.nebula-key.path;
-
-        firewall = {
-          inbound = [{ host = "any"; port = "any"; proto = "any"; }];
-          outbound = [{ host = "any"; port = "any"; proto = "any"; }];
-        };
-
-        lighthouses = [ "10.10.10.1" ];
-        staticHostMap = { "10.10.10.1" = [ "159.203.12.215:4242" ]; };
-      };
-    };
-  };
 
   services.flatpak.enable = true;
   services.acpid = {
