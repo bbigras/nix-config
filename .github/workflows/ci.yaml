@@ -89,6 +89,8 @@ jobs:
       matrix:
         host: ${{ fromJson(needs.get-hosts.outputs.hosts) }}
     steps:
+      - uses: docker/setup-qemu-action@v2
+        if: ${{ matrix.host == 'pixel6' }}
       - uses: actions/checkout@v3
       - uses: cachix/install-nix-action@v18
         with:
@@ -110,6 +112,7 @@ jobs:
             cachix watch-exec bbigras-nix-config -- \
               nix run nixpkgs#nix-build-uncached -- \
                 --keep-going \
+                -build-flags '--extra-platforms "aarch64-linux i686-linux"' \
                 -A packages.x86_64-linux.all.${{ matrix.host.name }}
 
   check:
