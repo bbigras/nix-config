@@ -16,6 +16,12 @@ let
       address = "bbigras-work";
       remoteBuild = true;
     };
+    pixel6 = {
+      type = "nix-on-droid";
+      hostPlatform = "aarch64-linux";
+      address = "pixel6";
+      remoteBuild = false;
+    };
   };
 
   inherit (builtins) attrNames concatMap listToAttrs;
@@ -31,6 +37,7 @@ let
     nixos = genFamily (_: v: v.type == "nixos") all;
     nix-darwin = genFamily (_: v: v.type == "darwin") all;
     homeManager = genFamily (_: v: v.type == "home-manager") all;
+    nix-on-droid = genFamily (_: v: v.type == "nix-on-droid") all;
 
     darwin = genFamily (systemPred "-darwin") all;
     linux = genFamily (systemPred "-linux") all;

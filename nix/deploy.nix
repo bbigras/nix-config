@@ -7,6 +7,7 @@
 let
   inherit (nixpkgs) lib;
   hosts = (import ./hosts.nix).all;
+  droidHosts = (import ./hosts.nix).nix-on-droid;
 
   genNode = hostName: nixosCfg:
     let
@@ -19,24 +20,20 @@ let
       profiles.system.path = activate.nixos nixosCfg;
     };
 
-  pkgs_arch64 = import nixpkgs {
-    system = "aarch64-linux";
-  };
+  genNixOnDroid = hostname: nixosCfg:
+    let
+      pkgs_droid = import nixpkgs {
+        system = nixosCfg.hostPlatform;
+      };
 
-  pixel6 = (nix-on-droid.lib.nixOnDroidConfiguration {
-    pkgs = pkgs_arch64;
-    modules = [ ../hosts/pixel6 ];
-  }).activationPackage;
-in
-{
-  # XXX: auto-rollback is too noisy since any service failing will cause it to
-  # go haywire.
-  autoRollback = false;
-  magicRollback = true;
-  user = "root";
-  nodes = lib.mapAttrs genNode self.nixosConfigurations // {
-    pixel6 = {
-      hostname = "pixel6";
+      pixel6 = (nix-on-droid.lib.nixOnDroidConfiguration {
+        pkgs = pkgs_droid;
+        modules = [ (../hosts + "/${hostname}") ];
+
+      }).activationPackage;
+    in
+    {
+      inherit hostname;
 
       # to prevent using sudo
       sshUser = "nix-on-droid";
@@ -46,5 +43,14 @@ in
         pixel6
         (pixel6 + "/activate");
     };
-  };
+in
+{
+  # XXX: auto-rollback is too noisy since any service failing will cause it to
+  # go haywire.
+  autoRollback = false;
+  magicRollback = true;
+  user = "root";
+
+  nodes = lib.mapAttrs genNode self.nixosConfigurations //
+    lib.mapAttrs genNixOnDroid droidHosts.all;
 }
