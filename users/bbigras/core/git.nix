@@ -1,11 +1,6 @@
 { pkgs, ... }: {
   programs.git = {
     enable = true;
-    difftastic = {
-      enable = true;
-      background = "dark";
-      display = "side-by-side";
-    };
     package = pkgs.gitFull;
     lfs.enable = false;
     userEmail = "bigras.bruno@gmail.com";
