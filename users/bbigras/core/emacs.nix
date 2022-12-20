@@ -11,7 +11,7 @@ in
     enable = true;
 
     # TODO: use pkgs.emacsPgtkNativeComp with wayland
-    package = pkgs.emacsNativeComp;
+    package = pkgs.emacsUnstable;
 
     init = {
       enable = true;
