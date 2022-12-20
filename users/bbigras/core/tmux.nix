@@ -10,8 +10,11 @@
       copycat
       copy-toolkit
       extrakto
+      nord
       prefix-highlight
       yank
+      tmux-thumbs
+      tmux-fzf
     ];
     #secureSocket = false;
     terminal = "tmux-256color";
