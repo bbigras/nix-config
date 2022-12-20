@@ -8,6 +8,7 @@
     newSession = true;
     plugins = with pkgs.tmuxPlugins; [
       copycat
+      copy-toolkit
       extrakto
       prefix-highlight
       yank
