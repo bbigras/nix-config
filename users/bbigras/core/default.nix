@@ -61,7 +61,6 @@
       croc
       webwormhole
       qbittorrent
-      # youtube-dl
       wireshark
       dnsutils
       oneshot
@@ -189,6 +188,7 @@
       joplin-desktop
       just
       megasync
+      yt-dlp
     ];
   };
 
