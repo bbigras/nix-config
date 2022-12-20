@@ -19,6 +19,7 @@ jobs:
         with:
           name: bbigras-nix-config
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
+          extraPullNames: "dendrite-demo-pinecone,nix-community,nix-on-droid,pre-commit-hooks"
       - name: parse
         run: nix-instantiate --json --parse ./**/*.nix
       - name: lints
@@ -70,6 +71,7 @@ jobs:
         with:
           name: bbigras-nix-config
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
+          extraPullNames: "dendrite-demo-pinecone,nix-community,nix-on-droid,pre-commit-hooks"
       - name: build-shell
         run: |
           SYSTEM="$(nix eval --impure --expr 'builtins.currentSystem')"
@@ -97,6 +99,7 @@ jobs:
         with:
           name: bbigras-nix-config
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
+          extraPullNames: "dendrite-demo-pinecone,nix-community,nix-on-droid,pre-commit-hooks"
       - name: build-host
         uses: nick-invision/retry@v2
         with:
