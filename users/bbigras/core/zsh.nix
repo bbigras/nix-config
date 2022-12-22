@@ -17,7 +17,7 @@
     };
     envExtra = ''
       export LESSHISTFILE="${config.xdg.dataHome}/less_history"
-      export CARGO_HOME="${config.xdg.cacheHome}/cargo"
+      #export CARGO_HOME="${config.xdg.cacheHome}/cargo" # doesn't work with emacs
     '';
     initExtra = ''
         if [[ "$TERM" != 'dumb' && -z "$INSIDE_EMACS" ]]; then
