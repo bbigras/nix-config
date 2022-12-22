@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{
   imports = [
     ./fonts.nix
   ];
@@ -11,22 +11,5 @@
       "udev.log_level=3"
       "vt.global_cursor_default=0"
     ];
-  };
-
-  programs.dconf.enable = true;
-
-  services = {
-    dbus.packages = with pkgs; [ dconf ];
-    gnome.at-spi2-core.enable = true;
-    xserver.enable = true;
-    xserver.displayManager.gdm = {
-      enable = true;
-      autoSuspend = true;
-      wayland = false;
-    };
-  };
-
-  xdg.portal = {
-    enable = true;
   };
 }
