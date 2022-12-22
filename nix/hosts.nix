@@ -4,11 +4,13 @@ let
       type = "nixos";
       hostPlatform = "x86_64-linux";
       address = "desktop";
+      remoteBuild = false;
     };
     laptop = {
       type = "nixos";
       hostPlatform = "x86_64-linux";
       address = "laptop";
+      remoteBuild = false;
     };
     work = {
       type = "nixos";
