@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, nur, nixos-hardware, ... }:
+{ config, pkgs, nur, nixos-hardware, ... }:
 
 let
   nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
@@ -63,30 +63,6 @@ rec {
   virtualisation.docker.enable = true;
 
   services.flatpak.enable = true;
-  services.acpid = {
-    enable = true;
-    handlers = {
-      ac-power = {
-        action = ''
-          vals=($1)  # space separated string to array of multiple values
-          case ''${vals[3]} in
-              00000000)
-                  echo unplugged >> /tmp/acpi.log
-                  ${pkgs.brillo}/bin/brillo -e -S 50
-                  ;;
-              00000001)
-                  echo plugged in >> /tmp/acpi.log
-                  ${pkgs.brillo}/bin/brillo -e -S 100
-                  ;;
-              *)
-                  echo unknown >> /tmp/acpi.log
-                  ;;
-          esac
-        '';
-        event = "ac_adapter/*";
-      };
-    };
-  };
 
   fileSystems."/" =
     {
@@ -120,7 +96,71 @@ rec {
   services = {
     # fstrim.enable = true;
     # fwupd.enable = true;
-    tlp.enable = lib.mkForce false;
+    tlp = {
+      enable = true;
+      settings = {
+        #CPU_SCALING_GOVERNOR_ON_AC = "ondemand";
+        #CPU_SCALING_GOVERNOR_ON_BAT = "conservative";
+
+        #PLATFORM_PROFILE_ON_AC = "performance";
+        #PLATFORM_PROFILE_ON_BAT = "low-power";
+
+        DEVICES_TO_DISABLE_ON_BAT_NOT_IN_USE = [ "bluetooth" "wifi" ];
+        DEVICES_TO_ENABLE_ON_AC = [ "bluetooth" "wifi" ];
+
+        DISK_IOSCHED = [ "none" ];
+
+        START_CHARGE_THRESH_BAT0 = 70;
+        STOP_CHARGE_THRESH_BAT0 = 80;
+      };
+    };
+  };
+
+  systemd.targets = {
+    ac = {
+      description = "On AC power";
+      unitConfig.DefaultDependencies = false;
+    };
+    battery = {
+      description = "On battery power";
+      unitConfig.DefaultDependencies = false;
+    };
+  };
+
+  services = {
+    udev.extraRules = ''
+      SUBSYSTEM=="power_supply", KERNEL=="AC", ATTR{online}=="0", RUN+="${config.systemd.package}/bin/systemctl start battery.target"
+      SUBSYSTEM=="power_supply", KERNEL=="AC", ATTR{online}=="0", RUN+="${config.systemd.package}/bin/systemctl stop ac.target"
+      SUBSYSTEM=="power_supply", KERNEL=="AC", ATTR{online}=="1", RUN+="${config.systemd.package}/bin/systemctl start ac.target"
+      SUBSYSTEM=="power_supply", KERNEL=="AC", ATTR{online}=="1", RUN+="${config.systemd.package}/bin/systemctl stop battery.target"
+
+      SUBSYSTEM=="power_supply", KERNEL=="AC", ATTR{online}=="0", RUN+="${config.systemd.package}/bin/systemctl --user --machine=bbigras@.host start battery.target"
+      SUBSYSTEM=="power_supply", KERNEL=="AC", ATTR{online}=="0", RUN+="${config.systemd.package}/bin/systemctl --user --machine=bbigras@.host stop ac.target"
+      SUBSYSTEM=="power_supply", KERNEL=="AC", ATTR{online}=="1", RUN+="${config.systemd.package}/bin/systemctl --user --machine=bbigras@.host start ac.target"
+      SUBSYSTEM=="power_supply", KERNEL=="AC", ATTR{online}=="1", RUN+="${config.systemd.package}/bin/systemctl --user --machine=bbigras@.host stop battery.target"
+    '';
+  };
+
+  systemd.services = {
+    tailscaled = {
+      partOf = [ "ac.target" ];
+      wantedBy = [ "ac.target" ];
+    };
+    dendrite-demo-pinecone.partOf = [ "ac.target" ];
+    dendrite-demo-pinecone.wantedBy = [ "ac.target" ];
+    yggdrasil.partOf = [ "ac.target" ];
+    yggdrasil.wantedBy = [ "ac.target" ];
+  };
+
+  systemd.timers = {
+    btrbk-home.partOf = [ "ac.target" ];
+    btrbk-home.wantedBy = [ "ac.target" ];
+    logrotate.partOf = [ "ac.target" ];
+    logrotate.wantedBy = [ "ac.target" ];
+    systemd-tmpfiles-clean.partOf = [ "ac.target" ];
+    systemd-tmpfiles-clean.wantedBy = [ "ac.target" ];
+    fstrim.partOf = [ "ac.target" ];
+    fstrim.wantedBy = [ "ac.target" ];
   };
 
   environment.persistence."/persist" = {
@@ -153,6 +193,63 @@ rec {
       ../../users/bbigras/trusted
       nurNoPkgs.repos.rycee.hmModules.emacs-init
     ];
+
+    systemd.user.targets = {
+      ac = {
+        Unit = {
+          Description = "On AC power";
+        };
+      };
+      battery = {
+        Unit = {
+          Description = "On battery power";
+        };
+      };
+    };
+
+    systemd.user.services = {
+      megasync.Unit.PartOf = [ "ac.target" ];
+      megasync.Install.WantedBy = [ "ac.target" ];
+
+      syncthing.Unit.PartOf = [ "ac.target" ];
+      syncthing.Install.WantedBy = [ "ac.target" ];
+
+      dropbox.Unit.PartOf = [ "ac.target" ];
+      dropbox.Install.WantedBy = [ "ac.target" ];
+
+      pantalaimon.Unit.PartOf = [ "ac.target" ];
+      pantalaimon.Install.WantedBy = [ "ac.target" ];
+    };
+
+    systemd.user.services = {
+      brightness-ac = {
+        Unit = {
+          Description = "100% brightness on ac";
+          PartOf = [ "ac.target" ];
+        };
+        Service = {
+          Type = "oneshot";
+          ExecStart = "${pkgs.brillo}/bin/brillo -e -S 100";
+        };
+        Install = {
+          WantedBy = [ "ac.target" ];
+        };
+      };
+
+      brightness-battery = {
+        Unit = {
+          Description = "lower brightness on battery";
+          PartOf = [ "battery.target" ];
+        };
+        Service = {
+          Type = "oneshot";
+          ExecStart = "${pkgs.brillo}/bin/brillo -e -S 50";
+        };
+        Install = {
+          WantedBy = [ "battery.target" ];
+        };
+      };
+    };
 
     services.gnome-keyring = {
       enable = true;
