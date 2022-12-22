@@ -164,6 +164,7 @@ rec {
   };
 
   environment.persistence."/persist" = {
+    hideMounts = true;
     directories = [
       "/var/lib/iwd"
       "/var/lib/tailscale"
@@ -184,8 +185,70 @@ rec {
       "/etc/ssh/ssh_host_ed25519_key.pub"
       "/etc/ssh/ssh_host_rsa_key"
       "/etc/ssh/ssh_host_rsa_key.pub"
-      # "/etc/nix/id_rsa"
     ];
+
+    users.bbigras = {
+      directories = [
+        ".cache/direnv"
+        ".cache/mozilla"
+        ".cache/nix"
+        ".cache/nix-index"
+        ".cache/restic"
+        ".cache/tealdeer"
+        ".cache/wofi"
+        ".cache/zsh"
+        ".cargo"
+        ".config/Bitwarden CLI"
+        ".config/discord"
+        ".config/kdeconnect"
+        ".config/syncthing"
+        ".config/obsidian"
+        ".wrangler/config"
+        ".cache/.wrangler"
+        ".cache/wine"
+        ".cache/emacs"
+        ".cache/winetricks"
+        ".npm"
+        # ".gnupg/private-keys-v1.d"
+        ".local/share/atuin"
+        ".local/share/data/Mega Limited/MEGAsync"
+        ".local/share/df_linux/data/save"
+        ".local/share/direnv"
+        ".local/share/pantalaimon"
+        ".local/share/remmina"
+        ".local/share/task"
+        ".local/share/zoxide"
+        ".local/share/Steam"
+        ".local/share/zsh"
+        ".mozilla"
+        ".steam"
+        ".var/app/com.valvesoftware.Steam"
+        "Documents"
+        "Downloads"
+        "Maildir"
+        "MEGAsync"
+        "Music"
+        "Pictures"
+        "Videos"
+        "dev"
+        "matrix-p2p"
+        "tmp"
+        "src"
+        { directory = ".gnupg"; mode = "0700"; }
+        { directory = ".local/share/keyrings"; mode = "0700"; }
+        { directory = ".ssh"; mode = "0700"; }
+      ];
+      files = [
+        ".authinfo.gpg"
+        ".cache/swaymenu-history.txt"
+        ".config/cachix/cachix.dhall"
+        ".config/remmina/remmina.pref"
+        ".kube/config"
+        ".zsh_history"
+        ".notmuch-config"
+        ".local/share/wall.png"
+      ];
+    };
   };
 
   home-manager.users.bbigras = {
@@ -285,74 +348,6 @@ rec {
           };
         };
       };
-    };
-
-    home.persistence."/persist/home/bbigras" = {
-      directories = [
-        ".cache/mozilla"
-        ".cache/restic"
-        ".cache/tealdeer"
-        ".cargo"
-        ".config/Bitwarden CLI"
-        ".config/discord"
-        ".config/kdeconnect"
-        ".config/syncthing"
-        ".config/obsidian"
-        ".wrangler/config"
-        ".cache/.wrangler"
-        ".cache/wine"
-        ".cache/emacs"
-        ".cache/winetricks"
-        ".npm"
-        ".gnupg/private-keys-v1.d"
-        ".local/share/atuin"
-        ".local/share/df_linux/data/save"
-        ".local/share/direnv"
-        ".local/share/keyrings"
-        ".local/share/pantalaimon"
-        ".local/share/remmina"
-        ".local/share/task"
-        ".local/share/zoxide"
-        ".local/share/Steam"
-        ".mozilla"
-        ".steam"
-        ".var/app/com.valvesoftware.Steam"
-        "Documents"
-        "Downloads"
-        "Maildir"
-        "Music"
-        "Pictures"
-        "Videos"
-        "dev"
-        "matrix-p2p"
-        "tmp"
-        "src"
-        # ".nixops"
-        # ".ssh"
-        # "VirtualBox VMs"
-      ];
-      files = [
-        ".authinfo.gpg"
-        ".cache/swaymenu-history.txt"
-        ".config/cachix/cachix.dhall"
-        ".config/remmina/remmina.pref"
-        ".gnupg/pubring.kbx"
-        ".gnupg/random_seed"
-        ".gnupg/sshcontrol"
-        ".gnupg/trustdb.gpg"
-        ".kube/config"
-        # ".local/share/fish/fish_history"
-        ".zsh_history"
-        ".notmuch-config"
-        ".ssh/id_ed25519"
-        ".ssh/id_ed25519.pub"
-        ".ssh/known_hosts"
-        # ".cache/cargo/credentials"
-        # ".config/dconf"
-        # ".local/share/keyrings"
-        ".local/share/wall.png"
-      ];
-      allowOther = false;
     };
   };
 
