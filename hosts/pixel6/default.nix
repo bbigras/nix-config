@@ -82,10 +82,6 @@
       # Use the same overlays as the system packages
       # nixpkgs.overlays = config.nixpkgs.overlays;
 
-      home.sessionVariables = {
-        VAULT_ADDR = "http://100.118.252.12:8200";
-      };
-
       home.language.base = "fr_CA.UTF-8";
 
       # insert home-manager config
