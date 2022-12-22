@@ -204,7 +204,11 @@
       enableAliases = true;
     };
     jq.enable = true;
-    fzf.enable = true;
+    fzf = {
+      enable = true;
+      tmux.enableShellIntegration = true;
+      tmux.shellIntegrationOptions = [ "-d 40%" ];
+    };
     gpg.enable = true;
     navi.enable = true;
     sqls.enable = true;
