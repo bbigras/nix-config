@@ -14,10 +14,6 @@ with self.pkgs.${system};
       hooks = {
         actionlint.enable = true;
         # luacheck.enable = true;
-        nix-linter = {
-          enable = true;
-          excludes = [ "hardware-configuration.*.nix" ];
-        };
         nixpkgs-fmt = {
           enable = true;
           excludes = [ "hardware-configuration.*.nix" ];
@@ -25,27 +21,5 @@ with self.pkgs.${system};
         statix.enable = true;
         # stylua.enable = true;
       };
-      settings.nix-linter.checks = [
-        "DIYInherit"
-        "EmptyInherit"
-        "EmptyLet"
-        "EtaReduce"
-        "LetInInheritRecset"
-        "ListLiteralConcat"
-        "NegateAtom"
-        "SequentialLet"
-        "SetLiteralUpdate"
-        "UnfortunateArgName"
-        "UnneededRec"
-        "UnusedArg"
-        "UnusedLetBind"
-        "UpdateEmptySet"
-        "BetaReduction"
-        "EmptyVariadicParamSet"
-        "UnneededAntiquote"
-        "no-FreeLetInFunc"
-        "no-AlphabeticalArgs"
-        "no-AlphabeticalBindings"
-      ];
     };
 } // (deploy-rs.lib.deployChecks self.deploy)
