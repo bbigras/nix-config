@@ -174,6 +174,7 @@ in
         (setq org-directory "~/dev/org-mode")
         (setq custom-file (expand-file-name (concat "custom-" (system-name) ".el") "~/dev/emacs"))
         (load custom-file)
+        (setq native-comp-async-report-warnings-errors nil)
       '';
 
       usePackage = {
