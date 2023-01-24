@@ -509,6 +509,20 @@ in
             };
           };
         };
+
+        org-roam-dailies = {
+          enable = true;
+          after = [ "org-roam" ];
+          config = ''
+            (setq org-roam-dailies-directory "journal/")
+
+            (setq org-roam-dailies-capture-templates
+                  '(("d" "default" entry
+                     "* %?"
+                     :target (file+head "%<%Y-%m-%d>.org"
+                                        "#+title: %<%Y-%m-%d>\n"))))
+          '';
+        };
           };
         };
 
