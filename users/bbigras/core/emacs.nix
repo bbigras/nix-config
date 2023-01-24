@@ -174,6 +174,27 @@ in
         (setq org-directory "~/dev/org-mode")
         (setq custom-file (expand-file-name (concat "custom-" (system-name) ".el") "~/dev/emacs"))
         (load custom-file)
+
+        (setq backup-directory-alist '(("." . "~/.config/emacs/backups")))
+        (with-eval-after-load 'tramp
+        (add-to-list 'tramp-backup-directory-alist
+                     (cons tramp-file-name-regexp nil)))
+
+        (setq delete-old-versions -1)
+        (setq version-control t)
+        (setq vc-make-backup-files t)
+        (setq auto-save-file-name-transforms '((".*" "~/.config/emacs/auto-save-list/" t)))
+
+        (setq savehist-file "~/.config/emacs/savehist")
+        (savehist-mode 1)
+        (setq history-length t)
+        (setq history-delete-duplicates t)
+        (setq savehist-save-minibuffer-history 1)
+        (setq savehist-additional-variables
+              '(kill-ring
+                search-ring
+                regexp-search-ring))
+
         (setq native-comp-async-report-warnings-errors nil)
       '';
 
