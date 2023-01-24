@@ -523,6 +523,15 @@ in
                                         "#+title: %<%Y-%m-%d>\n"))))
           '';
         };
+
+        org-download = {
+          enable = true;
+          after = [ "org" ];
+          bindLocal = {
+            org-mode-map = {
+              "s-Y" = "org-download-screenshot";
+              "s-y" = "org-download-yank";
+            };
           };
         };
 
