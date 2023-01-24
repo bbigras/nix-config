@@ -1247,6 +1247,7 @@ in
             (setq org-agenda-files
                   (list
                    (concat org-directory "/inbox.org")
+                   (concat org-directory "/luxor.org")
                    (concat org-directory "/gtd.org")))
             (setq org-agenda-span 5
                   org-deadline-warning-days 14
