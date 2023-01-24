@@ -1255,6 +1255,16 @@ in
                   org-agenda-skip-deadline-if-done t
                   org-agenda-skip-scheduled-if-done t
                   org-agenda-start-on-weekday nil)
+
+            (setq org-agenda-custom-commands
+                  '(("p" tags "PROJECT-MAYBE-DONE" nil)
+                    ("m" tags "PROJECT&MAYBE" nil)
+                    ("a" "My agenda"
+                     ((org-agenda-list)
+                      (org-agenda-list-stuck-projects)          ;; (1)
+                      (tags "PROJECT-MAYBE-DONE")))
+                    ;; ... put your other custom commands here
+                   ))
           '';
         };
 
