@@ -1073,7 +1073,9 @@ in
           config = ''
             (setq undo-tree-visualizer-relative-timestamps t
                   undo-tree-visualizer-timestamps t
-                  undo-tree-enable-undo-in-region t)
+                  undo-tree-enable-undo-in-region t
+                  undo-tree-visualizer-diff t)
+            (setq undo-tree-history-directory-alist '(("." . "~/.config/emacs/backups/undo-tree")))
             (global-undo-tree-mode)
           '';
         };
