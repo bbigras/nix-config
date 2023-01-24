@@ -171,8 +171,8 @@ in
         (setq compilation-scroll-output t)
         ;;(setq compilation-scroll-output 'first-error)
 
-        (setq org-directory "~/Dropbox/org-mode")
-        (setq custom-file (expand-file-name (concat "custom-" (system-name) ".el") "~/Dropbox/emacs"))
+        (setq org-directory "~/dev/org-mode")
+        (setq custom-file (expand-file-name (concat "custom-" (system-name) ".el") "~/dev/emacs"))
         (load custom-file)
       '';
 
