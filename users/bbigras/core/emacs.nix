@@ -1265,6 +1265,9 @@ in
                       (tags "PROJECT-MAYBE-DONE")))
                     ;; ... put your other custom commands here
                    ))
+
+            (setq org-stuck-projects
+                  '("+PROJECT/-MAYBE-DONE" ("TODO" "STARTED") nil "\\<IGNORE\\>"))
           '';
         };
 
