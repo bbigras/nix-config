@@ -489,17 +489,26 @@ in
 
         org-roam = {
           enable = true;
-          after = [ "org" "org-element" "emacsql" ];
-          hook = [ "(after-init . org-roam-mode)" ];
+          hook = [ "(after-init . org-roam-db-autosync-mode)" ];
           config = ''
             (setq org-roam-directory "~/dev/org-mode/notes")
           '';
           bind = {
-            "C-c n l" = "org-roam";
+            "C-c n f" = "org-roam-node-find";
+            "C-c n r" = "org-roam-node-random";
             "C-c n t" = "org-roam-dailies-find-today";
-            "C-c n f" = "org-roam-find-file";
-            "C-c n i" = "org-roam-insert";
-            "C-c n g" = "org-roam-graph";
+          };
+
+          bindLocal = {
+            org-mode-map = {
+              "C-c n i" = "org-roam-node-insert";
+              "C-c n o" = "org-id-get-create";
+              "C-c n t" = "org-roam-tag-add";
+              "C-c n a" = "org-roam-alias-add";
+              "C-c n l" = "org-roam-buffer-toggle";
+            };
+          };
+        };
           };
         };
 
