@@ -247,7 +247,6 @@ rec {
     umount /mnt
   '';
 
-  services.espanso.enable = true;
   services.earlyoom.enable = true;
 
   services.btrbk = {
