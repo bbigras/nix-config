@@ -52,11 +52,7 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    pre-commit-hooks = {
-      url = "github:cachix/pre-commit-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
+    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -92,25 +88,9 @@
       flake = false;
     };
 
-    dendrite-demo-pinecone = {
-      url = "github:bbigras/dendrite-demo-pinecone";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-        flake-compat.follows = "flake-compat";
-        pre-commit-hooks.follows = "pre-commit-hooks";
-      };
-    };
-
+    dendrite-demo-pinecone.url = "github:bbigras/dendrite-demo-pinecone";
     templates.url = "github:NixOS/templates";
-
-    nix-on-droid = {
-      url = "github:t184256/nix-on-droid";
-      inputs = {
-        home-manager.follows = "home-manager";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
+    nix-on-droid.url = "github:t184256/nix-on-droid";
   };
 
   outputs = { self, nixpkgs, flake-utils, ... }@inputs:
