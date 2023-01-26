@@ -47,9 +47,10 @@
       bindkey -s "^O" 'fzf | xargs -r $VISUAL^M'
 
       bindkey -rpM viins '^[^['
-      KEYTIMEOUT=1
 
       ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
+
+      source ${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.sh
     '';
     sessionVariables = {
       RPROMPT = "";
