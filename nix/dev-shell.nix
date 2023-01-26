@@ -21,6 +21,9 @@ mkShell {
     # stylua
     # (luajit.withPackages (p: with p; [ luacheck ]))
     # sumneko-lua-language-server
+    # Shell
+    shellcheck
+    shfmt
 
     # GitHub Actions
     act

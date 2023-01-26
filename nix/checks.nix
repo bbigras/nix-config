@@ -18,6 +18,8 @@ with self.pkgs.${system};
           enable = true;
           excludes = [ "hardware-configuration.*.nix" ];
         };
+        shellcheck.enable = true;
+        shfmt.enable = true;
         statix.enable = true;
         # stylua.enable = true;
       };
