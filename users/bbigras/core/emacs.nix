@@ -560,18 +560,29 @@ in
         hass = {
           enable = true;
           config = ''
-                        (require 'hass-dash)
-                        (hass-setup)
+            (require 'hass-dash)
 
-            (setq hass-dash-layout
-             '(("Group One" . (
-             ("light.signify_netherlands_b_v_lwa003_0a1edf08_level_on_off" :name "Living Room Light" :service "light.toggle")
-             ("scene.salon_100")
-             ("scene.salon_min")
-             ("scene.salon_off")
-             ("scene.salon_relax")
-             ("automation.bruno_arrivee")
-            ))))
+            (setq hass-dash-layouts
+                  '((default . ; Key for dashboard. Shows up with completing-read when calling `hass-dash-open'.
+                             ((hass-dash-group          ; Create a widget group.
+                               :title "Home Assistant"  ; Give the group a title at the top.
+                               :format "%t\n\n%v"       ; %t is where the title goes and %v is the widget it owns.
+                               (hass-dash-group         ; Create a subgroup of widgets.
+                                :title "Kitchen"
+                                :title-face outline-2   ; Give it a unique face to make it stand out.
+                                (hass-dash-toggle :entity-id "light.jasco_products_43082_light_2")
+            ))
+                              (hass-dash-group :title "Salle de bain" :format "\n\n%t\n\n%v"
+                                               (hass-dash-state :entity-id "sensor.lumi_lumi_weather_humidity" :format "%[%t: %v%]\n" :label "Humidité")
+                                               (hass-dash-state :entity-id "sensor.lumi_lumi_weather_temperature" :format "%[%t: %v%]\n" :label "Température")
+                                               (hass-dash-toggle :entity-id "light.fan_salle_de_bain_light" :label "Fan")
+            )
+            ))
+
+            ;        (simple . ; Declaring a top-level group is optional and implied.
+            ;                ((hass-dash-toggle :entity-id "light.kitchen_lights")
+            ;                 (hass-dash-toggle :entity-id "switch.entry_lights")))
+            ))
           '';
         };
 
