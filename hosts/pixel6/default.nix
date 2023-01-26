@@ -1,5 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, nur, ... }:
 
+let
+  nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
+in
 {
   build.arch = "aarch64";
   user.shell = "${pkgs.zsh}/bin/zsh";
@@ -77,6 +80,8 @@
         ../../users/bbigras/core/git.nix
         ../../users/bbigras/core/tmux.nix
         ../../users/bbigras/core/zsh.nix
+        ../../users/bbigras/core/emacs.nix
+        nurNoPkgs.repos.rycee.hmModules.emacs-init
       ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/pixel6.nix") then [ (builtins.getEnv "PWD" + "/secrets/pixel6.nix") ] else [ ]);
 
       # Use the same overlays as the system packages
@@ -94,8 +99,8 @@
         bat.enable = true;
         command-not-found.enable = true;
         emacs = {
-          enable = false;
-          package = pkgs.emacs-nox;
+          enable = true;
+          package = lib.mkForce pkgs.emacs-nox;
         };
         exa = {
           enable = true;

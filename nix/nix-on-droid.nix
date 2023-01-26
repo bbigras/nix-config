@@ -1,5 +1,6 @@
 { nixpkgs
 , nix-on-droid
+, nur
 , ...
 }:
 let
@@ -11,6 +12,9 @@ let
       modules = [
         (../hosts + "/${hostname}")
       ];
+      extraSpecialArgs = {
+        inherit nur;
+      };
     };
 in
 lib.mapAttrs genConfiguration hosts
