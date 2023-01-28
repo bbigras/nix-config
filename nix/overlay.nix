@@ -35,6 +35,10 @@ localOverlays // {
       dendrite-demo-pinecone = dendrite-demo-pinecone2;
     })
 
+    (self: super: {
+      ripgrep = super.ripgrep.overrideAttrs (_: { doCheck = false; });
+    })
+
     (_self: super: {
       emacsPackages = super.emacsPackages // {
         plz = super.emacsPackages.trivialBuild {
