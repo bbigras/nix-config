@@ -163,11 +163,11 @@
     "emacs-plz": {
       "flake": false,
       "locked": {
-        "lastModified": 1672525865,
-        "narHash": "sha256-GVVDX0sASrl3Ivl87B9+fz/VBHp9bq9K6ZauVzoyVfo=",
+        "lastModified": 1675553385,
+        "narHash": "sha256-L3kUekhT582Rfans2aOjUol5mkItg9KuZ5Nr6daj0oY=",
         "owner": "alphapapa",
         "repo": "plz.el",
-        "rev": "b6072edeec1f0e2465d273db74a8f2f7726e6bce",
+        "rev": "fe226f4074fdfa59a8d4f94d105e4ac657f460d1",
         "type": "github"
       },
       "original": {
