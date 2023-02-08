@@ -765,11 +765,11 @@
         "nixpkgs-stable": "nixpkgs-stable_3"
       },
       "locked": {
-        "lastModified": 1675758931,
-        "narHash": "sha256-RqYnUQ4I+CUjkYe1MrWSyt6vYKEZ7sHhTw7vrsjJyvc=",
+        "lastModified": 1675872570,
+        "narHash": "sha256-RPH3CeTv7ixC2WcYiKyhmIgoH/9tur4Kr+3Vg/pleQk=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "5dc9710905bcd8d3fa4b8912a120d9a2f9fe25e5",
+        "rev": "8fec29b009c19538e68d5d814ec74e04f662fbd1",
         "type": "github"
       },
       "original": {
