@@ -5,31 +5,6 @@
     enable = pkgs.hostPlatform.system == "x86_64-linux";
     package = pkgs.firefox-bin;
 
-    extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      anchors-reveal
-      auto-tab-discard
-      bypass-paywalls-clean
-      cookies-txt
-      facebook-container
-      ff2mpv
-      french-dictionary
-      french-language-pack
-      languagetool
-      link-cleaner
-      linkhints
-      markdownload
-      offline-qr-code-generator
-      privacy-badger
-      private-relay
-      react-devtools
-      reddit-enhancement-suite
-      rust-search-extension
-      sponsorblock
-      tree-style-tab
-      tst-tab-search
-      ublock-origin
-    ];
-
     # https://ffprofile.com/
     profiles = {
       default = {
@@ -154,6 +129,32 @@
             display: none;
           }
         '';
+
+        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          anchors-reveal
+          auto-tab-discard
+          bypass-paywalls-clean
+          cookies-txt
+          facebook-container
+          ff2mpv
+          french-dictionary
+          french-language-pack
+          languagetool
+          link-cleaner
+          linkhints
+          markdownload
+          offline-qr-code-generator
+          privacy-badger
+          private-relay
+          react-devtools
+          reddit-enhancement-suite
+          rust-search-extension
+          sponsorblock
+          tree-style-tab
+          tst-tab-search
+          ublock-origin
+        ];
+
       };
       travail = {
         isDefault = false;
