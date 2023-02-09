@@ -90,7 +90,11 @@
 
     dendrite-demo-pinecone.url = "github:bbigras/dendrite-demo-pinecone";
     templates.url = "github:NixOS/templates";
-    nix-on-droid.url = "github:t184256/nix-on-droid";
+    nix-on-droid = {
+      url = "github:t184256/nix-on-droid";
+      inputs.home-manager.follows = "home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, flake-utils, ... }@inputs:
