@@ -37,8 +37,8 @@ in
 
         ;; Configure color theme and modeline in early init to avoid flashing
         ;; during start.
-        (require 'base16-theme)
-        (load-theme 'base16-tomorrow-night t)
+        (require 'nimbus-theme)
+        (load-theme 'nimbus t)
 
         (require 'doom-modeline)
         (setq doom-modeline-buffer-file-name-style 'truncate-except-project)
@@ -252,7 +252,7 @@ in
         #   '';
         # };
 
-        base16-theme = {
+        nimbus-theme = {
           enable = true;
           extraConfig = ":disabled";
         };
