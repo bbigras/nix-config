@@ -4,4 +4,8 @@
   environment = {
     enableDebugInfo = true;
   };
+
+  programs = {
+    wireshark.enable = true;
+  };
 }
