@@ -92,6 +92,8 @@ jobs:
       - uses: docker/setup-qemu-action@v2
         if: ${{ matrix.host.name == 'pixel6' }}
       - uses: actions/checkout@v3
+      - name: "Make more space"
+        run: "sudo rm -rf /opt /usr/local || true &"
       - uses: cachix/install-nix-action@v18
         with:
           extra_nix_config: |
