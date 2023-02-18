@@ -1,4 +1,5 @@
 { self
+, attic
 , home-manager
 , impermanence
 , nixos-hardware
@@ -38,7 +39,7 @@ let
         sops-nix.nixosModules.sops
       ];
       specialArgs = {
-        inherit nur;
+        inherit nur attic;
         impermanence = impermanence.nixosModules;
         nixos-hardware = nixos-hardware.nixosModules;
       };

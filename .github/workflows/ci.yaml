@@ -112,7 +112,7 @@ jobs:
             cachix watch-exec bbigras-nix-config -- \
               nix run nixpkgs#nix-build-uncached -- \
                 --keep-going \
-                -build-flags '--extra-platforms "aarch64-linux i686-linux"' \
+                -build-flags '--extra-platforms "aarch64-linux i686-linux" --extra-trusted-substituters "https://staging.attic.rs/attic-ci" --extra-trusted-public-keys "attic-ci:U5Sey4mUxwBXM3iFapmP0/ogODXywKLRNgRPQpEXxbo="' \
                 -A packages.x86_64-linux.all.${{ matrix.host.name }}
 
   check:

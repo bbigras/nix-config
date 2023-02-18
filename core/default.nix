@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, attic, ... }:
 let
   dummyConfig = pkgs.writeText "configuration.nix" ''
     assert builtins.trace "This is a dummy config, use deploy-rs!" false;
@@ -29,6 +29,7 @@ in
     ];
     systemPackages = with pkgs; [
       rsync
+      (import attic)
     ];
   };
 
