@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: cachix/install-nix-action@v18
+      - uses: cachix/install-nix-action@v20
         with:
           extra_nix_config: |
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
@@ -35,7 +35,7 @@ jobs:
       systems: ${{ steps.get-hosts.outputs.systems }}
     steps:
       - uses: actions/checkout@v3
-      - uses: cachix/install-nix-action@v18
+      - uses: cachix/install-nix-action@v20
       - id: get-hosts
         run: |
           nix eval --json -f ./nix/hosts.nix all | jq -c '
@@ -63,7 +63,7 @@ jobs:
         system: ${{ fromJson(needs.get-hosts.outputs.systems) }}
     steps:
       - uses: actions/checkout@v3
-      - uses: cachix/install-nix-action@v18
+      - uses: cachix/install-nix-action@v20
         with:
           extra_nix_config: |
             experimental-features = nix-command flakes recursive-nix
@@ -94,7 +94,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: "Make more space"
         run: "sudo rm -rf /opt /usr/local || true &"
-      - uses: cachix/install-nix-action@v18
+      - uses: cachix/install-nix-action@v20
         with:
           extra_nix_config: |
             access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
