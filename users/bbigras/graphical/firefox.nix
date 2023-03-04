@@ -133,6 +133,7 @@
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
           anchors-reveal
           auto-tab-discard
+          bitwarden
           bypass-paywalls-clean
           cookies-txt
           facebook-container
