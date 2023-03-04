@@ -23,8 +23,6 @@
       xdg-utils
     ] ++ lib.optionals (pkgs.hostPlatform.system == "x86_64-linux") [
       discord
-      mbk
-      obsidian
     ];
 
     pointerCursor = {
