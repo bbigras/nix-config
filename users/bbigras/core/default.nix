@@ -195,10 +195,7 @@
       cls = "clear";
       j = "${pkgs.just}/bin/just";
       ".j" = "${pkgs.just}/bin/just --justfile ~/.user.justfile";
-      l = "ls";
-      la = "ls --all";
       less = ''${pkgs.bat}/bin/bat --paging=always --pager "${pkgs.less}/bin/less -RF"'';
-      ls = "exa --binary --header --long --classify";
       man = "${pkgs.bat-extras.batman}/bin/batman";
     };
   };
