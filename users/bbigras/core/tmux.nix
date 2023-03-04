@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   programs.tmux = {
     enable = true;
+    sensibleOnTop = true;
     aggressiveResize = true;
     clock24 = true;
     escapeTime = 0;
