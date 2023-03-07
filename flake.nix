@@ -28,7 +28,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/24b55b7251f93b7a8448dde982b4f3cd92edf282";
 
     flake-compat = {
       url = "github:edolstra/flake-compat";
