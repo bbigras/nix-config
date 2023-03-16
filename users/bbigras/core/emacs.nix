@@ -577,6 +577,26 @@ in
                                                (hass-dash-state :entity-id "sensor.lumi_lumi_weather_temperature" :format "%[%t: %v%]\n" :label "Température")
                                                (hass-dash-toggle :entity-id "light.fan_salle_de_bain_light" :label "Fan")
             )
+
+                              (hass-dash-group :title "Salon" :format "\n\n%t\n\n%v"
+                                               (hass-dash-state :entity-id "sensor.multisensor_6_humidity" :format "%[%t: %v%]\n" :label "Humidité")
+                                               (hass-dash-state :entity-id "sensor.multisensor_6_air_temperature" :format "%[%t: %v%]\n" :label "Température")
+                                               (hass-dash-state :entity-id "sensor.salon_temperature" :format "%[%t: %v%]\n" :label "Température2")
+                                               (hass-dash-toggle :entity-id "group.lum_salon" :label "Lumières")
+
+                                               (hass-dash-state :entity-id "sensor.thermal_comfort_perception")
+                                               (hass-dash-state :entity-id "media_player.salon_haut_parleur")
+                                               (hass-dash-state :entity-id "media_player.salon_android_tv")
+                                               (hass-dash-state :entity-id "humidifier.salon")
+
+                                               (hass-dash-state :entity-id "sensor.creton_soil_moisture")
+                                               (hass-dash-state :entity-id "sensor.langue_de_belle_mere_soil_moisture")
+                                               (hass-dash-state :entity-id "sensor.zz_soil_moisture")
+
+
+            )
+
+
             ))
 
             ;        (simple . ; Declaring a top-level group is optional and implied.
