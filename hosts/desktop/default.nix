@@ -102,8 +102,6 @@ rec {
   programs.thefuck.enable = true;
   users.users.bbigras.packages = [ pkgs.retroarchBare ];
 
-  services.hardware.openrgb.enable = true;
-
   services.flatpak.enable = true;
   services.jellyfin = {
     enable = true;
