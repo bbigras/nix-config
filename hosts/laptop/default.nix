@@ -172,8 +172,6 @@ rec {
       "/var/lib/flatpak"
       "/var/lib/docker"
       "/var/lib/libvirt"
-      "/home/bbigras/.dropbox-dist"
-      "/home/bbigras/.dropbox-hm"
       "/root/.cache/restic"
       # "/var/cache/libvirt"
       #     "/var/lib/bluetooth"
@@ -276,9 +274,6 @@ rec {
 
       syncthing.Unit.PartOf = [ "ac.target" ];
       syncthing.Install.WantedBy = [ "ac.target" ];
-
-      dropbox.Unit.PartOf = [ "ac.target" ];
-      dropbox.Install.WantedBy = [ "ac.target" ];
 
       pantalaimon.Unit.PartOf = [ "ac.target" ];
       pantalaimon.Install.WantedBy = [ "ac.target" ];

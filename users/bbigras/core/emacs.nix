@@ -482,7 +482,6 @@ in
         #       config = ''
         # (setq org-journal-date-prefix "#+TITLE: ")
         # (setq org-journal-file-format "%Y-%m-%d.org")
-        # (setq org-journal-dir "~/Dropbox/org-mode/notes/")
         # (setq org-journal-date-format "%A, %d %B %Y")
         #       '';
         #     };
@@ -1682,7 +1681,6 @@ in
             (push ".yarn" projectile-globally-ignored-directories)
             (push ".direnv" projectile-globally-ignored-directories)
             (push "node_modules" projectile-globally-ignored-directories)
-            (push ".dropbox-hm" projectile-globally-ignored-directories)
             (push ".cargo" projectile-globally-ignored-directories)
             (push ".idea" projectile-globally-ignored-directories)
             (push "~/" projectile-ignored-projects)
