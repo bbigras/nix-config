@@ -94,7 +94,6 @@ rec {
   # };
 
   services = {
-    # fstrim.enable = true;
     # fwupd.enable = true;
     tlp = {
       enable = true;
@@ -407,6 +406,4 @@ rec {
     # we can unmount /mnt and continue on the boot process.
     umount /mnt
   '';
-
-  services.fstrim.enable = true;
 }
