@@ -14,7 +14,8 @@ in
       ../../hardware/efi.nix
       ../../hardware/sound-pipewire.nix
 
-      nixos-hardware.common-pc-laptop-ssd
+      nixos-hardware.common-pc
+      nixos-hardware.common-pc-ssd
       nixos-hardware.common-cpu-intel
 
       ../../graphical
