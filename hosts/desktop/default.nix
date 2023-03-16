@@ -33,9 +33,9 @@ rec {
       nixos-hardware.common-pc
       nixos-hardware.common-pc-ssd
       nixos-hardware.common-cpu-intel-cpu-only
+      nixos-hardware.common-gpu-nvidia-nonprime
 
       ../../hardware/sound-pipewire.nix
-      ../../hardware/nvidia.nix
 
       # ./aarch64.nix
 
@@ -62,6 +62,7 @@ rec {
     };
   };
 
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
   boot = {
     binfmt.registrations.aarch64 = {
       interpreter = "${qemu-aarch64-static}/bin/qemu-aarch64-static";
