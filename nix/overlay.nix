@@ -80,6 +80,7 @@ localOverlays // {
             super.emacsPackages.taxy
             super.emacsPackages.taxy-magit-section
             super.emacsPackages.svg-lib
+            super.emacsPackages.persist
           ];
           src = emacs-ement;
         };
