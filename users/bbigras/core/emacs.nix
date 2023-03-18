@@ -781,9 +781,6 @@ in
 
         consult = {
           enable = true;
-          after = [
-            "consult-xref"
-          ];
           hook = [
             "(completion-list-mode . consult-preview-at-point-mode)"
           ];
@@ -846,6 +843,8 @@ in
           };
 
           init = ''
+            (require 'consult-xref)
+
             ;; Optionally configure the register formatting. This improves the register
             ;; preview for `consult-register', `consult-register-load',
             ;; `consult-register-store' and the Emacs built-ins.
@@ -906,11 +905,6 @@ in
 
         consult-imenu = {
           enable = true;
-        };
-
-        consult-xref = {
-          enable = true;
-          command = [ "consult-xref" ];
         };
 
         consult-dir = {
