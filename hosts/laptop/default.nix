@@ -60,7 +60,10 @@ rec {
     interfaces.eth0.useDHCP = true;
   };
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    storageDriver = "btrfs";
+  };
 
   services.flatpak.enable = true;
 
