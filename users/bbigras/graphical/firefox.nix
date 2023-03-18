@@ -150,7 +150,6 @@
           react-devtools
           reddit-enhancement-suite
           rust-search-extension
-          sponsorblock
           tree-style-tab
           tst-tab-search
           ublock-origin
