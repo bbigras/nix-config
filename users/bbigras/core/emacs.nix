@@ -1833,6 +1833,33 @@ in
           '';
         };
 
+        dirvish = {
+          enable = true;
+          config = ''
+            (require 'dirvish-quick-access)
+            (require 'dirvish-history)
+            (require 'dirvish-ls)
+            (require 'dirvish-extras)
+            (require 'dirvish-emerge)
+            (require 'dirvish-subtree)
+            (require 'dirvish-vc)
+            (require 'dirvish-yank)
+            (require 'dirvish-fd)
+            (require 'dirvish-narrow)
+            (dirvish-override-dired-mode)
+
+            (setq dirvish-emerge-groups '(("Recent" (predicate . ‘recent-files-2h’))
+              ("README" (regex . "README"))
+              ("PDF"    (extensions "pdf"))
+              ("Documents" (extensions "pdf" "tex" "bib" "epub"))
+              ("Video" (extensions "mp4" "mkv" "webm"))
+              ("Pictures" (extensions "jpg" "png" "svg" "gif"))
+              ("Audio" (extensions "mp3" "flac" "wav" "ape" "aac"))
+              ("Archives" (extensions "gz" "rar" "zip"))
+              ("LaTeX"  (extensions "tex" "bib"))))
+          '';
+        };
+
         dired = {
           enable = true;
           command = [ "dired" "dired-jump" ];
