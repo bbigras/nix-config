@@ -1251,6 +1251,12 @@ in
 
         wgrep.enable = true;
 
+        org-modern = {
+          enable = true;
+          config = ''
+            (global-org-modern-mode)
+          '';
+        };
         org = {
           enable = true;
           bind = {
