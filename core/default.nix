@@ -74,10 +74,6 @@ in
   };
 
   services = {
-    openssh = {
-      enable = true;
-      permitRootLogin = "no";
-    };
     tailscale.enable = true;
   };
 
