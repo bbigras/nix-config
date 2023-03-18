@@ -266,6 +266,9 @@ in
             "M-g M-d" = "dogears-list";
             "M-g M-D" = "dogears-sidebar";
           };
+          config = ''
+            (dogears-mode)
+          '';
         };
 
         browse-at-remote = {
