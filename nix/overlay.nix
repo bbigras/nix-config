@@ -27,7 +27,7 @@ localOverlays // {
     ragenix.overlays.default
 
     deploy-rs.overlay
-    ragenix.overlay
+    ragenix.overlays.default
     emacs-overlay.overlay
     nur.overlay
 
