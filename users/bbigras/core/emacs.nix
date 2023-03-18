@@ -617,6 +617,7 @@ in
           package = _epkgs: pkgs.emacsPackages.ement;
           config = ''
             (require 'ement-room-list)
+            (require 'ement-tabulated-room-list)
             (add-hook 'ement-room-mode-hook (lambda () (setq show-trailing-whitespace nil)))
           '';
         };
