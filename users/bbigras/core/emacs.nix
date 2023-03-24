@@ -1,4 +1,4 @@
-{ pkgs, config, nixosConfig, ... }:
+{ pkgs, config, ... }:
 
 let
   pcfg = config.programs.emacs.init.usePackage;
@@ -10,7 +10,7 @@ in
   programs.emacs = {
     enable = true;
 
-    package = if nixosConfig.programs.sway.enable then pkgs.emacsPgtk else pkgs.emacsGit;
+    package = pkgs.emacsGit;
 
     init = {
       enable = true;
