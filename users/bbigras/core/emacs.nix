@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, nixosConfig, ... }:
 
 let
   pcfg = config.programs.emacs.init.usePackage;
@@ -10,8 +10,7 @@ in
   programs.emacs = {
     enable = true;
 
-    # TODO: use pkgs.emacsPgtkNativeComp with wayland
-    package = pkgs.lib.mkDefault pkgs.emacsUnstable;
+    package = if nixosConfig.programs.sway.enable then pkgs.emacsPgtk else pkgs.emacsGit;
 
     init = {
       enable = true;
