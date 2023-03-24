@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, nixosConfig, lib, ... }:
 
 {
   programs.mpv = {
@@ -18,13 +18,14 @@
     };
     config = {
       profile = "gpu-hq";
-      #gpu-context = "wayland";
       vo = "gpu";
       hwdec = "auto";
       force-window = true;
       # ytdl-format = "bestvideo+bestaudio";
       # cache-default = 4000000;
       osc = "no"; # for mpvScripts.thumbnail
+    } // lib.optionalAttrs nixosConfig.programs.sway.enable {
+      gpu-context = "wayland";
     };
   };
 
