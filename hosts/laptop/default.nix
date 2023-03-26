@@ -19,6 +19,7 @@ rec {
       ../../hardware/bluetooth.nix
       ../../hardware/sound-pipewire.nix
       nixos-hardware.dell-xps-13-9343
+      nixos-hardware.common-hidpi
 
       ../../graphical
       ../../graphical/sway.nix
