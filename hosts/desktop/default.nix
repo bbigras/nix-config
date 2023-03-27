@@ -35,7 +35,7 @@ rec {
       nixos-hardware.common-cpu-intel-cpu-only
       nixos-hardware.common-gpu-nvidia-nonprime
 
-      ../../hardware/sound-pipewire.nix
+      ../../hardware/sound.nix
 
       # ./aarch64.nix
 

@@ -12,7 +12,7 @@ in
       # Include the results of the hardware scan.
       ../../hardware/hardware-configuration-work.nix
       ../../hardware/efi.nix
-      ../../hardware/sound-pipewire.nix
+      ../../hardware/sound.nix
 
       nixos-hardware.common-pc
       nixos-hardware.common-pc-ssd

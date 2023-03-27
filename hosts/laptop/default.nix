@@ -17,7 +17,7 @@ rec {
       ../../hardware/hardware-configuration-laptop.nix
       ../../hardware/efi.nix
       ../../hardware/bluetooth.nix
-      ../../hardware/sound-pipewire.nix
+      ../../hardware/sound.nix
       nixos-hardware.dell-xps-13-9343
       nixos-hardware.common-hidpi
 
