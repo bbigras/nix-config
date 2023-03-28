@@ -4,7 +4,7 @@ let
   nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
 in
 {
-  imports =
+  imports = with nixos-hardware.nixosModules;
     [
       ../../core
       ../../dev
@@ -14,9 +14,9 @@ in
       ../../hardware/efi.nix
       ../../hardware/sound.nix
 
-      nixos-hardware.common-pc
-      nixos-hardware.common-pc-ssd
-      nixos-hardware.common-cpu-intel
+      common-pc
+      common-pc-ssd
+      common-cpu-intel
 
       ../../graphical
       ../../graphical/sway.nix
