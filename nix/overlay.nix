@@ -24,12 +24,9 @@ in
 localOverlays // {
   default = lib.composeManyExtensions ((lib.attrValues localOverlays) ++ [
     deploy-rs.overlay
-    ragenix.overlays.default
-
-    deploy-rs.overlay
-    ragenix.overlays.default
     emacs-overlay.overlay
     nur.overlay
+    ragenix.overlays.default
 
     (_self: _super: {
       dendrite-demo-pinecone = dendrite-demo-pinecone2;
@@ -86,7 +83,5 @@ localOverlays // {
         };
       };
     })
-
-
   ]);
 }

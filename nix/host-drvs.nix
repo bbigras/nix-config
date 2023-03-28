@@ -5,19 +5,17 @@ system:
 let
   inherit (self.pkgs.${system}) lib linkFarm;
 
-  hosts = import ./hosts.nix;
-
   nixosDrvs = lib.mapAttrs (_: nixos: nixos.config.system.build.toplevel) self.nixosConfigurations;
   homeDrvs = lib.mapAttrs (_: home: home.activationPackage) self.homeConfigurations;
-  darwinDrvs = lib.mapAttrs (_: darwin: darwin.system) self.darwinConfigurations;
-  nixondroidDrvs = lib.mapAttrs (_: home: home.activationPackage) self.nixondroidConfigurations;
+  # darwinDrvs = lib.mapAttrs (_: darwin: darwin.system) self.darwinConfigurations;
 
-  hostDrvs = nixosDrvs // homeDrvs // darwinDrvs // nixondroidDrvs;
+  hostDrvs' = nixosDrvs // homeDrvs;
+  hostDrvs = lib.mapAttrs (_: drv: drv // { allowSubstitutes = true; }) hostDrvs';
 
   structuredHostDrvs = lib.mapAttrsRecursiveCond
-    (as: !(as ? "type" && (lib.elem as.type [ "darwin" "home-manager" "nixos" "nix-on-droid" ])))
+    (hostAttr: !(hostAttr ? "type" && (lib.elem hostAttr.type [ "homeManager" "nixos" ])))
     (path: _: hostDrvs.${lib.last path})
-    hosts;
+    self.hosts;
 
   structuredHostFarms = lib.mapAttrsRecursiveCond
     (as: !(lib.any lib.isDerivation (lib.attrValues as)))

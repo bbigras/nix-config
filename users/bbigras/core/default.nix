@@ -1,7 +1,8 @@
-{ pkgs, ... }:
-
-{
+{ impermanence, nix-index-database, pkgs, ... }: {
   imports = [
+    impermanence.nixosModules.home-manager.impermanence
+    nix-index-database.hmModules.nix-index
+
     ./atuin.nix
     ./btop.nix
     ./git.nix
@@ -14,7 +15,7 @@
 
   home = {
     username = "bbigras";
-    stateVersion = "21.05";
+    stateVersion = "22.11";
     packages = with pkgs; [
       kalker # calc
 
@@ -238,8 +239,8 @@
     };
     gpg.enable = true;
     navi.enable = true;
+    nix-index.enable = true;
     sqls.enable = true;
-
 
     bashmount.enable = true;
 

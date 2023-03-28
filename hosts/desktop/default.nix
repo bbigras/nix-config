@@ -20,7 +20,7 @@ let
   nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
 in
 rec {
-  imports =
+  imports = with nixos-hardware.nixosModules;
     [
       ../../core
       ../../dev
@@ -30,10 +30,10 @@ rec {
       ../../hardware/hardware-configuration-desktop.nix
       ../../hardware/efi.nix
 
-      nixos-hardware.common-pc
-      nixos-hardware.common-pc-ssd
-      nixos-hardware.common-cpu-intel-cpu-only
-      nixos-hardware.common-gpu-nvidia-nonprime
+      common-pc
+      common-pc-ssd
+      common-cpu-intel-cpu-only
+      common-gpu-nvidia-nonprime
 
       ../../hardware/sound.nix
 

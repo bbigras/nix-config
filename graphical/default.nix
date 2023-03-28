@@ -1,15 +1,10 @@
-{
+{ hostType, ... }: {
   imports = [
+    (
+      if hostType == "nixos" then ./nixos.nix
+      else if hostType == "darwin" then ./darwin.nix
+      else throw "Unknown hostType '${hostType}' for graphical"
+    )
     ./fonts.nix
   ];
-
-  boot = {
-    consoleLogLevel = 3;
-    kernelParams = [
-      "quiet"
-      "systemd.show_status=auto"
-      "udev.log_level=3"
-      "vt.global_cursor_default=0"
-    ];
-  };
 }

@@ -44,7 +44,5 @@ in
       enable = true;
       settings.git_protocol = "ssh";
     };
-
-    nix-index.enable = true;
   };
 }

@@ -1,48 +1,37 @@
 { self
-, attic
 , home-manager
 , impermanence
+, nix-index-database
 , nixos-hardware
 , nixpkgs
 , ragenix
 , templates
-, sops-nix
 , nur
+, attic
+, sops-nix
 , ...
 }:
 let
   inherit (nixpkgs) lib;
-  hosts = (import ./hosts.nix).nixos.all;
 
-  nixRegistry = {
-    nix.registry = {
-      nixpkgs.flake = nixpkgs;
-      p.flake = nixpkgs;
-      pkgs.flake = nixpkgs;
-      templates.flake = templates;
-    };
-  };
-
-  genConfiguration = hostname: { hostPlatform, ... }:
+  genConfiguration = hostname: { address, hostPlatform, type, ... }:
     lib.nixosSystem {
       modules = [
         (../hosts + "/${hostname}")
         {
+          nix.registry = {
+            nixpkgs.flake = nixpkgs;
+            p.flake = nixpkgs;
+            templates.flake = templates;
+          };
           nixpkgs.pkgs = self.pkgs.${hostPlatform};
-          # FIXME: This shouldn't be needed, but is for some reason
-          nixpkgs.hostPlatform = hostPlatform;
         }
-        nixRegistry
-        home-manager.nixosModules.home-manager
-        impermanence.nixosModules.impermanence
-        ragenix.nixosModules.age
-        sops-nix.nixosModules.sops
       ];
       specialArgs = {
-        inherit nur attic;
-        impermanence = impermanence.nixosModules;
-        nixos-hardware = nixos-hardware.nixosModules;
+        hostAddress = address;
+        hostType = type;
+        inherit home-manager impermanence nix-index-database nixos-hardware ragenix nur attic sops-nix;
       };
     };
 in
-lib.mapAttrs genConfiguration hosts
+lib.mapAttrs genConfiguration (self.hosts.nixos or { })

@@ -54,6 +54,11 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
+    nix-index-database = {
+      url = "github:Mic92/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
 
     sops-nix = {
@@ -103,11 +108,13 @@
 
   outputs = { self, nixpkgs, flake-utils, ... }@inputs:
     {
+      hosts = import ./nix/hosts.nix;
+
       deploy = import ./nix/deploy.nix inputs;
 
       overlays = import ./nix/overlay.nix inputs;
 
-      darwinConfigurations = import ./nix/darwin.nix inputs;
+      # darwinConfigurations = import ./nix/darwin.nix inputs;
 
       homeConfigurations = import ./nix/home-manager.nix inputs;
 
@@ -115,7 +122,7 @@
 
       nixondroidConfigurations = import ./nix/nix-on-droid.nix inputs;
     }
-    // flake-utils.lib.eachSystem [ "aarch64-darwin" "aarch64-linux" "x86_64-darwin" "x86_64-linux" ] (localSystem: {
+    // flake-utils.lib.eachSystem [ "aarch64-linux" "x86_64-linux" ] (localSystem: {
       checks = import ./nix/checks.nix inputs localSystem;
 
       devShells.default = import ./nix/dev-shell.nix inputs localSystem;

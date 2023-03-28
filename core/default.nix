@@ -1,33 +1,27 @@
-{ config, pkgs, attic, ... }:
-let
-  dummyConfig = pkgs.writeText "configuration.nix" ''
-    assert builtins.trace "This is a dummy config, use deploy-rs!" false;
-    { }
-  '';
-in
-{
+{ pkgs, hostType, impermanence, nix-index-database, attic, ... }: {
   imports = [
+    (
+      if hostType == "nixos" then ./nixos.nix
+      else if hostType == "darwin" then ./darwin.nix
+      else throw "Unknown hostType '${hostType}' for core"
+    )
     ./aspell.nix
     ./nix.nix
-    ./openssh.nix
-    ./resolved.nix
-    ./tailscale.nix
-    ./tmux.nix
-    ./xdg.nix
-    ./yggdrasil.nix
-    ./zsh.nix
-    ./solo2.nix
-    ./dendrite-demo-pinecone.nix
   ];
 
-  boot.kernelParams = [ "log_buf_len=10M" ];
+  documentation = {
+    enable = true;
+    doc.enable = true;
+    man.enable = true;
+    info.enable = true;
+  };
 
   environment = {
-    etc."nixos/configuration.nix".source = dummyConfig;
     pathsToLink = [
       "/share/zsh"
     ];
     systemPackages = with pkgs; [
+      man-pages
       rsync
       (import attic)
     ];
@@ -36,63 +30,14 @@ in
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    verbose = true;
-  };
-
-  i18n.defaultLocale = "fr_CA.UTF-8";
-
-  networking = {
-    firewall = {
-      checkReversePath = "loose";
-      trustedInterfaces = [ "tailscale0" ];
-      allowedUDPPorts = [ config.services.tailscale.port ];
+    extraSpecialArgs = {
+      inherit hostType impermanence nix-index-database;
     };
-    useDHCP = false;
-    useNetworkd = true;
-    wireguard.enable = true;
   };
-
-  nix.nixPath = [
-    "nixos-config=${dummyConfig}"
-    "nixpkgs=/run/current-system/nixpkgs"
-    "nixpkgs-overlays=/run/current-system/overlays"
-  ];
-
-  nixpkgs.config.allowUnfree = true;
 
   programs = {
-    mosh.enable = true;
-    zsh = {
-      enable = true;
-      enableGlobalCompInit = false;
-    };
+    nix-index.enable = true;
+    fish.enable = true;
+    zsh.enable = true;
   };
-
-  security.sudo = {
-    enable = true;
-    wheelNeedsPassword = false;
-  };
-
-  services = {
-    tailscale.enable = true;
-  };
-
-  system = {
-    extraSystemBuilderCmds = ''
-      ln -sv ${pkgs.path} $out/nixpkgs
-      ln -sv ${../nix/overlays} $out/overlays
-    '';
-
-    stateVersion = "22.05";
-  };
-
-  time.timeZone = "America/Montreal";
-
-  systemd = {
-    enableUnifiedCgroupHierarchy = true;
-    network.wait-online.anyInterface = true;
-    services.tailscaled.after = [ "network-online.target" "systemd-resolved.service" ];
-  };
-
-  users.mutableUsers = false;
 }
