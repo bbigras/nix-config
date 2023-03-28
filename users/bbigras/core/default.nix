@@ -164,7 +164,7 @@
       natscli
       joplin-desktop
       just
-      # megasync
+      megasync
       yt-dlp
     ];
     shellAliases = {
@@ -240,7 +240,7 @@
   services = {
     # kdeconnect.enable = true;
     # spotifyd.enable = true;
-    # megasync.enable = true;
+    megasync.enable = true;
     syncthing.enable = true;
     easyeffects.enable = true;
     pantalaimon = {
