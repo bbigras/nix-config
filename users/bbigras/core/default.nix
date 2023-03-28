@@ -188,7 +188,7 @@
       natscli
       joplin-desktop
       just
-      megasync
+      # megasync
       yt-dlp
     ];
     shellAliases = {
