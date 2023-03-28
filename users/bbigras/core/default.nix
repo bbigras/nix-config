@@ -264,7 +264,7 @@
   services = {
     # kdeconnect.enable = true;
     # spotifyd.enable = true;
-    megasync.enable = true;
+    # megasync.enable = true;
     syncthing.enable = true;
     easyeffects.enable = true;
     pantalaimon = {
