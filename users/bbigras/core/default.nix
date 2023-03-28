@@ -27,13 +27,7 @@
       google-chrome
       remmina
 
-      # espeak
-      socat
-      websocat
-
       # media
-      gimp
-      mediainfo
       pavucontrol
 
       # games
@@ -48,69 +42,55 @@
 
       # dev
       bfg-repo-cleaner
-      gitAndTools.git-absorb
-      gitAndTools.gitui
       gitAndTools.git-machete
       git-filter-repo
       gist
       gitAndTools.gh
       colordiff
-      wrangler # cloudflare workers
-      tcpdump
 
       # net
       croc
-      webwormhole
       qbittorrent
-      wireshark
-      dnsutils
-      oneshot
+      rclone
       tailscale
+      tcpdump
+      webwormhole
+      wireshark
       xh
 
       # nix
       cachix
       comma
-      nix-prefetch
-      nix-prefetch-scripts
-      nix-prefetch-github
-      nixpkgs-review
+      manix
       nix-update
       nixpkgs-fmt
-      nixos-shell
-      manix
+      nixpkgs-review
 
       # cool cli tools
       fd
       hexyl
-      zenith
-      # dust
       procs
-      hyperfine
       pwgen
-      rage
       sd # find & replace
-      eva # calc
       bandwhich
       dogdns
       btop
 
       # Android
       # android-studio
-      scrcpy
+      # scrcpy
 
       # security?
       bitwarden-cli
 
       # backup
       restic
-      kopia
+      # kopia
 
       # gist gopass  weechat
 
       # utils
       file
-      tcpdump
       strace
 
       # rust
@@ -134,7 +114,6 @@
       compsize
 
       pv
-      rclone
 
       asciinema # record the terminal
       docker-compose # docker manager
@@ -142,7 +121,6 @@
       prettyping # a nicer ping
       rnix-lsp # nix lsp server
 
-      xdragon
       feh # light-weight image viewer
       killall
       ghidra-bin
@@ -151,18 +129,17 @@
       dbeaver
       obsidian
       logseq
-      cloudflared
-      tmate
       josm
       ntp
 
       # Go
-      go
-      gopls
+      # go
+      # gopls
 
       # remote
       anydesk
       rustdesk
+
       # kubernetes
       k9s
       kdash
@@ -174,14 +151,13 @@
       kind
 
       anytype
-      pueue
 
       # perf
       sysstat
 
       ventoy-bin
       docker-credential-helpers
-      freeplane
+      # freeplane
       viddy
       streamlink
       beets-unstable
