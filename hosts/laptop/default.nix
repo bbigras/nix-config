@@ -8,7 +8,7 @@ let
   nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
 in
 rec {
-  imports =
+  imports = with nixos-hardware.nixosModules;
     [
       ../../core
       ../../dev
@@ -18,8 +18,8 @@ rec {
       ../../hardware/efi.nix
       ../../hardware/bluetooth.nix
       ../../hardware/sound.nix
-      nixos-hardware.dell-xps-13-9343
-      nixos-hardware.common-hidpi
+      dell-xps-13-9343
+      common-hidpi
 
       ../../graphical
       ../../graphical/sway.nix
