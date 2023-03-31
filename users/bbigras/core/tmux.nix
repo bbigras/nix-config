@@ -1,4 +1,10 @@
 { pkgs, ... }: {
+  home = {
+    packages = with pkgs; [
+      tmux-sessionizer
+    ];
+  };
+
   programs.tmux = {
     enable = true;
     sensibleOnTop = true;
