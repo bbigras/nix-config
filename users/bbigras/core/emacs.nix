@@ -1256,6 +1256,17 @@ in
             (global-org-modern-mode)
           '';
         };
+        org-ai = {
+          enable = true;
+          command = [ "org-ai-mode" ];
+          # config = ''
+          #   ;; if you are on the gpt-4 beta:
+          #   (setq org-ai-default-chat-model "gpt-4")
+          #   ;; if you are using yasnippet and want `ai` snippets
+          #   (org-ai-install-yasnippets)
+          # '';
+        };
+
         org = {
           enable = true;
           bind = {
