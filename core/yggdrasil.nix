@@ -10,6 +10,7 @@
 
   services.yggdrasil = {
     enable = true;
+    package = pkgs.popura;
     configFile = config.sops.secrets.yggdrasil-conf.path;
   };
 
