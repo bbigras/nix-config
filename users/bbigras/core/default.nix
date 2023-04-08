@@ -110,6 +110,7 @@
 
       # games
       starsector
+      mangohud
 
       compsize
 
