@@ -1267,6 +1267,10 @@ in
           # '';
         };
 
+        org-hyperscheduler = {
+          enable = true;
+        };
+
         org = {
           enable = true;
           bind = {
