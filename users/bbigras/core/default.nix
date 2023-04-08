@@ -111,6 +111,7 @@
       # games
       starsector
       mangohud
+      heroic
 
       compsize
 
