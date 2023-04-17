@@ -970,11 +970,11 @@
         "nixpkgs-stable": "nixpkgs-stable_4"
       },
       "locked": {
-        "lastModified": 1681613729,
-        "narHash": "sha256-9Qb0tHW8l1hgFkuB76n4VT9UNUaR7QL3CgmJ5hcVYEg=",
+        "lastModified": 1681717984,
+        "narHash": "sha256-Jj1eMGnl6RYN2j4OZla8Y/ViIcLWHvCetPMkvPpLTno=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "b7a6670a28b01cd1f62879921e36be2c69c4137a",
+        "rev": "4cb3502465f3ace00713614bfdea30b7955ce9dd",
         "type": "github"
       },
       "original": {
