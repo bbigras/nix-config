@@ -157,7 +157,7 @@
       # perf
       sysstat
 
-      ventoy-bin
+      ventoy
       docker-credential-helpers
       # freeplane
       viddy
