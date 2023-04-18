@@ -489,6 +489,14 @@ in
         #       '';
         #     };
 
+        org-rich-yank = {
+          enable = true;
+          bindLocal = {
+            org-mode-map = {
+              "C-M-y" = "org-rich-yank";
+            };
+          };
+        };
         org-roam = {
           enable = true;
           hook = [ "(after-init . org-roam-db-autosync-mode)" ];
