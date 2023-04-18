@@ -172,7 +172,8 @@ in
 
         (setq org-directory "~/dev/org-mode")
         (setq custom-file (expand-file-name (concat "custom-" (system-name) ".el") "~/dev/emacs"))
-        (load custom-file)
+        (when (file-exists-p custom-file)
+          (load custom-file 'noerror))
 
         (setq backup-directory-alist '(("." . "~/.config/emacs/backups")))
         (with-eval-after-load 'tramp
