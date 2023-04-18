@@ -126,8 +126,6 @@
 
       unar
       dbeaver
-      obsidian
-      logseq
       josm
       ntp
 
