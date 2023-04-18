@@ -10,22 +10,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: cachix/install-nix-action@v20
         with:
-          extra_nix_config: |
-            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-            experimental-features = nix-command flakes recursive-nix
-      - uses: cachix/cachix-action@v12
+          lfs: false
+      - uses: ./.github/actions/setup-nix
         with:
-          name: bbigras-nix-config
-          signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
-          extraPullNames: "dendrite-demo-pinecone,nix-community,nix-on-droid,pre-commit-hooks"
+          cachix-auth-token: ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: parse
         run: nix-instantiate --json --parse ./**/*.nix
       - name: lints
         run: |
-          cachix watch-exec bbigras-nix-config -- \
-            nix build -L --keep-going \
+          nix build -L --keep-going \
             .\#checks.x86_64-linux.pre-commit-check
 
   get-hosts:
@@ -35,27 +29,38 @@ jobs:
       systems: ${{ steps.get-hosts.outputs.systems }}
     steps:
       - uses: actions/checkout@v3
-      - uses: cachix/install-nix-action@v20
+        with:
+          lfs: false
+      - uses: ./.github/actions/setup-nix
+        with:
+          cachix: false
       - id: get-hosts
         run: |
+          TMP="$(mktemp -d)"
           nix eval --json -f ./nix/hosts.nix all | jq -c '
-          map_values(
-              if .hostPlatform  == "x86_64-linux" then "ubuntu-latest"
-              elif .hostPlatform == "aarch64-linux" then "ubuntu-latest"
-              elif .hostPlatform == "x86_64-darwin" then "macos-latest"
-              else null end)
-          | to_entries
-          | map(select(.value != null))
-          | map({ "name": .key, "system": .value })
-          ' > hosts.json
+            to_entries
+            | map({name: .key} + .value)
+            | map_values(
+                if .hostPlatform  == "x86_64-linux" then . + {ghSystem: "ubuntu-latest"}
+                elif .hostPlatform == "aarch64-linux" then . + {ghSystem: "ubuntu-latest"}
+                elif .hostPlatform == "x86_64-darwin" then . + {ghSystem: "macos-latest"}
+                else . + {ghSystem: null} end)
+            | map(select(.ghSystem != null))
+          ' > "$TMP/hosts.json"
 
-          jq -c 'map(.system) | unique | sort' hosts.json > systems.json
+          # shellcheck disable=SC2002
+          cat "$TMP/hosts.json" | jq -c '
+            map({hostPlatform, ghSystem})
+            | unique_by(.hostPlatform)
+            | sort_by(.ghSystem)
+          ' > "$TMP/systems.json"
 
-          echo "hosts=$(cat hosts.json)" >> "$GITHUB_OUTPUT"
-          echo "systems=$(cat systems.json)" >> "$GITHUB_OUTPUT"
+          echo "hosts=$(cat "$TMP/hosts.json")" >> "$GITHUB_OUTPUT"
+          echo "systems=$(cat "$TMP/systems.json")" >> "$GITHUB_OUTPUT"
 
   build-shell:
-    runs-on: ${{ matrix.system }}
+    name: build-shell (${{ matrix.system.hostPlatform }})
+    runs-on: ${{ matrix.system.ghSystem }}
     needs: get-hosts
     strategy:
       fail-fast: false
@@ -63,63 +68,41 @@ jobs:
         system: ${{ fromJson(needs.get-hosts.outputs.systems) }}
     steps:
       - uses: actions/checkout@v3
-      - uses: cachix/install-nix-action@v20
         with:
-          extra_nix_config: |
-            experimental-features = nix-command flakes recursive-nix
-      - uses: cachix/cachix-action@v12
+          lfs: false
+      - uses: ./.github/actions/setup-nix
         with:
-          name: bbigras-nix-config
-          signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
-          extraPullNames: "dendrite-demo-pinecone,nix-community,nix-on-droid,pre-commit-hooks"
+          cachix-auth-token: ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: build-shell
         run: |
-          SYSTEM="$(nix eval --impure --expr 'builtins.currentSystem')"
-          cachix watch-exec bbigras-nix-config -- \
-            nix run nixpkgs\#nix-build-uncached -- \
-              --keep-going \
-              -A "devShells.$SYSTEM.default.inputDerivation"
+          nix run nixpkgs\#nix-build-uncached -- \
+            --keep-going \
+            -A "devShells.${{ matrix.system.hostPlatform }}.default.inputDerivation"
 
   build-host:
     name: build-${{ matrix.host.name }}
-    runs-on: ${{ matrix.host.system }}
+    runs-on: ${{ matrix.host.ghSystem }}
     needs: get-hosts
     strategy:
       fail-fast: false
       matrix:
         host: ${{ fromJson(needs.get-hosts.outputs.hosts) }}
     steps:
-      - uses: docker/setup-qemu-action@v2
-        if: ${{ matrix.host.name == 'pixel6' }}
       - uses: actions/checkout@v3
-      - name: "Make more space"
-        run: "sudo rm -rf /opt /usr/local || true &"
-      - uses: cachix/install-nix-action@v20
         with:
-          extra_nix_config: |
-            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
-            experimental-features = nix-command flakes recursive-nix
-      - uses: cachix/cachix-action@v12
+          lfs: false
+      - uses: ./.github/actions/setup-nix
         with:
-          name: bbigras-nix-config
-          signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
-          extraPullNames: "dendrite-demo-pinecone,nix-community,nix-on-droid,pre-commit-hooks"
+          cachix-auth-token: ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: build-host
-        uses: nick-invision/retry@v2
-        with:
-          max_attempts: 2
-          timeout_minutes: 720
-          retry_on: error
-          command: |
-            cachix watch-exec bbigras-nix-config -- \
-              nix run nixpkgs#nix-build-uncached -- \
-                --keep-going \
-                -build-flags '--extra-platforms "aarch64-linux i686-linux" --extra-trusted-substituters "https://staging.attic.rs/attic-ci" --extra-trusted-public-keys "attic-ci:U5Sey4mUxwBXM3iFapmP0/ogODXywKLRNgRPQpEXxbo="' \
-                -A packages.x86_64-linux.all.${{ matrix.host.name }}
+        run: |
+          nix run nixpkgs#nix-build-uncached -- \
+            --keep-going \
+            -A packages.${{ matrix.host.hostPlatform }}.${{ matrix.host.name }}
 
   check:
     runs-on: ubuntu-latest
-    needs: [ build-host, build-shell ]
+    needs: [ lints, build-host, build-shell ]
     if: always()
     steps:
       - uses: re-actors/alls-green@release/v1
