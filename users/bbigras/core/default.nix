@@ -37,9 +37,6 @@
       # streamlink
       chatterino2
 
-      # comm
-      discord
-
       # dev
       bfg-repo-cleaner
       gitAndTools.git-machete

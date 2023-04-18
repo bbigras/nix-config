@@ -16,7 +16,6 @@
     qalculate-gtk
     xdg-utils
   ] ++ (builtins.filter (lib.meta.availableOn hostPlatform) [
-    discord
     # iterm2
     # ledger-live-desktop
     # plexamp
