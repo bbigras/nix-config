@@ -14,7 +14,7 @@ jobs:
           lfs: false
       - uses: ./.github/actions/setup-nix
         with:
-          cachix-auth-token: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          cachix-signing-key: ${{ secrets.CACHIX_SIGNING_KEY }}
       - name: parse
         run: nix-instantiate --json --parse ./**/*.nix
       - name: lints
@@ -72,7 +72,7 @@ jobs:
           lfs: false
       - uses: ./.github/actions/setup-nix
         with:
-          cachix-auth-token: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          cachix-signing-key: ${{ secrets.CACHIX_SIGNING_KEY }}
       - name: build-shell
         run: |
           nix run nixpkgs\#nix-build-uncached -- \
@@ -93,7 +93,7 @@ jobs:
           lfs: false
       - uses: ./.github/actions/setup-nix
         with:
-          cachix-auth-token: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          cachix-signing-key: ${{ secrets.CACHIX_SIGNING_KEY }}
       - name: build-host
         run: |
           nix run nixpkgs#nix-build-uncached -- \

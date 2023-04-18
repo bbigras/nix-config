@@ -10,6 +10,9 @@ inputs:
   cachix-auth-token:
     description: "Auth token for cachix"
     required: false
+  cachix-signing-key:
+    description: "Signing key for cachix"
+    required: false
   github-token:
     description: "A GitHub token for making authenticated requests"
     default: ${{ github.token }}
@@ -29,4 +32,4 @@ runs:
       if: ${{ inputs.cachix == 'true' }}
       with:
         name: bbigras-nix-config
-        signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
+        signingKey: ${{ inputs.cachix-signing-key }}
