@@ -134,7 +134,6 @@
           anchors-reveal
           auto-tab-discard
           bitwarden
-          bypass-paywalls-clean
           cookies-txt
           facebook-container
           ff2mpv
