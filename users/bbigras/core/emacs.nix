@@ -1841,6 +1841,13 @@ in
           command = [ "wc-mode" ];
         };
 
+        devdocs = {
+          enable = true;
+          bind = {
+            "C-c D" = "devdocs-lookup";
+          };
+        };
+
         web-mode = {
           enable = true;
           mode = [
