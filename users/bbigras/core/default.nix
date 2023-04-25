@@ -163,6 +163,7 @@
       just
       megasync
       yt-dlp
+      zrok
       quickemu
     ];
     shellAliases = {
