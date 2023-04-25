@@ -131,6 +131,7 @@
         '';
 
         extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          a11ycss
           anchors-reveal
           auto-tab-discard
           bitwarden
