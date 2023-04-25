@@ -163,6 +163,7 @@
       just
       megasync
       yt-dlp
+      quickemu
     ];
     shellAliases = {
       cat = "${pkgs.bat}/bin/bat";
