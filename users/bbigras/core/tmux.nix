@@ -21,23 +21,6 @@
       yank
       tmux-thumbs
       tmux-fzf
-      {
-        plugin = resurrect;
-        extraConfig = ''
-          ## Restore Panes
-          set -g @resurrect-capture-pane-contents 'on'
-        '';
-      }
-      {
-        plugin = continuum;
-        extraConfig = ''
-          set -g @continuum-boot 'on'
-
-          ## Restore last saved environment (automatically)
-          set -g @continuum-restore 'on'
-          set -g @continuum-save-interval '60' # minutes
-        '';
-      }
     ];
     mouse = true;
     secureSocket = false;
