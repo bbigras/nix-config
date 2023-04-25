@@ -39,13 +39,13 @@
         '';
       }
     ];
+    mouse = true;
     secureSocket = false;
     terminal = "tmux-256color";
     historyLimit = 30000;
     extraConfig = ''
       bind r source-file ~/.config/tmux/tmux.conf \; display-message "Config reloaded..."
       setw -g monitor-activity on
-      set -g mouse on
 
       # https://waylonwalker.com/tmux-fzf-session-jump/
       bind C-j display-popup -E "\
