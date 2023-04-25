@@ -6,6 +6,7 @@ in
 {
   home.packages = with pkgs; [
     samba # for tramp
+    xclip # [tag:xclip-for-org-download-clipboard]
   ];
   programs.emacs = {
     enable = true;
@@ -551,14 +552,8 @@ in
         };
 
         org-download = {
+          # Needs [ref:xclip-for-org-download-clipboard]
           enable = true;
-          after = [ "org" ];
-          bindLocal = {
-            org-mode-map = {
-              "s-Y" = "org-download-screenshot";
-              "s-y" = "org-download-yank";
-            };
-          };
         };
 
         rainbow-mode = {
