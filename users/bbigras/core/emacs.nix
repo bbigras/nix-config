@@ -489,6 +489,12 @@ in
         #       '';
         #     };
 
+        jinx = {
+          enable = true;
+          config = ''
+            (add-hook 'emacs-startup-hook #'global-jinx-mode)
+          '';
+        };
         org-rich-yank = {
           enable = true;
           bindLocal = {
