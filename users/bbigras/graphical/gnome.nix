@@ -16,8 +16,10 @@
       gnomeExtensions.appindicator
       gnomeExtensions.caffeine
       gnomeExtensions.clipboard-indicator
-      gnomeExtensions.just-perfection
-      gnomeExtensions.pop-shell
+      # gnomeExtensions.just-perfection
+      # gnomeExtensions.pop-shell
+      gnomeExtensions.forge
+      gnomeExtensions.tiling-assistant
     ];
   };
 
