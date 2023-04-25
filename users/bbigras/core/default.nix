@@ -164,6 +164,7 @@
       megasync
       yt-dlp
       zrok
+      aichat
       quickemu
     ];
     shellAliases = {
