@@ -18,12 +18,12 @@ let
       address = "bbigras-work";
       remoteBuild = true;
     };
-    # pixel6 = {
-    #   type = "nix-on-droid";
-    #   hostPlatform = "aarch64-linux";
-    #   address = "pixel6";
-    #   remoteBuild = false;
-    # };
+    pixel6 = {
+      type = "nix-on-droid";
+      hostPlatform = "aarch64-linux";
+      address = "pixel6";
+      remoteBuild = false;
+    };
   };
 
   inherit (builtins) attrNames concatMap listToAttrs filter;
