@@ -79,6 +79,7 @@ jobs:
         run: |
           nix run nixpkgs\#nix-build-uncached -- \
             --keep-going \
+            -build-flags '--extra-platforms "aarch64-linux i686-linux" --extra-trusted-substituters "https://staging.attic.rs/attic-ci" --extra-trusted-public-keys "attic-ci:U5Sey4mUxwBXM3iFapmP0/ogODXywKLRNgRPQpEXxbo="' \
             -A "devShells.${{ matrix.system.hostPlatform }}.default.inputDerivation"
 
   build-host:
@@ -102,6 +103,7 @@ jobs:
         run: |
           nix run nixpkgs#nix-build-uncached -- \
             --keep-going \
+            -build-flags '--extra-platforms "aarch64-linux i686-linux" --extra-trusted-substituters "https://staging.attic.rs/attic-ci" --extra-trusted-public-keys "attic-ci:U5Sey4mUxwBXM3iFapmP0/ogODXywKLRNgRPQpEXxbo="' \
             -A packages.${{ matrix.host.hostPlatform }}.${{ matrix.host.name }}
 
   check:
