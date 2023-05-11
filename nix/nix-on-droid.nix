@@ -6,7 +6,7 @@
 }:
 let
   inherit (nixpkgs) lib;
-  hosts = (import ./hosts.nix).nix-on-droid.all;
+  hosts = (import ./hosts.nix).nix-on-droid;
 
   pkgs = import nixpkgs {
     system = "aarch64-linux"; # FIXME

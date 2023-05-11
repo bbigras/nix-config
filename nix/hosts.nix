@@ -45,7 +45,7 @@ let
 
   genTypeGroups = hosts:
     let
-      types = [ "darwin" "homeManager" "nixos" ];
+      types = [ "darwin" "homeManager" "nixos" "nix-on-droid" ];
       typeHostGroup = name: {
         inherit name;
         value = filterAttrs (_: host: host.type == name) hosts;
