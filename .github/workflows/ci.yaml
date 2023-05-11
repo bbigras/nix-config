@@ -68,7 +68,7 @@ jobs:
         system: ${{ fromJson(needs.get-hosts.outputs.systems) }}
     steps:
       - uses: docker/setup-qemu-action@v2
-        if: ${{ matrix.host.name == 'pixel6' }}
+        if: ${{ hostPlatform == "aarch64-linux" }}
       - uses: actions/checkout@v3
         with:
           lfs: false
