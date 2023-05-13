@@ -1299,6 +1299,13 @@ in
           ];
         };
 
+        org-sticky-header = {
+          enable = true;
+          hook = [
+            "(org-mode . org-sticky-header-mode)"
+          ];
+        };
+
         org = {
           enable = true;
           bind = {
