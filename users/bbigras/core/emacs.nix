@@ -1204,7 +1204,7 @@ in
                   undo-tree-visualizer-timestamps t
                   undo-tree-enable-undo-in-region t
                   undo-tree-visualizer-diff t)
-            (setq undo-tree-history-directory-alist '(("." . "~/.config/emacs/backups/undo-tree")))
+            (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
             (global-undo-tree-mode)
           '';
         };
