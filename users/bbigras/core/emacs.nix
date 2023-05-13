@@ -494,6 +494,7 @@ in
           enable = true;
           config = ''
             (add-hook 'emacs-startup-hook #'global-jinx-mode)
+            (setq jinx-languages "fr_CA en_CA")
           '';
         };
         org-rich-yank = {
