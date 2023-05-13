@@ -1291,6 +1291,9 @@ in
           enable = true;
         };
 
+        # for org-mode
+        htmlize.enable = true;
+
         topsy = {
           enable = true;
           hook = [
