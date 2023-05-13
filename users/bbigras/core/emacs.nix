@@ -1291,6 +1291,14 @@ in
           enable = true;
         };
 
+        topsy = {
+          enable = true;
+          hook = [
+            "(prog-mode . topsy-mode)"
+            "(magit-section-mode . topsy-mode)"
+          ];
+        };
+
         org = {
           enable = true;
           bind = {
