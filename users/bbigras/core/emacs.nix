@@ -2060,6 +2060,7 @@ in
             (setq rustic-lsp-server 'rust-analyzer)
             (setq rustic-cargo-bin "cargo")
             (setq rustic-lsp-client 'eglot)
+            (add-hook 'rust-mode-hook 'eglot-ensure)
           '';
         };
 
