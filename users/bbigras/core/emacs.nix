@@ -197,6 +197,12 @@ in
 
         ; Enable mouse in terminal/TTY
         (xterm-mouse-mode 1)
+
+        (if (version< emacs-version "29.0")
+            (pixel-scroll-mode)
+          (pixel-scroll-precision-mode 1)
+          (setq pixel-scroll-precision-large-scroll-height 35.0))
+
       '';
 
       usePackage = {
