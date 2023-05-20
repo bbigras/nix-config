@@ -2061,6 +2061,9 @@ in
             (setq rustic-cargo-bin "cargo")
             (setq rustic-lsp-client 'eglot)
             (add-hook 'rust-mode-hook 'eglot-ensure)
+
+            ;; prevent rust-ts-mode from stealing .rs for now
+            (setcdr (assoc "\\.rs\\'" auto-mode-alist) 'rustic-mode)
           '';
         };
 
