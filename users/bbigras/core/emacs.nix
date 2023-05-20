@@ -1316,6 +1316,23 @@ in
           ];
         };
 
+        org-gtd = {
+          enable = true;
+
+          init = ''
+            (setq org-gtd-update-ack "3.0.0")
+          '';
+
+          config = ''
+            (org-edna-mode)
+
+            (setq org-gtd-directory "~/org-gtd")
+            (setq org-edna-use-inheritance t)
+            (setq org-gtd-organize-hooks '(org-gtd-set-area-of-focus org-set-tags-command))
+            (setq org-gtd-areas-of-focus '("Maison" "Santé" "Famille" "Carrière" "Finances" "Productivité" "Dev" "Loisirs" "Performance"))
+          '';
+        };
+
         org = {
           enable = true;
           bind = {
