@@ -194,6 +194,9 @@ in
                 regexp-search-ring))
 
         (setq native-comp-async-report-warnings-errors nil)
+
+        ; Enable mouse in terminal/TTY
+        (xterm-mouse-mode 1)
       '';
 
       usePackage = {
