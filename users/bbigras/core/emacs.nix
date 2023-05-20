@@ -125,9 +125,6 @@ in
         (put 'upcase-region 'disabled nil)
         (put 'downcase-region 'disabled nil)
 
-        ;;(setq custom-file (locate-user-emacs-file "custom.el"))
-        ;;(load custom-file)
-
         ;; When finding file in non-existing directory, offer to create the
         ;; parent directory.
         (defun with-buffer-name-prompt-and-make-subdirs ()
