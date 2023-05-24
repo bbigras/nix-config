@@ -1328,6 +1328,7 @@ in
 
             (setq org-gtd-directory "~/org-gtd")
             (setq org-edna-use-inheritance t)
+            (setq org-gtd-refile-to-any-target nil)
             (setq org-gtd-organize-hooks '(org-gtd-set-area-of-focus org-set-tags-command))
             (setq org-gtd-areas-of-focus '("Maison" "Santé" "Famille" "Carrière" "Finances" "Productivité" "Dev" "Loisirs" "Performance"))
           '';
