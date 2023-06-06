@@ -250,14 +250,15 @@
         ],
         "nixpkgs": [
           "nixpkgs"
-        ]
+        ],
+        "nixpkgs-stable": "nixpkgs-stable_3"
       },
       "locked": {
-        "lastModified": 1684435384,
-        "narHash": "sha256-MrH+NpnQqCx1bobTAp5b1TW/SvY/cO+L0EkbTL/d4IA=",
+        "lastModified": 1686018145,
+        "narHash": "sha256-4otkca8zBBSCKrj7J5KpimzWJRw2ijIM6Y3eieUabCc=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "859e27b4dccdfee45ea258510bbfcceaa527a85e",
+        "rev": "201c7544f6842430e8cc872658bdf8a91de20503",
         "type": "github"
       },
       "original": {
@@ -674,6 +675,22 @@
     },
     "nixpkgs-stable_3": {
       "locked": {
+        "lastModified": 1685883127,
+        "narHash": "sha256-zPDaPNrAtBnO24rNqjHLINHsqTdRbgWy1c/TL3EdwlM=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d4a9ff82fc18723219b60c66fb2ccb0734c460eb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-22.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-stable_4": {
+      "locked": {
         "lastModified": 1685801374,
         "narHash": "sha256-otaSUoFEMM+LjBI1XL/xGB5ao6IwnZOXc47qhIgJe8U=",
         "owner": "NixOS",
@@ -688,7 +705,7 @@
         "type": "github"
       }
     },
-    "nixpkgs-stable_4": {
+    "nixpkgs-stable_5": {
       "locked": {
         "lastModified": 1685758009,
         "narHash": "sha256-IT4Z5WGhafrq+xbDTyuKrRPRQ1f+kVOtE+4JU1CHFeo=",
@@ -846,7 +863,7 @@
         "flake-utils": "flake-utils_4",
         "gitignore": "gitignore_2",
         "nixpkgs": "nixpkgs_4",
-        "nixpkgs-stable": "nixpkgs-stable_3"
+        "nixpkgs-stable": "nixpkgs-stable_4"
       },
       "locked": {
         "lastModified": 1685970613,
@@ -970,7 +987,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "nixpkgs-stable": "nixpkgs-stable_4"
+        "nixpkgs-stable": "nixpkgs-stable_5"
       },
       "locked": {
         "lastModified": 1685848844,
