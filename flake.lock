@@ -2,7 +2,51 @@
   "nodes": {
     "agenix": {
       "inputs": {
-        "darwin": "darwin_2",
+        "darwin": "darwin",
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1684153753,
+        "narHash": "sha256-PVbWt3qrjYAK+T5KplFcO+h7aZWfEj1UtyoKlvcDxh0=",
+        "owner": "ryantm",
+        "repo": "agenix",
+        "rev": "db5637d10f797bb251b94ef9040b237f4702cde3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ryantm",
+        "repo": "agenix",
+        "type": "github"
+      }
+    },
+    "agenix-rekey": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1686354959,
+        "narHash": "sha256-eL06GIQowJ6GnXvjaHkpzZoTosaIyXQNJ/jXiI2nhdU=",
+        "owner": "oddlama",
+        "repo": "agenix-rekey",
+        "rev": "6ee1548ca52afd17748c36c4c2829bcf832d7b43",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oddlama",
+        "repo": "agenix-rekey",
+        "type": "github"
+      }
+    },
+    "agenix_2": {
+      "inputs": {
+        "darwin": "darwin_3",
         "nixpkgs": [
           "ragenix",
           "nixpkgs"
@@ -107,6 +151,28 @@
     "darwin": {
       "inputs": {
         "nixpkgs": [
+          "agenix",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1673295039,
+        "narHash": "sha256-AsdYgE8/GPwcelGgrntlijMg4t3hLFJFCRF3tL5WVjA=",
+        "owner": "lnl7",
+        "repo": "nix-darwin",
+        "rev": "87b9d090ad39b25b2400029c64825fc2a8868943",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lnl7",
+        "ref": "master",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
+    "darwin_2": {
+      "inputs": {
+        "nixpkgs": [
           "nixpkgs"
         ]
       },
@@ -124,7 +190,7 @@
         "type": "github"
       }
     },
-    "darwin_2": {
+    "darwin_3": {
       "inputs": {
         "nixpkgs": [
           "ragenix",
@@ -881,7 +947,7 @@
     },
     "ragenix": {
       "inputs": {
-        "agenix": "agenix",
+        "agenix": "agenix_2",
         "crane": "crane_2",
         "flake-utils": [
           "flake-utils"
@@ -907,8 +973,10 @@
     },
     "root": {
       "inputs": {
+        "agenix": "agenix",
+        "agenix-rekey": "agenix-rekey",
         "attic": "attic",
-        "darwin": "darwin",
+        "darwin": "darwin_2",
         "defmacro-gensym": "defmacro-gensym",
         "dendrite-demo-pinecone": "dendrite-demo-pinecone",
         "deploy-rs": "deploy-rs",

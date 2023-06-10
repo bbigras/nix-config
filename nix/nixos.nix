@@ -9,6 +9,8 @@
 , nur
 , attic
 , sops-nix
+, agenix
+, agenix-rekey
 , ...
 }:
 let
@@ -26,6 +28,8 @@ let
           };
           nixpkgs.pkgs = self.pkgs.${hostPlatform};
         }
+        agenix.nixosModules.default
+        agenix-rekey.nixosModules.default
       ];
       specialArgs = {
         hostAddress = address;

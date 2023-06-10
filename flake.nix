@@ -71,6 +71,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+    agenix-rekey = {
+      url = "github:oddlama/agenix-rekey";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixos-hardware.url = "nixos-hardware";
     nur.url = "nur";
     emacs-overlay = {
@@ -105,7 +115,7 @@
     attic.url = "github:zhaofengli/attic";
   };
 
-  outputs = { self, nixpkgs, flake-utils, ... }@inputs:
+  outputs = { self, nixpkgs, flake-utils, agenix-rekey, ... }@inputs:
     {
       hosts = import ./nix/hosts.nix;
 
@@ -138,5 +148,7 @@
         config.allowUnfree = true;
         config.allowAliases = true;
       };
+
+      apps = agenix-rekey.defineApps self (import nixpkgs { inherit localSystem; }) self.nixosConfigurations;
     });
 }

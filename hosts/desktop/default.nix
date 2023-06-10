@@ -62,6 +62,22 @@ rec {
     };
   };
 
+  age.rekey = {
+    hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOeKDFWYxxGsWsyL9vs/sIKDTaguQR8MB1KY5jBVk16R root@desktop";
+    masterIdentities = [ "/home/bbigras/.config/age/keys/bbigras.age" ];
+  };
+
+  age.generators.wireguard-priv.script = { pkgs, file, ... }: ''
+    priv=$(${pkgs.wireguard-tools}/bin/wg genkey)
+    ${pkgs.wireguard-tools}/bin/wg pubkey <<< "$priv" > ${lib.escapeShellArg (lib.removeSuffix ".age" file + ".pub")}
+    echo "$priv"
+  '';
+
+  age.secrets.wireguard = {
+    rekeyFile = ./secrets/wg.age;
+    generator = "wireguard-priv";
+  };
+
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
   boot = {
     binfmt.registrations.aarch64 = {
