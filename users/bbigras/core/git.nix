@@ -7,7 +7,7 @@
       display = "side-by-side";
     };
     package = pkgs.gitFull;
-    lfs.enable = false;
+    lfs.enable = true;
     userEmail = "bigras.bruno@gmail.com";
     userName = "Bruno Bigras";
     extraConfig = {
