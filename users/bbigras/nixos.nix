@@ -13,8 +13,8 @@ with lib;
       ++ optionals config.services.unbound.enable [ "unbound" ]
       ++ optionals config.sound.enable [ "audio" ]
       ++ optionals config.virtualisation.docker.enable [ "docker" ]
-      ++ optionals config.virtualisation.kvmgt.enable [ "kvm" ]
       ++ optionals config.virtualisation.libvirtd.enable [ "libvirtd" ]
+      ++ optionals config.virtualisation.kvmgt.enable [ "kvm" ]
       ++ optionals config.virtualisation.podman.enable [ "podman" ];
     isNormalUser = true;
     shell = mkIf config.programs.zsh.enable pkgs.zsh;

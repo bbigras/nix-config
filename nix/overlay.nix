@@ -1,5 +1,6 @@
 { deploy-rs
 , emacs-overlay
+, nix
 , nixpkgs
 , nur
 , dendrite-demo-pinecone
@@ -22,6 +23,7 @@ let
 in
 localOverlays // {
   default = lib.composeManyExtensions ((lib.attrValues localOverlays) ++ [
+    nix.overlays.default
     deploy-rs.overlay
     emacs-overlay.overlay
     nur.overlay

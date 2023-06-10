@@ -1,9 +1,11 @@
 { self
 , home-manager
 , impermanence
+, lanzaboote
 , nix-index-database
 , nixos-hardware
 , nixpkgs
+, stylix
 , templates
 , nur
 , attic
@@ -32,7 +34,7 @@ let
       specialArgs = {
         hostAddress = address;
         hostType = type;
-        inherit home-manager impermanence nix-index-database nixos-hardware nur attic;
+        inherit attic home-manager impermanence lanzaboote nix-index-database nixos-hardware nur stylix;
       };
     };
 in

@@ -1,11 +1,13 @@
-{ config, lib, pkgs, home-manager, impermanence, nix-index-database, ... }:
+{ config, lib, pkgs, home-manager, impermanence, lanzaboote, nix-index-database, stylix, ... }:
 {
   imports = [
     home-manager.nixosModules.home-manager
     impermanence.nixosModules.impermanence
+    lanzaboote.nixosModules.lanzaboote
     nix-index-database.nixosModules.nix-index
     ./dendrite-demo-pinecone.nix
     ./openssh.nix
+    stylix.nixosModules.stylix
     ./resolved.nix
     ./solo2.nix
     ./tailscale.nix
@@ -62,7 +64,6 @@
   system = {
     extraSystemBuilderCmds = ''
       ln -sv ${pkgs.path} $out/nixpkgs
-      ln -sv ${../nix/overlays} $out/overlays
     '';
 
     stateVersion = "22.11";

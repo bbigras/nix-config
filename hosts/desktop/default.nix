@@ -29,6 +29,7 @@ rec {
       # Include the results of the hardware scan.
       ../../hardware/hardware-configuration-desktop.nix
       ../../hardware/efi.nix
+      ../../hardware/secureboot.nix
 
       common-pc
       common-pc-ssd
@@ -201,6 +202,7 @@ rec {
   virtualisation.docker.enable = true;
 
   environment.persistence."/persist" = {
+    hideMounts = true;
     directories = [
       "/var/lib/sonarr"
       "/var/lib/jellyfin"

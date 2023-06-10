@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ lib, pkgs, ... }: {
   imports = [
     ./foot.nix
     ./mako.nix
@@ -13,18 +13,28 @@
       slurp
       swaybg
       swayidle
-      swaylock
       wl-clipboard
-      wofi
       xwayland
     ];
   };
 
-  programs.swaylock.settings = {
-    image = "${config.xdg.dataHome}/wall.png";
-    indicator-caps-lock = true;
-    scaling = "fill";
-    show-failed-attempts = true;
+  programs = {
+    swaylock = {
+      enable = true;
+      settings = {
+        indicator-caps-lock = true;
+        scaling = "fill";
+        show-failed-attempts = true;
+      };
+    };
+    wofi = {
+      enable = true;
+      settings = {
+        allow_images = true;
+        allow_markup = true;
+        term = "foot";
+      };
+    };
   };
 
   services.swayidle = {

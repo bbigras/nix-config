@@ -53,6 +53,21 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.pre-commit-hooks-nix.follows = "pre-commit-hooks";
+    };
+
+    # XXX: https://github.com/NixOS/nix/pull/8047
+    nix = {
+      url = "github:lovesegfault/nix/always-allow-substitutes-backport";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
+    };
+
     nix-index-database = {
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -63,6 +78,7 @@
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.darwin.follows = "darwin";
       inputs.home-manager.follows = "home-manager";
     };
     agenix-rekey = {
@@ -94,6 +110,14 @@
     };
 
     dendrite-demo-pinecone.url = "github:bbigras/dendrite-demo-pinecone";
+
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+      inputs.flake-compat.follows = "flake-compat";
+    };
+
     templates.url = "github:NixOS/templates";
     nix-on-droid = {
       url = "github:t184256/nix-on-droid";

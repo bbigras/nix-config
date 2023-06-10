@@ -1,37 +1,6 @@
 { pkgs, lib, ... }:
 let
   common = rec {
-    colors =
-      let
-        foreground_focused = "#E6B450";
-        border_focused = "#273747";
-        foreground_inactive = "#B3B1AD";
-        border_inactive = "#0A0E14";
-      in
-      {
-        focused = {
-          border = border_focused;
-          background = border_focused;
-          text = foreground_focused;
-          childBorder = border_focused;
-          indicator = border_focused;
-        };
-        unfocused = {
-          border = border_inactive;
-          background = border_inactive;
-          text = foreground_inactive;
-          childBorder = border_inactive;
-          indicator = border_inactive;
-        };
-        focusedInactive = {
-          border = border_inactive;
-          background = border_inactive;
-          text = foreground_inactive;
-          childBorder = border_inactive;
-          indicator = border_inactive;
-        };
-      };
-
     defaultWorkspace = "workspace 1";
 
     floating = {
@@ -40,11 +9,6 @@ let
     };
 
     focus.followMouse = false;
-
-    fonts = {
-      names = [ "monospace" ];
-      size = 10.0;
-    };
 
     gaps = {
       inner = 10;
@@ -75,11 +39,17 @@ let
     modifier = "Mod4";
 
     window = {
+      titlebar = false;
       border = 0;
       commands = [
         {
           command = "floating enable, sticky enable";
           criteria.title = "Picture-in-Picture";
+        }
+        {
+          command = "floating enable, sticky enable";
+          criteria.title = ".*Lock Screen.*";
+          criteria.app_id = "1Password";
         }
         {
           command = "floating enable, sticky enable";

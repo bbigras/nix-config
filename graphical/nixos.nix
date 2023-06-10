@@ -1,15 +1,14 @@
 { pkgs, ... }: {
+  # silent boot for plymouth
   boot = {
-    consoleLogLevel = 3;
+    consoleLogLevel = 0;
     kernelParams = [
       "quiet"
-      "systemd.show_status=auto"
       "udev.log_level=3"
-      "vt.global_cursor_default=0"
     ];
   };
 
-  # programs.dconf.enable = true;
+  programs.dconf.enable = true;
 
   # security.pam.services.gdm-fingerprint.text = ''
   #   account  include    login
@@ -25,16 +24,19 @@
   #   session  include    login
   # '';
 
-  # services = {
-  #   dbus.packages = with pkgs; [ dconf ];
-  #   gnome.at-spi2-core.enable = true;
-  #   xserver.enable = true;
-  #   xserver.displayManager.gdm = {
-  #     enable = true;
-  #     autoSuspend = true;
-  #     # wayland = true;
-  #   };
-  # };
+  services = {
+    dbus.packages = with pkgs; [ dconf ];
+    gnome.at-spi2-core.enable = true;
+    xserver.enable = true;
+    xserver.displayManager.gdm = {
+      enable = true;
+      autoSuspend = true;
+      wayland = false;
+    };
+  };
+
+  stylix.targets.plymouth.enable = false;
+  stylix.targets.gnome.enable = true;
 
   # xdg.portal = {
   #   enable = true;

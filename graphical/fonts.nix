@@ -2,26 +2,18 @@
   fonts = {
     fontDir.enable = hostType == "darwin";
     fonts = with pkgs; [
-      (nerdfonts.override { fonts = [ "Hack" ]; })
-      ibm-plex
-      dejavu_fonts
-      unifont
+      # FIXME: Make nix-darwin stop exploding when there are repeated fonts
+      # dejavu_fonts
+      # noto-fonts-extra
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
-      noto-fonts-emoji
-      noto-fonts-extra
+      unifont
     ];
   } // lib.optionalAttrs (hostType == "nixos") {
     enableDefaultFonts = false;
     enableGhostscriptFonts = false;
     fontconfig = {
-      defaultFonts = {
-        sansSerif = [ "IBM Plex Sans" ];
-        serif = [ "IBM Plex Sans" ];
-        monospace = [ "Hack Nerd Font" ];
-        emoji = [ "Noto Color Emoji" ];
-      };
       localConf = ''
         <?xml version="1.0"?>
         <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
@@ -46,6 +38,25 @@
             </alias>
         </fontconfig>
       '';
+    };
+  };
+
+  stylix.fonts = {
+    sansSerif = {
+      package = pkgs.ibm-plex;
+      name = "IBM Plex Sans";
+    };
+    serif = {
+      package = pkgs.dejavu_fonts;
+      name = "IBM Plex Serif";
+    };
+    monospace = {
+      package = pkgs.nerdfonts.override { fonts = [ "Hack" ]; };
+      name = "Hack Nerd Font";
+    };
+    emoji = {
+      package = pkgs.noto-fonts-emoji;
+      name = "Noto Color Emoji";
     };
   };
 }

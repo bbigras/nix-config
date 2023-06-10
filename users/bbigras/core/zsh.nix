@@ -11,10 +11,12 @@
       expireDuplicatesFirst = true;
       extended = true;
       ignoreDups = true;
+      ignoreSpace = true;
       path = "${config.xdg.dataHome}/zsh/history";
       save = 10000;
       share = true;
     };
+    historySubstringSearch.enable = true;
     envExtra = ''
       export LESSHISTFILE="${config.xdg.dataHome}/less_history"
       #export CARGO_HOME="${config.xdg.cacheHome}/cargo" # doesn't work with emacs
@@ -34,23 +36,15 @@
       bindkey "$${terminfo[khome]}" beginning-of-line
       bindkey "$${terminfo[kend]}" end-of-line
       bindkey "$${terminfo[kdch1]}" delete-char
-      bindkey '\eOA' history-substring-search-up
-      bindkey '\eOB' history-substring-search-down
-      bindkey "^[[A" history-substring-search-up
-      bindkey "^[[B" history-substring-search-down
-      bindkey "$$terminfo[kcuu1]" history-substring-search-up
-      bindkey "$$terminfo[kcud1]" history-substring-search-down
       bindkey "^[[1;5C" forward-word
       bindkey "^[[1;3C" forward-word
       bindkey "^[[1;5D" backward-word
       bindkey "^[[1;3D" backward-word
-      bindkey -s "^O" 'fzf | xargs -r $VISUAL^M'
+      bindkey -s "^O" 'fzf | xargs -r $EDITOR^M'
 
       bindkey -rpM viins '^[^['
 
       ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
-
-      source ${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.sh
     '';
     sessionVariables = {
       RPROMPT = "";
