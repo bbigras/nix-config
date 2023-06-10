@@ -2111,16 +2111,6 @@ in
           enable = true;
         };
 
-        tree-sitter = {
-          enable = true;
-          config = ''
-            (global-tree-sitter-mode)
-            (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
-          '';
-        };
-
-        tree-sitter-langs.enable = true;
-
         treemacs = {
           enable = true;
           bind = {
