@@ -60,17 +60,6 @@
 
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
 
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    ragenix = {
-      url = "github:yaxitech/ragenix";
-      inputs.flake-utils.follows = "flake-utils";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";

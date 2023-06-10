@@ -1,11 +1,9 @@
-{ config, lib, pkgs, home-manager, impermanence, nix-index-database, ragenix, sops-nix, ... }:
+{ config, lib, pkgs, home-manager, impermanence, nix-index-database, ... }:
 {
   imports = [
     home-manager.nixosModules.home-manager
     impermanence.nixosModules.impermanence
     nix-index-database.nixosModules.nix-index
-    # ragenix.nixosModules.age
-    sops-nix.nixosModules.sops
     ./dendrite-demo-pinecone.nix
     ./openssh.nix
     ./resolved.nix

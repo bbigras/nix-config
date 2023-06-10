@@ -1,7 +1,6 @@
 { deploy-rs
 , emacs-overlay
 , nixpkgs
-, ragenix
 , nur
 , dendrite-demo-pinecone
 , emacs-plz
@@ -26,7 +25,6 @@ localOverlays // {
     deploy-rs.overlay
     emacs-overlay.overlay
     nur.overlay
-    ragenix.overlays.default
 
     (_self: _super: {
       dendrite-demo-pinecone = dendrite-demo-pinecone2;

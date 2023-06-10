@@ -4,11 +4,9 @@
 , nix-index-database
 , nixos-hardware
 , nixpkgs
-, ragenix
 , templates
 , nur
 , attic
-, sops-nix
 , agenix
 , agenix-rekey
 , ...
@@ -34,7 +32,7 @@ let
       specialArgs = {
         hostAddress = address;
         hostType = type;
-        inherit home-manager impermanence nix-index-database nixos-hardware ragenix nur attic sops-nix;
+        inherit home-manager impermanence nix-index-database nixos-hardware nur attic;
       };
     };
 in

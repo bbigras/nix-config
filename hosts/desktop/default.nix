@@ -117,13 +117,6 @@ rec {
 
   powerManagement.cpuFreqGovernor = "performance";
 
-  sops.secrets = {
-    restic-desktop-password.sopsFile = ./restic-desktop.yaml;
-    restic-desktop-creds.sopsFile = ./restic-desktop.yaml;
-    yggdrasil-conf.sopsFile = ./restic-desktop.yaml;
-    yggdrasil-conf.owner = config.users.users.yggdrasil.name;
-  };
-
   # hardware.enableRedistributableFirmware = true;
   networking.hostName = "desktop"; # Define your hostname.
   networking.networkmanager.enable = false;

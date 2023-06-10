@@ -38,8 +38,6 @@ rec {
     boot.kernelPackages.bcc
   ];
 
-  sops.secrets.restic-laptop-password.sopsFile = ./restic-laptop.yaml;
-  sops.secrets.restic-laptop-creds.sopsFile = ./restic-laptop.yaml;
   age.rekey = {
     hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE4hqAgOm8CbtstqYcUwTHHqdXqd3FzwPvQl4YVp9Wec root@laptop";
     masterIdentities = [ "/home/bbigras/.config/age/keys/bbigras.age" ];
@@ -66,9 +64,6 @@ rec {
       generator = "wireguard-priv";
     };
   };
-
-  sops.secrets.yggdrasil-conf.sopsFile = ./restic-laptop.yaml;
-  sops.secrets.yggdrasil-conf.owner = config.users.users.yggdrasil.name;
 
   hardware.brillo.enable = true;
   boot.kernelPackages = pkgs.linuxPackages_zen;

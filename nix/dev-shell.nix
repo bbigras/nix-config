@@ -13,7 +13,6 @@ mkShell {
     deploy-rs.deploy-rs
     nix-build-uncached
     nixpkgs-fmt
-    ragenix
     nil
     statix
 
