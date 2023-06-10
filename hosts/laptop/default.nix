@@ -249,6 +249,7 @@ rec {
         ".mozilla"
         ".steam"
         ".var/app/com.valvesoftware.Steam"
+        ".zrok"
         "Documents"
         "Downloads"
         "Maildir"
