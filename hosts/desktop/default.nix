@@ -62,6 +62,7 @@ rec {
     };
   };
 
+  age.identityPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
   age.rekey = {
     hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOeKDFWYxxGsWsyL9vs/sIKDTaguQR8MB1KY5jBVk16R root@desktop";
     masterIdentities = [ "/home/bbigras/.config/age/keys/bbigras.age" ];
