@@ -73,9 +73,20 @@ rec {
     echo "$priv"
   '';
 
-  age.secrets.wireguard = {
-    rekeyFile = ./secrets/wg.age;
-    generator = "wireguard-priv";
+  age.generators.yggdrasil.script = { pkgs, file, ... }: ''
+    ${pkgs.yggdrasil}/bin/yggdrasil -genconf
+  '';
+
+  age.secrets = {
+    yggdrasil = {
+      rekeyFile = ./secrets/yggdrasil.age;
+      generator = "yggdrasil";
+    };
+
+    wireguard = {
+      rekeyFile = ./secrets/wg.age;
+      generator = "wireguard-priv";
+    };
   };
 
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_470;

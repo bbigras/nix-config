@@ -11,7 +11,7 @@
   services.yggdrasil = {
     enable = true;
     package = pkgs.popura;
-    configFile = config.sops.secrets.yggdrasil-conf.path;
+    configFile = config.age.secrets.yggdrasil.path;
   };
 
   systemd.services.yggdrasil = {
