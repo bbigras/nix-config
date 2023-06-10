@@ -23,7 +23,7 @@
     systemPackages = with pkgs; [
       man-pages
       rsync
-      (import attic)
+      # (import attic)
     ];
   };
 
