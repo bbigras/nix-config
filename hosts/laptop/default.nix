@@ -258,6 +258,7 @@ rec {
         "Videos"
         "dev"
         "matrix-p2p"
+        "org-gtd"
         "tmp"
         "src"
         { directory = ".gnupg"; mode = "0700"; }
