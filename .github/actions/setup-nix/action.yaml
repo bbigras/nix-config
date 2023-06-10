@@ -16,17 +16,22 @@ inputs:
   github-token:
     description: "A GitHub token for making authenticated requests"
     default: ${{ github.token }}
+  nix-package-url:
+    description: "The Nix package to install"
+    required: false
 
 runs:
   using: "composite"
   steps:
-    - uses: DeterminateSystems/nix-installer-action@v2
+    - uses: DeterminateSystems/nix-installer-action@v3
       with:
-        nix-package-url: "https://nix-config.cachix.org/serve/j26m73q2svl04nmvxksjwwns4rgb8x4w/nix-2.13.3-x86_64-linux.tar.xz"
+        nix-installer-tag: "v0.9.1"
+        nix-package-url: ${{ inputs.nix-package-url }}
         extra-conf: |
+          accept-flake-config = true
           always-allow-substitutes = true
           builders-use-substitutes = true
-          experimental-features = nix-command flakes recursive-nix
+          experimental-features = nix-command flakes
         github-token: ${{ inputs.github-token }}
     - uses: cachix/cachix-action@v12
       if: ${{ inputs.cachix == 'true' }}
