@@ -128,40 +128,31 @@
     attic.url = "github:zhaofengli/attic";
   };
 
-  outputs = { self, nixpkgs, flake-utils, agenix-rekey, ... }@inputs:
+  outputs = { self, nixpkgs, agenix-rekey, ... }@inputs:
+    let
+      forAllSystems = nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" ];
+    in
     {
       hosts = import ./nix/hosts.nix;
 
-      deploy = import ./nix/deploy.nix inputs;
-
-      overlays = import ./nix/overlay.nix inputs;
-
-      # darwinConfigurations = import ./nix/darwin.nix inputs;
-
-      homeConfigurations = import ./nix/home-manager.nix inputs;
-
-      nixosConfigurations = import ./nix/nixos.nix inputs;
-
-      nixondroidConfigurations = import ./nix/nix-on-droid.nix inputs;
-    }
-    // flake-utils.lib.eachSystem [ "aarch64-linux" "x86_64-linux" ] (localSystem: {
-      checks = import ./nix/checks.nix inputs localSystem;
-
-      devShells.default = import ./nix/dev-shell.nix inputs localSystem;
-
-      packages = {
-        default = self.packages.${localSystem}.all;
-      } // (import ./nix/host-drvs.nix inputs localSystem);
-
-      pkgs = import nixpkgs {
+      pkgs = forAllSystems (localSystem: import nixpkgs {
         inherit localSystem;
-        overlays = [
-          self.overlays.default
-        ];
+        overlays = [ self.overlays.default ];
         config.allowUnfree = true;
         config.allowAliases = true;
-      };
+      });
 
-      apps = agenix-rekey.defineApps self (import nixpkgs { inherit localSystem; }) self.nixosConfigurations;
-    });
+      checks = forAllSystems (import ./nix/checks.nix inputs);
+      devShells = forAllSystems (import ./nix/dev-shell.nix inputs);
+      overlays = import ./nix/overlay.nix inputs;
+      packages = forAllSystems (import ./nix/packages.nix inputs);
+
+      deploy = import ./nix/deploy.nix inputs;
+      darwinConfigurations = import ./nix/darwin.nix inputs;
+      homeConfigurations = import ./nix/home-manager.nix inputs;
+      nixosConfigurations = import ./nix/nixos.nix inputs;
+      nixondroidConfigurations = import ./nix/nix-on-droid.nix inputs;
+
+      apps = forAllSystems (localSystem: agenix-rekey.defineApps self (import nixpkgs { inherit localSystem; }) self.nixosConfigurations);
+    };
 }
