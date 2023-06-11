@@ -84,18 +84,18 @@ jobs:
       matrix:
         system: ${{ fromJson(needs.get-hosts.outputs.nix-systems) }}
     steps:
+      - uses: docker/setup-qemu-action@v2
+        if: ${{ matrix.system.hostPlatform == 'aarch64-linux' }}
       - uses: actions/checkout@v3
         with:
           lfs: false
       - uses: ./.github/actions/setup-nix
         with:
-          aarch64-builder: ${{ matrix.system.hostPlatform == 'aarch64-linux' }}
-          aarch64-builder-key: ${{ secrets.AARCH64_BUILDER_KEY }}
           cachix-auth-token: ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: build-nix
         id: build-nix
         run: |
-          nix build -L --print-out-paths .#packages.${{ matrix.system.hostPlatform }}.nixBinaryTarball
+          nix build -L --print-out-paths .#packages.${{ matrix.system.hostPlatform }}.nixBinaryTarball --extra-platforms "aarch64-linux i686-linux"
           storePath="$(realpath ./result | xargs basename)"
           narHash="$(cut -f1 -d'-' <<< "$storePath")"
           narLen="$(printf "%s" "$narHash" | wc -c)"
