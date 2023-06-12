@@ -166,7 +166,7 @@ jobs:
           nix run nixpkgs\#nix-build-uncached -- \
             --keep-going \
             -build-flags '--extra-platforms "aarch64-linux i686-linux" --extra-trusted-substituters "https://staging.attic.rs/attic-ci" --extra-trusted-public-keys "attic-ci:U5Sey4mUxwBXM3iFapmP0/ogODXywKLRNgRPQpEXxbo="' \
-            -A "devShells.${{ matrix.system.hostPlatform }}.default.inputDerivation"
+            -A "devShells.${{ matrix.system.hostPlatform }}.inputDerivation"
 
   build-host:
     name: build-${{ matrix.host.name }}
