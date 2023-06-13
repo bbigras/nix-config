@@ -2,6 +2,8 @@
 
 let
   nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
+
+  zrok2 = pkgs.callPackage ./zrok.nix { };
 in
 {
   build.arch = "aarch64";
@@ -181,6 +183,7 @@ in
         kubelogin-oidc
         # socat
         # websocat
+        zrok2
       ];
     };
 }
