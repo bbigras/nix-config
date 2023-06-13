@@ -182,6 +182,8 @@ jobs:
       - uses: actions/checkout@v3
         with:
           lfs: false
+      - name: "Make more space"
+        run: "sudo rm -rf /opt /usr/local || true &"
       - name: get-nix-package-url
         id: get-nix
         env:
