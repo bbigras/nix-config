@@ -204,6 +204,8 @@ jobs:
         with:
           cachix-signing-key: ${{ secrets.CACHIX_SIGNING_KEY }}
           nix-package-url: ${{ steps.get-nix.outputs.package-url }}
+      - name: rekey
+        run: nix run .#rekey -- --dummy
       - name: build-host
         run: |
           nix run nixpkgs#nix-build-uncached -- \
