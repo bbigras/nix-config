@@ -38,6 +38,7 @@ rec {
     boot.kernelPackages.bcc
   ];
 
+  age.identityPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
   age.rekey = {
     hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE4hqAgOm8CbtstqYcUwTHHqdXqd3FzwPvQl4YVp9Wec root@laptop";
     masterIdentities = [ "/home/bbigras/.config/age/keys/bbigras.age" ];
