@@ -121,7 +121,7 @@
 
       pv
 
-      asciinema # record the terminal
+      # asciinema # record the terminal
       docker-compose # docker manager
       ncdu # disk space info (a better du)
       prettyping # a nicer ping
