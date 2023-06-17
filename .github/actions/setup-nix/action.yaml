@@ -38,4 +38,4 @@ runs:
       with:
         name: bbigras-nix-config
         signingKey: ${{ inputs.cachix-signing-key }}
-        extraPullNames: "dendrite-demo-pinecone,nix-community,nix-on-droid,pre-commit-hooks"
+        extraPullNames: "dendrite-demo-pinecone,nix-community,nix-on-droid,pre-commit-hooks,nix-config"
