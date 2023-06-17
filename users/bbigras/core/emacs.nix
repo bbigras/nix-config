@@ -493,6 +493,16 @@ in
             (setq jinx-languages "fr_CA en_CA")
           '';
         };
+        flymake-eslint = {
+          enable = true;
+          config = ''
+            (add-hook 'eglot-managed-mode-hook (lambda ()
+              (remove-hook 'flymake-diagnostic-functions 'eglot-flymake-backend)
+              (setq-local flymake-eslint-project-root (locate-dominating-file buffer-file-name ".eslintrc.js"))
+              (flymake-eslint-enable)))
+          '';
+        };
+
         org-rich-yank = {
           enable = true;
           bindLocal = {
