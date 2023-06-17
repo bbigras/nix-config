@@ -227,6 +227,20 @@ in
           (pixel-scroll-precision-mode 1)
           (setq pixel-scroll-precision-large-scroll-height 35.0))
 
+        (defun bh/prepare-meeting-notes ()
+          "Prepare meeting notes for email
+           Take selected region and convert tabs to spaces, mark TODOs with leading >>>, and copy to kill ring for pasting"
+          (interactive)
+          (let (prefix)
+            (save-excursion
+              (save-restriction
+                (narrow-to-region (region-beginning) (region-end))
+                (untabify (point-min) (point-max))
+                (goto-char (point-min))
+                (while (re-search-forward "^\\( *-\\\) \\(TODO\\|DONE\\): " (point-max) t)
+                  (replace-match (concat (make-string (length (match-string 1)) ?>) " " (match-string 2) ": ")))
+                (goto-char (point-min))
+                (kill-ring-save (point-min) (point-max))))))
       '';
 
       usePackage = {
