@@ -553,21 +553,25 @@ in
           enable = true;
         };
 
-        rainbow-mode = {
+        prism = {
           enable = true;
-          defer = 1;
-          hook = [
-            ''(org-mode
-         emacs-lisp-mode
-         web-mode
-         typescript-mode
-         js2-mode)''
-          ];
-        };
+          config = ''
+            (prism-set-colors :num 16
+              :desaturations (cl-loop for i from 0 below 16
+                                      collect (* i 2.5))
+              :lightens (cl-loop for i from 0 below 16
+                                 collect (* i 2.5))
+              :colors (list "dodgerblue" "medium sea green" "sandy brown")
 
-        rainbow-delimiters = {
-          enable = true;
-          hook = [ "(prog-mode . rainbow-delimiters-mode)" ];
+              :comments-fn
+              (lambda (color)
+                (prism-blend color
+                             (face-attribute 'font-lock-comment-face :foreground) 0.25))
+
+              :strings-fn
+              (lambda (color)
+                (prism-blend color "white" 0.5)))
+          '';
         };
 
         org-tempo = {
