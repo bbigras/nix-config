@@ -24,11 +24,15 @@ let
         grammars);
 
   grammarsLibPath = withPlugins (_: pkgs.tree-sitter.allGrammars);
+
+  myLatex = with pkgs; (texlive.combine { inherit (texlive) scheme-small wrapfig ulem capt-of; });
 in
 {
   home.packages = with pkgs; [
     samba # for tramp
     xclip # [tag:xclip-for-org-download-clipboard]
+  ] ++ lib.optionals (stdenv.hostPlatform.system == "x86_64-linux") [
+    myLatex
   ];
   programs.emacs = {
     enable = true;
