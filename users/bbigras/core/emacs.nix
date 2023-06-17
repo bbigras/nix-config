@@ -2129,8 +2129,8 @@ in
         eglot = {
           enable = true;
           hook = [
-            "(rust-ts . eglot-ensure)"
-            "(typescript-ts . eglot-ensure)"
+            "(rust-ts-mode . eglot-ensure)"
+            "(typescript-ts-mode . eglot-ensure)"
           ];
         };
 
