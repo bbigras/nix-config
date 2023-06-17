@@ -1654,8 +1654,6 @@ in
 
             ;; Enable flycheck in all eligible buffers.
             (global-flycheck-mode)
-
-            (flycheck-add-mode 'javascript-eslint 'web-mode)
           '';
         };
 
@@ -1912,23 +1910,6 @@ in
           bind = {
             "C-c D" = "devdocs-lookup";
           };
-        };
-
-        web-mode = {
-          enable = true;
-          mode = [
-            ''"\\.html\\'"''
-            ''"\\.jsx?\\'"''
-            ''"\\.tsx\\'"''
-            ''"\\.ts\\'"''
-          ];
-          config = ''
-            (setq web-mode-attr-indent-offset 4
-                  web-mode-code-indent-offset 2
-                  web-mode-markup-indent-offset 2)
-
-            (add-to-list 'web-mode-content-types '("jsx" . "\\.jsx?\\'"))
-          '';
         };
 
         dirvish = {
