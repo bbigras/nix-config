@@ -384,10 +384,9 @@ in
 
         prettier-js = {
           enable = true;
-          after = [ "web-mode" ];
-          config = ''
-            (add-hook 'web-mode-hook #'prettier-js-mode)
-          '';
+          hook = [
+            "(typescript-ts-mode . prettier-js-mode)"
+          ];
         };
 
         ws-butler = {
