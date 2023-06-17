@@ -1383,6 +1383,16 @@ in
             (setq org-extend-today-until 4)
             (setq org-export-backends (quote (ascii html icalendar latex md odt)))
 
+            (defun add-newline-at-end-if-none ()
+              "Add a newline at the end of the buffer if there isn't any."
+              (save-excursion
+                (save-restriction
+                  (goto-char (1- (point-max)))
+                  (if (not (looking-at "\n"))
+                  (progn
+                    (goto-char (point-max))
+                    (insert "\n"))))))
+
             ;; https://old.reddit.com/r/orgmode/comments/hg8qik/weird_joined_lines_bug/fw73kml/
             (add-hook 'org-capture-prepare-finalize-hook 'add-newline-at-end-if-none)
           '';
