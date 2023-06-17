@@ -2,6 +2,28 @@
 
 let
   pcfg = config.programs.emacs.init.usePackage;
+
+  withPlugins = with pkgs; grammarFn:
+    let
+      grammars = grammarFn tree-sitter.builtGrammars;
+    in
+    linkFarm "grammars"
+      (map
+        (drv:
+          let
+            name = lib.strings.getName drv;
+          in
+          {
+            name =
+              "lib" +
+              (lib.strings.removeSuffix "-grammar" name)
+              + ".so";
+            path = "${drv}/parser";
+          }
+        )
+        grammars);
+
+  grammarsLibPath = withPlugins (_: pkgs.tree-sitter.allGrammars);
 in
 {
   home.packages = with pkgs; [
@@ -189,6 +211,13 @@ in
                 regexp-search-ring))
 
         (setq native-comp-async-report-warnings-errors nil)
+
+        ; Use Tree-sitter
+        (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
+        (add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
+        (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
+        (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-ts-mode))
+        (setq treesit-extra-load-path '("${grammarsLibPath}"))
 
         ; Enable mouse in terminal/TTY
         (xterm-mouse-mode 1)
