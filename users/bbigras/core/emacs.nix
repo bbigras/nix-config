@@ -35,11 +35,6 @@ in
         (set-face-attribute 'fixed-pitch nil :font "Source Code Pro" :height 100)
         (set-face-attribute 'variable-pitch nil :font "Cantarell" :height 150 :weight 'regular)
 
-        ;; Configure color theme and modeline in early init to avoid flashing
-        ;; during start.
-        (require 'nimbus-theme)
-        (load-theme 'nimbus t)
-
         (require 'doom-modeline)
         (setq doom-modeline-buffer-file-name-style 'truncate-except-project)
         (doom-modeline-mode)
@@ -258,11 +253,6 @@ in
         #     (setq global-mark-ring-max 50)
         #   '';
         # };
-
-        nimbus-theme = {
-          enable = true;
-          extraConfig = ":disabled";
-        };
 
         dogears = {
           enable = true;
