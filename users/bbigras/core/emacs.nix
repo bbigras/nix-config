@@ -2129,6 +2129,10 @@ in
 
         eglot = {
           enable = true;
+          hook = [
+            "(rust-ts . eglot-ensure)"
+            "(typescript-ts . eglot-ensure)"
+          ];
         };
 
         treemacs = {
