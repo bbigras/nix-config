@@ -7,6 +7,7 @@
 , emacs-plz
 , defmacro-gensym
 , emacs-ement
+, combobulate
 , ...
 }:
 
@@ -80,6 +81,15 @@ localOverlays // {
             super.emacsPackages.persist
           ];
           src = emacs-ement;
+        };
+      };
+    })
+    (_self: super: {
+      emacsPackages = super.emacsPackages // {
+        combobulate = (super.emacsPackagesFor super.emacs-git).trivialBuild {
+          pname = "combobulate";
+          version = "git";
+          src = combobulate;
         };
       };
     })

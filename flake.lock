@@ -140,6 +140,22 @@
         "type": "github"
       }
     },
+    "combobulate": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1687195931,
+        "narHash": "sha256-VtQwSho7IkeLivukWVto+GqpF2JClCuAyYvUlqBs4KE=",
+        "owner": "mickeynp",
+        "repo": "combobulate",
+        "rev": "582f896c73bd35654dc179155cfb9c7719098847",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mickeynp",
+        "repo": "combobulate",
+        "type": "github"
+      }
+    },
     "crane": {
       "inputs": {
         "flake-compat": [
@@ -1335,6 +1351,7 @@
         "agenix": "agenix",
         "agenix-rekey": "agenix-rekey",
         "attic": "attic",
+        "combobulate": "combobulate",
         "darwin": "darwin",
         "defmacro-gensym": "defmacro-gensym",
         "dendrite-demo-pinecone": "dendrite-demo-pinecone",

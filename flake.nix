@@ -106,6 +106,10 @@
       url = "github:alphapapa/ement.el";
       flake = false;
     };
+    combobulate = {
+      url = "github:mickeynp/combobulate";
+      flake = false;
+    };
 
     dendrite-demo-pinecone.url = "github:bbigras/dendrite-demo-pinecone";
 
