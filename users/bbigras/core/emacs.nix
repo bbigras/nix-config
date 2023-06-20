@@ -32,7 +32,11 @@ in
     samba # for tramp
     xclip # [tag:xclip-for-org-download-clipboard]
   ] ++ lib.optionals (stdenv.hostPlatform.system == "x86_64-linux") [
+    marksman
     myLatex
+    nodePackages.vscode-css-languageserver-bin
+    nodePackages.vscode-json-languageserver
+    yaml-language-server
   ];
   programs.emacs = {
     enable = true;
@@ -2135,6 +2139,11 @@ in
           hook = [
             "(rust-ts-mode . eglot-ensure)"
             "(typescript-ts-mode . eglot-ensure)"
+            "(nix-mode . eglot-ensure)"
+            "(css-ts-mode . eglot-ensure)"
+            "(json-ts-mode . eglot-ensure)"
+            "(markdown-mode . eglot-ensure)"
+            "(yaml-ts-mode . eglot-ensure)"
           ];
         };
 
