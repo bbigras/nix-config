@@ -384,13 +384,6 @@ in
           enable = true;
         };
 
-        prettier-js = {
-          enable = true;
-          hook = [
-            "(typescript-ts-mode . prettier-js-mode)"
-          ];
-        };
-
         ws-butler = {
           enable = true;
           hook = [
@@ -789,6 +782,14 @@ in
           config = ''
             (setq-default save-place t)
             (setq save-place-file (locate-user-emacs-file "places"))
+          '';
+        };
+
+        apheleia = {
+          enable = true;
+          config = ''
+            (require 'apheleia-core)
+            (apheleia-global-mode +1)
           '';
         };
 
