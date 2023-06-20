@@ -1355,6 +1355,13 @@ in
         # for org-mode
         htmlize.enable = true;
 
+        golden-ratio = {
+          enable = true;
+          config = ''
+            (golden-ratio-mode 1)
+          '';
+        };
+
         topsy = {
           enable = true;
           hook = [
