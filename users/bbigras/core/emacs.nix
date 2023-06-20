@@ -220,12 +220,6 @@ in
 
         (setq native-comp-async-report-warnings-errors nil)
 
-        ; Use Tree-sitter
-        (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode))
-        (add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
-        (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
-        (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-ts-mode))
-        (setq treesit-extra-load-path '("${grammarsLibPath}"))
 
         ; Enable mouse in terminal/TTY
         (xterm-mouse-mode 1)
@@ -795,6 +789,32 @@ in
           config = ''
             (setq-default save-place t)
             (setq save-place-file (locate-user-emacs-file "places"))
+          '';
+        };
+
+        treesit = {
+          enable = true;
+          config = ''
+            (setq treesit-extra-load-path '("${grammarsLibPath}"))
+
+            ;; Optional, but recommended. Tree-sitter enabled major modes are
+            ;; distinct from their ordinary counterparts.
+            ;;
+            ;; You can remap major modes with `major-mode-remap-alist'. Note
+            ;; that this does *not* extend to hooks! Make sure you migrate them
+            ;; also
+            (dolist (mapping '((python-mode . python-ts-mode)
+                               (css-mode . css-ts-mode)
+                               (typescript-mode . tsx-ts-mode)
+                               (js-mode . js-ts-mode)
+                               (css-mode . css-ts-mode)
+                               (rust-mode . rust-ts-mode)
+                               (conf-toml-mode . toml-ts-mode)
+                               (yaml-mode . yaml-ts-mode)))
+              (add-to-list 'major-mode-remap-alist mapping))
+
+            (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
+            (add-to-list 'auto-mode-alist '("\\.json\\'" . json-ts-mode))
           '';
         };
 
