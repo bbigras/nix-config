@@ -174,6 +174,7 @@
       aichat
       quickemu
       xournalpp
+      mediainfo
     ];
     shellAliases = {
       cat = "${pkgs.bat}/bin/bat";
