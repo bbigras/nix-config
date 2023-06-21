@@ -173,6 +173,7 @@
       zrok
       aichat
       quickemu
+      xournalpp
     ];
     shellAliases = {
       cat = "${pkgs.bat}/bin/bat";
