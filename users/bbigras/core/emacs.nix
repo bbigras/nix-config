@@ -2189,6 +2189,7 @@ in
           hook = [
             "(rust-ts-mode . eglot-ensure)"
             "(typescript-ts-mode . eglot-ensure)"
+            "(js-ts-mode . eglot-ensure)"
             "(nix-mode . eglot-ensure)"
             "(css-ts-mode . eglot-ensure)"
             "(json-ts-mode . eglot-ensure)"
