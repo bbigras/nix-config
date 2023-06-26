@@ -15,6 +15,7 @@ jobs:
       - uses: ./.github/actions/setup-nix
         with:
           cachix-signing-key: ${{ secrets.CACHIX_SIGNING_KEY }}
+      - uses: DeterminateSystems/magic-nix-cache-action@main
       - name: parse
         run: nix-instantiate --json --parse ./**/*.nix
       - name: lints
@@ -35,6 +36,7 @@ jobs:
       - uses: ./.github/actions/setup-nix
         with:
           cachix: false
+      - uses: DeterminateSystems/magic-nix-cache-action@main
       - id: get-hosts
         run: |
           TMP="$(mktemp -d)"
@@ -92,6 +94,7 @@ jobs:
       - uses: ./.github/actions/setup-nix
         with:
           cachix-auth-token: ${{ secrets.CACHIX_AUTH_TOKEN }}
+      - uses: DeterminateSystems/magic-nix-cache-action@main
       - name: build-nix
         id: build-nix
         run: |
@@ -161,6 +164,7 @@ jobs:
         with:
           cachix-signing-key: ${{ secrets.CACHIX_SIGNING_KEY }}
           nix-package-url: ${{ steps.get-nix.outputs.package-url }}
+      - uses: DeterminateSystems/magic-nix-cache-action@main
       - name: build-shell
         run: |
           nix run nixpkgs\#nix-build-uncached -- \
@@ -204,6 +208,7 @@ jobs:
         with:
           cachix-signing-key: ${{ secrets.CACHIX_SIGNING_KEY }}
           nix-package-url: ${{ steps.get-nix.outputs.package-url }}
+      - uses: DeterminateSystems/magic-nix-cache-action@main
       - name: rekey
         run: nix run .#rekey -- --dummy
       - name: build-host
