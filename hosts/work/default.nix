@@ -3,7 +3,7 @@
 let
   nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
 
-  my_attic = (import attic);
+  my_attic = import attic;
 
   upload_to_attic = pkgs.writeScriptBin "upload-to-attic" ''
     #!/bin/sh

@@ -1,33 +1,5 @@
 { hostType, impermanence, nix-index-database, pkgs, stylix, ... }:
 
-let
-  #perfect_eq_repo = pkgs.fetchgit {
-  #  url = "https://github.com/JackHack96/EasyEffects-Presets";
-  #  rev = "041588fa7871b53282221741b3d11593f96ce468";
-  #  sha256 = "sha256-gpdW2k9E+3DtaztD89wp1TA1kyrAdQNXNFT3hk36WA0=";
-  #};
-
-  # easyeffects-presets_repo = pkgs.fetchgit {
-  #   url = "https://github.com/Digitalone1/EasyEffects-Presets";
-  #   rev = "1148788e2768170d704fd2de4f7f5053d32f71d4";
-  #   sparseCheckout = ''
-  #     LoudnessEqualizer.json
-  #   '';
-  #   sha256 = "sha256-WzfVg7PAfrreKC1ckzVtCfOJ90JaUdl/h5mcXt4SFUw=";
-  # };
-
-  # mic_gist_repo = pkgs.fetchgit {
-  #   url = "https://gist.github.com/a10225eb132cdcb97d7c458526f93085.git";
-  #   rev = "5219f20faeaab9ac069cfe93b1d6fbdd82301dfe";
-  #   sha256 = "sha256-pSjtpKs2nA5fZ85k2N18nzzK5JttUj0ZqxpMEXd+OEs=";
-  # };
-
-  #pipewire_repo = pkgs.fetchgit {
-  #  url = "https://gitlab.freedesktop.org/pipewire/pipewire.git";
-  #  rev = "c6ffeeeb342311f9d8b3916447f2001e959f99e6";
-  #  sha256 = "sha256-frkxyR63frjdOHSF8obOA3NWGyhSKg+yVjlZ1mLlsMY=";
-  #};
-in
 {
   imports = [
     impermanence.nixosModules.home-manager.impermanence
