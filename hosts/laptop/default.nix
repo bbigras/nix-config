@@ -18,9 +18,7 @@ rec {
       ../../hardware/efi.nix
       ../../hardware/bluetooth.nix
       ../../hardware/sound.nix
-
-      common-pc-laptop
-      common-cpu-intel
+      dell-xps-13-9343
       common-hidpi
 
       ../../graphical
