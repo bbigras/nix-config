@@ -176,6 +176,8 @@
       xournalpp
       mediainfo
       space-station-14-launcher
+      git-annex
+      git-remote-gcrypt
     ];
     shellAliases = {
       cat = "${pkgs.bat}/bin/bat";
