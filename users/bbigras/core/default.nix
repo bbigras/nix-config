@@ -175,6 +175,7 @@
       quickemu
       xournalpp
       mediainfo
+      space-station-14-launcher
     ];
     shellAliases = {
       cat = "${pkgs.bat}/bin/bat";
