@@ -169,7 +169,9 @@ jobs:
         run: |
           nix run nixpkgs\#nix-build-uncached -- \
             --keep-going \
-            --extra-platforms "aarch64-linux i686-linux" --extra-trusted-substituters "https://staging.attic.rs/attic-ci" --extra-trusted-public-keys "attic-ci:U5Sey4mUxwBXM3iFapmP0/ogODXywKLRNgRPQpEXxbo=" \
+            --extra-platforms "aarch64-linux" \
+            --extra-substituters "https://staging.attic.rs/attic-ci https://nix-on-droid.cachix.org" \
+            --extra-trusted-public-keys "attic-ci:U5Sey4mUxwBXM3iFapmP0/ogODXywKLRNgRPQpEXxbo= nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU=" \
             -A "devShells.${{ matrix.system.hostPlatform }}.default.inputDerivation"
 
   build-host:
