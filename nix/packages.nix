@@ -33,5 +33,5 @@ let
     else { };
 in
 structuredHostFarms // defaultHostFarm // {
-  inherit (nix.packages.${localSystem}) nixBinaryTarball;
+  nixBinaryTarball = nix.hydraJobs.binaryTarball.${localSystem};
 }
