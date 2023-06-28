@@ -1,4 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+
+let
+  tmux-airline = ./tmux-airline.sh;
+in
+{
   home = {
     packages = with pkgs; [
       tmux-sessionizer
@@ -16,7 +21,9 @@
       copycat
       copy-toolkit
       extrakto
-      nord
+      fuzzback
+      mode-indicator
+      # nord
       prefix-highlight
       yank
       tmux-thumbs
@@ -37,5 +44,14 @@
           fzf --reverse --header jump-to-session --preview 'tmux capture-pane -pt {}'  |\
           xargs tmux switch-client -t"
     '';
+
+    # set -g status-right '#(eval ${tmux-airline} `tmux display -p "#{client_width}"`)'
+
+    # set -g status-right " #(tms sessions)"
+    # bind -r '(' switch-client -p\; refresh-client -S
+    # bind -r ')' switch-client -n\; refresh-client -S
+
+    # tmuxinator.enable
+    # tmuxp.enable
   };
 }

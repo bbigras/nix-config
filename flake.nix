@@ -3,6 +3,7 @@
   nixConfig.substituters = [
     "https://cache.nixos.org"
     "https://bbigras-nix-config.cachix.org"
+    "https://nix-config.cachix.org"
     # "https://cache.ngi0.nixos.org"
     "https://dendrite-demo-pinecone.cachix.org"
     "https://nix-community.cachix.org"
@@ -20,6 +21,7 @@
     "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU="
     "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
     "attic-ci:U5Sey4mUxwBXM3iFapmP0/ogODXywKLRNgRPQpEXxbo="
+    "nix-config.cachix.org-1:Vd6raEuldeIZpttVQfrUbLvXJHzzzkS0pezXCVVjDG4="
   ];
 
   inputs = {
@@ -95,6 +97,11 @@
       inputs.flake-utils.follows = "flake-utils";
     };
 
+    codemetrics = {
+      url = "github:jcs-elpa/codemetrics";
+      flake = false;
+    };
+
     emacs-plz = {
       url = "github:alphapapa/plz.el";
       flake = false;
@@ -109,6 +116,15 @@
       url = "github:alphapapa/ement.el";
       flake = false;
     };
+    org-tufte = {
+      url = "github:Zilong-Li/org-tufte";
+      flake = false;
+    };
+    org-modern-indent = {
+      url = "github:jdtsmith/org-modern-indent";
+      flake = false;
+    };
+
     combobulate = {
       url = "github:mickeynp/combobulate";
       flake = false;

@@ -6,8 +6,8 @@ final: prev:
       domain = "gitlab.freedesktop.org";
       owner = "wlroots";
       repo = "wlroots";
-      rev = "30616bcf0cb3f2b15bb9f9ecd71b26f7bfe13481";
-      hash = "sha256-X/8LRJP9vQJQ0AQbd6wncaRVc4B/e1xn8Ux9UpUVdKs=";
+      rev = "71b57b8d27e2817ebcaa6471e22251203c370554";
+      hash = "sha256-yYFlQsHD/TU0l6pS0t9tSHh7w+LFAUclJMpSyiA+Wnw=";
     };
     nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ final.hwdata ];
     buildInputs = (old.buildInputs or [ ]) ++ [
@@ -21,8 +21,8 @@ final: prev:
     src = final.fetchFromGitHub {
       owner = "Nefsen402";
       repo = "sway";
-      rev = "2c098513a27f1f0b40e0a70e25041e96d8f01874";
-      hash = "sha256-04jwtHCYqNmQ0EyH9ySSVD5lGoxEDrcQ3hcjPMtiWLc=";
+      rev = "2ba70db26475a62025e0d9a987e8de550ccd7a0f";
+      hash = "sha256-gRAkreCYLwvCNPM1HCx0iKoFlUsxXL/XkN7RNUMTIXM=";
     };
 
     nativeBuildInputs = with final; (old.nativeBuildInputs or [ ]) ++ [ bash-completion fish ];
@@ -32,5 +32,5 @@ final: prev:
       (p: !p ? name || p.name != "LIBINPUT_CONFIG_ACCEL_PROFILE_CUSTOM.patch")
       (old.patches or [ ]);
 
-  })).override { wlroots_0_16 = final.wlroots_0_17; };
+  })).override { wlroots = final.wlroots_0_17; };
 }

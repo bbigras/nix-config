@@ -64,6 +64,8 @@ rec {
   };
 
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
+  networking.interfaces."enp3s0".wakeOnLan.enable = true;
+
   boot = {
     binfmt.registrations.aarch64 = {
       interpreter = "${qemu-aarch64-static}/bin/qemu-aarch64-static";
@@ -72,6 +74,8 @@ rec {
     };
     kernelPackages = pkgs.linuxPackages_zen;
     loader.grub.useOSProber = true;
+
+    loader.systemd-boot.memtest86.enable = true;
 
     kernel.sysctl = {
       "kernel.sysrq" = 1;
@@ -146,6 +150,13 @@ rec {
     };
 
   # networking.firewall.enable = false;
+  networking.firewall = {
+    extraCommands = ''
+      iptables -A FORWARD -i tailscale0 -j ACCEPT
+      iptables -A FORWARD -o tailscale0 -j ACCEPT
+    '';
+    # iptables -t nat -A POSTROUTING -o eno1 -j MASQUERADE
+  };
   networking.firewall.allowedTCPPorts = [
     9977
     9988
@@ -178,13 +189,17 @@ rec {
 
   environment.systemPackages = with pkgs; [
     # boot.kernelPackages.bcc
+    fwupd
   ];
   virtualisation.docker.enable = true;
+
+  services.fwupd.enable = true;
 
   environment.persistence."/persist" = {
     hideMounts = true;
     directories = [
       "/var/lib/sonarr"
+      "/var/lib/lidarr"
       "/var/lib/jellyfin"
       "/var/lib/tailscale"
       "/var/lib/flatpak"
@@ -273,5 +288,6 @@ rec {
     };
   };
 
-  services.sonarr.enable = true;
+  services.sonarr.enable = false;
+  services.lidarr.enable = false;
 }

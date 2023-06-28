@@ -32,12 +32,14 @@ in
     samba # for tramp
     xclip # [tag:xclip-for-org-download-clipboard]
   ] ++ lib.optionals (stdenv.hostPlatform.system == "x86_64-linux") [
+    khoj
     marksman
     myLatex
     nodePackages.vscode-css-languageserver-bin
     nodePackages.vscode-json-languageserver
     yaml-language-server
   ];
+
   programs.emacs = {
     enable = true;
 
@@ -220,6 +222,9 @@ in
 
         (setq native-comp-async-report-warnings-errors nil)
 
+        ; (server-start)
+
+        (add-hook 'eshell-preoutput-filter-functions  'ansi-color-apply)
 
         ; Enable mouse in terminal/TTY
         (xterm-mouse-mode 1)
@@ -474,6 +479,7 @@ in
           enable = true;
           command = [ "eldoc-mode" ];
         };
+        # (setq eldoc-echo-area-use-multiline-p nil)
 
         eldoc-box = {
           enable = true;
@@ -530,14 +536,55 @@ in
             (setq jinx-languages "fr_CA en_CA")
           '';
         };
+        # flymake-vale.enable = true;
+
+        flymake-sqlfluff = {
+          enable = true;
+          hook = [ "(sql-mode . flymake-sqlfluff-load)" ];
+          #           config = ''
+          # (add-hook 'sql-mode-hook #'flymake-sqlfluff-load)
+          #           '';
+        };
+
         flymake-eslint = {
           enable = true;
           config = ''
-            (add-hook 'eglot-managed-mode-hook (lambda ()
+            (setq flymake-eslint-executable-name "${pkgs.nodePackages.eslint}/bin/eslint")
+
+            (add-hook 'typescript-ts-mode-hook (lambda ()
+              (remove-hook 'flymake-diagnostic-functions 'eglot-flymake-backend)
+              (setq-local flymake-eslint-project-root (locate-dominating-file buffer-file-name ".eslintrc.js"))
+              (flymake-eslint-enable)))
+            (add-hook 'js-ts-mode-hook (lambda ()
               (remove-hook 'flymake-diagnostic-functions 'eglot-flymake-backend)
               (setq-local flymake-eslint-project-root (locate-dominating-file buffer-file-name ".eslintrc.js"))
               (flymake-eslint-enable)))
           '';
+        };
+
+        osm = {
+          enable = true;
+          bind = {
+            # "C-c m h" = "osm-home";
+            # "C-c m s" = "osm-search";
+            # "C-c m v" = "osm-server";
+            # "C-c m t" = "osm-goto";
+            # "C-c m x" = "osm-gpx-show";
+            # "C-c m j" = "osm-bookmark-jump";
+          };
+          init = ''
+            ;; Load Org link support
+            (with-eval-after-load 'org
+              (require 'osm-ol))
+          '';
+        };
+
+        org-transclusion = {
+          enable = true;
+          #           init = ''
+          # (define-key global-map (kbd "<f12>") #'org-transclusion-add)
+          # (define-key global-map (kbd "C-n t") #'org-transclusion-mode)
+          #           '';
         };
 
         org-rich-yank = {
@@ -620,6 +667,9 @@ in
                 (prism-blend color "white" 0.5)))
           '';
         };
+
+        # Highlight and annotate text file and websites
+        org-remark.enable = true;
 
         org-tempo = {
           enable = true;
@@ -907,6 +957,7 @@ in
 
         consult = {
           enable = true;
+          after = [ "org" ];
           hook = [
             "(completion-list-mode . consult-preview-at-point-mode)"
           ];
@@ -969,63 +1020,142 @@ in
           };
 
           init = ''
-            (require 'consult-xref)
+                        (require 'consult-xref)
+                        (require 'consult-org)
 
-            ;; Optionally configure the register formatting. This improves the register
-            ;; preview for `consult-register', `consult-register-load',
-            ;; `consult-register-store' and the Emacs built-ins.
-            (setq register-preview-delay 0.5
-                  register-preview-function #'consult-register-format)
+                        ;; Optionally configure the register formatting. This improves the register
+                        ;; preview for `consult-register', `consult-register-load',
+                        ;; `consult-register-store' and the Emacs built-ins.
+                        (setq register-preview-delay 0.5
+                              register-preview-function #'consult-register-format)
 
-            ;; Optionally tweak the register preview window.
-            ;; This adds thin lines, sorting and hides the mode line of the window.
-            (advice-add #'register-preview :override #'consult-register-window)
+                        ;; Optionally tweak the register preview window.
+                        ;; This adds thin lines, sorting and hides the mode line of the window.
+                        (advice-add #'register-preview :override #'consult-register-window)
 
-            ;; Use Consult to select xref locations with preview
-            (setq xref-show-xrefs-function #'consult-xref
-                  xref-show-definitions-function #'consult-xref)
+                        ;; Use Consult to select xref locations with preview
+                        (setq xref-show-xrefs-function #'consult-xref
+                              xref-show-definitions-function #'consult-xref)
 
-            ;; Configure other variables and modes in the :config section,
-            ;; after lazily loading the package.
-            :config
+                        ;; Configure other variables and modes in the :config section,
+                        ;; after lazily loading the package.
+                        :config
 
-            ;; Optionally configure preview. The default value
-            ;; is 'any, such that any key triggers the preview.
-            ;; (setq consult-preview-key 'any)
-            ;; (setq consult-preview-key "M-.")
-            ;; (setq consult-preview-key '("S-<down>" "S-<up>"))
-            ;; For some commands and buffer sources it is useful to configure the
-            ;; :preview-key on a per-command basis using the `consult-customize' macro.
-            (consult-customize
-             consult-theme :preview-key '(:debounce 0.2 any)
-             consult-ripgrep consult-git-grep consult-grep
-             consult-bookmark consult-recent-file consult-xref
-             consult--source-bookmark consult--source-file-register
-             consult--source-recent-file consult--source-project-recent-file
-             ;; :preview-key "M-."
-             :preview-key '(:debounce 0.4 any))
+                        ;; Optionally configure preview. The default value
+                        ;; is 'any, such that any key triggers the preview.
+                        ;; (setq consult-preview-key 'any)
+                        ;; (setq consult-preview-key "M-.")
+                        ;; (setq consult-preview-key '("S-<down>" "S-<up>"))
+                        ;; For some commands and buffer sources it is useful to configure the
+                        ;; :preview-key on a per-command basis using the `consult-customize' macro.
+                        (consult-customize
+                         consult-theme :preview-key '(:debounce 0.2 any)
+                         consult-ripgrep consult-git-grep consult-grep
+                         consult-bookmark consult-recent-file consult-xref
+                         consult--source-bookmark consult--source-file-register
+                         consult--source-recent-file consult--source-project-recent-file
+                         ;; :preview-key "M-."
+                         :preview-key '(:debounce 0.4 any))
 
-            ;; Optionally configure the narrowing key.
-            ;; Both < and C-+ work reasonably well.
-            (setq consult-narrow-key "<") ;; "C-+"
+                        ;; Optionally configure the narrowing key.
+                        ;; Both < and C-+ work reasonably well.
+                        (setq consult-narrow-key "<") ;; "C-+"
 
-            ;; Optionally make narrowing help available in the minibuffer.
-            ;; You may want to use `embark-prefix-help-command' or which-key instead.
-            ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
+                        ;; Optionally make narrowing help available in the minibuffer.
+                        ;; You may want to use `embark-prefix-help-command' or which-key instead.
+                        ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
 
-            ;; By default `consult-project-function' uses `project-root' from project.el.
-            ;; Optionally configure a different project root function.
-            ;;;; 1. project.el (the default)
-            ;; (setq consult-project-function #'consult--default-project--function)
-            ;;;; 2. vc.el (vc-root-dir)
-            ;; (setq consult-project-function (lambda (_) (vc-root-dir)))
-            ;;;; 3. locate-dominating-file
-            ;; (setq consult-project-function (lambda (_) (locate-dominating-file "." ".git")))
-            ;;;; 4. projectile.el (projectile-project-root)
-            ;; (autoload 'projectile-project-root "projectile")
-            ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
-            ;;;; 5. No project support
-            ;; (setq consult-project-function nil)
+                        ;; By default `consult-project-function' uses `project-root' from project.el.
+                        ;; Optionally configure a different project root function.
+                        ;;;; 1. project.el (the default)
+                        ;; (setq consult-project-function #'consult--default-project--function)
+                        ;;;; 2. vc.el (vc-root-dir)
+                        ;; (setq consult-project-function (lambda (_) (vc-root-dir)))
+                        ;;;; 3. locate-dominating-file
+                        ;; (setq consult-project-function (lambda (_) (locate-dominating-file "." ".git")))
+                        ;;;; 4. projectile.el (projectile-project-root)
+                        ;; (autoload 'projectile-project-root "projectile")
+                        ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
+                        ;;;; 5. No project support
+                        ;; (setq consult-project-function nil)
+
+
+            (defvar consult--previous-point nil
+                "Location of point before entering minibuffer.
+            Used to preselect nearest headings and imenu items.")
+
+            (defun consult--set-previous-point ()
+              "Save location of point. Used before entering the minibuffer."
+              (setq consult--previous-point (point)))
+
+            (advice-add #'consult-org-heading :before #'consult--set-previous-point)
+            (advice-add #'consult-outline :before #'consult--set-previous-point)
+
+            (advice-add #'vertico--update :after #'consult-vertico--update-choose)
+
+            (defun consult-vertico--update-choose (&rest _)
+              "Pick the nearest candidate rather than the first after updating candidates."
+              (when (and consult--previous-point
+                         (memq current-minibuffer-command
+                               '(consult-org-heading consult-outline)))
+                (setq vertico--index
+                      (max 0 ; if none above, choose the first below
+                           (1- (or (seq-position
+                                    vertico--candidates
+                                    consult--previous-point
+                                    (lambda (cand point-pos) ; counts on candidate list being sorted
+                                      (> (cl-case current-minibuffer-command
+                                           (consult-outline
+                                            (car (consult--get-location cand)))
+                                           (consult-org-heading
+                                            (get-text-property 0 'consult--candidate cand)))
+                                         point-pos)))
+                                   (length vertico--candidates))))))
+              (setq consult--previous-point nil))
+
+            ;; org clock
+
+            (setq org-clock-persist t)
+            (with-eval-after-load 'org
+              (org-clock-persistence-insinuate))
+
+            (defun consult-clock-in (&optional match scope resolve)
+              "Clock into an Org heading."
+              (interactive (list nil nil current-prefix-arg))
+              (require 'org-clock)
+              (org-clock-load)
+              (save-window-excursion
+                (consult-org-heading
+                 match
+                 (or scope
+                     (thread-last org-clock-history
+                       (mapcar 'marker-buffer)
+                       (mapcar 'buffer-file-name)
+                       (delete-dups)
+                       (delq nil))
+                     (user-error "No recent clocked tasks")))
+                (org-clock-in nil (when resolve
+                                    (org-resolve-clocks)
+                                    (org-read-date t t)))))
+
+            (consult-customize consult-clock-in
+                               :prompt "Clock in: "
+                               :preview-key "M-."
+                               :group
+                               (lambda (cand transform)
+                                 (let* ((marker (get-text-property 0 'consult--candidate cand))
+                                        (name (if (member marker org-clock-history)
+                                                  "*Recent*"
+                                                (buffer-name (marker-buffer marker)))))
+                                   (if transform (substring cand (1+ (length name))) name))))
+          '';
+        };
+
+        emacs-gc-stats = {
+          enable = true;
+          config = ''
+            (setq emacs-gc-stats-gc-defaults 'emacs-defaults) ; optional
+            (emacs-gc-stats-mode +1)
           '';
         };
 
@@ -1084,7 +1214,7 @@ in
         marginalia = {
           enable = true;
           command = [ "marginalia-mode" ];
-          after = [ "vertico" ];
+          # after = [ "vertico" ];
           defer = 1;
           config = "(marginalia-mode)";
         };
@@ -1380,6 +1510,31 @@ in
             (global-org-modern-mode)
           '';
         };
+
+        # org-modern-indent = {
+        #   enable = true;
+        #   package = _epkgs: pkgs.emacsPackages.org-modern-indent;
+        #   config = ''
+        #     (add-hook 'org-mode-hook #'org-modern-indent-mode 90)
+        #   '';
+        # };
+
+        # org-tufte = {
+        #   enable = true;
+        #   package = _epkgs: pkgs.emacsPackages.org-tufte;
+        #   config = ''
+        #     (setq org-tufte-htmlize-code t)
+        #   '';
+        # };
+
+        # codemetrics = {
+        #   enable = true;
+        #   package = _epkgs: pkgs.emacsPackages.codemetrics;
+        #   # config = ''
+        #   # (codemetrics-mode 1)
+        #   # '';
+        # };
+
         org-ai = {
           enable = true;
           command = [ "org-ai-mode" ];
@@ -1393,6 +1548,16 @@ in
 
         org-hyperscheduler = {
           enable = true;
+        };
+
+        khoj = {
+          enable = true;
+          bind = {
+            "C-c s" = "khoj";
+          };
+          config = ''
+            (setq khoj-org-directories '("~/dev/org-mode"))
+          '';
         };
 
         # for org-mode
@@ -1503,6 +1668,16 @@ in
 
         org-ql.enable = true;
         org-sidebar.enable = true;
+
+        # not in melpa?
+        # org-similarity = {
+        #   enable = true;
+        #   config = ''
+        # (setq org-similarity-directory org-roam-directory)
+        # (setq org-similarity-language "french")
+        # (setq org-similarity-use-id-links t)
+        #           '';
+        # };
 
         nginx-mode.enable = true;
 
@@ -1679,7 +1854,7 @@ in
         # Set up yasnippet. Defer it for a while since I don't generally
         # need it immediately.
         yasnippet = {
-          enable = true;
+          enable = false;
           defer = 3;
           command = [ "yas-global-mode" "yas-minor-mode" "yas-expand-snippet" ];
           hook = [
@@ -1691,7 +1866,7 @@ in
         };
 
         yasnippet-snippets = {
-          enable = true;
+          enable = false;
           after = [ "yasnippet" ];
         };
 
@@ -1914,7 +2089,7 @@ in
         };
 
         company-yasnippet = {
-          enable = true;
+          enable = false;
           after = [ "company" "yasnippet" ];
           bind = {
             "M-/" = "company-yasnippet";

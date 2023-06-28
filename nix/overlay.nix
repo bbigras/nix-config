@@ -7,6 +7,9 @@
 , emacs-plz
 , defmacro-gensym
 , emacs-ement
+, org-tufte
+, org-modern-indent
+, codemetrics
 , combobulate
 , ...
 }:
@@ -84,6 +87,69 @@ localOverlays // {
         };
       };
     })
+
+    (_self: super: {
+      emacsPackages = super.emacsPackages // {
+        codemetrics = super.emacsPackages.trivialBuild {
+          pname = "codemetrics";
+          version = "git";
+          packageRequires = [
+            # super.emacsPackages.plz
+            # super.emacsPackages.ts
+            # super.emacsPackages.cl-lib
+            # super.emacsPackages.taxy
+            # super.emacsPackages.taxy-magit-section
+            # super.emacsPackages.svg-lib
+            # super.emacsPackages.persist
+            super.emacsPackages.s
+            super.emacsPackages.tree-sitter
+          ];
+          src = codemetrics;
+        };
+      };
+    })
+
+    (_self: super: {
+      emacsPackages = super.emacsPackages // {
+        org-tufte = super.emacsPackages.trivialBuild {
+          pname = "org-tufte";
+          version = "git";
+          packageRequires = [
+            # super.emacsPackages.plz
+            # super.emacsPackages.ts
+            # super.emacsPackages.cl-lib
+            # super.emacsPackages.taxy
+            # super.emacsPackages.taxy-magit-section
+            # super.emacsPackages.svg-lib
+            # super.emacsPackages.persist
+            super.emacsPackages.s
+          ];
+          src = org-tufte;
+        };
+      };
+    })
+
+
+    (_self: super: {
+      emacsPackages = super.emacsPackages // {
+        org-modern-indent = super.emacsPackages.trivialBuild {
+          pname = "org-modern-indent";
+          version = "git";
+          packageRequires = [
+            # super.emacsPackages.plz
+            # super.emacsPackages.ts
+            # super.emacsPackages.cl-lib
+            # super.emacsPackages.taxy
+            # super.emacsPackages.taxy-magit-section
+            # super.emacsPackages.svg-lib
+            # super.emacsPackages.persist
+            super.emacsPackages.compat
+          ];
+          src = org-modern-indent;
+        };
+      };
+    })
+
     (_self: super: {
       emacsPackages = super.emacsPackages // {
         combobulate = (super.emacsPackagesFor super.emacs-git).trivialBuild {
