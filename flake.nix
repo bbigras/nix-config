@@ -63,7 +63,9 @@
 
     # XXX: https://github.com/NixOS/nix/pull/8047
     nix = {
-      url = "github:lovesegfault/nix-config";
+      url = "github:lovesegfault/nix/always-allow-substitutes-backport";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "flake-compat";
     };
 
     nix-index-database = {
