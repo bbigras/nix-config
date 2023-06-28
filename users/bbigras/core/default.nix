@@ -208,6 +208,7 @@ in
       mediainfo
       git-annex
       git-remote-gcrypt
+      space-station-14-launcher
     ];
     shellAliases = {
       cat = "${pkgs.bat}/bin/bat";
