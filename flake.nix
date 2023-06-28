@@ -73,15 +73,16 @@
 
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
 
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.darwin.follows = "darwin";
       inputs.home-manager.follows = "home-manager";
-    };
-    agenix-rekey = {
-      url = "github:oddlama/agenix-rekey";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixos-hardware.url = "nixos-hardware";
@@ -130,7 +131,7 @@
     attic.url = "github:zhaofengli/attic";
   };
 
-  outputs = { self, nixpkgs, agenix-rekey, ... }@inputs:
+  outputs = { self, nixpkgs, ... }@inputs:
     let
       forAllSystems = nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" ];
     in
@@ -154,7 +155,5 @@
       homeConfigurations = import ./nix/home-manager.nix inputs;
       nixosConfigurations = import ./nix/nixos.nix inputs;
       nixondroidConfigurations = import ./nix/nix-on-droid.nix inputs;
-
-      apps = forAllSystems (localSystem: agenix-rekey.defineApps self (import nixpkgs { inherit localSystem; }) self.nixosConfigurations);
     };
 }

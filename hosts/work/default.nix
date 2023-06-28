@@ -33,10 +33,6 @@ in
     # "vm.swappiness" = 1;
   };
 
-  age.rekey = {
-    masterIdentities = [ "/home/bbigras/.config/age/keys/bbigras.age" ];
-  };
-
   virtualisation.docker.enable = true;
 
   environment.systemPackages = with pkgs; [ linuxPackages_zen.bcc ];

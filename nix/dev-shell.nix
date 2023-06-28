@@ -37,6 +37,7 @@ with self.pkgs.${localSystem};
       jq
       pre-commit
       rage
+      sops
     ];
 
     shellHook = ''

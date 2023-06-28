@@ -9,8 +9,8 @@
 , templates
 , nur
 , attic
+, sops-nix
 , agenix
-, agenix-rekey
 , ...
 }:
 let
@@ -29,12 +29,11 @@ let
           nixpkgs.pkgs = self.pkgs.${hostPlatform};
         }
         agenix.nixosModules.default
-        agenix-rekey.nixosModules.default
       ];
       specialArgs = {
         hostAddress = address;
         hostType = type;
-        inherit attic home-manager impermanence lanzaboote nix-index-database nixos-hardware nur stylix;
+        inherit attic home-manager impermanence lanzaboote nix-index-database nixos-hardware nur stylix sops-nix;
       };
     };
 in

@@ -1,10 +1,11 @@
-{ config, lib, pkgs, home-manager, impermanence, lanzaboote, nix-index-database, stylix, ... }:
+{ config, lib, pkgs, home-manager, impermanence, lanzaboote, nix-index-database, stylix, sops-nix, ... }:
 {
   imports = [
     home-manager.nixosModules.home-manager
     impermanence.nixosModules.impermanence
     lanzaboote.nixosModules.lanzaboote
     nix-index-database.nixosModules.nix-index
+    sops-nix.nixosModules.sops
     ./dendrite-demo-pinecone.nix
     ./openssh.nix
     stylix.nixosModules.stylix

@@ -209,8 +209,6 @@ jobs:
           cachix-signing-key: ${{ secrets.CACHIX_SIGNING_KEY }}
           nix-package-url: ${{ steps.get-nix.outputs.package-url }}
       - uses: DeterminateSystems/magic-nix-cache-action@main
-      - name: rekey
-        run: nix run .#rekey -- --dummy
       - name: build-host
         run: |
           nix run nixpkgs#nix-build-uncached -- \

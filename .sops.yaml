@@ -1,5 +1,5 @@
 keys:
-  - &bbigras 6C1E9EE5072B435ECBFB0C8545A837FF4235EEF3
+  - &bbigras age1ejjym658kp46e5jfqm2mplh895caekll9lpgmy9xgtgu0mh97y2qw09zpp
   - &desktop 044d18dc13bcddbbb441d6dfec2814bc0baba24c
   - &laptop 044563484de3f8a04eab2fa2a1f1884c176b12c3
   - &work 1d848bac4d07e12426f76ce9eac9bb416ff96587
@@ -8,20 +8,24 @@ creation_rules:
   - path_regex: hosts/desktop/restic-desktop.yaml
     key_groups:
       - pgp:
-        - *bbigras
         - *desktop
+      - age:
+        - *bbigras
   - path_regex: hosts/desktop/nebula.yaml
     key_groups:
       - pgp:
-        - *bbigras
         - *desktop
+      - age:
+        - *bbigras
   - path_regex: hosts/laptop/nebula.yaml
     key_groups:
       - pgp:
-        - *bbigras
         - *laptop
+      - age:
+        - *bbigras
   - path_regex: hosts/laptop/restic-laptop.yaml
     key_groups:
       - pgp:
-        - *bbigras
         - *laptop
+      - age:
+        - *bbigras

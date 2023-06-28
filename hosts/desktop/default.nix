@@ -63,34 +63,6 @@ rec {
     };
   };
 
-  age.identityPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
-  age.rekey = {
-    hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOeKDFWYxxGsWsyL9vs/sIKDTaguQR8MB1KY5jBVk16R root@desktop";
-    masterIdentities = [ "/home/bbigras/.config/age/keys/bbigras.age" ];
-  };
-
-  age.generators.wireguard-priv.script = { pkgs, file, ... }: ''
-    priv=$(${pkgs.wireguard-tools}/bin/wg genkey)
-    ${pkgs.wireguard-tools}/bin/wg pubkey <<< "$priv" > ${lib.escapeShellArg (lib.removeSuffix ".age" file + ".pub")}
-    echo "$priv"
-  '';
-
-  age.generators.yggdrasil.script = { pkgs, file, ... }: ''
-    ${pkgs.yggdrasil}/bin/yggdrasil -genconf
-  '';
-
-  age.secrets = {
-    yggdrasil = {
-      rekeyFile = ./secrets/yggdrasil.age;
-      generator = "yggdrasil";
-    };
-
-    wireguard = {
-      rekeyFile = ./secrets/wg.age;
-      generator = "wireguard-priv";
-    };
-  };
-
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
   boot = {
     binfmt.registrations.aarch64 = {
@@ -115,6 +87,14 @@ rec {
     ];
 
     xdg.mimeApps.enable = lib.mkForce false;
+  };
+
+  sops.secrets = {
+    restic-desktop-password.sopsFile = ./restic-desktop.yaml;
+    restic-desktop-creds.sopsFile = ./restic-desktop.yaml;
+    yggdrasil-conf.sopsFile = ./restic-desktop.yaml;
+    yggdrasil-conf.owner = config.users.users.yggdrasil.name;
+    wireguard.sopsFile = ./restic-desktop.yaml;
   };
 
   powerManagement.cpuFreqGovernor = "performance";

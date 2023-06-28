@@ -40,32 +40,12 @@ rec {
     boot.kernelPackages.bcc
   ];
 
-  age.identityPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
-  age.rekey = {
-    hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE4hqAgOm8CbtstqYcUwTHHqdXqd3FzwPvQl4YVp9Wec root@laptop";
-    masterIdentities = [ "/home/bbigras/.config/age/keys/bbigras.age" ];
-  };
-
-  age.generators.wireguard-priv.script = { pkgs, file, ... }: ''
-    priv=$(${pkgs.wireguard-tools}/bin/wg genkey)
-    ${pkgs.wireguard-tools}/bin/wg pubkey <<< "$priv" > ${lib.escapeShellArg (lib.removeSuffix ".age" file + ".pub")}
-    echo "$priv"
-  '';
-
-  age.generators.yggdrasil.script = { pkgs, file, ... }: ''
-    ${pkgs.yggdrasil}/bin/yggdrasil -genconf
-  '';
-
-  age.secrets = {
-    yggdrasil = {
-      rekeyFile = ./secrets/yggdrasil.age;
-      generator = "yggdrasil";
-    };
-
-    wireguard = {
-      rekeyFile = ./secrets/wg.age;
-      generator = "wireguard-priv";
-    };
+  sops.secrets = {
+    restic-laptop-password.sopsFile = ./restic-laptop.yaml;
+    restic-laptop-creds.sopsFile = ./restic-laptop.yaml;
+    yggdrasil-conf.sopsFile = ./restic-laptop.yaml;
+    yggdrasil-conf.owner = config.users.users.yggdrasil.name;
+    wireguard.sopsFile = ./restic-laptop.yaml;
   };
 
   hardware.brillo.enable = true;
