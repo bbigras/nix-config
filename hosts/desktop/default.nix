@@ -214,7 +214,7 @@ rec {
       #     "/etc/NetworkManager/system-connections"
     ];
     files = [
-      "/etc/machine-id"
+      # "/etc/machine-id"
       # "/etc/nix/id_rsa"
 
       "/etc/ssh/ssh_host_ed25519_key"
