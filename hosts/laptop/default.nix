@@ -71,6 +71,7 @@ rec {
   };
 
   services.flatpak.enable = true;
+  services.smartd.enable = true;
 
   fileSystems."/" =
     {

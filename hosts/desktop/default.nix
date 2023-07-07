@@ -122,6 +122,7 @@ rec {
     enable = true;
     openFirewall = true;
   };
+  services.smartd.enable = true;
 
   systemd.network = {
     enable = true;

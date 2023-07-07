@@ -51,6 +51,7 @@ in
 
   services.yggdrasil.enable = lib.mkForce false;
 
+  services.smartd.enable = true;
   networking = {
     hostName = "bbigras-work";
   };
