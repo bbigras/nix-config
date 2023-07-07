@@ -1,4 +1,4 @@
-{ lib, pkgs, nur, nixos-hardware, ... }:
+{ config, lib, pkgs, nur, nixos-hardware, ... }:
 
 let
   nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
@@ -51,7 +51,18 @@ in
 
   services.yggdrasil.enable = lib.mkForce false;
 
+  nix = {
+    extraOptions = ''
+      netrc-file = ${config.sops.secrets.netrc.path};
+    '';
+  };
+
   services.smartd.enable = true;
+
+  sops.secrets = {
+    netrc.sopsFile = ./secrets.yaml;
+  };
+
   networking = {
     hostName = "bbigras-work";
   };
