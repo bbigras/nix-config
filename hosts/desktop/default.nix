@@ -153,12 +153,12 @@ rec {
     enable = true;
   };
 
-  fileSystems."/media/gamedisk" =
-    {
-      device = "/dev/disk/by-uuid/A238EB6A38EB3BC3";
-      fsType = "ntfs";
-      options = [ "uid=1000,gid=100,rw,user,exec,umask=000" ];
-    };
+  boot.supportedFilesystems = [ "ntfs" ];
+  fileSystems."/media/gamedisk" = {
+    device = "/dev/disk/by-uuid/A238EB6A38EB3BC3";
+    fsType = "ntfs-3g";
+    options = [ "rw" "uid=1001" ];
+  };
 
   # networking.firewall.enable = false;
   networking.firewall.allowedTCPPorts = [
