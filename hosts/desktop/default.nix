@@ -85,6 +85,8 @@ rec {
     kernelPackages = pkgs.linuxPackages_zen;
     loader.grub.useOSProber = true;
 
+    loader.systemd-boot.memtest86.enable = true;
+
     kernel.sysctl = {
       "kernel.sysrq" = 1;
       # "fs.inotify.max_user_watches" = 524288;
