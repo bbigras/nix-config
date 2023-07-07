@@ -52,6 +52,18 @@ rec {
     ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ])
     ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/desktop.nix") then [ (builtins.getEnv "PWD" + "/secrets/desktop.nix") ] else [ ]);
 
+  fileSystems = {
+    "/".options = [ "compress=zstd" ];
+    "/home".options = [ "compress=zstd" ];
+    "/nix".options = [ "compress=zstd" "noatime" ];
+    "/persist" =
+      {
+        options = [ "compress=zstd" "noatime" ];
+        neededForBoot = true;
+      };
+    #"/swap".options = [ "noatime" ];
+  };
+
   nix = {
     extraOptions = ''
       extra-platforms = aarch64-linux i686-linux
