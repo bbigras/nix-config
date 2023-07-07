@@ -11,17 +11,7 @@ creation_rules:
         - *desktop
       - age:
         - *bbigras
-  - path_regex: hosts/desktop/nebula.yaml
-    key_groups:
-      - pgp:
         - *desktop
-      - age:
-        - *bbigras
-  - path_regex: hosts/laptop/nebula.yaml
-    key_groups:
-      - pgp:
-        - *laptop
-      - age:
         - *bbigras
   - path_regex: hosts/laptop/restic-laptop.yaml
     key_groups:
