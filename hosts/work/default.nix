@@ -44,11 +44,6 @@ in
       options = [ "subvol=nixos" "compress=zstd" ];
     };
 
-  services.printing = {
-    enable = true;
-    drivers = with pkgs; [ postscript-lexmark hplip ];
-  };
-
   services.yggdrasil.enable = lib.mkForce false;
 
   nix = {
