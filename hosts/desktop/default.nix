@@ -129,7 +129,7 @@ rec {
   systemd.network = {
     enable = true;
     networks = {
-      lan = {
+      "10-lan" = {
         DHCP = "yes";
         matchConfig.Name = "enp3s0";
         # domains = [ "~." ];
