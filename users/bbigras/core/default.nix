@@ -24,25 +24,8 @@
       kalker # calc
 
       mosh
-      neofetch
 
       ripgrep
-
-      google-chrome
-      remmina
-
-      # media
-      pavucontrol
-
-      # games
-      # lutris
-
-      # twitch
-      # streamlink
-      chatterino2
-
-      # comm
-      discord
 
       # dev
       bfg-repo-cleaner
@@ -54,12 +37,11 @@
 
       # net
       croc
-      qbittorrent
+
       rclone
       tailscale
       tcpdump
       webwormhole
-      wireshark
       xh
 
       # nix
@@ -112,10 +94,6 @@
       cargo-tarpaulin
       cargo-udeps
 
-      # games
-      starsector
-      mangohud
-      heroic
 
       compsize
 
@@ -129,20 +107,13 @@
 
       feh # light-weight image viewer
       killall
-      ghidra-bin
 
       unar
-      dbeaver
-      josm
       ntp
 
       # Go
       # go
       # gopls
-
-      # remote
-      anydesk
-      rustdesk
 
       # kubernetes
       k9s
@@ -154,28 +125,22 @@
       kubernetes-helm
       kind
 
-      anytype
-
       # perf
       sysstat
 
       ventoy
       docker-credential-helpers
-      # freeplane
       viddy
-      streamlink
       beets-unstable
       natscli
-      joplin-desktop
       just
-      megasync
+
       yt-dlp
       zrok
       aichat
       quickemu
-      xournalpp
       mediainfo
-      space-station-14-launcher
+
       git-annex
       git-remote-gcrypt
     ];
@@ -250,11 +215,8 @@
   };
 
   services = {
-    # kdeconnect.enable = true;
     # spotifyd.enable = true;
-    megasync.enable = true;
     syncthing.enable = true;
-    easyeffects.enable = true;
     pantalaimon = {
       enable = true;
       settings = {

@@ -15,6 +15,45 @@
     libnotify
     qalculate-gtk
     xdg-utils
+
+    google-chrome
+    remmina
+
+
+    # media
+    pavucontrol
+
+    # games
+    # lutris
+
+    # twitch
+    # streamlink
+    chatterino2
+
+    qbittorrent
+    wireshark
+
+    # games
+    # starsector
+    # mangohud
+    # heroic
+
+    dbeaver
+    josm
+
+
+    # remote
+    anydesk
+    rustdesk
+
+    # anytype
+
+    joplin-desktop
+    # megasync
+
+    xournalpp
+    space-station-14-launcher
+
   ] ++ lib.filter (lib.meta.availableOn stdenv.hostPlatform) [
     discord
     # iterm2
@@ -23,6 +62,12 @@
     # signal-desktop
     # thunderbird
   ];
+
+  services = {
+    # megasync.enable = true;
+    # kdeconnect.enable = true;
+    easyeffects.enable = true;
+  };
 
   stylix.fonts = {
     sansSerif = {
