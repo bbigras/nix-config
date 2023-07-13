@@ -24,6 +24,7 @@
       man-pages
       rsync
       (import attic)
+      molly-guard
     ];
   };
 
