@@ -5,8 +5,6 @@
       # XXX: Causes annoying "cannot link ... to ...: File exists" errors on Darwin
       auto-optimise-store = hostType == "nixos";
       allowed-users = [ "@wheel" ];
-      # c.f. https://github.com/NixOS/nix/pull/8047
-      always-allow-substitutes = true;
       build-users-group = "nixbld";
       builders-use-substitutes = true;
       trusted-users = [ "root" "@wheel" ];
