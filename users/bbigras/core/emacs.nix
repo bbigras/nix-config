@@ -2244,7 +2244,7 @@ in
 
     };
 
-  } // lib.optionalAttrs (osConfig.programs.sway.enable) {
+  } // lib.optionalAttrs osConfig.programs.sway.enable {
     package = pkgs.emacs-pgtk;
   };
 }
