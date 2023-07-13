@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, osConfig, ... }:
 
 let
   pcfg = config.programs.emacs.init.usePackage;
@@ -41,7 +41,7 @@ in
   programs.emacs = {
     enable = true;
 
-    package = pkgs.emacs-git;
+    package = pkgs.emacs-unstable;
 
     init = {
       enable = true;
@@ -2244,5 +2244,7 @@ in
 
     };
 
+  } // lib.optionalAttrs (osConfig.programs.sway.enable) {
+    package = pkgs.emacs-pgtk;
   };
 }
