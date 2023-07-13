@@ -42,14 +42,14 @@
     gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
   };
 
-  qt = {
-    enable = true;
-    platformTheme = "gnome";
-    style = {
-      name = "adwaita";
-      package = pkgs.adwaita-qt;
-    };
-  };
+  # qt = {
+  #   enable = true;
+  #   platformTheme = "gnome";
+  #   style = {
+  #     name = "adwaita";
+  #     package = pkgs.adwaita-qt;
+  #   };
+  # };
 
   services = {
     gpg-agent.pinentryFlavor = "gnome3";
