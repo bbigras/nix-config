@@ -1,4 +1,4 @@
-{ self, nix, ... }:
+{ self, ... }:
 
 localSystem:
 
@@ -32,6 +32,4 @@ let
     then { default = self.packages.${localSystem}.${localSystem}; }
     else { };
 in
-structuredHostFarms // defaultHostFarm // {
-  nixBinaryTarball = nix.hydraJobs.binaryTarball.${localSystem};
-}
+structuredHostFarms // defaultHostFarm
