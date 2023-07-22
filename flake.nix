@@ -117,11 +117,7 @@
     };
 
     templates.url = "github:NixOS/templates";
-    nix-on-droid = {
-      url = "github:t184256/nix-on-droid";
-      inputs.home-manager.follows = "home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-on-droid.url = "github:t184256/nix-on-droid/064e1b280e4711ecea0d7abbe885362cbf7b717a";
 
     attic.url = "github:zhaofengli/attic";
   };
