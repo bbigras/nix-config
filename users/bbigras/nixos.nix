@@ -10,6 +10,7 @@ with lib;
       ++ optionals config.programs.sway.enable [ "input" "video" ]
       ++ optionals config.programs.wireshark.enable [ "wireshark" ]
       ++ optionals config.services.flatpak.enable [ "flatpak" ]
+      ++ optionals config.services.kubo.enable [ "ipfs" ]
       ++ optionals config.services.unbound.enable [ "unbound" ]
       ++ optionals config.sound.enable [ "audio" ]
       ++ optionals config.virtualisation.docker.enable [ "docker" ]
