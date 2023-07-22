@@ -43,7 +43,7 @@
   };
 
   stylix = {
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tomorrow-night.yaml";
     # We need this otherwise the autoimport clashes with our manual import.
     homeManagerIntegration.autoImport = false;
     image = pkgs.nixos-artwork.wallpapers.simple-dark-gray.gnomeFilePath;

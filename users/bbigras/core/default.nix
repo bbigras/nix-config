@@ -239,7 +239,7 @@
   home.language.base = "fr_CA.UTF-8";
 
   stylix = {
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/ayu-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tomorrow-night.yaml";
     image = pkgs.nixos-artwork.wallpapers.simple-dark-gray.gnomeFilePath;
     targets.gnome.enable = hostType == "nixos";
     targets.gtk.enable = hostType == "nixos";
