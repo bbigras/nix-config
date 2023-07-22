@@ -2,6 +2,7 @@
 , nix-on-droid
 , nur
 , emacs-overlay
+, stylix
 , ...
 }:
 let
@@ -24,7 +25,7 @@ let
         (../hosts + "/${hostname}")
       ];
       extraSpecialArgs = {
-        inherit nur;
+        inherit nur stylix;
       };
     };
 in
