@@ -10,7 +10,7 @@ in
   programs.emacs = {
     enable = true;
 
-    package = pkgs.emacsGit;
+    package = pkgs.emacs-git;
 
     init = {
       enable = true;
