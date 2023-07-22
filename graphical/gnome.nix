@@ -17,4 +17,7 @@
     };
     xserver.desktopManager.gnome.enable = true;
   };
+
+  stylix.targets.plymouth.enable = false;
+  stylix.targets.gnome.enable = true;
 }
