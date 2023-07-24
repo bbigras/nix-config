@@ -29,7 +29,6 @@ runs:
         nix-package-url: ${{ inputs.nix-package-url }}
         extra-conf: |
           accept-flake-config = true
-          always-allow-substitutes = true
           builders-use-substitutes = true
           experimental-features = nix-command flakes
         github-token: ${{ inputs.github-token }}
