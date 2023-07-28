@@ -1,45 +1,50 @@
-{ hostType, lib, pkgs, ... }: {
-  fonts = {
-    fontDir.enable = hostType == "darwin";
-    fonts = with pkgs; [
-      # FIXME: Make nix-darwin stop exploding when there are repeated fonts
-      # dejavu_fonts
-      # noto-fonts-extra
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-cjk-serif
-      unifont
-      fira-code-symbols
-    ];
-  } // lib.optionalAttrs (hostType == "nixos") {
-    enableDefaultFonts = false;
-    enableGhostscriptFonts = false;
-    fontconfig = {
-      localConf = ''
-        <?xml version="1.0"?>
-        <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
-        <fontconfig>
-            <alias binding="weak">
-                <family>monospace</family>
-                <prefer>
-                    <family>emoji</family>
-                </prefer>
-            </alias>
-            <alias binding="weak">
-                <family>sans-serif</family>
-                <prefer>
-                    <family>emoji</family>
-                </prefer>
-            </alias>
-            <alias binding="weak">
-                <family>serif</family>
-                <prefer>
-                    <family>emoji</family>
-                </prefer>
-            </alias>
-        </fontconfig>
-      '';
-    };
+{ hostType, lib, pkgs, ... }:
+let
+  fontPackages = with pkgs; [
+    dejavu_fonts
+    noto-fonts-extra
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    unifont
+    fira-code-symbols
+  ];
+in
+{
+  fonts = lib.optionalAttrs (hostType == "nixos")
+    {
+      packages = fontPackages;
+      enableDefaultPackages = false;
+      enableGhostscriptFonts = false;
+      fontconfig = {
+        localConf = ''
+          <?xml version="1.0"?>
+          <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+          <fontconfig>
+              <alias binding="weak">
+                  <family>monospace</family>
+                  <prefer>
+                      <family>emoji</family>
+                  </prefer>
+              </alias>
+              <alias binding="weak">
+                  <family>sans-serif</family>
+                  <prefer>
+                      <family>emoji</family>
+                  </prefer>
+              </alias>
+              <alias binding="weak">
+                  <family>serif</family>
+                  <prefer>
+                      <family>emoji</family>
+                  </prefer>
+              </alias>
+          </fontconfig>
+        '';
+      };
+    } // lib.optionalAttrs (hostType == "darwin") {
+    fonts = fontPackages;
+    fontDir.enable = true;
   };
 
   stylix.fonts = {
