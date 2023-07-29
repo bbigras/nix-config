@@ -31,7 +31,7 @@ runs:
           accept-flake-config = true
           builders-use-substitutes = true
           experimental-features = nix-command flakes
-          system = aarch64-linux
+          extra-platforms = aarch64-linux
         github-token: ${{ inputs.github-token }}
     - uses: cachix/cachix-action@v12
       if: ${{ inputs.cachix == 'true' }}
