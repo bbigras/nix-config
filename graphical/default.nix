@@ -5,6 +5,6 @@
       else if hostType == "darwin" then ./darwin.nix
       else throw "Unknown hostType '${hostType}' for graphical"
     )
-    ./fonts.nix
+    #./fonts.nix
   ];
 }
