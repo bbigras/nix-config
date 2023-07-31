@@ -168,16 +168,16 @@
       "inputs": {
         "dendrite": "dendrite",
         "flake-compat": "flake-compat_2",
-        "flake-utils": "flake-utils_2",
+        "flake-parts": "flake-parts",
         "nixpkgs": "nixpkgs_2",
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1690774430,
-        "narHash": "sha256-Q+OGRzcvJxBtE5C/x/oN6M3ec3zJr6QGJYCBpYcGS3I=",
+        "lastModified": 1690780982,
+        "narHash": "sha256-aJeDBncjR51FXT/Dizlatwiy37cHw0SrzwzHRtPPFok=",
         "owner": "bbigras",
         "repo": "dendrite-demo-pinecone",
-        "rev": "d6baf1570aa23c69e16bfd80bbdd7c4883eb42e0",
+        "rev": "0e3e9d46ef6a34e63971a362124e5017983b7e3b",
         "type": "github"
       },
       "original": {
@@ -349,6 +349,26 @@
       }
     },
     "flake-parts": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "dendrite-demo-pinecone",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1688466019,
+        "narHash": "sha256-VeM2akYrBYMsb4W/MmBo1zmaMfgbL4cH3Pu8PGyIwJ0=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "8e8d955c22df93dbe24f19ea04f47a74adbdc5ec",
+        "type": "github"
+      },
+      "original": {
+        "id": "flake-parts",
+        "type": "indirect"
+      }
+    },
+    "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
           "lanzaboote",
@@ -558,7 +578,7 @@
         "flake-compat": [
           "flake-compat"
         ],
-        "flake-parts": "flake-parts",
+        "flake-parts": "flake-parts_2",
         "flake-utils": [
           "flake-utils"
         ],
@@ -902,10 +922,7 @@
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_3",
-        "flake-utils": [
-          "dendrite-demo-pinecone",
-          "flake-utils"
-        ],
+        "flake-utils": "flake-utils_2",
         "gitignore": "gitignore",
         "nixpkgs": [
           "dendrite-demo-pinecone",
