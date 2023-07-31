@@ -19,7 +19,7 @@ let
         (import (./overlays + "/${f}")))
       (builtins.readDir ./overlays);
 
-  dendrite-demo-pinecone2 = dendrite-demo-pinecone.defaultPackage."x86_64-linux";
+  dendrite-demo-pinecone2 = dendrite-demo-pinecone.packages.default."x86_64-linux";
 in
 localOverlays // {
   default = lib.composeManyExtensions ((lib.attrValues localOverlays) ++ [
