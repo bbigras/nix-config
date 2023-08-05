@@ -173,11 +173,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1691165128,
-        "narHash": "sha256-yacPIkGVsfMXWh7iKW55IzU8OhprGFqp5yKjhxoQbA8=",
+        "lastModified": 1691206441,
+        "narHash": "sha256-I6goucSEm4wuV/Yhp1B+we+lGqTakbbWEtxpcaFVwMs=",
         "owner": "bbigras",
         "repo": "dendrite-demo-pinecone",
-        "rev": "0f3f90595e1908eb960c95561c5cea48445ca537",
+        "rev": "8e5c256be40a41e4e63b6de7e49ac72376f27249",
         "type": "github"
       },
       "original": {
@@ -797,11 +797,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1691155369,
-        "narHash": "sha256-CIuJO5pgwCMsZM8flIU2OiZ79QfDCesXPsAiokCzlNM=",
+        "lastModified": 1691188534,
+        "narHash": "sha256-oXjS9GrZar+sB8j2KYzWw3dW62jYFhnjOsnO5+D+B3s=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "7d050b98e51cdbdd88ad960152d398d41c7ff5b4",
+        "rev": "5767e7b931f2e6ee7f582d564b8665095c059f3b",
         "type": "github"
       },
       "original": {
