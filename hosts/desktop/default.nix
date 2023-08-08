@@ -195,7 +195,6 @@ rec {
   environment.persistence."/persist" = {
     hideMounts = true;
     directories = [
-      "/var/lib/sonarr"
       "/var/lib/tailscale"
       "/var/lib/flatpak"
       "/var/lib/docker"
@@ -278,5 +277,4 @@ rec {
     };
   };
 
-  services.sonarr.enable = true;
 }
