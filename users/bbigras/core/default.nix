@@ -50,7 +50,6 @@
       manix
       nix-update
       nixpkgs-fmt
-      nixpkgs-review
 
       # cool cli tools
       fd
