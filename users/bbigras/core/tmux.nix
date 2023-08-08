@@ -16,7 +16,6 @@
       copycat
       copy-toolkit
       extrakto
-      nord
       prefix-highlight
       yank
       tmux-thumbs
