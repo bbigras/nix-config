@@ -120,10 +120,6 @@ rec {
   users.users.bbigras.packages = [ pkgs.retroarchBare ];
 
   services.flatpak.enable = true;
-  services.jellyfin = {
-    enable = true;
-    openFirewall = true;
-  };
   services.smartd.enable = true;
 
   systemd.network = {
@@ -200,7 +196,6 @@ rec {
     hideMounts = true;
     directories = [
       "/var/lib/sonarr"
-      "/var/lib/jellyfin"
       "/var/lib/tailscale"
       "/var/lib/flatpak"
       "/var/lib/docker"
