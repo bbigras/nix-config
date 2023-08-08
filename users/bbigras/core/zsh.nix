@@ -3,8 +3,8 @@
     enable = true;
     enableAutosuggestions = true;
     enableCompletion = true;
-    enableSyntaxHighlighting = true;
     enableVteIntegration = pkgs.stdenv.isLinux;
+    syntaxHighlighting.enable = true;
     autocd = true;
     dotDir = ".config/zsh";
     history = {
