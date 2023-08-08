@@ -16,6 +16,7 @@
       copycat
       copy-toolkit
       extrakto
+      fuzzback
       prefix-highlight
       yank
       tmux-thumbs
