@@ -15,7 +15,6 @@ in
     packages = with pkgs; [
       git-lfs
       nix-update
-      nixpkgs-review
       tmate
       upterm
     ];
