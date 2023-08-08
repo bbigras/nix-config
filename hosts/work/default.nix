@@ -12,16 +12,10 @@ in
       # Include the results of the hardware scan.
       ../../hardware/hardware-configuration-work.nix
       ../../hardware/efi.nix
-      ../../hardware/sound.nix
 
       common-pc
       common-pc-ssd
       common-cpu-intel
-
-      ../../graphical
-      ../../graphical/sway.nix
-      ../../graphical/trusted.nix
-      ../../dev/virt-manager.nix
 
       ../../users/bbigras
     ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_work.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_work.nix") ] else [ ]);
