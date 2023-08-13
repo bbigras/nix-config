@@ -1028,11 +1028,11 @@
         "nixpkgs-stable": "nixpkgs-stable_5"
       },
       "locked": {
-        "lastModified": 1691895982,
-        "narHash": "sha256-wScqSv0ZKlt11ST9t5/KUhnCr2S1sg9KcRte7MZUVa8=",
+        "lastModified": 1691915920,
+        "narHash": "sha256-4pitrahUZc1ftIw38CelScd+JYGUVZ4mQTMe3VAz44c=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "9d812be0a8ad4f22a6467c7dbc403d1af7c4655a",
+        "rev": "32603de0dc988d60a7b80774dd7aed1083cd9629",
         "type": "github"
       },
       "original": {
