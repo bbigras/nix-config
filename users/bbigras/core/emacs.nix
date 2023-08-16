@@ -540,6 +540,7 @@ in
           '';
         };
 
+        org-mime.enable = true;
         org-rich-yank = {
           enable = true;
           bindLocal = {
