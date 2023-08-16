@@ -542,6 +542,8 @@ in
 
         org-mime.enable = true;
         org-web-tools.enable = true;
+        ox-clip.enable = true;
+
         org-rich-yank = {
           enable = true;
           bindLocal = {
