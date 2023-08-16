@@ -88,18 +88,8 @@
       inputs.flake-utils.follows = "flake-utils";
     };
 
-    emacs-plz = {
-      url = "github:alphapapa/plz.el";
-      flake = false;
-    };
-
     defmacro-gensym = {
       url = "gitlab:akater/defmacro-gensym";
-      flake = false;
-    };
-
-    emacs-ement = {
-      url = "github:alphapapa/ement.el";
       flake = false;
     };
     combobulate = {

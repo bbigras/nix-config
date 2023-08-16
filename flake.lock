@@ -212,22 +212,6 @@
         "type": "github"
       }
     },
-    "emacs-ement": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1692152386,
-        "narHash": "sha256-/lpvK4kl36I4QijIIA6lLWP2j0rv1enbhQBBuljgLyc=",
-        "owner": "alphapapa",
-        "repo": "ement.el",
-        "rev": "abedcf0d21aa8b1f79e9ef4c275b54b01faf247b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "alphapapa",
-        "repo": "ement.el",
-        "type": "github"
-      }
-    },
     "emacs-overlay": {
       "inputs": {
         "flake-utils": [
@@ -249,22 +233,6 @@
       "original": {
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "type": "github"
-      }
-    },
-    "emacs-plz": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1688957193,
-        "narHash": "sha256-sufK/K+i8wEmlArXzqR6Gm5kueqTsB8XcKizCljH5PM=",
-        "owner": "alphapapa",
-        "repo": "plz.el",
-        "rev": "e8440857e5500ae3f223afa7bd90263abf5c4df3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "alphapapa",
-        "repo": "plz.el",
         "type": "github"
       }
     },
@@ -974,9 +942,7 @@
         "defmacro-gensym": "defmacro-gensym",
         "dendrite-demo-pinecone": "dendrite-demo-pinecone",
         "deploy-rs": "deploy-rs",
-        "emacs-ement": "emacs-ement",
         "emacs-overlay": "emacs-overlay",
-        "emacs-plz": "emacs-plz",
         "flake-compat": "flake-compat_4",
         "flake-utils": "flake-utils_3",
         "home-manager": "home-manager",

@@ -215,22 +215,6 @@
   services = {
     # spotifyd.enable = true;
     syncthing.enable = true;
-    pantalaimon = {
-      enable = true;
-      settings = {
-        Default = {
-          # LogLevel = "Debug";
-          SSL = true;
-        };
-        local-matrix = {
-          Homeserver = "https://matrix.org";
-          ListenAddress = "127.0.0.1";
-          ListenPort = 8009;
-          # UseKeyring = false;
-          IgnoreVerification = true;
-        };
-      };
-    };
     systembus-notify.enable = true;
   };
 
