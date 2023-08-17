@@ -26,5 +26,8 @@ with self.pkgs.${system};
         statix.enable = true;
         # stylua.enable = true;
       };
+      excludes = [
+        "users/bbigras/core/p10k-config/p10k.zsh"
+      ];
     };
 } // (deploy-rs.lib.deployChecks self.deploy)
