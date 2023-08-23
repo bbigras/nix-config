@@ -151,11 +151,11 @@
     "dendrite": {
       "flake": false,
       "locked": {
-        "lastModified": 1692099424,
-        "narHash": "sha256-wUuwAd62EZ8zcF1K3Aw5oBmqO3dbXH0fjAqffDfVmqE=",
+        "lastModified": 1692802604,
+        "narHash": "sha256-H/UQP9uKV2D6gYC2hbpny2TpKUT7IGjxslSSq32VAtY=",
         "owner": "matrix-org",
         "repo": "dendrite",
-        "rev": "9a12420428f1832c76fc0c84ad85db200e261ecb",
+        "rev": "a721294e2b339b45fe84995deb756bfe66804c45",
         "type": "github"
       },
       "original": {
@@ -173,11 +173,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1692767333,
-        "narHash": "sha256-NUmRof1XCNZeG1RXoMjPFuSZQkg01H0qpeqJrIMlSkU=",
+        "lastModified": 1692804865,
+        "narHash": "sha256-Byw08abtVzGrwHW1x/n5dK+WJUmAbsEXOgmIAPtq/Z8=",
         "owner": "bbigras",
         "repo": "dendrite-demo-pinecone",
-        "rev": "f1c436fcb3a2bd1e06eaf4558f80b81092f516fd",
+        "rev": "e9dd7100c3dc17a1e2bff864d2535a2c04d813db",
         "type": "github"
       },
       "original": {
@@ -745,11 +745,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1692684269,
-        "narHash": "sha256-zJk2pyF4Cuhtor0khtPlf+hfJIh22rzAUC+KU3Ob31Q=",
+        "lastModified": 1692742407,
+        "narHash": "sha256-faLzZ2u3Wki8h9ykEfzQr19B464eyADP3Ux7A/vjKIY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "9d757ec498666cc1dcc6f2be26db4fd3e1e9ab37",
+        "rev": "a2eca347ae1e542af3f818274c38305c1e00604c",
         "type": "github"
       },
       "original": {
