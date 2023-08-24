@@ -21,7 +21,7 @@
     username = "bbigras";
     stateVersion = "22.11";
     packages = with pkgs; [
-      kalker # calc
+      libqalculate
 
       mosh
 

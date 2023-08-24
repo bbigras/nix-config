@@ -156,7 +156,7 @@ in
       };
 
       home.packages = with pkgs; [
-        kalker
+        libqalculate
         cachix
         croc
         dogdns
