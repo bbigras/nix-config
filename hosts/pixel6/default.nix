@@ -98,6 +98,7 @@ in
           settings.auto_sync = true;
         };
         bat.enable = true;
+        carapace.enable = true;
         command-not-found.enable = true;
         emacs = {
           enable = true;

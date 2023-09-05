@@ -161,6 +161,7 @@
       settings.auto_sync = true;
     };
     bat.enable = true;
+    carapace.enable = true;
     exa = {
       enable = true;
       enableAliases = true;
