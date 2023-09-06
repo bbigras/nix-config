@@ -12,6 +12,7 @@ rec {
     [
       ../../core
       ../../dev
+      ../../veilid
 
       # Include the results of the hardware scan.
       ../../hardware/hardware-configuration-laptop.nix

@@ -23,6 +23,7 @@ rec {
   imports = with nixos-hardware.nixosModules;
     [
       ../../core
+      ../../veilid
       ../../dev
       ../../dev/virt-manager.nix
 
