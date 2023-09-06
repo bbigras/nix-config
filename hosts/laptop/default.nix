@@ -41,8 +41,6 @@ rec {
   sops.secrets = {
     restic-laptop-password.sopsFile = ./restic-laptop.yaml;
     restic-laptop-creds.sopsFile = ./restic-laptop.yaml;
-    yggdrasil-conf.sopsFile = ./restic-laptop.yaml;
-    yggdrasil-conf.owner = config.users.users.yggdrasil.name;
     wireguard.sopsFile = ./restic-laptop.yaml;
   };
 
@@ -156,8 +154,6 @@ rec {
     };
     dendrite-demo-pinecone.partOf = [ "ac.target" ];
     dendrite-demo-pinecone.wantedBy = [ "ac.target" ];
-    yggdrasil.partOf = [ "ac.target" ];
-    yggdrasil.wantedBy = [ "ac.target" ];
   };
 
   systemd.timers = {

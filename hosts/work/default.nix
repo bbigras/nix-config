@@ -55,8 +55,6 @@ in
       options = [ "subvol=nixos" "compress=zstd" ];
     };
 
-  services.yggdrasil.enable = lib.mkForce false;
-
   nix = {
     settings = {
       trusted-users = [ "hydra-queue-runner" "hydra" "hydra-www" ];

@@ -14,7 +14,6 @@
     ./tailscale.nix
     ./tmux.nix
     ./xdg.nix
-    ./yggdrasil.nix
     ./zsh.nix
   ];
 
