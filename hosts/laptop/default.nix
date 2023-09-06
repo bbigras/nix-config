@@ -152,8 +152,6 @@ rec {
       partOf = [ "ac.target" ];
       wantedBy = [ "ac.target" ];
     };
-    dendrite-demo-pinecone.partOf = [ "ac.target" ];
-    dendrite-demo-pinecone.wantedBy = [ "ac.target" ];
   };
 
   systemd.timers = {

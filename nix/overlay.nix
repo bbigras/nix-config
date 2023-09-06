@@ -2,7 +2,6 @@
 , emacs-overlay
 , nixpkgs
 , nur
-, dendrite-demo-pinecone
 , defmacro-gensym
 , combobulate
 , ...
@@ -16,18 +15,12 @@ let
         (lib.removeSuffix ".nix" f)
         (import (./overlays + "/${f}")))
       (builtins.readDir ./overlays);
-
-  dendrite-demo-pinecone2 = dendrite-demo-pinecone.packages."x86_64-linux".dendrite;
 in
 localOverlays // {
   default = lib.composeManyExtensions ((lib.attrValues localOverlays) ++ [
     deploy-rs.overlay
     emacs-overlay.overlay
     nur.overlay
-
-    (_self: _super: {
-      dendrite-demo-pinecone = dendrite-demo-pinecone2;
-    })
 
     (self: super: {
       ripgrep = super.ripgrep.overrideAttrs (_: { doCheck = false; });

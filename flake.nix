@@ -4,7 +4,6 @@
     "https://cache.nixos.org"
     "https://bbigras-nix-config.cachix.org"
     # "https://cache.ngi0.nixos.org"
-    "https://dendrite-demo-pinecone.cachix.org"
     "https://nix-community.cachix.org"
     "https://nix-on-droid.cachix.org"
     "https://pre-commit-hooks.cachix.org"
@@ -15,7 +14,6 @@
     "bbigras-nix-config.cachix.org-1:aXL6Q9Oi0jyF79YAKRu17iVNk9HY0p23OZX7FA8ulhU="
     # "cache.ngi0.nixos.org-1:KqH5CBLNSyX184S9BKZJo1LxrxJ9ltnY2uAs5c/f1MA="
     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-    "dendrite-demo-pinecone.cachix.org-1:qgybhOM1X0JikTrvpYo1HwtsXT2ee+6ajbmCjCns4yI="
     "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU="
     "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
@@ -96,8 +94,6 @@
       url = "github:mickeynp/combobulate";
       flake = false;
     };
-
-    dendrite-demo-pinecone.url = "github:bbigras/dendrite-demo-pinecone";
 
     stylix = {
       url = "github:danth/stylix";
