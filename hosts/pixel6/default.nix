@@ -1,4 +1,4 @@
-{ pkgs, nur, stylix, lib, ... }:
+{ base16-schemes, pkgs, nur, stylix, lib, ... }:
 
 let
   nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
@@ -189,7 +189,7 @@ in
 
       dconf.enable = lib.mkForce false;
       stylix = {
-        base16Scheme = "${pkgs.base16-schemes}/share/themes/tomorrow-night.yaml";
+        base16Scheme = "${base16-schemes}/tomorrow-night.yaml";
         image = pkgs.nixos-artwork.wallpapers.simple-dark-gray.gnomeFilePath;
       };
     };

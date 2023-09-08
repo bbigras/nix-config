@@ -1,4 +1,4 @@
-{ hostType, impermanence, nix-index-database, pkgs, stylix, ... }: {
+{ base16-schemes, hostType, impermanence, nix-index-database, pkgs, stylix, ... }: {
   imports = [
     impermanence.nixosModules.home-manager.impermanence
     nix-index-database.hmModules.nix-index
@@ -222,7 +222,7 @@
   home.language.base = "fr_CA.UTF-8";
 
   stylix = {
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tomorrow-night.yaml";
+    base16Scheme = "${base16-schemes}/tomorrow-night.yaml";
     image = pkgs.nixos-artwork.wallpapers.simple-dark-gray.gnomeFilePath;
     targets.gnome.enable = hostType == "nixos";
     targets.gtk.enable = hostType == "nixos";

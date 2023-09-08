@@ -1,4 +1,4 @@
-{ pkgs, hostType, impermanence, nix-index-database, stylix, attic, ... }: {
+{ pkgs, base16-schemes, hostType, impermanence, nix-index-database, stylix, attic, ... }: {
   imports = [
     (
       if hostType == "nixos" then ./nixos.nix
@@ -32,7 +32,12 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = {
-      inherit hostType impermanence nix-index-database stylix;
+      inherit
+        base16-schemes
+        hostType
+        impermanence
+        nix-index-database
+        stylix;
     };
   };
 
@@ -43,7 +48,7 @@
   };
 
   stylix = {
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/tomorrow-night.yaml";
+    base16Scheme = "${base16-schemes}/tomorrow-night.yaml";
     # We need this otherwise the autoimport clashes with our manual import.
     homeManagerIntegration.autoImport = false;
     image = pkgs.nixos-artwork.wallpapers.simple-dark-gray.gnomeFilePath;

@@ -1,4 +1,5 @@
 { nixpkgs
+, base16-schemes
 , nix-on-droid
 , nur
 , emacs-overlay
@@ -25,7 +26,7 @@ let
         (../hosts + "/${hostname}")
       ];
       extraSpecialArgs = {
-        inherit nur stylix;
+        inherit nur stylix base16-schemes;
       };
     };
 in
