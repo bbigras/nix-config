@@ -85,7 +85,7 @@
 
     nixos-hardware.url = "nixos-hardware";
     rycee-nur-expressions = {
-      url = "gitlab:bbigras/nur-expressions/version";
+      url = "gitlab:rycee/nur-expressions";
       flake = false;
     };
 

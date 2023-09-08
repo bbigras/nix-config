@@ -846,16 +846,15 @@
     "rycee-nur-expressions": {
       "flake": false,
       "locked": {
-        "lastModified": 1694197134,
-        "narHash": "sha256-JfSO61vzeZEtk+2vQUvBgDeiywGSkHBq7JmKpUCFzZ0=",
-        "owner": "bbigras",
+        "lastModified": 1694161903,
+        "narHash": "sha256-gTh34qDhujcvJQ5Accm1XwhUTFwUwddFs60IcZGvzbE=",
+        "owner": "rycee",
         "repo": "nur-expressions",
-        "rev": "f3d47aa146cdb306f4c2069700f4f15e244758ac",
+        "rev": "979070714a27334cfbed141a4cdd8a7cdddbf100",
         "type": "gitlab"
       },
       "original": {
-        "owner": "bbigras",
-        "ref": "version",
+        "owner": "rycee",
         "repo": "nur-expressions",
         "type": "gitlab"
       }
