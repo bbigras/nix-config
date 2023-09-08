@@ -895,15 +895,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1691942466,
-        "narHash": "sha256-bK6FFbsKtyLKJLwgHerWp/EMMoWqE0UJk0KEbgYICbY=",
-        "owner": "danth",
+        "lastModified": 1694198202,
+        "narHash": "sha256-Jc9vA2UesrmuXD8ajUUKVrv5sh1tGwVdtwnGDZgP4UU=",
+        "owner": "bbigras",
         "repo": "stylix",
-        "rev": "beb35709c9a769a5f279d3177af778a15dcbda46",
+        "rev": "8c330683ca438d034eea1df353456419f16232b7",
         "type": "github"
       },
       "original": {
-        "owner": "danth",
+        "owner": "bbigras",
+        "ref": "emacs",
         "repo": "stylix",
         "type": "github"
       }

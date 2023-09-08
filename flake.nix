@@ -105,7 +105,7 @@
     };
 
     stylix = {
-      url = "github:danth/stylix";
+      url = "github:bbigras/stylix/emacs";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
       inputs.flake-compat.follows = "flake-compat";
