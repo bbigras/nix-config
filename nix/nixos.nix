@@ -8,10 +8,10 @@
 , nixpkgs
 , stylix
 , templates
-, nur
 , attic
 , sops-nix
 , agenix
+, rycee-nur-expressions
 , ...
 }:
 let
@@ -42,7 +42,7 @@ let
           lanzaboote
           nix-index-database
           nixos-hardware
-          nur
+          rycee-nur-expressions
           sops-nix
           stylix;
       };

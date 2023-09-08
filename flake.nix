@@ -84,7 +84,11 @@
     };
 
     nixos-hardware.url = "nixos-hardware";
-    nur.url = "nur";
+    rycee-nur-expressions = {
+      url = "gitlab:rycee/nur-expressions";
+      flake = false;
+    };
+
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";

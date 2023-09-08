@@ -10,9 +10,6 @@
       default = {
         isDefault = true;
         settings = { };
-
-        extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        ];
       };
       travail = {
         isDefault = false;

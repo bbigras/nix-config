@@ -1,7 +1,6 @@
 { deploy-rs
 , emacs-overlay
 , nixpkgs
-, nur
 , defmacro-gensym
 , combobulate
 , ...
@@ -20,7 +19,6 @@ localOverlays // {
   default = lib.composeManyExtensions ((lib.attrValues localOverlays) ++ [
     deploy-rs.overlay
     emacs-overlay.overlay
-    nur.overlay
 
     (self: super: {
       ripgrep = super.ripgrep.overrideAttrs (_: { doCheck = false; });

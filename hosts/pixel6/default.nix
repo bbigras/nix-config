@@ -1,7 +1,7 @@
-{ base16-schemes, pkgs, nur, stylix, lib, ... }:
+{ base16-schemes, pkgs, rycee-nur-expressions, stylix, lib, ... }:
 
 let
-  nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
+  rycee-nur-expressions2 = import rycee-nur-expressions { inherit pkgs; };
 in
 {
   build.arch = "aarch64";
@@ -82,7 +82,7 @@ in
         ../../users/bbigras/core/tmux.nix
         ../../users/bbigras/core/zsh.nix
         ../../users/bbigras/core/emacs-android.nix
-        nurNoPkgs.repos.rycee.hmModules.emacs-init
+        rycee-nur-expressions2.hmModules.emacs-init
       ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/pixel6.nix") then [ (builtins.getEnv "PWD" + "/secrets/pixel6.nix") ] else [ ]);
 
       # Use the same overlays as the system packages

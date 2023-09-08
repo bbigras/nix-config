@@ -1,7 +1,7 @@
-{ config, lib, pkgs, nur, nixos-hardware, attic, ... }:
+{ config, lib, pkgs, rycee-nur-expressions, nixos-hardware, attic, ... }:
 
 let
-  nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
+  rycee-nur-expressions2 = import rycee-nur-expressions { inherit pkgs; };
 
   my_attic = import attic;
 
@@ -97,7 +97,7 @@ in
   home-manager.users.bbigras = {
     imports = [
       ../../users/bbigras/trusted
-      nurNoPkgs.repos.rycee.hmModules.emacs-init
+      rycee-nur-expressions2.hmModules.emacs-init
     ];
 
     wayland.windowManager.sway = {

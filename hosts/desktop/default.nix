@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, nur, nixos-hardware, ... }:
+{ config, lib, pkgs, rycee-nur-expressions, nixos-hardware, ... }:
 
 let
   qemu-aarch64-static = pkgs.stdenv.mkDerivation {
@@ -17,7 +17,7 @@ let
     installPhase = "install -D -m 0755 $src $out/bin/qemu-aarch64-static";
   };
 
-  nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
+  rycee-nur-expressions2 = import rycee-nur-expressions { inherit pkgs; };
 in
 rec {
   imports = with nixos-hardware.nixosModules;
@@ -98,7 +98,7 @@ rec {
   home-manager.users.bbigras = {
     imports = [
       ../../users/bbigras/trusted
-      nurNoPkgs.repos.rycee.hmModules.emacs-init
+      rycee-nur-expressions2.hmModules.emacs-init
     ];
 
     xdg.mimeApps.enable = lib.mkForce false;
