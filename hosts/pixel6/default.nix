@@ -104,7 +104,7 @@ in
           enable = true;
           package = lib.mkForce pkgs.emacs-nox;
         };
-        exa = {
+        eza = {
           enable = true;
           enableAliases = true;
         };
