@@ -9,7 +9,7 @@ jobs:
   lints:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           lfs: false
       - uses: ./.github/actions/setup-nix
@@ -30,7 +30,7 @@ jobs:
       nix-systems: ${{ steps.get-hosts.outputs.hostPlatforms }}
       gh-systems: ${{ steps.get-hosts.outputs.ghSystems }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           lfs: false
       - uses: ./.github/actions/setup-nix
@@ -83,7 +83,7 @@ jobs:
     steps:
       - uses: docker/setup-qemu-action@v3
         if: ${{ matrix.system.hostPlatform == 'aarch64-linux' }}
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           lfs: false
       - uses: ./.github/actions/setup-nix
@@ -110,7 +110,7 @@ jobs:
     steps:
       - uses: docker/setup-qemu-action@v3
         if: ${{ matrix.host.name == 'pixel6' }}
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           lfs: false
       - name: "Make more space"
