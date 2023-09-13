@@ -81,7 +81,7 @@ jobs:
       matrix:
         system: ${{ fromJson(needs.get-hosts.outputs.nix-systems) }}
     steps:
-      - uses: docker/setup-qemu-action@v2
+      - uses: docker/setup-qemu-action@v3
         if: ${{ matrix.system.hostPlatform == 'aarch64-linux' }}
       - uses: actions/checkout@v3
         with:
@@ -108,7 +108,7 @@ jobs:
       matrix:
         host: ${{ fromJson(needs.get-hosts.outputs.hosts) }}
     steps:
-      - uses: docker/setup-qemu-action@v2
+      - uses: docker/setup-qemu-action@v3
         if: ${{ matrix.host.name == 'pixel6' }}
       - uses: actions/checkout@v3
         with:
