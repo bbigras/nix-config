@@ -66,33 +66,10 @@ rec {
   virtualisation.docker = {
     enable = true;
     autoPrune.enable = true;
-    storageDriver = "btrfs";
   };
 
   services.flatpak.enable = true;
   services.smartd.enable = true;
-
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/8e2cf716-7b2f-4c87-a895-1ea6d84d5f65";
-      fsType = "btrfs";
-      options = [ "subvol=root,compress=zstd,noatime" ];
-    };
-
-  fileSystems."/nix" =
-    {
-      device = "/dev/disk/by-uuid/8e2cf716-7b2f-4c87-a895-1ea6d84d5f65";
-      fsType = "btrfs";
-      options = [ "subvol=nix,compress=zstd,noatime" ];
-    };
-
-  fileSystems."/persist" =
-    {
-      device = "/dev/disk/by-uuid/8e2cf716-7b2f-4c87-a895-1ea6d84d5f65";
-      fsType = "btrfs";
-      options = [ "subvol=persist,compress=zstd,noatime" ];
-      neededForBoot = true;
-    };
 
   # systemd.user.services.mpris-proxy = {
   #   description = "Mpris proxy";
@@ -352,66 +329,4 @@ rec {
       };
     };
   };
-
-  services.btrbk = {
-    instances = {
-      home = {
-        onCalendar = "hourly";
-        settings = {
-          timestamp_format = "long";
-          snapshot_preserve = "48h";
-          snapshot_preserve_min = "18h";
-          volume = {
-            "/mnt/btr_pool" = {
-              subvolume = {
-                persist = {
-                  snapshot_create = "always";
-                };
-              };
-            };
-          };
-        };
-      };
-    };
-  };
-
-  # Note `lib.mkBefore` is used instead of `lib.mkAfter` here.
-  boot.initrd.postDeviceCommands = pkgs.lib.mkBefore ''
-    mkdir -p /mnt
-
-    # We first mount the btrfs root to /mnt
-    # so we can manipulate btrfs subvolumes.
-    mount -o subvol=/ /dev/mapper/enc /mnt
-
-    # While we're tempted to just delete /root and create
-    # a new snapshot from /root-blank, /root is already
-    # populated at this point with a number of subvolumes,
-    # which makes `btrfs subvolume delete` fail.
-    # So, we remove them first.
-    #
-    # /root contains subvolumes:
-    # - /root/var/lib/portables
-    # - /root/var/lib/machines
-    #
-    # I suspect these are related to systemd-nspawn, but
-    # since I don't use it I'm not 100% sure.
-    # Anyhow, deleting these subvolumes hasn't resulted
-    # in any issues so far, except for fairly
-    # benign-looking errors from systemd-tmpfiles.
-    btrfs subvolume list -o /mnt/root |
-    cut -f9 -d' ' |
-    while read subvolume; do
-      echo "deleting /$subvolume subvolume..."
-      btrfs subvolume delete "/mnt/$subvolume"
-    done &&
-    echo "deleting /root subvolume..." &&
-    btrfs subvolume delete /mnt/root
-
-    echo "restoring blank /root subvolume..."
-    btrfs subvolume snapshot /mnt/root-blank /mnt/root
-
-    # Once we're done rolling back to a blank snapshot,
-    # we can unmount /mnt and continue on the boot process.
-    umount /mnt
-  '';
 }
