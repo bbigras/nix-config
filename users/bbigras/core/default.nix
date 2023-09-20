@@ -198,6 +198,7 @@
 
     bashmount.enable = true;
 
+    rio.enable = true;
     ssh = {
       enable = true;
       hashKnownHosts = true;
