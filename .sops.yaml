@@ -1,7 +1,7 @@
 keys:
   - &bbigras age1ejjym658kp46e5jfqm2mplh895caekll9lpgmy9xgtgu0mh97y2qw09zpp
   - &desktop age134a97ly0td08ggcfhc8pcvlarxr3hpwcvsmc05ejhd9dyfj8hvgse0n8x7
-  - &laptop 044563484de3f8a04eab2fa2a1f1884c176b12c3
+  - &laptop age1we4degv2a8tauss0r05ym509tdwxz77fsuj98myqtstpkmnhya8sxa5g4e
   - &work age10npkltghhgu7yytefxtwtevwwgsguxn0fr4rr4x7pv5ts08c8s5sydd3aj
 
 creation_rules:
@@ -12,10 +12,9 @@ creation_rules:
         - *bbigras
   - path_regex: hosts/laptop/restic-laptop.yaml
     key_groups:
-      - pgp:
-        - *laptop
       - age:
         - *bbigras
+        - *laptop
   - path_regex: hosts/work/secrets.yaml
     key_groups:
       - age:
