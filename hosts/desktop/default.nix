@@ -77,7 +77,6 @@ rec {
   };
 
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
-  nixpkgs.config.nvidia.acceptLicense = true;
   boot = {
     binfmt.registrations.aarch64 = {
       interpreter = "${qemu-aarch64-static}/bin/qemu-aarch64-static";

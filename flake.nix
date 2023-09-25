@@ -132,6 +132,7 @@
         overlays = [ self.overlays.default ];
         config.allowUnfree = true;
         config.allowAliases = true;
+        config.nvidia.acceptLicense = true;
       });
 
       checks = forAllSystems (import ./nix/checks.nix inputs);
