@@ -36,7 +36,6 @@ rec {
 
   environment.systemPackages = with pkgs; [
     iwd
-    boot.kernelPackages.bcc
   ];
 
   sops.secrets = {
