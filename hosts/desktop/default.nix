@@ -173,27 +173,6 @@ rec {
   ];
   virtualisation.docker.enable = true;
 
-  environment.persistence."/persist" = {
-    hideMounts = true;
-    directories = [
-      "/var/lib/tailscale"
-      "/var/lib/flatpak"
-      "/var/lib/docker"
-      "/var/lib/libvirt"
-      "/root/.cache/restic"
-      # "/var/cache/libvirt"
-
-      #     # "/var/log"
-      #     "/var/lib/bluetooth"
-      #     "/var/lib/systemd/coredump"
-      #     "/etc/NetworkManager/system-connections"
-    ];
-    files = [
-      # "/etc/machine-id"
-      # "/etc/nix/id_rsa"
-    ];
-  };
-
 
   services.earlyoom.enable = true;
 
