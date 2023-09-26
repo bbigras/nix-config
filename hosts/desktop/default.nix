@@ -53,18 +53,6 @@ rec {
     ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ])
     ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/desktop.nix") then [ (builtins.getEnv "PWD" + "/secrets/desktop.nix") ] else [ ]);
 
-  fileSystems = {
-    "/".options = [ "compress=zstd" ];
-    "/home".options = [ "compress=zstd" ];
-    "/nix".options = [ "compress=zstd" "noatime" ];
-    "/persist" =
-      {
-        options = [ "compress=zstd" "noatime" ];
-        neededForBoot = true;
-      };
-    #"/swap".options = [ "noatime" ];
-  };
-
   nix = {
     extraOptions = ''
       extra-platforms = aarch64-linux i686-linux
@@ -149,11 +137,6 @@ rec {
   };
 
   boot.supportedFilesystems = [ "ntfs" ];
-  fileSystems."/media/gamedisk" = {
-    device = "/dev/disk/by-uuid/A238EB6A38EB3BC3";
-    fsType = "ntfs-3g";
-    options = [ "rw" "uid=1001" ];
-  };
 
   # networking.firewall.enable = false;
   networking.firewall.allowedTCPPorts = [
