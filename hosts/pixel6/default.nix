@@ -102,7 +102,7 @@ in
         command-not-found.enable = true;
         emacs = {
           enable = true;
-          package = lib.mkForce pkgs.emacs-nox;
+          package = lib.mkForce pkgs.emacs29-nox;
         };
         eza = {
           enable = true;
