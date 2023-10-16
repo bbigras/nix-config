@@ -1,24 +1,7 @@
-{ config, lib, pkgs, rycee-nur-expressions, nixos-hardware, attic, ... }:
+{ config, lib, pkgs, rycee-nur-expressions, nixos-hardware, ... }:
 
 let
   rycee-nur-expressions2 = import rycee-nur-expressions { inherit pkgs; };
-
-  my_attic = import attic;
-
-  upload_to_attic = pkgs.writeScriptBin "upload-to-attic" ''
-    #!/bin/sh
-    set -eu
-    set -f # disable globbing
-
-    # skip push if the declarative job spec
-    OUT_END=$(echo ''${OUT_PATHS: -10})
-    if [ "$OUT_END" == "-spec.json" ]; then
-    exit 0
-    fi
-
-    export HOME=/root
-    exec ${my_attic}/bin/attic push luxor $OUT_PATHS > /tmp/hydra_attic 2>&1
-  '';
 in
 {
   imports = with nixos-hardware.nixosModules;
@@ -71,7 +54,6 @@ in
 
     extraOptions = ''
       builders-use-substitutes = true
-      post-build-hook = ${upload_to_attic}/bin/upload-to-attic
       netrc-file = ${config.sops.secrets.netrc.path};
     '';
   };

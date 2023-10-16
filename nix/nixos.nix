@@ -8,7 +8,6 @@
 , nixpkgs
 , stylix
 , templates
-, attic
 , sops-nix
 , agenix
 , rycee-nur-expressions
@@ -35,7 +34,6 @@ let
         hostAddress = address;
         hostType = type;
         inherit
-          attic
           base16-schemes
           home-manager
           impermanence

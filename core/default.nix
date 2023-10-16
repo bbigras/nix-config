@@ -1,4 +1,4 @@
-{ pkgs, base16-schemes, hostType, impermanence, nix-index-database, stylix, attic, ... }: {
+{ pkgs, base16-schemes, hostType, impermanence, nix-index-database, stylix, ... }: {
   imports = [
     (
       if hostType == "nixos" then ./nixos.nix
@@ -23,7 +23,6 @@
     systemPackages = with pkgs; [
       man-pages
       rsync
-      (import attic)
       molly-guard
     ];
   };

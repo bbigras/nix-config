@@ -7,14 +7,12 @@
       "https://nix-community.cachix.org"
       "https://nix-on-droid.cachix.org"
       "https://pre-commit-hooks.cachix.org"
-      "https://staging.attic.rs/attic-ci"
     ];
     extra-trusted-public-keys = [
       "bbigras-nix-config.cachix.org-1:aXL6Q9Oi0jyF79YAKRu17iVNk9HY0p23OZX7FA8ulhU="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU="
       "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
-      "attic-ci:U5Sey4mUxwBXM3iFapmP0/ogODXywKLRNgRPQpEXxbo="
     ];
   };
 
@@ -114,8 +112,6 @@
       url = "github:t184256/nix-on-droid";
       inputs.home-manager.follows = "home-manager";
     };
-
-    attic.url = "github:zhaofengli/attic";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
