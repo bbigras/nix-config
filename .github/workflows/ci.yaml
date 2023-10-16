@@ -1,138 +1,208 @@
 name: ci
+
 on:
   push:
     branches:
       - master
       - try
   pull_request:
+
+permissions: {}
+
+env:
+  flake: github:${{ github.repository }}/${{ github.sha }}
+  nix-conf: |-
+    accept-flake-config = true
+    builders-use-substitutes = true
+    max-jobs = auto
+  cachix-install: nix profile install 'github:${{ github.repository }}/${{ github.sha }}#cachix'
+
 jobs:
-  lints:
+  flake-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@v6
         with:
-          lfs: false
-      - uses: ./.github/actions/setup-nix
+          extra-conf: ${{ env.nix-conf }}
+      - uses: cachix/cachix-action@v12
         with:
+          name: bbigras-nix-config
           cachix-signing-key: ${{ secrets.CACHIX_SIGNING_KEY }}
-      - uses: DeterminateSystems/magic-nix-cache-action@main
-      - name: parse
-        run: nix-instantiate --json --parse ./**/*.nix
-      - name: lints
-        run: |
-          nix build -L --keep-going \
-            .\#checks.x86_64-linux.pre-commit-check
-
-  get-hosts:
+          extraPullNames: nix-community
+          installCommand: ${{ env.cachix-install }}
+      - name: nix-flake-check
+        run: nix flake check '${{ env.flake }}'
+  flake-show:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: DeterminateSystems/nix-installer-action@v6
+        with:
+          extra-conf: ${{ env.nix-conf }}
+      - uses: cachix/cachix-action@v12
+        with:
+          name: bbigras-nix-config
+          cachix-signing-key: ${{ secrets.CACHIX_SIGNING_KEY }}
+          extraPullNames: nix-community
+          installCommand: ${{ env.cachix-install }}
+      - name: nix-flake-show
+        run: nix flake show '${{ env.flake }}'
+  get-attrs:
     runs-on: ubuntu-latest
     outputs:
-      hosts: ${{ steps.get-hosts.outputs.hosts }}
-      nix-systems: ${{ steps.get-hosts.outputs.hostPlatforms }}
-      gh-systems: ${{ steps.get-hosts.outputs.ghSystems }}
+      build: ${{ steps.get-attrs.outputs.build }}
+      eval: ${{ steps.get-attrs.outputs.eval }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@v6
         with:
-          lfs: false
-      - uses: ./.github/actions/setup-nix
-        with:
-          cachix: false
-      - uses: DeterminateSystems/magic-nix-cache-action@main
-      - id: get-hosts
+          extra-conf: ${{ env.nix-conf }}
+      - id: install-jq
+        run: nix profile install '${{ env.flake }}#pkgs.x86_64-linux.jq'
+      - id: get-attrs
         run: |
-          TMP="$(mktemp -d)"
-          nix eval --json -f ./nix/hosts.nix all | jq -c '
-            to_entries
-            | map({name: .key} + .value)
-            | map_values(
-                if .hostPlatform  == "x86_64-linux" then . + {ghSystem: "ubuntu-latest"}
-                elif .hostPlatform == "aarch64-linux" then . + {ghSystem: "ubuntu-latest"}
-                elif .hostPlatform == "x86_64-darwin" then . + {ghSystem: "macos-latest"}
-                else . + {ghSystem: null} end)
-            | map(select(.ghSystem != null))
-          ' > "$TMP/hosts.json"
-
-          jq -c '
-            map({hostPlatform, ghSystem})
-            | unique_by(.hostPlatform)
-            | sort_by(.ghSystem)
-          ' \
-          < "$TMP/hosts.json" \
-          > "$TMP/hostPlatforms.json"
-
-          jq -c <<EOF >"$TMP/ghSystems.json"
-          {
-            "ubuntu-latest": "x86_64-linux",
-            "macos-latest": "x86_64-darwin"
+          function summary() {
+            printf '%s\n' "${*}" >> "$GITHUB_STEP_SUMMARY"
           }
-          EOF
 
-          {
-            echo "hosts=$(cat "$TMP/hosts.json")"
-            echo "hostPlatforms=$(cat "$TMP/hostPlatforms.json")"
-            echo "ghSystems=$(cat "$TMP/ghSystems.json")"
-          } >> "$GITHUB_OUTPUT"
+          summary "# CI"
+          TMP="$(mktemp -d)"
+          # host packages
+          nix eval --json '${{ env.flake }}#hosts' | jq -c '
+            to_entries
+            | map({
+                name: .key,
+                evalOnly: false,
+                hostPlatform: .value.hostPlatform,
+                large: .value.large,
+                attr: "packages.\(.value.hostPlatform).\(.key)"
+            })
+            | map(
+                if .hostPlatform  == "x86_64-linux" then .runsOn="ubuntu-latest"
+                elif .hostPlatform == "aarch64-linux" then .runsOn="ubuntu-latest"
+                elif .hostPlatform == "x86_64-darwin" then .runsOn="macos-latest"
+                else .evalOnly=true | .runsOn="ubuntu-latest"
+                end
+            )
+            | map(if .large then .evalOnly=true end)
+          ' >"$TMP/hostAttrs.json"
 
-  build-shell:
-    name: build-shell (${{ matrix.system.hostPlatform }})
-    runs-on: ${{ matrix.system.ghSystem }}
-    needs: get-hosts
+          # dev shells
+          jq -c '
+            unique_by(.hostPlatform)
+            | sort_by(.runsOn)
+            | map(
+                .attr = "devShells.\(.hostPlatform).default.inputDerivation"
+                | .name = "devShell-\(.hostPlatform)"
+              )
+          ' "$TMP/hostAttrs.json" >"$TMP/shellAttrs.json"
+
+          # join shell and host attrs
+          jq -c -s add "$TMP/hostAttrs.json" "$TMP/shellAttrs.json" >"$TMP/attrs.json"
+
+          # warn about eval-only attrs
+          read -r -a evalOnlyAttrs < \
+            <(jq -c -r 'map(select(.evalOnly) | .name) | @sh' "$TMP/attrs.json" | tr -d \')
+          if [[ "${#evalOnlyAttrs[@]}" -ne 0 ]]; then
+            printf -v attrs "\`%s\`, " "${evalOnlyAttrs[@]}"
+            summary \
+              "- ⚠️ The following attributes will only be evaluated: ${attrs%, }"
+          fi
+
+          # add all to-build attrs to the summary
+          read -r -a buildAttrs < \
+            <(jq -c -r 'map(select(.evalOnly | not) | .name) | @sh' "$TMP/attrs.json" | tr -d \')
+          if [[ "${#buildAttrs[@]}" -ne 0 ]]; then
+            printf -v attrs "\`%s\`, " "${buildAttrs[@]}"
+            summary \
+              "- ✅ The following attributes will be built: ${attrs%, }"
+          fi
+
+          # check for dupes
+          duplicate_count="$(jq -r '
+            group_by([.name, .attr]) | map(select(length>1)) | length
+            ' "$TMP/attrs.json")"
+          if [[ "$duplicate_count" -ne 0 ]]; then
+            summary \
+              "- ‼️ Duplicate entries in \`attrs.json\`: \`$(cat "$TMP/attrs.json")\`"
+            exit 1
+          fi
+
+          # split build and evalOnly attrs
+          jq -c 'map(select(.evalOnly))' <"$TMP/attrs.json" >"$TMP/eval.json"
+          jq -c 'map(select(.evalOnly | not))' <"$TMP/attrs.json" >"$TMP/build.json"
+
+          echo "build=$(<"$TMP/build.json")" >>"$GITHUB_OUTPUT"
+          echo "eval=$(<"$TMP/eval.json")" >>"$GITHUB_OUTPUT"
+
+  eval:
+    name: eval ${{ matrix.attrs.name }}
+    runs-on: ${{ matrix.attrs.runsOn }}
+    needs: [ get-attrs ]
     strategy:
       fail-fast: false
       matrix:
-        system: ${{ fromJson(needs.get-hosts.outputs.nix-systems) }}
+        attrs: ${{ fromJson(needs.get-attrs.outputs.eval) }}
+    env:
+      system: ${{ matrix.attrs.hostPlatform }}
     steps:
       - uses: docker/setup-qemu-action@v3
-        if: ${{ matrix.system.hostPlatform == 'aarch64-linux' }}
-      - uses: actions/checkout@v4
+        if: ${{ matrix.attrs.hostPlatform == 'aarch64-linux' }}
+      - uses: DeterminateSystems/nix-installer-action@v6
         with:
-          lfs: false
-      - uses: ./.github/actions/setup-nix
+          extra-conf: ${{ env.nix-conf }}
+      - uses: cachix/cachix-action@v12
         with:
+          name: bbigras-nix-config
           cachix-signing-key: ${{ secrets.CACHIX_SIGNING_KEY }}
-      - uses: DeterminateSystems/magic-nix-cache-action@main
-      - name: build-shell
+          extraPullNames: nix-community
+          installCommand: ${{ env.cachix-install }}
+      - name: eval
+        if: ${{ matrix.attrs.evalOnly }}
         run: |
-          nix run nixpkgs\#nix-build-uncached \
-            --extra-platforms aarch64-linux \
-            -- \
-            --keep-going \
-            -build-flags '--extra-platforms "aarch64-linux i686-linux" --extra-trusted-substituters "https://staging.attic.rs/attic-ci" --extra-trusted-public-keys "attic-ci:U5Sey4mUxwBXM3iFapmP0/ogODXywKLRNgRPQpEXxbo="' \
-            -A "devShells.${{ matrix.system.hostPlatform }}.default.inputDerivation"
+          nix eval --raw '${{ env.flake }}#${{ matrix.attrs.attr }}'
 
-  build-host:
-    name: build-${{ matrix.host.name }}
-    runs-on: ${{ matrix.host.ghSystem }}
-    needs: get-hosts
+  build:
+    name: build ${{ matrix.attrs.name }}
+    runs-on: ${{ matrix.attrs.runsOn }}
+    needs: [ get-attrs ]
     strategy:
       fail-fast: false
       matrix:
-        host: ${{ fromJson(needs.get-hosts.outputs.hosts) }}
+        attrs: ${{ fromJson(needs.get-attrs.outputs.build) }}
+    env:
+      system: ${{ matrix.attrs.hostPlatform }}
     steps:
       - uses: docker/setup-qemu-action@v3
-        if: ${{ matrix.host.name == 'pixel6' }}
-      - uses: actions/checkout@v4
-        with:
-          lfs: false
+        if: ${{ env.system == 'aarch64-linux' }}
       - name: "Make more space"
         run: "sudo rm -rf /opt /usr/local || true &"
-      - uses: ./.github/actions/setup-nix
+      - uses: DeterminateSystems/nix-installer-action@v6
         with:
+          extra-conf: ${{ env.nix-conf }}
+      - uses: cachix/cachix-action@v12
+        with:
+          name: bbigras-nix-config
           cachix-signing-key: ${{ secrets.CACHIX_SIGNING_KEY }}
-      - uses: DeterminateSystems/magic-nix-cache-action@main
-      - name: build-host
+          extraPullNames: nix-community
+          installCommand: ${{ env.cachix-install }}
+      - name: build
         run: |
-          nix run nixpkgs#nix-build-uncached \
-            --extra-platforms aarch64-linux \
-            -- \
-            --keep-going \
-            -build-flags '--extra-platforms aarch64-linux --extra-trusted-substituters "https://staging.attic.rs/attic-ci" --extra-trusted-public-keys "attic-ci:U5Sey4mUxwBXM3iFapmP0/ogODXywKLRNgRPQpEXxbo="' \
-            -A packages.${{ matrix.host.hostPlatform }}.${{ matrix.host.name }}
+          declare -a args=(
+            '--no-nom'
+            '--skip-cached'
+            '--systems=${{ env.system }}'
+            '--option' 'accept-flake-config' 'true'
+            '--retries=3'
+          )
+          [[ '${{ env.system }}' == 'aarch64-linux' ]] && args+=('--option' 'extra-platforms' 'aarch64-linux')
+          args+=('--flake=${{ env.flake }}#${{ matrix.attrs.attr }}')
+          nix run '${{ env.flake }}#nix-fast-build' -- "${args[@]}"
 
   check:
     runs-on: ubuntu-latest
-    needs: [ lints, build-host, build-shell ]
+    needs: [ flake-check, flake-show, build, eval ]
     if: always()
     steps:
       - uses: re-actors/alls-green@release/v1
         with:
           jobs: ${{ toJSON(needs) }}
+          allowed-skips: eval

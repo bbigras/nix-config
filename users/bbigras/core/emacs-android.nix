@@ -1,12 +1,6 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
-let
-  pcfg = config.programs.emacs.init.usePackage;
-in
 {
-  home.packages = with pkgs; [
-    # samba # for tramp
-  ];
   programs.emacs = {
     enable = true;
 

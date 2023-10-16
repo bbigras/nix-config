@@ -9,7 +9,7 @@
   environment.sessionVariables = { WINEDEBUG = "-all"; };
 
   environment.systemPackages = with pkgs; [
-    pkgs.steam-run
+    steam-run
   ];
 
   security.pam.loginLimits = [

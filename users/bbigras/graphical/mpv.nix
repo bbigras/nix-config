@@ -1,5 +1,3 @@
-{ pkgs, nixosConfig, lib, ... }:
-
 {
   programs.mpv.enable = true;
 

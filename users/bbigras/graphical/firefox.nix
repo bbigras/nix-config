@@ -1,9 +1,12 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   home.file.".mozilla/native-messaging-hosts/ff2mpv.json".source = "${pkgs.ff2mpv}/lib/mozilla/native-messaging-hosts/ff2mpv.json";
 
   programs.firefox = {
     enable = pkgs.hostPlatform.system == "x86_64-linux";
-    package = pkgs.firefox-bin;
+    package =
+      if lib.meta.availableOn pkgs.stdenv.hostPlatform pkgs.firefox-bin
+      then pkgs.firefox-bin
+      else pkgs.firefox;
 
     # https://ffprofile.com/
     profiles = {

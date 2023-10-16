@@ -1,64 +1,72 @@
 let
-  hosts = {
-    desktop = {
-      type = "nixos";
-      hostPlatform = "x86_64-linux";
-      address = "desktop";
-      remoteBuild = false;
-    };
-    laptop = {
-      type = "nixos";
-      hostPlatform = "x86_64-linux";
-      address = "laptop";
-      remoteBuild = false;
-    };
-    work = {
-      type = "nixos";
-      hostPlatform = "x86_64-linux";
-      address = "bbigras-work";
-      remoteBuild = true;
-    };
-    pixel6 = {
-      type = "nix-on-droid";
-      hostPlatform = "aarch64-linux";
-      address = "pixel6";
-      remoteBuild = false;
-    };
-  };
-
-  inherit (builtins) attrNames concatMap listToAttrs filter;
-
-  filterAttrs = pred: set:
-    listToAttrs (concatMap (name: let value = set.${name}; in if pred name value then [{ inherit name value; }] else [ ]) (attrNames set));
-
-  removeEmptyAttrs = filterAttrs (_: v: v != { });
-
-  genSystemGroups = hosts:
+  hasSuffix = suffix: content:
     let
-      systems = [ "aarch64-linux" "x86_64-linux" ];
-      systemHostGroup = name: {
-        inherit name;
-        value = filterAttrs (_: host: host.hostPlatform == name) hosts;
-      };
+      inherit (builtins) stringLength substring;
+      lenContent = stringLength content;
+      lenSuffix = stringLength suffix;
     in
-    removeEmptyAttrs (listToAttrs (map systemHostGroup systems));
+    lenContent >= lenSuffix
+    && substring (lenContent - lenSuffix) lenContent content == suffix
+  ;
 
-  genTypeGroups = hosts:
-    let
-      types = [ "darwin" "homeManager" "nixos" "nix-on-droid" ];
-      typeHostGroup = name: {
-        inherit name;
-        value = filterAttrs (_: host: host.type == name) hosts;
-      };
-    in
-    removeEmptyAttrs (listToAttrs (map typeHostGroup types));
-
-  genHostGroups = hosts:
-    let
-      all = hosts;
-      systemGroups = genSystemGroups all;
-      typeGroups = genTypeGroups all;
-    in
-    all // systemGroups // typeGroups // { inherit all; };
+  mkHost =
+    { type
+    , hostPlatform
+    , address ? null
+    , pubkey ? null
+    , homeDirectory ? null
+    , remoteBuild ? true
+    , large ? false
+    }:
+    if type == "nixos" then
+      assert address != null && pubkey != null;
+      assert (hasSuffix "linux" hostPlatform);
+      {
+        inherit type hostPlatform address pubkey remoteBuild large;
+      }
+    else if type == "darwin" then
+      assert pubkey != null;
+      assert (hasSuffix "darwin" hostPlatform);
+      {
+        inherit type hostPlatform pubkey large;
+      }
+    else if type == "home-manager" then
+      assert homeDirectory != null;
+      {
+        inherit type hostPlatform homeDirectory large;
+      }
+    else if type == "nix-on-droid" then
+      assert address != null && pubkey != null;
+      assert (hasSuffix "linux" hostPlatform);
+      {
+        inherit type hostPlatform address pubkey remoteBuild large;
+      }
+    else throw "unknown host type '${type}'";
 in
-genHostGroups hosts
+{
+  desktop = mkHost {
+    type = "nixos";
+    hostPlatform = "x86_64-linux";
+    address = "desktop";
+    pubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGUlX5oPlf1HHr7TLaOTeN0NldHzgeWGHZF1ntVpWwIm";
+  };
+  # laptop = {
+  #   type = "nixos";
+  #   hostPlatform = "x86_64-linux";
+  #   address = "laptop";
+  #   pubkey = "";
+  # };
+  work = {
+    type = "nixos";
+    hostPlatform = "x86_64-linux";
+    address = "bbigras-work";
+    pubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKEfhY66gBDU0xgjaQgm9V991wuxI/R3bm3Yt6Kdv9Au root@nixos";
+  };
+  # pixel6 = {
+  #   type = "nix-on-droid";
+  #   hostPlatform = "aarch64-linux";
+  #   address = "pixel6";
+  #   pubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHGTEcpBZpaWTaPBXsBCvO2sNE6UU9Z7In98htaEofYa nix-on-droid@localhost";
+  #   remoteBuild = false;
+  # };
+}

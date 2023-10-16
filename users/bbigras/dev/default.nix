@@ -14,11 +14,12 @@ in
     };
     packages = with pkgs; [
       git-lfs
+      nix-output-monitor
+      (lib.hiPrio nixpkgs-review)
       nix-update
       tmate
       upterm
     ];
-    shellAliases.gco = lib.mkForce "git cz commit";
   };
 
   programs = {

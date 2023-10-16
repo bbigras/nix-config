@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{
   # silent boot for plymouth
   boot = {
     consoleLogLevel = 0;

@@ -22,6 +22,11 @@
       flake = false;
     };
 
+    truecolor-check = {
+      url = "git+https://gist.github.com/fdeaf79e921c2f413f44b6f613f6ad53.git";
+      flake = false;
+    };
+
     darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -43,7 +48,14 @@
       };
     };
 
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     flake-utils.url = "github:numtide/flake-utils";
+
+    gemoji = {
+      url = "github:github/gemoji";
+      flake = false;
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -58,6 +70,14 @@
       inputs.flake-compat.follows = "flake-compat";
       inputs.flake-utils.follows = "flake-utils";
       inputs.pre-commit-hooks-nix.follows = "pre-commit-hooks";
+    };
+
+    nix-fast-build = {
+      url = "github:Mic92/nix-fast-build";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
     };
 
     nix-index-database = {
@@ -116,7 +136,10 @@
 
   outputs = { self, nixpkgs, ... }@inputs:
     let
-      forAllSystems = nixpkgs.lib.genAttrs [ "aarch64-linux" "x86_64-linux" ];
+      forAllSystems = nixpkgs.lib.genAttrs [
+        "aarch64-linux"
+        "x86_64-linux"
+      ];
     in
     {
       hosts = import ./nix/hosts.nix;
@@ -124,9 +147,11 @@
       pkgs = forAllSystems (localSystem: import nixpkgs {
         inherit localSystem;
         overlays = [ self.overlays.default ];
-        config.allowUnfree = true;
-        config.allowAliases = true;
-        config.nvidia.acceptLicense = true;
+        config = {
+          allowAliases = true;
+          allowUnfree = true;
+          nvidia.acceptLicense = true;
+        };
       });
 
       checks = forAllSystems (import ./nix/checks.nix inputs);

@@ -10,12 +10,16 @@
 
       keybindings =
         let
+          execSpawn = cmd: "exec ${pkgs.spawn}/bin/spawn ${cmd}";
           inherit (config.wayland.windowManager.sway.config) modifier terminal;
         in
         lib.mkOptionDefault {
-          "${modifier}+Return" = "exec ${pkgs.foot}/bin/foot";
-          "${modifier}+Shift+q" = "kill";
-          "${modifier}+d" = "exec ${pkgs.dmenu}/bin/dmenu_path | ${pkgs.dmenu}/bin/dmenu | ${pkgs.findutils}/bin/xargs swaymsg exec --";
+          "${modifier}+Return" = execSpawn terminal;
+          "${modifier}+d" = execSpawn "${pkgs.drunmenu-wayland}/bin/drunmenu";
+          "${modifier}+m" = execSpawn "${pkgs.emojimenu-wayland}/bin/emojimenu";
+          "${modifier}+o" = execSpawn "${pkgs.screenocr}/bin/screenocr";
+          "${modifier}+q" = execSpawn "swaylock -f";
+          "Print" = execSpawn "${pkgs.screenshot}/bin/screenshot";
         };
 
       terminal = lib.getExe pkgs.foot;
@@ -55,7 +59,7 @@
       export WLR_RENDERER=vulkan
     '';
 
-    systemdIntegration = true;
+    systemd.enable = true;
     wrapperFeatures.gtk = true;
   };
 }

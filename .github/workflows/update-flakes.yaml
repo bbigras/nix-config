@@ -3,42 +3,38 @@ on:
   schedule:
     - cron:  '*/120 * * * *'
   workflow_dispatch:
+
+permissions: {}
+
 jobs:
-  get-flakes:
+  get-flake-inputs:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.get-flakes.outputs.matrix }}
+      flake-inputs: ${{ steps.get-flake-inputs.outputs.flake-inputs }}
     steps:
       - uses: actions/checkout@v4
         with:
           lfs: false
-      - uses: ./.github/actions/setup-nix
-        with:
-          cachix: false
-      - id: get-flakes
+          sparse-checkout: flake.lock
+      - id: get-flake-inputs
         run: |
-          get_flake_inputs() {
-            nix flake metadata --json \
-              | jq -c '
-                  .locks.nodes.root.inputs
-                  | {flake: keys}'
-          }
+          flake_inputs="$(jq -c '.nodes.root.inputs | {flake: keys}' flake.lock)"
 
-          echo "matrix=$(get_flake_inputs)" >> "$GITHUB_OUTPUT"
+          echo "flake-inputs=${flake_inputs}" >> "$GITHUB_OUTPUT"
   update-flake:
     name: update-${{ matrix.flake }}
     runs-on: ubuntu-latest
-    needs: get-flakes
+    needs: get-flake-inputs
     strategy:
       fail-fast: false
-      matrix: ${{ fromJson(needs.get-flakes.outputs.matrix) }}
+      matrix: ${{ fromJson(needs.get-flake-inputs.outputs.flake-inputs) }}
     steps:
       - uses: actions/checkout@v4
         with:
           lfs: false
-      - uses: ./.github/actions/setup-nix
+      - uses: DeterminateSystems/nix-installer-action@v6
         with:
-          cachix: false
+          extra-conf: accept-flake-config = true
       - run: git config --global user.email "noreply@github.com"
       - run: git config --global user.name "github[bot]"
       - uses: cpcloud/flake-update-action@v1.0.4

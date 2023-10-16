@@ -1,51 +1,35 @@
-{ deploy-rs
+{ self
+, agenix
+, deploy-rs
 , emacs-overlay
 , nixpkgs
-, defmacro-gensym
-, combobulate
 , ...
-}:
+}@inputs:
 
 let
   inherit (nixpkgs) lib;
+
+  importLocalOverlay = file:
+    lib.composeExtensions
+      (_: _: { __inputs = inputs; })
+      (import (./overlays + "/${file}"));
+
   localOverlays =
     lib.mapAttrs'
       (f: _: lib.nameValuePair
         (lib.removeSuffix ".nix" f)
-        (import (./overlays + "/${f}")))
+        (importLocalOverlay f)
+      )
       (builtins.readDir ./overlays);
+
 in
 localOverlays // {
-  default = lib.composeManyExtensions ((lib.attrValues localOverlays) ++ [
+  default = lib.composeManyExtensions ([
+    agenix.overlays.default
     deploy-rs.overlay
     emacs-overlay.overlay
-
-    (self: super: {
-      ripgrep = super.ripgrep.overrideAttrs (_: { doCheck = false; });
+    (final: prev: {
+      inherit (self.packages.${final.stdenv.hostPlatform.system}) nix-fast-build;
     })
-
-    (_self: super: {
-      emacsPackages = super.emacsPackages // {
-        defmacro-gensym = super.emacsPackages.trivialBuild {
-          pname = "defmacro-gensym";
-          version = "git";
-          src = defmacro-gensym;
-          buildPhase = ''
-            runHook preBuild
-            make default
-            runHook postBuild
-          '';
-        };
-      };
-    })
-    (_self: super: {
-      emacsPackages = super.emacsPackages // {
-        combobulate = (super.emacsPackagesFor super.emacs-git).trivialBuild {
-          pname = "combobulate";
-          version = "git";
-          src = combobulate;
-        };
-      };
-    })
-  ]);
+  ] ++ (lib.attrValues localOverlays));
 }

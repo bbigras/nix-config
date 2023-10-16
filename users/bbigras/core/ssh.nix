@@ -8,6 +8,9 @@
 
     Match canonical Host *
       ChallengeResponseAuthentication no
+      ControlMaster auto
+      ControlPath ~/.ssh/ssh-%r@%h:%p
+      ControlPersist 30m
       ForwardAgent no
       ForwardX11 no
       ForwardX11Trusted no

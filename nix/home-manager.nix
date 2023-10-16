@@ -5,7 +5,6 @@
 , nix-index-database
 , nixpkgs
 , stylix
-, templates
 , ...
 }:
 let
@@ -17,7 +16,6 @@ let
       nix.registry = {
         nixpkgs.flake = nixpkgs;
         p.flake = nixpkgs;
-        templates.flake = templates;
       };
 
       home = {
@@ -49,4 +47,6 @@ let
       };
     };
 in
-lib.mapAttrs genConfiguration (self.hosts.homeManager or { })
+lib.mapAttrs
+  genConfiguration
+  (lib.filterAttrs (_: host: host.type == "home-manager") self.hosts)

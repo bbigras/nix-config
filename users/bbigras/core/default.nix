@@ -1,4 +1,4 @@
-{ base16-schemes, hostType, impermanence, nix-index-database, pkgs, stylix, ... }: {
+{ base16-schemes, hostType, impermanence, nix-index-database, pkgs, stylix, lib, ... }: {
   imports = [
     impermanence.nixosModules.home-manager.impermanence
     nix-index-database.hmModules.nix-index
@@ -21,6 +21,9 @@
     username = "bbigras";
     stateVersion = "22.11";
     packages = with pkgs; [
+      nix-closure-size
+      truecolor-check
+
       libqalculate
 
       mosh
@@ -225,8 +228,12 @@
   stylix = {
     base16Scheme = "${base16-schemes}/tomorrow-night.yaml";
     image = pkgs.nixos-artwork.wallpapers.simple-dark-gray.gnomeFilePath;
-    targets.gnome.enable = hostType == "nixos";
-    targets.gtk.enable = hostType == "nixos";
+
+    targets = {
+      gnome.enable = hostType == "nixos";
+      gtk.enable = hostType == "nixos";
+      kde.enable = lib.mkDefault false;
+    };
   };
 
   systemd.user.startServices = "sd-switch";

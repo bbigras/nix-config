@@ -1,4 +1,4 @@
-{ base16-schemes, pkgs, rycee-nur-expressions, stylix, lib, ... }:
+{ base16-schemes, pkgs, rycee-nur-expressions, stylix, ... }:
 
 let
   rycee-nur-expressions2 = import rycee-nur-expressions { inherit pkgs; };

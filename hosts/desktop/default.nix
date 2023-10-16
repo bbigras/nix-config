@@ -19,7 +19,7 @@ let
 
   rycee-nur-expressions2 = import rycee-nur-expressions { inherit pkgs; };
 in
-rec {
+{
   imports = with nixos-hardware.nixosModules;
     [
       ../../core
@@ -168,12 +168,7 @@ rec {
   #   enableWebUI = true;
   # };
 
-  environment.systemPackages = with pkgs; [
-    # boot.kernelPackages.bcc
-  ];
   virtualisation.docker.enable = true;
 
-
   services.earlyoom.enable = true;
-
 }

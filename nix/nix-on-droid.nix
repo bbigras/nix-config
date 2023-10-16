@@ -1,4 +1,5 @@
-{ nixpkgs
+{ self
+, nixpkgs
 , base16-schemes
 , nix-on-droid
 , emacs-overlay
@@ -8,7 +9,6 @@
 }:
 let
   inherit (nixpkgs) lib;
-  hosts = (import ./hosts.nix).nix-on-droid;
 
   pkgs = import nixpkgs {
     system = "aarch64-linux"; # FIXME
@@ -30,4 +30,6 @@ let
       };
     };
 in
-lib.mapAttrs genConfiguration hosts
+lib.mapAttrs
+  genConfiguration
+  (lib.filterAttrs (_: host: host.type == "nix-on-droid") self.hosts)

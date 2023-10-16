@@ -1,4 +1,4 @@
-{ config, lib, pkgs, rycee-nur-expressions, nixos-hardware, ... }:
+{ config, pkgs, rycee-nur-expressions, nixos-hardware, ... }:
 
 let
   rycee-nur-expressions2 = import rycee-nur-expressions { inherit pkgs; };

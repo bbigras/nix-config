@@ -6,7 +6,6 @@
 , nix-index-database
 , nixpkgs
 , stylix
-, templates
 , ...
 }:
 let
@@ -22,7 +21,6 @@ let
           nix.registry = {
             nixpkgs.flake = nixpkgs;
             p.flake = nixpkgs;
-            templates.flake = templates;
           };
         }
       ];
@@ -37,4 +35,6 @@ let
       };
     };
 in
-lib.mapAttrs genConfiguration (self.hosts.darwin or { })
+lib.mapAttrs
+  genConfiguration
+  (lib.filterAttrs (_: host: host.type == "darwin") self.hosts)

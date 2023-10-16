@@ -2,12 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, rycee-nur-expressions, nixos-hardware, ... }:
+{ config, pkgs, rycee-nur-expressions, nixos-hardware, ... }:
 
 let
   rycee-nur-expressions2 = import rycee-nur-expressions { inherit pkgs; };
 in
-rec {
+{
   imports = with nixos-hardware.nixosModules;
     [
       ../../core
