@@ -832,6 +832,22 @@
         "type": "gitlab"
       }
     },
+    "org-tufte": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1679003984,
+        "narHash": "sha256-KUkhayF8fB4g9nIJeY4lmBJARFooe3JlX0Y6oTMqwPE=",
+        "owner": "Zilong-Li",
+        "repo": "org-tufte",
+        "rev": "404ab1286139ea6cbdc00bb1fb50a0afd9d067de",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Zilong-Li",
+        "repo": "org-tufte",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -876,6 +892,7 @@
         "nix-on-droid": "nix-on-droid",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
+        "org-tufte": "org-tufte",
         "pre-commit-hooks": "pre-commit-hooks",
         "rycee-nur-expressions": "rycee-nur-expressions",
         "sops-nix": "sops-nix",

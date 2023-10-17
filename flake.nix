@@ -120,6 +120,12 @@
       url = "gitlab:akater/defmacro-gensym";
       flake = false;
     };
+
+    org-tufte = {
+      url = "github:Zilong-Li/org-tufte";
+      flake = false;
+    };
+
     combobulate = {
       url = "github:mickeynp/combobulate";
       flake = false;
