@@ -134,14 +134,6 @@ in
           '';
         };
 
-        # org-modern-indent = {
-        #   enable = true;
-        #   package = _epkgs: pkgs.emacsPackages.org-modern-indent;
-        #   config = ''
-        #     (add-hook 'org-mode-hook #'org-modern-indent-mode 90)
-        #   '';
-        # };
-
         org-tufte = {
           enable = true;
           package = _epkgs: pkgs.emacsPackages.org-tufte;
