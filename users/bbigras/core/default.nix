@@ -7,7 +7,7 @@
     ./atuin.nix
     ./btop.nix
     ./git.nix
-    ./emacs.nix
+    ./emacs
     ./ssh.nix
     ./tmux.nix
     ./xdg.nix
