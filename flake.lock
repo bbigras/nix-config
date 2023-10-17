@@ -307,6 +307,22 @@
         "type": "github"
       }
     },
+    "envrc": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1640071200,
+        "narHash": "sha256-9ETx8XNNJSPrEngkJCWIFOejeFXqaPUIvfwTdbgjoOs=",
+        "owner": "siddharthverma314",
+        "repo": "envrc",
+        "rev": "880e6c3ca24a46decfce5b5e280fd41e6e8460e0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "siddharthverma314",
+        "repo": "envrc",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -847,6 +863,7 @@
         "defmacro-gensym": "defmacro-gensym",
         "deploy-rs": "deploy-rs",
         "emacs-overlay": "emacs-overlay",
+        "envrc": "envrc",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",

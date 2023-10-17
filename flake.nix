@@ -111,6 +111,11 @@
       inputs.flake-utils.follows = "flake-utils";
     };
 
+    envrc = {
+      url = "github:siddharthverma314/envrc";
+      flake = false;
+    };
+
     defmacro-gensym = {
       url = "gitlab:akater/defmacro-gensym";
       flake = false;

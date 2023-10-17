@@ -368,6 +368,7 @@
         envrc = {
           enable = true;
           defer = 1;
+          package = _epkgs: pkgs.emacsPackages.envrc;
           command = [ "envrc-global-mode" ];
           config = ''
             (envrc-global-mode 1)
