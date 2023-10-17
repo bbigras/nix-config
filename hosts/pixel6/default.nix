@@ -81,7 +81,7 @@ in
         ../../users/bbigras/core/git.nix
         ../../users/bbigras/core/tmux.nix
         ../../users/bbigras/core/zsh.nix
-        ../../users/bbigras/core/emacs-android.nix
+        ../../users/bbigras/core/emacs.nix
         rycee-nur-expressions2.hmModules.emacs-init
       ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/pixel6.nix") then [ (builtins.getEnv "PWD" + "/secrets/pixel6.nix") ] else [ ]);
 
