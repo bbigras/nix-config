@@ -21,9 +21,9 @@ with lib;
     shell = mkIf config.programs.zsh.enable pkgs.zsh;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP2Eo0xWZ1VPs5iHlDd3j+O+3I1qx4VqDaXpkL6phB6Z bbigras@desktop"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE6LFIPxHhM18nw6Sp8xPVG2GGPNcTSrNwTQAoNIyA0r bbigras@laptop"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPwsO15RzSL1/tNskRkdPWCp6VnJ5tlYAUq4nv3f/fed bbigras@laptop"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAoSe4gCERcN4Fucwd7dFWUm9LLO/T0wBC+NzXcgrhwt bbigras@pixel6"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID+OdZsgFMdSEajVmhuDYaM17qLnAkY+IRhIsX1KUgAz bbigras@tablette"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOmSUqyRyAtKAA1wWw1B33DKk3Bebu0ZiXx42lRg6Mxz bbigras@tablette"
       "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCQErMfuhLr14DAHaUSgTLArydzPoLzeOzkYAzf/ye3qvP/vVXeGe4ruWWxvro0yS3DUlfUpmWUU3KRyv3ZN9z6Q9FnDsKKv+GXTrZq4owymd6NWKOLl2F6LGwUGgnkwvit5TDUVolCvIQTT7F/qLgYvmr0q1nTunrl+uPVNXFiAyalhIPMVU+atw/pNmp3JfIqBRefVlrxeoCQ81/nRhQJcNNXjRxSzIeKu80wwCxODYOBtHdIP/NJEzhAMOq/HLabC7ehZtNohweEAlK71HycqwWSNNonEBU0g9R0r/VfXiENa4x+IY5fvMjsdOj53dZuXCDV0AjOmd8sJoepjF7l pubkeygenerator@mobiledevice"
     ];
   };
