@@ -185,6 +185,7 @@ in
         # socat
         # websocat
         zrok
+        truecolor-check
       ];
 
       dconf.enable = lib.mkForce false;
