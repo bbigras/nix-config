@@ -50,13 +50,13 @@ in
     address = "desktop";
     pubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGUlX5oPlf1HHr7TLaOTeN0NldHzgeWGHZF1ntVpWwIm";
   };
-  laptop = {
+  laptop = mkHost {
     type = "nixos";
     hostPlatform = "x86_64-linux";
     address = "laptop";
     pubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEIs8Ait2j8oYQB0cWPLZIw9vObzuWxo4E00awCNw2rZ root@nixos";
   };
-  work = {
+  work = mkHost {
     type = "nixos";
     hostPlatform = "x86_64-linux";
     address = "bbigras-work";
