@@ -10,18 +10,9 @@
 let
   inherit (nixpkgs) lib;
 
-  pkgs = import nixpkgs {
-    system = "aarch64-linux"; # FIXME
-    overlays = [
-      emacs-overlay.overlay
-    ];
-    config.allowUnfree = true;
-    config.allowAliases = true;
-  };
-
-  genConfiguration = hostname: _:
+  genConfiguration = hostname: { hostPlatform, ... }:
     nix-on-droid.lib.nixOnDroidConfiguration {
-      inherit pkgs;
+      pkgs = self.pkgs.${hostPlatform};
       modules = [
         (../hosts + "/${hostname}")
       ];
