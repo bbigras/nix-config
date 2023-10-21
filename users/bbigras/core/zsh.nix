@@ -45,6 +45,8 @@
       bindkey -rpM viins '^[^['
 
       ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
+
+      export DIRENV_LOG_FORMAT=""
     '';
     sessionVariables = {
       RPROMPT = "";
