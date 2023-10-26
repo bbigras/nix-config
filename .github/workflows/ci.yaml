@@ -27,7 +27,7 @@ jobs:
       - uses: cachix/cachix-action@v12
         with:
           name: bbigras-nix-config
-          cachix-signing-key: ${{ secrets.CACHIX_SIGNING_KEY }}
+          signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
           extraPullNames: nix-community
           installCommand: ${{ env.cachix-install }}
       - name: nix-flake-check
@@ -41,7 +41,7 @@ jobs:
       - uses: cachix/cachix-action@v12
         with:
           name: bbigras-nix-config
-          cachix-signing-key: ${{ secrets.CACHIX_SIGNING_KEY }}
+          signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
           extraPullNames: nix-community
           installCommand: ${{ env.cachix-install }}
       - name: nix-flake-show
@@ -153,7 +153,7 @@ jobs:
       - uses: cachix/cachix-action@v12
         with:
           name: bbigras-nix-config
-          cachix-signing-key: ${{ secrets.CACHIX_SIGNING_KEY }}
+          signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
           extraPullNames: nix-community
           installCommand: ${{ env.cachix-install }}
       - name: eval
@@ -182,7 +182,7 @@ jobs:
       - uses: cachix/cachix-action@v12
         with:
           name: bbigras-nix-config
-          cachix-signing-key: ${{ secrets.CACHIX_SIGNING_KEY }}
+          signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
           extraPullNames: nix-community
           installCommand: ${{ env.cachix-install }}
       - name: build
