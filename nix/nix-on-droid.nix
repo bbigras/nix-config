@@ -2,8 +2,8 @@
 , nixpkgs
 , base16-schemes
 , nix-on-droid
+, nur
 , stylix
-, rycee-nur-expressions
 , ...
 }:
 let
@@ -16,7 +16,7 @@ let
         (../hosts + "/${hostname}")
       ];
       extraSpecialArgs = {
-        inherit rycee-nur-expressions stylix base16-schemes;
+        inherit nur stylix base16-schemes;
       };
     };
 in

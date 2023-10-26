@@ -2,10 +2,10 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, rycee-nur-expressions, nixos-hardware, ... }:
+{ config, pkgs, nur, nixos-hardware, ... }:
 
 let
-  rycee-nur-expressions2 = import rycee-nur-expressions { inherit pkgs; };
+  nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
 in
 {
   imports = with nixos-hardware.nixosModules;
@@ -144,7 +144,7 @@ in
   home-manager.users.bbigras = {
     imports = [
       ../../users/bbigras/trusted
-      rycee-nur-expressions2.hmModules.emacs-init
+      nurNoPkgs.repos.rycee.hmModules.emacs-init
     ];
 
     systemd.user.targets = {

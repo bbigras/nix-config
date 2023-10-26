@@ -3,6 +3,7 @@
 , deploy-rs
 , emacs-overlay
 , nixpkgs
+, nur
 , ...
 }@inputs:
 
@@ -31,5 +32,6 @@ localOverlays // {
     (final: prev: {
       inherit (self.packages.${final.stdenv.hostPlatform.system}) nix-fast-build;
     })
+    nur.overlay
   ] ++ (lib.attrValues localOverlays));
 }

@@ -819,6 +819,20 @@
         "type": "gitlab"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1698301517,
+        "narHash": "sha256-omZUrQefrUoluVlpRi2Ne06rA6bLyxZ/7nOH7vqwL0s=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "985450f07ced08b5dc248d7382d80b2defd42083",
+        "type": "github"
+      },
+      "original": {
+        "id": "nur",
+        "type": "indirect"
+      }
+    },
     "org-tufte": {
       "flake": false,
       "locked": {
@@ -879,9 +893,9 @@
         "nix-on-droid": "nix-on-droid",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
+        "nur": "nur",
         "org-tufte": "org-tufte",
         "pre-commit-hooks": "pre-commit-hooks",
-        "rycee-nur-expressions": "rycee-nur-expressions",
         "sops-nix": "sops-nix",
         "stylix": "stylix",
         "templates": "templates",
@@ -911,22 +925,6 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "type": "github"
-      }
-    },
-    "rycee-nur-expressions": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1698252763,
-        "narHash": "sha256-fIN7QP76Hv0fkyS860MQQ4Abx+7iQ62L9ffy9t3EsHQ=",
-        "owner": "rycee",
-        "repo": "nur-expressions",
-        "rev": "1c0edd81d576b8df4b7d2ba83267e4dded0f473a",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "rycee",
-        "repo": "nur-expressions",
-        "type": "gitlab"
       }
     },
     "sops-nix": {

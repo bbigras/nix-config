@@ -7,9 +7,9 @@
 , nixos-hardware
 , nixpkgs
 , stylix
+, nur
 , sops-nix
 , agenix
-, rycee-nur-expressions
 , ...
 }:
 let
@@ -38,7 +38,7 @@ let
           lanzaboote
           nix-index-database
           nixos-hardware
-          rycee-nur-expressions
+          nur
           sops-nix
           stylix;
       };
