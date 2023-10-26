@@ -45,7 +45,7 @@ jobs:
           extraPullNames: nix-community
           installCommand: ${{ env.cachix-install }}
       - name: nix-flake-show
-        run: nix flake show '${{ env.flake }}'
+        run: nix flake show '${{ env.flake }}' --option allow-import-from-derivation true
   get-attrs:
     runs-on: ubuntu-latest
     outputs:
