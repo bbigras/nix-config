@@ -1,6 +1,6 @@
 self: super: {
   emacsPackages = super.emacsPackages // {
-    combobulate = (super.emacsPackagesFor super.emacs-git).trivialBuild {
+    combobulate = super.emacsPackages.trivialBuild {
       pname = "combobulate";
       version = "git";
       src = self.__inputs.combobulate;
