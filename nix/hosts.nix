@@ -62,11 +62,11 @@ in
     address = "bbigras-work";
     pubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKEfhY66gBDU0xgjaQgm9V991wuxI/R3bm3Yt6Kdv9Au root@nixos";
   };
-  pixel6 = mkHost {
-    type = "nix-on-droid";
-    hostPlatform = "aarch64-linux";
-    address = "pixel6";
-    pubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHGTEcpBZpaWTaPBXsBCvO2sNE6UU9Z7In98htaEofYa nix-on-droid@localhost";
-    remoteBuild = false;
-  };
+  # pixel6 = mkHost {
+  #   type = "nix-on-droid";
+  #   hostPlatform = "aarch64-linux";
+  #   address = "pixel6";
+  #   pubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHGTEcpBZpaWTaPBXsBCvO2sNE6UU9Z7In98htaEofYa nix-on-droid@localhost";
+  #   remoteBuild = false;
+  # };
 }
