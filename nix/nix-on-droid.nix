@@ -2,7 +2,6 @@
 , nixpkgs
 , base16-schemes
 , nix-on-droid
-, emacs-overlay
 , stylix
 , rycee-nur-expressions
 , ...
