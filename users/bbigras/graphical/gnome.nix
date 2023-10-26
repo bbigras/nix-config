@@ -10,16 +10,11 @@
 
       gnome.eog # image viewer
       gnome.gnome-tweaks
-      # tilix
 
       # extensions
       gnomeExtensions.appindicator
       gnomeExtensions.caffeine
       gnomeExtensions.clipboard-indicator
-      # gnomeExtensions.just-perfection
-      # gnomeExtensions.pop-shell
-      gnomeExtensions.forge
-      gnomeExtensions.tiling-assistant
     ];
   };
 
