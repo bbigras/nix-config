@@ -283,6 +283,14 @@
           '';
         };
 
+        ef-themes = {
+          enable = true;
+          config = ''
+            (mapc #'disable-theme custom-enabled-themes)
+            (ef-themes-select 'ef-elea-dark)
+          '';
+        };
+
         bufler.enable = true;
 
         # Save and restore frames and windows with their buffers in Emacs
