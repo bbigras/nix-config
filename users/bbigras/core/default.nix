@@ -234,6 +234,7 @@
       gtk.enable = hostType == "nixos";
       kde.enable = lib.mkDefault false;
       xfce.enable = lib.mkDefault false;
+      emacs.enable = false;
     };
   };
 
