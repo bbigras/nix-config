@@ -136,6 +136,7 @@ jobs:
   eval:
     name: eval ${{ matrix.attrs.name }}
     runs-on: ${{ matrix.attrs.runsOn }}
+    if: needs.get-attrs.outputs.eval != '[]'
     needs: [ get-attrs ]
     strategy:
       fail-fast: false
