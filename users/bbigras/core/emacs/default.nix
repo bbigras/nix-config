@@ -1008,7 +1008,5 @@
         };
       };
     };
-  } // lib.optionalAttrs (osConfig.programs.sway.enable or false) {
-    package = pkgs.emacs-pgtk;
   };
 }
