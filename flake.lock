@@ -771,6 +771,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_tmux": {
+      "locked": {
+        "lastModified": 1698756107,
+        "narHash": "sha256-nGciwMmDH8pfE+PKGgoJEE/SY0QcfGWkktCvbD9nWTU=",
+        "owner": "hmajid2301",
+        "repo": "nixpkgs",
+        "rev": "e59598bda7846853e96f479d900c0f4970b31346",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hmajid2301",
+        "ref": "add-tmux-t",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nmd": {
       "flake": false,
       "locked": {
@@ -893,6 +909,7 @@
         "nix-on-droid": "nix-on-droid",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs_tmux": "nixpkgs_tmux",
         "nur": "nur",
         "org-tufte": "org-tufte",
         "pre-commit-hooks": "pre-commit-hooks",

@@ -34,6 +34,8 @@
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nixpkgs_tmux.url = "github:hmajid2301/nixpkgs/add-tmux-t";
+
     flake-compat.url = "github:edolstra/flake-compat";
 
     deploy-rs = {

@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   home = {
     packages = with pkgs; [
-      tmux-sessionizer
+      tmuxPlugins.t-smart-tmux-session-manager
     ];
   };
 
@@ -19,6 +19,7 @@
       fuzzback
       prefix-highlight
       yank
+      t-smart-tmux-session-manager
       tmux-thumbs
       tmux-fzf
     ];
@@ -30,12 +31,11 @@
       bind r source-file ~/.config/tmux/tmux.conf \; display-message "Config reloaded..."
       setw -g monitor-activity on
 
-      # https://waylonwalker.com/tmux-fzf-session-jump/
-      bind C-j display-popup -E "\
-          tmux list-sessions -F '#{?session_attached,,#{session_name}}' |\
-          sed '/^$/d' |\
-          fzf --reverse --header jump-to-session --preview 'tmux capture-pane -pt {}'  |\
-          xargs tmux switch-client -t"
+      # for t-smart-tmux-session-manager
+      bind-key x kill-pane # skip "kill-pane 1? (y/n)" prompt
+      set -g detach-on-destroy off  # don't exit from tmux when closing a session
+      set -g @t-fzf-find-binding 'ctrl-f:change-prompt(  )+reload(fd -H -d 2 -t d . ~)'
+      set -g @t-fzf-prompt '  '
     '';
   };
 }
