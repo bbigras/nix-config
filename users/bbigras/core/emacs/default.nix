@@ -499,7 +499,6 @@
         apheleia = {
           enable = true;
           config = ''
-            (require 'apheleia-core)
             (apheleia-global-mode +1)
           '';
         };
