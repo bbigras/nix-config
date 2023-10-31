@@ -5,8 +5,6 @@
     ./mime.nix
   ];
 
-  dconf.enable = lib.mkForce true;
-
   home = {
     packages = with pkgs; [
       gammastep
