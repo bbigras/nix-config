@@ -32,7 +32,6 @@
     flameshot.enable = true;
     gnome-keyring.enable = true;
     gpg-agent.pinentryFlavor = "gnome3";
-    rsibreak.enable = true;
     unclutter.enable = true;
   };
 }
