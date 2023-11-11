@@ -160,7 +160,7 @@ in
         libqalculate
         cachix
         croc
-        dogdns
+        doggo
         fd
         just
         mosh

@@ -61,7 +61,7 @@
       pwgen
       sd # find & replace
       bandwhich
-      dogdns
+      doggo
       btop
 
       # Android
