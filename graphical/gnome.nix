@@ -18,6 +18,12 @@
     xserver.desktopManager.gnome.enable = true;
   };
 
-  stylix.targets.plymouth.enable = false;
-  stylix.targets.gnome.enable = true;
+  stylix = {
+    cursor = {
+      name = "Adwaita";
+      package = pkgs.gnome.adwaita-icon-theme;
+    };
+    targets.plymouth.enable = false;
+    targets.gnome.enable = true;
+  };
 }
