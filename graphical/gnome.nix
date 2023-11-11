@@ -12,7 +12,7 @@
     xserver.enable = true;
     xserver.displayManager.gdm = {
       enable = true;
-      autoSuspend = true;
+      autoSuspend = false;
       wayland = false;
     };
     xserver.desktopManager.gnome.enable = true;
