@@ -230,10 +230,6 @@ in
             ;; https://old.reddit.com/r/orgmode/comments/hg8qik/weird_joined_lines_bug/fw73kml/
             (add-hook 'org-capture-prepare-finalize-hook 'add-newline-at-end-if-none)
           '';
-
-          extraConfig = ''
-            :custom-face (org-link ((t (:underline t))))
-          '';
         };
 
 
