@@ -10,12 +10,13 @@
 , nur
 , sops-nix
 , agenix
+, srvos
 , ...
 }:
 let
   inherit (nixpkgs) lib;
 
-  genConfiguration = hostname: { address, hostPlatform, type, ... }:
+  genConfiguration = hostname: { address, hostPlatform, type, type2, ... }:
     lib.nixosSystem {
       modules = [
         (../hosts + "/${hostname}")
@@ -27,6 +28,10 @@ let
           nixpkgs.pkgs = self.pkgs.${hostPlatform};
         }
         agenix.nixosModules.default
+      ] ++ lib.optionals (type2 == "desktop") [
+        srvos.nixosModules.desktop
+      ] ++ lib.optionals (type2 == "server") [
+        srvos.nixosModules.server
       ];
       specialArgs = {
         hostAddress = address;

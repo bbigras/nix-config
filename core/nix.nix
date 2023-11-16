@@ -30,7 +30,6 @@
       !include tokens.conf
     '';
   } // lib.optionalAttrs (hostType == "nixos") {
-    daemonCPUSchedPolicy = "batch";
     daemonIOSchedPriority = 5;
     nixPath = [ "nixpkgs=/run/current-system/nixpkgs" ];
     optimise = {

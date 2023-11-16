@@ -17,12 +17,13 @@ let
     , homeDirectory ? null
     , remoteBuild ? true
     , large ? false
+    , type2 ? "desktop"
     }:
     if type == "nixos" then
       assert address != null && pubkey != null;
       assert (hasSuffix "linux" hostPlatform);
       {
-        inherit type hostPlatform address pubkey remoteBuild large;
+        inherit type type2 hostPlatform address pubkey remoteBuild large;
       }
     else if type == "darwin" then
       assert pubkey != null;

@@ -34,6 +34,11 @@
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    srvos = {
+      url = "github:nix-community/srvos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixpkgs_tmux.url = "github:hmajid2301/nixpkgs/add-tmux-t";
 
     flake-compat.url = "github:edolstra/flake-compat";
