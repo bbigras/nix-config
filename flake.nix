@@ -39,6 +39,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.1.0";
+
     nixpkgs_tmux.url = "github:hmajid2301/nixpkgs/add-tmux-t";
 
     flake-compat.url = "github:edolstra/flake-compat";

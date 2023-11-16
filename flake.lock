@@ -561,6 +561,22 @@
         "type": "github"
       }
     },
+    "nix-flatpak": {
+      "locked": {
+        "lastModified": 1699563939,
+        "narHash": "sha256-2Z4IP5Vb7jDVaDrKMO1tzLvpfuBpgTk9kJ2Okurv7rc=",
+        "owner": "gmodena",
+        "repo": "nix-flatpak",
+        "rev": "df3ea9930422fb14bf00e857ff771ddb85aafba6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gmodena",
+        "ref": "v0.1.0",
+        "repo": "nix-flatpak",
+        "type": "github"
+      }
+    },
     "nix-formatter-pack": {
       "inputs": {
         "nixpkgs": [
@@ -921,6 +937,7 @@
         "impermanence": "impermanence",
         "lanzaboote": "lanzaboote",
         "nix-fast-build": "nix-fast-build",
+        "nix-flatpak": "nix-flatpak",
         "nix-index-database": "nix-index-database",
         "nix-on-droid": "nix-on-droid",
         "nixos-hardware": "nixos-hardware",
