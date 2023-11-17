@@ -12,6 +12,10 @@ in
     uid = 10382;
   };
 
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
+
   # Simply install just the packages
   environment.packages = with pkgs; [
     # User-facing stuff that you really really want to have
