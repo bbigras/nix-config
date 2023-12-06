@@ -44,6 +44,7 @@ in
     wireguard.sopsFile = ./restic-laptop.yaml;
   };
 
+  boot.kernelPackages = pkgs.linuxPackages_testing;
   hardware.brillo.enable = true;
   boot.kernel.sysctl = {
     "kernel.sysrq" = 1;
