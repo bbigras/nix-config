@@ -24,6 +24,6 @@
       package = pkgs.gnome.adwaita-icon-theme;
     };
     targets.plymouth.enable = false;
-    targets.gnome.enable = true;
+    targets.gnome.enable = false;
   };
 }
