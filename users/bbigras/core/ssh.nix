@@ -1,6 +1,6 @@
 {
   home.file.".ssh/config".text = ''
-    Include ~/.ssh/config.host
+    Include ~/.ssh/devpod
 
     Host *
       CanonicalizeHostname yes
