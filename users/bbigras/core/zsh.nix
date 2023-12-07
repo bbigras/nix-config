@@ -36,6 +36,7 @@
       bindkey "$${terminfo[khome]}" beginning-of-line
       bindkey "$${terminfo[kend]}" end-of-line
       bindkey "$${terminfo[kdch1]}" delete-char
+      ${pkgs.nix-your-shell}/bin/nix-your-shell zsh | source /dev/stdin
       bindkey "^[[1;5C" forward-word
       bindkey "^[[1;3C" forward-word
       bindkey "^[[1;5D" backward-word
@@ -44,7 +45,6 @@
 
       bindkey -rpM viins '^[^['
 
-      ${pkgs.any-nix-shell}/bin/any-nix-shell zsh | source /dev/stdin
     '';
     sessionVariables = {
       RPROMPT = "";

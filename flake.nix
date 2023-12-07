@@ -49,8 +49,8 @@
       url = "github:serokell/deploy-rs";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        utils.follows = "flake-utils";
         flake-compat.follows = "flake-compat";
+        utils.follows = "flake-utils";
       };
     };
 
@@ -72,10 +72,13 @@
 
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.flake-utils.follows = "flake-utils";
-      inputs.pre-commit-hooks-nix.follows = "pre-commit-hooks";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "flake-compat";
+        flake-parts.follows = "flake-parts";
+        flake-utils.follows = "flake-utils";
+        pre-commit-hooks-nix.follows = "pre-commit-hooks";
+      };
     };
 
     nix-fast-build = {

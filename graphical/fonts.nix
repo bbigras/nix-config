@@ -2,10 +2,10 @@
 let
   fontPackages = with pkgs; [
     dejavu_fonts
-    noto-fonts-extra
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
+    noto-fonts-extra
     unifont
     fira-code-symbols
   ];
@@ -53,7 +53,7 @@ in
       name = "IBM Plex Sans";
     };
     serif = {
-      package = pkgs.dejavu_fonts;
+      package = pkgs.ibm-plex;
       name = "IBM Plex Serif";
     };
     monospace = {
