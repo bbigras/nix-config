@@ -95,7 +95,7 @@
     };
 
     nix-fast-build = {
-      url = "github:Mic92/nix-fast-build";
+      url = "github:bbigras/nix-fast-build/impure";
       inputs = {
         flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
@@ -150,6 +150,11 @@
     org-tufte = {
       url = "github:Zilong-Li/org-tufte";
       flake = false;
+    };
+
+    nix-on-droid = {
+      url = "github:t184256/nix-on-droid";
+      inputs.home-manager.follows = "home-manager";
     };
 
     catppuccin.url = "github:catppuccin/nix";
@@ -221,6 +226,7 @@
           darwinConfigurations = import ./nix/darwin.nix toplevel;
           homeConfigurations = import ./nix/home-manager.nix toplevel;
           nixosConfigurations = import ./nix/nixos.nix toplevel;
+          nixondroidConfigurations = import ./nix/nix-on-droid.nix toplevel;
 
           deploy = import ./nix/deploy.nix toplevel;
 

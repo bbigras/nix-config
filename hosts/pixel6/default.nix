@@ -87,7 +87,7 @@ in
         ../../users/bbigras/core/git.nix
         ../../users/bbigras/core/tmux.nix
         ../../users/bbigras/core/zsh.nix
-        ../../users/bbigras/core/emacs
+        # ../../users/bbigras/core/emacs
         nurNoPkgs.repos.rycee.hmModules.emacs-init
         catppuccin.homeManagerModules.catppuccin
       ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/pixel6.nix") then [ (builtins.getEnv "PWD" + "/secrets/pixel6.nix") ] else [ ]);
@@ -155,7 +155,7 @@ in
         zellij.enable = true;
         zsh = {
           shellAliases = {
-            ssh-server = "${pkgs.openssh}/bin/sshd -dD -f /etc/tmp-sshd";
+            ssh-server = "${pkgs.openssh}/bin/sshd -f /etc/tmp-sshd";
           };
         };
       };
@@ -189,8 +189,12 @@ in
         # websocat
         git-annex
         devpod
+        natscli
+        viddy
+        aichat
         zrok
         truecolor-check
+        restic
       ];
 
       dconf.enable = lib.mkForce false;

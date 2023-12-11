@@ -196,6 +196,7 @@ jobs:
             '--systems=${{ env.system }}'
             '--option' 'accept-flake-config' 'true'
             '--retries=3'
+            '--option' 'pure-eval' 'false'
           )
           [[ '${{ env.system }}' == 'aarch64-linux' ]] && args+=('--option' 'extra-platforms' 'aarch64-linux')
           args+=('--flake=${{ env.flake }}#${{ matrix.attrs.attr }}')

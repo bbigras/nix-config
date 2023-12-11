@@ -1,23 +1,20 @@
-{ self
-, nixpkgs
-, nix-on-droid
-, nur
-, catppuccin
-, ...
-}:
+{ withSystem, inputs, ... }:
+
 let
+  inherit (inputs) self nix-on-droid nur catppuccin nixpkgs;
   inherit (nixpkgs) lib;
 
   genConfiguration = hostname: { hostPlatform, ... }:
-    nix-on-droid.lib.nixOnDroidConfiguration {
-      pkgs = self.pkgs.${hostPlatform};
-      modules = [
-        (../hosts + "/${hostname}")
-      ];
-      extraSpecialArgs = {
-        inherit nur catppuccin;
-      };
-    };
+    withSystem hostPlatform ({ pkgs, ... }:
+      nix-on-droid.lib.nixOnDroidConfiguration {
+        inherit pkgs;
+        modules = [
+          (../hosts + "/${hostname}")
+        ];
+        extraSpecialArgs = {
+          inherit nur catppuccin;
+        };
+      });
 in
 lib.mapAttrs
   genConfiguration

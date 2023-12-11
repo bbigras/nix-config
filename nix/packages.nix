@@ -8,7 +8,8 @@ let
   nixosDrvs = lib.mapAttrs (_: nixos: nixos.config.system.build.toplevel) flake.nixosConfigurations;
   homeDrvs = lib.mapAttrs (_: home: home.activationPackage) flake.homeConfigurations;
   darwinDrvs = lib.mapAttrs (_: darwin: darwin.system) flake.darwinConfigurations;
-  hostDrvs = nixosDrvs // homeDrvs // darwinDrvs;
+  nixondroidDrvs = lib.mapAttrs (_: home: home.activationPackage) flake.nixondroidConfigurations;
+  hostDrvs = nixosDrvs // homeDrvs // darwinDrvs // nixondroidDrvs;
 
   compatHosts = lib.filterAttrs (_: host: host.hostPlatform == system) flake.hosts;
   compatHostDrvs = lib.mapAttrs
