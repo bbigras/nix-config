@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }: {
+{ pkgs, ... }: {
   imports = [
     ./common.nix
     ./firefox.nix
@@ -45,15 +45,15 @@
 
   services = {
     gpg-agent.pinentryFlavor = "gnome3";
-    gammastep = {
-      enable = false;
-      provider = "geoclue2";
-      tray = true;
-      settings.general = {
-        brightness-day = lib.mkDefault 1.0;
-        brightness-night = lib.mkDefault 0.4;
-      };
-    };
+    # gammastep = {
+    #   enable = false;
+    #   provider = "geoclue2";
+    #   tray = true;
+    #   settings.general = {
+    #     brightness-day = lib.mkDefault 1.0;
+    #     brightness-night = lib.mkDefault 0.4;
+    #   };
+    # };
     # udiskie = {
     #   enable = true;
     #   automount = false;
