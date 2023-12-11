@@ -177,7 +177,6 @@ in
         prettyping
         # tab-rs
         ripgrep
-        vault
         kubernetes
         kubernetes-helm
         k9s
