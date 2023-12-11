@@ -66,7 +66,6 @@
   services = {
     # megasync.enable = true;
     # kdeconnect.enable = true;
-    easyeffects.enable = true;
   };
 
   stylix.fonts = {
