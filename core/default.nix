@@ -51,5 +51,9 @@
     # We need this otherwise the autoimport clashes with our manual import.
     homeManagerIntegration.autoImport = false;
     image = pkgs.nixos-artwork.wallpapers.simple-dark-gray.gnomeFilePath;
+    cursor = {
+      name = "Adwaita";
+      package = pkgs.gnome.adwaita-icon-theme;
+    };
   };
 }
