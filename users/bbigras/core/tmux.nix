@@ -28,7 +28,6 @@
     terminal = "tmux-256color";
     historyLimit = 30000;
     extraConfig = ''
-      bind r source-file ~/.config/tmux/tmux.conf \; display-message "Config reloaded..."
       # update the env when attaching to an existing session
       set -g update-environment -r
       set -ag terminal-overrides ",alacritty*:RGB,foot*:RGB,xterm-kitty*:RGB,xterm-256color:RGB"
@@ -36,6 +35,7 @@
 
       # automatically renumber windows
       set -g renumber-windows on
+      bind R source-file ~/.config/tmux/tmux.conf \; display-message "Config reloaded..."
       set -g base-index 0
       set-window-option -g automatic-rename
       setw -g monitor-activity on
