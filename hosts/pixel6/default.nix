@@ -68,6 +68,10 @@ in
       # Read the changelog before changing this value
       home.stateVersion = "20.09";
 
+      home.file.".ssh/config".text = ''
+        Include ~/.ssh/devpod
+      '';
+
       home.activation = {
         copyFont =
           let
@@ -187,6 +191,7 @@ in
         kubelogin-oidc
         # socat
         # websocat
+        devpod
         zrok
         truecolor-check
       ];

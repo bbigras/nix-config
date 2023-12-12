@@ -146,6 +146,7 @@
       git-annex
       git-remote-gcrypt
       qalculate-gtk
+      devpod
     ];
     shellAliases = {
       cat = "${pkgs.bat}/bin/bat";
