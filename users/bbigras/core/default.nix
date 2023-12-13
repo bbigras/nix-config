@@ -133,7 +133,6 @@
       ventoy
       docker-credential-helpers
       viddy
-      beets-unstable
       natscli
       just
 
