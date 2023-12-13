@@ -34,6 +34,7 @@
       bfg-repo-cleaner
       gitAndTools.git-machete
       git-filter-repo
+      git-ps-rs
       gist
       gitAndTools.gh
       colordiff
