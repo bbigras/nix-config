@@ -203,6 +203,11 @@
     bashmount.enable = true;
 
     rio.enable = true;
+    sapling = {
+      enable = true;
+      userEmail = "bigras.bruno@gmail.com";
+      userName = "Bruno Bigras";
+    };
     ssh = {
       enable = true;
       hashKnownHosts = true;
