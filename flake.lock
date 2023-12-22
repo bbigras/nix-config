@@ -786,11 +786,11 @@
     },
     "nixpkgs_tmux": {
       "locked": {
-        "lastModified": 1698756107,
-        "narHash": "sha256-nGciwMmDH8pfE+PKGgoJEE/SY0QcfGWkktCvbD9nWTU=",
+        "lastModified": 1703265355,
+        "narHash": "sha256-4gqBqOBNTKhAtEg173MgH+/pMjhigUHaiGkWE90RrmE=",
         "owner": "hmajid2301",
         "repo": "nixpkgs",
-        "rev": "e59598bda7846853e96f479d900c0f4970b31346",
+        "rev": "d4143f3b9f1c0054c459e8215ca8f07d3956d79a",
         "type": "github"
       },
       "original": {
