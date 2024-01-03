@@ -30,6 +30,7 @@
       !include tokens.conf
     '';
   } // lib.optionalAttrs (hostType == "nixos") {
+    channel.enable = false;
     daemonIOSchedPriority = 5;
     nixPath = [ "nixpkgs=/run/current-system/nixpkgs" ];
     optimise = {
