@@ -282,6 +282,16 @@
           '';
         };
 
+        gptel = {
+          enable = true;
+          init = ''
+            (setq gptel-model "gpt-4-1106-preview")
+          '';
+          config = ''
+            (require 'gptel-curl)
+          '';
+        };
+
         ef-themes = {
           enable = true;
           config = ''
