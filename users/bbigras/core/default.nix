@@ -149,7 +149,6 @@
       devpod
     ];
     shellAliases = {
-      cat = "${pkgs.bat}/bin/bat";
       cls = "clear";
       j = "${pkgs.just}/bin/just";
       ".j" = "${pkgs.just}/bin/just --justfile ~/.user.justfile";
