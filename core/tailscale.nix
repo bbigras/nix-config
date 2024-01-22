@@ -2,7 +2,13 @@
 
 {
   services.tailscale.enable = true;
-  systemd.services.tailscaled.after = [ "network-online.target" "systemd-resolved.service" ];
+
+  systemd = {
+    services.tailscaled = {
+      after = [ "network-online.target" "systemd-resolved.service" ];
+      wants = [ "network-online.target" "systemd-resolved.service" ];
+    };
+  };
 
   networking = {
     firewall = {
