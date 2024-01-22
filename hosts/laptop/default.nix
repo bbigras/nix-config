@@ -54,12 +54,9 @@ in
 
   networking = {
     useNetworkd = true;
-    dhcpcd.enable = false;
     hostName = "laptop"; # Define your hostname.
     networkmanager.enable = false;
     wireless.iwd.enable = true;
-    useDHCP = false;
-    interfaces.eth0.useDHCP = true;
   };
 
   virtualisation.docker = {
