@@ -16,6 +16,7 @@
       merge.conflictstyle = "diff3";
       mergetool.prompt = true;
       pull.ff = "only";
+      rebase.updateRefs = true;
       credential.helper = "${pkgs.gitAndTools.gitFull}/bin/git-credential-libsecret";
     };
 
