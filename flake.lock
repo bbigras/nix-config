@@ -809,11 +809,11 @@
     },
     "nixpkgs_tmux": {
       "locked": {
-        "lastModified": 1703265355,
-        "narHash": "sha256-4gqBqOBNTKhAtEg173MgH+/pMjhigUHaiGkWE90RrmE=",
+        "lastModified": 1706182073,
+        "narHash": "sha256-H0UahPm40gM4e+vsy4Rnt/QMtjcho43i9PdQABdOTjk=",
         "owner": "hmajid2301",
         "repo": "nixpkgs",
-        "rev": "d4143f3b9f1c0054c459e8215ca8f07d3956d79a",
+        "rev": "9404f2ac4345612840350b2b70b63650d472dd33",
         "type": "github"
       },
       "original": {
