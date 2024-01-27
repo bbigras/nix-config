@@ -64,7 +64,7 @@ in
     };
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_testing;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
   boot = {
     binfmt.registrations.aarch64 = {
