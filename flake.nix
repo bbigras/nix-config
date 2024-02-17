@@ -32,7 +32,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:SuperSandro2000/nixpkgs/libgit_1_6";
 
     srvos = {
       url = "github:nix-community/srvos";
