@@ -107,9 +107,6 @@ in
   users.users.bbigras.packages = [ pkgs.retroarchBare ];
 
   services.flatpak.enable = true;
-  services.flatpak.packages = [
-    "com.valvesoftware.Steam"
-  ];
   services.smartd.enable = true;
 
   systemd.network = {

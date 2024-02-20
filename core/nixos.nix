@@ -6,7 +6,6 @@
     lanzaboote.nixosModules.lanzaboote
     nix-index-database.nixosModules.nix-index
     sops-nix.nixosModules.sops
-    ./flatpak.nix
     ./openssh.nix
     stylix.nixosModules.stylix
     ./resolved.nix

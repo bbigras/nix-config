@@ -11,7 +11,6 @@
 , sops-nix
 , agenix
 , srvos
-, nix-flatpak
 , ...
 }:
 let
@@ -29,7 +28,6 @@ let
           nixpkgs.pkgs = self.pkgs.${hostPlatform};
         }
         agenix.nixosModules.default
-        nix-flatpak.nixosModules.nix-flatpak
       ] ++ lib.optionals (type2 == "desktop") [
         srvos.nixosModules.desktop
       ] ++ lib.optionals (type2 == "server") [
