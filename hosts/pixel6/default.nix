@@ -39,7 +39,6 @@ in
     unzip
     dnsutils
     which
-    git-annex
   ];
 
   # Backup etc files instead of failing to activate generation if a file already exists in /etc
@@ -191,6 +190,7 @@ in
         kubelogin-oidc
         # socat
         # websocat
+        git-annex
         devpod
         zrok
         truecolor-check
