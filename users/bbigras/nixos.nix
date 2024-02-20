@@ -5,6 +5,7 @@ with lib;
     createHome = true;
     # group = "bbigras";
     extraGroups = [ "wheel" "dialout" ]
+      ++ optionals config.hardware.uinput.enable [ "uinput" ]
       ++ optionals config.hardware.i2c.enable [ "i2c" ]
       ++ optionals config.networking.networkmanager.enable [ "networkmanager" ]
       ++ optionals config.programs.sway.enable [ "input" "video" ]
