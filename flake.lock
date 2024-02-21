@@ -773,17 +773,17 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1708085344,
-        "narHash": "sha256-XPyS2G0gMPVEDKC2VGM7tHA02zXJc3riOOHDg1aM3OA=",
-        "owner": "SuperSandro2000",
+        "lastModified": 1708535278,
+        "narHash": "sha256-WQHQ+311Mp8/L5+wB++6nnzeVscdF46hbAh/EwQdp/k=",
+        "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "7188e3243b53ea1900e7650bfc38b47d702dba8f",
+        "rev": "591f9cbebeef5dfdcb24997a3069d7f29c365ab9",
         "type": "github"
       },
       "original": {
-        "owner": "SuperSandro2000",
-        "ref": "libgit_1_6",
+        "owner": "nixos",
         "repo": "nixpkgs",
+        "rev": "591f9cbebeef5dfdcb24997a3069d7f29c365ab9",
         "type": "github"
       }
     },
