@@ -627,15 +627,16 @@
         ],
         "nix-formatter-pack": "nix-formatter-pack",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-docs": "nixpkgs-docs",
         "nixpkgs-for-bootstrap": "nixpkgs-for-bootstrap",
         "nmd": "nmd_2"
       },
       "locked": {
-        "lastModified": 1709676965,
-        "narHash": "sha256-BOMqEShw82JRbdEBY3T5i9PId8Ri1OB78MSOQHvf0ag=",
+        "lastModified": 1709686262,
+        "narHash": "sha256-zSAS1R52CAPc6prc9+EZeUFZmr6hDPhEOU46hZz5aG8=",
         "owner": "t184256",
         "repo": "nix-on-droid",
-        "rev": "11e98b0140e094919258028b05db0efe6e83977e",
+        "rev": "40290511094531f2932f7954fd5159861de2ada3",
         "type": "github"
       },
       "original": {
@@ -669,6 +670,22 @@
       },
       "original": {
         "owner": "NixOS",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-docs": {
+      "locked": {
+        "lastModified": 1705957679,
+        "narHash": "sha256-Q8LJaVZGJ9wo33wBafvZSzapYsjOaNjP/pOnSiKVGHY=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "9a333eaa80901efe01df07eade2c16d183761fa3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "release-23.05",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -823,7 +840,7 @@
       "inputs": {
         "nixpkgs": [
           "nix-on-droid",
-          "nixpkgs"
+          "nixpkgs-docs"
         ],
         "scss-reset": "scss-reset"
       },
