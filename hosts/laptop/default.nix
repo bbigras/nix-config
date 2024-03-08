@@ -51,6 +51,11 @@ in
     # "fs.inotify.max_user_watches" = 524288;
     # "vm.swappiness" = 1;
   };
+  swapDevices = [
+    {
+      device = "/swapfile";
+    }
+  ];
 
   networking = {
     useNetworkd = true;
