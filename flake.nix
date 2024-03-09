@@ -39,8 +39,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs_tmux.url = "github:hmajid2301/nixpkgs/add-tmux-t";
-
     flake-compat.url = "github:edolstra/flake-compat";
 
     deploy-rs = {
@@ -126,11 +124,6 @@
 
     org-tufte = {
       url = "github:Zilong-Li/org-tufte";
-      flake = false;
-    };
-
-    combobulate = {
-      url = "github:mickeynp/combobulate";
       flake = false;
     };
 

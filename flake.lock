@@ -190,22 +190,6 @@
         "type": "github"
       }
     },
-    "combobulate": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1709228400,
-        "narHash": "sha256-jR8XlRAig/lgmaVoM3uPp+Odao0JIGG5x3FTHxnmJRo=",
-        "owner": "mickeynp",
-        "repo": "combobulate",
-        "rev": "f220e87c7bc1792e5fd46efaa86f75a9f5bcc1d0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mickeynp",
-        "repo": "combobulate",
-        "type": "github"
-      }
-    },
     "crane": {
       "inputs": {
         "nixpkgs": [
@@ -804,22 +788,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_tmux": {
-      "locked": {
-        "lastModified": 1706182073,
-        "narHash": "sha256-H0UahPm40gM4e+vsy4Rnt/QMtjcho43i9PdQABdOTjk=",
-        "owner": "hmajid2301",
-        "repo": "nixpkgs",
-        "rev": "9404f2ac4345612840350b2b70b63650d472dd33",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hmajid2301",
-        "ref": "add-tmux-t",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nmd": {
       "flake": false,
       "locked": {
@@ -930,7 +898,6 @@
       "inputs": {
         "agenix": "agenix",
         "base16-schemes": "base16-schemes",
-        "combobulate": "combobulate",
         "darwin": "darwin",
         "defmacro-gensym": "defmacro-gensym",
         "deploy-rs": "deploy-rs",
@@ -948,7 +915,6 @@
         "nix-on-droid": "nix-on-droid",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs_tmux": "nixpkgs_tmux",
         "nur": "nur",
         "org-tufte": "org-tufte",
         "pre-commit-hooks": "pre-commit-hooks",
