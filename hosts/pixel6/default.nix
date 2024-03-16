@@ -111,10 +111,7 @@ in
           enable = true;
           package = lib.mkForce pkgs.emacs29-nox;
         };
-        eza = {
-          enable = true;
-          enableAliases = true;
-        };
+        eza.enable = true;
         fzf = {
           enable = true;
           tmux.enableShellIntegration = true;

@@ -106,7 +106,6 @@
       docker-compose # docker manager
       ncdu # disk space info (a better du)
       prettyping # a nicer ping
-      rnix-lsp # nix lsp server
 
       feh # light-weight image viewer
       killall
@@ -165,10 +164,7 @@
     };
     bat.enable = true;
     carapace.enable = true;
-    eza = {
-      enable = true;
-      enableAliases = true;
-    };
+    eza.enable = true;
     jq.enable = true;
     fzf = {
       enable = true;

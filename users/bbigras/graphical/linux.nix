@@ -13,7 +13,6 @@
       hicolor-icon-theme
       lollypop
       pavucontrol
-      pinentry-gnome
       qgnomeplatform
       qt5.qtwayland
       qt6.qtwayland
@@ -44,7 +43,6 @@
   };
 
   services = {
-    gpg-agent.pinentryFlavor = "gnome3";
     # gammastep = {
     #   enable = false;
     #   provider = "geoclue2";
