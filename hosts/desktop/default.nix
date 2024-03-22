@@ -103,7 +103,6 @@ in
   # hardware.enableRedistributableFirmware = true;
   networking.hostName = "desktop"; # Define your hostname.
   networking.networkmanager.enable = false;
-  programs.thefuck.enable = true;
   users.users.bbigras.packages = [ pkgs.retroarchBare ];
 
   services.flatpak.enable = true;
