@@ -35,7 +35,7 @@ in
       common-pc
       common-pc-ssd
       common-cpu-intel-cpu-only
-      common-gpu-nvidia-nonprime
+      common-gpu-amd
 
       ../../hardware/sound.nix
 
