@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }: {
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     enableCompletion = true;
     enableVteIntegration = pkgs.stdenv.isLinux;
     syntaxHighlighting.enable = true;
