@@ -33,6 +33,7 @@
     };
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs_veilid.url = "github:bbigras/nixpkgs/bf427c9eba26309fe9c799b25c0c8a1de051c1f3";
 
     srvos = {
       url = "github:nix-community/srvos";
