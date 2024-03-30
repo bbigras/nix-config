@@ -788,22 +788,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_veilid": {
-      "locked": {
-        "lastModified": 1711595521,
-        "narHash": "sha256-oYovtFMUuYMRjDOUuSAW4Hz1AZGOxqZxM2dsr0xVFZA=",
-        "owner": "bbigras",
-        "repo": "nixpkgs",
-        "rev": "bf427c9eba26309fe9c799b25c0c8a1de051c1f3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "bbigras",
-        "repo": "nixpkgs",
-        "rev": "bf427c9eba26309fe9c799b25c0c8a1de051c1f3",
-        "type": "github"
-      }
-    },
     "nmd": {
       "flake": false,
       "locked": {
@@ -931,7 +915,6 @@
         "nix-on-droid": "nix-on-droid",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs_veilid": "nixpkgs_veilid",
         "nur": "nur",
         "org-tufte": "org-tufte",
         "pre-commit-hooks": "pre-commit-hooks",
