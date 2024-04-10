@@ -34,6 +34,9 @@
 
   dconf.enable = lib.mkForce true;
   dconf.settings = {
+    "org/gnome/settings-daemon/plugins/power" = {
+      sleep-inactive-ac-type = "nothing";
+    };
     "org/gnome/desktop/peripherals/keyboard" = {
       numlock-state = true;
     };
