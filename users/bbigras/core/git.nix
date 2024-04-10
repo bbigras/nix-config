@@ -18,6 +18,7 @@
       pull.ff = "only";
       rebase.updateRefs = true;
       credential.helper = "${pkgs.gitAndTools.gitFull}/bin/git-credential-libsecret";
+      rerere.enabled = true;
     };
 
     aliases = {
