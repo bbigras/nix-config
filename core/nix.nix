@@ -19,7 +19,7 @@
       ];
       cores = 0;
       max-jobs = "auto";
-      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      experimental-features = [ "nix-command" "flakes" "repl-flake" "ca-derivations" ];
       connect-timeout = 5;
       http-connections = 0;
       # flake-registry = "/etc/nix/registry.json";
