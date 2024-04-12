@@ -131,7 +131,6 @@ in
 
   services.xserver = {
     autorun = true;
-    displayManager.hiddenUsers = [ "builder" ];
     enable = true;
   };
 
