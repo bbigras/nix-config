@@ -425,8 +425,9 @@
           package = _epkgs: pkgs.emacsPackages.envrc;
           command = [ "envrc-global-mode" ];
           config = ''
-            (envrc-global-mode 1)
+            (setq envrc-remote t)
           '';
+          hook = [ "(after-init . envrc-global-mode)" ];
         };
 
         dockerfile-mode.enable = true;
