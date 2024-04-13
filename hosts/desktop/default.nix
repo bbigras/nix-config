@@ -53,6 +53,8 @@ in
     ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ])
     ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/desktop.nix") then [ (builtins.getEnv "PWD" + "/secrets/desktop.nix") ] else [ ]);
 
+  catppuccin.flavour = "mocha";
+
   nix = {
     extraOptions = ''
       extra-platforms = aarch64-linux i686-linux

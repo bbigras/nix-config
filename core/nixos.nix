@@ -1,4 +1,4 @@
-{ agenix, config, lib, pkgs, home-manager, impermanence, lanzaboote, nix-index-database, stylix, sops-nix, ... }:
+{ agenix, config, lib, pkgs, home-manager, impermanence, lanzaboote, nix-index-database, catppuccin, sops-nix, ... }:
 {
   imports = [
     home-manager.nixosModules.home-manager
@@ -6,8 +6,8 @@
     lanzaboote.nixosModules.lanzaboote
     nix-index-database.nixosModules.nix-index
     sops-nix.nixosModules.sops
+    catppuccin.nixosModules.catppuccin
     ./openssh.nix
-    stylix.nixosModules.stylix
     ./resolved.nix
     ./solo2.nix
     ./tailscale.nix

@@ -20,15 +20,14 @@ let
           hostAddress = address;
           hostType = type;
           inherit (inputs)
-            base16-schemes
+            catppuccin
             home-manager
             impermanence
             lanzaboote
             nix-index-database
             nixos-hardware
             nur
-            sops-nix
-            stylix;
+            sops-nix;
         };
       });
 in

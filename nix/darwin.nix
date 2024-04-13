@@ -20,11 +20,10 @@ let
         specialArgs = {
           hostType = type;
           inherit (inputs)
-            base16-schemes
+            catppuccin
             home-manager
             impermanence
-            nix-index-database
-            stylix;
+            nix-index-database;
         };
       });
 in

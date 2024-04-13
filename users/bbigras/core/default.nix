@@ -1,8 +1,8 @@
-{ base16-schemes, hostType, impermanence, nix-index-database, pkgs, stylix, lib, ... }: {
+{ hostType, impermanence, nix-index-database, pkgs, catppuccin, lib, ... }: {
   imports = [
     impermanence.nixosModules.home-manager.impermanence
     nix-index-database.hmModules.nix-index
-    stylix.homeManagerModules.stylix
+    catppuccin.homeManagerModules.catppuccin
 
     ./atuin.nix
     ./btop.nix
@@ -13,6 +13,8 @@
     ./xdg.nix
     ./zsh.nix
   ];
+
+  catppuccin.flavour = "mocha";
 
   # XXX: Manually enabled in the graphic module
   dconf.enable = false;
@@ -165,6 +167,7 @@
     bat = {
       enable = true;
       extraPackages = with pkgs.bat-extras; [ batman ];
+      catppuccin.enable = true;
     };
     carapace.enable = true;
     eza.enable = true;
@@ -186,12 +189,7 @@
       fileWidgetOptions = [
         "--preview 'head {}'"
       ];
-      colors = {
-        bg = "#1e1e1e";
-        "bg+" = "#1e1e1e";
-        fg = "#d4d4d4";
-        "fg+" = "#d4d4d4";
-      };
+      catppuccin.enable = true;
     };
     gpg.enable = true;
     navi.enable = true;
@@ -228,19 +226,6 @@
   };
 
   home.language.base = "fr_CA.UTF-8";
-
-  stylix = {
-    base16Scheme = "${base16-schemes}/tomorrow-night.yaml";
-    image = pkgs.nixos-artwork.wallpapers.simple-dark-gray.gnomeFilePath;
-
-    targets = {
-      gnome.enable = hostType == "nixos";
-      gtk.enable = hostType == "nixos";
-      kde.enable = lib.mkDefault false;
-      xfce.enable = lib.mkDefault false;
-      emacs.enable = false;
-    };
-  };
 
   systemd.user.startServices = "sd-switch";
 

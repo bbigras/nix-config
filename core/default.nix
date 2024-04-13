@@ -1,4 +1,4 @@
-{ pkgs, base16-schemes, hostType, impermanence, nix-index-database, stylix, ... }: {
+{ pkgs, hostType, impermanence, nix-index-database, catppuccin, ... }: {
   imports = [
     (
       if hostType == "nixos" then ./nixos.nix
@@ -32,11 +32,10 @@
     useUserPackages = true;
     extraSpecialArgs = {
       inherit
-        base16-schemes
         hostType
         impermanence
         nix-index-database
-        stylix;
+        catppuccin;
     };
   };
 
@@ -44,16 +43,5 @@
     nix-index.enable = true;
     fish.enable = true;
     zsh.enable = true;
-  };
-
-  stylix = {
-    base16Scheme = "${base16-schemes}/tomorrow-night.yaml";
-    # We need this otherwise the autoimport clashes with our manual import.
-    homeManagerIntegration.autoImport = false;
-    image = pkgs.nixos-artwork.wallpapers.simple-dark-gray.gnomeFilePath;
-    cursor = {
-      name = "Adwaita";
-      package = pkgs.gnome.adwaita-icon-theme;
-    };
   };
 }

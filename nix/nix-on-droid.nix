@@ -1,9 +1,8 @@
 { self
 , nixpkgs
-, base16-schemes
 , nix-on-droid
 , nur
-, stylix
+, catppuccin
 , ...
 }:
 let
@@ -16,7 +15,7 @@ let
         (../hosts + "/${hostname}")
       ];
       extraSpecialArgs = {
-        inherit nur stylix base16-schemes;
+        inherit nur catppuccin;
       };
     };
 in

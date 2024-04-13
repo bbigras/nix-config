@@ -12,9 +12,4 @@
     # xserver.enable = true;
     # xserver.desktopManager.gnome.enable = true;
   };
-
-  stylix = {
-    targets.plymouth.enable = false;
-    targets.gnome.enable = false;
-  };
 }

@@ -1,4 +1,4 @@
-{ base16-schemes, pkgs, nur, stylix, ... }:
+{ pkgs, nur, catppuccin, ... }:
 
 let
   nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
@@ -83,19 +83,21 @@ in
       };
 
       imports = [
-        stylix.homeManagerModules.stylix
         ../../users/bbigras/core/atuin.nix
         ../../users/bbigras/core/git.nix
         ../../users/bbigras/core/tmux.nix
         ../../users/bbigras/core/zsh.nix
         ../../users/bbigras/core/emacs
         nurNoPkgs.repos.rycee.hmModules.emacs-init
+        catppuccin.homeManagerModules.catppuccin
       ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/pixel6.nix") then [ (builtins.getEnv "PWD" + "/secrets/pixel6.nix") ] else [ ]);
 
       # Use the same overlays as the system packages
       # nixpkgs.overlays = config.nixpkgs.overlays;
 
       home.language.base = "fr_CA.UTF-8";
+
+      catppuccin.flavour = "mocha";
 
       # insert home-manager config
       programs = {
@@ -104,7 +106,10 @@ in
           enable = true;
           settings.auto_sync = true;
         };
-        bat.enable = true;
+        bat = {
+          enable = true;
+          catppuccin.enable = true;
+        };
         carapace.enable = true;
         command-not-found.enable = true;
         emacs = {
@@ -129,12 +134,7 @@ in
           fileWidgetOptions = [
             "--preview 'head {}'"
           ];
-          colors = {
-            bg = "#1e1e1e";
-            "bg+" = "#1e1e1e";
-            fg = "#d4d4d4";
-            "fg+" = "#d4d4d4";
-          };
+          catppuccin.enable = true;
         };
         jq.enable = true;
         htop.enable = true;
@@ -194,10 +194,6 @@ in
       ];
 
       dconf.enable = lib.mkForce false;
-      stylix = {
-        base16Scheme = "${base16-schemes}/tomorrow-night.yaml";
-        image = pkgs.nixos-artwork.wallpapers.simple-dark-gray.gnomeFilePath;
-      };
     };
 }
 

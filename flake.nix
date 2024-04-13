@@ -27,11 +27,6 @@
       };
     };
 
-    base16-schemes = {
-      url = "github:tinted-theming/base16-schemes";
-      flake = false;
-    };
-
     truecolor-check = {
       url = "git+https://gist.github.com/fdeaf79e921c2f413f44b6f613f6ad53.git";
       flake = false;
@@ -137,14 +132,7 @@
       flake = false;
     };
 
-    stylix = {
-      url = "github:danth/stylix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-        flake-compat.follows = "flake-compat";
-      };
-    };
+    catppuccin.url = "github:catppuccin/nix";
 
     systems.url = "github:nix-systems/default";
 

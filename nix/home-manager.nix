@@ -35,10 +35,9 @@ let
         extraSpecialArgs = {
           hostType = type;
           inherit (inputs)
-            base16-schemes
+            catppuccin
             impermanence
-            nix-index-database
-            stylix;
+            nix-index-database;
         };
       });
 in

@@ -66,23 +66,4 @@
     # megasync.enable = true;
     # kdeconnect.enable = true;
   };
-
-  stylix.fonts = {
-    sansSerif = {
-      package = pkgs.ibm-plex;
-      name = "IBM Plex Sans";
-    };
-    serif = {
-      package = pkgs.ibm-plex;
-      name = "IBM Plex Serif";
-    };
-    monospace = {
-      package = pkgs.nerdfonts.override { fonts = [ "Hack" ]; };
-      name = "Hack Nerd Font";
-    };
-    emoji = {
-      package = pkgs.noto-fonts-emoji;
-      name = "Noto Color Emoji";
-    };
-  };
 }

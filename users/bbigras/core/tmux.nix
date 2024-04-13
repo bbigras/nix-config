@@ -8,6 +8,7 @@
     enable = true;
     sensibleOnTop = true;
     aggressiveResize = true;
+    catppuccin.enable = true;
     clock24 = true;
     escapeTime = 0;
     newSession = true;
