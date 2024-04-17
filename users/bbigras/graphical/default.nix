@@ -34,7 +34,7 @@
 
     # games
     # starsector
-    # mangohud
+    mangohud
     # heroic
 
     dbeaver
