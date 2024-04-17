@@ -7,44 +7,20 @@ let
     noto-fonts-cjk-serif
     noto-fonts-extra
     unifont
-    fira-code-symbols
+    (nerdfonts.override { fonts = [ "Iosevka" ]; })
   ];
 in
 {
-  fonts = lib.optionalAttrs (hostType == "nixos")
-    {
-      packages = fontPackages;
-      enableDefaultPackages = false;
-      enableGhostscriptFonts = false;
-      fontconfig = {
-        localConf = ''
-          <?xml version="1.0"?>
-          <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
-          <fontconfig>
-              <alias binding="weak">
-                  <family>monospace</family>
-                  <prefer>
-                      <family>emoji</family>
-                  </prefer>
-              </alias>
-              <alias binding="weak">
-                  <family>sans-serif</family>
-                  <prefer>
-                      <family>emoji</family>
-                  </prefer>
-              </alias>
-              <alias binding="weak">
-                  <family>serif</family>
-                  <prefer>
-                      <family>emoji</family>
-                  </prefer>
-              </alias>
-          </fontconfig>
-        '';
+  fonts = {
+    packages = fontPackages;
+    enableDefaultPackages = false;
+    enableGhostscriptFonts = false;
+
+    fontconfig = {
+      defaultFonts = {
+        monospace = [ "Iosevka Nerd Font" ];
       };
-    } // lib.optionalAttrs (hostType == "darwin") {
-    fonts = fontPackages;
-    fontDir.enable = true;
+    };
   };
 
   stylix.fonts = {
