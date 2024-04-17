@@ -12,6 +12,7 @@ let
   mkHost =
     { type
     , hostPlatform
+    , sshOpts ? [ ]
     , address ? null
     , pubkey ? null
     , homeDirectory ? null
@@ -23,24 +24,24 @@ let
       assert address != null && pubkey != null;
       assert (hasSuffix "linux" hostPlatform);
       {
-        inherit type type2 hostPlatform address pubkey remoteBuild large;
+        inherit type type2 hostPlatform address pubkey remoteBuild large sshOpts;
       }
     else if type == "darwin" then
       assert pubkey != null;
       assert (hasSuffix "darwin" hostPlatform);
       {
-        inherit type hostPlatform pubkey large;
+        inherit type hostPlatform pubkey large sshOpts;
       }
     else if type == "home-manager" then
       assert homeDirectory != null;
       {
-        inherit type hostPlatform homeDirectory large;
+        inherit type hostPlatform homeDirectory large sshOpts;
       }
     else if type == "nix-on-droid" then
       assert address != null && pubkey != null;
       assert (hasSuffix "linux" hostPlatform);
       {
-        inherit type hostPlatform address pubkey remoteBuild large;
+        inherit type hostPlatform address pubkey remoteBuild large sshOpts;
       }
     else throw "unknown host type '${type}'";
 in
