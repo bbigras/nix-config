@@ -8,25 +8,25 @@ let
 
   genNode = hostName: nixosCfg:
     let
-      inherit (self.hosts.${hostName}) address hostPlatform remoteBuild;
+      inherit (self.hosts.${hostName}) address hostPlatform remoteBuild sshOpts;
       inherit (deploy-rs.lib.${hostPlatform}) activate;
     in
     {
-      inherit remoteBuild;
+      inherit remoteBuild sshOpts;
       hostname = address;
       profiles.system.path = activate.nixos nixosCfg;
     };
 
   genNixOnDroid = hostName: nixosCfg:
     let
-      inherit (self.hosts.${hostName}) address hostPlatform remoteBuild;
+      inherit (self.hosts.${hostName}) address hostPlatform remoteBuild sshOpts;
       inherit (deploy-rs.lib.${hostPlatform}) activate;
 
       pixel6 = nixosCfg.activationPackage;
 
     in
     {
-      inherit remoteBuild;
+      inherit remoteBuild sshOpts;
       hostname = address;
 
       # to prevent using sudo
