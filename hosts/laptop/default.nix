@@ -165,8 +165,6 @@ in
   };
 
   systemd.timers = {
-    btrbk-home.partOf = [ "ac.target" ];
-    btrbk-home.wantedBy = [ "ac.target" ];
     logrotate.partOf = [ "ac.target" ];
     logrotate.wantedBy = [ "ac.target" ];
     systemd-tmpfiles-clean.partOf = [ "ac.target" ];
