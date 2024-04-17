@@ -108,6 +108,7 @@ in
   services.flatpak.enable = true;
   services.smartd.enable = true;
 
+  programs.gamemode.enable = true;
   systemd.network = {
     enable = true;
     networks = {
