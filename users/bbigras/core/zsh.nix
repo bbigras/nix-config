@@ -1,11 +1,10 @@
 { config, lib, pkgs, ... }: {
   programs.zsh = {
     enable = true;
-    autosuggestion.enable = true;
     enableCompletion = true;
     enableVteIntegration = pkgs.stdenv.isLinux;
-    syntaxHighlighting.enable = true;
     autocd = true;
+    autosuggestion.enable = true;
     dotDir = ".config/zsh";
     history = {
       expireDuplicatesFirst = true;
@@ -16,7 +15,6 @@
       save = 10000;
       share = true;
     };
-    historySubstringSearch.enable = true;
     envExtra = ''
       export LESSHISTFILE="${config.xdg.dataHome}/less_history"
       #export CARGO_HOME="${config.xdg.cacheHome}/cargo" # doesn't work with emacs
@@ -27,11 +25,6 @@
           [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
         fi
 
-      nix-closure-size() {
-        nix-store -q --size $(nix-store -qR $(${pkgs.coreutils}/bin/readlink -e $1) ) |
-          ${pkgs.gawk}/bin/gawk '{ a+=$1 } END { print a }' |
-          ${pkgs.coreutils}/bin/numfmt --to=iec-i
-      }
 
       bindkey "$${terminfo[khome]}" beginning-of-line
       bindkey "$${terminfo[kend]}" end-of-line

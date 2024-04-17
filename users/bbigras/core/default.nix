@@ -162,7 +162,10 @@
       enable = true;
       settings.auto_sync = true;
     };
-    bat.enable = true;
+    bat = {
+      enable = true;
+      extraPackages = with pkgs.bat-extras; [ batman ];
+    };
     carapace.enable = true;
     eza.enable = true;
     jq.enable = true;

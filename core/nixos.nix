@@ -1,4 +1,4 @@
-{ config, lib, pkgs, home-manager, impermanence, lanzaboote, nix-index-database, stylix, sops-nix, ... }:
+{ agenix, config, lib, pkgs, home-manager, impermanence, lanzaboote, nix-index-database, stylix, sops-nix, ... }:
 {
   imports = [
     home-manager.nixosModules.home-manager
@@ -12,7 +12,6 @@
     ./solo2.nix
     ./tailscale.nix
     ./tmux.nix
-    ./xdg.nix
     ./zsh.nix
   ];
 
@@ -72,7 +71,10 @@
   systemd = {
     enableUnifiedCgroupHierarchy = true;
     network.wait-online.anyInterface = true;
-    services.tailscaled.after = [ "network-online.target" "systemd-resolved.service" ];
+    services.tailscaled = {
+      after = [ "network-online.target" "systemd-resolved.service" ];
+      wants = [ "network-online.target" "systemd-resolved.service" ];
+    };
   };
 
   users.mutableUsers = false;

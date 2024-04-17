@@ -21,6 +21,7 @@
     ];
     systemPath = lib.mkBefore [
       "/opt/homebrew/bin"
+      "/opt/homebrew/sbin"
     ];
     variables = {
       SHELL = lib.getExe pkgs.zsh;
@@ -53,5 +54,6 @@
   system = {
     stateVersion = 4;
     defaults.SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
+    includeUninstaller = false;
   };
 }

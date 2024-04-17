@@ -1,5 +1,6 @@
-{ hostType, lib, ... }: {
+{ hostType, lib, pkgs, ... }: {
   nix = {
+    package = pkgs.nixVersions.unstable;
     settings = {
       accept-flake-config = true;
       # XXX: Causes annoying "cannot link ... to ...: File exists" errors on Darwin
@@ -19,7 +20,14 @@
       ];
       cores = 0;
       max-jobs = "auto";
-      experimental-features = [ "nix-command" "flakes" "repl-flake" "ca-derivations" ];
+      experimental-features = [
+        "auto-allocate-uids"
+        "ca-derivations"
+        "configurable-impure-env"
+        "flakes"
+        "nix-command"
+        "repl-flake"
+      ];
       connect-timeout = 5;
       http-connections = 0;
       # flake-registry = "/etc/nix/registry.json";

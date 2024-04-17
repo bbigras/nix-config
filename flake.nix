@@ -17,6 +17,16 @@
   };
 
   inputs = {
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs = {
+        darwin.follows = "darwin";
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+      };
+    };
+
     base16-schemes = {
       url = "github:tinted-theming/base16-schemes";
       flake = false;
@@ -44,8 +54,8 @@
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
+        nixpkgs.follows = "nixpkgs";
         utils.follows = "flake-utils";
       };
     };
@@ -69,19 +79,19 @@
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
         flake-parts.follows = "flake-parts";
         flake-utils.follows = "flake-utils";
-        pre-commit-hooks-nix.follows = "pre-commit-hooks";
+        nixpkgs.follows = "nixpkgs";
+        pre-commit-hooks-nix.follows = "git-hooks";
       };
     };
 
     nix-fast-build = {
       url = "github:Mic92/nix-fast-build";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
       };
     };
 
@@ -90,18 +100,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+    git-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs = {
+        flake-compat.follows = "flake-compat";
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.darwin.follows = "darwin";
-      inputs.home-manager.follows = "home-manager";
     };
 
     nixos-hardware.url = "nixos-hardware";
@@ -129,46 +139,84 @@
 
     stylix = {
       url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-      inputs.flake-compat.follows = "flake-compat";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+        flake-compat.follows = "flake-compat";
+      };
     };
 
-    templates.url = "github:NixOS/templates";
-    nix-on-droid = {
-      url = "github:t184256/nix-on-droid";
-      inputs.home-manager.follows = "home-manager";
+    systems.url = "github:nix-systems/default";
+
+    treefmt = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
-    let
-      forAllSystems = nixpkgs.lib.genAttrs [
-        "aarch64-linux"
-        "x86_64-linux"
-      ];
-    in
-    {
-      hosts = import ./nix/hosts.nix;
+  outputs = inputs@{ self, flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; }
+      (toplevel@{ withSystem, ... }: {
+        imports = [
+          inputs.git-hooks.flakeModule
+          inputs.treefmt.flakeModule
+        ];
+        systems = [ "aarch64-linux" "x86_64-linux" ];
+        perSystem = ctx@{ config, self', inputs', pkgs, system, ... }: {
+          _module.args.pkgs = import inputs.nixpkgs {
+            localSystem = system;
+            overlays = [ self.overlays.default ];
+            config = {
+              allowUnfree = true;
+              allowAliases = true;
+            };
+          };
 
-      pkgs = forAllSystems (localSystem: import nixpkgs {
-        inherit localSystem;
-        overlays = [ self.overlays.default ];
-        config = {
-          allowAliases = true;
-          allowUnfree = true;
+          devShells = import ./nix/dev-shell.nix ctx;
+
+          packages = import ./nix/packages.nix toplevel ctx;
+
+          pre-commit = {
+            check.enable = true;
+            settings.hooks = {
+              actionlint.enable = true;
+              # luacheck.enable = true;
+              nil.enable = true;
+              shellcheck = {
+                enable = true;
+                excludes = [
+                  "users/bbigras/core/p10k-config/p10k.zsh"
+                ];
+              };
+              statix.enable = false;
+              # stylua.enable = true;
+              treefmt.enable = true;
+            };
+          };
+
+          treefmt = {
+            projectRootFile = "flake.nix";
+            programs = {
+              nixpkgs-fmt.enable = true;
+              shfmt = {
+                enable = true;
+                indent_size = 0;
+              };
+            };
+            settings.formatter.nixpkgs-fmt.excludes = [ "hardware-configuration-*.nix" ];
+          };
+        };
+
+        flake = {
+          hosts = import ./nix/hosts.nix;
+
+          darwinConfigurations = import ./nix/darwin.nix toplevel;
+          homeConfigurations = import ./nix/home-manager.nix toplevel;
+          nixosConfigurations = import ./nix/nixos.nix toplevel;
+
+          deploy = import ./nix/deploy.nix toplevel;
+
+          overlays = import ./nix/overlay.nix toplevel;
         };
       });
-
-      checks = forAllSystems (import ./nix/checks.nix inputs);
-      devShells = forAllSystems (import ./nix/dev-shell.nix inputs);
-      overlays = import ./nix/overlay.nix inputs;
-      packages = forAllSystems (import ./nix/packages.nix inputs);
-
-      deploy = import ./nix/deploy.nix inputs;
-      darwinConfigurations = import ./nix/darwin.nix inputs;
-      homeConfigurations = import ./nix/home-manager.nix inputs;
-      nixosConfigurations = import ./nix/nixos.nix inputs;
-      nixondroidConfigurations = import ./nix/nix-on-droid.nix inputs;
-    };
 }
