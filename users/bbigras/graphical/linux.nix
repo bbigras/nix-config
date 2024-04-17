@@ -1,9 +1,12 @@
-{ pkgs, ... }: {
+{ lib, pkgs, ... }: {
   imports = [
     ./common.nix
     ./firefox.nix
     ./mime.nix
+    ./mpv.nix
   ];
+
+  dconf.enable = lib.mkForce true;
 
   home = {
     packages = with pkgs; [
@@ -13,6 +16,7 @@
       hicolor-icon-theme
       lollypop
       pavucontrol
+      pinentry-gnome3
       qgnomeplatform
       qt5.qtwayland
       qt6.qtwayland
@@ -57,6 +61,7 @@
     #   automount = false;
     #   tray = "auto";
     # };
+    gpg-agent.pinentryPackage = pkgs.pinentry-gnome3;
   };
 
   systemd.user.services = {

@@ -1,14 +1,7 @@
-{ self
-, agenix
-, deploy-rs
-, emacs-overlay
-, nixpkgs
-, nur
-, ...
-}@inputs:
+{ inputs, ... }:
 
 let
-  inherit (nixpkgs) lib;
+  inherit (inputs.nixpkgs) lib;
 
   importLocalOverlay = file:
     lib.composeExtensions
@@ -26,12 +19,12 @@ let
 in
 localOverlays // {
   default = lib.composeManyExtensions ([
-    agenix.overlays.default
-    deploy-rs.overlay
-    emacs-overlay.overlay
+    inputs.agenix.overlays.default
+    inputs.deploy-rs.overlays.default
+    inputs.emacs-overlay.overlay
+    inputs.nur.overlay
     (final: prev: {
-      inherit (self.packages.${final.stdenv.hostPlatform.system}) nix-fast-build;
+      inherit (inputs.nix-fast-build.packages.${final.stdenv.hostPlatform.system}) nix-fast-build;
     })
-    nur.overlay
   ] ++ (lib.attrValues localOverlays));
 }

@@ -9,7 +9,7 @@
   home = {
     packages = with pkgs; [
       grim
-      # imv
+      imv
       slurp
       swaybg
       swayidle

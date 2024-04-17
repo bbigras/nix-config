@@ -77,7 +77,6 @@
   services = {
     flameshot.enable = true;
     gnome-keyring.enable = true;
-    gpg-agent.pinentryPackage = pkgs.pinentry-gnome3;
     unclutter.enable = true;
   };
 }

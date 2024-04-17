@@ -1,13 +1,7 @@
-{ self
-, base16-schemes
-, home-manager
-, impermanence
-, nix-index-database
-, nixpkgs
-, stylix
-, ...
-}:
+{ withSystem, inputs, ... }:
+
 let
+  inherit (inputs) self home-manager nixpkgs;
   inherit (nixpkgs) lib;
 
   genModules = hostName: { homeDirectory, ... }:
@@ -34,18 +28,19 @@ let
     };
 
   genConfiguration = hostName: { hostPlatform, type, ... }@attrs:
-    home-manager.lib.homeManagerConfiguration {
-      pkgs = self.pkgs.${hostPlatform};
-      modules = [ (genModules hostName attrs) ];
-      extraSpecialArgs = {
-        hostType = type;
-        inherit
-          base16-schemes
-          impermanence
-          nix-index-database
-          stylix;
-      };
-    };
+    withSystem hostPlatform ({ pkgs, ... }:
+      home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ (genModules hostName attrs) ];
+        extraSpecialArgs = {
+          hostType = type;
+          inherit (inputs)
+            base16-schemes
+            impermanence
+            nix-index-database
+            stylix;
+        };
+      });
 in
 lib.mapAttrs
   genConfiguration

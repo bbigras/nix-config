@@ -7,7 +7,6 @@
     )
     ./alacritty.nix
     ./kitty.nix
-    ./mpv.nix
   ];
 
   home.packages = with pkgs; [

@@ -13,6 +13,7 @@ env:
   flake: github:${{ github.repository }}/${{ github.sha }}
   nix-conf: |-
     accept-flake-config = true
+    always-allow-substitutes = true
     builders-use-substitutes = true
     max-jobs = auto
   cachix-install: nix profile install 'github:${{ github.repository }}/${{ github.sha }}#cachix'
@@ -55,8 +56,9 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@v10
         with:
           extra-conf: ${{ env.nix-conf }}
+      - uses: DeterminateSystems/magic-nix-cache-action@v4
       - id: install-jq
-        run: nix profile install '${{ env.flake }}#pkgs.x86_64-linux.jq'
+        run: nix profile install '${{ env.flake }}#jq'
       - id: get-attrs
         run: |
           function summary() {
@@ -78,7 +80,8 @@ jobs:
             | map(
                 if .hostPlatform  == "x86_64-linux" then .runsOn="ubuntu-latest"
                 elif .hostPlatform == "aarch64-linux" then .runsOn="ubuntu-latest"
-                elif .hostPlatform == "x86_64-darwin" then .runsOn="macos-latest"
+                elif .hostPlatform == "x86_64-darwin" then .runsOn="macos-13"
+                elif .hostPlatform == "aarch64-darwin" then .runsOn="macos-14"
                 else .evalOnly=true | .runsOn="ubuntu-latest"
                 end
             )
@@ -197,6 +200,10 @@ jobs:
           [[ '${{ env.system }}' == 'aarch64-linux' ]] && args+=('--option' 'extra-platforms' 'aarch64-linux')
           args+=('--flake=${{ env.flake }}#${{ matrix.attrs.attr }}')
           nix run '${{ env.flake }}#nix-fast-build' -- "${args[@]}"
+      - name: nix-build
+        if: ${{ env.system == 'aarch64-darwin' }}
+        run: |
+          nix build --keep-going '${{ env.flake }}#${{ matrix.attrs.attr }}'
 
   check:
     runs-on: ubuntu-latest
