@@ -1,7 +1,6 @@
 { pkgs, ... }: {
   home = {
     packages = with pkgs; [
-      tmuxPlugins.t-smart-tmux-session-manager
     ];
   };
 
@@ -13,18 +12,17 @@
     escapeTime = 0;
     newSession = true;
     plugins = with pkgs.tmuxPlugins; [
-      copycat
       copy-toolkit
+      copycat
       extrakto
       fuzzback
       prefix-highlight
-      yank
-      t-smart-tmux-session-manager
-      tmux-thumbs
       tmux-fzf
+      tmux-thumbs
+      yank
     ];
     mouse = true;
-    secureSocket = false;
+    # secureSocket = false;
     terminal = "tmux-256color";
     historyLimit = 30000;
     extraConfig = ''
