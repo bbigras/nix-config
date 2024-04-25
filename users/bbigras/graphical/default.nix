@@ -42,7 +42,6 @@
 
 
     # remote
-    anydesk
     rustdesk
 
     # anytype
