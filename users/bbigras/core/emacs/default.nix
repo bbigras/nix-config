@@ -811,27 +811,6 @@
 
         nginx-mode.enable = true;
 
-        smartparens = {
-          enable = true;
-          defer = 3;
-          command = [ "smartparens-global-mode" "show-smartparens-global-mode" ];
-          bindLocal = {
-            smartparens-mode-map = {
-              "C-M-f" = "sp-forward-sexp";
-              "C-M-b" = "sp-backward-sexp";
-            };
-          };
-          config = ''
-            (require 'smartparens-config)
-            (smartparens-global-mode t)
-            (show-smartparens-global-mode t)
-
-            (sp-local-pair 'prog-mode "{" nil :post-handlers '((indent-between-pair "RET")))
-            (sp-local-pair 'prog-mode "[" nil :post-handlers '((indent-between-pair "RET")))
-            (sp-local-pair 'prog-mode "(" nil :post-handlers '((indent-between-pair "RET")))
-          '';
-        };
-
         flycheck = {
           enable = true;
           command = [ "global-flycheck-mode" ];
