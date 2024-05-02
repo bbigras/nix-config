@@ -68,6 +68,5 @@ let
   };
 in
 {
-  xsession.windowManager.i3.config = common;
   wayland.windowManager.sway.config = common;
 }
