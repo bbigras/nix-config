@@ -186,7 +186,13 @@ in
   #   enableWebUI = true;
   # };
 
+  environment.systemPackages = with pkgs; [
+    fwupd
+  ];
+
   virtualisation.docker.enable = true;
+
+  services.fwupd.enable = true;
 
   services.earlyoom.enable = true;
 }
