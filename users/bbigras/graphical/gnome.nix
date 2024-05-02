@@ -6,8 +6,6 @@
 
   home = {
     packages = with pkgs; [
-      peek
-
       gnome.eog # image viewer
       gnome.gnome-tweaks
 
