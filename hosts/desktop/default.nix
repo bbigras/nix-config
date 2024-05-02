@@ -107,7 +107,6 @@ in
   networking.networkmanager.enable = false;
   users.users.bbigras.packages = [ pkgs.retroarchBare ];
 
-  services.flatpak.enable = true;
   services.smartd.enable = true;
 
   programs.steam.enable = true;
