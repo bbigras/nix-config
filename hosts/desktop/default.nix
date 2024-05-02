@@ -160,6 +160,7 @@ in
     8096 # jellyfin
     21000 # immersed
     21013 # immersed
+    8077 # qBittorrent
   ];
   #   22000
   #   6680
