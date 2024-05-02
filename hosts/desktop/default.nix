@@ -157,6 +157,7 @@ in
   networking.firewall.allowedTCPPorts = [
     9977
     9988
+    8096 # jellyfin
     21000 # immersed
     21013 # immersed
   ];
@@ -193,6 +194,11 @@ in
   virtualisation.docker.enable = true;
 
   services.fwupd.enable = true;
+
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+  };
 
   services.earlyoom.enable = true;
 }
