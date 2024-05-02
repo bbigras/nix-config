@@ -148,6 +148,7 @@
       git-remote-gcrypt
       qalculate-gtk
       devpod
+      broot
     ];
     shellAliases = {
       cls = "clear";
