@@ -110,6 +110,8 @@ in
   services.flatpak.enable = true;
   services.smartd.enable = true;
 
+  programs.steam.enable = true;
+  programs.steam.remotePlay.openFirewall = true;
   programs.gamemode.enable = true;
   systemd.network = {
     enable = true;
