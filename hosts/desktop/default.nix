@@ -130,7 +130,7 @@ in
     networks = {
       "10-lan" = {
         DHCP = "yes";
-        matchConfig.Name = "enp3s0";
+        matchConfig.Name = "enp*";
         # domains = [ "~." ];
         dhcpV4Config = { UseDNS = false; };
         dns = [
