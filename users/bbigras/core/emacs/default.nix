@@ -1016,18 +1016,6 @@
 
         terraform-mode.enable = true;
 
-        eglot = {
-          enable = true;
-          hook = [
-            "(js-ts-mode . eglot-ensure)"
-            "(nix-mode . eglot-ensure)"
-            "(css-ts-mode . eglot-ensure)"
-            "(json-ts-mode . eglot-ensure)"
-            "(markdown-mode . eglot-ensure)"
-            "(yaml-ts-mode . eglot-ensure)"
-          ];
-        };
-
         visual-fill-column = {
           enable = true;
           command = [ "visual-fill-column-mode" ];
