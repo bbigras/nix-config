@@ -284,6 +284,13 @@
           '';
         };
 
+        catppuccin-theme = {
+          enable = true;
+          config = ''
+            (load-theme 'catppuccin :no-confirm)
+          '';
+        };
+
         dwim-shell-command = {
           enable = true;
           extraPackages = [ pkgs.atool pkgs.zrok ];
