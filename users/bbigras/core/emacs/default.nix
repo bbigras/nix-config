@@ -261,6 +261,8 @@
       '';
 
       usePackage = {
+        no-littering.enable = true;
+
         project = {
           enable = true;
           config = lib.optionalString config.programs.jujutsu.enable ''
