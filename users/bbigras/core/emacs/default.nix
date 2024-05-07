@@ -1,5 +1,6 @@
 { pkgs
 , lib
+, config
 , osConfig
 , ...
 }:
@@ -260,6 +261,13 @@
       '';
 
       usePackage = {
+        project = {
+          enable = true;
+          config = lib.optionalString config.programs.jujutsu.enable ''
+            (add-to-list 'project-vc-extra-root-markers ".jj")
+          '';
+        };
+
         dwim-shell-command = {
           enable = true;
           extraPackages = [ pkgs.atool pkgs.zrok ];
@@ -877,36 +885,6 @@
           enable = true;
           config = ''
             (ctrlf-mode +1)
-          '';
-        };
-
-        projectile = {
-          enable = true;
-          command = [ "projectile-mode" "projectile-project-root" ];
-          bindKeyMap = {
-            "C-c p" = "projectile-command-map";
-          };
-          config = ''
-            (setq projectile-completion-system 'default)
-            (setq projectile-enable-caching t)
-            (push "vendor" projectile-globally-ignored-directories)
-            (push ".yarn" projectile-globally-ignored-directories)
-            (push ".direnv" projectile-globally-ignored-directories)
-            (push "node_modules" projectile-globally-ignored-directories)
-            (push ".cargo" projectile-globally-ignored-directories)
-            (push ".idea" projectile-globally-ignored-directories)
-            (push "~/" projectile-ignored-projects)
-
-            ;;(setq projectile-ignored-projects
-            ;;'("~/" "test"))
-
-            (projectile-mode 1)
-          '';
-
-          init = ''
-            (when (file-directory-p "~/dev")
-            (setq projectile-project-search-path '("~/dev")))
-            ;;(setq projectile-switch-project-action #'projectile-dired)
           '';
         };
 
