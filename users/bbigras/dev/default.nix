@@ -48,6 +48,7 @@ in
       enable = true;
       settings = {
         core.fsmonitor = "watchman";
+        ui.allow-filesets = true;
         user = {
           name = "Bruno Bigras";
           email = "bigras.bruno@gmail.com";
