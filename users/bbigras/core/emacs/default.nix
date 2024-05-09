@@ -450,6 +450,22 @@
           };
         };
 
+        copilot = {
+          enable = true;
+          # package = _epkgs: pkgs.emacsPackages.copilot_el;
+          package = _epkgs: pkgs.my_copilot;
+          # package = _epkgs: pkgs.emacsPackages.copilot;
+          config = ''
+            (add-hook 'prog-mode-hook 'copilot-mode)
+            (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+            (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+          '';
+        };
+        # (setq copilot--server-executable "${pkgs.my_copilot-node-server}/lib/node_modules/copilot-node-server/copilot/dist/agent.js")
+        #
+        # my_copilot-node-server
+        # "/home/bbigras/.emacs.d/.cache/copilot/bin/copilot-node-server"
+
         envrc = {
           enable = true;
           defer = 1;
