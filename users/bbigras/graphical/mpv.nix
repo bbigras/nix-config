@@ -1,5 +1,6 @@
 {
   programs.mpv.enable = true;
+  programs.mpv.catppuccin.enable = true;
 
   xdg.configFile."mpv/mpv.conf".text = ''
     vo=gpu
