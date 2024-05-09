@@ -126,6 +126,10 @@ in
         ox-clip.enable = true;
         ox-tufte.enable = true;
 
+        ox-hugo = {
+          enable = true;
+          after = [ "ox" ];
+        };
 
         org-modern = {
           enable = true;
