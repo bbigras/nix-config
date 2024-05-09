@@ -1,4 +1,4 @@
-{ pkgs, nur, ... }:
+{ pkgs, nur, catppuccin, ... }:
 
 let
   nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
@@ -88,8 +88,9 @@ in
         ../../users/bbigras/core/git.nix
         ../../users/bbigras/core/tmux.nix
         ../../users/bbigras/core/zsh.nix
-        ../../users/bbigras/core/emacs
+        # ../../users/bbigras/core/emacs
         nurNoPkgs.repos.rycee.hmModules.emacs-init
+        catppuccin.homeManagerModules.catppuccin
       ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/tablet.nix") then [ (builtins.getEnv "PWD" + "/secrets/tablet.nix") ] else [ ]);
 
       # Use the same overlays as the system packages
@@ -111,10 +112,7 @@ in
           enable = true;
           package = lib.mkForce pkgs.emacs29-nox;
         };
-        eza = {
-          enable = true;
-          enableAliases = true;
-        };
+        eza.enable = true;
         fzf = {
           enable = true;
           tmux.enableShellIntegration = true;
