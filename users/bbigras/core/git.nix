@@ -20,6 +20,7 @@
       credential.helper = "${pkgs.gitAndTools.gitFull}/bin/git-credential-libsecret";
       rerere.enabled = true;
       gpg.format = "ssh";
+      maintenance.prefetch.enabled = false;
     };
 
     aliases = {
