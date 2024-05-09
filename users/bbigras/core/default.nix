@@ -148,6 +148,7 @@
       git-remote-gcrypt
       qalculate-gtk
       devpod
+      open-interpreter
       altair
       broot
       usbimager
