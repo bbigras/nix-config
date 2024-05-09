@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   programs.foot = {
     enable = true;
+    catppuccin.enable = true;
     settings = {
       main.font = "monospace:size=12";
       main.notify = "${pkgs.libnotify}/bin/notify-send -a foot -i foot \${title} \${body}";
