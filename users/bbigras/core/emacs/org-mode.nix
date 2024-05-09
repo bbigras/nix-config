@@ -417,13 +417,24 @@ in
           config = "(org-edna-mode)";
         };
 
+        # custom
+        # (org-image-actual-width nil)
         org-tree-slide = {
           enable = true;
           command = [ "org-tree-slide-mode" ];
-          hook = [
-            "(org-tree-slide-play . efs/presentation-setup)"
-            "(org-tree-slide-stop . efs/presentation-end)"
-          ];
+          # hook = [
+          #   "(org-tree-slide-play . efs/presentation-setup)"
+          #   "(org-tree-slide-stop . efs/presentation-end)"
+          # ];
+          init = ''
+            (global-set-key (kbd "<f8>") 'org-tree-slide-mode)
+            (global-set-key (kbd "S-<f8>") 'org-tree-slide-skip-done-toggle)
+
+            (with-eval-after-load "org-tree-slide"
+              (define-key org-tree-slide-mode-map (kbd "<f9>") 'org-tree-slide-move-previous-tree)
+              (define-key org-tree-slide-mode-map (kbd "<f10>") 'org-tree-slide-move-next-tree)
+              )
+          '';
         };
       };
     };
