@@ -50,7 +50,34 @@ in
     wireguard.sopsFile = ./restic-laptop.yaml;
   };
 
+  # https://www.reddit.com/r/NixOS/comments/p8bqvu/how_to_install_v4l2looback_kernel_module/
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelModules = [ "kvm-intel" "hid-nintendo" "v4l2loopback" ];
+  # boot.kernelModules = [ "v4l2loopback" ];
+  # boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+
+  hardware.uinput.enable = true;
+
+  # boot.kernelModules = [ "uinput" ];
+  boot = {
+    extraModulePackages = with config.boot.kernelPackages; [
+      # v4l2loopback.out
+    ];
+    kernelModules = [
+      # "v4l2loopback"
+    ];
+    # extraModprobeConfig = ''
+    # options v4l2loopback exclisive_caps=1 card_label="Virtual Camera"
+    # '';
+  };
+
+  hardware.opengl = { enable = true; driSupport = true; driSupport32Bit = true; extraPackages = with pkgs; [ libva vaapiVdpau libvdpau-va-gl ]; };
+  networking.firewall.enable = false;
+  networking.firewall.allowedTCPPorts = [ 21000 21013 445 ];
+
+  # boot.extraModulePackages = [
+  # config.boot.kernelPackages.v4l2loopback.out
+  # ];
   hardware.brillo.enable = true;
   boot.kernel.sysctl = {
     "kernel.sysrq" = 1;
@@ -61,6 +88,11 @@ in
     {
       device = "/swapfile";
     }
+  ];
+
+  boot.initrd.availableKernelModules = [
+    "aesni_intel"
+    "cryptd"
   ];
 
   networking = {
