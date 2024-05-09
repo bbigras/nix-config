@@ -18,6 +18,7 @@ in
       nix-update
       tmate
       upterm
+      watchman
     ];
   };
 
@@ -46,6 +47,7 @@ in
     jujutsu = {
       enable = true;
       settings = {
+        core.fsmonitor = "watchman";
         user = {
           name = "Bruno Bigras";
           email = "bigras.bruno@gmail.com";
