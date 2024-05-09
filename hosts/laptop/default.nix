@@ -196,13 +196,6 @@ in
     '';
   };
 
-  systemd.services = {
-    tailscaled = {
-      partOf = [ "ac.target" ];
-      wantedBy = [ "ac.target" ];
-    };
-  };
-
   systemd.timers = {
     logrotate.partOf = [ "ac.target" ];
     logrotate.wantedBy = [ "ac.target" ];
@@ -234,9 +227,6 @@ in
     systemd.user.services = {
       megasync.Unit.PartOf = [ "ac.target" ];
       megasync.Install.WantedBy = [ "ac.target" ];
-
-      syncthing.Unit.PartOf = [ "ac.target" ];
-      syncthing.Install.WantedBy = [ "ac.target" ];
 
       pantalaimon.Unit.PartOf = [ "ac.target" ];
       pantalaimon.Install.WantedBy = [ "ac.target" ];
