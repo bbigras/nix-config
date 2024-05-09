@@ -30,6 +30,9 @@
       br = "branch";
       lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
       recent = "for-each-ref --sort=-committerdate --format='%(committerdate:short): %(refname:short)' refs/heads/";
+
+      # So you think you know git - Fosdem 2024
+      staash = "stash --all";
     };
 
     ignores = [
