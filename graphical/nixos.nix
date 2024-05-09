@@ -17,13 +17,13 @@
     xserver.displayManager.gdm = {
       enable = true;
       autoSuspend = true;
-      wayland = true;
+      wayland = false;
     };
   };
 
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
-  };
+  # xdg.portal = {
+  #   enable = true;
+  #   wlr.enable = true;
+  #   extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+  # };
 }
