@@ -39,6 +39,11 @@ in
   ];
 
   services.avahi.enable = true;
+  services.jellyfin = {
+    enable = true;
+    openFirewall = true;
+  };
+
   sops.secrets = {
     restic-laptop-password.sopsFile = ./restic-laptop.yaml;
     restic-laptop-creds.sopsFile = ./restic-laptop.yaml;
