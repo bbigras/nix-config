@@ -8,6 +8,7 @@
     in
     {
       enable = true;
+      catppuccin.enable = true;
       defaultTimeout = 30 * 1000; # millis
       iconPath = "${homeIcons}:${systemIcons}:${homePixmaps}:${systemPixmaps}";
       icons = true;
