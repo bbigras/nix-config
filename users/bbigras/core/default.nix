@@ -150,6 +150,7 @@
       devpod
       altair
       broot
+      usbimager
     ];
     shellAliases = {
       cls = "clear";
