@@ -486,7 +486,12 @@
             "which-key-add-major-mode-key-based-replacements"
           ];
           defer = 3;
-          config = "(which-key-mode)";
+          init = ''
+            (which-key-mode)
+          '';
+          config = ''
+            (setq which-key-idle-delay 0.3)
+          '';
         };
 
         all-the-icons = {
