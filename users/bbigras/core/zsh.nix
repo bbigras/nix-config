@@ -21,12 +21,6 @@
       #export CARGO_HOME="${config.xdg.cacheHome}/cargo" # doesn't work with emacs
     '';
     initExtra = ''
-        if [[ "$TERM" != 'dumb' && -z "$INSIDE_EMACS" ]]; then
-          source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
-          [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-        fi
-
-
       bindkey "$${terminfo[khome]}" beginning-of-line
       bindkey "$${terminfo[kend]}" end-of-line
       bindkey "$${terminfo[kdch1]}" delete-char
@@ -46,11 +40,6 @@
       PAGER = "less -FRX";
     };
     plugins = [
-      {
-        name = "powerlevel10k-config";
-        src = lib.cleanSource ./p10k-config;
-        file = "p10k.zsh";
-      }
       {
         name = "zsh-you-should-use";
         src = pkgs.zsh-you-should-use;
