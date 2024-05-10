@@ -43,6 +43,7 @@
     sessionVariables = {
       RPROMPT = "";
       DIRENV_LOG_FORMAT = "";
+      PAGER = "less -FRX";
     };
     plugins = [
       {
