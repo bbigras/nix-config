@@ -41,228 +41,59 @@
       usePackageVerbose = false;
 
       earlyInit = ''
-        ;; Disable some GUI distractions. We set these manually to avoid starting
-        ;; the corresponding minor modes.
-        (push '(menu-bar-lines . 0) default-frame-alist)
-        (push '(tool-bar-lines . nil) default-frame-alist)
-        (push '(vertical-scroll-bars . nil) default-frame-alist)
+        ;; extra Lisp functions
+        (require 'subr-x)
 
-        ;; Set up fonts early.
-        (set-face-attribute 'default
-                            nil
-                            :height 105
-                            :family "Source Code Pro")
-        (set-face-attribute 'fixed-pitch nil :font "Source Code Pro" :height 100)
-        (set-face-attribute 'variable-pitch nil :font "Cantarell" :height 150 :weight 'regular)
+        (defconst dw/is-termux (getenv "ANDROID_ROOT"))
 
-        (require 'doom-modeline)
-        (setq doom-modeline-buffer-file-name-style 'truncate-except-project)
-        (doom-modeline-mode)
+        ;; Thanks, but no thanks
+        (setq inhibit-startup-message t)
+
+        (unless dw/is-termux
+          (scroll-bar-mode -1)        ; Disable visible scrollbar
+          (tool-bar-mode -1)          ; Disable the toolbar
+          (tooltip-mode -1)           ; Disable tooltips
+          (set-fringe-mode 10))       ; Give some breathing room
+
+        (menu-bar-mode -1)            ; Disable the menu bar
+
+        ;; Set up the visible bell
+        (setq visible-bell t)
+
+        (unless dw/is-termux
+          (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+          (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+          (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+          (setq scroll-step 1) ;; keyboard scroll one line at a time
+          (setq use-dialog-box nil)) ;; Disable dialog boxes since they weren't working in Mac OSX
+
+        (column-number-mode)
+
+        ;; Enable line numbers for some modes
+        (dolist (mode '(text-mode-hook
+                        prog-mode-hook
+                        conf-mode-hook))
+          (add-hook mode (lambda () (display-line-numbers-mode 1))))
+
+        ;; Override some modes which derive from the above
+        (dolist (mode '(org-mode-hook))
+          (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
+        (setq auth-sources '("~/.authinfo.age"))
+
+        (add-hook 'prog-mode-hook (lambda () (hs-minor-mode t)))
+
+        ;;(set-face-attribute 'default nil :family "Hack")
+        ;;(set-face-attribute 'default nil :family "Iosevka")
+
+        ;; list font families with `fc-list : family`
+        (set-face-attribute 'default nil :family "Iosevka Nerd Font")
+        (set-face-attribute 'default nil :height (* 13 10))
       '';
 
       prelude = ''
-        ;; Disable startup message.
-        (setq inhibit-startup-screen t
-              inhibit-startup-echo-area-message (user-login-name))
-
-        (setq initial-major-mode 'fundamental-mode
-              initial-scratch-message nil)
-
-        ;; Don't blink the cursor.
-        (setq blink-cursor-mode nil)
-
-        ;; Set frame title.
-        (setq frame-title-format
-              '("" invocation-name ": "(:eval
-                                        (if (buffer-file-name)
-                                            (abbreviate-file-name (buffer-file-name))
-                                            "%b"))))
-
-        ;; Make sure the mouse cursor is visible at all times.
-        (set-face-background 'mouse "#ffffff")
-
-        ;; Accept 'y' and 'n' rather than 'yes' and 'no'.
-        (defalias 'yes-or-no-p 'y-or-n-p)
-
-        ;; Don't want to move based on visual line.
-        (setq line-move-visual nil)
-
-        ;; Stop creating backup and autosave files.
-        (setq make-backup-files nil
-              auto-save-default nil)
-
-        ;; Default is 4k, which is too low for LSP.
-        (setq read-process-output-max (* 1024 1024))
-
-        ;; Always show line and column number in the mode line.
-        (line-number-mode)
-        (column-number-mode)
-
-        ;; Enable some features that are disabled by default.
-        (put 'narrow-to-region 'disabled nil)
-
-        ;; Typically, I only want spaces when pressing the TAB key. I also
-        ;; want 4 of them.
-        (setq-default indent-tabs-mode nil
-                      tab-width 4
-                      c-basic-offset 4)
-
-        ;; Trailing white space are banned!
-        (setq-default show-trailing-whitespace t)
-
-        ;; Use one space to end sentences.
-        (setq sentence-end-double-space nil)
-
-         (add-hook 'prog-mode-hook (lambda () (hs-minor-mode t)))
-
-        ;; I typically want to use UTF-8.
-        (prefer-coding-system 'utf-8)
-
-        ;; Nicer handling of regions.
-        (transient-mark-mode 1)
-
-        ;; Make moving cursor past bottom only scroll a single line rather
-        ;; than half a page.
-        (setq scroll-step 1
-              scroll-conservatively 5)
-
-        ;; Enable highlighting of current line.
-        (global-hl-line-mode 1)
-
-        ;; Improved handling of clipboard in GNU/Linux and otherwise.
-        (setq select-enable-clipboard t
-              select-enable-primary t
-              save-interprogram-paste-before-kill t)
-
-        ;; Pasting with middle click should insert at point, not where the
-        ;; click happened.
-        (setq mouse-yank-at-point t)
-
-        ;; Enable a few useful commands that are initially disabled.
-        (put 'upcase-region 'disabled nil)
-        (put 'downcase-region 'disabled nil)
-
-        ;; When finding file in non-existing directory, offer to create the
-        ;; parent directory.
-        (defun with-buffer-name-prompt-and-make-subdirs ()
-          (let ((parent-directory (file-name-directory buffer-file-name)))
-            (when (and (not (file-exists-p parent-directory))
-                       (y-or-n-p (format "Directory `%s' does not exist! Create it? " parent-directory)))
-              (make-directory parent-directory t))))
-
-        (add-to-list 'find-file-not-found-functions #'with-buffer-name-prompt-and-make-subdirs)
-
-        ;; Don't want to complete .hi files.
-        (add-to-list 'completion-ignored-extensions ".hi")
-
-        (defun rah-disable-trailing-whitespace-mode ()
-          (setq show-trailing-whitespace nil))
-
-        ;; Shouldn't highlight trailing spaces in terminal mode.
-        (add-hook 'term-mode #'rah-disable-trailing-whitespace-mode)
-        (add-hook 'term-mode-hook #'rah-disable-trailing-whitespace-mode)
-
-        ;; Ignore trailing white space in compilation mode.
-        (add-hook 'compilation-mode-hook #'rah-disable-trailing-whitespace-mode)
-
-        (defun rah-prog-mode-setup ()
-          ;; Use a bit wider fill column width in programming modes
-          ;; since we often work with indentation to start with.
-          (setq fill-column 80))
-
-        (add-hook 'prog-mode-hook #'rah-prog-mode-setup)
-
-                                                ;(defun rah-sort-lines-ignore-case ()
-                                                ;  (interactive)
-                                                ;  (let ((sort-fold-case t))
-                                                ;    (call-interactively 'sort-lines)))
-
-        ;; MY STUFF
-        (setq auth-sources '((:source "~/.authinfo.gpg")))
-        ;;(setq max-lisp-eval-depth 10000)
-        ;;(setq max-specpdl-size 13000)
-        (delete-selection-mode 1)
-        (setq compilation-scroll-output t)
-        ;;(setq compilation-scroll-output 'first-error)
-
         (setq custom-file (expand-file-name (concat "custom-" (system-name) ".el") "~/dev/emacs"))
-        (when (file-exists-p custom-file)
-          (load custom-file 'noerror))
-
-        (setq backup-directory-alist '(("." . "~/.config/emacs/backups")))
-        (with-eval-after-load 'tramp
-          (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
-          (add-to-list 'tramp-backup-directory-alist
-                       (cons tramp-file-name-regexp nil)))
-
-        (setq delete-old-versions -1)
-        (setq version-control t)
-        (setq vc-make-backup-files t)
-        (setq auto-save-file-name-transforms '((".*" "~/.config/emacs/auto-save-list/" t)))
-
-        (setq savehist-file "~/.config/emacs/savehist")
-        (savehist-mode 1)
-        (setq history-length t)
-        (setq history-delete-duplicates t)
-        (setq savehist-save-minibuffer-history 1)
-        (setq savehist-additional-variables
-              '(kill-ring
-                search-ring
-                regexp-search-ring))
-
-        (setq native-comp-async-report-warnings-errors nil)
-
-                                                ; (server-start)
-
-        (add-hook 'eshell-preoutput-filter-functions  'ansi-color-apply)
-
-                                                ; Enable mouse in terminal/TTY
-        (xterm-mouse-mode 1)
-
-        (if (version< emacs-version "29.0")
-            (pixel-scroll-mode)
-            (pixel-scroll-precision-mode 1)
-            (setq pixel-scroll-precision-large-scroll-height 35.0))
-
-        (defun bh/prepare-meeting-notes ()
-          "Prepare meeting notes for email
-                           Take selected region and convert tabs to spaces, mark TODOs with leading >>>, and copy to kill ring for pasting"
-          (interactive)
-          (let (prefix)
-            (save-excursion
-              (save-restriction
-                (narrow-to-region (region-beginning) (region-end))
-                (untabify (point-min) (point-max))
-                (goto-char (point-min))
-                (while (re-search-forward "^\\( *-\\\) \\(TODO\\|DONE\\): " (point-max) t)
-                  (replace-match (concat (make-string (length (match-string 1)) ?>) " " (match-string 2) ": ")))
-                (goto-char (point-min))
-                (kill-ring-save (point-min) (point-max))))))
-
-        (defun renz/async-shell-command-filter-hook ()
-          "Filter async shell command output via `comint-output-filter'."
-          (when (equal (buffer-name (current-buffer)) "*Async Shell Command*")
-            ;; When `comint-output-filter' is non-nil, the carriage return characters ^M
-            ;; are displayed
-            (setq-local comint-inhibit-carriage-motion nil)
-            (when-let ((proc (get-buffer-process (current-buffer))))
-              ;; Attempting a solution found here:
-              ;; https://gnu.emacs.help.narkive.com/2PEYGWfM/m-chars-in-async-command-output
-              (set-process-filter proc 'comint-output-filter))))
-
-
-        (add-hook 'shell-mode-hook #'renz/async-shell-command-filter-hook)
-
-                                                ; tramp
-        (setq vc-handled-backends '(Git)
-              file-name-inhibit-locks t
-              tramp-inline-compress-start-size 1000
-              tramp-copy-size-limit 10000
-              tramp-verbose 1)
-                                                ; (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
-        (setq tramp-default-method "scp")
-        (setq projectile--mode-line "Projectile")
-
+        (load custom-file 'noerror 'nomessage)
       '';
 
       usePackage = {
