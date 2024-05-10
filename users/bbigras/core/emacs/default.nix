@@ -559,6 +559,13 @@
 
         dockerfile-mode.enable = true;
 
+        eat = {
+          enable = true;
+          extraConfig = ''
+            :hook ('eshell-load-hook #'eat-eshell-mode)
+          '';
+        };
+
         doom-modeline = {
           enable = true;
           extraConfig = ":disabled";
