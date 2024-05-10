@@ -358,6 +358,12 @@
           '';
         };
 
+        # A minor-mode menu for the mode line
+        minions = {
+          enable = true;
+          hook = [ "(doom-modeline-mode . minions-mode)" ];
+        };
+
         doom-modeline = {
           enable = true;
           extraConfig = ":disabled";
