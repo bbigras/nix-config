@@ -1,8 +1,9 @@
-{ pkgs
-, lib
-, config
-, osConfig
-, ...
+{
+  pkgs,
+  lib,
+  config,
+  osConfig,
+  ...
 }:
 
 {
@@ -17,13 +18,15 @@
     ./tree-sitter.nix
   ];
 
-  home.packages = with pkgs; [
-  ] ++ lib.optionals (stdenv.hostPlatform.system == "x86_64-linux") [
-    samba # for tramp
-    nodePackages.vscode-css-languageserver-bin
-    nodePackages.vscode-json-languageserver
-    yaml-language-server
-  ];
+  home.packages =
+    with pkgs;
+    [ ]
+    ++ lib.optionals (stdenv.hostPlatform.system == "x86_64-linux") [
+      samba # for tramp
+      nodePackages.vscode-css-languageserver-bin
+      nodePackages.vscode-json-languageserver
+      yaml-language-server
+    ];
 
   programs.emacs = {
     enable = true;
@@ -293,7 +296,10 @@
 
         dwim-shell-command = {
           enable = true;
-          extraPackages = [ pkgs.atool pkgs.zrok ];
+          extraPackages = [
+            pkgs.atool
+            pkgs.zrok
+          ];
           config = ''
                         (require 'dwim-shell-commands)
 
@@ -513,7 +519,10 @@
         hydra = {
           enable = true;
           # after = [ "org-tempo" ];
-          after = [ "org" "org-tempo" ];
+          after = [
+            "org"
+            "org-tempo"
+          ];
           config = ''
             (progn
                                  (defhydra hydra-org-template (:color blue :hint nil)
@@ -593,7 +602,10 @@
 
         which-key = {
           enable = true;
-          command = [ "which-key-mode" "which-key-add-major-mode-key-based-replacements" ];
+          command = [
+            "which-key-mode"
+            "which-key-add-major-mode-key-based-replacements"
+          ];
           defer = 3;
           config = "(which-key-mode)";
         };
@@ -609,7 +621,10 @@
 
         all-the-icons-dired = {
           enable = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
-          after = [ "dired" "all-the-icons" ];
+          after = [
+            "dired"
+            "all-the-icons"
+          ];
           hook = [ "(dired-mode . all-the-icons-dired-mode)" ];
         };
 
@@ -923,7 +938,11 @@
 
         company = {
           enable = true;
-          command = [ "company-mode" "company-doc-buffer" "global-company-mode" ];
+          command = [
+            "company-mode"
+            "company-doc-buffer"
+            "global-company-mode"
+          ];
           defer = 1;
           extraConfig = ''
             :bind (:map company-mode-map
@@ -1030,7 +1049,5 @@
         };
       };
     };
-  } // lib.optionalAttrs (osConfig.programs.sway.enable or false) {
-    package = pkgs.emacs-pgtk;
-  };
+  } // lib.optionalAttrs (osConfig.programs.sway.enable or false) { package = pkgs.emacs-pgtk; };
 }
