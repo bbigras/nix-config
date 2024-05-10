@@ -350,6 +350,64 @@
           '';
           config = ''
             (require 'gptel-curl)
+            (require 'auth-source)
+            (require 'gptel-kagi)
+
+            (defvar my-kagi-service "kagi-service-name") ;; Replace with your service name as in the auth-info file
+            (defvar my-kagi-user "bigras.bruno@gmail.com") ;; Replace with your user name as in the auth-info file
+
+            (let ((credential (auth-source-user-and-password my-kagi-service my-kagi-user)))
+              (defvar gptel--kagi
+                (gptel-make-kagi "Kagi" :key (if credential (cadr credential) ""))))
+
+            ;; Function that requests kagi for a url summary and shows it in a side-window
+            (defun my/kagi-summarize (url)
+              (let ((gptel-backend gptel--kagi)
+                    (gptel-model "summarize:agnes")) ;or summarize:cecil, summarize:daphne, summarize:muriel
+                (gptel-request
+                    url
+                  :callback
+                  (lambda (response info)
+                    (if response
+                        (with-current-buffer (get-buffer-create "*Kagi Summary*")
+                          (let ((inhibit-read-only t))
+                            (erase-buffer)
+                            (visual-line-mode 1)
+                            (insert response)
+                            (display-buffer
+                             (current-buffer)
+                             '((display-buffer-in-side-window
+                                display-buffer-at-bottom)
+                               (side . bottom))))
+                          (special-mode 1))
+                        (message "gptel-request failed with message: %s"
+                                 (plist-get info :status)))))))
+
+            ;; Make this function available to Embark
+            ;;(keymap-set embark-url-map "=" #'my/kagi-summarize)
+
+
+            (cl-defun my/clean-up-gptel-refactored-code (beg end)
+              "Clean up the code responses for refactored code in the current buffer.
+
+                        The response is placed between BEG and END.  The current buffer is
+                        guaranteed to be the response buffer."
+              (when gptel-mode          ; Don't want this to happen in the dedicated buffer.
+                (cl-return-from my/clean-up-gptel-refactored-code))
+              (when (and beg end)
+                (save-excursion
+                  (let ((contents
+                         (replace-regexp-in-string
+                          "\n*``.*\n*" ""
+                          (buffer-substring-no-properties beg end))))
+                    (delete-region beg end)
+                    (goto-char beg)
+                    (insert contents))
+                  ;; Indent the code to match the buffer indentation if it's messed up.
+                  (indent-region beg end)
+                  (pulse-momentary-highlight-region beg end))))
+
+            (add-hook 'gptel-post-response-functions #'my/clean-up-gptel-refactored-code)
           '';
         };
 
