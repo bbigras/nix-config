@@ -342,7 +342,7 @@
         gptel = {
           enable = true;
           init = ''
-            (setq gptel-model "gpt-4-1106-preview")
+            (setq gptel-model "gpt-4-turbo")
           '';
           config = ''
             (require 'gptel-curl)
