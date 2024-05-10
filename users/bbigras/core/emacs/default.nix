@@ -781,15 +781,6 @@
           '';
         };
 
-        savehist = {
-          enable = true;
-          init = "(savehist-mode)";
-          config = ''
-            (setq history-delete-duplicates t
-                  history-length 100)
-          '';
-        };
-
         emacs = {
           enable = true;
           init = ''
