@@ -102,6 +102,9 @@
 
         ;; Accept 'y' and 'n' rather than 'yes' and 'no'.
         (defalias 'yes-or-no-p 'y-or-n-p)
+
+        ;; Enable highlighting of current line.
+        (global-hl-line-mode 1)
       '';
 
       prelude = ''
