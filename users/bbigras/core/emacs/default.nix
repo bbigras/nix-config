@@ -113,6 +113,8 @@
         ;; Use one space to end sentences.
         (setq sentence-end-double-space nil)
 
+         (add-hook 'prog-mode-hook (lambda () (hs-minor-mode t)))
+
         ;; I typically want to use UTF-8.
         (prefer-coding-system 'utf-8)
 
@@ -265,20 +267,6 @@
 
       usePackage = {
         no-littering.enable = true;
-
-        age = {
-          enable = true;
-          demand = true;
-          extraPackages = [ pkgs.rage ];
-          config = ''
-            (setq age-default-identity  "/home/bbigras/.ssh/id_ed25519"
-                  age-default-recipient "/home/bbigras/.ssh/id_ed25519.pub"
-                  age-pinentry-mode 'ask
-                  age-debug t
-                  age-program "${pkgs.rage}/bin/rage"
-            )
-          '';
-        };
 
         logview.enable = true;
 
