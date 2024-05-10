@@ -242,8 +242,6 @@
           '';
         };
 
-        bufler.enable = true;
-
         # Save and restore frames and windows with their buffers in Emacs
         burly.enable = true;
 
