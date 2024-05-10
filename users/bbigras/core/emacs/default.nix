@@ -105,6 +105,12 @@
 
         ;; Enable highlighting of current line.
         (global-hl-line-mode 1)
+
+        ;; Improved handling of clipboard in GNU/Linux and otherwise.
+        (setq select-enable-clipboard t
+              select-enable-primary t
+              save-interprogram-paste-before-kill t)
+
       '';
 
       prelude = ''
