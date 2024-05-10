@@ -94,6 +94,7 @@
          blink-cursor-mode nil
          read-process-output-max (* 1024 1024) ;; Default is 4k, which is too low for LSP.
          sentence-end-double-space nil ;; Use one space to end sentences
+         native-comp-async-report-warnings-errors nil
          )
       '';
 
