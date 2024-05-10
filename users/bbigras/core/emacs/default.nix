@@ -86,6 +86,10 @@
         ;; list font families with `fc-list : family`
         (set-face-attribute 'default nil :family "Iosevka Nerd Font")
         (set-face-attribute 'default nil :height (* 13 10))
+
+        (setq
+         ediff-window-setup-function 'ediff-setup-windows-plain
+         )
       '';
 
       prelude = ''
