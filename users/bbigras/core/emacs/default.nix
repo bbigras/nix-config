@@ -99,6 +99,9 @@
 
         ;; Enable some features that are disabled by default.
         (put 'narrow-to-region 'disabled nil)
+
+        ;; Accept 'y' and 'n' rather than 'yes' and 'no'.
+        (defalias 'yes-or-no-p 'y-or-n-p)
       '';
 
       prelude = ''
