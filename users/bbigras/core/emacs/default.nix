@@ -789,27 +789,20 @@
 
         company = {
           enable = true;
-          command = [
-            "company-mode"
-            "company-doc-buffer"
-            "global-company-mode"
-          ];
           defer = 1;
-          extraConfig = ''
-            :bind (:map company-mode-map
-                        ([remap completion-at-point] . company-complete-common)
-                        ([remap complete-symbol] . company-complete-common))
-          '';
           config = ''
-            (setq company-idle-delay 0.2
-                  company-minimum-prefix-length 3
-                  company-show-quick-access t
-                  company-tooltip-maximum-width 100
-                  company-tooltip-minimum-width 20
-                  ; Allow me to keep typing even if company disapproves.
-                  company-require-match nil)
+            (global-company-mode t)
 
-            (global-company-mode)
+            (setq-default
+             company-idle-delay 0.2
+             ;;company-require-match nil
+             ;;company-minimum-prefix-length 0
+
+             ;; get only preview
+             company-frontends '(company-preview-frontend)
+             ;; also get a drop down
+             company-frontends '(company-pseudo-tooltip-frontend company-preview-frontend)
+             )
           '';
         };
 
