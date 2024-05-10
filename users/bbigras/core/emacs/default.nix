@@ -23,6 +23,7 @@
     [ ]
     ++ lib.optionals (stdenv.hostPlatform.system == "x86_64-linux") [
       samba # for tramp
+      pkgs.terraform-ls
     ];
 
   programs.emacs = {
