@@ -323,14 +323,6 @@
           '';
         };
 
-        ef-themes = {
-          enable = true;
-          config = ''
-            (mapc #'disable-theme custom-enabled-themes)
-            (ef-themes-select 'ef-elea-dark)
-          '';
-        };
-
         powerline = {
           enable = true;
           config = ''
