@@ -363,7 +363,7 @@
 
         doom-modeline = {
           enable = true;
-          extraConfig = ":disabled";
+          hook = [ "(after-init . doom-modeline-mode)" ];
         };
 
         drag-stuff = {
