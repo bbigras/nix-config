@@ -1043,11 +1043,6 @@
           '';
         };
 
-        company-posframe = {
-          enable = true;
-          hook = [ "(company-mode . company-posframe-mode)" ];
-        };
-
         protobuf-mode = {
           enable = true;
           mode = [ ''"'\\.proto\\'"'' ];
