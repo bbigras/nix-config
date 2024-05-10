@@ -528,14 +528,6 @@
           enable = true;
         };
 
-        fira-code-mode = {
-          enable = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
-          hook = [ "prog-mode" ];
-          config = ''
-            (fira-code-mode-set-font)
-          '';
-        };
-
         hcl-mode.enable = true;
 
         graphql-mode.enable = true;
