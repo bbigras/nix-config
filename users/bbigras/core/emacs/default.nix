@@ -266,6 +266,20 @@
       usePackage = {
         no-littering.enable = true;
 
+        age = {
+          enable = true;
+          demand = true;
+          extraPackages = [ pkgs.rage ];
+          config = ''
+            (setq age-default-identity  "/home/bbigras/.ssh/id_ed25519"
+                  age-default-recipient "/home/bbigras/.ssh/id_ed25519.pub"
+                  age-pinentry-mode 'ask
+                  age-debug t
+                  age-program "${pkgs.rage}/bin/rage"
+            )
+          '';
+        };
+
         logview.enable = true;
 
         project = {
