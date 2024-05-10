@@ -266,6 +266,8 @@
       usePackage = {
         no-littering.enable = true;
 
+        logview.enable = true;
+
         project = {
           enable = true;
           config = lib.optionalString config.programs.jujutsu.enable ''
