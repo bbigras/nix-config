@@ -96,6 +96,9 @@
          sentence-end-double-space nil ;; Use one space to end sentences
          native-comp-async-report-warnings-errors nil
          )
+
+        ;; Enable some features that are disabled by default.
+        (put 'narrow-to-region 'disabled nil)
       '';
 
       prelude = ''
