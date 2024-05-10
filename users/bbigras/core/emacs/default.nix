@@ -89,6 +89,7 @@
 
         (setq
          ediff-window-setup-function 'ediff-setup-windows-plain
+         delete-selection-mode t
          )
       '';
 
