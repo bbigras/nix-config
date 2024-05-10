@@ -23,9 +23,6 @@
     [ ]
     ++ lib.optionals (stdenv.hostPlatform.system == "x86_64-linux") [
       samba # for tramp
-      nodePackages.vscode-css-languageserver-bin
-      nodePackages.vscode-json-languageserver
-      yaml-language-server
     ];
 
   programs.emacs = {
