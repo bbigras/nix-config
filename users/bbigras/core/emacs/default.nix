@@ -341,6 +341,8 @@
           '';
         };
 
+        consult-recoll.enable = true;
+
         gptel = {
           enable = true;
           init = ''
