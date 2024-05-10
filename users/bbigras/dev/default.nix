@@ -49,6 +49,13 @@ in
       settings = {
         core.fsmonitor = "watchman";
         ui.allow-filesets = true;
+
+        # https://github.com/martinvonz/jj/pull/3657
+        ui.pager = {
+          command = ["less" "-FRX"];
+          env = { LESSCHARSET = "utf-8"; };
+        };
+
         user = {
           name = "Bruno Bigras";
           email = "bigras.bruno@gmail.com";
