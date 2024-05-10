@@ -58,12 +58,12 @@ in
     address = "laptop";
     pubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEIs8Ait2j8oYQB0cWPLZIw9vObzuWxo4E00awCNw2rZ root@nixos";
   };
-  # work = mkHost {
-  #   type = "nixos";
-  #   hostPlatform = "x86_64-linux";
-  #   address = "bbigras-work";
-  #   pubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKEfhY66gBDU0xgjaQgm9V991wuxI/R3bm3Yt6Kdv9Au root@nixos";
-  # };
+  work = mkHost {
+    type = "nixos";
+    hostPlatform = "x86_64-linux";
+    address = "bbigras-work";
+    pubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKEfhY66gBDU0xgjaQgm9V991wuxI/R3bm3Yt6Kdv9Au root@nixos";
+  };
   pixel6 = mkHost {
     type = "nix-on-droid";
     hostPlatform = "aarch64-linux";
