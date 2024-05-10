@@ -92,6 +92,7 @@
          delete-selection-mode t
          show-trailing-whitespace t
          blink-cursor-mode nil
+         read-process-output-max (* 1024 1024) ;; Default is 4k, which is too low for LSP.
          )
       '';
 
