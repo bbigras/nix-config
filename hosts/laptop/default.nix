@@ -98,7 +98,6 @@ in
   networking = {
     useNetworkd = true;
     hostName = "laptop"; # Define your hostname.
-    networkmanager.enable = false;
     wireless.iwd.enable = true;
   };
 
