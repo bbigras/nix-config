@@ -98,7 +98,14 @@ in
   networking = {
     useNetworkd = true;
     hostName = "laptop"; # Define your hostname.
-    wireless.iwd.enable = true;
+    wireless.iwd = {
+      enable = true;
+      settings = {
+        Settings = {
+          AutoConnect = true;
+        };
+      };
+    };
   };
 
   virtualisation.docker = {
