@@ -120,6 +120,23 @@ in
 
   powerManagement.cpuFreqGovernor = "performance";
 
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+    extraPackages = with pkgs; [
+      libva
+      vaapiVdpau
+      libvdpau-va-gl
+      amdvlk
+    ];
+    extraPackages32 = with pkgs; [
+      driversi686Linux.amdvlk
+    ];
+  };
+  boot.initrd.kernelModules = [ "amdgpu" ];
+
+
   # hardware.enableRedistributableFirmware = true;
   networking.hostName = "desktop"; # Define your hostname.
   networking.networkmanager.enable = false;
