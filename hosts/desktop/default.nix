@@ -68,6 +68,11 @@ in
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  boot.plymouth = {
+    enable = true;
+    catppuccin.enable = true;
+  };
+
   networking.interfaces."enp6s0".wakeOnLan.enable = true;
   # boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
 
