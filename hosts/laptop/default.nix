@@ -108,6 +108,21 @@ in
     };
   };
 
+  systemd.network = {
+    enable = true;
+    networks = {
+      "10-wifi" = {
+        DHCP = "yes";
+        matchConfig.Name = "wlan*";
+        dhcpV4Config = { UseDNS = false; };
+      };
+    };
+  };
+
+  systemd.network.wait-online.enable = false;
+  boot.initrd.systemd.network.wait-online.enable = false;
+  networking.wireless.dbusControlled = false;
+
   virtualisation.docker = {
     enable = true;
     autoPrune.enable = true;
