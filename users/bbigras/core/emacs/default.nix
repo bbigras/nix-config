@@ -205,7 +205,7 @@
         gptel = {
           enable = true;
           init = ''
-            (setq gptel-model "gpt-4-turbo")
+            (setq gptel-model "gpt-4o")
           '';
           config = ''
             (require 'gptel-curl)
