@@ -143,6 +143,13 @@
           '';
         };
 
+        sqlformat = {
+          enable = true;
+          config = ''
+            (setq sqlformat-command 'pgformatter)
+          '';
+        };
+
         activities = {
           enable = true;
           bind = {
