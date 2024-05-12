@@ -22,9 +22,8 @@ jobs:
   flake-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/nix-installer-action@v11
         with:
-          source-url: https://install.lix.systems/lix/lix-installer-x86_64-linux
           extra-conf: ${{ env.nix-conf }}
       - uses: cachix/cachix-action@v14
         with:
@@ -37,9 +36,8 @@ jobs:
   flake-show:
     runs-on: ubuntu-latest
     steps:
-      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/nix-installer-action@v11
         with:
-          source-url: https://install.lix.systems/lix/lix-installer-x86_64-linux
           extra-conf: ${{ env.nix-conf }}
       - uses: cachix/cachix-action@v14
         with:
@@ -55,9 +53,8 @@ jobs:
       build: ${{ steps.get-attrs.outputs.build }}
       eval: ${{ steps.get-attrs.outputs.eval }}
     steps:
-      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/nix-installer-action@v11
         with:
-          source-url: https://install.lix.systems/lix/lix-installer-x86_64-linux
           extra-conf: ${{ env.nix-conf }}
       - uses: DeterminateSystems/magic-nix-cache-action@v6
       - id: install-jq
@@ -153,9 +150,8 @@ jobs:
     steps:
       - uses: docker/setup-qemu-action@v3
         if: ${{ matrix.attrs.hostPlatform == 'aarch64-linux' }}
-      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/nix-installer-action@v11
         with:
-          source-url: https://install.lix.systems/lix/lix-installer-x86_64-linux
           extra-conf: ${{ env.nix-conf }}
       - uses: cachix/cachix-action@v14
         with:
@@ -183,9 +179,8 @@ jobs:
         if: ${{ env.system == 'aarch64-linux' }}
       - name: "Make more space"
         run: "sudo rm -rf /opt /usr/local || true &"
-      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/nix-installer-action@v11
         with:
-          source-url: https://install.lix.systems/lix/lix-installer-x86_64-linux
           extra-conf: ${{ env.nix-conf }}
       - uses: cachix/cachix-action@v14
         with:
