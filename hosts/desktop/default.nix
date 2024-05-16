@@ -69,7 +69,7 @@ in
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.plymouth = {
-    enable = true;
+    enable = false;
     catppuccin.enable = true;
   };
 
