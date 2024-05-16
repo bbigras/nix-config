@@ -182,6 +182,7 @@
       altair
       broot
       usbimager
+      localsend
     ];
     shellAliases = {
       cls = "clear";
