@@ -37,6 +37,7 @@
     ./atuin.nix
     ./btop.nix
     ./git.nix
+    ./jujutsu.nix
     ./emacs
     ./ssh.nix
     ./tmux.nix
