@@ -150,6 +150,10 @@ in
             VerifyHostKeyDNS = "ask";
           };
         };
+        starship = {
+          enable = true;
+          catppuccin.enable = true;
+        };
         tealdeer.enable = true;
         zoxide.enable = true;
         zellij.enable = true;
