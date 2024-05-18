@@ -28,7 +28,14 @@
     firewall = {
       checkReversePath = "loose";
       trustedInterfaces = [ "tailscale0" ];
-      allowedUDPPorts = [ config.services.tailscale.port ];
+      allowedUDPPorts = [
+        config.services.tailscale.port
+        22000 # syncthing
+        21027 # syncthing discovery
+      ];
+      allowedTCPPorts = [
+        22000 # syncthing
+      ];
     };
     useDHCP = false;
     useNetworkd = true;
