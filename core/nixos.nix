@@ -26,10 +26,7 @@
 
   networking = {
     firewall = {
-      checkReversePath = "loose";
-      trustedInterfaces = [ "tailscale0" ];
       allowedUDPPorts = [
-        config.services.tailscale.port
         22000 # syncthing
         21027 # syncthing discovery
       ];
@@ -78,10 +75,6 @@
   systemd = {
     enableUnifiedCgroupHierarchy = true;
     network.wait-online.anyInterface = true;
-    services.tailscaled = {
-      after = [ "network-online.target" "systemd-resolved.service" ];
-      wants = [ "network-online.target" "systemd-resolved.service" ];
-    };
   };
 
   users.mutableUsers = false;
