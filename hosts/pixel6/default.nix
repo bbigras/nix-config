@@ -108,6 +108,7 @@ in
         };
         bat = {
           enable = true;
+          extraPackages = with pkgs.bat-extras; [ batman ];
           catppuccin.enable = true;
         };
         carapace.enable = true;
