@@ -23,7 +23,7 @@ in
   imports = with nixos-hardware.nixosModules;
     [
       ../../core
-      # ../../services/veilid.nix
+      ../../services/veilid.nix
       ../../dev
       ../../dev/virt-manager.nix
 

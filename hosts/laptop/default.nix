@@ -12,7 +12,7 @@ in
     [
       ../../core
       ../../dev
-      # ../../services/veilid.nix
+      ../../services/veilid.nix
 
       # Include the results of the hardware scan.
       ../../hardware/hardware-configuration-laptop.nix
