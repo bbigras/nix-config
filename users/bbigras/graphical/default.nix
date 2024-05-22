@@ -37,7 +37,7 @@
     mangohud
     # heroic
 
-    dbeaver
+    dbeaver-bin
     josm
 
 
