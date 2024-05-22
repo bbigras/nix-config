@@ -8,8 +8,8 @@ in
   user.shell = "${pkgs.zsh}/bin/zsh";
 
   user = {
-    gid = 10202;
-    uid = 10202;
+    gid = 10253;
+    uid = 10253;
   };
 
   nix.extraOptions = ''
