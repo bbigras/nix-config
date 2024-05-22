@@ -356,7 +356,7 @@
         };
 
         copilot = {
-          enable = true;
+          enable = pkgs.stdenv.hostPlatform.system != "aarch64-linux";
           # package = _epkgs: pkgs.emacsPackages.copilot_el;
           package = _epkgs: pkgs.my_copilot;
           # package = _epkgs: pkgs.emacsPackages.copilot;
