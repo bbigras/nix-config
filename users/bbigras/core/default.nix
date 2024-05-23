@@ -45,7 +45,7 @@
     ./zsh.nix
   ];
 
-  catppuccin.flavour = "mocha";
+  catppuccin.flavor = "mocha";
 
   # XXX: Manually enabled in the graphic module
   dconf.enable = false;
