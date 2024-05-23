@@ -5,7 +5,7 @@
       enable = true;
       configurationLimit = 15;
     };
-    timeout = lib.mkDefault 2;
+    timeout = lib.mkDefault 0;
   };
   console.earlySetup = true;
 }
