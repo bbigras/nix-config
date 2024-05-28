@@ -63,6 +63,7 @@ in
     hostPlatform = "x86_64-linux";
     address = "bbigras-work";
     pubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKEfhY66gBDU0xgjaQgm9V991wuxI/R3bm3Yt6Kdv9Au root@nixos";
+    type2 = "server";
   };
   pixel6 = mkHost {
     type = "nix-on-droid";
