@@ -38,9 +38,12 @@ jobs:
           extra-conf: accept-flake-config = true
       - run: git config --global user.email "noreply@github.com"
       - run: git config --global user.name "github[bot]"
-      - name: Update flake.lock
-        uses: DeterminateSystems/update-flake-lock@v21
+      - uses: cpcloud/flake-update-action@v2.0.1
         with:
-          token: ${{ secrets.PAT }}
-          git-author-name: 'github[bot]'
-          git-author-email: 'github-actions[bot]@users.noreply.github.com'
+          dependency: ${{ matrix.flake }}
+          pull-request-token: ${{ secrets.PAT }}
+          pull-request-author: github[bot] <noreply@github.com>
+          delete-branch: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          pull-request-branch-prefix: update-
+          automerge: true
