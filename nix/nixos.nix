@@ -3,7 +3,7 @@
 let
   inherit (inputs.nixpkgs) lib;
 
-  genConfiguration = hostname: { address, hostPlatform, type, ... }:
+  genConfiguration = hostname: { address, hostPlatform, type, type2, ... }:
     withSystem hostPlatform ({ pkgs, ... }:
       lib.nixosSystem {
         modules = [
@@ -16,6 +16,10 @@ let
             };
             nixpkgs.pkgs = pkgs;
           }
+        ] ++ lib.optionals (type2 == "desktop") [
+          inputs.srvos.nixosModules.desktop
+        ] ++ lib.optionals (type2 == "server") [
+          inputs.srvos.nixosModules.server
         ];
         specialArgs = {
           hostAddress = address;
