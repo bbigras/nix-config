@@ -8,6 +8,7 @@ in
     [
       ../../core
       ../../dev
+      ../../dev/virt-manager.nix
 
       # Include the results of the hardware scan.
       ../../hardware/hardware-configuration-work.nix
