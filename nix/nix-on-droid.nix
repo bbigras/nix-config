@@ -1,7 +1,7 @@
 { withSystem, inputs, ... }:
 
 let
-  inherit (inputs) self nix-on-droid nur catppuccin nixpkgs;
+  inherit (inputs) self nix-on-droid nixpkgs;
   inherit (nixpkgs) lib;
 
   genConfiguration = hostname: { hostPlatform, ... }:
@@ -12,7 +12,7 @@ let
           (../hosts + "/${hostname}")
         ];
         extraSpecialArgs = {
-          inherit nur catppuccin;
+          inherit (inputs) nur catppuccin nix-doom-emacs-unstraightened;
         };
       });
 in

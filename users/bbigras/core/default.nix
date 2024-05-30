@@ -184,6 +184,11 @@
       broot
       usbimager
       localsend
+
+      (pkgs.doomEmacs {
+        doomDir = ../../../doomDir;
+        doomLocalDir = "~/.local/share/nix-doom";
+      })
     ];
     shellAliases = {
       cls = "clear";

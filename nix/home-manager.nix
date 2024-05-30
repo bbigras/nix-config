@@ -37,6 +37,7 @@ let
           inherit (inputs)
             catppuccin
             impermanence
+            nix-doom-emacs-unstraightened
             nix-index-database;
         };
       });

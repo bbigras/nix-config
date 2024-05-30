@@ -1,4 +1,4 @@
-{ pkgs, nur, catppuccin, ... }:
+{ pkgs, nur, catppuccin, nix-doom-emacs-unstraightened, ... }:
 
 let
   nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
@@ -94,7 +94,9 @@ in
       ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/tablet.nix") then [ (builtins.getEnv "PWD" + "/secrets/tablet.nix") ] else [ ]);
 
       # Use the same overlays as the system packages
-      # nixpkgs.overlays = config.nixpkgs.overlays;
+      nixpkgs.overlays = config.nixpkgs.overlays ++ [
+        nix-doom-emacs-unstraightened.overlays.default
+      ];
 
       home.language.base = "fr_CA.UTF-8";
 
@@ -200,6 +202,12 @@ in
         zrok
         truecolor-check
         restic
+
+        (pkgs.doomEmacs {
+          doomDir = ../../doomDir;
+          doomLocalDir = "~/.local/share/nix-doom";
+          emacs = pkgs.emacs-nox;
+        })
       ];
 
       dconf.enable = lib.mkForce false;
