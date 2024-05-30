@@ -9,9 +9,11 @@
     firewall = {
       allowedTCPPorts = [
         5150
+        5151
       ];
       allowedUDPPorts = [
         5150
+        5151
       ];
     };
   };
