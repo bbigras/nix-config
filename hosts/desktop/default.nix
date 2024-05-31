@@ -218,6 +218,8 @@ in
 
   services.fwupd.enable = true;
 
+  services.flatpak.enable = true;
+
   services.jellyfin = {
     enable = true;
     openFirewall = true;
