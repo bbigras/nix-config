@@ -201,6 +201,12 @@ in
         zrok
         truecolor-check
         restic
+
+        (pkgs.doomEmacs {
+          doomDir = ../../doomDir;
+          doomLocalDir = "~/.local/share/nix-doom";
+          emacs = pkgs.emacs-nox;
+        })
       ];
 
       dconf.enable = lib.mkForce false;
