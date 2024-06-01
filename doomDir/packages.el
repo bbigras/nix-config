@@ -33,7 +33,7 @@
 
 (package! projectile :pin "0163b335a18af0f077a474d4dc6b36e22b5e3274")
 
-(package! copilot)
+;; (package! copilot)
 
 ;; (use-package! projectile
 ;; :init
