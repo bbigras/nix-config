@@ -128,12 +128,6 @@
       inputs.flake-utils.follows = "flake-utils";
     };
 
-    # copilot_el = {
-    #   url = "github:copilot-emacs/copilot.el";
-    #   flake = false;
-    # };
-
-    copilot_pkgs.url = "github:bbigras/nixpkgs/copilot";
     copilot-node-server_pkgs.url = "github:bbigras/nixpkgs/copilot-node-server";
 
     envrc = {

@@ -34,7 +34,7 @@
 (package! projectile)
 (package! crux)
 
-;; (package! copilot)
+(package! copilot)
 (package! catppuccin-theme)
 
 ;; (use-package! projectile
