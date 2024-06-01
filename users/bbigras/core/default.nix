@@ -1,4 +1,4 @@
-{ hostType, impermanence, nix-index-database, pkgs, lib, catppuccin, ... }:
+{ config, hostType, impermanence, nix-index-database, pkgs, lib, catppuccin, ... }:
 
 # let
 #perfect_eq_repo = pkgs.fetchgit {
@@ -158,6 +158,12 @@
       (pkgs.doomEmacs {
         doomDir = ../../../doomDir;
         doomLocalDir = "~/.local/share/nix-doom";
+        extraBinPackages = with pkgs; [
+          nodejs
+          config.programs.ripgrep.package
+          config.programs.git.package
+          config.programs.fd.package
+        ];
       })
     ];
     shellAliases = {
