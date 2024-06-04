@@ -169,7 +169,10 @@
       natscli
       just
 
+      # media
+      spotube
       yt-dlp
+
       zrok
       aichat
       quickemu
