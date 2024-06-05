@@ -65,16 +65,13 @@
 
       # dev
       bfg-repo-cleaner
-      gitAndTools.git-machete
       git-filter-repo
-      git-ps-rs
-      gist
       gitAndTools.gh
       colordiff
 
       # net
       croc
-
+      localsend
       rclone
       tailscale
       tcpdump
@@ -102,14 +99,8 @@
       # android-studio
       # scrcpy
 
-      # security?
-      bitwarden-cli
-
       # backup
       restic
-      # kopia
-
-      # gist gopass  weechat
 
       # utils
       file
@@ -119,40 +110,21 @@
       cargo
       cargo-audit
       cargo-outdated
-      # cargo-asm
-      # cargo-bloat
-      # cargo-crev
-      cargo-expand
       cargo-flamegraph
-      # cargo-fuzz
-      # cargo-geiger
       cargo-sweep
       cargo-tarpaulin
       cargo-udeps
 
-
-      compsize
-
       pv
 
-      # asciinema # record the terminal
-      docker-compose # docker manager
-      ncdu # disk space info (a better du)
+      docker-compose
       prettyping # a nicer ping
 
-      feh # light-weight image viewer
       killall
 
       unar
-      ntp
-
-      # Go
-      # go
-      # gopls
 
       # kubernetes
-      k9s
-      kdash
       kubectl
       kubectx
       kubelogin-oidc
@@ -160,33 +132,29 @@
       kubernetes-helm
       kind
 
-      # perf
-      sysstat
-
-      ventoy
       docker-credential-helpers
       viddy
       natscli
       just
 
+      # usb imagers
+      ventoy
+      usbimager
+
       # media
+      mediainfo
       spotube
       yt-dlp
 
       zrok
       aichat
       quickemu
-      mediainfo
 
-      git-annex
-      git-remote-gcrypt
       qalculate-gtk
       devpod
       open-interpreter
       altair
       broot
-      usbimager
-      localsend
 
       (pkgs.doomEmacs {
         doomDir = ../../../doomDir;
