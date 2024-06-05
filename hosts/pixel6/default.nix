@@ -141,6 +141,7 @@ in
         jq.enable = true;
         htop.enable = true;
         nushell.enable = false;
+        ripgrep.enable = true;
         ssh = {
           enable = true;
           # controlMaster = "auto";
@@ -182,7 +183,6 @@ in
         openssh
         prettyping
         # tab-rs
-        ripgrep
         kubernetes
         kubernetes-helm
         k9s
