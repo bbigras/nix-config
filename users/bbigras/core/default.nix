@@ -61,8 +61,6 @@
 
       mosh
 
-      ripgrep
-
       # dev
       bfg-repo-cleaner
       git-filter-repo
@@ -195,6 +193,7 @@
     gpg.enable = true;
     navi.enable = true;
     nix-index.enable = true;
+    ripgrep.enable = true;
     sqls.enable = true;
 
     bashmount.enable = true;
