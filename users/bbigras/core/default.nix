@@ -80,6 +80,7 @@
       cachix
       comma
       manix
+      nil
       nix-update
       nixpkgs-fmt
 
