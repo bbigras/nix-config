@@ -110,7 +110,7 @@
        (lsp +peek)
        (debugger +lsp)
        (lookup +dictionary +docsets)
-       ;; (magit +forge)
+       (magit +forge)
        (rgb)
        (terraform)
        (tmux)
