@@ -7,3 +7,4 @@
 ;;                           ("C-<tab>" . 'copilot-accept-completion-by-word))
 ;;               )
 (setq org-directory "~/dev/org-mode/")
+(setq org-roam-directory "~/dev/org-mode/notes/")
