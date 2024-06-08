@@ -241,11 +241,6 @@ in
           '';
         };
 
-
-        org-ql.enable = true;
-        org-sidebar.enable = true;
-
-
         # org-super-agenda = {
         #   enable = true;
         #   after = [ "org" ];
