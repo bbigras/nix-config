@@ -37,7 +37,7 @@
     gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
     catppuccin = {
       enable = true;
-      cursor.enable = true;
+      # cursor.enable = true;
       gnomeShellTheme = true;
       icon.enable = true;
     };
