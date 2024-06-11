@@ -99,6 +99,7 @@ in
       home.language.base = "fr_CA.UTF-8";
 
       catppuccin.flavor = "mocha";
+      catppuccin.accent = "blue";
 
       # insert home-manager config
       programs = {

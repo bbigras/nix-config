@@ -54,6 +54,7 @@ in
     ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/desktop.nix") then [ (builtins.getEnv "PWD" + "/secrets/desktop.nix") ] else [ ]);
 
   catppuccin.flavor = "mocha";
+  catppuccin.accent = "blue";
 
   nix = {
     extraOptions = ''

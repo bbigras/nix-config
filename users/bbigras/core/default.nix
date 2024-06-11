@@ -46,6 +46,7 @@
   ];
 
   catppuccin.flavor = "mocha";
+  catppuccin.accent = "blue";
 
   # XXX: Manually enabled in the graphic module
   dconf.enable = false;
