@@ -14,3 +14,7 @@
   :bind (
          ("C-c d" . crux-duplicate-current-line-or-region)
          ))
+
+(setq doom-theme 'catppuccin)
+(load-theme 'catppuccin t t)
+(catppuccin-set-color 'mauve "#89b4fa" 'mocha)

@@ -35,6 +35,7 @@
 (package! crux)
 
 ;; (package! copilot)
+(package! catppuccin-theme)
 
 ;; (use-package! projectile
 ;; :init
