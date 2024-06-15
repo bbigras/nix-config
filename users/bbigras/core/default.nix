@@ -138,7 +138,6 @@
       just
 
       # usb imagers
-      ventoy
       usbimager
 
       # media
