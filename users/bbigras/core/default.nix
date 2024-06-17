@@ -81,7 +81,6 @@
       cachix
       comma
       manix
-      nil
       nix-update
       nixpkgs-fmt
 
@@ -163,6 +162,8 @@
           config.programs.ripgrep.package
           config.programs.git.package
           config.programs.fd.package
+          nil
+          python3Minimal
         ];
       })
     ];
