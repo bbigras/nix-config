@@ -143,6 +143,7 @@
       mediainfo
       spotube
       yt-dlp
+      kooha
 
       zrok
       aichat
