@@ -71,7 +71,7 @@ in
     # '';
   };
 
-  hardware.opengl = { enable = true; driSupport = true; driSupport32Bit = true; extraPackages = with pkgs; [ libva vaapiVdpau libvdpau-va-gl ]; };
+  hardware.opengl = { enable = true; extraPackages = with pkgs; [ libva vaapiVdpau libvdpau-va-gl ]; };
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [ 21000 21013 445 ];
 
