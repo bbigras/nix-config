@@ -26,6 +26,7 @@ in
       ../../services/veilid.nix
       ../../dev
       ../../dev/virt-manager.nix
+      ../../dev/incus.nix
 
       # Include the results of the hardware scan.
       ../../hardware/hardware-configuration-desktop.nix

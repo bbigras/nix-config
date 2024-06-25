@@ -17,6 +17,7 @@ with lib;
       ++ optionals config.virtualisation.docker.enable [ "docker" ]
       ++ optionals config.virtualisation.libvirtd.enable [ "libvirtd" ]
       ++ optionals config.virtualisation.kvmgt.enable [ "kvm" ]
+      ++ optionals config.virtualisation.incus.enable [ "incus-admin" ]
       ++ optionals config.virtualisation.podman.enable [ "podman" ];
     isNormalUser = true;
     shell = mkIf config.programs.zsh.enable pkgs.zsh;
