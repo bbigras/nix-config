@@ -20,7 +20,7 @@
 ;; (setq doom-font (font-spec :family "Fira Mono" :size 12))
 
 (doom! :completion
-       vertico
+       (vertico +icons)
        (company +childframe)
 
        :ui
@@ -32,7 +32,7 @@
        (popup +defaults)
        window-select
        minimap
-       (ligatures)
+       (ligatures +extra)
 
        :checkers
        grammar
@@ -50,9 +50,10 @@
        (undo +tree)
        (dired +icons)
        tramp
+       electric
 
        :term
-       eshell
+       ;; eshell
        vterm
 
        :os
@@ -109,11 +110,13 @@
        direnv
        (lsp +peek)
        (debugger +lsp)
+       (docker +lsp)
        (lookup +dictionary +docsets)
        (magit +forge)
        (rgb)
        (terraform)
        (tmux)
+       tree-sitter
 
        :config
        (default +bindings +smartparens))
