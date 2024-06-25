@@ -18,13 +18,6 @@
     ];
   };
 
-  # https://github.com/catppuccin/nix/issues/176
-  home.pointerCursor = {
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Ice";
-    size = 22;
-  };
-
   programs = {
     swaylock = {
       enable = true;
