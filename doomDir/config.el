@@ -18,3 +18,7 @@
 (setq doom-theme 'catppuccin)
 (load-theme 'catppuccin t t)
 (catppuccin-set-color 'mauve "#89b4fa" 'mocha)
+
+(after! tramp
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
+  (setq tramp-ssh-controlmaster-options ""))
