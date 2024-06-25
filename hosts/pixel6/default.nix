@@ -67,10 +67,6 @@ in
       # Read the changelog before changing this value
       home.stateVersion = "20.09";
 
-      home.file.".ssh/config".text = ''
-        Include ~/.ssh/devpod
-      '';
-
       home.activation = {
         copyFont =
           let
@@ -148,7 +144,9 @@ in
           controlMaster = "auto";
           controlPersist = "10m";
           hashKnownHosts = true;
-
+          includes = [
+            "~/.ssh/devpod"
+          ];
           extraOptionOverrides = {
             AddKeysToAgent = "confirm";
             VerifyHostKeyDNS = "ask";

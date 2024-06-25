@@ -39,7 +39,6 @@
     ./git.nix
     ./jujutsu.nix
     # ./emacs
-    ./ssh.nix
     ./tmux.nix
     ./xdg.nix
     ./zsh.nix
@@ -224,7 +223,9 @@
       controlMaster = "auto";
       controlPersist = "10m";
       hashKnownHosts = true;
-
+      includes = [
+        "~/.ssh/devpod"
+      ];
       extraOptionOverrides = {
         AddKeysToAgent = "confirm";
         VerifyHostKeyDNS = "ask";
