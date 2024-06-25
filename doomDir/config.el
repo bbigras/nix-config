@@ -19,6 +19,8 @@
 (load-theme 'catppuccin t t)
 (catppuccin-set-color 'mauve "#89b4fa" 'mocha)
 
+(setq vc-handled-backends '(Git))
+
 (after! tramp
   (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
   (setq tramp-ssh-controlmaster-options ""))
