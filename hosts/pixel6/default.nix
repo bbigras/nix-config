@@ -145,8 +145,8 @@ in
         ripgrep.enable = true;
         ssh = {
           enable = true;
-          # controlMaster = "auto";
-          # controlPersist = "10m";
+          controlMaster = "auto";
+          controlPersist = "10m";
           hashKnownHosts = true;
 
           extraOptionOverrides = {
