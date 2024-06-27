@@ -46,6 +46,9 @@
 
   catppuccin.flavor = "mocha";
   catppuccin.accent = "blue";
+  catppuccin.pointerCursor.enable = true;
+  home.pointerCursor.gtk.enable = true;
+  gtk.enable = true;
 
   # XXX: Manually enabled in the graphic module
   dconf.enable = false;
