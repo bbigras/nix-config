@@ -161,6 +161,7 @@ in
           catppuccin.enable = true;
         };
         tealdeer.enable = true;
+        yazi.enable = true;
         zoxide.enable = true;
         zellij.enable = true;
         zsh = {

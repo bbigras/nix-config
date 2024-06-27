@@ -153,6 +153,7 @@
       open-interpreter
       altair
       broot
+      ueberzugpp # for yazi
 
       (pkgs.doomEmacs {
         doomDir = ../../../doomDir;
@@ -238,6 +239,7 @@
     tealdeer.enable = true;
     zoxide.enable = true;
     nushell.enable = false;
+    yazi.enable = true;
     zellij.enable = true;
   };
 
