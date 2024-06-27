@@ -11,7 +11,6 @@
   home = {
     packages = with pkgs; [
       gammastep
-      gnome.adwaita-icon-theme
       gnome.evince
       hicolor-icon-theme
       lollypop
@@ -44,10 +43,9 @@
 
   qt = {
     enable = true;
-    platformTheme.name = "adwaita";
     style = {
-      name = "adwaita";
-      package = pkgs.adwaita-qt;
+      name = "kvantum";
+      catppuccin.enable = true;
     };
   };
 
