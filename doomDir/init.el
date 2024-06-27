@@ -83,7 +83,7 @@
        ;; (scheme +guile)
        (kotlin +lsp)
 
-       ;; (org +pretty +roam)
+       (org +pretty +roam)
        ;; (python +lsp +pyright +cython)
        ;; (ruby +rails)
        ;; (scheme +guile)
