@@ -36,7 +36,6 @@
     gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
     catppuccin = {
       enable = true;
-      gnomeShellTheme = true;
       icon.enable = true;
     };
   };
