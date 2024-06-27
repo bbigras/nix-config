@@ -135,12 +135,6 @@ in
           fileWidgetOptions = [
             "--preview 'head {}'"
           ];
-          colors = {
-            bg = "#1e1e1e";
-            "bg+" = "#1e1e1e";
-            fg = "#d4d4d4";
-            "fg+" = "#d4d4d4";
-          };
         };
         jq.enable = true;
         htop.enable = true;
