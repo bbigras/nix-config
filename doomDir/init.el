@@ -75,7 +75,7 @@
        ;; lua
        (markdown +grip)
        (nix +lsp)
-       (org +pretty +roam2)
+       ;; (org +pretty +roam2)
        ;; (python +lsp +pyright +cython)
        ;; (ruby +rails)
        (rust +lsp)
