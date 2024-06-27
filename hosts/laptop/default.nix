@@ -58,6 +58,12 @@ in
 
   hardware.uinput.enable = true;
 
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+    accent = "blue";
+  };
+
   # boot.kernelModules = [ "uinput" ];
   boot = {
     extraModulePackages = with config.boot.kernelPackages; [

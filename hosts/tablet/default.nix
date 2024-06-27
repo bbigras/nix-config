@@ -97,8 +97,11 @@ in
 
       home.language.base = "fr_CA.UTF-8";
 
-      catppuccin.flavor = "mocha";
-      catppuccin.accent = "blue";
+      catppuccin = {
+        enable = true;
+        flavor = "mocha";
+        accent = "blue";
+      };
 
       # insert home-manager config
       programs = {
@@ -156,10 +159,7 @@ in
             VerifyHostKeyDNS = "ask";
           };
         };
-        starship = {
-          enable = true;
-          catppuccin.enable = true;
-        };
+        starship.enable = true;
         tealdeer.enable = true;
         yazi.enable = true;
         zoxide.enable = true;

@@ -36,12 +36,14 @@
     gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
     catppuccin = {
       enable = true;
+      gnomeShellTheme = true;
       icon.enable = true;
     };
   };
 
   qt = {
     enable = true;
+    # style.name = "kvantum";
     style = {
       name = "kvantum";
       catppuccin.enable = true;

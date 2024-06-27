@@ -2,7 +2,6 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    syntaxHighlighting.catppuccin.enable = true;
     enableVteIntegration = pkgs.stdenv.isLinux;
     autocd = true;
     autosuggestion.enable = true;

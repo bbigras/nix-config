@@ -54,8 +54,11 @@ in
     ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ])
     ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/desktop.nix") then [ (builtins.getEnv "PWD" + "/secrets/desktop.nix") ] else [ ]);
 
-  catppuccin.flavor = "mocha";
-  catppuccin.accent = "blue";
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+    accent = "blue";
+  };
 
   nix = {
     extraOptions = ''
@@ -70,10 +73,7 @@ in
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  boot.plymouth = {
-    enable = true;
-    catppuccin.enable = true;
-  };
+  boot.plymouth.enable = true;
 
   networking.interfaces."enp6s0".wakeOnLan.enable = true;
   # boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];

@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }: {
   wayland.windowManager.sway = {
     enable = true;
-    catppuccin.enable = true;
     config = {
       bars = [ ];
 

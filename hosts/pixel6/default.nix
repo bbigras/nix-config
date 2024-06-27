@@ -94,8 +94,11 @@ in
 
       home.language.base = "fr_CA.UTF-8";
 
-      catppuccin.flavor = "mocha";
-      catppuccin.accent = "blue";
+      catppuccin = {
+        enable = true;
+        flavor = "mocha";
+        accent = "blue";
+      };
 
       # insert home-manager config
       programs = {
@@ -107,7 +110,6 @@ in
         bat = {
           enable = true;
           extraPackages = with pkgs.bat-extras; [ batman ];
-          catppuccin.enable = true;
         };
         carapace.enable = true;
         command-not-found.enable = true;
@@ -133,7 +135,6 @@ in
           fileWidgetOptions = [
             "--preview 'head {}'"
           ];
-          catppuccin.enable = true;
         };
         jq.enable = true;
         htop.enable = true;
@@ -152,10 +153,7 @@ in
             VerifyHostKeyDNS = "ask";
           };
         };
-        starship = {
-          enable = true;
-          catppuccin.enable = true;
-        };
+        starship.enable = true;
         tealdeer.enable = true;
         yazi.enable = true;
         zoxide.enable = true;

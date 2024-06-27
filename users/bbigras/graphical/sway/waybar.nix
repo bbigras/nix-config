@@ -2,7 +2,6 @@
   systemd.user.services.waybar.Service.Restart = lib.mkForce "always";
   programs.waybar = {
     enable = true;
-    catppuccin.enable = true;
     package = pkgs.waybar.override { pulseSupport = true; };
     settings.main = {
       gtk-layer-shell = true;

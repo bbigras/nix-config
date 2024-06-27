@@ -44,9 +44,12 @@
     ./zsh.nix
   ];
 
-  catppuccin.flavor = "mocha";
-  catppuccin.accent = "blue";
-  catppuccin.pointerCursor.enable = true;
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+    accent = "blue";
+    pointerCursor.enable = true;
+  };
   home.pointerCursor.gtk.enable = true;
   gtk.enable = true;
 
@@ -195,7 +198,6 @@
     bat = {
       enable = true;
       extraPackages = with pkgs.bat-extras; [ batman ];
-      catppuccin.enable = true;
     };
     carapace.enable = true;
     eza.enable = true;
@@ -206,7 +208,6 @@
       defaultCommand = "fd --type f";
       changeDirWidgetCommand = "fd --type d"; # alt+c
       fileWidgetCommand = "fd --type f";
-      catppuccin.enable = true;
     };
     gpg.enable = true;
     navi.enable = true;
@@ -235,10 +236,7 @@
         VerifyHostKeyDNS = "ask";
       };
     };
-    starship = {
-      enable = true;
-      catppuccin.enable = true;
-    };
+    starship.enable = true;
     tealdeer.enable = true;
     zoxide.enable = true;
     nushell.enable = false;

@@ -21,7 +21,6 @@
   programs = {
     swaylock = {
       enable = true;
-      catppuccin.enable = true;
       settings = {
         indicator-caps-lock = true;
         scaling = "fill";
