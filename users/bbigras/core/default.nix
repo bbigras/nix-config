@@ -38,7 +38,7 @@
     ./btop.nix
     ./git.nix
     ./jujutsu.nix
-    ./emacs
+    # ./emacs
     ./ssh.nix
     ./tmux.nix
     ./xdg.nix
