@@ -1,0 +1,6 @@
+# One CLI to format the code tree - https://git.numtide.com/numtide/treefmt
+
+[formatter.nix]
+command = "nixpkgs-fmt"
+includes = ["*.nix"]
+excludes = [ "*hardware-configuration*.nix" ]
