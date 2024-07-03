@@ -4,7 +4,6 @@ let
   nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
 in
 {
-  build.arch = "aarch64";
   user.shell = "${pkgs.zsh}/bin/zsh";
 
   user = {
