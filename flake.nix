@@ -206,7 +206,7 @@
               };
               statix.enable = false;
               # stylua.enable = true;
-              treefmt.enable = true;
+              treefmt.enable = false;
             };
           };
 
