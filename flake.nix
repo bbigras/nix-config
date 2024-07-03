@@ -175,7 +175,7 @@
       (toplevel@{ withSystem, ... }: {
         imports = [
           inputs.git-hooks.flakeModule
-          inputs.treefmt.flakeModule
+          #inputs.treefmt.flakeModule
         ];
         systems = [ "aarch64-linux" "x86_64-linux" ];
         perSystem = ctx@{ config, self', inputs', pkgs, system, ... }: {
@@ -208,18 +208,6 @@
               # stylua.enable = true;
               treefmt.enable = false;
             };
-          };
-
-          treefmt = {
-            projectRootFile = "flake.nix";
-            programs = {
-              nixpkgs-fmt.enable = true;
-              shfmt = {
-                enable = true;
-                indent_size = 0;
-              };
-            };
-            settings.formatter.nixpkgs-fmt.excludes = [ "hardware-configuration-*.nix" ];
           };
         };
 
