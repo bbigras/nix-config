@@ -16,6 +16,7 @@
   ];
 
   boot.kernelParams = [ "log_buf_len=10M" ];
+  services.systembus-notify.enable = true;
 
   documentation = {
     dev.enable = true;
