@@ -1,31 +1,34 @@
 final: prev:
 {
   wlroots-unstable = (final.wlroots_0_17.overrideAttrs (old: {
-    version = "unstable-2024-03-18";
+    version = "unstable-2024-06-27";
     src = final.fetchFromGitLab {
       domain = "gitlab.freedesktop.org";
       owner = "wlroots";
       repo = "wlroots";
-      rev = "873e8e455892fbd6e85a8accd7e689e8e1a9c776";
-      hash = "sha256-5zX0ILonBFwAmx7NZYX9TgixDLt3wBVfgx6M24zcxMY=";
+      rev = "85875c47d9234c2ad61bf3af97fca133fe3ffa78";
+      hash = "sha256-w2mx2x9aQHgWv1PM5SWk7Qhb9rzBLpncMbCEPd2uKpk=";
     };
+
+    buildInputs = (old.buildInputs or [ ]) ++ [
+      final.lcms2
+    ];
   })).override { };
 
   sway-unwrapped = (prev.sway-unwrapped.overrideAttrs (old: {
-    version = "unstable-2024-03-18";
+    version = "unstable-2024-06-27";
     src = final.fetchFromGitHub {
       owner = "swaywm";
       repo = "sway";
-      rev = "5a7477cb8f568ce4aeb852215ad40899f18f3d91";
-      hash = "sha256-56CRUjaebyERr1JGTQFWnrET04gFg9p20GZcixgWoVY=";
+      rev = "cdde0165dad94e4522f8f6f040e9d30145fbb14f";
+      hash = "sha256-xVkPZkrxFOB+cQAvkJCgfplaHAEp5Tv9M/Dj24Vh5Ys=";
     };
 
     nativeBuildInputs = with final; (old.nativeBuildInputs or [ ]) ++ [ bash-completion fish ];
 
-    # Our version of sway already has this patch upstream, so we filter it out.
-    patches = builtins.filter
-      (p: !p ? name || p.name != "LIBINPUT_CONFIG_ACCEL_PROFILE_CUSTOM.patch")
-      (old.patches or [ ]);
-
+    # Sway master no longer has an xwayland enable option
+    mesonFlags = builtins.filter
+      (f: f != "-Dxwayland=enabled")
+      (old.mesonFlags or [ ]);
   })).override { wlroots = final.wlroots-unstable; };
 }
