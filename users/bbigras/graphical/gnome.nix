@@ -42,6 +42,7 @@
       sources = [ (lib.gvariant.mkTuple [ "xkb" "ca" ]) ];
     };
     "org/gnome/shell" = {
+      # run `gsettings get org.gnome.shell favorite-apps` to get the current list
       favorite-apps = [
         "firefox.desktop"
         "Alacritty.desktop"
@@ -50,6 +51,7 @@
         "emacs.desktop"
         "element-desktop.desktop"
         "discord.desktop"
+        "qalculate-gtk.desktop"
       ];
       disable-user-extensions = false;
 
