@@ -151,7 +151,6 @@
 
       zrok
       aichat
-      quickemu
 
       qalculate-gtk
       devpod
