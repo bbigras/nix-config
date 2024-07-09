@@ -157,6 +157,7 @@
       altair
       broot
       ueberzugpp # for yazi
+      distrobox
 
       (pkgs.doomEmacs {
         doomDir = ../../../doomDir;
