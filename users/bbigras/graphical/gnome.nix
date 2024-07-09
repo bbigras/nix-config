@@ -73,7 +73,7 @@
   };
 
   services = {
-    flameshot.enable = true;
+    flameshot.enable = false;
     gnome-keyring.enable = true;
     unclutter.enable = true;
   };
