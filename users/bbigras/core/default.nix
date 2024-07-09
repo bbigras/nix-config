@@ -154,7 +154,6 @@
 
       qalculate-gtk
       devpod
-      open-interpreter
       altair
       broot
       ueberzugpp # for yazi
