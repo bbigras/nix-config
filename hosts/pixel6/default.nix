@@ -196,7 +196,6 @@ in
         viddy
         aichat
         zrok
-        truecolor-check
         restic
 
         (pkgs.doomEmacs {

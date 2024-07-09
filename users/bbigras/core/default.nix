@@ -61,7 +61,6 @@
     stateVersion = "22.11";
     packages = with pkgs; [
       nix-closure-size
-      truecolor-check
 
       libqalculate
 
