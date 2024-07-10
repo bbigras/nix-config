@@ -129,11 +129,6 @@ in
   boot.initrd.systemd.network.wait-online.enable = false;
   networking.wireless.dbusControlled = false;
 
-  virtualisation.docker = {
-    enable = true;
-    autoPrune.enable = true;
-  };
-
   services.flatpak.enable = true;
   services.smartd.enable = true;
 
