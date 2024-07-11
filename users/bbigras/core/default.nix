@@ -146,7 +146,6 @@
       # media
       mediainfo
       spotube
-      yt-dlp
       kooha
 
       zrok
