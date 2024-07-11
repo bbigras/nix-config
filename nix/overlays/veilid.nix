@@ -2,13 +2,13 @@ final: prev:
 {
   veilid = final.rustPlatform.buildRustPackage rec {
     pname = "veilid";
-    version = "unstable-2024-05-21";
+    version = "0.3.3";
 
     src = final.fetchFromGitLab {
       owner = "veilid";
       repo = "veilid";
-      rev = "8e8ee06fe9103674e8fb2ce8464e4a296d742cbb";
-      hash = "sha256-ABity7TBEg2tyiUwGJFTVW9MeQRdCWYE3JQR//Mwwq0=";
+      rev = "v${version}";
+      sha256 = "sha256-Gm65fvLImbsAU8kMYQv5VFEjkBQnhBFDqwheddRbtU8=";
     };
 
     cargoLock = {
