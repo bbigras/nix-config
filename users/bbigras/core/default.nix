@@ -262,6 +262,14 @@
   # /nix/store/jh21g751nxpzsyrrw92hryz8p6a0dwaw-pipewire-0.3.56-lib/share/pipewire/filter-chain/sink-virtual-surround-5.1-kemar.conf
   # /nix/store/vs9fqz47mgy9pi4d5znz7c8gg962vrs3-pipewire-0.3.56-lib/share/pipewire/filter-chain/sink-virtual-surround-5.1-kemar.conf
 
+  systemd.user.services = {
+    syncthing = {
+      Service = {
+        StandardOutput = "null";
+      };
+    };
+  };
+
   home.language.base = "fr_CA.UTF-8";
 
   systemd.user.startServices = "sd-switch";
