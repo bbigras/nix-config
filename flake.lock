@@ -764,11 +764,11 @@
     },
     "nixpkgs_incus": {
       "locked": {
-        "lastModified": 1720808756,
-        "narHash": "sha256-gPYce+lkQwjvt6WaATDTfmoTrNngQVPjAcRnWnVM4N4=",
+        "lastModified": 1720816457,
+        "narHash": "sha256-by8ms0FsG8T74eiLhDxTb/epq8lZBhcESPbF2/LjNmE=",
         "owner": "bbigras",
         "repo": "nixpkgs",
-        "rev": "d42ba49cbf1764169de0f27212cfc9955f12b96b",
+        "rev": "c2a12db1a456a4b2a7b85a92143d26fda794f4e2",
         "type": "github"
       },
       "original": {
