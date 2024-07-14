@@ -563,7 +563,10 @@
           "nix-on-droid",
           "nixpkgs"
         ],
-        "nmd": "nmd",
+        "nmd": [
+          "nix-on-droid",
+          "nmd"
+        ],
         "nmt": "nmt"
       },
       "locked": {
@@ -609,14 +612,14 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-docs": "nixpkgs-docs",
         "nixpkgs-for-bootstrap": "nixpkgs-for-bootstrap",
-        "nmd": "nmd_2"
+        "nmd": "nmd"
       },
       "locked": {
-        "lastModified": 1720612508,
-        "narHash": "sha256-WbjV0gmnh6jG1B292K4KIJwtBacn2sTWhiw1ZMeti9s=",
+        "lastModified": 1720964831,
+        "narHash": "sha256-UwVKfjrQ6FWTuqks6lF4+VlzPFDC/GR1Ti/iBKTEQco=",
         "owner": "t184256",
         "repo": "nix-on-droid",
-        "rev": "8bcadcef69dcb5ca177bfb6ea3dc6b092cda2b06",
+        "rev": "c00333ee42aa2b4d4825e0388a1049fdeeded6c6",
         "type": "github"
       },
       "original": {
@@ -779,22 +782,6 @@
       }
     },
     "nmd": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1666190571,
-        "narHash": "sha256-Z1hc7M9X6L+H83o9vOprijpzhTfOBjd0KmUTnpHAVjA=",
-        "owner": "rycee",
-        "repo": "nmd",
-        "rev": "b75d312b4f33bd3294cd8ae5c2ca8c6da2afc169",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "rycee",
-        "repo": "nmd",
-        "type": "gitlab"
-      }
-    },
-    "nmd_2": {
       "inputs": {
         "nixpkgs": [
           "nix-on-droid",
