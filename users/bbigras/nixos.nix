@@ -13,7 +13,6 @@ with lib;
       ++ optionals config.services.flatpak.enable [ "flatpak" ]
       ++ optionals config.services.kubo.enable [ "ipfs" ]
       ++ optionals config.services.unbound.enable [ "unbound" ]
-      ++ optionals config.sound.enable [ "audio" ]
       ++ optionals config.virtualisation.docker.enable [ "docker" ]
       ++ optionals config.virtualisation.libvirtd.enable [ "libvirtd" ]
       ++ optionals config.virtualisation.kvmgt.enable [ "kvm" ]
