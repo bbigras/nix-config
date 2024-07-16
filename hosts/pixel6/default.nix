@@ -112,6 +112,10 @@ in
         };
         carapace.enable = true;
         command-not-found.enable = true;
+        direnv = {
+          enable = true;
+          nix-direnv.enable = true;
+        };
         emacs = {
           enable = true;
           package = lib.mkForce pkgs.emacs29-nox;
