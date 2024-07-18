@@ -15,7 +15,6 @@
     qalculate-gtk
     xdg-utils
 
-    google-chrome
     remmina
 
 
@@ -42,7 +41,6 @@
 
 
     # remote
-    rustdesk
 
     # anytype
 
@@ -53,7 +51,6 @@
     space-station-14-launcher
 
   ] ++ lib.filter (lib.meta.availableOn stdenv.hostPlatform) [
-    discord
     # iterm2
     # ledger-live-desktop
     # plexamp

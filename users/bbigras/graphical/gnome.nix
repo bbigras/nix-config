@@ -50,7 +50,6 @@
         "org.remmina.Remmina.desktop"
         "emacs.desktop"
         "element-desktop.desktop"
-        "discord.desktop"
         "qalculate-gtk.desktop"
       ];
       disable-user-extensions = false;

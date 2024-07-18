@@ -184,8 +184,13 @@
             localSystem = system;
             overlays = [ self.overlays.default ];
             config = {
-              allowUnfree = true;
+              allowUnfree = false;
               allowAliases = true;
+              allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
+                "steam"
+                "steam-original"
+                "steam-run"
+              ];
             };
           };
 
