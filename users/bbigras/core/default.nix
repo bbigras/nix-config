@@ -157,6 +157,7 @@
       broot
       ueberzugpp # for yazi
       distrobox
+      dbgate
 
       (pkgs.doomEmacs {
         doomDir = ../../../doomDir;
