@@ -40,7 +40,6 @@
     };
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs_incus.url = "github:bbigras/nixpkgs/incus";
 
     lix = {
       url = "https://git.lix.systems/lix-project/lix/archive/main.tar.gz";

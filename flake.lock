@@ -765,22 +765,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_incus": {
-      "locked": {
-        "lastModified": 1721014793,
-        "narHash": "sha256-rYQcng+YYlcE0AmIytA77tzlQFHDggH4tkT/dBLHaE0=",
-        "owner": "bbigras",
-        "repo": "nixpkgs",
-        "rev": "8923ec72b511cf2dbb91623d189de3ad796b0216",
-        "type": "github"
-      },
-      "original": {
-        "owner": "bbigras",
-        "ref": "incus",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nmd": {
       "inputs": {
         "nixpkgs": [
@@ -876,7 +860,6 @@
         "nix-on-droid": "nix-on-droid",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs_incus": "nixpkgs_incus",
         "nur": "nur",
         "org-tufte": "org-tufte",
         "sops-nix": "sops-nix",
