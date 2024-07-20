@@ -817,22 +817,6 @@
         "type": "indirect"
       }
     },
-    "org-tufte": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1718918773,
-        "narHash": "sha256-6oGzp4qywKC8O/DKNW9ydBvimbe1BoRmZg5ykjmquyo=",
-        "owner": "Zilong-Li",
-        "repo": "org-tufte",
-        "rev": "a0673ce4e81b3f7625230f61f693bf6c4a348ee4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Zilong-Li",
-        "repo": "org-tufte",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -861,7 +845,6 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nur": "nur",
-        "org-tufte": "org-tufte",
         "sops-nix": "sops-nix",
         "srvos": "srvos",
         "systems": "systems_5",

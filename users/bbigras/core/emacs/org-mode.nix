@@ -138,14 +138,6 @@ in
           '';
         };
 
-        org-tufte = {
-          enable = true;
-          package = _epkgs: pkgs.emacsPackages.org-tufte;
-          config = ''
-            (setq org-tufte-htmlize-code t)
-          '';
-        };
-
         org-hyperscheduler = {
           enable = true;
         };

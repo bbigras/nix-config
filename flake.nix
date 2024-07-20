@@ -146,11 +146,6 @@
       flake = false;
     };
 
-    org-tufte = {
-      url = "github:Zilong-Li/org-tufte";
-      flake = false;
-    };
-
     nix-on-droid = {
       url = "github:t184256/nix-on-droid";
       inputs.home-manager.follows = "home-manager";
