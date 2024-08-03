@@ -42,7 +42,7 @@ in
       # ./aarch64.nix
 
       ../../graphical
-      ../../graphical/gnome.nix
+      # ../../graphical/gnome.nix
       ../../graphical/trusted.nix
 
       # ../../dev/rust-embeded.nix
@@ -210,4 +210,6 @@ in
   };
 
   services.earlyoom.enable = false;
+  services.desktopManager.cosmic.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
 }

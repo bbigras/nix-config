@@ -39,6 +39,8 @@ with lib;
     ] ++ optionals config.services.xserver.desktopManager.gnome.enable [
       ./graphical
       ./graphical/gnome.nix
+    ] ++ optionals config.services.desktopManager.cosmic.enable [
+      ./graphical
     ];
   };
 }

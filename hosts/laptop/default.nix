@@ -10,8 +10,8 @@ in
   imports = with nixos-hardware.nixosModules;
     [
       ../../core
-      ../../dev
       ../../dev/incus.nix
+      ../../dev
       # ../../dev/virt-manager.nix
       ../../services/veilid.nix
 
@@ -24,7 +24,6 @@ in
       common-hidpi
 
       ../../graphical
-      ../../graphical/sway.nix
       ../../graphical/trusted.nix
 
       # ../../dev/rust-embeded.nix
@@ -161,6 +160,8 @@ in
       };
     };
   };
+  services.desktopManager.cosmic.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
 
   zramSwap = {
     enable = true;
@@ -175,37 +176,6 @@ in
     services.gnome-keyring = {
       enable = true;
       components = [ "secrets" ];
-    };
-
-    wayland.windowManager.sway = {
-      config = {
-        input = {
-          "1:1:AT_Translated_Set_2_keyboard" = {
-            repeat_rate = "70";
-            xkb_layout = "ca";
-          };
-          "1739:30381:DLL0665:01_06CB:76AD_Touchpad" = {
-            # dwt = "enabled";
-            # tap = "enabled";
-            # natural_scroll = "enabled";
-            # middle_emulation = "enabled";
-
-            accel_profile = "adaptive";
-            click_method = "button_areas";
-            dwt = "disabled";
-            natural_scroll = "enabled";
-            scroll_method = "two_finger";
-            tap = "enabled";
-          };
-        };
-
-        output = {
-          "*" = {
-            scale = "2";
-            # bg = "~/Downloads/molly.png fit";
-          };
-        };
-      };
     };
   };
 }

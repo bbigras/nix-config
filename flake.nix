@@ -8,6 +8,7 @@
       "https://nix-on-droid.cachix.org"
       "https://pre-commit-hooks.cachix.org"
       "https://cache.lix.systems"
+      "https://cosmic.cachix.org"
     ];
     extra-trusted-public-keys = [
       "bbigras-nix-config.cachix.org-1:aXL6Q9Oi0jyF79YAKRu17iVNk9HY0p23OZX7FA8ulhU="
@@ -15,6 +16,7 @@
       "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU="
       "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
       "cache.lix.systems:aBnZUw8zA7H35Cz2RyKFVs3H4PlGTLawyY5KRbvJR8o="
+      "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
     ];
   };
 
@@ -27,6 +29,12 @@
         nixpkgs.follows = "nixpkgs";
         systems.follows = "systems";
       };
+    };
+
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      #url = "github:lilyinstarlight/nixos-cosmic?ref=d903c5edacd867e3f1479098e83df21098961327";
+      #inputs.nixpkgs.follows = "nixpkgs";
     };
 
     truecolor-check = {
