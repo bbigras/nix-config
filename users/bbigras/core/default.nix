@@ -159,6 +159,7 @@
       distrobox
       dbgate
       keet
+      zed-editor
 
       (pkgs.doomEmacs {
         doomDir = ../../../doomDir;
