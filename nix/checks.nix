@@ -28,7 +28,7 @@ with self.pkgs.${system};
         };
         shfmt = {
           enable = true;
-          excludes = [ "users/bbigras/core/p10k-config/p10k.zsh" ];
+          excludes = [ ];
         };
         # statix.enable = true;
         # stylua.enable = true;
@@ -42,7 +42,6 @@ with self.pkgs.${system};
         };
       };
       excludes = [
-        "users/bbigras/core/p10k-config/p10k.zsh"
       ];
     };
 }

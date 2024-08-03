@@ -17,9 +17,6 @@
   };
 
   environment = {
-    pathsToLink = [
-      "/share/zsh"
-    ];
     systemPackages = with pkgs; [
       man-pages
       rsync
@@ -42,6 +39,5 @@
   programs = {
     nix-index.enable = true;
     fish.enable = true;
-    zsh.enable = true;
   };
 }

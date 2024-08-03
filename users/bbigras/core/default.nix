@@ -41,7 +41,7 @@
     # ./emacs
     ./tmux.nix
     ./xdg.nix
-    ./zsh.nix
+    ./fish.nix
   ];
 
   catppuccin = {

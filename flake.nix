@@ -203,7 +203,6 @@
               shellcheck = {
                 enable = true;
                 excludes = [
-                  "users/bbigras/core/p10k-config/p10k.zsh"
                 ];
               };
               statix.enable = false;

@@ -12,7 +12,6 @@
     ./solo2.nix
     ./tailscale.nix
     ./tmux.nix
-    ./zsh.nix
   ];
 
   boot.initrd.systemd.enable = true;
@@ -44,7 +43,6 @@
   programs = {
     command-not-found.enable = false;
     mosh.enable = true;
-    zsh.enableGlobalCompInit = false;
   };
 
   security = {

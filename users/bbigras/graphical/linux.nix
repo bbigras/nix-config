@@ -21,8 +21,10 @@
     ];
 
     sessionVariables = {
+      DIRENV_LOG_FORMAT = "";
       MOZ_DBUS_REMOTE = 1;
       MOZ_USE_XINPUT2 = 1;
+      PAGER = "less -FRX";
       QT_AUTO_SCREEN_SCALE_FACTOR = 1;
       _JAVA_OPTIONS = "-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.xrender=true";
     };

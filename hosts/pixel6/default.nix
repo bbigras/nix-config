@@ -3,6 +3,7 @@
 let
 in
 {
+  # user.shell = "${pkgs.fish}/bin/fish";
   user.shell = "${pkgs.zsh}/bin/zsh";
 
   user = {
@@ -115,7 +116,7 @@ in
         ../../users/bbigras/core/git.nix
         ../../users/bbigras/core/jujutsu.nix
         ../../users/bbigras/core/tmux.nix
-        ../../users/bbigras/core/zsh.nix
+        ../../users/bbigras/core/fish.nix
         # ../../users/bbigras/core/emacs
         catppuccin.homeManagerModules.catppuccin
       ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/pixel6.nix") then [ (builtins.getEnv "PWD" + "/secrets/pixel6.nix") ] else [ ]);
@@ -193,7 +194,7 @@ in
         yazi.enable = true;
         zoxide.enable = true;
         zellij.enable = true;
-        zsh = {
+        fish = {
           shellAliases = {
             ssh-server = "${pkgs.openssh}/bin/sshd -f /etc/tmp-sshd";
           };
@@ -206,6 +207,7 @@ in
         croc
         doggo
         fd
+        hyperfine
         just
         mosh
         (neofetch.override { x11Support = false; })
@@ -248,3 +250,4 @@ in
 }
 
 # vim: ft=nix
+
