@@ -182,6 +182,7 @@
               allowAliases = true;
               allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
                 "broadcom-sta"
+                "keet"
                 "steam"
                 "steam-original"
                 "steam-run"

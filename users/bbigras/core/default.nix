@@ -158,6 +158,7 @@
       ueberzugpp # for yazi
       distrobox
       dbgate
+      keet
 
       (pkgs.doomEmacs {
         doomDir = ../../../doomDir;
