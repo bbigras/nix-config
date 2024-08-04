@@ -75,7 +75,6 @@
   time.timeZone = "America/Montreal";
 
   systemd = {
-    enableUnifiedCgroupHierarchy = true;
     network.wait-online.anyInterface = true;
   };
 
