@@ -877,11 +877,11 @@
         "nixpkgs-stable": "nixpkgs-stable_3"
       },
       "locked": {
-        "lastModified": 1722897572,
-        "narHash": "sha256-3m/iyyjCdRBF8xyehf59QlckIcmShyTesymSb+N4Ap4=",
+        "lastModified": 1723454404,
+        "narHash": "sha256-Zhcf1TMDYb0BxDHKhEKCKFb1qi2vwlX0BgJPwk9Gd3E=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "8ae477955dfd9cbf5fa4eb82a8db8ddbb94e79d9",
+        "rev": "ab2d1ffeb5b85da2f6537beb2fe05da54276c261",
         "type": "github"
       },
       "original": {
