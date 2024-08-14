@@ -18,7 +18,6 @@
         aliases.l = [ "log" "-r" "(trunk()..@):: | (trunk()..@)-" ];
         core.fsmonitor = "watchman";
         colors."working_copy commit_id" = { underline = true; };
-        ui.allow-filesets = true;
         user = {
           name = "Bruno Bigras";
           email = "bigras.bruno@gmail.com";
