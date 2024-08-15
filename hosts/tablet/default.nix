@@ -187,7 +187,6 @@ in
         kubernetes
         kubernetes-helm
         k9s
-        kdash
         kubie
         kubectl
         kubectx

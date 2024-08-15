@@ -94,7 +94,6 @@
       procs
       pwgen
       sd # find & replace
-      bandwhich
       doggo
       btop
 
@@ -111,8 +110,6 @@
 
       # rust
       cargo
-      cargo-audit
-      cargo-outdated
       cargo-flamegraph
       cargo-sweep
       cargo-tarpaulin
@@ -155,7 +152,6 @@
       devpod
       altair
       broot
-      ueberzugpp # for yazi
       distrobox
       dbgate
       keet
@@ -235,7 +231,6 @@
     tealdeer.enable = true;
     zoxide.enable = true;
     nushell.enable = false;
-    yazi.enable = true;
     zellij.enable = true;
   };
 
