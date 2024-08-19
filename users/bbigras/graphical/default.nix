@@ -10,7 +10,6 @@
   ];
 
   home.packages = with pkgs; [
-    element-desktop
     libnotify
     qalculate-gtk
     xdg-utils
