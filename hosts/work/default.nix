@@ -78,7 +78,6 @@ in
   home-manager.users.bbigras = {
     imports = [
       ../../users/bbigras/trusted
-      nurNoPkgs.repos.rycee.hmModules.emacs-init
     ];
 
     wayland.windowManager.sway = {

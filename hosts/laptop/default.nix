@@ -230,7 +230,6 @@ in
   home-manager.users.bbigras = {
     imports = [
       ../../users/bbigras/trusted
-      nurNoPkgs.repos.rycee.hmModules.emacs-init
     ];
 
     systemd.user.targets = {
@@ -244,10 +243,6 @@ in
           Description = "On battery power";
         };
       };
-    };
-
-    systemd.user.services = {
-
     };
 
     systemd.user.services = {

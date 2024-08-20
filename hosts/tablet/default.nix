@@ -85,7 +85,6 @@ in
         ../../users/bbigras/core/tmux.nix
         ../../users/bbigras/core/zsh.nix
         # ../../users/bbigras/core/emacs
-        nurNoPkgs.repos.rycee.hmModules.emacs-init
         catppuccin.homeManagerModules.catppuccin
       ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/tablet.nix") then [ (builtins.getEnv "PWD" + "/secrets/tablet.nix") ] else [ ]);
 
