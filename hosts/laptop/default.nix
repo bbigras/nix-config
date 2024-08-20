@@ -247,8 +247,6 @@ in
     };
 
     systemd.user.services = {
-      megasync.Unit.PartOf = [ "ac.target" ];
-      megasync.Install.WantedBy = [ "ac.target" ];
 
     };
 
