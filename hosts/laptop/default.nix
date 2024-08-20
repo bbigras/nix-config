@@ -250,8 +250,6 @@ in
       megasync.Unit.PartOf = [ "ac.target" ];
       megasync.Install.WantedBy = [ "ac.target" ];
 
-      pantalaimon.Unit.PartOf = [ "ac.target" ];
-      pantalaimon.Install.WantedBy = [ "ac.target" ];
     };
 
     systemd.user.services = {
