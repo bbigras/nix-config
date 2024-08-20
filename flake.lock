@@ -784,20 +784,6 @@
         "type": "gitlab"
       }
     },
-    "nur": {
-      "locked": {
-        "lastModified": 1724247552,
-        "narHash": "sha256-zrwiCyWX2pa+BfeXgEhMs2BvdbjhrBP2zk2EJD0BjXw=",
-        "owner": "nix-community",
-        "repo": "NUR",
-        "rev": "ce52608aa057584fd0af448d1bb036d52f1d1089",
-        "type": "github"
-      },
-      "original": {
-        "id": "nur",
-        "type": "indirect"
-      }
-    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -824,7 +810,6 @@
         "nix-on-droid": "nix-on-droid",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
-        "nur": "nur",
         "sops-nix": "sops-nix",
         "srvos": "srvos",
         "systems": "systems_5",

@@ -31,7 +31,6 @@ let
             lanzaboote
             nix-index-database
             nixos-hardware
-            nur
             sops-nix;
         };
       });

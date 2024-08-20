@@ -1,7 +1,6 @@
-{ config, pkgs, nur, nixos-hardware, ... }:
+{ config, pkgs, nixos-hardware, ... }:
 
 let
-  nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
 in
 {
   imports = with nixos-hardware.nixosModules;
