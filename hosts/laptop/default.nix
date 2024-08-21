@@ -11,6 +11,7 @@ in
     [
       ../../core
       ../../dev
+      ../../dev/incus.nix
       # ../../dev/virt-manager.nix
       ../../services/veilid.nix
 
