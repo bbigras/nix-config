@@ -134,6 +134,7 @@ in
   };
   services = {
     fwupd.enable = true;
+    thermald.enable = true;
     tlp = {
       enable = true;
       settings = {
