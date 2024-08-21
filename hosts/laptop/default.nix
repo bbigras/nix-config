@@ -101,13 +101,6 @@ in
   services.flatpak.enable = true;
   services.smartd.enable = true;
 
-  # systemd.user.services.mpris-proxy = {
-  #   description = "Mpris proxy";
-  #   after = [ "network.target" "sound.target" ];
-  #   script = "${pkgs.bluez}/bin/mpris-proxy";
-  #   wantedBy = [ "default.target" ];
-  # };
-
   services.earlyoom = {
     enable = true;
     enableNotifications = true;
