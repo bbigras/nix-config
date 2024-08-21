@@ -56,7 +56,6 @@ in
     accent = "blue";
   };
 
-  hardware.opengl = { enable = true; extraPackages = with pkgs; [ libva vaapiVdpau libvdpau-va-gl ]; };
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [ ];
 
