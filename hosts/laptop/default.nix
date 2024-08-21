@@ -11,6 +11,7 @@ in
     [
       ../../core
       ../../dev
+      # ../../dev/virt-manager.nix
       ../../services/veilid.nix
 
       # Include the results of the hardware scan.
@@ -24,7 +25,6 @@ in
       ../../graphical
       ../../graphical/sway.nix
       ../../graphical/trusted.nix
-      ../../dev/virt-manager.nix
 
       # ../../dev/rust-embeded.nix
       ../../dev/adb.nix
@@ -74,7 +74,7 @@ in
 
   hardware.opengl = { enable = true; extraPackages = with pkgs; [ libva vaapiVdpau libvdpau-va-gl ]; };
   networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [];
+  networking.firewall.allowedTCPPorts = [ ];
 
   # boot.extraModulePackages = [
   # config.boot.kernelPackages.v4l2loopback.out
