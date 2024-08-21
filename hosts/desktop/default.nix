@@ -207,5 +207,5 @@ in
     openFirewall = true;
   };
 
-  services.earlyoom.enable = true;
+  services.earlyoom.enable = false;
 }
