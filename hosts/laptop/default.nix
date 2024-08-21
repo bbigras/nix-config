@@ -48,8 +48,6 @@ in
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  hardware.uinput.enable = true;
-
   catppuccin = {
     enable = true;
     flavor = "mocha";
