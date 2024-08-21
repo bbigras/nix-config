@@ -98,8 +98,6 @@ in
     };
   };
 
-  systemd.network.wait-online.enable = false;
-  boot.initrd.systemd.network.wait-online.enable = false;
   networking.wireless.dbusControlled = false;
 
   services.flatpak.enable = true;
