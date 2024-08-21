@@ -74,7 +74,7 @@ in
 
   hardware.opengl = { enable = true; extraPackages = with pkgs; [ libva vaapiVdpau libvdpau-va-gl ]; };
   networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [ 445 ];
+  networking.firewall.allowedTCPPorts = [];
 
   # boot.extraModulePackages = [
   # config.boot.kernelPackages.v4l2loopback.out
