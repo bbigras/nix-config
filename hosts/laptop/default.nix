@@ -147,7 +147,7 @@ in
       ];
   };
   services = {
-    # fwupd.enable = true;
+    fwupd.enable = true;
     tlp = {
       enable = false;
       settings = {
