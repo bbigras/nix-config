@@ -112,7 +112,7 @@
        (debugger +lsp)
        (docker +lsp)
        (lookup +dictionary +docsets)
-       (magit +forge)
+       (magit)
        (rgb)
        (terraform)
        (tmux)
