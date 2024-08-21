@@ -38,10 +38,6 @@ in
   ];
 
   services.avahi.enable = true;
-  services.jellyfin = {
-    enable = true;
-    openFirewall = true;
-  };
 
   sops.secrets = {
     restic-laptop-password.sopsFile = ./restic-laptop.yaml;
@@ -78,7 +74,7 @@ in
 
   hardware.opengl = { enable = true; extraPackages = with pkgs; [ libva vaapiVdpau libvdpau-va-gl ]; };
   networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [ 21000 21013 445 ];
+  networking.firewall.allowedTCPPorts = [ 445 ];
 
   # boot.extraModulePackages = [
   # config.boot.kernelPackages.v4l2loopback.out
