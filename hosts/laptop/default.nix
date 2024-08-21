@@ -98,8 +98,6 @@ in
     };
   };
 
-  networking.wireless.dbusControlled = false;
-
   services.flatpak.enable = true;
   services.smartd.enable = true;
 
