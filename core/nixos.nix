@@ -70,6 +70,11 @@
       ln -sv ${pkgs.path} $out/nixpkgs
     '';
 
+    switch = {
+      enable = false;
+      enableNg = true;
+    };
+
     stateVersion = "22.11";
   };
 
