@@ -68,7 +68,7 @@ in
 
   home = {
     username = "bbigras";
-    stateVersion = "22.11";
+    stateVersion = "24.05";
     packages = with pkgs; [
       nix-closure-size
 
