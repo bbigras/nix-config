@@ -156,6 +156,11 @@ in
     };
   };
 
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+  };
+
   home-manager.users.bbigras = {
     imports = [
       ../../users/bbigras/trusted
