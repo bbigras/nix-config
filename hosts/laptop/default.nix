@@ -100,6 +100,7 @@ in
 
   services.flatpak.enable = true;
   services.smartd.enable = true;
+  services.irqbalance.enable = true;
 
   services.earlyoom = {
     enable = true;
