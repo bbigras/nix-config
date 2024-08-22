@@ -73,6 +73,7 @@ in
 
   boot.plymouth.enable = true;
 
+
   networking.interfaces."enp6s0".wakeOnLan.enable = true;
 
   boot = {
