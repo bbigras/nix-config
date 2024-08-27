@@ -21,14 +21,12 @@ in
       ../../users/bbigras
     ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_work.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_work.nix") ] else [ ]);
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernel.sysctl = {
     "kernel.sysrq" = 1;
     # "fs.inotify.max_user_watches" = 524288;
     # "vm.swappiness" = 1;
   };
-
-  environment.systemPackages = with pkgs; [ linuxPackages_zen.bcc ];
 
   fileSystems."/" =
     {
