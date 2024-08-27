@@ -7,7 +7,7 @@ let
     noto-fonts-cjk-serif
     noto-fonts-extra
     unifont
-    (nerdfonts.override { fonts = [ "Iosevka" ]; })
+    (nerdfonts.override { fonts = [ "Iosevka" "NerdFontsSymbolsOnly" ]; })
   ];
 in
 {
