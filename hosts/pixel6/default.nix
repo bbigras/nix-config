@@ -42,6 +42,7 @@ in
   # Backup etc files instead of failing to activate generation if a file already exists in /etc
   environment.etcBackupExtension = ".bak";
 
+  environment.motd = null;
   environment.etc = {
     "tmp-sshd".text = ''
       HostKey /data/data/com.termux.nix/files/home/ssh_host_ed25519_key
