@@ -77,15 +77,5 @@ in
     imports = [
       ../../users/bbigras/trusted
     ];
-
-    wayland.windowManager.sway = {
-      config = {
-        input = {
-          "1118:1974:Microsoft_Comfort_Curve_Keyboard_3000" = {
-            xkb_numlock = "enabled";
-          };
-        };
-      };
-    };
   };
 }
