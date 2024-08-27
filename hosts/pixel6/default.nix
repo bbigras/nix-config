@@ -80,6 +80,8 @@ in
     };
   };
 
+  time.timeZone = "America/Montreal";
+
   # Read the changelog before changing this value
   system.stateVersion = "20.09";
 
