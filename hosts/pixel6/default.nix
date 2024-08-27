@@ -49,6 +49,9 @@ in
       Port 8022
     '';
   };
+  environment.sessionVariables = {
+    EDITOR = "doom-emacs";
+  };
 
   android-integration = {
     am.enable = true;
