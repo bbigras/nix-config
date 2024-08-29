@@ -21,6 +21,7 @@
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/DA5A-BC65";
       fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
   fileSystems."/media/gamedisk" =
