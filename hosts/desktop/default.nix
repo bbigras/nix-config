@@ -189,6 +189,11 @@ in
     rocmOverrideGfx = "10.3.1";
   };
 
+  services.open-webui = {
+    enable = true;
+    host = "0.0.0.0";
+  };
+
   environment.systemPackages = with pkgs; [
     fwupd
   ];
