@@ -3,7 +3,7 @@
     efi.canTouchEfiVariables = true;
     systemd-boot = {
       enable = true;
-      configurationLimit = 15;
+      configurationLimit = 4;
     };
     timeout = lib.mkDefault 0;
   };
