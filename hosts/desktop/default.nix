@@ -107,9 +107,6 @@ in
 
   powerManagement.cpuFreqGovernor = "performance";
 
-  boot.initrd.kernelModules = [ "amdgpu" ];
-
-
   # hardware.enableRedistributableFirmware = true;
   networking.hostName = "desktop"; # Define your hostname.
   networking.networkmanager.enable = false;
