@@ -107,18 +107,6 @@ in
 
   powerManagement.cpuFreqGovernor = "performance";
 
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
-      libva
-      vaapiVdpau
-      libvdpau-va-gl
-      amdvlk
-    ];
-    extraPackages32 = with pkgs; [
-      driversi686Linux.amdvlk
-    ];
-  };
   boot.initrd.kernelModules = [ "amdgpu" ];
 
 
