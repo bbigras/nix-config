@@ -232,6 +232,7 @@ in
         aichat
         zrok
         restic
+        incus
 
         (pkgs.doomEmacs {
           doomDir = ../../doomDir;
