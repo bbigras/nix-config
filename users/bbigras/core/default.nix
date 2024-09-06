@@ -28,16 +28,6 @@
 #  sha256 = "sha256-frkxyR63frjdOHSF8obOA3NWGyhSKg+yVjlZ1mLlsMY=";
 #};
 # in
-let
-  zed-fhs = pkgs.buildFHSUserEnv {
-    name = "zed";
-    targetPkgs = pkgs:
-      with pkgs; [
-        zed-editor
-      ];
-    runScript = "zed";
-  };
-in
 {
   imports = [
     impermanence.nixosModules.home-manager.impermanence
@@ -165,7 +155,7 @@ in
       distrobox
       dbgate
       keet
-      zed-fhs
+      zed-editor.fhs
 
       (pkgs.doomEmacs {
         doomDir = ../../../doomDir;
