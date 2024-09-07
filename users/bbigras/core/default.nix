@@ -196,6 +196,7 @@
       extraPackages = with pkgs.bat-extras; [ batman ];
     };
     carapace.enable = true;
+    chromium.enable = true;
     eza.enable = true;
     jq.enable = true;
     fzf = {
