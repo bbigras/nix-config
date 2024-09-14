@@ -28,6 +28,10 @@ in
     # "vm.swappiness" = 1;
   };
 
+  virtualisation.docker.enable = true;
+
+  environment.systemPackages = with pkgs; [ linuxPackages_zen.bcc ];
+
   fileSystems."/" =
     {
       device = "/dev/disk/by-uuid/ccb4db0b-1cb8-4d5f-be9a-8b20a5c63982";

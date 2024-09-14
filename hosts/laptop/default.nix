@@ -98,6 +98,11 @@ in
     };
   };
 
+  virtualisation.docker = {
+    enable = true;
+    autoPrune.enable = true;
+  };
+
   services.flatpak.enable = true;
   services.smartd.enable = true;
   services.irqbalance.enable = true;

@@ -8,7 +8,6 @@
     sops-nix.nixosModules.sops
     catppuccin.nixosModules.catppuccin
     ./openssh.nix
-    ./podman.nix
     ./resolved.nix
     ./solo2.nix
     ./tailscale.nix
