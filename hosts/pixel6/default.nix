@@ -233,6 +233,7 @@ in
         zrok
         restic
         incus
+        glasskube
 
         (pkgs.doomEmacs {
           doomDir = ../../doomDir;
