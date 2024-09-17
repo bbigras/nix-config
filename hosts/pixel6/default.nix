@@ -239,7 +239,7 @@ in
         (pkgs.doomEmacs {
           doomDir = ../../doomDir;
           doomLocalDir = "~/.local/share/nix-doom";
-          emacs = pkgs.emacs-nox;
+          emacs = pkgs.emacs;
         })
       ];
 
