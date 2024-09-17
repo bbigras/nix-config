@@ -232,7 +232,7 @@ in
         aichat
         zrok
         restic
-        incus
+        incus.client
         glasskube
 
         (pkgs.doomEmacs {
