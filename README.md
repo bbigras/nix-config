@@ -12,7 +12,6 @@ WIP
 - overlays
   - emacs-overlay
   - nix-doom-emacs-unstraightened
-- sway for 1 machine, gnome for 1 machine not supporting sway
 - split-dns with systemd-resolved (might be set in my privates files)
 - tailscale
 

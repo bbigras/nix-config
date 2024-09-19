@@ -8,7 +8,6 @@ with lib;
       ++ optionals config.hardware.uinput.enable [ "uinput" ]
       ++ optionals config.hardware.i2c.enable [ "i2c" ]
       ++ optionals config.networking.networkmanager.enable [ "networkmanager" ]
-      ++ optionals config.programs.sway.enable [ "input" "video" ]
       ++ optionals config.programs.wireshark.enable [ "wireshark" ]
       ++ optionals config.services.flatpak.enable [ "flatpak" ]
       ++ optionals config.services.kubo.enable [ "ipfs" ]
@@ -33,10 +32,7 @@ with lib;
   # programs._1password-gui.polkitPolicyOwners = [ "bbigras" ];
 
   home-manager.users.bbigras = {
-    imports = optionals config.programs.sway.enable [
-      ./graphical
-      ./graphical/sway
-    ] ++ optionals config.services.xserver.desktopManager.gnome.enable [
+    imports = optionals config.services.xserver.desktopManager.gnome.enable [
       ./graphical
       ./graphical/gnome.nix
     ] ++ optionals config.services.desktopManager.cosmic.enable [
