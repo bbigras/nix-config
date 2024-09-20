@@ -10,7 +10,6 @@ in
   imports = with nixos-hardware.nixosModules;
     [
       ../../core
-      ../../dev/incus.nix
       ../../dev
       # ../../dev/virt-manager.nix
       ../../services/veilid.nix
