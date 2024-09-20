@@ -156,6 +156,7 @@
       dbgate
       keet
       zed-editor.fhs
+      incus.client
 
       (pkgs.doomEmacs {
         doomDir = ../../../doomDir;
