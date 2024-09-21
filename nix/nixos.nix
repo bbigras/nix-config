@@ -31,6 +31,7 @@ let
             impermanence
             lanzaboote
             nix-index-database
+            nixpkgs_veilid
             nixos-hardware
             sops-nix;
         };

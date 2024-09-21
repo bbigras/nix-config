@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, nixos-hardware, ... }:
+{ config, lib, pkgs, nixos-hardware, nixpkgs_veilid, ... }:
 
 let
   qemu-aarch64-static = pkgs.stdenv.mkDerivation {
@@ -49,6 +49,7 @@ in
       ../../dev/adb.nix
 
       ../../users/bbigras
+      "${nixpkgs_veilid}/nixos/modules/services/networking/veilid.nix"
     ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ])
     ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/desktop.nix") then [ (builtins.getEnv "PWD" + "/secrets/desktop.nix") ] else [ ]);
 
