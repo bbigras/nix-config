@@ -3,8 +3,7 @@
 let
 in
 {
-  # user.shell = "${pkgs.fish}/bin/fish";
-  user.shell = "${pkgs.zsh}/bin/zsh";
+  user.shell = "${pkgs.fish}/bin/fish";
 
   user = {
     gid = 10382;
