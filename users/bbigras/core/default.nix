@@ -39,6 +39,7 @@
     ./git.nix
     ./jujutsu.nix
     # ./emacs
+    ./starship.nix
     ./tmux.nix
     ./xdg.nix
     ./fish.nix
@@ -229,7 +230,6 @@
         VerifyHostKeyDNS = "ask";
       };
     };
-    starship.enable = true;
     tealdeer.enable = true;
     zoxide.enable = true;
     nushell.enable = false;
@@ -276,3 +276,5 @@
 
   xdg.configFile."nixpkgs/config.nix".text = "{ allowUnfree = true; }";
 }
+
+
