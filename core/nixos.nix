@@ -14,6 +14,8 @@
     ./tmux.nix
   ];
 
+  environment.systemPackages = with pkgs; [ nix-output-monitor ];
+
   boot.initrd.systemd.enable = true;
   boot.kernelParams = [ "log_buf_len=10M" ];
   services.systembus-notify.enable = true;
