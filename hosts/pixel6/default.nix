@@ -237,6 +237,7 @@ in
         incus.client
         glasskube
         talosctl
+        nix-output-monitor
 
         (pkgs.doomEmacs {
           doomDir = ../../doomDir;
