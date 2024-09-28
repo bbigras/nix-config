@@ -12,7 +12,15 @@
     ];
     plugins = [
       { name = "autopair"; inherit (pkgs.fishPlugins.autopair) src; }
-      { name = "tide"; inherit (pkgs.fishPlugins.tide) src; }
+      {
+        name = "tide";
+        src = pkgs.fetchFromGitHub {
+          owner = "ETCaton";
+          repo = "tide";
+          rev = "d607c9e767b3ce919bbc78d6a1bd4ef9c1bdfd8a";
+          sha256 = "sha256-kyOzGBrytaaShuO8rSj6IbJLBsPn8wu/U0Slx0LnBqk=";
+        };
+      }
     ];
   };
 }
