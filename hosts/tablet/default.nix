@@ -188,7 +188,6 @@ in
             VerifyHostKeyDNS = "ask";
           };
         };
-        starship.enable = true;
         tealdeer.enable = true;
         yazi.enable = true;
         zoxide.enable = true;

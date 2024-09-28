@@ -39,7 +39,6 @@
     ./git.nix
     ./jujutsu.nix
     # ./emacs
-    ./starship.nix
     ./tmux.nix
     ./xdg.nix
     ./fish.nix
@@ -276,5 +275,3 @@
 
   xdg.configFile."nixpkgs/config.nix".text = "{ allowUnfree = true; }";
 }
-
-

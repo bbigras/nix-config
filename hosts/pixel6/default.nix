@@ -188,20 +188,6 @@ in
             VerifyHostKeyDNS = "ask";
           };
         };
-        starship.enable = true;
-        starship.enableTransience = true;
-        starship.settings = {
-          custom.jj = {
-            command = ../../jj.sh;
-            detect_folders = [ ".jj" ];
-            symbol = "jj";
-          };
-          custom.jjstate = {
-            detect_folders = [ ".jj" ];
-            command = ../../jj2.sh;
-          };
-        };
-
         tealdeer.enable = true;
         yazi.enable = true;
         zoxide.enable = true;
@@ -263,4 +249,3 @@ in
 }
 
 # vim: ft=nix
-
