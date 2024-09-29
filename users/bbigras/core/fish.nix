@@ -4,6 +4,9 @@
     functions = {
       gitignore = "curl -sL https://www.gitignore.io/api/$argv";
     };
+    shellAliases = {
+      "..." = "cd ../..";
+    };
     interactiveShellInit = lib.mkMerge [
       (lib.mkBefore ''
         set -g fish_escape_delay_ms 300
