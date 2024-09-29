@@ -157,6 +157,7 @@
       keet
       zed-editor.fhs
       incus.client
+      srgn
 
       (pkgs.doomEmacs {
         doomDir = ../../../doomDir;
