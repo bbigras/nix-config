@@ -6,8 +6,8 @@ in
   user.shell = "${pkgs.fish}/bin/fish";
 
   user = {
-    gid = 10382;
-    uid = 10382;
+    gid = 10160;
+    uid = 10160;
   };
 
   nix.extraOptions = ''
