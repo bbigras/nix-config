@@ -1,6 +1,9 @@
 { lib, pkgs, ... }: {
   programs.fish = {
     enable = true;
+    functions = {
+      gitignore = "curl -sL https://www.gitignore.io/api/$argv";
+    };
     interactiveShellInit = lib.mkMerge [
       (lib.mkBefore ''
         set -g fish_escape_delay_ms 300
