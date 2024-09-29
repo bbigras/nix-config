@@ -8,6 +8,7 @@
       (lib.mkBefore ''
         set -g fish_escape_delay_ms 300
         set -g fish_greeting
+        set -g tide_left_prompt_items os pwd git jj newline character
       '')
       (lib.mkAfter ''
         ${pkgs.nix-your-shell}/bin/nix-your-shell --nom fish | source
