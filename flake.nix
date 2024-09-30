@@ -48,7 +48,6 @@
     };
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs_veilid.url = "github:figboy9/nixpkgs/add-veilid-module";
 
     lix = {
       url = "https://git.lix.systems/lix-project/lix/archive/main.tar.gz";

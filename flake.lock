@@ -815,22 +815,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_veilid": {
-      "locked": {
-        "lastModified": 1727065838,
-        "narHash": "sha256-5Apz/vS0vxg1vL0DWtETpCfeWhwn51GUWBps8e97+XA=",
-        "owner": "figboy9",
-        "repo": "nixpkgs",
-        "rev": "56f8f810aeedd2b03c4bc390f714875fe522e93a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "figboy9",
-        "ref": "add-veilid-module",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nmd": {
       "inputs": {
         "nixpkgs": [
@@ -896,7 +880,6 @@
         "nixos-cosmic": "nixos-cosmic",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs_veilid": "nixpkgs_veilid",
         "sops-nix": "sops-nix",
         "srvos": "srvos",
         "systems": "systems_5",

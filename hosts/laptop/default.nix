@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, nixos-hardware, nixpkgs_veilid, ... }:
+{ config, pkgs, nixos-hardware, ... }:
 
 let
 in
@@ -29,8 +29,6 @@ in
       ../../dev/adb.nix
 
       ../../users/bbigras
-
-      "${nixpkgs_veilid}/nixos/modules/services/networking/veilid.nix"
     ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ])
     ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/laptop.nix") then [ (builtins.getEnv "PWD" + "/secrets/laptop.nix") ] else [ ]);
 
