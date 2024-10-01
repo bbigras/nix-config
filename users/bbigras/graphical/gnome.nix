@@ -49,6 +49,7 @@
         "org.gnome.Nautilus.desktop"
         "org.remmina.Remmina.desktop"
         "emacs.desktop"
+        "element-desktop.desktop"
         "qalculate-gtk.desktop"
       ];
       disable-user-extensions = false;
