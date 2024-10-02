@@ -44,6 +44,7 @@
 
   programs = {
     command-not-found.enable = false;
+    localsend.enable = true;
     mosh.enable = true;
   };
 

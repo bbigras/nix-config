@@ -74,7 +74,6 @@
 
       # net
       croc
-      localsend
       rclone
       tailscale
       tcpdump
