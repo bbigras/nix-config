@@ -203,6 +203,8 @@ in
         libqalculate
         cachix
         croc
+        sendme
+        dumbpipe
         doggo
         fd
         hyperfine

@@ -73,8 +73,10 @@
       colordiff
 
       # net
+      dumbpipe
       croc
       rclone
+      sendme
       tailscale
       tcpdump
       webwormhole
