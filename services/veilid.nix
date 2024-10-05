@@ -1,3 +1,6 @@
 {
-  services.veilid.enable = true;
+  services.veilid = {
+    enable = true;
+    openFirewall = true;
+  };
 }
