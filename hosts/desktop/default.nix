@@ -30,6 +30,7 @@ in
       # Include the results of the hardware scan.
       ../../hardware/hardware-configuration-desktop.nix
       ../../hardware/efi.nix
+      ../../hardware/qmk.nix
       #../../hardware/secureboot.nix
 
       common-pc
