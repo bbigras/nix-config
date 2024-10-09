@@ -24,8 +24,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "ETCaton";
           repo = "tide";
-          rev = "d607c9e767b3ce919bbc78d6a1bd4ef9c1bdfd8a";
-          sha256 = "sha256-kyOzGBrytaaShuO8rSj6IbJLBsPn8wu/U0Slx0LnBqk=";
+          rev = "1e063799e076117969dd0f5ab1b493ba28cc757d";
+          sha256 = "sha256-Ea81varZWqk/+uZRImKAnlkSscTbHsdFj6CA8TL3cYA=";
         };
       }
     ];
