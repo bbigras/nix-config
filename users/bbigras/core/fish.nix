@@ -1,4 +1,13 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, ... }:
+
+let
+  wakatime = pkgs.fishPlugins.wakatime-fish.overrideAttrs (oldAttrs: {
+    postFixup = ''
+      mv $out/share/fish/vendor_conf.d $out/share/fish/conf.d
+    '';
+  });
+in
+{
   programs.fish = {
     enable = true;
     functions = {
@@ -19,6 +28,10 @@
     ];
     plugins = [
       { name = "autopair"; inherit (pkgs.fishPlugins.autopair) src; }
+      {
+        name = "wakatime";
+        src = "${wakatime}/share/fish";
+      }
       {
         name = "tide";
         src = pkgs.fetchFromGitHub {
