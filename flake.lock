@@ -369,11 +369,11 @@
         "nixpkgs-stable": "nixpkgs-stable_2"
       },
       "locked": {
-        "lastModified": 1728634248,
-        "narHash": "sha256-f+Z7KHEHiitzHkG0H+yzZHzERvHr66bUaQ2akM/y3ww=",
+        "lastModified": 1728651332,
+        "narHash": "sha256-lm+asqDSTj0m6j1dtEte1/XG+uzZbwxS3tn7JLaBw84=",
         "owner": "cachix",
         "repo": "git-hooks.nix",
-        "rev": "6d7586d0d35ccd1e87bb0ffb7c0d38b4cc0fe469",
+        "rev": "06bb5971c139959d9a951f34e4264d32f5d998e7",
         "type": "github"
       },
       "original": {
