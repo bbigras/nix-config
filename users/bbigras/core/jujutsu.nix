@@ -3,6 +3,7 @@
 {
   home = {
     packages = with pkgs; [
+      meld
       watchman
     ];
   };
@@ -24,6 +25,7 @@
         template-aliases = {
           "format_short_signature(signature)" = "signature.username()";
         };
+        ui.diff-editor = "meld-3";
         revset-aliases = {
           "HEAD" = "@-";
           "user()" = ''user("bigras.bruno@gmail.com")'';
