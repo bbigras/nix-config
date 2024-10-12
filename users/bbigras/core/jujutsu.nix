@@ -3,6 +3,7 @@
 {
   home = {
     packages = with pkgs; [
+      kdiff3
       meld
       watchman
     ];
