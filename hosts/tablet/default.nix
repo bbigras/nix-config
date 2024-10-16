@@ -203,8 +203,11 @@ in
         libqalculate
         cachix
         croc
+        sendme
+        dumbpipe
         doggo
         fd
+        hyperfine
         just
         mosh
         (neofetch.override { x11Support = false; })
@@ -234,6 +237,7 @@ in
         incus.client
         glasskube
         talosctl
+        nix-output-monitor
         attic-client
 
         (pkgs.doomEmacs {
