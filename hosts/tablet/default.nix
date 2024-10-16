@@ -234,6 +234,7 @@ in
         incus.client
         glasskube
         talosctl
+        attic-client
 
         (pkgs.doomEmacs {
           doomDir = ../../doomDir;

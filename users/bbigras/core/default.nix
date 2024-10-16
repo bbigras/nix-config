@@ -159,6 +159,7 @@
       zed-editor.fhs
       incus.client
       srgn
+      attic-client
 
       (pkgs.doomEmacs {
         doomDir = ../../../doomDir;

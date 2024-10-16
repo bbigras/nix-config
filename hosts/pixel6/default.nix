@@ -238,6 +238,7 @@ in
         glasskube
         talosctl
         nix-output-monitor
+        attic-client
 
         (pkgs.doomEmacs {
           doomDir = ../../doomDir;
