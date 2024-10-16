@@ -12,7 +12,6 @@ let
           (../hosts + "/${hostname}")
           {
             nix.registry = {
-              nixpkgs.flake = nixpkgs;
               p.flake = nixpkgs;
             };
           }
