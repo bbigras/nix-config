@@ -75,15 +75,20 @@ in
   networking = {
     useNetworkd = true;
     hostName = "laptop"; # Define your hostname.
-    wireless.iwd = {
-      enable = true;
-      settings = {
-        Settings = {
-          AutoConnect = true;
+    wireless = {
+      enable = false;
+      iwd = {
+        enable = true;
+        settings = {
+          Settings = {
+            AutoConnect = true;
+          };
         };
       };
     };
   };
+
+  networking.networkmanager.enable = false;
 
   systemd.network = {
     enable = true;
