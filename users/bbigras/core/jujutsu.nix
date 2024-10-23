@@ -4,6 +4,7 @@
   home = {
     packages = with pkgs; [
       kdiff3
+      lazyjj
       meld
       watchman
     ];
