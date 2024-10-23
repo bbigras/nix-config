@@ -42,6 +42,7 @@
     ./tmux.nix
     ./xdg.nix
     ./fish.nix
+    ./yazi.nix
   ];
 
   catppuccin = {
