@@ -1,4 +1,8 @@
-{ lib, pkgs, ... }:
+{ lib
+, pkgs
+, config
+, ...
+}:
 
 let
   wakatime = pkgs.fishPlugins.wakatime-fish.overrideAttrs (oldAttrs: {
@@ -6,6 +10,8 @@ let
       mv $out/share/fish/vendor_conf.d $out/share/fish/conf.d
     '';
   });
+
+  withPrompt = !config.programs.starship.enable;
 in
 {
   programs.fish = {
@@ -16,22 +22,26 @@ in
     shellAliases = {
       "..." = "cd ../..";
     };
-    interactiveShellInit = lib.mkMerge [
+    interactiveShellInit = lib.mkMerge ([
       (lib.mkBefore ''
         set -g fish_escape_delay_ms 300
         set -g fish_greeting
-        set -g tide_left_prompt_items os pwd git jj newline character
       '')
       (lib.mkAfter ''
         ${pkgs.nix-your-shell}/bin/nix-your-shell --nom fish | source
       '')
-    ];
+    ] ++ lib.optionals withPrompt [
+      (lib.mkBefore ''
+        set -g tide_left_prompt_items os pwd git jj newline character
+      '')
+    ]);
     plugins = [
       { name = "autopair"; inherit (pkgs.fishPlugins.autopair) src; }
       {
         name = "wakatime";
         src = "${wakatime}/share/fish";
       }
+    ] ++ lib.optionals withPrompt [
       {
         name = "tide";
         src = pkgs.fetchFromGitHub {
