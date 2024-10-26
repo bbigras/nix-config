@@ -152,7 +152,7 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    catppuccin.url = "github:ryand56/catppuccin-nix/home-manager-kvantum-fix";
+    catppuccin.url = "github:catppuccin/nix";
 
     systems.url = "github:nix-systems/default";
 
