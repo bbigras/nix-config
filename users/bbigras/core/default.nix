@@ -161,6 +161,7 @@
       incus.client
       srgn
       attic-client
+      aider-chat
 
       (pkgs.doomEmacs {
         doomDir = ../../../doomDir;
