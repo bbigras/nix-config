@@ -357,9 +357,6 @@
 
         copilot = {
           enable = pkgs.stdenv.hostPlatform.system != "aarch64-linux";
-          # package = _epkgs: pkgs.emacsPackages.copilot_el;
-          package = _epkgs: pkgs.my_copilot;
-          # package = _epkgs: pkgs.emacsPackages.copilot;
           config = ''
             (add-hook 'prog-mode-hook 'copilot-mode)
             (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)

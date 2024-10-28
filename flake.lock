@@ -44,22 +44,6 @@
         "type": "github"
       }
     },
-    "copilot-node-server_pkgs": {
-      "locked": {
-        "lastModified": 1715054414,
-        "narHash": "sha256-G6Ylo4VpQgrvQU2XcqYRTXvNCErfIflcC+scOaWzfIc=",
-        "owner": "bbigras",
-        "repo": "nixpkgs",
-        "rev": "d9ba5a2ab0b30a1d1ec43427ce70bf68832729eb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "bbigras",
-        "ref": "copilot-node-server",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "crane": {
       "locked": {
         "lastModified": 1730060262,
@@ -881,7 +865,6 @@
       "inputs": {
         "agenix": "agenix",
         "catppuccin": "catppuccin",
-        "copilot-node-server_pkgs": "copilot-node-server_pkgs",
         "darwin": "darwin",
         "defmacro-gensym": "defmacro-gensym",
         "deploy-rs": "deploy-rs",
