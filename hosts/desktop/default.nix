@@ -98,6 +98,7 @@ in
   home-manager.users.bbigras = {
     imports = [
       ../../users/bbigras/trusted
+      nurNoPkgs.repos.rycee.hmModules.emacs-init
     ];
 
     xdg.mimeApps.enable = lib.mkForce false;

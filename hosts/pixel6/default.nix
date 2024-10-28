@@ -120,6 +120,7 @@ in
         ../../users/bbigras/core/fish.nix
         ../../users/bbigras/core/yazi.nix
         # ../../users/bbigras/core/emacs
+        nurNoPkgs.repos.rycee.hmModules.emacs-init
         catppuccin.homeManagerModules.catppuccin
       ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/pixel6.nix") then [ (builtins.getEnv "PWD" + "/secrets/pixel6.nix") ] else [ ]);
 
