@@ -2,9 +2,10 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, nixos-hardware, ... }:
+{ config, pkgs, nur, nixos-hardware, ... }:
 
 let
+  nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
 in
 {
   imports = with nixos-hardware.nixosModules;

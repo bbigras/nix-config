@@ -11,6 +11,7 @@ WIP
 - Full disk encryption on laptop
 - overlays
   - emacs-overlay
+  - nur
   - nix-doom-emacs-unstraightened
 - split-dns with systemd-resolved (might be set in my privates files)
 - tailscale

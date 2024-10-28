@@ -863,6 +863,20 @@
         "type": "gitlab"
       }
     },
+    "nur": {
+      "locked": {
+        "lastModified": 1730134033,
+        "narHash": "sha256-7wZWS9hpF8WYZLZzpmTsW+U0DyiblQoX7fjVWwiwwLQ=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "01936ee33cef1675ba8475d11aba559d52629d86",
+        "type": "github"
+      },
+      "original": {
+        "id": "nur",
+        "type": "indirect"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -891,6 +905,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs_veilid": "nixpkgs_veilid",
+        "nur": "nur",
         "sops-nix": "sops-nix",
         "srvos": "srvos",
         "systems": "systems_5",

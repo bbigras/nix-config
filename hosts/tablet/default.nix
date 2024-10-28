@@ -1,6 +1,7 @@
-{ pkgs, catppuccin, ... }:
+{ pkgs, nur, catppuccin, nix-doom-emacs-unstraightened, ... }:
 
 let
+  nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
 in
 {
   user.shell = "${pkgs.fish}/bin/fish";

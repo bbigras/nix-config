@@ -12,7 +12,7 @@ let
           (../hosts + "/${hostname}")
         ];
         extraSpecialArgs = {
-          inherit (inputs) catppuccin nix-doom-emacs-unstraightened;
+          inherit (inputs) nur catppuccin nix-doom-emacs-unstraightened;
         };
       });
 in
