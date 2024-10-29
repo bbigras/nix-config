@@ -18,7 +18,10 @@
     jujutsu = {
       enable = true;
       settings = {
-        aliases.l = [ "log" "-r" "(trunk()..@):: | (trunk()..@)-" ];
+        aliases = {
+          l = [ "log" "-r" "(trunk()..@):: | (trunk()..@)-" ];
+          dlog = [ "log" "-r" ];
+        };
         core.fsmonitor = "watchman";
         user = {
           name = "Bruno Bigras";
@@ -30,6 +33,7 @@
         ui.diff-editor = "meld-3";
         revset-aliases = {
           "HEAD" = "@-";
+          "desc(x)" = "description(x)";
           "user()" = ''user("bigras.bruno@gmail.com")'';
           "user(x)" = "author(x) | committer(x)";
         };
