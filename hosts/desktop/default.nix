@@ -152,7 +152,6 @@ in
   networking.firewall.allowedTCPPorts = [
     9977
     9988
-    8096 # jellyfin
     21000 # immersed
     21013 # immersed
     8077 # qBittorrent
@@ -206,11 +205,6 @@ in
   services.fwupd.enable = true;
 
   services.flatpak.enable = true;
-
-  services.jellyfin = {
-    enable = true;
-    openFirewall = true;
-  };
 
   services.earlyoom.enable = false;
   services.desktopManager.cosmic.enable = true;
