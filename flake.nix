@@ -153,7 +153,7 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    catppuccin.url = "github:catppuccin/nix";
+    catppuccin.url = "github:catppuccin/nix?rev=f52d2fc7c4f513c1a5d89f2911611333aee339da";
 
     systems.url = "github:nix-systems/default";
 
