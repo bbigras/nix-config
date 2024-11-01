@@ -48,6 +48,7 @@
     };
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs_zed.url = "github:nixos/nixpkgs?rev=e4f302deb8cf324905ba93e650f2f4ef24b33606";
 
     lix = {
       url = "https://git.lix.systems/lix-project/lix/archive/main.tar.gz";

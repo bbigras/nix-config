@@ -794,6 +794,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_zed": {
+      "locked": {
+        "lastModified": 1730473678,
+        "narHash": "sha256-KWHpvU3PkJTP/LRL4G8Xbt/mXbj+ZckX7cvrh86Wwag=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "e4f302deb8cf324905ba93e650f2f4ef24b33606",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "e4f302deb8cf324905ba93e650f2f4ef24b33606",
+        "type": "github"
+      }
+    },
     "nmd": {
       "inputs": {
         "nixpkgs": [
@@ -872,6 +888,7 @@
         "nixos-cosmic": "nixos-cosmic",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs_zed": "nixpkgs_zed",
         "nur": "nur",
         "sops-nix": "sops-nix",
         "srvos": "srvos",
