@@ -43,6 +43,7 @@
     ./xdg.nix
     ./fish.nix
     ./yazi.nix
+    ./zed-editor.nix
   ];
 
   catppuccin = {
@@ -157,7 +158,6 @@
       distrobox
       dbgate
       keet
-      zed-editor.fhs
       incus.client
       srgn
       attic-client
