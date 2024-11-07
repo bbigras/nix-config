@@ -133,7 +133,6 @@
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
     };
 
     # copilot_pkgs.url = "github:bbigras/nixpkgs/copilot";
