@@ -9,8 +9,8 @@
 
   home = {
     packages = with pkgs; [
+      evince
       gammastep
-      gnome.evince
       hicolor-icon-theme
       pavucontrol
       pinentry-gnome3
