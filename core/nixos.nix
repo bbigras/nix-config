@@ -1,10 +1,11 @@
-{ agenix, config, lib, pkgs, home-manager, impermanence, lanzaboote, nix-index-database, catppuccin, sops-nix, ... }:
+{ agenix, config, lib, pkgs, home-manager, impermanence, lanzaboote, nix-index-database, nixos-facter-modules, catppuccin, sops-nix, ... }:
 {
   imports = [
     home-manager.nixosModules.home-manager
     impermanence.nixosModules.impermanence
     lanzaboote.nixosModules.lanzaboote
     nix-index-database.nixosModules.nix-index
+    nixos-facter-modules.nixosModules.facter
     sops-nix.nixosModules.sops
     catppuccin.nixosModules.catppuccin
     ./openssh.nix

@@ -31,6 +31,7 @@ let
             impermanence
             lanzaboote
             nix-index-database
+            nixos-facter-modules
             nixos-hardware
             nur
             sops-nix;

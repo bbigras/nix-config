@@ -29,15 +29,16 @@ in
       ../../dev/incus.nix
 
       # Include the results of the hardware scan.
-      ../../hardware/hardware-configuration-desktop.nix
       ../../hardware/efi.nix
       ../../hardware/qmk.nix
       #../../hardware/secureboot.nix
 
-      common-pc
-      common-pc-ssd
-      common-cpu-intel-cpu-only
-      common-gpu-amd
+      { config.facter.reportPath = ./facter.json; }
+
+      # common-pc
+      # common-pc-ssd
+      # common-cpu-intel-cpu-only
+      # common-gpu-amd
 
       ../../hardware/sound.nix
 
@@ -53,6 +54,25 @@ in
       ../../users/bbigras
     ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ])
     ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/desktop.nix") then [ (builtins.getEnv "PWD" + "/secrets/desktop.nix") ] else [ ]);
+
+  fileSystems."/" =
+    {
+      device = "/dev/disk/by-uuid/e58653d8-7f76-402d-998d-400fe04f7520";
+      fsType = "ext4";
+    };
+
+  fileSystems."/boot" =
+    {
+      device = "/dev/disk/by-uuid/DA5A-BC65";
+      fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
+    };
+
+  fileSystems."/media/gamedisk" =
+    {
+      device = "/dev/disk/by-uuid/CA909C6D909C622D";
+      fsType = "ntfs3";
+    };
 
   catppuccin = {
     enable = true;
