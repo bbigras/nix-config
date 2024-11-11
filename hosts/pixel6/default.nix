@@ -115,7 +115,7 @@ in
       imports = [
         ../../users/bbigras/core/atuin.nix
         ../../users/bbigras/core/git.nix
-        ../../users/bbigras/core/jujutsu.nix
+        #../../users/bbigras/core/jujutsu.nix
         ../../users/bbigras/core/tmux.nix
         ../../users/bbigras/core/fish.nix
         ../../users/bbigras/core/yazi.nix
