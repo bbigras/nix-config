@@ -37,7 +37,6 @@ in
     iwd
   ];
 
-  services.avahi.enable = true;
 
   sops.secrets = {
     restic-laptop-password.sopsFile = ./restic-laptop.yaml;
