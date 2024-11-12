@@ -770,6 +770,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_jj-fzf": {
+      "locked": {
+        "lastModified": 1731385239,
+        "narHash": "sha256-8Zemz7W5B5R85WoW72dzE+SMYhyYetV5Iccs69hDRKs=",
+        "owner": "bbigras",
+        "repo": "nixpkgs",
+        "rev": "982a781409bc03db970c36d5ba7a75827c78bf0c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bbigras",
+        "ref": "push-qsnkmvlwnrvm",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_zed": {
       "locked": {
         "lastModified": 1732294425,
@@ -865,6 +881,7 @@
         "nixos-facter-modules": "nixos-facter-modules",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs_jj-fzf": "nixpkgs_jj-fzf",
         "nixpkgs_zed": "nixpkgs_zed",
         "nur": "nur",
         "sops-nix": "sops-nix",
