@@ -219,7 +219,15 @@
 
     bashmount.enable = true;
 
-    rio.enable = true;
+    rio = {
+      enable = true;
+      settings = {
+        fonts = {
+          family = "Iosevka Nerd Font";
+          size = 15;
+        };
+      };
+    };
     ssh = {
       enable = true;
       controlMaster = "auto";
