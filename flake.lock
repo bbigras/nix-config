@@ -941,11 +941,11 @@
         "nixpkgs-stable": "nixpkgs-stable_4"
       },
       "locked": {
-        "lastModified": 1731824381,
-        "narHash": "sha256-Zluegq0O709V6tL1fhDkOyVUQsvVfI0jamDSb8NNYlw=",
+        "lastModified": 1731842579,
+        "narHash": "sha256-///x6/i73Tv6ZgXa+2IjwFRu5PbUGy0lCQzLa/57q7s=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "eee831aadbc25f72fa9d214d57bddfd847e026b2",
+        "rev": "6b85086bccc660291db1652cbe97462cc9f3cd58",
         "type": "github"
       },
       "original": {
