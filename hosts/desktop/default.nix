@@ -133,7 +133,6 @@ in
   # hardware.enableRedistributableFirmware = true;
   networking.hostName = "desktop"; # Define your hostname.
   networking.networkmanager.enable = false;
-  users.users.bbigras.packages = [ pkgs.retroarchBare ];
 
   services.smartd.enable = true;
 
