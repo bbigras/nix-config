@@ -12,7 +12,6 @@
       "just"
       "nix"
       "sql"
-      "wakatime"
     ];
     userSettings = {
       theme = {

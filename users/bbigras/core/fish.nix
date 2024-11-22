@@ -5,12 +5,6 @@
 }:
 
 let
-  wakatime = pkgs.fishPlugins.wakatime-fish.overrideAttrs (oldAttrs: {
-    postFixup = ''
-      mv $out/share/fish/vendor_conf.d $out/share/fish/conf.d
-    '';
-  });
-
   withPrompt = !config.programs.starship.enable;
 in
 {
@@ -37,10 +31,6 @@ in
     ]);
     plugins = [
       { name = "autopair"; inherit (pkgs.fishPlugins.autopair) src; }
-      {
-        name = "wakatime";
-        src = "${wakatime}/share/fish";
-      }
     ] ++ lib.optionals withPrompt [
       {
         name = "tide";
