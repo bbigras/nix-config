@@ -1,5 +1,6 @@
 { hostType, lib, pkgs, ... }: {
   nix = {
+    package = pkgs.nixVersions.latest;
     settings = {
       accept-flake-config = true;
       # XXX: Causes annoying "cannot link ... to ...: File exists" errors on Darwin
@@ -21,14 +22,14 @@
       max-jobs = "auto";
       experimental-features = [
         "auto-allocate-uids"
-        "ca-derivations"
+        "configurable-impure-env"
         "flakes"
         "nix-command"
-        "repl-flake"
       ];
       connect-timeout = 5;
       http-connections = 0;
       # flake-registry = "/etc/nix/registry.json";
+      always-allow-substitutes = true;
     };
 
     distributedBuilds = true;
@@ -37,6 +38,7 @@
     '';
   } // lib.optionalAttrs (hostType == "nixos") {
     channel.enable = false;
+    # daemonCPUSchedPolicy = "batch";
     daemonIOSchedPriority = 5;
     nixPath = [ "nixpkgs=/run/current-system/nixpkgs" ];
     optimise = {
@@ -45,6 +47,6 @@
     };
   } // lib.optionalAttrs (hostType == "darwin") {
     nixPath = [ "nixpkgs=/run/current-system/sw/nixpkgs" ];
-    daemonIOLowPriority = true;
+    daemonIOLowPriority = false;
   };
 }
