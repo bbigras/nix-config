@@ -7,6 +7,7 @@ let
     withSystem hostPlatform ({ pkgs, ... }:
       lib.nixosSystem {
         modules = [
+          inputs.lix-module.nixosModules.default
           inputs.nixos-cosmic.nixosModules.default
           (../hosts + "/${hostname}")
           {
