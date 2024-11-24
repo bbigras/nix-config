@@ -188,7 +188,7 @@ jobs:
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
           extraPullNames: nix-community
           installCommand: ${{ env.cachix-install }}
-      - name: build
+      - name: nix-fast-build
         run: |
           declare -a args=(
             '--no-nom'

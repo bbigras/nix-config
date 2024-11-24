@@ -17,17 +17,19 @@
   };
 
   environment = {
+    pathsToLink = [
+      "/share/fish"
+      "/share/zsh"
+    ];
     systemPackages = with pkgs; [
-      man-pages
       rsync
       molly-guard
-    ];
+    ] ++ (lib.optional (hostType != "darwin") man-pages);
   };
 
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    backupFileExtension = "hm-backup";
     extraSpecialArgs = {
       inherit
         hostType

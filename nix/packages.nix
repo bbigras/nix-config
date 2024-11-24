@@ -22,6 +22,5 @@ compatHostDrvs
 // (lib.optionalAttrs (compatHosts != { }) {
   default = compatHostsFarm;
 }) // {
-  inherit (pkgs) cachix nix-fast-build;
-  inherit (pkgs.pkgsStatic) jq;
+  inherit (pkgs) cachix jq nix-fast-build;
 }

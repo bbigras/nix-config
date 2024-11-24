@@ -1,5 +1,4 @@
 { withSystem, inputs, ... }:
-
 let
   inherit (inputs) self home-manager nixpkgs;
   inherit (nixpkgs) lib;
@@ -19,11 +18,24 @@ let
         ];
       };
 
+      programs.fish.plugins = [{
+        name = "nix-env";
+        src = pkgs.fetchFromGitHub {
+          owner = "lilyball";
+          repo = "nix-env.fish";
+          rev = "7b65bd228429e852c8fdfa07601159130a818cfa";
+          hash = "sha256-RG/0rfhgq6aEKNZ0XwIqOaZ6K5S4+/Y5EEMnIdtfPhk";
+        };
+      }];
+
       xdg = {
         dataFile.nixpkgs.source = nixpkgs;
         configFile."nix/nix.conf".text = ''
           flake-registry = ${config.xdg.configHome}/nix/registry.json
         '';
+        # Workaround for HM passing a nonexistent units dir to sd-switch
+        # FIXME: https://github.com/nix-community/home-manager/issues/5552
+        configFile."systemd/user/.hm-keep".text = "";
       };
     };
 

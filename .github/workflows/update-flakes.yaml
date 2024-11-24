@@ -1,7 +1,7 @@
 name: update-flakes
 on:
   schedule:
-    - cron:  '*/120 * * * *'
+    - cron:  '0 */4 * * *'
   workflow_dispatch:
 
 permissions: {}
@@ -14,12 +14,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          lfs: false
           sparse-checkout: flake.lock
       - id: get-flake-inputs
         run: |
           flake_inputs="$(jq -c '.nodes.root.inputs | {flake: keys}' flake.lock)"
-
           echo "flake-inputs=${flake_inputs}" >> "$GITHUB_OUTPUT"
   update-flake:
     name: update-${{ matrix.flake }}
@@ -34,7 +32,6 @@ jobs:
           lfs: false
       - uses: DeterminateSystems/nix-installer-action@v16
         with:
-          nix-installer-branch: main
           extra-conf: accept-flake-config = true
       - run: git config --global user.email "noreply@github.com"
       - run: git config --global user.name "github[bot]"

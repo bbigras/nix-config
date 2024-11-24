@@ -1,7 +1,8 @@
-{ home-manager, lib, nix-index-database, pkgs, ... }: {
+{ home-manager, lib, nix-index-database, pkgs, stylix, ... }: {
   imports = [
     home-manager.darwinModules.home-manager
     nix-index-database.darwinModules.nix-index
+    stylix.darwinModules.stylix
   ];
 
   environment = {
@@ -25,7 +26,7 @@
     variables = {
       SHELL = lib.getExe pkgs.zsh;
     };
-    postBuild = ''
+    extraSetup = ''
       ln -sv ${pkgs.path} $out/nixpkgs
     '';
   };
