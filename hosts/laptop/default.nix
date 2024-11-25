@@ -16,14 +16,12 @@ in
       ../../services/veilid.nix
 
       # Include the results of the hardware scan.
-      # ../../hardware/hardware-configuration-laptop.nix
+      ../../hardware/hardware-configuration-laptop.nix
       ../../hardware/efi.nix
-      # ../../hardware/bluetooth.nix
-      # ../../hardware/sound.nix
-      # dell-xps-13-9343
-      # common-hidpi
-
-      { config.facter.reportPath = ./facter.json; }
+      ../../hardware/bluetooth.nix
+      ../../hardware/sound.nix
+      dell-xps-13-9343
+      common-hidpi
 
       ../../graphical
       ../../graphical/trusted.nix
@@ -39,6 +37,7 @@ in
     iwd
   ];
 
+
   sops.secrets = {
     restic-laptop-password.sopsFile = ./restic-laptop.yaml;
     restic-laptop-creds.sopsFile = ./restic-laptop.yaml;
@@ -46,19 +45,6 @@ in
   };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/af3adc21-df14-49b0-8d51-3b18f9dc8a82";
-      fsType = "ext4";
-    };
-
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-uuid/bfd7024b-39d6-4ba4-8517-967a8c2360c4";
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/339C-3957";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
 
   catppuccin = {
     enable = true;
