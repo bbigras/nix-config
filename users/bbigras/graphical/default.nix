@@ -47,7 +47,6 @@
     joplin-desktop
 
     xournalpp
-    space-station-14-launcher
 
   ] ++ lib.filter (lib.meta.availableOn stdenv.hostPlatform) [
     # iterm2
