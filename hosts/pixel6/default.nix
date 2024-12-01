@@ -63,7 +63,7 @@ in
   };
 
   terminal = {
-    font = "${pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; }}/share/fonts/truetype/NerdFonts/IosevkaNerdFontMono-Regular.ttf";
+    font = "${pkgs.nerd-fonts.iosevka}/share/fonts/truetype/NerdFonts/IosevkaNerdFontMono-Regular.ttf";
     colors = {
       background = "#1e1e2e";
       foreground = "#cdd6f4";

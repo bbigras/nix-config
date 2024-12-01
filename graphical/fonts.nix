@@ -2,13 +2,14 @@
 let
   fontPackages = with pkgs; [
     dejavu_fonts
+    nerd-fonts.iosevka
+    nerd-fonts.symbols-only
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-cjk-serif
     noto-fonts-color-emoji
     noto-fonts-extra
     unifont
-    (nerdfonts.override { fonts = [ "Iosevka" "NerdFontsSymbolsOnly" ]; })
   ];
 in
 {
