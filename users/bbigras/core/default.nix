@@ -191,6 +191,14 @@
     chromium.enable = true;
     eza.enable = true;
     jq.enable = true;
+    kubecolor = {
+      enable = true;
+      enableAlias = true;
+      settings = {
+        preset = "dark";
+        paging = "auto";
+      };
+    };
     fzf = {
       enable = true;
       tmux.enableShellIntegration = true;
