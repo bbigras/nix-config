@@ -22,7 +22,6 @@ in
         set -g fish_greeting
       '')
       (lib.mkAfter ''
-        ${pkgs.nix-your-shell}/bin/nix-your-shell --nom fish | source
       '')
     ] ++ lib.optionals withPrompt [
       (lib.mkBefore ''

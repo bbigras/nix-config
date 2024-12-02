@@ -209,6 +209,7 @@
     gpg.enable = true;
     navi.enable = true;
     nix-index.enable = true;
+    nix-your-shell.enable = true;
     ripgrep.enable = true;
     sqls.enable = true;
 
