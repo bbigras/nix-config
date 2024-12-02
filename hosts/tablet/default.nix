@@ -1,4 +1,4 @@
-{ pkgs, nur, catppuccin, nix-doom-emacs-unstraightened, ... }:
+{ pkgs, nur, catppuccin, ... }:
 
 let
   nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
@@ -51,7 +51,6 @@ in
     '';
   };
   environment.sessionVariables = {
-    EDITOR = "doom-emacs";
   };
 
   android-integration = {
@@ -241,12 +240,6 @@ in
         talosctl
         nix-output-monitor
         attic-client
-
-        (pkgs.doomEmacs {
-          doomDir = ../../doomDir;
-          doomLocalDir = "~/.local/share/nix-doom";
-          emacs = pkgs.emacs-nox;
-        })
       ];
 
       dconf.enable = lib.mkForce false;

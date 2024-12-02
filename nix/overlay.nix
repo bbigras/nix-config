@@ -23,7 +23,6 @@ localOverlays // {
     inputs.deploy-rs.overlays.default
     inputs.emacs-overlay.overlay
     inputs.nur.overlay
-    inputs.nix-doom-emacs-unstraightened.overlays.default
     (final: prev: {
       inherit (inputs.nix-fast-build.packages.${final.stdenv.hostPlatform.system}) nix-fast-build;
     })

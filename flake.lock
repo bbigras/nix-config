@@ -121,22 +121,6 @@
         "type": "github"
       }
     },
-    "doomemacs": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1732368874,
-        "narHash": "sha256-ketdYl75drmTQZRUvUDcVswUXGi0vKonzqopX8Maja8=",
-        "owner": "doomemacs",
-        "repo": "doomemacs",
-        "rev": "9c8cfaadde1ccc96a780d713d2a096f0440b9483",
-        "type": "github"
-      },
-      "original": {
-        "owner": "doomemacs",
-        "repo": "doomemacs",
-        "type": "github"
-      }
-    },
     "emacs-overlay": {
       "inputs": {
         "nixpkgs": [
@@ -150,29 +134,6 @@
         "owner": "nix-community",
         "repo": "emacs-overlay",
         "rev": "51d6aafb5e3bbf10a29bd8ff417b617e35b14d0e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "emacs-overlay",
-        "type": "github"
-      }
-    },
-    "emacs-overlay_2": {
-      "inputs": {
-        "nixpkgs": [
-          "nix-doom-emacs-unstraightened"
-        ],
-        "nixpkgs-stable": [
-          "nix-doom-emacs-unstraightened"
-        ]
-      },
-      "locked": {
-        "lastModified": 1732954794,
-        "narHash": "sha256-8qWs7rtWF/32x3Iw33jl39tviSNtcoIJFznbUqXYn8Q=",
-        "owner": "nix-community",
-        "repo": "emacs-overlay",
-        "rev": "ba91b440d752de20c11371b661b4fe395d65ef06",
         "type": "github"
       },
       "original": {
@@ -462,27 +423,6 @@
       "original": {
         "type": "git",
         "url": "https://git.lix.systems/lix-project/nixos-module"
-      }
-    },
-    "nix-doom-emacs-unstraightened": {
-      "inputs": {
-        "doomemacs": "doomemacs",
-        "emacs-overlay": "emacs-overlay_2",
-        "nixpkgs": [],
-        "systems": "systems_3"
-      },
-      "locked": {
-        "lastModified": 1732955819,
-        "narHash": "sha256-c86D4rU/Skg5Z8oJMBQBRSqTeZFXh6YmQgo28ICU1pY=",
-        "owner": "marienz",
-        "repo": "nix-doom-emacs-unstraightened",
-        "rev": "23fa436b1ce437055267372bc456973cfb758b2a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "marienz",
-        "repo": "nix-doom-emacs-unstraightened",
-        "type": "github"
       }
     },
     "nix-fast-build": {
@@ -873,7 +813,6 @@
         "lanzaboote": "lanzaboote",
         "lix": "lix",
         "lix-module": "lix-module",
-        "nix-doom-emacs-unstraightened": "nix-doom-emacs-unstraightened",
         "nix-fast-build": "nix-fast-build",
         "nix-index-database": "nix-index-database",
         "nix-on-droid": "nix-on-droid",
@@ -886,7 +825,7 @@
         "nur": "nur",
         "sops-nix": "sops-nix",
         "srvos": "srvos",
-        "systems": "systems_4",
+        "systems": "systems_3",
         "treefmt": "treefmt",
         "truecolor-check": "truecolor-check"
       }
@@ -1020,21 +959,6 @@
       }
     },
     "systems_3": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
-    "systems_4": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",

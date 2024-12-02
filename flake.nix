@@ -164,10 +164,6 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
-    # Optional, to download less. Neither the module nor the overlay uses this input.
-    nix-doom-emacs-unstraightened.inputs.nixpkgs.follows = "";
   };
 
   outputs = inputs@{ self, flake-parts, ... }:

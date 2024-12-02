@@ -161,19 +161,6 @@
       srgn
       attic-client
       aider-chat
-
-      (pkgs.doomEmacs {
-        doomDir = ../../../doomDir;
-        doomLocalDir = "~/.local/share/nix-doom";
-        extraBinPackages = with pkgs; [
-          nodejs
-          config.programs.ripgrep.package
-          config.programs.git.package
-          config.programs.fd.package
-          nil
-          python3Minimal
-        ];
-      })
     ];
     shellAliases = {
       cls = "clear";
