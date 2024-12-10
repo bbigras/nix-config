@@ -50,9 +50,9 @@
     enable = true;
     flavor = "mocha";
     accent = "blue";
-    pointerCursor.enable = true;
+    pointerCursor.enable = false;
   };
-  home.pointerCursor.gtk.enable = true;
+  #home.pointerCursor.gtk.enable = true;
   gtk.enable = true;
 
   # XXX: Manually enabled in the graphic module
