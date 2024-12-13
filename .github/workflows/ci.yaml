@@ -140,7 +140,7 @@ jobs:
     name: eval ${{ matrix.attrs.name }}
     runs-on: ${{ matrix.attrs.runsOn }}
     if: needs.get-attrs.outputs.eval != '[]'
-    needs: [ get-attrs ]
+    needs: [get-attrs]
     strategy:
       fail-fast: false
       matrix:
@@ -167,7 +167,7 @@ jobs:
   build:
     name: build ${{ matrix.attrs.name }}
     runs-on: ${{ matrix.attrs.runsOn }}
-    needs: [ get-attrs ]
+    needs: [get-attrs]
     strategy:
       fail-fast: false
       matrix:
@@ -208,7 +208,7 @@ jobs:
 
   check:
     runs-on: ubuntu-latest
-    needs: [ flake-check, flake-show, build, eval ]
+    needs: [flake-check, flake-show, build, eval]
     if: always()
     steps:
       - uses: re-actors/alls-green@release/v1
