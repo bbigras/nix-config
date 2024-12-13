@@ -193,6 +193,8 @@ jobs:
           declare -a args=(
             '--no-nom'
             '--skip-cached'
+            '--max-jobs=2'
+            '--eval-workers=2'
             '--systems=${{ env.system }}'
             '--option' 'accept-flake-config' 'true'
             '--retries=3'
