@@ -161,6 +161,8 @@
       srgn
       attic-client
       aider-chat
+      git-annex
+      git-remote-gcrypt
     ];
     shellAliases = {
       cls = "clear";

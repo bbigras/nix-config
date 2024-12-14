@@ -240,6 +240,8 @@ in
         talosctl
         nix-output-monitor
         attic-client
+        git-annex
+        git-remote-gcrypt
       ];
 
       dconf.enable = lib.mkForce false;
