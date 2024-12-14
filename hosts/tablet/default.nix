@@ -62,6 +62,7 @@ in
   };
 
   terminal = {
+    font = "${pkgs.nerd-fonts.iosevka}/share/fonts/truetype/NerdFonts/IosevkaNerdFontMono-Regular.ttf";
     colors = {
       background = "#1e1e2e";
       foreground = "#cdd6f4";
@@ -190,6 +191,7 @@ in
             VerifyHostKeyDNS = "ask";
           };
         };
+        starship.enable = true;
         tealdeer.enable = true;
         zoxide.enable = true;
         zellij.enable = true;
