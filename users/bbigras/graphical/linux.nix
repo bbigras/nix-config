@@ -30,25 +30,26 @@
     };
   };
 
+  catppuccin = {
+    cursors.enable = true;
+    gtk = {
+      enable = true;
+      gnomeShellTheme = true;
+      icon.enable = true;
+    };
+    kvantum.enable = true;
+  };
+
   gtk = {
     enable = true;
     gtk2.extraConfig = "gtk-application-prefer-dark-theme = true";
     gtk3.extraConfig.gtk-application-prefer-dark-theme = true;
-    catppuccin = {
-      enable = true;
-      cursor.enable = true;
-      gnomeShellTheme = true;
-      icon.enable = true;
-    };
   };
 
   qt = {
     enable = true;
     platformTheme.name = "kvantum";
-    style = {
-      name = "kvantum";
-      catppuccin.enable = true;
-    };
+    style.name = "kvantum";
   };
 
   services = {
