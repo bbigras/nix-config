@@ -207,6 +207,21 @@
 
         consult-recoll.enable = true;
 
+        howm = {
+          enable = true;
+          init = ''
+            ;; Where to store the files?
+            (setq howm-directory "~/Documents/Howm")
+            (setq howm-home-directory howm-directory)
+            ;; What format to use for the files?
+            (setq howm-file-name-format "%Y-%m-%d-%H%M%S.org")
+            (setq howm-view-title-header "*")
+            (setq howm-dtime-format "<%Y-%m-%d %a %H:%M>")
+            ;; Avoid conflicts with Org-mode by changing Howm's prefix from "C-c ,".
+            (setq howm-prefix (kbd "C-c ;"))
+          '';
+        };
+
         gptel = {
           enable = true;
           init = ''
