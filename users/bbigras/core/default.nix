@@ -204,9 +204,6 @@
     pay-respects.enable = true;
     ripgrep.enable = true;
     sqls.enable = true;
-
-    bashmount.enable = true;
-
     rio = {
       enable = true;
       settings = {
