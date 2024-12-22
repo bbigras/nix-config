@@ -199,7 +199,6 @@
       fileWidgetCommand = "fd --type f";
     };
     gpg.enable = true;
-    navi.enable = true;
     nix-index.enable = true;
     nix-your-shell.enable = true;
     pay-respects.enable = true;
