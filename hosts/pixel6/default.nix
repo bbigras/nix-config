@@ -178,6 +178,7 @@ in
         htop.enable = true;
         nushell.enable = false;
         ripgrep.enable = true;
+        pay-respects.enable = true;
         ssh = {
           enable = true;
           controlMaster = "auto";
