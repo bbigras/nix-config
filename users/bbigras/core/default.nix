@@ -102,7 +102,6 @@
 
       # rust
       cargo
-      cargo-flamegraph
       cargo-tarpaulin
       cargo-udeps
 
