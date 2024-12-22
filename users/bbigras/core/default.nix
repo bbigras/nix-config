@@ -60,9 +60,6 @@
     stateVersion = "24.05";
     packages = with pkgs; [
       nix-closure-size
-
-      libqalculate
-
       mosh
 
       # dev
