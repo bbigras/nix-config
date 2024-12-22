@@ -102,7 +102,6 @@
 
       # rust
       cargo
-      cargo-tarpaulin
       cargo-udeps
 
       pv
