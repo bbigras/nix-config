@@ -102,7 +102,6 @@
 
       # rust
       cargo
-      cargo-udeps
 
       pv
 
