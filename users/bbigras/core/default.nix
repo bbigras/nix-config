@@ -134,7 +134,6 @@
       kooha
 
       zrok
-      aichat
 
       qalculate-gtk
       devpod

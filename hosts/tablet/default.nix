@@ -233,7 +233,6 @@ in
         devpod
         natscli
         viddy
-        aichat
         zrok
         restic
         incus.client
