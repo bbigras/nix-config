@@ -63,7 +63,6 @@
       mosh
 
       # dev
-      gitAndTools.gh
       colordiff
 
       # net
