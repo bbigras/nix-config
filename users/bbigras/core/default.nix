@@ -63,7 +63,6 @@
       mosh
 
       # dev
-      bfg-repo-cleaner
       git-filter-repo
       gitAndTools.gh
       colordiff
