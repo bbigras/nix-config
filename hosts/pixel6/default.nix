@@ -136,7 +136,6 @@ in
 
       # insert home-manager config
       programs = {
-        aria2.enable = true;
         atuin = {
           enable = true;
           settings.auto_sync = true;

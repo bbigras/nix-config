@@ -181,13 +181,11 @@ in
   #   19515 # qbittorrent
   # ];
   # networking.firewall.allowedTCPPortRanges = [
-  #   { from = 6881; to = 6999; } # aria2c
   # ];
   # networking.firewall.allowedUDPPorts = [
   #   21027
   # ];
   # networking.firewall.allowedUDPPortRanges = [
-  #   { from = 6881; to = 6999; } # aria2c
   # ];
 
   users.users.builder = {
