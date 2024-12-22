@@ -88,7 +88,6 @@
       pwgen
       sd # find & replace
       doggo
-      btop
 
       # Android
       # android-studio
