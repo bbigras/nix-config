@@ -175,7 +175,6 @@ in
         };
         jq.enable = true;
         htop.enable = true;
-        nushell.enable = false;
         ripgrep.enable = true;
         pay-respects.enable = true;
         ssh = {
