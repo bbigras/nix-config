@@ -140,7 +140,6 @@
       altair
       broot
       distrobox
-      dbgate
       keet
       incus.client
       srgn
