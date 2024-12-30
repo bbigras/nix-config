@@ -1,4 +1,5 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+{
   environment.systemPackages = [ config.services.pipewire.package ];
 
   services.pulseaudio.enable = lib.mkForce false;
