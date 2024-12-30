@@ -193,6 +193,7 @@ in
         starship.enable = true;
         tealdeer.enable = true;
         zoxide.enable = true;
+        zed-editor.enable = true;
         zellij.enable = true;
         fish = {
           shellAliases = {
