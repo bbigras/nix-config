@@ -152,7 +152,7 @@ in
         };
         emacs = {
           enable = true;
-          package = lib.mkForce pkgs.emacs29-nox;
+          package = lib.mkForce pkgs.emacs29;
         };
         eza.enable = true;
         fzf = {
