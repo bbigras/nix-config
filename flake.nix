@@ -45,7 +45,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs_zed.url = "github:nixos/nixpkgs?rev=d233eb89118bcc22856ac7d511ef56c146567c8b";
     nixpkgs_jj-fzf.url = "github:bbigras/nixpkgs/push-qsnkmvlwnrvm";
 
@@ -69,7 +68,10 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 
-    flake-utils.url = "github:numtide/flake-utils";
+    flake-utils = {
+      url = "github:numtide/flake-utils";
+      inputs.systems.follows = "systems";
+    };
 
     gemoji = {
       url = "github:github/gemoji";
@@ -94,7 +96,7 @@
     };
 
     nix-fast-build = {
-      url = "github:bbigras/nix-fast-build/impure";
+      url = "github:Mic92/nix-fast-build";
       inputs = {
         flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
@@ -105,6 +107,10 @@
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
+
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
@@ -119,7 +125,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-hardware.url = "nixos-hardware";
     nur.url = "nur";
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
@@ -148,7 +153,7 @@
 
     systems.url = "github:nix-systems/default";
 
-    treefmt = {
+    treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -159,7 +164,7 @@
       (toplevel@{ withSystem, ... }: {
         imports = [
           inputs.git-hooks.flakeModule
-          #inputs.treefmt.flakeModule
+          inputs.treefmt-nix.flakeModule
         ];
         systems = [ "aarch64-linux" "x86_64-linux" ];
         perSystem = ctx@{ config, self', inputs', pkgs, system, ... }: {
@@ -183,23 +188,29 @@
 
           packages = import ./nix/packages.nix toplevel ctx;
 
-          pre-commit = {
-            check.enable = true;
-            settings.hooks = {
-              actionlint.enable = true;
-              # luacheck.enable = true;
-              nil.enable = true;
-              shellcheck = {
-                enable = true;
-                excludes = [
-                ];
+            pre-commit = {
+              check.enable = true;
+              settings.hooks = {
+                actionlint.enable = true;
+                nil.enable = true;
+                shellcheck.enable = true;
+                statix.enable = true;
+                treefmt.enable = true;
               };
-              statix.enable = false;
-              # stylua.enable = true;
-              treefmt.enable = false;
+            };
+
+            treefmt = {
+              projectRootFile = "flake.nix";
+              flakeCheck = false; # Covered by git-hooks check
+              programs = {
+                nixfmt.enable = true;
+                shfmt = {
+                  enable = true;
+                  indent_size = 0;
+                };
+              };
             };
           };
-        };
 
         flake = {
           hosts = import ./nix/hosts.nix;
