@@ -17,16 +17,10 @@
         nil
         nix-output-monitor
         nix-tree
-        nixpkgs-fmt
         self'.packages.cachix
         self'.packages.nix-fast-build
-        statix
         config.treefmt.build.wrapper
-
-        # Lua
-        # stylua
-        # (luajit.withPackages (p: with p; [ luacheck ]))
-        # lua-language-server
+        statix
 
         # Shell
         shellcheck
@@ -45,6 +39,7 @@
         sops
       ]
       ++ (builtins.attrValues config.treefmt.build.programs);
+
     shellHook = ''
       ${config.pre-commit.installationScript}
     '';
