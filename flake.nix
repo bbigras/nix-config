@@ -2,7 +2,7 @@
   description = "bbigras's NixOS config";
 
   nixConfig = {
-    extra-substituters = [
+    extra-trusted-substituters = [
       "https://bbigras-nix-config.cachix.org"
       "https://nix-community.cachix.org"
       "https://nix-on-droid.cachix.org"
