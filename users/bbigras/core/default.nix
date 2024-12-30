@@ -147,6 +147,7 @@
       aider-chat
       git-annex
       git-remote-gcrypt
+      ghostty
     ];
     shellAliases = {
       cls = "clear";
