@@ -28,8 +28,6 @@
     extraConfig = ''
       # update the env when attaching to an existing session
       set -g update-environment -r
-      set -ag terminal-overrides ",alacritty*:RGB,foot*:RGB,xterm-kitty*:RGB,xterm-256color:RGB"
-      set -as terminal-features ",alacritty*:RGB,foot*:RGB,xterm-kitty*:RGB,xterm-256color:RGB"
 
       # automatically renumber windows
       set -g renumber-windows on
