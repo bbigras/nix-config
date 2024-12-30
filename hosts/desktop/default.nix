@@ -120,8 +120,6 @@ in
       ../../users/bbigras/trusted
       nurNoPkgs.repos.rycee.hmModules.emacs-init
     ];
-
-    xdg.mimeApps.enable = lib.mkForce false;
   };
 
   sops.secrets = {
