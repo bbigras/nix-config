@@ -28,7 +28,7 @@
   programs.emacs = {
     enable = true;
 
-    package = pkgs.emacs-unstable;
+    package = pkgs.emacs-pgtk;
 
     init = {
       enable = true;
