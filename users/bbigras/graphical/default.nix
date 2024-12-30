@@ -5,7 +5,6 @@
       else if hostType == "darwin" then ./darwin.nix
       else throw "Unknown hostType '${hostType}' for users/bbigras/graphical"
     )
-    ./kitty.nix
   ];
 
   home.packages = with pkgs; [
