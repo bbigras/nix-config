@@ -1,10 +1,19 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
 {
   users.users.bbigras = {
     createHome = true;
     # group = "bbigras";
-    extraGroups = [ "wheel" "dialout" ]
+    extraGroups =
+      [
+        "wheel"
+        "dialout"
+      ]
       ++ optionals config.hardware.uinput.enable [ "uinput" ]
       ++ optionals config.hardware.i2c.enable [ "i2c" ]
       ++ optionals config.networking.networkmanager.enable [ "networkmanager" ]
@@ -32,11 +41,13 @@ with lib;
   # programs._1password-gui.polkitPolicyOwners = [ "bbigras" ];
 
   home-manager.users.bbigras = {
-    imports = optionals config.services.xserver.desktopManager.gnome.enable [
-      ./graphical
-      ./graphical/gnome.nix
-    ] ++ optionals config.services.desktopManager.cosmic.enable [
-      ./graphical
-    ];
+    imports =
+      optionals config.services.xserver.desktopManager.gnome.enable [
+        ./graphical
+        ./graphical/gnome.nix
+      ]
+      ++ optionals config.services.desktopManager.cosmic.enable [
+        ./graphical
+      ];
   };
 }

@@ -1,4 +1,17 @@
-{ agenix, config, lib, pkgs, home-manager, impermanence, lanzaboote, nix-index-database, nixos-facter-modules, catppuccin, sops-nix, ... }:
+{
+  agenix,
+  config,
+  lib,
+  pkgs,
+  home-manager,
+  impermanence,
+  lanzaboote,
+  nix-index-database,
+  nixos-facter-modules,
+  catppuccin,
+  sops-nix,
+  ...
+}:
 {
   imports = [
     home-manager.nixosModules.home-manager

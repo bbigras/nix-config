@@ -38,7 +38,12 @@
       numlock-state = true;
     };
     "org/gnome/desktop/input-sources" = {
-      sources = [ (lib.gvariant.mkTuple [ "xkb" "ca" ]) ];
+      sources = [
+        (lib.gvariant.mkTuple [
+          "xkb"
+          "ca"
+        ])
+      ];
     };
     "org/gnome/shell" = {
       # run `gsettings get org.gnome.shell favorite-apps` to get the current list

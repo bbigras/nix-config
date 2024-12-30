@@ -1,10 +1,20 @@
-{ config, pkgs, nur, nixos-hardware, ... }:
+{
+  config,
+  pkgs,
+  nur,
+  nixos-hardware,
+  ...
+}:
 
 let
-  nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
+  nurNoPkgs = import nur {
+    pkgs = null;
+    nurpkgs = pkgs;
+  };
 in
 {
-  imports = with nixos-hardware.nixosModules;
+  imports =
+    with nixos-hardware.nixosModules;
     [
       ../../core
       ../../dev
@@ -20,7 +30,13 @@ in
       common-cpu-intel
 
       ../../users/bbigras
-    ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_work.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_work.nix") ] else [ ]);
+    ]
+    ++ (
+      if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_work.nix") then
+        [ (builtins.getEnv "PWD" + "/secrets/at_work.nix") ]
+      else
+        [ ]
+    );
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernel.sysctl = {
@@ -33,16 +49,22 @@ in
 
   environment.systemPackages = with pkgs; [ linuxPackages_zen.bcc ];
 
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/ccb4db0b-1cb8-4d5f-be9a-8b20a5c63982";
-      fsType = "btrfs";
-      options = [ "subvol=nixos" "compress=zstd" ];
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/ccb4db0b-1cb8-4d5f-be9a-8b20a5c63982";
+    fsType = "btrfs";
+    options = [
+      "subvol=nixos"
+      "compress=zstd"
+    ];
+  };
 
   nix = {
     settings = {
-      trusted-users = [ "hydra-queue-runner" "hydra" "hydra-www" ];
+      trusted-users = [
+        "hydra-queue-runner"
+        "hydra"
+        "hydra-www"
+      ];
 
       substituters = [
         "https://cache.nixos.org"

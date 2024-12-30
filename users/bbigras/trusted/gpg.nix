@@ -1,4 +1,5 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, ... }:
+{
   services.gpg-agent = lib.mkIf pkgs.stdenv.isLinux {
     enable = true;
     # enableExtraSocket = true;

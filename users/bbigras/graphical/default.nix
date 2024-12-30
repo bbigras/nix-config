@@ -1,58 +1,63 @@
-{ hostType, pkgs, ... }: {
+{ hostType, pkgs, ... }:
+{
   imports = [
     (
-      if hostType == "nixos" || hostType == "homeManager" then ./linux.nix
-      else if hostType == "darwin" then ./darwin.nix
-      else throw "Unknown hostType '${hostType}' for users/bbigras/graphical"
+      if hostType == "nixos" || hostType == "homeManager" then
+        ./linux.nix
+      else if hostType == "darwin" then
+        ./darwin.nix
+      else
+        throw "Unknown hostType '${hostType}' for users/bbigras/graphical"
     )
   ];
 
-  home.packages = with pkgs; [
-    element-desktop
-    libnotify
-    qalculate-gtk
-    xdg-utils
+  home.packages =
+    with pkgs;
+    [
+      element-desktop
+      libnotify
+      qalculate-gtk
+      xdg-utils
 
-    remmina
+      remmina
 
+      # media
+      pavucontrol
 
-    # media
-    pavucontrol
+      # games
+      # lutris
 
-    # games
-    # lutris
+      # twitch
+      # streamlink
+      chatterino2
 
-    # twitch
-    # streamlink
-    chatterino2
+      qbittorrent
+      wireshark
 
-    qbittorrent
-    wireshark
+      # games
+      # starsector
+      mangohud
+      # heroic
 
-    # games
-    # starsector
-    mangohud
-    # heroic
+      dbeaver-bin
+      josm
 
-    dbeaver-bin
-    josm
+      # remote
 
+      # anytype
 
-    # remote
+      joplin-desktop
 
-    # anytype
+      xournalpp
 
-    joplin-desktop
-
-    xournalpp
-
-  ] ++ lib.filter (lib.meta.availableOn stdenv.hostPlatform) [
-    # iterm2
-    # ledger-live-desktop
-    # plexamp
-    # signal-desktop
-    # thunderbird
-  ];
+    ]
+    ++ lib.filter (lib.meta.availableOn stdenv.hostPlatform) [
+      # iterm2
+      # ledger-live-desktop
+      # plexamp
+      # signal-desktop
+      # thunderbird
+    ];
 
   services = {
     # kdeconnect.enable = true;

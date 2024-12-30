@@ -1,4 +1,5 @@
-{ lib, ... }: {
+{ lib, ... }:
+{
   programs.mosh.enable = true;
 
   services.openssh = {

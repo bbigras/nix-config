@@ -112,7 +112,6 @@ in
           extraPackages = [ pkgs.xclip ];
         };
 
-
         # Highlight and annotate text file and websites
         org-remark.enable = true;
 
@@ -142,10 +141,8 @@ in
           enable = true;
         };
 
-
         # for org-mode
         htmlize.enable = true;
-
 
         org-sticky-header = {
           enable = true;
@@ -291,7 +288,10 @@ in
 
         ol-notmuch = {
           enable = pcfg.org.enable && pcfg.notmuch.enable;
-          after = [ "notmuch" "org" ];
+          after = [
+            "notmuch"
+            "org"
+          ];
         };
 
         ob-restclient = {
@@ -310,7 +310,6 @@ in
           after = [ "org" ];
           defer = true;
         };
-
 
         org-table = {
           enable = true;

@@ -1,4 +1,9 @@
-{ hostType, lib, pkgs, ... }:
+{
+  hostType,
+  lib,
+  pkgs,
+  ...
+}:
 let
   fontPackages = with pkgs; [
     dejavu_fonts

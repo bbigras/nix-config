@@ -2,7 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, nur, nixos-hardware, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  nur,
+  nixos-hardware,
+  ...
+}:
 
 let
   qemu-aarch64-static = pkgs.stdenv.mkDerivation {
@@ -17,10 +24,14 @@ let
     installPhase = "install -D -m 0755 $src $out/bin/qemu-aarch64-static";
   };
 
-  nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
+  nurNoPkgs = import nur {
+    pkgs = null;
+    nurpkgs = pkgs;
+  };
 in
 {
-  imports = with nixos-hardware.nixosModules;
+  imports =
+    with nixos-hardware.nixosModules;
     [
       ../../core
       ../../services/veilid.nix
@@ -52,27 +63,38 @@ in
       ../../dev/adb.nix
 
       ../../users/bbigras
-    ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ])
-    ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/desktop.nix") then [ (builtins.getEnv "PWD" + "/secrets/desktop.nix") ] else [ ]);
+    ]
+    ++ (
+      if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then
+        [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ]
+      else
+        [ ]
+    )
+    ++ (
+      if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/desktop.nix") then
+        [ (builtins.getEnv "PWD" + "/secrets/desktop.nix") ]
+      else
+        [ ]
+    );
 
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/e58653d8-7f76-402d-998d-400fe04f7520";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/e58653d8-7f76-402d-998d-400fe04f7520";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-uuid/DA5A-BC65";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/DA5A-BC65";
+    fsType = "vfat";
+    options = [
+      "fmask=0022"
+      "dmask=0022"
+    ];
+  };
 
-  fileSystems."/media/gamedisk" =
-    {
-      device = "/dev/disk/by-uuid/CA909C6D909C622D";
-      fsType = "ntfs3";
-    };
+  fileSystems."/media/gamedisk" = {
+    device = "/dev/disk/by-uuid/CA909C6D909C622D";
+    fsType = "ntfs3";
+  };
 
   catppuccin = {
     enable = true;
@@ -87,14 +109,18 @@ in
     '';
     settings = {
       extra-sandbox-paths = [ "/run/binfmt/aarch64=${qemu-aarch64-static}/bin/qemu-aarch64-static" ];
-      system-features = [ "benchmark" "nixos-test" "big-parallel" "kvm" ];
+      system-features = [
+        "benchmark"
+        "nixos-test"
+        "big-parallel"
+        "kvm"
+      ];
     };
   };
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.plymouth.enable = true;
-
 
   networking.interfaces."enp6s0".wakeOnLan.enable = true;
 
@@ -144,7 +170,9 @@ in
         DHCP = "yes";
         matchConfig.Name = "enp*";
         # domains = [ "~." ];
-        dhcpV4Config = { UseDNS = false; };
+        dhcpV4Config = {
+          UseDNS = false;
+        };
         dns = [
           # https://developers.cloudflare.com/1.1.1.1/dns-over-tls
           "1.1.1.1#cloudflare-dns.com"

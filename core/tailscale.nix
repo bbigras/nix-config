@@ -5,8 +5,14 @@
 
   systemd = {
     services.tailscaled = {
-      after = [ "network-online.target" "systemd-resolved.service" ];
-      wants = [ "network-online.target" "systemd-resolved.service" ];
+      after = [
+        "network-online.target"
+        "systemd-resolved.service"
+      ];
+      wants = [
+        "network-online.target"
+        "systemd-resolved.service"
+      ];
     };
   };
 

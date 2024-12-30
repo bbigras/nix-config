@@ -1,10 +1,13 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
-    (aspellWithDicts (ds: with ds; [
-      en
-      en-computers
-      # en-science
-      fr
-    ]))
+    (aspellWithDicts (
+      ds: with ds; [
+        en
+        en-computers
+        # en-science
+        fr
+      ]
+    ))
   ];
 }
