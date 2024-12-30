@@ -14,6 +14,7 @@
       self'.packages.cachix
       self'.packages.nix-fast-build
       statix
+        config.treefmt.build.wrapper
 
       # Lua
       # stylua
@@ -35,7 +36,8 @@
       pre-commit
       rage
       sops
-    ];
+    ]
+    ++ (builtins.attrValues config.treefmt.build.programs);
     shellHook = ''
       ${config.pre-commit.installationScript}
     '';
