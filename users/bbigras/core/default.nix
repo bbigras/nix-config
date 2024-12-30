@@ -1,4 +1,13 @@
-{ config, hostType, impermanence, nix-index-database, pkgs, lib, catppuccin, ... }:
+{
+  config,
+  hostType,
+  impermanence,
+  nix-index-database,
+  pkgs,
+  lib,
+  catppuccin,
+  ...
+}:
 
 # let
 #perfect_eq_repo = pkgs.fetchgit {

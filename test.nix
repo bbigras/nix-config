@@ -30,7 +30,10 @@ in
       ];
     };
 
-    environment.systemPackages = with pkgs; [ rust-analyzer helloWorld ];
+    environment.systemPackages = with pkgs; [
+      rust-analyzer
+      helloWorld
+    ];
 
     users.users.bbigras = {
       createHome = true;
@@ -38,15 +41,17 @@ in
     };
 
     home-manager.useGlobalPkgs = true;
-    home-manager.users.bbigras = { pkgs, ... }: {
-      # imports = [ ./users/bbigras/dev/emacs.nix ];
+    home-manager.users.bbigras =
+      { pkgs, ... }:
+      {
+        # imports = [ ./users/bbigras/dev/emacs.nix ];
 
-      programs.emacs = {
-        enable = true;
-        init.enable = true;
-        package = pkgs.emacsGit;
+        programs.emacs = {
+          enable = true;
+          init.enable = true;
+          package = pkgs.emacsGit;
+        };
       };
-    };
   };
 
   testScript = ''

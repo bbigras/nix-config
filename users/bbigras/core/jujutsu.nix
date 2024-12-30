@@ -19,8 +19,15 @@
       enable = true;
       settings = {
         aliases = {
-          l = [ "log" "-r" "(trunk()..@):: | (trunk()..@)-" ];
-          dlog = [ "log" "-r" ];
+          l = [
+            "log"
+            "-r"
+            "(trunk()..@):: | (trunk()..@)-"
+          ];
+          dlog = [
+            "log"
+            "-r"
+          ];
         };
         core.fsmonitor = "watchman";
         user = {

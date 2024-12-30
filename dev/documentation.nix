@@ -1,4 +1,5 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [ man-pages ];
   documentation = {
     dev.enable = true;

@@ -5,7 +5,10 @@ let
 in
 {
   home = {
-    extraOutputsToInstall = [ "doc" "devdoc" ];
+    extraOutputsToInstall = [
+      "doc"
+      "devdoc"
+    ];
     file.gdbinit = {
       target = ".gdbinit";
       text = ''

@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.steam.enable = true;
 
   # https://github.com/NixOS/nixpkgs/issues/45492
@@ -6,7 +7,9 @@
   systemd.extraConfig = "DefaultLimitNOFILE=1048576";
 
   # improve wine performance
-  environment.sessionVariables = { WINEDEBUG = "-all"; };
+  environment.sessionVariables = {
+    WINEDEBUG = "-all";
+  };
 
   environment.systemPackages = with pkgs; [
     steam-run

@@ -3,9 +3,15 @@ let
   inherit (inputs) self deploy-rs nixpkgs;
   inherit (nixpkgs) lib;
 
-  genNode = hostName: nixosCfg:
+  genNode =
+    hostName: nixosCfg:
     let
-      inherit (self.hosts.${hostName}) address hostPlatform remoteBuild sshOpts;
+      inherit (self.hosts.${hostName})
+        address
+        hostPlatform
+        remoteBuild
+        sshOpts
+        ;
       inherit (deploy-rs.lib.${hostPlatform}) activate;
     in
     {
@@ -14,9 +20,15 @@ let
       profiles.system.path = activate.nixos nixosCfg;
     };
 
-  genNixOnDroid = hostName: nixosCfg:
+  genNixOnDroid =
+    hostName: nixosCfg:
     let
-      inherit (self.hosts.${hostName}) address hostPlatform remoteBuild sshOpts;
+      inherit (self.hosts.${hostName})
+        address
+        hostPlatform
+        remoteBuild
+        sshOpts
+        ;
       inherit (deploy-rs.lib.${hostPlatform}) activate;
 
       pixel6 = nixosCfg.activationPackage;
@@ -30,9 +42,7 @@ let
       sshUser = "nix-on-droid";
       user = "nix-on-droid";
 
-      profiles.system.path = activate.custom
-        pixel6
-        (pixel6 + "/activate");
+      profiles.system.path = activate.custom pixel6 (pixel6 + "/activate");
     };
 in
 {
@@ -41,6 +51,7 @@ in
   autoRollback = false;
   magicRollback = true;
   user = "root";
-  nodes = lib.mapAttrs genNode self.nixosConfigurations //
-    lib.mapAttrs genNixOnDroid self.nixondroidConfigurations;
+  nodes =
+    lib.mapAttrs genNode self.nixosConfigurations
+    // lib.mapAttrs genNixOnDroid self.nixondroidConfigurations;
 }

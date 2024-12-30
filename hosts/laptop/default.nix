@@ -2,13 +2,23 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, nur, nixos-hardware, ... }:
+{
+  config,
+  pkgs,
+  nur,
+  nixos-hardware,
+  ...
+}:
 
 let
-  nurNoPkgs = import nur { pkgs = null; nurpkgs = pkgs; };
+  nurNoPkgs = import nur {
+    pkgs = null;
+    nurpkgs = pkgs;
+  };
 in
 {
-  imports = with nixos-hardware.nixosModules;
+  imports =
+    with nixos-hardware.nixosModules;
     [
       ../../core
       ../../dev
@@ -30,13 +40,23 @@ in
       ../../dev/adb.nix
 
       ../../users/bbigras
-    ] ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ] else [ ])
-    ++ (if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/laptop.nix") then [ (builtins.getEnv "PWD" + "/secrets/laptop.nix") ] else [ ]);
+    ]
+    ++ (
+      if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then
+        [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ]
+      else
+        [ ]
+    )
+    ++ (
+      if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/laptop.nix") then
+        [ (builtins.getEnv "PWD" + "/secrets/laptop.nix") ]
+      else
+        [ ]
+    );
 
   environment.systemPackages = with pkgs; [
     iwd
   ];
-
 
   sops.secrets = {
     restic-laptop-password.sopsFile = ./restic-laptop.yaml;
@@ -96,7 +116,9 @@ in
       "10-wifi" = {
         DHCP = "yes";
         matchConfig.Name = "wlan*";
-        dhcpV4Config = { UseDNS = false; };
+        dhcpV4Config = {
+          UseDNS = false;
+        };
       };
     };
   };

@@ -1,10 +1,9 @@
 { pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [
-      (modulesPath + "/virtualisation/digital-ocean-config.nix")
-    ];
+  imports = [
+    (modulesPath + "/virtualisation/digital-ocean-config.nix")
+  ];
 
   networking.hostName = "vps";
 
@@ -16,7 +15,10 @@
     tmux
   ];
 
-  nix.trustedUsers = [ "root" "bbigras" ];
+  nix.trustedUsers = [
+    "root"
+    "bbigras"
+  ];
   nix.gc = {
     automatic = true;
     dates = "weekly";

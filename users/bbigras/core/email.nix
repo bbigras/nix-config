@@ -14,7 +14,10 @@
   programs.notmuch = {
     enable = true;
     new.tags = [ "new" ];
-    search.excludeTags = [ "trash" "spam" ];
+    search.excludeTags = [
+      "trash"
+      "spam"
+    ];
   };
   programs.lieer.enable = true;
   services.lieer.enable = true;

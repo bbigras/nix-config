@@ -159,34 +159,50 @@
     };
   };
 
-  outputs = inputs@{ self, flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; }
-      (toplevel@{ withSystem, ... }: {
+  outputs =
+    inputs@{ self, flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } (
+      toplevel@{ withSystem, ... }:
+      {
         imports = [
           inputs.git-hooks.flakeModule
           inputs.treefmt-nix.flakeModule
         ];
-        systems = [ "aarch64-linux" "x86_64-linux" ];
-        perSystem = ctx@{ config, self', inputs', pkgs, system, ... }: {
-          _module.args.pkgs = import inputs.nixpkgs {
-            localSystem = system;
-            overlays = [ self.overlays.default ];
-            config = {
-              allowUnfree = false;
-              allowAliases = true;
-              allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [
-                "keet"
-                "steam"
-                "steam-original"
-                "steam-run"
-                "steam-unwrapped"
-              ];
+        systems = [
+          "aarch64-linux"
+          "x86_64-linux"
+        ];
+        perSystem =
+          ctx@{
+            config,
+            self',
+            inputs',
+            pkgs,
+            system,
+            ...
+          }:
+          {
+            _module.args.pkgs = import inputs.nixpkgs {
+              localSystem = system;
+              overlays = [ self.overlays.default ];
+              config = {
+                allowUnfree = false;
+                allowAliases = true;
+                allowUnfreePredicate =
+                  pkg:
+                  builtins.elem (pkgs.lib.getName pkg) [
+                    "keet"
+                    "steam"
+                    "steam-original"
+                    "steam-run"
+                    "steam-unwrapped"
+                  ];
+              };
             };
-          };
 
-          devShells = import ./nix/dev-shell.nix ctx;
+            devShells = import ./nix/dev-shell.nix ctx;
 
-          packages = import ./nix/packages.nix toplevel ctx;
+            packages = import ./nix/packages.nix toplevel ctx;
 
             pre-commit = {
               check.enable = true;
@@ -224,5 +240,6 @@
 
           overlays = import ./nix/overlay.nix toplevel;
         };
-      });
+      }
+    );
 }

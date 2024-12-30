@@ -224,7 +224,10 @@
 
         embark-consult = {
           enable = true;
-          after = [ "embark" "consult" ];
+          after = [
+            "embark"
+            "consult"
+          ];
           hook = [
             "(embark-collect-mode . consult-preview-at-point-mode)"
             # "(prog-mode . lsp)"

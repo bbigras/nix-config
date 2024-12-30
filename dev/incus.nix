@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   networking.firewall.trustedInterfaces = [ "incusbr0" ];
   networking.nftables.enable = true;
   networking.firewall = {
