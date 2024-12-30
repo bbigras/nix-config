@@ -76,6 +76,7 @@ let
   };
   otherDefaults = {
     "x-scheme-handler/prusaslicer" = "PrusaSlicerURLProtocol.desktop";
+    "x-scheme-handler/terminal" = "com.mitchellh.ghostty.desktop";
   };
 in
 {
