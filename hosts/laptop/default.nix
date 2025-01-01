@@ -20,6 +20,8 @@ in
   imports =
     with nixos-hardware.nixosModules;
     [
+      ./broadcom-wifi.nix
+
       ../../core
       ../../dev
       # ../../dev/virt-manager.nix
@@ -115,7 +117,7 @@ in
     networks = {
       "10-wifi" = {
         DHCP = "yes";
-        matchConfig.Name = "wlan*";
+        matchConfig.Name = "eth0";
         dhcpV4Config = {
           UseDNS = false;
         };
