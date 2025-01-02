@@ -182,7 +182,7 @@
       enable = true;
       settings = {
         theme = "catppuccin-mocha";
-        font-size = 10;
+        # font-size = 10;
       };
       themes = {
         catppuccin-mocha = {
