@@ -119,13 +119,6 @@
       '';
 
       usePackage = {
-        no-littering = {
-          enable = true;
-          config = ''
-            (no-littering-theme-backups)
-          '';
-        };
-
         logview.enable = true;
 
         project = {
