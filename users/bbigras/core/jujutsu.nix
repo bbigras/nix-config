@@ -35,7 +35,7 @@
           email = "bigras.bruno@gmail.com";
         };
         template-aliases = {
-          "format_short_signature(signature)" = "signature.username()";
+          "format_short_signature(signature)" = "signature.email().local()";
         };
         ui.diff-editor = "meld-3";
         revset-aliases = {
