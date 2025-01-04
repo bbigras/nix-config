@@ -5,7 +5,6 @@
     packages = with pkgs; [
       jj-fzf
       kdiff3
-      lazyjj
       meld
       watchman
     ];
