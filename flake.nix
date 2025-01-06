@@ -211,7 +211,7 @@
                 actionlint.enable = true;
                 nil.enable = true;
                 shellcheck.enable = true;
-                statix.enable = true;
+                statix.enable = false;
                 treefmt.enable = true;
               };
             };
