@@ -96,7 +96,7 @@
     };
 
     nix-fast-build = {
-      url = "github:Mic92/nix-fast-build";
+      url = "github:bbigras/nix-fast-build/impure";
       inputs = {
         flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
