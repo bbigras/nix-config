@@ -258,6 +258,8 @@ in
         attic-client
         git-annex
         git-remote-gcrypt
+        spacer
+        faketty
       ];
 
       dconf.enable = lib.mkForce false;
