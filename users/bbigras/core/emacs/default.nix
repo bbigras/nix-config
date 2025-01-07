@@ -218,6 +218,7 @@
 
         gptel = {
           enable = true;
+          package = _epkgs: pkgs.emacsPackages.gptel;
           init = ''
             (setq gptel-model "gpt-4o")
           '';

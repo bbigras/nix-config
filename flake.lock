@@ -364,6 +364,23 @@
         "type": "github"
       }
     },
+    "gptel": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1736210928,
+        "narHash": "sha256-7ITffw/XdqeMSVuE6al2wplDmkxE60rbBoH70hSskG8=",
+        "owner": "karthink",
+        "repo": "gptel",
+        "rev": "f1f65def27dd12f53e2523f4edf2994112356653",
+        "type": "github"
+      },
+      "original": {
+        "owner": "karthink",
+        "ref": "feature-tool-use",
+        "repo": "gptel",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -945,6 +962,7 @@
         "flake-utils": "flake-utils_2",
         "gemoji": "gemoji",
         "git-hooks": "git-hooks",
+        "gptel": "gptel",
         "home-manager": "home-manager_2",
         "impermanence": "impermanence",
         "lanzaboote": "lanzaboote",

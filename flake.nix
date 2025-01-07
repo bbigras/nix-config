@@ -157,6 +157,11 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    gptel = {
+      url = "github:karthink/gptel/feature-tool-use";
+      flake = false;
+    };
   };
 
   outputs =
