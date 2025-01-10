@@ -259,6 +259,7 @@ in
         git-remote-gcrypt
         spacer
         faketty
+        television
       ];
 
       dconf.enable = lib.mkForce false;

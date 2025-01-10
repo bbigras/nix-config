@@ -158,6 +158,7 @@
       git-remote-gcrypt
       spacer
       faketty
+      television
     ];
     shellAliases = {
       cls = "clear";
