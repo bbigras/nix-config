@@ -206,6 +206,10 @@
           after = [
             "org"
           ];
+          bind = {
+            "<f12>" = "howm-list-all";
+            "<C-f12>" = "howm-create";
+          };
           init = ''
             ;; Where to store the files?
             (setq howm-directory "~/Documents/Howm")
