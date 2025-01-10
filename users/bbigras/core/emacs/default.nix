@@ -216,6 +216,15 @@
             (setq howm-dtime-format (format "<%s>" (cdr org-timestamp-formats)))
             ;; Avoid conflicts with Org-mode by changing Howm's prefix from "C-c ,".
             (setq howm-prefix (kbd "C-c ;"))
+
+            ;; Use ripgrep for fast searching.
+            (setq howm-view-use-grep t)
+            (setq howm-view-grep-command "rg")
+            (setq howm-view-grep-option "-nH --no-heading --color never")
+            (setq howm-view-grep-extended-option nil)
+            (setq howm-view-grep-fixed-option "-F")
+            (setq howm-view-grep-expr-option nil)
+            (setq howm-view-grep-file-stdin-option nil)
           '';
         };
 
