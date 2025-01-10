@@ -203,6 +203,9 @@
 
         howm = {
           enable = true;
+          after = [
+            "org"
+          ];
           init = ''
             ;; Where to store the files?
             (setq howm-directory "~/Documents/Howm")
@@ -210,7 +213,7 @@
             ;; What format to use for the files?
             (setq howm-file-name-format "%Y-%m-%d-%H%M%S.org")
             (setq howm-view-title-header "*")
-            (setq howm-dtime-format "<%Y-%m-%d %a %H:%M>")
+            (setq howm-dtime-format (format "<%s>" (cdr org-timestamp-formats)))
             ;; Avoid conflicts with Org-mode by changing Howm's prefix from "C-c ,".
             (setq howm-prefix (kbd "C-c ;"))
           '';
