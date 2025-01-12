@@ -157,7 +157,6 @@ in
         };
         bat = {
           enable = true;
-          extraPackages = with pkgs.bat-extras; [ batman ];
         };
         carapace.enable = true;
         command-not-found.enable = true;
