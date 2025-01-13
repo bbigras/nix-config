@@ -179,6 +179,22 @@
         "type": "github"
       }
     },
+    "emacs-ultra-scroll": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1736790890,
+        "narHash": "sha256-lHz0AypoMYdlOQ/7hMw2Jy7LVG8S1CmK60PH1x5dJnM=",
+        "owner": "jdtsmith",
+        "repo": "ultra-scroll",
+        "rev": "64ad7be02e11317576498dabb15c92cf31e2c04c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jdtsmith",
+        "repo": "ultra-scroll",
+        "type": "github"
+      }
+    },
     "envrc": {
       "flake": false,
       "locked": {
@@ -955,6 +971,7 @@
         "defmacro-gensym": "defmacro-gensym",
         "deploy-rs": "deploy-rs",
         "emacs-overlay": "emacs-overlay",
+        "emacs-ultra-scroll": "emacs-ultra-scroll",
         "envrc": "envrc",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",

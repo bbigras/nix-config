@@ -162,6 +162,11 @@
       url = "github:karthink/gptel/feature-tool-use";
       flake = false;
     };
+
+    emacs-ultra-scroll = {
+      url = "github:jdtsmith/ultra-scroll";
+      flake = false;
+    };
   };
 
   outputs =

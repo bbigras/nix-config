@@ -232,6 +232,18 @@
           '';
         };
 
+        ultra-scroll = {
+          enable = true;
+          package = _epkgs: pkgs.emacsPackages.ultra-scroll;
+          init = ''
+            (setq scroll-conservatively 101 ; important!
+                    scroll-margin 0)
+          '';
+          config = ''
+            (ultra-scroll-mode 1)
+          '';
+        };
+
         gptel = {
           enable = true;
           package = _epkgs: pkgs.emacsPackages.gptel;
