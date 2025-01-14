@@ -36,7 +36,6 @@
 
       # games
       # starsector
-      mangohud
       # heroic
 
       dbeaver-bin
@@ -61,5 +60,9 @@
 
   services = {
     # kdeconnect.enable = true;
+  };
+
+  programs = {
+    mangohud.enable = true;
   };
 }
