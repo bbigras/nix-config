@@ -19,8 +19,6 @@
       qalculate-gtk
       xdg-utils
 
-      remmina
-
       # media
       pavucontrol
 
@@ -60,6 +58,7 @@
 
   services = {
     # kdeconnect.enable = true;
+    remmina.enable = true;
   };
 
   programs = {
