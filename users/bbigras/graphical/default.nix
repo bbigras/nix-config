@@ -37,13 +37,9 @@
       # heroic
 
       dbeaver-bin
-      josm
-
       # remote
 
       # anytype
-
-      joplin-desktop
 
       xournalpp
 
