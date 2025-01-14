@@ -149,7 +149,6 @@
       altair
       broot
       distrobox
-      keet
       incus.client
       srgn
       attic-client

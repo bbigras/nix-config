@@ -203,7 +203,6 @@
                   builtins.elem (pkgs.lib.getName pkg) [
                     "broadcom-sta"
                     "copilot-node-server"
-                    "keet"
                     "steam"
                     "steam-original"
                     "steam-run"
