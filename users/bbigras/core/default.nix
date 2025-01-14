@@ -52,7 +52,6 @@
     ./xdg.nix
     ./fish.nix
     ./yazi.nix
-    ./zed-editor.nix
   ];
 
   catppuccin = {
@@ -144,7 +143,6 @@
 
       zrok
 
-      qalculate-gtk
       devpod
       altair
       broot
@@ -176,9 +174,7 @@
       enable = true;
     };
     carapace.enable = true;
-    chromium.enable = true;
     eza.enable = true;
-    ghostty.enable = true;
     jq.enable = true;
     kubecolor = {
       enable = true;

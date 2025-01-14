@@ -4,6 +4,7 @@
     ./firefox.nix
     ./mime.nix
     ./mpv.nix
+    ./zed-editor.nix
   ];
 
   dconf.enable = lib.mkForce true;

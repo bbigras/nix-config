@@ -39,6 +39,8 @@
   };
 
   programs = {
+    chromium.enable = true;
+    ghostty.enable = true;
     mangohud.enable = true;
   };
 }
