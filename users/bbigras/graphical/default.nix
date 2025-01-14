@@ -14,35 +14,16 @@
   home.packages =
     with pkgs;
     [
+      chatterino2
+      dbeaver-bin
       element-desktop
       libnotify
-      qalculate-gtk
-      xdg-utils
-
-      # media
       pavucontrol
-
-      # games
-      # lutris
-
-      # twitch
-      # streamlink
-      chatterino2
-
+      qalculate-gtk
       qbittorrent
       wireshark
-
-      # games
-      # starsector
-      # heroic
-
-      dbeaver-bin
-      # remote
-
-      # anytype
-
+      xdg-utils
       xournalpp
-
     ]
     ++ lib.filter (lib.meta.availableOn stdenv.hostPlatform) [
       # iterm2
