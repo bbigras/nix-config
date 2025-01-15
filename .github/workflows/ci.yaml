@@ -15,7 +15,7 @@ env:
     accept-flake-config = true
     always-allow-substitutes = true
     builders-use-substitutes = true
-    max-jobs = auto
+    max-jobs = 1
 
 jobs:
   flake-check:
@@ -199,7 +199,7 @@ jobs:
           declare -a args=(
             '--no-nom'
             '--skip-cached'
-            '--max-jobs=2'
+            '--max-jobs=1'
             '--eval-workers=2'
             '--systems=${{ env.system }}'
             '--option' 'accept-flake-config' 'true'
