@@ -28,5 +28,5 @@ compatHostDrvs
   default = compatHostsFarm;
 })
 // {
-  inherit (pkgs) cachix jq nix-fast-build;
+  inherit (pkgs) nix-fast-build;
 }

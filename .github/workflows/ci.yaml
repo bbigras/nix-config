@@ -16,11 +16,13 @@ env:
     always-allow-substitutes = true
     builders-use-substitutes = true
     max-jobs = auto
-  cachix-install: nix profile install 'github:${{ github.repository }}/${{ github.sha }}#cachix'
 
 jobs:
   flake-check:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
     steps:
       - uses: DeterminateSystems/nix-installer-action@v16
         with:
@@ -30,11 +32,13 @@ jobs:
           name: bbigras-nix-config
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
           extraPullNames: nix-community
-          installCommand: ${{ env.cachix-install }}
       - name: nix-flake-check
         run: nix flake check '${{ env.flake }}'
   flake-show:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
     steps:
       - uses: DeterminateSystems/nix-installer-action@v16
         with:
@@ -44,7 +48,6 @@ jobs:
           name: bbigras-nix-config
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
           extraPullNames: nix-community
-          installCommand: ${{ env.cachix-install }}
       - name: nix-flake-show
         run: nix flake show '${{ env.flake }}' --option allow-import-from-derivation true
   get-attrs:
@@ -53,12 +56,10 @@ jobs:
       build: ${{ steps.get-attrs.outputs.build }}
       eval: ${{ steps.get-attrs.outputs.eval }}
     steps:
-      - uses: DeterminateSystems/nix-installer-action@v16
+      - uses: actions/checkout@v4
         with:
-          extra-conf: ${{ env.nix-conf }}
-      - uses: DeterminateSystems/magic-nix-cache-action@v8
-      - id: install-jq
-        run: nix profile install '${{ env.flake }}#jq'
+          sparse-checkout: nix/hosts.nix
+      - uses: nixbuild/nix-quick-install-action@v29
       - id: get-attrs
         run: |
           function summary() {
@@ -68,7 +69,7 @@ jobs:
           summary "# CI"
           TMP="$(mktemp -d)"
           # host packages
-          nix eval --json '${{ env.flake }}#hosts' | jq -c '
+          nix eval --json -f nix/hosts.nix | jq -c '
             to_entries
             | map({
                 name: .key,
@@ -79,9 +80,8 @@ jobs:
             })
             | map(
                 if .hostPlatform  == "x86_64-linux" then .runsOn="ubuntu-latest"
-                elif .hostPlatform == "aarch64-linux" then .runsOn="ubuntu-latest"
                 elif .hostPlatform == "x86_64-darwin" then .runsOn="macos-13"
-                elif .hostPlatform == "aarch64-darwin" then .runsOn="macos-14"
+                elif .hostPlatform == "aarch64-darwin" then .runsOn="macos-latest"
                 else .evalOnly=true | .runsOn="ubuntu-latest"
                 end
             )
@@ -133,13 +133,20 @@ jobs:
           jq -c 'map(select(.evalOnly))' <"$TMP/attrs.json" >"$TMP/eval.json"
           jq -c 'map(select(.evalOnly | not))' <"$TMP/attrs.json" >"$TMP/build.json"
 
+          echo "eval.json"
+          cat "$TMP/eval.json"
+          echo "---------"
+
+          echo "build.json"
+          cat "$TMP/build.json"
+          echo "---------"
+
           echo "build=$(<"$TMP/build.json")" >>"$GITHUB_OUTPUT"
           echo "eval=$(<"$TMP/eval.json")" >>"$GITHUB_OUTPUT"
 
   eval:
     name: eval ${{ matrix.attrs.name }}
     runs-on: ${{ matrix.attrs.runsOn }}
-    if: needs.get-attrs.outputs.eval != '[]'
     needs: [get-attrs]
     strategy:
       fail-fast: false
@@ -147,6 +154,7 @@ jobs:
         attrs: ${{ fromJson(needs.get-attrs.outputs.eval) }}
     env:
       system: ${{ matrix.attrs.hostPlatform }}
+    if: ${{ fromJson(needs.get-attrs.outputs.eval)[0] != null }}
     steps:
       - uses: docker/setup-qemu-action@v3
         if: ${{ matrix.attrs.hostPlatform == 'aarch64-linux' }}
@@ -158,11 +166,10 @@ jobs:
           name: bbigras-nix-config
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
           extraPullNames: nix-community
-          installCommand: ${{ env.cachix-install }}
       - name: eval
         if: ${{ matrix.attrs.evalOnly }}
         run: |
-          nix eval --raw '${{ env.flake }}#${{ matrix.attrs.attr }}'
+          nix eval --raw '${{ env.flake }}#${{ matrix.attrs.attr }}' --impure
 
   build:
     name: build ${{ matrix.attrs.name }}
@@ -187,7 +194,6 @@ jobs:
           name: bbigras-nix-config
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
           extraPullNames: nix-community
-          installCommand: ${{ env.cachix-install }}
       - name: nix-fast-build
         run: |
           declare -a args=(
@@ -201,12 +207,9 @@ jobs:
             '--option' 'pure-eval' 'false'
           )
           [[ '${{ env.system }}' == 'aarch64-linux' ]] && args+=('--option' 'extra-platforms' 'aarch64-linux')
+
           args+=('--flake=${{ env.flake }}#${{ matrix.attrs.attr }}')
           nix run '${{ env.flake }}#nix-fast-build' -- "${args[@]}"
-      - name: nix-build
-        if: ${{ env.system == 'aarch64-darwin' }}
-        run: |
-          nix build --keep-going '${{ env.flake }}#${{ matrix.attrs.attr }}'
 
   check:
     runs-on: ubuntu-latest
