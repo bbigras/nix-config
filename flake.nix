@@ -139,7 +139,7 @@
     };
 
     nix-on-droid = {
-      url = "github:t184256/nix-on-droid";
+      url = "github:nix-community/nix-on-droid";
       inputs.home-manager.follows = "home-manager";
     };
 
