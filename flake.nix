@@ -133,11 +133,6 @@
     # copilot_pkgs.url = "github:bbigras/nixpkgs/copilot";
     # copilot-node-server_pkgs.url = "github:bbigras/nixpkgs/copilot-node-server";
 
-    envrc = {
-      url = "github:siddharthverma314/envrc";
-      flake = false;
-    };
-
     defmacro-gensym = {
       url = "gitlab:akater/defmacro-gensym";
       flake = false;
