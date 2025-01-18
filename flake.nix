@@ -45,7 +45,7 @@
     };
 
     nixpkgs_zed.url = "github:nixos/nixpkgs?rev=d233eb89118bcc22856ac7d511ef56c146567c8b";
-    nixpkgs_jj-fzf.url = "github:bbigras/nixpkgs/push-qsnkmvlwnrvm";
+    nixpkgs_jj-fzf.url = "github:bbigras/nixpkgs?rev=f4d87ebcc2ce06f7a51fd58565cb88b681746567";
 
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
 
