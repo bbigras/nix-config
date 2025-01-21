@@ -14,9 +14,7 @@
       "sql"
     ];
     userSettings = {
-      theme = {
-        dark = lib.mkForce "Catppuccin Macchiato";
-      };
+
     };
   };
 }
