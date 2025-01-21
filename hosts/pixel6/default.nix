@@ -167,6 +167,9 @@ in
         emacs = {
           enable = true;
           package = lib.mkForce pkgs.emacs29;
+          init.usePackage = {
+            god-mode.enable = true;
+          };
         };
         eza.enable = true;
         fzf = {
