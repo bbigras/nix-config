@@ -14,7 +14,20 @@
       "sql"
     ];
     userSettings = {
-
+      "lsp" = {
+        "nil" = {
+          # or "nixd" =
+          "initialization_options" = {
+            "formatting" = {
+              "command" = [
+                "alejandra"
+                "--quiet"
+                "--"
+              ]; # or ["nixfmt"]
+            };
+          };
+        };
+      };
     };
   };
 }
