@@ -28,7 +28,7 @@
   programs.emacs = {
     enable = true;
 
-    package = pkgs.emacs-pgtk;
+    package = pkgs.emacs-unstable;
 
     init = {
       enable = true;
@@ -959,5 +959,5 @@
         };
       };
     };
-  } // lib.optionalAttrs (osConfig.programs.sway.enable or false) { package = pkgs.emacs-pgtk; };
+  } // lib.optionalAttrs (osConfig.services.desktopManager.cosmic.enable or false) { package = pkgs.emacs-pgtk; };
 }
