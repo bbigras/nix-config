@@ -129,6 +129,10 @@
             '';
           };
 
+          god-mode = {
+            enable = true;
+          };
+
           dashboard = {
             enable = true;
             config = ''
