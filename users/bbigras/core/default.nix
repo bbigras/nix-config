@@ -156,6 +156,7 @@
       spacer
       faketty
       television
+      radicle-node
     ];
     shellAliases = {
       cls = "clear";
