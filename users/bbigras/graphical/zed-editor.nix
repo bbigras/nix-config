@@ -1,6 +1,15 @@
-{ nixpkgs_zed, lib, ... }:
+{
+  nixpkgs_zed,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
+  home.packages = with pkgs; [
+    alejandra
+  ];
+
   programs.zed-editor = {
     enable = true;
     # https://github.com/zed-industries/extensions/tree/main/extensions
