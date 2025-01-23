@@ -36,6 +36,23 @@
             };
           };
         };
+        rust-analyzer = {
+          initialization_options = {
+            check = {
+              command = "clippy"; # rust-analyzer.check.command (default: "check")
+            };
+            inlayHints = {
+              maxLength = null;
+              lifetimeElisionHints = {
+                enable = "skip_trivial";
+                useParameterNames = true;
+              };
+              closureReturnTypeHints = {
+                enable = "always";
+              };
+            };
+          };
+        };
       };
     };
   };
