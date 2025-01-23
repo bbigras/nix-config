@@ -23,12 +23,12 @@
       "sql"
     ];
     userSettings = {
-      "lsp" = {
-        "nil" = {
+      lsp = {
+        nil = {
           # or "nixd" =
-          "initialization_options" = {
-            "formatting" = {
-              "command" = [
+          initialization_options = {
+            formatting = {
+              command = [
                 "alejandra"
                 "--quiet"
                 "--"
