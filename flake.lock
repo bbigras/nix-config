@@ -698,17 +698,17 @@
     },
     "nixpkgs_jj-fzf": {
       "locked": {
-        "lastModified": 1737147096,
-        "narHash": "sha256-ZsSVu46FU3YgOnQq0Adx0vG0YLk2olJ+i4nsUOGcz+Q=",
+        "lastModified": 1737838104,
+        "narHash": "sha256-TqHdCP2NzPB0VNszNQA9ALfrKBEHDNgtEKTGGfeh8gc=",
         "owner": "bbigras",
         "repo": "nixpkgs",
-        "rev": "f4d87ebcc2ce06f7a51fd58565cb88b681746567",
+        "rev": "801551c91747e725d9e9186919a4f475fa1bfca2",
         "type": "github"
       },
       "original": {
         "owner": "bbigras",
         "repo": "nixpkgs",
-        "rev": "f4d87ebcc2ce06f7a51fd58565cb88b681746567",
+        "rev": "801551c91747e725d9e9186919a4f475fa1bfca2",
         "type": "github"
       }
     },
