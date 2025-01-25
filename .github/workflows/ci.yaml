@@ -169,7 +169,7 @@ jobs:
       - name: eval
         if: ${{ matrix.attrs.evalOnly }}
         run: |
-          nix eval --raw '${{ env.flake }}#${{ matrix.attrs.attr }}' --impure
+          nix eval --raw '${{ env.flake }}#${{ matrix.attrs.attr }}' --impure --extra-platforms "aarch64-linux i686-linux"
 
   build:
     name: build ${{ matrix.attrs.name }}
