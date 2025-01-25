@@ -44,7 +44,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs_zed.url = "github:nixos/nixpkgs?rev=9427db47f7c5ba8295660ac4999fae81a870d986";
+    nixpkgs_zed.url = "github:nixos/nixpkgs?rev=c3d267ad763d6d8dece2672cf9eb96b7490e70b9";
     nixpkgs_jj-fzf.url = "github:bbigras/nixpkgs?rev=f4d87ebcc2ce06f7a51fd58565cb88b681746567";
 
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
@@ -164,7 +164,11 @@
   };
 
   outputs =
-    inputs@{ self, flake-parts, ... }:
+    inputs@{
+      self,
+      flake-parts,
+      ...
+    }:
     flake-parts.lib.mkFlake { inherit inputs; } (
       toplevel@{ withSystem, ... }:
       {
