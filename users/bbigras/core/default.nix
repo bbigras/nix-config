@@ -159,6 +159,7 @@
       radicle-node
       resticprofile
       tkey-ssh-agent
+      jan
     ];
     shellAliases = {
       cls = "clear";
