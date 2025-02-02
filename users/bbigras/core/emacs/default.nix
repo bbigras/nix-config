@@ -854,13 +854,6 @@
             '';
           };
 
-          ctrlf = {
-            enable = true;
-            config = ''
-              (ctrlf-mode +1)
-            '';
-          };
-
           plantuml-mode.enable = true;
 
           company = {
