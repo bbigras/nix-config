@@ -5,7 +5,6 @@
   osConfig,
   ...
 }:
-
 {
   imports = [
     ./consult.nix
@@ -131,6 +130,28 @@
 
           god-mode = {
             enable = true;
+          };
+
+          casual-suite = {
+            enable = true;
+            # bind = {
+            #   "C-o" = "casual-suite-tmenu";
+            #   "M-g" = "casual-avy-tmenu";
+            # };
+            bindLocal = {
+              bookmark-bmenu-mode-map."C-o" = "casual-bookmarks-tmenu";
+              calc-mode-map."C-o" = "casual-calc-tmenu";
+              dired-mode-map."C-o" = "casual-dired-tmenu";
+              isearch-mode-map."C-o" = "casual-isearch-tmenu";
+              org-agenda-mode-map."C-o" = "casual-agenda-tmenu";
+              reb-lisp-mode-map."C-o" = "casual-re-builder-tmenu";
+              reb-mode-map."C-o" = "casual-re-builder-tmenu";
+              symbol-overlay-map."C-o" = "casual-symbol-overlay-tmenu";
+            };
+            config = ''
+              (keymap-global-set "M-g" #'casual-avy-tmenu)
+              (keymap-global-set "C-o" #'casual-editkit-main-tmenu)
+            '';
           };
 
           dashboard = {
