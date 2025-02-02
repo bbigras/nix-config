@@ -71,4 +71,22 @@
     # };
     gpg-agent.pinentryPackage = pkgs.pinentry-gnome3;
   };
+
+  home.sessionVariablesExtra = ''
+    if [ -z "$SSH_AUTH_SOCK" ]; then
+      export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/tkey-ssh-agent
+    fi
+  '';
+
+  systemd.user.services = {
+    tkey-ssh-agent = {
+      Unit = {
+        Description = "tkey-ssh-agent";
+      };
+      Service = {
+        ExecStart = "${pkgs.tkey-ssh-agent}/bin/tkey-ssh-agent -a %t/tkey-ssh-agent --uss";
+      };
+      Install.WantedBy = [ "default.target" ];
+    };
+  };
 }
