@@ -158,6 +158,7 @@
       television
       radicle-node
       resticprofile
+      tkey-ssh-agent
     ];
     shellAliases = {
       cls = "clear";
