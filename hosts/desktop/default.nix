@@ -243,8 +243,6 @@ in
     fwupd
   ];
 
-  virtualisation.docker.enable = true;
-
   services.fwupd.enable = true;
 
   services.flatpak.enable = true;

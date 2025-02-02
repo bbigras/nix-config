@@ -45,8 +45,6 @@ in
     # "vm.swappiness" = 1;
   };
 
-  virtualisation.docker.enable = true;
-
   environment.systemPackages = with pkgs; [ linuxPackages_zen.bcc ];
 
   fileSystems."/" = {
