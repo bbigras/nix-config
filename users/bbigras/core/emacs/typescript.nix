@@ -11,7 +11,7 @@
         };
 
         flymake-eslint = {
-          enable = true;
+          enable = false;
           config = ''
             (setq flymake-eslint-executable-name "${pkgs.nodePackages.eslint}/bin/eslint")
 
