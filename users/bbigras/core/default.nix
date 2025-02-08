@@ -157,6 +157,7 @@
       faketty
       television
       radicle-node
+      resticprofile
     ];
     shellAliases = {
       cls = "clear";
