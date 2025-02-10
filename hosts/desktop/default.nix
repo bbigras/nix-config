@@ -32,6 +32,7 @@ in
     with nixos-hardware.nixosModules;
     [
       ../../core
+      ../../services/kanata.nix
       ../../services/veilid.nix
       ../../dev
       ../../dev/virt-manager.nix

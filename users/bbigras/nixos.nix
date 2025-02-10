@@ -24,6 +24,7 @@ with lib;
         "input"
         "video"
       ]
+      ++ optionals config.services.kanata.enable [ "uinput" ]
       ++ optionals config.services.unbound.enable [ "unbound" ]
       ++ optionals config.services.transmission.enable [ "transmission" ]
       ++ optionals config.virtualisation.docker.enable [ "docker" ]
