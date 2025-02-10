@@ -160,6 +160,7 @@
       resticprofile
       tkey-ssh-agent
       jan
+      anki
     ];
     shellAliases = {
       cls = "clear";
