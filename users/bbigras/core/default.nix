@@ -217,7 +217,6 @@
     };
     tealdeer.enable = true;
     zoxide.enable = true;
-    zellij.enable = true;
   };
 
   services = {

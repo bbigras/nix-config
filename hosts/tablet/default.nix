@@ -211,7 +211,6 @@ in
         tealdeer.enable = true;
         zoxide.enable = true;
         zed-editor.enable = true;
-        zellij.enable = true;
         fish = {
           shellAliases = {
             ssh-server = "${pkgs.openssh}/bin/sshd -f /etc/tmp-sshd";
