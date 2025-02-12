@@ -132,7 +132,7 @@ in
     enableNotifications = true;
   };
   services = {
-    fwupd.enable = true;
+    fwupd.enable = false;
     thermald.enable = true;
   };
   services.desktopManager.cosmic.enable = true;
