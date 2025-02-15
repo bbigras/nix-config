@@ -6,6 +6,7 @@
     lfs.enable = true;
     userEmail = "bigras.bruno@gmail.com";
     userName = "Bruno Bigras";
+    signing.format = "ssh";
     extraConfig = {
       diff = {
         colorMoved = "default";
@@ -20,7 +21,6 @@
       rebase.updateRefs = true;
       credential.helper = "${pkgs.gitAndTools.gitFull}/bin/git-credential-libsecret";
       rerere.enabled = true;
-      gpg.format = "ssh";
       maintenance.prefetch.enabled = false;
     };
 
