@@ -18,6 +18,7 @@
     )
     ./aspell.nix
     ./nix.nix
+    ./nix-ld.nix
   ];
 
   documentation = {
