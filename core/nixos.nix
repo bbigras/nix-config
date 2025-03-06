@@ -21,6 +21,7 @@
     nixos-facter-modules.nixosModules.facter
     sops-nix.nixosModules.sops
     catppuccin.nixosModules.catppuccin
+    ./netbird.nix
     ./openssh.nix
     ./podman.nix
     ./resolved.nix

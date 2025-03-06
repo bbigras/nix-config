@@ -5,6 +5,9 @@
   services.tailscale.extraDaemonFlags = [
     "--no-logs-no-support"
   ];
+  services.tailscale.extraSetFlags = [
+    "--netfilter-mode=off"
+  ];
 
   systemd = {
     services.tailscaled = {
