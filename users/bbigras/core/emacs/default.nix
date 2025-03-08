@@ -8,6 +8,7 @@
 {
   imports = [
     ./consult.nix
+    ./denote.nix
     ./rust.nix
     # ./go.nix
     ./typescript.nix
