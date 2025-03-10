@@ -59,7 +59,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           sparse-checkout: nix/hosts.nix
-      - uses: nixbuild/nix-quick-install-action@v29
+      - uses: nixbuild/nix-quick-install-action@v30
       - id: get-attrs
         run: |
           function summary() {
