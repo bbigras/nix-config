@@ -27,7 +27,7 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@v16
         with:
           extra-conf: ${{ env.nix-conf }}
-      - uses: cachix/cachix-action@v15
+      - uses: cachix/cachix-action@v16
         with:
           name: bbigras-nix-config
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
@@ -43,7 +43,7 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@v16
         with:
           extra-conf: ${{ env.nix-conf }}
-      - uses: cachix/cachix-action@v15
+      - uses: cachix/cachix-action@v16
         with:
           name: bbigras-nix-config
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
@@ -161,7 +161,7 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@v16
         with:
           extra-conf: ${{ env.nix-conf }}
-      - uses: cachix/cachix-action@v15
+      - uses: cachix/cachix-action@v16
         with:
           name: bbigras-nix-config
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
@@ -189,7 +189,7 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@v16
         with:
           extra-conf: ${{ env.nix-conf }}
-      - uses: cachix/cachix-action@v15
+      - uses: cachix/cachix-action@v16
         with:
           name: bbigras-nix-config
           signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
