@@ -4,6 +4,7 @@
   impermanence,
   nix-index-database,
   catppuccin,
+  minimal-emacs-d,
   ...
 }:
 {
@@ -51,6 +52,7 @@
         impermanence
         nix-index-database
         catppuccin
+        minimal-emacs-d
         ;
     };
   };

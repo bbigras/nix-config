@@ -3,6 +3,7 @@
   lib,
   config,
   osConfig,
+  minimal-emacs-d,
   ...
 }:
 {
@@ -35,89 +36,20 @@
         enable = true;
 
         packageQuickstart = false;
-        recommendedGcSettings = true;
+        recommendedGcSettings = false;
         usePackageVerbose = false;
 
-        earlyInit = ''
-          ;; extra Lisp functions
-          (require 'subr-x)
+        prelude = (builtins.readFile "${minimal-emacs-d}/init.el");
+        earlyInit =
+          (builtins.readFile "${minimal-emacs-d}/early-init.el")
+          + "\n"
+          + ''
+            (defconst dw/is-termux (getenv "ANDROID_ROOT"))
 
-          (defconst dw/is-termux (getenv "ANDROID_ROOT"))
-
-          ;; Thanks, but no thanks
-          (setq inhibit-startup-message t)
-
-          (unless dw/is-termux
-            (scroll-bar-mode -1)        ; Disable visible scrollbar
-            (tool-bar-mode -1)          ; Disable the toolbar
-            (tooltip-mode -1)           ; Disable tooltips
-            (set-fringe-mode 10))       ; Give some breathing room
-
-          (menu-bar-mode -1)            ; Disable the menu bar
-
-          ;; Set up the visible bell
-          (setq visible-bell t)
-
-          (unless dw/is-termux
-            (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
-            (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-            (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-            (setq scroll-step 1) ;; keyboard scroll one line at a time
-            (setq use-dialog-box nil)) ;; Disable dialog boxes since they weren't working in Mac OSX
-
-          (column-number-mode)
-
-          ;; Enable line numbers for some modes
-          (dolist (mode '(text-mode-hook
-                          prog-mode-hook
-                          conf-mode-hook))
-            (add-hook mode (lambda () (display-line-numbers-mode 1))))
-
-          ;; Override some modes which derive from the above
-          (dolist (mode '(org-mode-hook))
-            (add-hook mode (lambda () (display-line-numbers-mode 0))))
-
-          (setq auth-sources '("~/.authinfo.age"))
-
-          (add-hook 'prog-mode-hook (lambda () (hs-minor-mode t)))
-
-          ;;(set-face-attribute 'default nil :family "Hack")
-          ;;(set-face-attribute 'default nil :family "Iosevka")
-
-          ;; list font families with `fc-list : family`
-          (set-face-attribute 'default nil :family "Iosevka Nerd Font")
-          (set-face-attribute 'default nil :height (* 13 10))
-
-          (setq
-           ediff-window-setup-function 'ediff-setup-windows-plain
-           delete-selection-mode t
-           show-trailing-whitespace t
-           blink-cursor-mode nil
-           read-process-output-max (* 1024 1024) ;; Default is 4k, which is too low for LSP.
-           sentence-end-double-space nil ;; Use one space to end sentences
-           native-comp-async-report-warnings-errors nil
-           )
-
-          ;; Enable some features that are disabled by default.
-          (put 'narrow-to-region 'disabled nil)
-
-          ;; Accept 'y' and 'n' rather than 'yes' and 'no'.
-          (defalias 'yes-or-no-p 'y-or-n-p)
-
-          ;; Enable highlighting of current line.
-          (global-hl-line-mode 1)
-
-          ;; Improved handling of clipboard in GNU/Linux and otherwise.
-          (setq select-enable-clipboard t
-                select-enable-primary t
-                save-interprogram-paste-before-kill t)
-
-        '';
-
-        prelude = ''
-          (setq custom-file (expand-file-name (concat "custom-" (system-name) ".el") "~/dev/emacs"))
-          (load custom-file 'noerror 'nomessage)
-        '';
+            ;; list font families with `fc-list : family`
+            (set-face-attribute 'default nil :family "Iosevka Nerd Font")
+            (set-face-attribute 'default nil :height (* 13 10))
+          '';
 
         usePackage = {
           logview.enable = true;

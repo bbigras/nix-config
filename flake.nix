@@ -39,6 +39,11 @@
       flake = false;
     };
 
+    minimal-emacs-d = {
+      url = "github:jamescherti/minimal-emacs.d";
+      flake = false;
+    };
+
     darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -395,6 +395,22 @@
         "type": "github"
       }
     },
+    "minimal-emacs-d": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1741736074,
+        "narHash": "sha256-0EWZxU9+0a6qfw4FsSW4dMIxEQ0I6jqAojrq7P2Feeo=",
+        "owner": "jamescherti",
+        "repo": "minimal-emacs.d",
+        "rev": "4620ce1b215729bf941d5128417a20d6926c3404",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jamescherti",
+        "repo": "minimal-emacs.d",
+        "type": "github"
+      }
+    },
     "nix-fast-build": {
       "inputs": {
         "flake-parts": [
@@ -806,6 +822,7 @@
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "lanzaboote": "lanzaboote",
+        "minimal-emacs-d": "minimal-emacs-d",
         "nix-fast-build": "nix-fast-build",
         "nix-index-database": "nix-index-database",
         "nix-on-droid": "nix-on-droid",

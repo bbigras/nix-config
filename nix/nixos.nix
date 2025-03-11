@@ -46,6 +46,7 @@ let
             nixos-hardware
             nur
             sops-nix
+            minimal-emacs-d
             ;
         };
       }
