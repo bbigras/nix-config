@@ -24,7 +24,6 @@
     ./openssh.nix
     ./podman.nix
     ./resolved.nix
-    ./solo2.nix
     ./tailscale.nix
     ./tmux.nix
   ];
