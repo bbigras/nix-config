@@ -13,6 +13,15 @@ let
         inherit pkgs;
         modules = [
           (../hosts + "/${hostname}")
+          {
+            home-manager = {
+              extraSpecialArgs = {
+                inherit (inputs)
+                  minimal-emacs-d
+                  ;
+              };
+            };
+          }
         ];
         extraSpecialArgs = {
           inherit (inputs) nur catppuccin;
