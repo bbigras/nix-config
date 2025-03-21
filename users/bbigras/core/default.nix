@@ -161,6 +161,7 @@
       tkey-ssh-agent
       jan
       anki
+      sops
     ];
     shellAliases = {
       cls = "clear";
