@@ -5,7 +5,6 @@
   config,
   pkgs,
   nur,
-  nixos-hardware,
   ...
 }:
 let
@@ -16,22 +15,17 @@ let
 in
 {
   imports =
-    with nixos-hardware.nixosModules;
     [
-      ./broadcom-wifi.nix
-
       ../../core
       ../../dev
       # ../../dev/virt-manager.nix
       ../../services/veilid.nix
 
+      { config.facter.reportPath = ./facter.json; }
+
       # Include the results of the hardware scan.
-      ../../hardware/hardware-configuration-laptop.nix
       ../../hardware/efi.nix
-      ../../hardware/bluetooth.nix
       ../../hardware/sound.nix
-      dell-xps-13-9343
-      common-hidpi
 
       ../../graphical
       ../../graphical/trusted.nix
@@ -53,6 +47,23 @@ in
       else
         [ ]
     );
+
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/af3adc21-df14-49b0-8d51-3b18f9dc8a82";
+    fsType = "ext4";
+  };
+
+  boot.initrd.luks.devices."cryptroot".device =
+    "/dev/disk/by-uuid/bfd7024b-39d6-4ba4-8517-967a8c2360c4";
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/339C-3957";
+    fsType = "vfat";
+    options = [
+      "fmask=0022"
+      "dmask=0022"
+    ];
+  };
 
   environment.systemPackages = with pkgs; [
     iwd
