@@ -202,6 +202,7 @@
     nix-your-shell.enable = true;
     pay-respects.enable = true;
     ripgrep.enable = true;
+    sesh.enable = true;
     sqls.enable = true;
     ssh = {
       enable = true;
