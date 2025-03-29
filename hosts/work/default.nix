@@ -55,12 +55,6 @@ in
 
   nix = {
     settings = {
-      trusted-users = [
-        "hydra-queue-runner"
-        "hydra"
-        "hydra-www"
-      ];
-
       substituters = [
         "https://cache.nixos.org"
         "https://nix-community.cachix.org"
@@ -75,14 +69,6 @@ in
       builders-use-substitutes = true
       netrc-file = ${config.sops.secrets.netrc.path};
     '';
-  };
-
-  services.hydra = {
-    enable = true;
-    hydraURL = "http://localhost:3000";
-    buildMachinesFiles = [ ];
-    useSubstitutes = true;
-    notificationSender = "fake@test.local";
   };
 
   services.smartd.enable = true;
