@@ -129,7 +129,7 @@ in
           ../../users/bbigras/core/yazi.nix
           ../../users/bbigras/core/emacs
           nurNoPkgs.repos.rycee.hmModules.emacs-init
-          catppuccin.homeManagerModules.catppuccin
+          catppuccin.homeModules.catppuccin
         ]
         ++ (
           if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/tablet.nix") then

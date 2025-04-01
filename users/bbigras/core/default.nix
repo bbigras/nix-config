@@ -41,7 +41,7 @@
   imports = [
     impermanence.nixosModules.home-manager.impermanence
     nix-index-database.hmModules.nix-index
-    catppuccin.homeManagerModules.catppuccin
+    catppuccin.homeModules.catppuccin
 
     ./atuin.nix
     ./btop.nix
