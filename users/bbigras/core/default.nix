@@ -217,6 +217,16 @@
         VerifyHostKeyDNS = "ask";
       };
     };
+    streamlink = {
+      enable = true;
+      settings = {
+        player = "${pkgs.mpv}/bin/mpv";
+        player-args = "--cache 2048";
+        player-no-close = true;
+        twitch-disable-ads = true;
+        twitch-low-latency = true;
+      };
+    };
     tealdeer.enable = true;
     zoxide.enable = true;
   };
