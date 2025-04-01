@@ -34,7 +34,10 @@
     ];
 
   services = {
-    # kdeconnect.enable = true;
+    kdeconnect = {
+      enable = true;
+      indicator = true;
+    };
     remmina.enable = true;
   };
 
