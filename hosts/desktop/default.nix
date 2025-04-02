@@ -251,4 +251,6 @@ in
   services.earlyoom.enable = false;
   services.desktopManager.cosmic.enable = true;
   services.displayManager.cosmic-greeter.enable = true;
+  systemd.packages = [ pkgs.observatory ];
+  systemd.services.monitord.wantedBy = [ "multi-user.target" ];
 }
