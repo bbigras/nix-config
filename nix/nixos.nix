@@ -15,9 +15,16 @@ let
     withSystem hostPlatform (
       { pkgs, ... }:
       lib.nixosSystem {
+
         modules =
           [
             inputs.nixos-cosmic.nixosModules.default
+            {
+              disabledModules = [
+                "services/desktop-managers/cosmic.nix"
+                "services/display-managers/cosmic-greeter.nix"
+              ];
+            }
             (../hosts + "/${hostname}")
             {
               nix.registry = {
