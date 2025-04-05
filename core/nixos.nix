@@ -29,8 +29,6 @@
     ./tmux.nix
   ];
 
-  environment.systemPackages = with pkgs; [ nix-output-monitor ];
-
   boot.initrd.systemd.enable = true;
   boot.kernelParams = [ "log_buf_len=10M" ];
   services.systembus-notify.enable = true;
@@ -41,6 +39,10 @@
   };
 
   i18n.defaultLocale = "fr_CA.UTF-8";
+  environment.systemPackages = with pkgs; [
+    ghostty.terminfo
+    nix-output-monitor
+  ];
 
   networking = {
     firewall = {
@@ -84,13 +86,9 @@
     extraSystemBuilderCmds = ''
       ln -sv ${pkgs.path} $out/nixpkgs
     '';
-
-    switch = {
-      enable = false;
-      enableNg = true;
-    };
-
-    stateVersion = "22.11";
+    rebuild.enableNg = true;
+    switch.enableNg = true;
+    stateVersion = "23.05";
   };
 
   time.timeZone = "America/Montreal";

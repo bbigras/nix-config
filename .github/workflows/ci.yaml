@@ -41,7 +41,7 @@ jobs:
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
           extraPullNames: nix-community
       - name: nix-flake-check
-        run: nix flake check '${{ env.flake }}' --option allow-import-from-derivation true
+        run: nix flake check '${{ env.flake }}' --impure --option allow-import-from-derivation true
   flake-show:
     name: flake show (${{ matrix.systems.platform }})
     runs-on: ${{ matrix.systems.os }}
@@ -64,7 +64,7 @@ jobs:
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
           extraPullNames: nix-community
       - name: nix-flake-show
-        run: nix flake show '${{ env.flake }}' --option allow-import-from-derivation true
+        run: nix flake show '${{ env.flake }}' --impure --option allow-import-from-derivation true
   get-attrs:
     runs-on: ubuntu-24.04
     outputs:
