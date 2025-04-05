@@ -15,14 +15,22 @@ env:
     accept-flake-config = true
     always-allow-substitutes = true
     builders-use-substitutes = true
-    max-jobs = 1
+    max-jobs = auto
+  nix-fast-build-args: --no-nom --skip-cached --retries=3 --option accept-flake-config true
 
 jobs:
   flake-check:
-    runs-on: ${{ matrix.os }}
+    name: flake check (${{ matrix.systems.platform }})
+    runs-on: ${{ matrix.systems.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        systems:
+          - os: ubuntu-24.04
+            platform: x86_64-linux
+          - os: ubuntu-22.04-arm
+            platform: aarch64-linux
+          - os: macos-15
+            platform: aarch64-darwin
     steps:
       - uses: DeterminateSystems/nix-installer-action@v16
         with:
@@ -30,15 +38,22 @@ jobs:
       - uses: cachix/cachix-action@v16
         with:
           name: bbigras-nix-config
-          signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
           extraPullNames: nix-community
       - name: nix-flake-check
-        run: nix flake check '${{ env.flake }}'
+        run: nix flake check '${{ env.flake }}' --option allow-import-from-derivation true
   flake-show:
-    runs-on: ${{ matrix.os }}
+    name: flake show (${{ matrix.systems.platform }})
+    runs-on: ${{ matrix.systems.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        systems:
+          - os: ubuntu-24.04
+            platform: x86_64-linux
+          - os: ubuntu-22.04-arm
+            platform: aarch64-linux
+          - os: macos-15
+            platform: aarch64-darwin
     steps:
       - uses: DeterminateSystems/nix-installer-action@v16
         with:
@@ -46,106 +61,28 @@ jobs:
       - uses: cachix/cachix-action@v16
         with:
           name: bbigras-nix-config
-          signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
           extraPullNames: nix-community
       - name: nix-flake-show
         run: nix flake show '${{ env.flake }}' --option allow-import-from-derivation true
   get-attrs:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       build: ${{ steps.get-attrs.outputs.build }}
       eval: ${{ steps.get-attrs.outputs.eval }}
+      darwin-hosts: ${{ steps.get-attrs.outputs.darwin-hosts }}
     steps:
       - uses: actions/checkout@v4
         with:
-          sparse-checkout: nix/hosts.nix
+          sparse-checkout: |
+            nix/hosts.nix
+            .github/workflows/get-attrs.py
       - uses: nixbuild/nix-quick-install-action@v30
       - id: get-attrs
-        run: |
-          function summary() {
-            printf '%s\n' "${*}" >> "$GITHUB_STEP_SUMMARY"
-          }
-
-          summary "# CI"
-          TMP="$(mktemp -d)"
-          # host packages
-          nix eval --json -f nix/hosts.nix | jq -c '
-            to_entries
-            | map({
-                name: .key,
-                evalOnly: false,
-                hostPlatform: .value.hostPlatform,
-                large: .value.large,
-                attr: "packages.\(.value.hostPlatform).\(.key)"
-            })
-            | map(
-                if .hostPlatform  == "x86_64-linux" then .runsOn="ubuntu-latest"
-                elif .hostPlatform == "x86_64-darwin" then .runsOn="macos-13"
-                elif .hostPlatform == "aarch64-darwin" then .runsOn="macos-latest"
-                else .evalOnly=true | .runsOn="ubuntu-latest"
-                end
-            )
-            | map(if .large then .evalOnly=true end)
-          ' >"$TMP/hostAttrs.json"
-
-          # dev shells
-          jq -c '
-            unique_by(.hostPlatform)
-            | sort_by(.runsOn)
-            | map(
-                .attr = "devShells.\(.hostPlatform).default.inputDerivation"
-                | .name = "devShell-\(.hostPlatform)"
-              )
-          ' "$TMP/hostAttrs.json" >"$TMP/shellAttrs.json"
-
-          # join shell and host attrs
-          jq -c -s add "$TMP/hostAttrs.json" "$TMP/shellAttrs.json" >"$TMP/attrs.json"
-
-          # warn about eval-only attrs
-          read -r -a evalOnlyAttrs < \
-            <(jq -c -r 'map(select(.evalOnly) | .name) | @sh' "$TMP/attrs.json" | tr -d \')
-          if [[ "${#evalOnlyAttrs[@]}" -ne 0 ]]; then
-            printf -v attrs "\`%s\`, " "${evalOnlyAttrs[@]}"
-            summary \
-              "- ⚠️ The following attributes will only be evaluated: ${attrs%, }"
-          fi
-
-          # add all to-build attrs to the summary
-          read -r -a buildAttrs < \
-            <(jq -c -r 'map(select(.evalOnly | not) | .name) | @sh' "$TMP/attrs.json" | tr -d \')
-          if [[ "${#buildAttrs[@]}" -ne 0 ]]; then
-            printf -v attrs "\`%s\`, " "${buildAttrs[@]}"
-            summary \
-              "- ✅ The following attributes will be built: ${attrs%, }"
-          fi
-
-          # check for dupes
-          duplicate_count="$(jq -r '
-            group_by([.name, .attr]) | map(select(length>1)) | length
-            ' "$TMP/attrs.json")"
-          if [[ "$duplicate_count" -ne 0 ]]; then
-            summary \
-              "- ‼️ Duplicate entries in \`attrs.json\`: \`$(cat "$TMP/attrs.json")\`"
-            exit 1
-          fi
-
-          # split build and evalOnly attrs
-          jq -c 'map(select(.evalOnly))' <"$TMP/attrs.json" >"$TMP/eval.json"
-          jq -c 'map(select(.evalOnly | not))' <"$TMP/attrs.json" >"$TMP/build.json"
-
-          echo "eval.json"
-          cat "$TMP/eval.json"
-          echo "---------"
-
-          echo "build.json"
-          cat "$TMP/build.json"
-          echo "---------"
-
-          echo "build=$(<"$TMP/build.json")" >>"$GITHUB_OUTPUT"
-          echo "eval=$(<"$TMP/eval.json")" >>"$GITHUB_OUTPUT"
-
+        run: ./.github/workflows/get-attrs.py
   eval:
-    name: eval ${{ matrix.attrs.name }}
+    name: eval ${{ matrix.attrs.name }} (${{ matrix.attrs.hostPlatform }})
+    if: ${{ fromJson(needs.get-attrs.outputs.eval)[0] != null }}
     runs-on: ${{ matrix.attrs.runsOn }}
     needs: [get-attrs]
     strategy:
@@ -154,25 +91,65 @@ jobs:
         attrs: ${{ fromJson(needs.get-attrs.outputs.eval) }}
     env:
       system: ${{ matrix.attrs.hostPlatform }}
-    if: ${{ fromJson(needs.get-attrs.outputs.eval)[0] != null }}
     steps:
-      - uses: docker/setup-qemu-action@v3
-        if: ${{ matrix.attrs.hostPlatform == 'aarch64-linux' }}
       - uses: DeterminateSystems/nix-installer-action@v16
         with:
           extra-conf: ${{ env.nix-conf }}
       - uses: cachix/cachix-action@v16
         with:
           name: bbigras-nix-config
-          signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
           extraPullNames: nix-community
       - name: eval
-        if: ${{ matrix.attrs.evalOnly }}
         run: |
-          nix eval --raw '${{ env.flake }}#${{ matrix.attrs.attr }}' --impure --extra-platforms "aarch64-linux i686-linux"
+          nix eval --raw '${{ env.flake }}#${{ matrix.attrs.attr }}' --impure
+  build-linux-builder:
+    name: build linux-builder for ${{ matrix.attrs.name }} (${{ matrix.attrs.equivalentLinuxPlatform }})
+    if: ${{ fromJson(needs.get-attrs.outputs.darwin-hosts)[0] != null }}
+    runs-on: ${{ matrix.attrs.equivalentLinuxRunner }}
+    needs: [get-attrs]
+    strategy:
+      fail-fast: false
+      matrix:
+        attrs: ${{ fromJson(needs.get-attrs.outputs.darwin-hosts) }}
+    env:
+      system: ${{ matrix.attrs.equivalentLinuxPlatform }}
+    steps:
+      - uses: DeterminateSystems/nix-installer-action@v16
+        with:
+          extra-conf: ${{ env.nix-conf }}
+      - uses: cachix/cachix-action@v16
+        with:
+          name: bbigras-nix-config
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          extraPullNames: nix-community
+      - name: nix-fast-build
+        run: nix run '${{ env.flake }}#nix-fast-build' -- ${{ env.nix-fast-build-args }} --systems=${{ env.system }} --flake='${{ env.flake }}#${{ matrix.attrs.linuxBuilderAttr }}'
 
+  build-darwin-host:
+    name: build ${{ matrix.attrs.name }} (${{ matrix.attrs.hostPlatform }})
+    if: ${{ fromJson(needs.get-attrs.outputs.darwin-hosts)[0] != null }}
+    runs-on: ${{ matrix.attrs.runsOn }}
+    needs: [get-attrs, build-linux-builder]
+    strategy:
+      fail-fast: false
+      matrix:
+        attrs: ${{ fromJson(needs.get-attrs.outputs.darwin-hosts) }}
+    env:
+      system: ${{ matrix.attrs.hostPlatform }}
+    steps:
+      - uses: DeterminateSystems/nix-installer-action@v16
+        with:
+          extra-conf: ${{ env.nix-conf }}
+      - uses: cachix/cachix-action@v16
+        with:
+          name: bbigras-nix-config
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          extraPullNames: nix-community
+      - name: nix-fast-build
+        run: nix run '${{ env.flake }}#nix-fast-build' -- ${{ env.nix-fast-build-args }} --systems=${{ env.system }} --flake='${{ env.flake }}#${{ matrix.attrs.attr }}'
   build:
-    name: build ${{ matrix.attrs.name }}
+    name: build ${{ matrix.attrs.name }} (${{ matrix.attrs.hostPlatform }})
     runs-on: ${{ matrix.attrs.runsOn }}
     needs: [get-attrs]
     strategy:
@@ -182,8 +159,6 @@ jobs:
     env:
       system: ${{ matrix.attrs.hostPlatform }}
     steps:
-      - uses: docker/setup-qemu-action@v3
-        if: ${{ env.system == 'aarch64-linux' }}
       - name: "Make more space"
         run: "sudo rm -rf /opt /usr/local || true &"
       - uses: DeterminateSystems/nix-installer-action@v16
@@ -192,31 +167,24 @@ jobs:
       - uses: cachix/cachix-action@v16
         with:
           name: bbigras-nix-config
-          signingKey: ${{ secrets.CACHIX_SIGNING_KEY }}
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
           extraPullNames: nix-community
       - name: nix-fast-build
-        run: |
-          declare -a args=(
-            '--no-nom'
-            '--skip-cached'
-            '--max-jobs=1'
-            '--eval-workers=2'
-            '--systems=${{ env.system }}'
-            '--option' 'accept-flake-config' 'true'
-            '--retries=3'
-            '--option' 'pure-eval' 'false'
-          )
-          [[ '${{ env.system }}' == 'aarch64-linux' ]] && args+=('--option' 'extra-platforms' 'aarch64-linux')
-
-          args+=('--flake=${{ env.flake }}#${{ matrix.attrs.attr }}')
-          nix run '${{ env.flake }}#nix-fast-build' -- "${args[@]}"
-
+        run: nix run '${{ env.flake }}#nix-fast-build' -- ${{ env.nix-fast-build-args }} --systems=${{ env.system }} --flake='${{ env.flake }}#${{ matrix.attrs.attr }}'
   check:
-    runs-on: ubuntu-latest
-    needs: [flake-check, flake-show, build, eval]
+    runs-on: ubuntu-24.04
+    needs:
+      [
+        flake-check,
+        flake-show,
+        build,
+        eval,
+        build-linux-builder,
+        build-darwin-host,
+      ]
     if: always()
     steps:
       - uses: re-actors/alls-green@release/v1
         with:
           jobs: ${{ toJSON(needs) }}
-          allowed-skips: eval
+          allowed-skips: eval, build-linux-builder, build-darwin-host
