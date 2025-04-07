@@ -732,6 +732,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_jjui": {
+      "locked": {
+        "lastModified": 1744019215,
+        "narHash": "sha256-c7a4evcLIwajC1nCOhcYEyqkEdz9XzBCMI1k/09bNxk=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "eb4e383e9170d02aaa0a005cd1521351ec488735",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "eb4e383e9170d02aaa0a005cd1521351ec488735",
+        "type": "github"
+      }
+    },
     "nixpkgs_veilid": {
       "locked": {
         "lastModified": 1742616299,
@@ -848,6 +864,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs_jj-fzf": "nixpkgs_jj-fzf",
+        "nixpkgs_jjui": "nixpkgs_jjui",
         "nixpkgs_veilid": "nixpkgs_veilid",
         "nixpkgs_zed": "nixpkgs_zed",
         "nur": "nur",
