@@ -3,7 +3,6 @@
 {
   home = {
     packages = with pkgs; [
-      jj-fzf
       jjui
       kdiff3
       meld
