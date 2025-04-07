@@ -50,7 +50,6 @@
     };
 
     nixpkgs_jjui.url = "github:nixos/nixpkgs?rev=eb4e383e9170d02aaa0a005cd1521351ec488735";
-    nixpkgs_veilid.url = "github:nixos/nixpkgs?rev=09aac85fe355774f37844cbc3712f4682bbc9de3";
 
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
 
