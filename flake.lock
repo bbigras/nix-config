@@ -398,11 +398,11 @@
     "minimal-emacs-d": {
       "flake": false,
       "locked": {
-        "lastModified": 1743683012,
-        "narHash": "sha256-e07RPwmIQ4zSHEabkBAsKFpiDyuzlfrnbrQrkQ0zq5s=",
+        "lastModified": 1744226132,
+        "narHash": "sha256-N34GtJO1LWJdANHatxw1j++3BweqH8qh5NdW2a0J7jM=",
         "owner": "jamescherti",
         "repo": "minimal-emacs.d",
-        "rev": "90e04207411b29f27e7849cc0df95a5b92f79e41",
+        "rev": "5e64341f07c51440cc98c83a9f0e3709d7d01120",
         "type": "github"
       },
       "original": {
