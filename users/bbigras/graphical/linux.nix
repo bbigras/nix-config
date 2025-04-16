@@ -23,7 +23,6 @@
     ];
 
     sessionVariables = {
-      DIRENV_LOG_FORMAT = "";
       MOZ_DBUS_REMOTE = 1;
       MOZ_USE_XINPUT2 = 1;
       PAGER = "less -FRX";
