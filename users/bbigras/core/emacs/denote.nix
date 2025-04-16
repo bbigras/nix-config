@@ -28,14 +28,11 @@
         };
 
         config = ''
-          (require 'denote-rename-buffer)
-           (require 'denote-org-extras)
+          ;; Rename buffers with the note name
+          (denote-rename-buffer-mode 1)
 
-           ;; Rename buffers with the note name
-           (denote-rename-buffer-mode 1)
-
-           ;; Buttonize all denote links in text buffers
-           (add-hook 'text-mode-hook #'denote-fontify-links-mode-maybe)
+          ;; Buttonize all denote links in text buffers
+          (add-hook 'text-mode-hook #'denote-fontify-links-mode-maybe)
         '';
 
         # ;; Automatically rename Denote buffers when opening them so that

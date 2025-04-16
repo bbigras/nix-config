@@ -21,7 +21,7 @@
             "C-x 4 b" = "consult-buffer-other-window"; # orig. switch-to-buffer-other-window
             "C-x 5 b" = "consult-buffer-other-frame"; # orig. switch-to-buffer-other-frame
             "C-x r b" = "consult-bookmark"; # orig. bookmark-jump
-            "C-x p b" = "consult-project-buffer"; # orig. project-switch-to-buffer
+            # "C-x p b" = "consult-project-buffer"; # orig. project-switch-to-buffer
             # Custom M-# bindings for fast register access
             "M-#" = "consult-register-load";
             "M-'" = "consult-register-store"; # orig. abbrev-prefix-mark (unrelated)
