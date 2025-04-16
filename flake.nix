@@ -49,8 +49,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs_jjui.url = "github:nixos/nixpkgs?rev=eb4e383e9170d02aaa0a005cd1521351ec488735";
-
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
 
     srvos = {
