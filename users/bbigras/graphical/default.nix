@@ -14,7 +14,7 @@
   home.packages =
     with pkgs;
     [
-      chatterino2
+      chatterino7
       dbeaver-bin
       element-desktop
       libnotify
