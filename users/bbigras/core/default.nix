@@ -48,6 +48,7 @@
     ./git.nix
     ./jujutsu.nix
     ./emacs
+    ./process-compose.nix
     ./tmux.nix
     ./xdg.nix
     ./fish.nix
