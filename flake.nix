@@ -112,6 +112,13 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixGL = {
+      url = "github:nix-community/nixGL";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
 
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
