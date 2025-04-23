@@ -106,15 +106,4 @@ in
       "8022"
     ];
   };
-  tablet = mkHost {
-    type = "nix-on-droid";
-    hostPlatform = "aarch64-linux";
-    address = "tablet";
-    pubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHGTEcpBZpaWTaPBXsBCvO2sNE6UU9Z7In98htaEofYa nix-on-droid@localhost"; # FIXME
-    remoteBuild = false;
-    sshOpts = [
-      "-p"
-      "8022"
-    ];
-  };
 }

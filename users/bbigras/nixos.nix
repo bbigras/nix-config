@@ -39,9 +39,7 @@ with lib;
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP2Eo0xWZ1VPs5iHlDd3j+O+3I1qx4VqDaXpkL6phB6Z bbigras@desktop"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICaqQycIPmT5lvdqdIQwcy+pitleXZtK0j8RsphADcfa bbigras@laptop"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGZqHDSyyXc5Zs5XzXveQaOzNoSMPLtY686W5/eVISuQ bbigras@pixel6"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOTrwYIPtKqyGjVAsUMBEroO5+FGOzmYk6VlSE0yaE+w nix-on-droid@tablet"
       "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCQErMfuhLr14DAHaUSgTLArydzPoLzeOzkYAzf/ye3qvP/vVXeGe4ruWWxvro0yS3DUlfUpmWUU3KRyv3ZN9z6Q9FnDsKKv+GXTrZq4owymd6NWKOLl2F6LGwUGgnkwvit5TDUVolCvIQTT7F/qLgYvmr0q1nTunrl+uPVNXFiAyalhIPMVU+atw/pNmp3JfIqBRefVlrxeoCQ81/nRhQJcNNXjRxSzIeKu80wwCxODYOBtHdIP/NJEzhAMOq/HLabC7ehZtNohweEAlK71HycqwWSNNonEBU0g9R0r/VfXiENa4x+IY5fvMjsdOj53dZuXCDV0AjOmd8sJoepjF7l pubkeygenerator@mobiledevice"
-      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCvDHgK4U+nWmYdcnENPvn9RuLZGkZj8FRfjv4IgGo7yelkWXXFWochjfuIrIZQUntL6C4kZpcO7MGl1yWELxop+hmm/zAyngy2h1q5RQSI4qkndrEvV8Mdntw2KZIym1XDAakAoI5yKnTCmKanJb7l0ros3l2hteqhPAnv6VA1gHuDAwgETR6IkFgrVWu0u6UxfKRQrQ6wnpZuAI54hhut4Yna37LRJ8ihT81IcMMuAr8kdl1CsrEEygfs2GzysZ1ElcalFqCckuxqjsv+YQum/cBo2sWDENt+UbDzDPzADKNan9K4bRVTuvXa3YiX7unuqikIlaxsmx0y3ofhjARl pubkeygenerator@tablet"
     ];
   };
 
