@@ -13,7 +13,7 @@ let
   };
 in
 {
-  user.shell = "${pkgs.fish}/bin/fish";
+  user.shell = "${pkgs.zsh}/bin/zsh";
 
   user = {
     gid = 10160;
@@ -126,8 +126,8 @@ in
           ../../users/bbigras/core/git.nix
           #../../users/bbigras/core/jujutsu.nix
           ../../users/bbigras/core/tmux.nix
-          ../../users/bbigras/core/fish.nix
           ../../users/bbigras/core/yazi.nix
+          ../../users/bbigras/core/zsh.nix
           ../../users/bbigras/core/emacs
           nurNoPkgs.repos.rycee.hmModules.emacs-init
           catppuccin.homeModules.catppuccin
