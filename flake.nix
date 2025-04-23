@@ -2,14 +2,14 @@
   description = "bbigras's NixOS config";
 
   nixConfig = {
-    extra-trusted-substituters = [
+    extra-substituters = [
       "https://bbigras-nix-config.cachix.org"
       "https://nix-community.cachix.org"
       "https://nix-on-droid.cachix.org"
       "https://pre-commit-hooks.cachix.org"
       "https://cosmic.cachix.org"
     ];
-    extra-trusted-public-keys = [
+    extra-public-keys = [
       "bbigras-nix-config.cachix.org-1:aXL6Q9Oi0jyF79YAKRu17iVNk9HY0p23OZX7FA8ulhU="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU="
