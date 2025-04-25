@@ -32,7 +32,7 @@ jobs:
           - os: macos-15
             platform: aarch64-darwin
     steps:
-      - uses: DeterminateSystems/nix-installer-action@v16
+      - uses: DeterminateSystems/nix-installer-action@v17
         with:
           extra-conf: ${{ env.nix-conf }}
       - uses: actions/cache@v4
@@ -60,7 +60,7 @@ jobs:
           - os: macos-15
             platform: aarch64-darwin
     steps:
-      - uses: DeterminateSystems/nix-installer-action@v16
+      - uses: DeterminateSystems/nix-installer-action@v17
         with:
           extra-conf: ${{ env.nix-conf }}
       - uses: actions/cache@v4
@@ -102,7 +102,7 @@ jobs:
     env:
       system: ${{ matrix.attrs.hostPlatform }}
     steps:
-      - uses: DeterminateSystems/nix-installer-action@v16
+      - uses: DeterminateSystems/nix-installer-action@v17
         with:
           extra-conf: ${{ env.nix-conf }}
       - uses: actions/cache@v4
@@ -130,7 +130,7 @@ jobs:
     env:
       system: ${{ matrix.attrs.equivalentLinuxPlatform }}
     steps:
-      - uses: DeterminateSystems/nix-installer-action@v16
+      - uses: DeterminateSystems/nix-installer-action@v17
         with:
           extra-conf: ${{ env.nix-conf }}
       - uses: actions/cache@v4
@@ -158,7 +158,7 @@ jobs:
     env:
       system: ${{ matrix.attrs.hostPlatform }}
     steps:
-      - uses: DeterminateSystems/nix-installer-action@v16
+      - uses: DeterminateSystems/nix-installer-action@v17
         with:
           extra-conf: ${{ env.nix-conf }}
       - uses: actions/cache@v4
@@ -186,7 +186,7 @@ jobs:
     steps:
       - name: "Make more space"
         run: "sudo rm -rf /opt /usr/local || true &"
-      - uses: DeterminateSystems/nix-installer-action@v16
+      - uses: DeterminateSystems/nix-installer-action@v17
         with:
           extra-conf: ${{ env.nix-conf }}
       - uses: actions/cache@v4
