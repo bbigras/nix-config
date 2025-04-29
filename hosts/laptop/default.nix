@@ -48,6 +48,10 @@ in
         [ ]
     );
 
+  boot = {
+    plymouth.enable = true;
+  };
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/af3adc21-df14-49b0-8d51-3b18f9dc8a82";
     fsType = "ext4";
