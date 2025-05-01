@@ -46,6 +46,7 @@
     ./atuin.nix
     ./btop.nix
     ./git.nix
+    ./jjui.nix
     ./jujutsu.nix
     ./emacs
     ./process-compose.nix
