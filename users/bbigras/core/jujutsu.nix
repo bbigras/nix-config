@@ -40,7 +40,7 @@
         };
         ui.default-command = "log";
         revset-aliases = {
-          "HEAD" = "@-";
+          "HEAD" = ''coalesce(@ ~ description(exact:""), @-)'';
           "desc(x)" = "description(x)";
           "user()" = ''user("bigras.bruno@gmail.com")'';
           "user(x)" = "author(x) | committer(x)";
