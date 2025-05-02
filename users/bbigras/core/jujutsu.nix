@@ -53,7 +53,8 @@
           "user()" = ''user("bigras.bruno@gmail.com")'';
           "user(x)" = "author(x) | committer(x)";
           "closest_bookmark(to)" = "heads(::to & bookmarks())";
-          "closest_pushable(to)" = ''heads(::to & ~description(exact:"") & (~empty() | merges()))'';
+          "closest_pushable(to)" =
+            ''heads(::to & mutable() & ~description(exact:"") & (~empty() | merges()))'';
         };
       };
     };
