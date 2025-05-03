@@ -211,7 +211,7 @@
                   pkg:
                   builtins.elem (pkgs.lib.getName pkg) [
                     "broadcom-sta"
-                    "copilot-node-server"
+                    "copilot-language-server"
                     "steam"
                     "steam-original"
                     "steam-run"
