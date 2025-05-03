@@ -73,6 +73,10 @@ in
     iwd
   ];
 
+  programs.steam.enable = true;
+  programs.steam.remotePlay.openFirewall = true;
+  programs.gamemode.enable = true;
+
   sops.secrets = {
     restic-laptop-password.sopsFile = ./restic-laptop.yaml;
     restic-laptop-creds.sopsFile = ./restic-laptop.yaml;
