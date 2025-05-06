@@ -156,8 +156,6 @@ in
   };
   services.desktopManager.cosmic.enable = true;
   services.displayManager.cosmic-greeter.enable = true;
-  systemd.packages = [ pkgs.observatory ];
-  systemd.services.monitord.wantedBy = [ "multi-user.target" ];
   environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
 
   zramSwap = {
