@@ -41,6 +41,7 @@
   };
 
   programs = {
+    alacritty.enable = true;
     chromium.enable = true;
     ghostty.enable = true;
     mangohud.enable = true;
