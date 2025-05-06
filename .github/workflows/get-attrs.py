@@ -168,7 +168,7 @@ class Flake:
     evalOnly: Sequence[Derivation]
 
     def __init__(self, hosts: List[Host]) -> None:
-        devShells = []
+        devShells = [DevShell(p) for p in set([h.hostPlatform for h in hosts])]
         buildables, evalOnly = map(
             list, partition(lambda a: a.buildable, itertools.chain(hosts, devShells))
         )

@@ -199,17 +199,8 @@ jobs:
           name: bbigras-nix-config
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
           extraPullNames: nix-community
-      - uses: actions/checkout@v4
-      - name: build-host
-        uses: nick-fields/retry@v3
-        with:
-          timeout_minutes: 720
-          max_attempts: 3
-          retry_on: error
-          command: |
-            nix run nixpkgs#nix-build-uncached -- \
-              --keep-going \
-              -A packages.${{ matrix.attrs.hostPlatform }}.${{ matrix.attrs.name }}
+      - name: nix-fast-build
+        run: nix run '${{ env.flake }}#nix-fast-build' -- ${{ env.nix-fast-build-args }} --systems=${{ env.system }} --flake='${{ env.flake }}#${{ matrix.attrs.attr }}'
   check:
     runs-on: ubuntu-24.04
     needs:
