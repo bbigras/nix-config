@@ -35,11 +35,6 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@v17
         with:
           extra-conf: ${{ env.nix-conf }}
-      - uses: actions/cache@v4
-        with:
-          path: ~/.cache/nix
-          key: cache-nix-${{ runner.os }}-${{ github.run_id }}
-          restore-keys: cache-nix-${{ runner.os }}
       - uses: cachix/cachix-action@v16
         with:
           name: bbigras-nix-config
@@ -63,11 +58,6 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@v17
         with:
           extra-conf: ${{ env.nix-conf }}
-      - uses: actions/cache@v4
-        with:
-          path: ~/.cache/nix
-          key: cache-nix-${{ runner.os }}-${{ github.run_id }}
-          restore-keys: cache-nix-${{ runner.os }}
       - uses: cachix/cachix-action@v16
         with:
           name: bbigras-nix-config
@@ -105,11 +95,6 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@v17
         with:
           extra-conf: ${{ env.nix-conf }}
-      - uses: actions/cache@v4
-        with:
-          path: ~/.cache/nix
-          key: cache-nix-${{ runner.os }}-${{ github.run_id }}
-          restore-keys: cache-nix-${{ runner.os }}
       - uses: cachix/cachix-action@v16
         with:
           name: bbigras-nix-config
@@ -133,11 +118,6 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@v17
         with:
           extra-conf: ${{ env.nix-conf }}
-      - uses: actions/cache@v4
-        with:
-          path: ~/.cache/nix
-          key: cache-nix-${{ runner.os }}-${{ github.run_id }}
-          restore-keys: cache-nix-${{ runner.os }}
       - uses: cachix/cachix-action@v16
         with:
           name: bbigras-nix-config
@@ -161,11 +141,6 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@v17
         with:
           extra-conf: ${{ env.nix-conf }}
-      - uses: actions/cache@v4
-        with:
-          path: ~/.cache/nix
-          key: cache-nix-${{ runner.os }}-${{ github.run_id }}
-          restore-keys: cache-nix-${{ runner.os }}
       - uses: cachix/cachix-action@v16
         with:
           name: bbigras-nix-config
@@ -189,11 +164,6 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@v17
         with:
           extra-conf: ${{ env.nix-conf }}
-      - uses: actions/cache@v4
-        with:
-          path: ~/.cache/nix
-          key: cache-nix-${{ runner.os }}-${{ github.run_id }}
-          restore-keys: cache-nix-${{ runner.os }}
       - uses: cachix/cachix-action@v16
         with:
           name: bbigras-nix-config
