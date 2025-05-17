@@ -739,6 +739,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_veilid": {
+      "locked": {
+        "lastModified": 1747447098,
+        "narHash": "sha256-VR4kKzDnQAF/i+vKKI+ZkjCkyLZFHMyzb0Cc7Qanx4Q=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "3bfe0a499ee44209ea2df5fce54d2d0ff2552305",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "3bfe0a499ee44209ea2df5fce54d2d0ff2552305",
+        "type": "github"
+      }
+    },
     "nmd": {
       "inputs": {
         "nixpkgs": [
@@ -823,6 +839,7 @@
         "nixos-facter-modules": "nixos-facter-modules",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
+        "nixpkgs_veilid": "nixpkgs_veilid",
         "nur": "nur",
         "sops-nix": "sops-nix",
         "srvos": "srvos",
