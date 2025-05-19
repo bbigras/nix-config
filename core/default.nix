@@ -3,6 +3,7 @@
   hostType,
   impermanence,
   nix-index-database,
+  nixos-avf,
   catppuccin,
   minimal-emacs-d,
   ...
@@ -51,6 +52,7 @@
         hostType
         impermanence
         nix-index-database
+        nixos-avf
         catppuccin
         minimal-emacs-d
         ;

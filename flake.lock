@@ -530,6 +530,21 @@
         "type": "github"
       }
     },
+    "nixos-avf": {
+      "locked": {
+        "lastModified": 1747400219,
+        "narHash": "sha256-MuBMdJiGPqZ9+mB6ppML5hbEhDvMFDNXtVxv2wkhpNg=",
+        "owner": "nix-community",
+        "repo": "nixos-avf",
+        "rev": "7f8d2b87877ed851db8060220eec92b180961977",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixos-avf",
+        "type": "github"
+      }
+    },
     "nixos-cosmic": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -835,6 +850,7 @@
         "nix-index-database": "nix-index-database",
         "nix-on-droid": "nix-on-droid",
         "nixGL": "nixGL",
+        "nixos-avf": "nixos-avf",
         "nixos-cosmic": "nixos-cosmic",
         "nixos-facter-modules": "nixos-facter-modules",
         "nixos-hardware": "nixos-hardware",
