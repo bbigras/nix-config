@@ -159,8 +159,9 @@ jobs:
     env:
       system: ${{ matrix.attrs.hostPlatform }}
     steps:
-      - name: "Make more space"
-        run: "sudo rm -rf /opt /usr/local || true &"
+      - uses: wimpysworld/nothing-but-nix@main
+        with:
+          hatchet-protocol: "holster"
       - uses: DeterminateSystems/nix-installer-action@v17
         with:
           extra-conf: ${{ env.nix-conf }}
