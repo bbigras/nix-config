@@ -18,12 +18,9 @@ in
       ../../dev
       # ../../dev/virt-manager.nix
       ../../dev/incus.nix
-
-      # Include the results of the hardware scan.
-      ../../hardware/hardware-configuration-work.nix
       ../../hardware/efi.nix
-
       ../../users/bbigras
+      { config.facter.reportPath = ./facter.json; }
     ]
     ++ (
       if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_work.nix") then
