@@ -254,8 +254,12 @@
           "prog_if": 0
         },
         "driver": "pcieport",
+        "driver_module": "pcieportdrv",
         "drivers": [
           "pcieport"
+        ],
+        "driver_modules": [
+          "pcieportdrv"
         ],
         "module_alias": "pci:v00008086d00007A38sv00001849sd00007A38bc06sc04i00"
       },
@@ -388,8 +392,12 @@
           "prog_if": 0
         },
         "driver": "pcieport",
+        "driver_module": "pcieportdrv",
         "drivers": [
           "pcieport"
+        ],
+        "driver_modules": [
+          "pcieportdrv"
         ],
         "module_alias": "pci:v00001002d00001479sv00001002sd00001479bc06sc04i00"
       },
@@ -465,8 +473,12 @@
           "prog_if": 0
         },
         "driver": "pcieport",
+        "driver_module": "pcieportdrv",
         "drivers": [
           "pcieport"
+        ],
+        "driver_modules": [
+          "pcieportdrv"
         ],
         "module_alias": "pci:v00008086d0000460Dsv00001849sd0000460Dbc06sc04i00"
       },
@@ -542,8 +554,12 @@
           "prog_if": 0
         },
         "driver": "pcieport",
+        "driver_module": "pcieportdrv",
         "drivers": [
           "pcieport"
+        ],
+        "driver_modules": [
+          "pcieportdrv"
         ],
         "module_alias": "pci:v00001002d00001478sv00000000sd00000000bc06sc04i00"
       },
@@ -619,8 +635,12 @@
           "prog_if": 0
         },
         "driver": "pcieport",
+        "driver_module": "pcieportdrv",
         "drivers": [
           "pcieport"
+        ],
+        "driver_modules": [
+          "pcieportdrv"
         ],
         "module_alias": "pci:v00008086d00007A3Bsv00001849sd00007A3Bbc06sc04i00"
       },
@@ -748,8 +768,12 @@
           "prog_if": 0
         },
         "driver": "pcieport",
+        "driver_module": "pcieportdrv",
         "drivers": [
           "pcieport"
+        ],
+        "driver_modules": [
+          "pcieportdrv"
         ],
         "module_alias": "pci:v00008086d0000464Dsv00000000sd00000000bc06sc04i00"
       },
@@ -825,8 +849,12 @@
           "prog_if": 0
         },
         "driver": "pcieport",
+        "driver_module": "pcieportdrv",
         "drivers": [
           "pcieport"
+        ],
+        "driver_modules": [
+          "pcieportdrv"
         ],
         "module_alias": "pci:v00008086d00007A36sv00001849sd00007A36bc06sc04i00"
       }
@@ -835,6 +863,7 @@
       {
         "architecture": "x86_64",
         "vendor_name": "GenuineIntel",
+        "model_name": "12th Gen Intel(R) Core(TM) i5-12600KF",
         "family": 6,
         "model": 151,
         "stepping": 2,
@@ -986,21 +1015,24 @@
           "rfds",
           "bhi"
         ],
+        "power_management": [
+          ""
+        ],
         "bogo": 7372.8,
         "cache": 20480,
         "units": 128,
         "physical_id": 0,
         "siblings": 16,
         "cores": 10,
-        "fpu": true,
-        "fpu_exception": true,
+        "fpu": false,
+        "fpu_exception": false,
         "cpuid_level": 32,
         "write_protect": false,
         "clflush_size": 64,
         "cache_alignment": 64,
         "address_sizes": {
-          "physical": 39,
-          "virtual": 48
+          "physical": "0x27",
+          "virtual": "0x30"
         }
       }
     ],
@@ -1074,7 +1106,7 @@
             "cylinders": 953869,
             "heads": 64,
             "sectors": 32,
-            "size": 0,
+            "size": "0x0",
             "geo_type": "logical"
           },
           {
@@ -1156,7 +1188,7 @@
             "cylinders": 364801,
             "heads": 255,
             "sectors": 63,
-            "size": 0,
+            "size": "0x0",
             "geo_type": "logical"
           },
           {
@@ -1244,7 +1276,7 @@
             "cylinders": 60801,
             "heads": 255,
             "sectors": 63,
-            "size": 0,
+            "size": "0x0",
             "geo_type": "logical"
           },
           {
@@ -1466,8 +1498,12 @@
         },
         "hotplug": "usb",
         "driver": "hub",
+        "driver_module": "usbcore",
         "drivers": [
           "hub"
+        ],
+        "driver_modules": [
+          "usbcore"
         ],
         "module_alias": "usb:v174Cp2074d0200dc09dsc00dp02ic09isc00ip02in00"
       },
@@ -1494,7 +1530,7 @@
         },
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 6.14.0 xhci-hcd",
+          "name": "Linux 6.12.28 xhci-hcd",
           "value": 7531
         },
         "device": {
@@ -1504,11 +1540,11 @@
         },
         "revision": {
           "hex": "0000",
-          "name": "6.14",
+          "name": "6.12",
           "value": 0
         },
         "serial": "0000:00:14.0",
-        "model": "Linux 6.14.0 xhci-hcd xHCI Host Controller",
+        "model": "Linux 6.12.28 xhci-hcd xHCI Host Controller",
         "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb1/1-0:1.0",
         "sysfs_bus_id": "1-0:1.0",
         "resources": [
@@ -1549,10 +1585,14 @@
         },
         "hotplug": "usb",
         "driver": "hub",
+        "driver_module": "usbcore",
         "drivers": [
           "hub"
         ],
-        "module_alias": "usb:v1D6Bp0002d0614dc09dsc00dp01ic09isc00ip00in00"
+        "driver_modules": [
+          "usbcore"
+        ],
+        "module_alias": "usb:v1D6Bp0002d0612dc09dsc00dp01ic09isc00ip00in00"
       },
       {
         "index": 60,
@@ -1621,8 +1661,12 @@
         },
         "hotplug": "usb",
         "driver": "hub",
+        "driver_module": "usbcore",
         "drivers": [
           "hub"
+        ],
+        "driver_modules": [
+          "usbcore"
         ],
         "module_alias": "usb:v174Cp3074d0200dc09dsc00dp03ic09isc00ip00in00"
       },
@@ -1649,7 +1693,7 @@
         },
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 6.14.0 xhci-hcd",
+          "name": "Linux 6.12.28 xhci-hcd",
           "value": 7531
         },
         "device": {
@@ -1659,11 +1703,11 @@
         },
         "revision": {
           "hex": "0000",
-          "name": "6.14",
+          "name": "6.12",
           "value": 0
         },
         "serial": "0000:00:14.0",
-        "model": "Linux 6.14.0 xhci-hcd xHCI Host Controller",
+        "model": "Linux 6.12.28 xhci-hcd xHCI Host Controller",
         "sysfs_id": "/devices/pci0000:00/0000:00:14.0/usb2/2-0:1.0",
         "sysfs_bus_id": "2-0:1.0",
         "detail": {
@@ -1694,10 +1738,14 @@
         },
         "hotplug": "usb",
         "driver": "hub",
+        "driver_module": "usbcore",
         "drivers": [
           "hub"
         ],
-        "module_alias": "usb:v1D6Bp0003d0614dc09dsc00dp03ic09isc00ip00in00"
+        "driver_modules": [
+          "usbcore"
+        ],
+        "module_alias": "usb:v1D6Bp0003d0612dc09dsc00dp03ic09isc00ip00in00"
       }
     ],
     "keyboard": [
@@ -1833,7 +1881,7 @@
           {
             "type": "mem",
             "base": 0,
-            "range": 33395302400,
+            "range": 33395609600,
             "enabled": true,
             "access": "read_write",
             "prefetch": "unknown"
@@ -2677,7 +2725,7 @@
     "network_interface": [
       {
         "index": 65,
-        "attached_to": 26,
+        "attached_to": 0,
         "class_list": [
           "network_interface"
         ],
@@ -2687,38 +2735,19 @@
           "value": 263
         },
         "sub_class": {
-          "hex": "0001",
-          "name": "Ethernet",
-          "value": 1
+          "hex": "0000",
+          "name": "Loopback",
+          "value": 0
         },
-        "model": "Ethernet network interface",
-        "sysfs_id": "/class/net/wlp0s20f3",
-        "sysfs_device_link": "/devices/pci0000:00/0000:00:14.3",
-        "unix_device_name": "wlp0s20f3",
+        "model": "Loopback network interface",
+        "sysfs_id": "/class/net/lo",
+        "unix_device_name": "lo",
         "unix_device_names": [
-          "wlp0s20f3"
-        ],
-        "resources": [
-          {
-            "type": "hwaddr",
-            "address": 99
-          },
-          {
-            "type": "phwaddr",
-            "address": 99
-          }
-        ],
-        "driver": "iwlwifi",
-        "driver_module": "iwlwifi",
-        "drivers": [
-          "iwlwifi"
-        ],
-        "driver_modules": [
-          "iwlwifi"
+          "lo"
         ]
       },
       {
-        "index": 69,
+        "index": 67,
         "attached_to": 34,
         "class_list": [
           "network_interface"
@@ -2761,7 +2790,7 @@
       },
       {
         "index": 70,
-        "attached_to": 0,
+        "attached_to": 26,
         "class_list": [
           "network_interface"
         ],
@@ -2771,15 +2800,34 @@
           "value": 263
         },
         "sub_class": {
-          "hex": "0000",
-          "name": "Loopback",
-          "value": 0
+          "hex": "0001",
+          "name": "Ethernet",
+          "value": 1
         },
-        "model": "Loopback network interface",
-        "sysfs_id": "/class/net/lo",
-        "unix_device_name": "lo",
+        "model": "Ethernet network interface",
+        "sysfs_id": "/class/net/wlp0s20f3",
+        "sysfs_device_link": "/devices/pci0000:00/0000:00:14.3",
+        "unix_device_name": "wlp0s20f3",
         "unix_device_names": [
-          "lo"
+          "wlp0s20f3"
+        ],
+        "resources": [
+          {
+            "type": "hwaddr",
+            "address": 99
+          },
+          {
+            "type": "phwaddr",
+            "address": 99
+          }
+        ],
+        "driver": "iwlwifi",
+        "driver_module": "iwlwifi",
+        "drivers": [
+          "iwlwifi"
+        ],
+        "driver_modules": [
+          "iwlwifi"
         ]
       }
     ],
@@ -3240,7 +3288,7 @@
         "resources": [
           {
             "type": "irq",
-            "base": 190,
+            "base": 191,
             "triggered": 0,
             "enabled": true
           },
@@ -3258,7 +3306,7 @@
           "command": 1030,
           "header_type": 0,
           "secondary_bus": 0,
-          "irq": 190,
+          "irq": 191,
           "prog_if": 0
         },
         "driver": "snd_hda_intel",
@@ -3323,7 +3371,7 @@
         "resources": [
           {
             "type": "irq",
-            "base": 191,
+            "base": 190,
             "triggered": 0,
             "enabled": true
           },
@@ -3349,7 +3397,7 @@
           "command": 1030,
           "header_type": 0,
           "secondary_bus": 0,
-          "irq": 191,
+          "irq": 190,
           "prog_if": 0
         },
         "driver": "snd_hda_intel",
@@ -4360,7 +4408,7 @@
         "resources": [
           {
             "type": "irq",
-            "base": 145,
+            "base": 146,
             "triggered": 0,
             "enabled": true
           },
@@ -4378,7 +4426,7 @@
           "command": 1030,
           "header_type": 0,
           "secondary_bus": 0,
-          "irq": 145,
+          "irq": 146,
           "prog_if": 48
         },
         "driver": "xhci_hcd",
@@ -4772,38 +4820,40 @@
         ]
       }
     ],
-    "chassis": {
-      "handle": 3,
-      "manufacturer": "To Be Filled By O.E.M.",
-      "version": "To Be Filled By O.E.M.",
-      "chassis_type": {
-        "hex": "0003",
-        "name": "Desktop",
-        "value": 3
-      },
-      "lock_present": false,
-      "bootup_state": {
-        "hex": "0003",
-        "name": "Safe",
-        "value": 3
-      },
-      "power_state": {
-        "hex": "0003",
-        "name": "Safe",
-        "value": 3
-      },
-      "thermal_state": {
-        "hex": "0003",
-        "name": "Safe",
-        "value": 3
-      },
-      "security_state": {
-        "hex": "0003",
-        "name": "None",
-        "value": 3
-      },
-      "oem": "0x0"
-    },
+    "chassis": [
+      {
+        "handle": 3,
+        "manufacturer": "To Be Filled By O.E.M.",
+        "version": "To Be Filled By O.E.M.",
+        "chassis_type": {
+          "hex": "0003",
+          "name": "Desktop",
+          "value": 3
+        },
+        "lock_present": false,
+        "bootup_state": {
+          "hex": "0003",
+          "name": "Safe",
+          "value": 3
+        },
+        "power_state": {
+          "hex": "0003",
+          "name": "Safe",
+          "value": 3
+        },
+        "thermal_state": {
+          "hex": "0003",
+          "name": "Safe",
+          "value": 3
+        },
+        "security_state": {
+          "hex": "0003",
+          "name": "None",
+          "value": 3
+        },
+        "oem": "0x0"
+      }
+    ],
     "group_associations": [
       {
         "handle": 41,
@@ -4831,7 +4881,7 @@
           "name": "None",
           "value": 3
         },
-        "max_size": 134217728,
+        "max_size": "0x8000000",
         "error_handle": 65534,
         "slots": 4
       }
@@ -4840,8 +4890,8 @@
       {
         "handle": 18,
         "array_handle": 13,
-        "start_address": 0,
-        "end_address": 34359738368,
+        "start_address": "0x0",
+        "end_address": "0x800000000",
         "part_width": 2
       }
     ],
@@ -4956,8 +5006,8 @@
         "handle": 22,
         "memory_device_handle": 15,
         "array_map_handle": 18,
-        "start_address": 0,
-        "end_address": 17179869184,
+        "start_address": "0x0",
+        "end_address": "0x400000000",
         "row_position": 1,
         "interleave_position": 1,
         "interleave_depth": 2
@@ -4966,8 +5016,8 @@
         "handle": 23,
         "memory_device_handle": 17,
         "array_map_handle": 18,
-        "start_address": 17179869184,
-        "end_address": 34359738368,
+        "start_address": "0x400000000",
+        "end_address": "0x800000000",
         "row_position": 1,
         "interleave_position": 2,
         "interleave_depth": 2
