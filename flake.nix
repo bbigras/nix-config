@@ -111,8 +111,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
-
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-avf.url = "github:nix-community/nixos-avf";
     nixGL = {

@@ -2,7 +2,6 @@
   config,
   pkgs,
   nur,
-  nixos-hardware,
   ...
 }:
 
@@ -14,7 +13,6 @@ let
 in
 {
   imports =
-    with nixos-hardware.nixosModules;
     [
       ../../core
       ../../dev
@@ -24,10 +22,6 @@ in
       # Include the results of the hardware scan.
       ../../hardware/hardware-configuration-work.nix
       ../../hardware/efi.nix
-
-      common-pc
-      common-pc-ssd
-      common-cpu-intel
 
       ../../users/bbigras
     ]

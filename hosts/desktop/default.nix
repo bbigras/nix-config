@@ -7,7 +7,6 @@
   lib,
   pkgs,
   nur,
-  nixos-hardware,
   ...
 }:
 
@@ -31,7 +30,6 @@ let
 in
 {
   imports =
-    with nixos-hardware.nixosModules;
     [
       ../../core
       ../../services/kanata.nix
@@ -46,11 +44,6 @@ in
       #../../hardware/secureboot.nix
 
       { config.facter.reportPath = ./facter.json; }
-
-      # common-pc
-      # common-pc-ssd
-      # common-cpu-intel-cpu-only
-      # common-gpu-amd
 
       ../../hardware/sound.nix
 
