@@ -13,14 +13,10 @@
     escapeTime = 0;
     newSession = true;
     plugins = with pkgs.tmuxPlugins; [
-      copy-toolkit
-      copycat
       extrakto
       fuzzback
-      prefix-highlight
       tmux-fzf
       tmux-thumbs
-      yank
     ];
     mouse = true;
     # secureSocket = false;
