@@ -31,7 +31,7 @@ in
     home-manager.nixosModules.home-manager
     nix-index-database.nixosModules.nix-index
     nixos-avf.nixosModules.avf
-    # ../../core/netbird.nix
+    ../../core/netbird.nix
     ../../core/openssh.nix
     # ../../core/podman.nix
     # ../../core/resolved.nix

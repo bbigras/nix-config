@@ -32,6 +32,7 @@ in
   imports =
     [
       ../../core
+      ../../core/netbird.nix
       ../../services/kanata.nix
       ../../services/veilid.nix
       ../../dev

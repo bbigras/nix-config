@@ -17,6 +17,7 @@ in
   imports =
     [
       ../../core
+      ../../core/netbird.nix
       ../../dev
       # ../../dev/virt-manager.nix
       ../../services/kanata.nix
