@@ -170,10 +170,6 @@ in
       nurNoPkgs.repos.rycee.hmModules.emacs-init
     ];
 
-    services.gnome-keyring = {
-      enable = true;
-      components = [ "secrets" ];
-    };
     services.wluma = {
       enable = true;
       settings = {

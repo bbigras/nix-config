@@ -46,13 +46,8 @@ with lib;
   # programs._1password-gui.polkitPolicyOwners = [ "bbigras" ];
 
   home-manager.users.bbigras = {
-    imports =
-      optionals config.services.xserver.desktopManager.gnome.enable [
-        ./graphical
-        ./graphical/gnome.nix
-      ]
-      ++ optionals config.services.desktopManager.cosmic.enable [
-        ./graphical
-      ];
+    imports = optionals config.services.desktopManager.cosmic.enable [
+      ./graphical
+    ];
   };
 }

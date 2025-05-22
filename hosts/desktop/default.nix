@@ -50,7 +50,6 @@ in
       # ./aarch64.nix
 
       ../../graphical
-      # ../../graphical/gnome.nix
       ../../graphical/trusted.nix
 
       # ../../dev/rust-embeded.nix

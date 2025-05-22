@@ -2,7 +2,6 @@
 {
   imports = [
     ./firefox.nix
-    ./mime.nix
     ./mpv.nix
     ./zed-editor.nix
   ];
@@ -16,7 +15,6 @@
       hicolor-icon-theme
       pavucontrol
       pinentry-gnome3
-      qgnomeplatform
       qt5.qtwayland
       qt6.qtwayland
       spawn
