@@ -11,11 +11,29 @@
       else
         pkgs.firefox;
 
+    languagePacks = [
+      "en-CA"
+      "fr"
+    ];
+
     # https://ffprofile.com/
     profiles = {
       default = {
         isDefault = true;
-        settings = { };
+        settings = {
+          "extensions.autoDisableScopes" = 0;
+        };
+        extensions.force = true;
+        extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+          # privacy-badger
+          ublock-origin
+        ];
+        extensions.settings = {
+          "FirefoxColor@mozilla.com".settings = builtins.fromJSON (builtins.readFile ./firefox-color.json);
+          "{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}".settings = {
+            dbInChromeStorage = true; # required for Stylus
+          };
+        };
       };
       travail = {
         isDefault = false;
