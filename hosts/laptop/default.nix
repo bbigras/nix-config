@@ -19,6 +19,7 @@ in
       ../../core
       ../../dev
       # ../../dev/virt-manager.nix
+      ../../services/kanata.nix
       ../../services/veilid.nix
 
       { config.facter.reportPath = ./facter.json; }
