@@ -276,7 +276,6 @@ in
         shaderc
       ];
 
-      dconf.enable = lib.mkForce false;
     };
 }
 

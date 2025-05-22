@@ -62,9 +62,6 @@
     accent = "blue";
   };
 
-  # XXX: Manually enabled in the graphic module
-  dconf.enable = false;
-
   home = {
     username = "bbigras";
     stateVersion = "24.05";
