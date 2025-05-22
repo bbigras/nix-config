@@ -25,18 +25,6 @@
     ];
     userSettings = {
       lsp = {
-        nil = {
-          # or "nixd" =
-          initialization_options = {
-            formatting = {
-              command = [
-                "alejandra"
-                "--quiet"
-                "--"
-              ]; # or ["nixfmt"]
-            };
-          };
-        };
         rust-analyzer = {
           initialization_options = {
             check = {
