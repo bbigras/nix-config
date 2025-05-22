@@ -8,14 +8,7 @@
 
   home = {
     packages = with pkgs; [
-      evince
-      gammastep
-      hicolor-icon-theme
-      pavucontrol
       pinentry-gnome3
-      qt5.qtwayland
-      qt6.qtwayland
-      spawn
     ];
 
     sessionVariables = {
