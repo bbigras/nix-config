@@ -57,7 +57,7 @@
     #   automount = false;
     #   tray = "auto";
     # };
-    gpg-agent.pinentryPackage = pkgs.pinentry-gnome3;
+    gpg-agent.pinentry.package = pkgs.pinentry-gnome3;
   };
 
   home.sessionVariablesExtra = ''
