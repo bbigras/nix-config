@@ -211,6 +211,8 @@
                   builtins.elem (pkgs.lib.getName pkg) [
                     "broadcom-sta"
                     "copilot-language-server"
+                    "firefox-bin"
+                    "firefox-release-bin-unwrapped"
                     "steam"
                     "steam-original"
                     "steam-run"
