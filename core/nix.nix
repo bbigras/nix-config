@@ -17,7 +17,6 @@
         builders-use-substitutes = true;
         trusted-users = [
           "root"
-          "@wheel"
         ];
         sandbox = hostType == "nixos";
         substituters = [
