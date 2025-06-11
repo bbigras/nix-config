@@ -6,7 +6,7 @@
     "--no-logs-no-support"
   ];
   services.tailscale.extraSetFlags = [
-    "--netfilter-mode=off"
+    "--netfilter-mode=on"
   ];
 
   systemd = {
