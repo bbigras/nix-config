@@ -740,6 +740,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_easyeffects-presets": {
+      "locked": {
+        "lastModified": 1749832053,
+        "narHash": "sha256-e6YHwJRpnelcpy+O0WxiWeAS1Uxg5BnYsghmkQEvTOY=",
+        "owner": "bbigras",
+        "repo": "nixpkgs",
+        "rev": "44e183580c47d9213b3e62205872c331cbd7d375",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bbigras",
+        "ref": "push-svpptrkvzslp",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_veilid": {
       "locked": {
         "lastModified": 1748971520,
@@ -840,6 +856,7 @@
         "nixos-cosmic": "nixos-cosmic",
         "nixos-facter-modules": "nixos-facter-modules",
         "nixpkgs": "nixpkgs_4",
+        "nixpkgs_easyeffects-presets": "nixpkgs_easyeffects-presets",
         "nixpkgs_veilid": "nixpkgs_veilid",
         "nur": "nur",
         "sops-nix": "sops-nix",
