@@ -81,6 +81,11 @@ in
           ];
         };
 
+        edraw-org = {
+          enable = true;
+          package = _epkgs: pkgs.emacsPackages.el-easydraw;
+        };
+
         org = {
           enable = true;
           bind = {

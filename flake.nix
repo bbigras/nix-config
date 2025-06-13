@@ -173,6 +173,11 @@
       url = "github:jdtsmith/ultra-scroll";
       flake = false;
     };
+
+    el-easydraw = {
+      url = "github:misohena/el-easydraw";
+      flake = false;
+    };
   };
 
   outputs =

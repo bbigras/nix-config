@@ -124,6 +124,22 @@
         "type": "github"
       }
     },
+    "el-easydraw": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1747969258,
+        "narHash": "sha256-YESpl+gSSC1eIOEQ8QevfTZ0Ar9wO4pzC12wVmDpDOA=",
+        "owner": "misohena",
+        "repo": "el-easydraw",
+        "rev": "8007f50c1c1734325c47939904f486753c7dd8ee",
+        "type": "github"
+      },
+      "original": {
+        "owner": "misohena",
+        "repo": "el-easydraw",
+        "type": "github"
+      }
+    },
     "emacs-overlay": {
       "inputs": {
         "nixpkgs": [
@@ -836,6 +852,7 @@
         "darwin": "darwin",
         "defmacro-gensym": "defmacro-gensym",
         "deploy-rs": "deploy-rs",
+        "el-easydraw": "el-easydraw",
         "emacs-overlay": "emacs-overlay",
         "emacs-ultra-scroll": "emacs-ultra-scroll",
         "flake-compat": "flake-compat",
