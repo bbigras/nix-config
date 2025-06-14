@@ -112,7 +112,6 @@
     };
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs_easyeffects-presets.url = "github:bbigras/nixpkgs/push-svpptrkvzslp";
 
     nixos-avf.url = "github:nix-community/nixos-avf";
     nixGL = {

@@ -27,6 +27,7 @@ let
     pkgs = null;
     nurpkgs = pkgs;
   };
+  json = pkgs.formats.json { };
 in
 {
   imports =
@@ -144,6 +145,16 @@ in
       ../../users/bbigras/trusted
       nurNoPkgs.repos.rycee.hmModules.emacs-init
     ];
+
+    xdg.configFile = {
+      "easyeffects/autoload/output/alsa_output.pci-0000_00_1f.3.analog-stereo:analog-output-lineout.json".source =
+        json.generate "alsa_output.pci-0000_00_1f.3.analog-stereo:analog-output-lineout.json" {
+          "device" = "alsa_output.pci-0000_00_1f.3.analog-stereo";
+          "device-description" = "Audio interne Stéréo analogique";
+          "device-profile" = "analog-output-lineout";
+          "preset-name" = "Perfect EQ";
+        };
+    };
   };
 
   sops.secrets = {
@@ -238,7 +249,6 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    easyeffects-presets
     fwupd
   ];
 
