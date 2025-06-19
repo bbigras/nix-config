@@ -219,7 +219,7 @@
                     "broadcom-sta"
                     "copilot-language-server"
                     "firefox-bin"
-                    "firefox-release-bin-unwrapped"
+                    "firefox-bin-unwrapped"
                     "steam"
                     "steam-original"
                     "steam-run"
