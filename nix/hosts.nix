@@ -93,6 +93,7 @@ in
     hostPlatform = "aarch64-linux";
     address = "pixel6-avf";
     pubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEIs8Ait2j8oYQB0cWPLZIw9vObzuWxo4E00awCNw2rZ root@nixos";
+    remoteBuild = false;
   };
   work = mkHost {
     type = "nixos";
