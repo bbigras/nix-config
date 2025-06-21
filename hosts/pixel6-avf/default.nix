@@ -208,6 +208,18 @@ in
       xh
       zrok
     ];
+
+    services = {
+      syncthing.enable = true;
+    };
+
+    systemd.user.services = {
+      syncthing = {
+        Service = {
+          StandardOutput = "null";
+        };
+      };
+    };
   };
 
   # This value determines the NixOS release from which the default
