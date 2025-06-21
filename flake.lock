@@ -549,11 +549,11 @@
     },
     "nixos-avf": {
       "locked": {
-        "lastModified": 1747400219,
-        "narHash": "sha256-MuBMdJiGPqZ9+mB6ppML5hbEhDvMFDNXtVxv2wkhpNg=",
+        "lastModified": 1750484961,
+        "narHash": "sha256-qP8RgqOcllpsxcLCOngJ0Emr7ggwtuZ3yHwnqbIUcAs=",
         "owner": "nix-community",
         "repo": "nixos-avf",
-        "rev": "7f8d2b87877ed851db8060220eec92b180961977",
+        "rev": "fde5c1a6ef94e9da6710eee0b8e92587927447ed",
         "type": "github"
       },
       "original": {
