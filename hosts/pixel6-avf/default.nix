@@ -161,6 +161,10 @@ in
       };
       jq.enable = true;
       htop.enable = true;
+      nh = {
+        clean.enable = true;
+        clean.extraArgs = "--keep-since 4d --keep 3";
+      };
       ripgrep.enable = true;
       pay-respects.enable = true;
       ssh = {
