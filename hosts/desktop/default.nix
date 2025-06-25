@@ -41,7 +41,6 @@ in
 
       # Include the results of the hardware scan.
       ../../hardware/efi.nix
-      ../../hardware/qmk.nix
       #../../hardware/secureboot.nix
 
       { config.facter.reportPath = ./facter.json; }
