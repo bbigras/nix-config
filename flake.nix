@@ -80,7 +80,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager?rev=de8463dd3ef259502b937fac37fadd6adc252bfe";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
