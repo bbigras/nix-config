@@ -799,11 +799,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1751744760,
-        "narHash": "sha256-z0wQX4GQYOxwCZ94+aU3Z4NnJHPoaPIsrOgw91lWa8w=",
+        "lastModified": 1751754818,
+        "narHash": "sha256-gARxzPFRzgIV8IURddZP65AAPMuiXU3DqResBrunvz8=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "5d8566b7031d3d1134cc31dfd4b212b2e0df870f",
+        "rev": "feddc752c19779132fa6b904b2cb261e0e29e77a",
         "type": "github"
       },
       "original": {
