@@ -2,7 +2,6 @@
   pkgs,
   nur,
   catppuccin,
-  nixGL,
   ...
 }:
 
@@ -264,7 +263,6 @@ in
         spacer
         faketty
         television
-        nixGL.packages.aarch64-linux.default
         mesa.drivers
         vulkan-tools
         vulkan-tools-lunarg

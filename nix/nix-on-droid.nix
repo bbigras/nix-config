@@ -24,7 +24,7 @@ let
           }
         ];
         extraSpecialArgs = {
-          inherit (inputs) nur catppuccin nixGL;
+          inherit (inputs) nur catppuccin;
         };
       }
     );
