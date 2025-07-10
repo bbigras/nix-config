@@ -36,8 +36,8 @@ in
       ../../services/kanata.nix
       ../../services/podman.nix
       ../../services/veilid.nix
+      ../../services/virt-manager.nix
       ../../dev
-      ../../dev/virt-manager.nix
       ../../dev/incus.nix
 
       # Include the results of the hardware scan.
