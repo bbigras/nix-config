@@ -1,6 +1,7 @@
 {
   agenix,
   config,
+  disko,
   lib,
   pkgs,
   home-manager,
@@ -14,6 +15,7 @@
 }:
 {
   imports = [
+    disko.nixosModules.disko
     home-manager.nixosModules.home-manager
     impermanence.nixosModules.impermanence
     lanzaboote.nixosModules.lanzaboote

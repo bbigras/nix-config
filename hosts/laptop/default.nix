@@ -37,6 +37,7 @@ in
       ../../dev/adb.nix
 
       ../../users/bbigras
+      ./disko.nix
     ]
     ++ (
       if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then
@@ -53,23 +54,6 @@ in
 
   boot = {
     plymouth.enable = true;
-  };
-
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/af3adc21-df14-49b0-8d51-3b18f9dc8a82";
-    fsType = "ext4";
-  };
-
-  boot.initrd.luks.devices."cryptroot".device =
-    "/dev/disk/by-uuid/bfd7024b-39d6-4ba4-8517-967a8c2360c4";
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/339C-3957";
-    fsType = "vfat";
-    options = [
-      "fmask=0022"
-      "dmask=0022"
-    ];
   };
 
   environment.systemPackages = with pkgs; [
@@ -102,11 +86,6 @@ in
     # "fs.inotify.max_user_watches" = 524288;
     # "vm.swappiness" = 1;
   };
-  swapDevices = [
-    {
-      device = "/swapfile";
-    }
-  ];
 
   boot.initrd.availableKernelModules = [
     "aesni_intel"

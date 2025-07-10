@@ -124,6 +124,26 @@
         "type": "github"
       }
     },
+    "disko": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1752113600,
+        "narHash": "sha256-7LYDxKxZgBQ8LZUuolAQ8UkIB+jb4A2UmiR+kzY9CLI=",
+        "owner": "nix-community",
+        "repo": "disko",
+        "rev": "79264292b7e3482e5702932949de9cbb69fedf6d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "disko",
+        "type": "github"
+      }
+    },
     "el-easydraw": {
       "flake": false,
       "locked": {
@@ -795,6 +815,7 @@
         "darwin": "darwin",
         "defmacro-gensym": "defmacro-gensym",
         "deploy-rs": "deploy-rs",
+        "disko": "disko",
         "el-easydraw": "el-easydraw",
         "emacs-overlay": "emacs-overlay",
         "emacs-ultra-scroll": "emacs-ultra-scroll",

@@ -45,6 +45,7 @@ let
           hostType = type;
           inherit (inputs)
             catppuccin
+            disko
             home-manager
             impermanence
             lanzaboote
