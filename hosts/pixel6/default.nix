@@ -262,7 +262,6 @@ in
         git-remote-gcrypt
         spacer
         faketty
-        television
         mesa.drivers
         vulkan-tools
         vulkan-tools-lunarg
