@@ -136,10 +136,15 @@
       sops
     ];
     shellAliases = {
+      cat = "bat";
       cls = "clear";
       j = "${pkgs.just}/bin/just";
       ".j" = "${pkgs.just}/bin/just --justfile ~/.user.justfile";
       less = "${pkgs.bat}/bin/bat";
+      l = "ls";
+      la = "ls --all";
+      ls = "eza --binary --header --long";
+      man = "batman";
     };
   };
 
@@ -150,6 +155,7 @@
     };
     bat = {
       enable = true;
+      extraPackages = with pkgs.bat-extras; [ batman ];
     };
     carapace.enable = true;
     eza.enable = true;
@@ -238,7 +244,6 @@
   services = {
     # spotifyd.enable = true;
     syncthing.enable = true;
-    systembus-notify.enable = true;
   };
 
   systemd.user.services = {

@@ -34,6 +34,7 @@ in
     [
       ../../core
       ../../services/kanata.nix
+      ../../services/podman.nix
       ../../services/veilid.nix
       ../../dev
       ../../dev/virt-manager.nix

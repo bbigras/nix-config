@@ -22,13 +22,11 @@
     sops-nix.nixosModules.sops
     catppuccin.nixosModules.catppuccin
     ./openssh.nix
-    ./podman.nix
     ./resolved.nix
     ./tailscale.nix
     ./tmux.nix
   ];
 
-  boot.initrd.systemd.enable = true;
   boot.kernelParams = [ "log_buf_len=10M" ];
   services.systembus-notify.enable = true;
 
@@ -37,11 +35,12 @@
     man.generateCaches = true;
   };
 
-  i18n.defaultLocale = "fr_CA.UTF-8";
   environment.systemPackages = with pkgs; [
     ghostty.terminfo
     nix-output-monitor
   ];
+
+  i18n.defaultLocale = "fr_CA.UTF-8";
 
   networking = {
     firewall = {

@@ -21,6 +21,7 @@ in
       ../../dev
       # ../../dev/virt-manager.nix
       ../../services/kanata.nix
+      ../../services/podman.nix
       ../../services/veilid.nix
 
       { config.facter.reportPath = ./facter.json; }
