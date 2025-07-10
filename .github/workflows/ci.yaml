@@ -159,6 +159,9 @@ jobs:
     env:
       system: ${{ matrix.attrs.hostPlatform }}
     steps:
+      - uses: wimpysworld/nothing-but-nix@main
+        with:
+          hatchet-protocol: "holster"
       - uses: DeterminateSystems/nix-installer-action@v18
         with:
           extra-conf: ${{ env.nix-conf }}
