@@ -231,7 +231,10 @@
           show_preview_panel = false;
         };
         keybindings = {
-          quit = [ "esc" "ctrl-c" ];
+          quit = [
+            "esc"
+            "ctrl-c"
+          ];
         };
       };
     };
