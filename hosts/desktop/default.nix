@@ -168,6 +168,7 @@ in
   networking.networkmanager.enable = false;
 
   services.smartd.enable = true;
+  services.gnome.gnome-keyring.enable = false;
 
   programs.steam.enable = true;
   programs.steam.remotePlay.openFirewall = true;

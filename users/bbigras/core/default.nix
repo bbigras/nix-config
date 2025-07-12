@@ -148,6 +148,7 @@
   };
 
   programs = {
+    keepassxc.enable = true;
     atuin = {
       enable = true;
       settings.auto_sync = true;
