@@ -682,6 +682,15 @@
             };
           };
 
+          secrets = {
+            enable = true;
+            config = ''
+              (setq auth-sources '(
+              "secrets:Mots de passe"
+              ))
+            '';
+          };
+
           multiple-cursors = {
             enable = true;
             bind = {
