@@ -234,15 +234,5 @@ in
         ];
       };
     };
-
-    xdg.configFile = {
-      "easyeffects/autoload/output/alsa_output.pci-0000_00_1b.0.analog-stereo:analog-output-lineout.json".source =
-        json.generate "alsa_output.pci-0000_00_1b.0.analog-stereo:analog-output-lineout.json" {
-          "device" = "alsa_output.pci-0000_00_1b.0.analog-stereo";
-          "device-description" = "Audio interne Stéréo analogique";
-          "device-profile" = "analog-output-speaker";
-          "preset-name" = "Perfect EQ";
-        };
-    };
   };
 }
