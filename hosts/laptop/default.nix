@@ -172,7 +172,11 @@ in
     enableNotifications = true;
   };
   services = {
-    fwupd.enable = false;
+    fwupd = {
+      enable = true;
+      extraRemotes = [ "lvfs-testing" ];
+      # uefiCapsuleSettings.DisableCapsuleUpdateOnDisk = true;
+    };
     thermald.enable = true;
   };
   services.desktopManager.cosmic.enable = true;
