@@ -171,7 +171,6 @@ in
   services.flatpak.enable = true;
   services.smartd.enable = true;
   services.gnome.gnome-keyring.enable = false;
-  services.irqbalance.enable = true;
 
   services.earlyoom = {
     enable = true;
