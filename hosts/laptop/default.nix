@@ -69,7 +69,7 @@ in
     networkmanager.sopsFile = ./secrets.yaml;
   };
 
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   catppuccin = {
     enable = true;
