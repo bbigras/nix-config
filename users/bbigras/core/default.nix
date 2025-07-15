@@ -122,7 +122,7 @@
       incus.client
       srgn
       attic-client
-      aider-chat
+      # aider-chat
       git-annex
       git-remote-gcrypt
       spacer
