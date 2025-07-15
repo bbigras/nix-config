@@ -168,6 +168,9 @@
         paging = "auto";
       };
     };
+    kubeswitch = {
+      enable = true;
+    };
     fzf = {
       enable = true;
       tmux.enableShellIntegration = true;
