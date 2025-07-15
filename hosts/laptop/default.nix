@@ -179,11 +179,6 @@ in
   services.displayManager.cosmic-greeter.enable = true;
   environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
 
-  zramSwap = {
-    enable = true;
-    algorithm = "zstd";
-  };
-
   home-manager.users.bbigras = {
     imports = [
       ../../users/bbigras/trusted
