@@ -87,11 +87,6 @@ in
     # "vm.swappiness" = 1;
   };
 
-  boot.initrd.availableKernelModules = [
-    "aesni_intel"
-    "cryptd"
-  ];
-
   networking = {
     hostName = "laptop"; # Define your hostname.
     wireless.enable = false;
