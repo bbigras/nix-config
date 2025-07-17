@@ -31,8 +31,8 @@ in
     inputs.nixos-hardware.nixosModules.framework-12-13th-gen-intel
 
     # Host-specific files
-    # ./state.nix
     ./disko.nix
+    ./state.nix
   ];
 
   # Host-specific home-manager user config
