@@ -52,6 +52,7 @@ let
             nix-index-database
             nixos-avf
             nixos-facter-modules
+            nixos-hardware
             nur
             sops-nix
             minimal-emacs-d

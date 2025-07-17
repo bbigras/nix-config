@@ -5,6 +5,7 @@
   config,
   pkgs,
   nur,
+  nixos-hardware,
   ...
 }:
 let
@@ -25,6 +26,7 @@ in
       ../../services/veilid.nix
 
       { config.facter.reportPath = ./facter.json; }
+      nixos-hardware.nixosModules.framework-12-13th-gen-intel
 
       # Include the results of the hardware scan.
       ../../hardware/efi.nix

@@ -6,6 +6,7 @@ WIP
 - flakes
 - deploy with deploy-rs
 - use the zen Linux kernel
+- use [nixos-hardware](https://github.com/NixOS/nixos-hardware)
 - use [srvos](https://github.com/nix-community/srvos)
 - Full disk encryption on laptop
 - [emacs-init module](https://gitlab.com/rycee/nur-expressions/blob/master/hm-modules/emacs-init.nix) for home-manager. See `users/bbigras/dev/emacs.nix`
