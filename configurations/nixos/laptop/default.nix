@@ -56,7 +56,34 @@ in
   # Host-specific configuration
   boot = {
     initrd = {
-      systemd.enable = true;
+      systemd = {
+        enable = true;
+        services.rollback = {
+          description = "Rollback BTRFS root and home subvolumes to a pristine state on boot";
+          wantedBy = [ "initrd.target" ];
+          after = [ "systemd-cryptsetup@crypted.service" ];
+          before = [ "sysroot.mount" ];
+          unitConfig.DefaultDependencies = "no";
+          serviceConfig.Type = "oneshot";
+          script = ''
+            mkdir -p /mnt
+            mount -o subvol=/ /dev/mapper/crypted /mnt
+
+            for sub in root home; do
+              btrfs subvolume list -o "/mnt/$sub" | cut -f9 -d' ' | while read subvolume; do
+                echo "deleting /$subvolume subvolume..."
+                btrfs subvolume delete "/mnt/$subvolume"
+              done
+              echo "deleting /$sub subvolume..."
+              btrfs subvolume delete "/mnt/$sub"
+              echo "restoring blank /$sub subvolume..."
+              btrfs subvolume snapshot "/mnt/$sub-blank" "/mnt/$sub"
+            done
+
+            umount /mnt
+          '';
+        };
+      };
     };
     lanzaboote.pkiBundle = lib.mkForce "/var/lib/sbctl";
     plymouth.enable = true;
