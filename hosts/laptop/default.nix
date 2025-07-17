@@ -56,6 +56,7 @@ in
 
   boot = {
     plymouth.enable = true;
+    tmp.useTmpfs = true;
   };
 
   environment.systemPackages = with pkgs; [
