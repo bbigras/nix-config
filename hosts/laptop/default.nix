@@ -74,6 +74,7 @@ in
 
   environment.systemPackages = with pkgs; [
     iwd
+    networkmanagerapplet
   ];
 
   programs.steam.enable = true;
@@ -81,6 +82,7 @@ in
   programs.gamemode.enable = true;
 
   sops.secrets = {
+    networkmanager.sopsFile = ./secrets.yaml;
   };
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -112,35 +114,80 @@ in
   ];
 
   networking = {
-    useNetworkd = true;
     hostName = "laptop"; # Define your hostname.
-    wireless = {
-      enable = false;
-      iwd = {
-        enable = true;
-        settings = {
-          Settings = {
-            AutoConnect = true;
+    wireless.enable = false;
+  };
+
+  networking.networkmanager = {
+    enable = true;
+    dns = "systemd-resolved";
+    wifi = {
+      backend = "iwd";
+      macAddress = "stable-ssid";
+      # powersave = false;
+    };
+    ensureProfiles = {
+      environmentFiles = [
+        config.sops.secrets.networkmanager.path
+      ];
+      profiles = {
+        home = {
+          connection = {
+            id = "home";
+            type = "wifi";
+            # uuid = "1a2538e1-1a72-4162-bc85-58682ecd91eb";
+            autoconnect = true;
+          };
+          ipv4 = {
+            method = "auto";
+          };
+          ipv6 = {
+            addr-gen-mode = "default";
+            method = "auto";
+          };
+          # proxy = { };
+          wifi = {
+            ssid = "$HOME_SSID";
+          };
+          wifi-security = {
+            key-mgmt = "wpa-psk";
+            psk = "$HOME_PASSPHRASE";
+          };
+        };
+        phone = {
+          connection = {
+            autoconnect-priority = "-1";
+            id = "phone";
+            metered = "1";
+            # timestamp = "1752765639";
+            type = "wifi";
+            # uuid = "d3c51cff-ccaa-481e-8d93-a02c5ac3bdda";
+          };
+          ipv4 = {
+            method = "auto";
+          };
+          ipv6 = {
+            addr-gen-mode = "stable-privacy";
+            method = "auto";
+          };
+          # proxy = { };
+          wifi = {
+            # cloned-mac-address = "stable-ssid";
+            mode = "infrastructure";
+            ssid = "$PHONE_PASSPHRASE";
+          };
+          wifi-security = {
+            key-mgmt = "wpa-psk";
+            psk = "$PHONE_PSK";
           };
         };
       };
     };
   };
 
-  networking.networkmanager.enable = false;
-
-  systemd.network = {
-    enable = true;
-    networks = {
-      "10-wifi" = {
-        DHCP = "yes";
-        matchConfig.Name = "eth0";
-        dhcpV4Config = {
-          UseDNS = false;
-        };
-      };
-    };
-  };
+  # These options are unnecessary when managing DNS ourselves
+  networking.useDHCP = false;
+  networking.dhcpcd.enable = false;
 
   services.flatpak.enable = true;
   services.smartd.enable = true;
