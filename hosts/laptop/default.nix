@@ -81,9 +81,6 @@ in
   programs.gamemode.enable = true;
 
   sops.secrets = {
-    restic-laptop-password.sopsFile = ./secrets.yaml;
-    restic-laptop-creds.sopsFile = ./secrets.yaml;
-    wireguard.sopsFile = ./secrets.yaml;
   };
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
