@@ -10,7 +10,7 @@ creation_rules:
       - age:
         - *desktop
         - *bbigras
-  - path_regex: hosts/laptop/restic-laptop.yaml
+  - path_regex: hosts/laptop/secrets.yaml
     key_groups:
       - age:
         - *bbigras
