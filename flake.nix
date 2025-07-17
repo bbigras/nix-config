@@ -213,7 +213,6 @@
                 allowUnfreePredicate =
                   pkg:
                   builtins.elem (pkgs.lib.getName pkg) [
-                    "broadcom-sta"
                     "copilot-language-server"
                     "firefox-bin"
                     "firefox-bin-unwrapped"
