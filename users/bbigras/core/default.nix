@@ -198,6 +198,7 @@
         VerifyHostKeyDNS = "ask";
       };
     };
+    starship.enable = true;
     streamlink = {
       enable = true;
       settings = {
