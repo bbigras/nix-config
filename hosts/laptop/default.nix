@@ -192,6 +192,14 @@ in
       nurNoPkgs.repos.rycee.hmModules.emacs-init
     ];
 
+    programs = {
+      ghostty = {
+        settings = {
+          font-size = 18;
+        };
+      };
+    };
+
     services.wluma = {
       enable = true;
       settings = {
