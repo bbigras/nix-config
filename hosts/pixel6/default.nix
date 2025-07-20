@@ -119,24 +119,23 @@ in
       # Read the changelog before changing this value
       home.stateVersion = "20.09";
 
-      imports =
-        [
-          ../../users/bbigras/core/atuin.nix
-          ../../users/bbigras/core/git.nix
-          #../../users/bbigras/core/jujutsu.nix
-          ../../users/bbigras/core/tmux.nix
-          ../../users/bbigras/core/yazi.nix
-          ../../users/bbigras/core/zsh.nix
-          ../../users/bbigras/core/emacs
-          nurNoPkgs.repos.rycee.hmModules.emacs-init
-          catppuccin.homeModules.catppuccin
-        ]
-        ++ (
-          if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/pixel6.nix") then
-            [ (builtins.getEnv "PWD" + "/secrets/pixel6.nix") ]
-          else
-            [ ]
-        );
+      imports = [
+        ../../users/bbigras/core/atuin.nix
+        ../../users/bbigras/core/git.nix
+        #../../users/bbigras/core/jujutsu.nix
+        ../../users/bbigras/core/tmux.nix
+        ../../users/bbigras/core/yazi.nix
+        ../../users/bbigras/core/zsh.nix
+        ../../users/bbigras/core/emacs
+        nurNoPkgs.repos.rycee.hmModules.emacs-init
+        catppuccin.homeModules.catppuccin
+      ]
+      ++ (
+        if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/pixel6.nix") then
+          [ (builtins.getEnv "PWD" + "/secrets/pixel6.nix") ]
+        else
+          [ ]
+      );
 
       # Use the same overlays as the system packages
       # nixpkgs.overlays = config.nixpkgs.overlays;

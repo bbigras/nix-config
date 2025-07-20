@@ -16,43 +16,42 @@ let
   json = pkgs.formats.json { };
 in
 {
-  imports =
-    [
-      ../../core
-      ../../dev
-      # ../../dev/virt-manager.nix
-      ../../services/kanata.nix
-      ../../services/podman.nix
-      ../../services/veilid.nix
+  imports = [
+    ../../core
+    ../../dev
+    # ../../dev/virt-manager.nix
+    ../../services/kanata.nix
+    ../../services/podman.nix
+    ../../services/veilid.nix
 
-      { config.facter.reportPath = ./facter.json; }
-      nixos-hardware.nixosModules.framework-12-13th-gen-intel
+    { config.facter.reportPath = ./facter.json; }
+    nixos-hardware.nixosModules.framework-12-13th-gen-intel
 
-      # Include the results of the hardware scan.
-      ../../hardware/efi.nix
-      ../../hardware/sound.nix
+    # Include the results of the hardware scan.
+    ../../hardware/efi.nix
+    ../../hardware/sound.nix
 
-      ../../graphical
-      ../../graphical/trusted.nix
+    ../../graphical
+    ../../graphical/trusted.nix
 
-      # ../../dev/rust-embeded.nix
-      ../../dev/adb.nix
+    # ../../dev/rust-embeded.nix
+    ../../dev/adb.nix
 
-      ../../users/bbigras
-      ./disko.nix
-    ]
-    ++ (
-      if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then
-        [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ]
-      else
-        [ ]
-    )
-    ++ (
-      if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/laptop.nix") then
-        [ (builtins.getEnv "PWD" + "/secrets/laptop.nix") ]
-      else
-        [ ]
-    );
+    ../../users/bbigras
+    ./disko.nix
+  ]
+  ++ (
+    if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then
+      [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ]
+    else
+      [ ]
+  )
+  ++ (
+    if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/laptop.nix") then
+      [ (builtins.getEnv "PWD" + "/secrets/laptop.nix") ]
+    else
+      [ ]
+  );
 
   boot = {
     plymouth.enable = true;

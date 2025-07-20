@@ -16,30 +16,29 @@ let
       { pkgs, ... }:
       lib.nixosSystem {
 
-        modules =
-          [
-            inputs.nixos-cosmic.nixosModules.default
-            {
-              disabledModules = [
-                "services/desktop-managers/cosmic.nix"
-                "services/display-managers/cosmic-greeter.nix"
-              ];
-            }
-            (../hosts + "/${hostname}")
-            {
-              nix.registry = {
-                nixpkgs.flake = inputs.nixpkgs;
-                p.flake = inputs.nixpkgs;
-              };
-              nixpkgs.pkgs = pkgs;
-            }
-          ]
-          ++ lib.optionals (type2 == "desktop") [
-            inputs.srvos.nixosModules.desktop
-          ]
-          ++ lib.optionals (type2 == "server") [
-            inputs.srvos.nixosModules.server
-          ];
+        modules = [
+          inputs.nixos-cosmic.nixosModules.default
+          {
+            disabledModules = [
+              "services/desktop-managers/cosmic.nix"
+              "services/display-managers/cosmic-greeter.nix"
+            ];
+          }
+          (../hosts + "/${hostname}")
+          {
+            nix.registry = {
+              nixpkgs.flake = inputs.nixpkgs;
+              p.flake = inputs.nixpkgs;
+            };
+            nixpkgs.pkgs = pkgs;
+          }
+        ]
+        ++ lib.optionals (type2 == "desktop") [
+          inputs.srvos.nixosModules.desktop
+        ]
+        ++ lib.optionals (type2 == "server") [
+          inputs.srvos.nixosModules.server
+        ];
         specialArgs = {
           hostAddress = address;
           hostType = type;

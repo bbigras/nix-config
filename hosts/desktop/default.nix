@@ -30,46 +30,45 @@ let
   json = pkgs.formats.json { };
 in
 {
-  imports =
-    [
-      ../../core
-      ../../services/kanata.nix
-      ../../services/podman.nix
-      ../../services/veilid.nix
-      ../../services/virt-manager.nix
-      ../../dev
-      ../../dev/incus.nix
+  imports = [
+    ../../core
+    ../../services/kanata.nix
+    ../../services/podman.nix
+    ../../services/veilid.nix
+    ../../services/virt-manager.nix
+    ../../dev
+    ../../dev/incus.nix
 
-      # Include the results of the hardware scan.
-      ../../hardware/efi.nix
-      #../../hardware/secureboot.nix
+    # Include the results of the hardware scan.
+    ../../hardware/efi.nix
+    #../../hardware/secureboot.nix
 
-      { config.facter.reportPath = ./facter.json; }
+    { config.facter.reportPath = ./facter.json; }
 
-      ../../hardware/sound.nix
+    ../../hardware/sound.nix
 
-      # ./aarch64.nix
+    # ./aarch64.nix
 
-      ../../graphical
-      ../../graphical/trusted.nix
+    ../../graphical
+    ../../graphical/trusted.nix
 
-      # ../../dev/rust-embeded.nix
-      ../../dev/adb.nix
+    # ../../dev/rust-embeded.nix
+    ../../dev/adb.nix
 
-      ../../users/bbigras
-    ]
-    ++ (
-      if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then
-        [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ]
-      else
-        [ ]
-    )
-    ++ (
-      if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/desktop.nix") then
-        [ (builtins.getEnv "PWD" + "/secrets/desktop.nix") ]
-      else
-        [ ]
-    );
+    ../../users/bbigras
+  ]
+  ++ (
+    if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_home.nix") then
+      [ (builtins.getEnv "PWD" + "/secrets/at_home.nix") ]
+    else
+      [ ]
+  )
+  ++ (
+    if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/desktop.nix") then
+      [ (builtins.getEnv "PWD" + "/secrets/desktop.nix") ]
+    else
+      [ ]
+  );
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/e58653d8-7f76-402d-998d-400fe04f7520";

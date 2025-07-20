@@ -12,22 +12,21 @@ let
   };
 in
 {
-  imports =
-    [
-      ../../core
-      ../../dev
-      # ../../dev/virt-manager.nix
-      ../../dev/incus.nix
-      ../../hardware/efi.nix
-      ../../users/bbigras
-      { config.facter.reportPath = ./facter.json; }
-    ]
-    ++ (
-      if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_work.nix") then
-        [ (builtins.getEnv "PWD" + "/secrets/at_work.nix") ]
-      else
-        [ ]
-    );
+  imports = [
+    ../../core
+    ../../dev
+    # ../../dev/virt-manager.nix
+    ../../dev/incus.nix
+    ../../hardware/efi.nix
+    ../../users/bbigras
+    { config.facter.reportPath = ./facter.json; }
+  ]
+  ++ (
+    if builtins.pathExists (builtins.getEnv "PWD" + "/secrets/at_work.nix") then
+      [ (builtins.getEnv "PWD" + "/secrets/at_work.nix") ]
+    else
+      [ ]
+  );
 
   boot.kernel.sysctl = {
     "kernel.sysrq" = 1;

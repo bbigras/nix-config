@@ -31,23 +31,22 @@ in
         '')
       ]
     );
-    plugins =
-      [
-        {
-          name = "autopair";
-          inherit (pkgs.fishPlugins.autopair) src;
-        }
-      ]
-      ++ lib.optionals withPrompt [
-        {
-          name = "tide";
-          src = pkgs.fetchFromGitHub {
-            owner = "ETCaton";
-            repo = "tide";
-            rev = "1e063799e076117969dd0f5ab1b493ba28cc757d";
-            sha256 = "sha256-Ea81varZWqk/+uZRImKAnlkSscTbHsdFj6CA8TL3cYA=";
-          };
-        }
-      ];
+    plugins = [
+      {
+        name = "autopair";
+        inherit (pkgs.fishPlugins.autopair) src;
+      }
+    ]
+    ++ lib.optionals withPrompt [
+      {
+        name = "tide";
+        src = pkgs.fetchFromGitHub {
+          owner = "ETCaton";
+          repo = "tide";
+          rev = "1e063799e076117969dd0f5ab1b493ba28cc757d";
+          sha256 = "sha256-Ea81varZWqk/+uZRImKAnlkSscTbHsdFj6CA8TL3cYA=";
+        };
+      }
+    ];
   };
 }

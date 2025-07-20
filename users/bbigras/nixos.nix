@@ -9,28 +9,27 @@ with lib;
   users.users.bbigras = {
     createHome = true;
     # group = "bbigras";
-    extraGroups =
-      [
-        "wheel"
-        "dialout"
-      ]
-      ++ optionals config.hardware.uinput.enable [ "uinput" ]
-      ++ optionals config.hardware.i2c.enable [ "i2c" ]
-      ++ optionals config.networking.networkmanager.enable [ "networkmanager" ]
-      ++ optionals config.programs.wireshark.enable [ "wireshark" ]
-      ++ optionals config.services.flatpak.enable [ "flatpak" ]
-      ++ optionals config.services.kubo.enable [ "ipfs" ]
-      ++ optionals config.programs.sway.enable [
-        "input"
-        "video"
-      ]
-      ++ optionals config.services.unbound.enable [ "unbound" ]
-      ++ optionals config.services.transmission.enable [ "transmission" ]
-      ++ optionals config.virtualisation.docker.enable [ "docker" ]
-      ++ optionals config.virtualisation.libvirtd.enable [ "libvirtd" ]
-      ++ optionals config.virtualisation.kvmgt.enable [ "kvm" ]
-      ++ optionals config.virtualisation.incus.enable [ "incus-admin" ]
-      ++ optionals config.virtualisation.podman.enable [ "podman" ];
+    extraGroups = [
+      "wheel"
+      "dialout"
+    ]
+    ++ optionals config.hardware.uinput.enable [ "uinput" ]
+    ++ optionals config.hardware.i2c.enable [ "i2c" ]
+    ++ optionals config.networking.networkmanager.enable [ "networkmanager" ]
+    ++ optionals config.programs.wireshark.enable [ "wireshark" ]
+    ++ optionals config.services.flatpak.enable [ "flatpak" ]
+    ++ optionals config.services.kubo.enable [ "ipfs" ]
+    ++ optionals config.programs.sway.enable [
+      "input"
+      "video"
+    ]
+    ++ optionals config.services.unbound.enable [ "unbound" ]
+    ++ optionals config.services.transmission.enable [ "transmission" ]
+    ++ optionals config.virtualisation.docker.enable [ "docker" ]
+    ++ optionals config.virtualisation.libvirtd.enable [ "libvirtd" ]
+    ++ optionals config.virtualisation.kvmgt.enable [ "kvm" ]
+    ++ optionals config.virtualisation.incus.enable [ "incus-admin" ]
+    ++ optionals config.virtualisation.podman.enable [ "podman" ];
     isNormalUser = true;
     shell = mkIf config.programs.fish.enable pkgs.fish;
     openssh.authorizedKeys.keys = [
