@@ -811,11 +811,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1754104685,
-        "narHash": "sha256-z9zDVL7474eVhiHrhX2ZdnpKSbxdz8sKrrNhY4i2gnA=",
+        "lastModified": 1754132989,
+        "narHash": "sha256-wOCYEwSknCri0+Rp77VNTUqdfiKDO9W6P0iG5vmIB8o=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "f10201b250cda809132a875a03e7b37faff9c0e6",
+        "rev": "dd4cad690f1ada34910930d9f8786f67db2d534d",
         "type": "github"
       },
       "original": {
