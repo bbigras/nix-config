@@ -767,6 +767,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_bongocat": {
+      "locked": {
+        "lastModified": 1754243347,
+        "narHash": "sha256-aYw37a+H63KCDexT6FIBGHJlp2D2BWy+Snb4LkPIfFM=",
+        "owner": "bbigras",
+        "repo": "nixpkgs",
+        "rev": "ff4d9b8f495985f1769df98c40255b3932fd29ca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bbigras",
+        "ref": "push-xwvkmqxvkzlk",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nmd": {
       "inputs": {
         "nixpkgs": [
@@ -852,6 +868,7 @@
         "nixos-facter-modules": "nixos-facter-modules",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
+        "nixpkgs_bongocat": "nixpkgs_bongocat",
         "nur": "nur",
         "sops-nix": "sops-nix",
         "srvos": "srvos",
