@@ -1,6 +1,7 @@
 { lib, pkgs, ... }:
 {
   imports = [
+    ./bongocat.nix
     ./firefox.nix
     ./mpv.nix
     ./zed-editor.nix

@@ -12,6 +12,7 @@ with lib;
     extraGroups = [
       "wheel"
       "dialout"
+      "input"
     ]
     ++ optionals config.hardware.uinput.enable [ "uinput" ]
     ++ optionals config.hardware.i2c.enable [ "i2c" ]
