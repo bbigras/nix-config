@@ -3,6 +3,7 @@
   home.file.".mozilla/native-messaging-hosts/ff2mpv.json".source =
     "${pkgs.ff2mpv}/lib/mozilla/native-messaging-hosts/ff2mpv.json";
 
+  catppuccin.firefox.enable = false;
   programs.firefox = {
     enable = pkgs.hostPlatform.system == "x86_64-linux";
     package =
