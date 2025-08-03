@@ -23,7 +23,6 @@
   catppuccin = {
     cursors.enable = true;
     gtk = {
-      enable = true;
       icon.enable = true;
     };
     kvantum.enable = true;
