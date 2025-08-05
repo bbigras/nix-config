@@ -233,34 +233,10 @@
     };
     television = {
       enable = true;
-      channels = {
-        my-custom = {
-          cable_channel = [
-            {
-              name = "git-log";
-              source_command = "git log --oneline --date=short --pretty=\"format:%h %s %an %cd\" \"$@\"";
-              preview_command = "git show -p --stat --pretty=fuller --color=always {0}";
-            }
-            {
-              name = "git-log";
-              source_command = "git log --oneline --date=short --pretty=\"format:%h %s %an %cd\" \"$@\"";
-              preview_command = "git show -p --stat --pretty=fuller --color=always {0}";
-            }
-          ];
-        };
-      };
       settings = {
         tick_rate = 50;
         ui = {
           use_nerd_font_icons = true;
-          ui_scale = 120;
-          show_preview_panel = false;
-        };
-        keybindings = {
-          quit = [
-            "esc"
-            "ctrl-c"
-          ];
         };
       };
     };
