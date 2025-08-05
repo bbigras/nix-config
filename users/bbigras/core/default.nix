@@ -159,6 +159,12 @@
     };
     carapace.enable = true;
     eza.enable = true;
+    gcc = {
+      enable = true;
+      colors = {
+        error = "01;31";
+      };
+    };
     jq.enable = true;
     kubecolor = {
       enable = true;
