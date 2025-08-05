@@ -186,6 +186,22 @@
     };
     gpg.enable = true;
     nix-index.enable = true;
+    nix-search-tv = {
+      enable = true;
+      settings = {
+        indexes = [
+          "nixpkgs"
+          "home-manager"
+          "nixos"
+        ];
+
+        experimental = {
+          render_docs_indexes = {
+            nvf = "https://notashelf.github.io/nvf/options.html";
+          };
+        };
+      };
+    };
     nix-your-shell.enable = true;
     pay-respects.enable = true;
     ripgrep.enable = true;
