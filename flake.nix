@@ -118,6 +118,7 @@
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs_bongocat.url = "github:bbigras/nixpkgs/push-xwvkmqxvkzlk";
+    nixpkgs_television.url = "github:bbigras/nixpkgs/push-uupknmykzxqz";
 
     nixos-avf.url = "github:nix-community/nixos-avf";
 
