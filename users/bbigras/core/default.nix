@@ -257,6 +257,7 @@
         };
       };
     };
+    trippy.enable = true;
     vesktop = {
       enable = true;
       settings = {
