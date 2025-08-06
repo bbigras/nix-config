@@ -3,6 +3,14 @@
   xdg = {
     enable = true;
     mimeApps.enable = pkgs.stdenv.isLinux;
+    terminal-exec = {
+      enable = true;
+      settings = {
+        default = [
+          "ghostty.desktop"
+        ];
+      };
+    };
     userDirs = {
       enable = pkgs.stdenv.isLinux;
       desktop = "$HOME/Bureau";
