@@ -37,8 +37,10 @@
             "closest_pushable(@)"
           ];
         };
-        core.fsmonitor = "watchman";
-        core.watchman.register-snapshot-trigger = true;
+        fsmonitor = {
+          backend = "watchman";
+          watchman.register-snapshot-trigger = true;
+        };
         user = {
           name = "Bruno Bigras";
           email = "bigras.bruno@gmail.com";
