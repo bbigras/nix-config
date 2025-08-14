@@ -120,7 +120,7 @@
     nixpkgs_bongocat.url = "github:bbigras/nixpkgs/push-xwvkmqxvkzlk";
     nixpkgs_television.url = "github:bbigras/nixpkgs/push-uupknmykzxqz";
 
-    nixos-avf.url = "github:nix-community/nixos-avf";
+    nixos-avf.url = "github:bbigras/nixos-avf/push-uupyqvopzsml";
 
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
