@@ -133,6 +133,7 @@
       jan
       anki
       sops
+      rustdesk-flutter
     ];
     shellAliases = {
       cat = "bat";
