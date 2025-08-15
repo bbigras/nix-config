@@ -48,10 +48,18 @@ in
     nix-output-monitor
   ];
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+    substituters = [
+      "http://192.168.68.6:8501?priority=1"
+    ];
+    trusted-public-keys = [
+      "192.168.68.6:zSAiwQJTX02yGP2NSof1Pin339R5YP+91Y5xdaqFsnU="
+    ];
+  };
 
   catppuccin = {
     enable = true;
