@@ -545,11 +545,11 @@
     },
     "nixos-avf": {
       "locked": {
-        "lastModified": 1755192756,
-        "narHash": "sha256-yCfH/y2/7dRaDEJjXtNKa7bEGbx+1hxWaYD14o2kdpo=",
+        "lastModified": 1755286110,
+        "narHash": "sha256-flrut+s91QwYg3/zy5GTGOAls8FWMXOUzpVAzNiteSw=",
         "owner": "bbigras",
         "repo": "nixos-avf",
-        "rev": "60ef58b2ad13262f6ccb468a6f3554a4047296fa",
+        "rev": "130a05120221961c1655cc1d83e2df4fbcd60106",
         "type": "github"
       },
       "original": {
