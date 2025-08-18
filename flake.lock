@@ -583,11 +583,11 @@
     },
     "nixos-facter-modules": {
       "locked": {
-        "lastModified": 1755424785,
-        "narHash": "sha256-OSBoOi9KNOc7R2uVSW9Xmm1gdZXi2k6VQwgxzntqeKg=",
+        "lastModified": 1755504238,
+        "narHash": "sha256-mw7q5DPdmz/1au8mY0u1DztRgVyJToGJfJszxjKSNes=",
         "owner": "nix-community",
         "repo": "nixos-facter-modules",
-        "rev": "2d0757d6e392cf0da406c9f51647a0eed68ad550",
+        "rev": "354ed498c9628f32383c3bf5b6668a17cdd72a28",
         "type": "github"
       },
       "original": {
