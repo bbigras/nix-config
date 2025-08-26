@@ -131,7 +131,6 @@
       resticprofile
       tkey-ssh-agent
       jan
-      anki
       sops
       rustdesk-flutter
     ];
