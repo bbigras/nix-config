@@ -768,18 +768,18 @@
         "type": "github"
       }
     },
-    "nixpkgs_bongocat": {
+    "nixpkgs_tmux": {
       "locked": {
-        "lastModified": 1754243347,
-        "narHash": "sha256-aYw37a+H63KCDexT6FIBGHJlp2D2BWy+Snb4LkPIfFM=",
+        "lastModified": 1756257760,
+        "narHash": "sha256-tfeGE/xhFfuxIwydxV4ERAucWR+ZpZVSHiFLhzpwKbI=",
         "owner": "bbigras",
         "repo": "nixpkgs",
-        "rev": "ff4d9b8f495985f1769df98c40255b3932fd29ca",
+        "rev": "4e88fa5da3958e5498ab9cbbca376b7184dc8e66",
         "type": "github"
       },
       "original": {
         "owner": "bbigras",
-        "ref": "push-xwvkmqxvkzlk",
+        "ref": "push-swylwxzotmzl",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -869,7 +869,7 @@
         "nixos-facter-modules": "nixos-facter-modules",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
-        "nixpkgs_bongocat": "nixpkgs_bongocat",
+        "nixpkgs_tmux": "nixpkgs_tmux",
         "nur": "nur",
         "sops-nix": "sops-nix",
         "srvos": "srvos",

@@ -17,6 +17,7 @@
       fuzzback
       tmux-fzf
       tmux-thumbs
+      pkgs.tmux-lazy-restore
     ];
     mouse = true;
     # secureSocket = false;
