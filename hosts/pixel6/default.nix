@@ -126,7 +126,7 @@ in
         ../../users/bbigras/core/tmux.nix
         ../../users/bbigras/core/yazi.nix
         ../../users/bbigras/core/zsh.nix
-        ../../users/bbigras/core/emacs
+        # ../../users/bbigras/core/emacs
         nurNoPkgs.repos.rycee.hmModules.emacs-init
         catppuccin.homeModules.catppuccin
       ]

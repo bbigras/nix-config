@@ -106,7 +106,7 @@ in
       catppuccin.homeModules.catppuccin
       nurNoPkgs.repos.rycee.hmModules.emacs-init
       ../../users/bbigras/core/atuin.nix
-      ../../users/bbigras/core/emacs
+      # ../../users/bbigras/core/emacs
       ../../users/bbigras/core/fish.nix
       ../../users/bbigras/core/git.nix
       ../../users/bbigras/core/jjui.nix
