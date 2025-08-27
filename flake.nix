@@ -117,7 +117,6 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs_bongocat.url = "github:bbigras/nixpkgs/push-xwvkmqxvkzlk";
 
     nixos-avf.url = "github:bbigras/nixos-avf/push-uupyqvopzsml";
 
