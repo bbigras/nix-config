@@ -17,12 +17,8 @@ let
       lib.nixosSystem {
 
         modules = [
-          inputs.nixos-cosmic.nixosModules.default
           {
-            disabledModules = [
-              "services/desktop-managers/cosmic.nix"
-              "services/display-managers/cosmic-greeter.nix"
-            ];
+            nixpkgs.overlays = [ inputs.nixos-cosmic.overlays.default ];
           }
           (../hosts + "/${hostname}")
           {
