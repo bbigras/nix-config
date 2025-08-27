@@ -118,7 +118,7 @@
 
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nixos-avf.url = "github:bbigras/nixos-avf/push-uupyqvopzsml";
+    nixos-avf.url = "github:nix-community/nixos-avf";
 
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
