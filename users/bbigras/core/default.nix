@@ -12,7 +12,7 @@
 {
   imports = [
     impermanence.nixosModules.home-manager.impermanence
-    nix-index-database.hmModules.nix-index
+    nix-index-database.homeModules.nix-index
     catppuccin.homeModules.catppuccin
 
     ./atuin.nix
@@ -225,15 +225,12 @@
     sqls.enable = true;
     ssh = {
       enable = true;
-      controlMaster = "auto";
-      controlPersist = "10m";
-      hashKnownHosts = true;
-      includes = [
-        "~/.ssh/devpod"
-      ];
-      extraOptionOverrides = {
-        AddKeysToAgent = "confirm";
-        VerifyHostKeyDNS = "ask";
+      enableDefaultConfig = false;
+      matchBlocks."*" = {
+        controlMaster = "auto";
+        controlPersist = "10m";
+        hashKnownHosts = true;
+        addKeysToAgent = "confirm";
       };
     };
     starship.enable = true;

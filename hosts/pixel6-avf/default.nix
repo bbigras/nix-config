@@ -165,15 +165,11 @@ in
       pay-respects.enable = true;
       ssh = {
         enable = true;
-        controlMaster = "auto";
-        controlPersist = "10m";
-        hashKnownHosts = true;
-        includes = [
-          "~/.ssh/devpod"
-        ];
-        extraOptionOverrides = {
-          AddKeysToAgent = "confirm";
-          VerifyHostKeyDNS = "ask";
+        matchBlocks."*" = {
+          controlMaster = "auto";
+          controlPersist = "10m";
+          hashKnownHosts = true;
+          addKeysToAgent = "confirm";
         };
       };
       starship.enable = true;
