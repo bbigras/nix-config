@@ -210,12 +210,6 @@
           "home-manager"
           "nixos"
         ];
-
-        experimental = {
-          render_docs_indexes = {
-            nvf = "https://notashelf.github.io/nvf/options.html";
-          };
-        };
       };
     };
     nix-your-shell.enable = true;
