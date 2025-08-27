@@ -29,8 +29,6 @@
   programs.emacs = {
     enable = true;
 
-    package = pkgs.emacs-unstable;
-
     init = {
       enable = true;
 

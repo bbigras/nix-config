@@ -166,7 +166,6 @@ in
         };
         emacs = {
           enable = true;
-          package = lib.mkForce pkgs.emacs30;
           init.usePackage = {
             god-mode.enable = true;
           };
