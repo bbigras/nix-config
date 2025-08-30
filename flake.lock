@@ -50,11 +50,11 @@
     "cosmic-applets-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1756133170,
-        "narHash": "sha256-cDJzHOrGpcgOVHUMGbZdr9SKnkh03Ag+lyPAeZElYgg=",
+        "lastModified": 1756305515,
+        "narHash": "sha256-b/X5dwZRJoML6DQDr5IJ9QEa0qKiPszm2N9Yc3GSgHE=",
         "owner": "pop-os",
         "repo": "cosmic-applets",
-        "rev": "d53b968cfbb81907acdd7f0e4cfd173b7b9ef47a",
+        "rev": "4dfb2025b60baa922933b62300f9da30c2a93eb8",
         "type": "github"
       },
       "original": {
@@ -242,11 +242,11 @@
     "cosmic-panel-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1754966361,
-        "narHash": "sha256-LNkCqR6KKQt3tjaj5qXJ2my8nY4sS6yx3+MWhfQpaoA=",
+        "lastModified": 1756314579,
+        "narHash": "sha256-TF1fUnN2pDmf7+GA4GLqncHODznnoubja/3stZbdBH4=",
         "owner": "pop-os",
         "repo": "cosmic-panel",
-        "rev": "9da7dc180f87613aa7edae5e9e692d695ffdde3f",
+        "rev": "efbc15c4c3c189d051c57f273162a5fc88a0e99a",
         "type": "github"
       },
       "original": {
@@ -354,11 +354,11 @@
     "cosmic-settings-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1755706429,
-        "narHash": "sha256-CFVkk5SJGAKpxlE1uEx9SLhFwhjWvfMhMVxImmJf3NM=",
+        "lastModified": 1756383884,
+        "narHash": "sha256-q5GFizyPPfbXIgWJtTzgDSxehPA2tdppS8uwIDVRcKQ=",
         "owner": "pop-os",
         "repo": "cosmic-settings",
-        "rev": "c8036c79170118a39c48d9930acd5bd2725bed92",
+        "rev": "e21ad9f27c88742e9057a13b7f6619ed7dd67845",
         "type": "github"
       },
       "original": {
@@ -370,11 +370,11 @@
     "cosmic-store-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1756218754,
-        "narHash": "sha256-pNMmkXQjQ66o21rxqXR3U2f4aLFASsRfw/R+qloBln8=",
+        "lastModified": 1756386820,
+        "narHash": "sha256-9g6W2E4Cgf+YeeuvISX/+DZiMqTEvT+FPBl0T8157Bk=",
         "owner": "pop-os",
         "repo": "cosmic-store",
-        "rev": "db805990b6b864d19d3dfff144965802da40f7d0",
+        "rev": "92355462645b085c6e815969c942e399c2b2703e",
         "type": "github"
       },
       "original": {
@@ -958,11 +958,11 @@
         "xdg-desktop-portal-cosmic-src": "xdg-desktop-portal-cosmic-src"
       },
       "locked": {
-        "lastModified": 1756243282,
-        "narHash": "sha256-7TOEJjda5GWYfndt6RFoMZC/7iTSWh45OKPVyXCX7wk=",
+        "lastModified": 1756482107,
+        "narHash": "sha256-ZyaXqBAgsvymaVSgzaa+f5l4RZpUsJqphgPG+ffBZ2w=",
         "owner": "busyboredom",
         "repo": "cosmic-nightly-flake",
-        "rev": "14a6df93b8c321e21e773d4241ef979cb230f028",
+        "rev": "8837d175bbc0409c5fd018b25d9e19e86c4254c4",
         "type": "github"
       },
       "original": {
