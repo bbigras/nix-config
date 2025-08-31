@@ -16,7 +16,7 @@ let
       address ? null,
       pubkey ? null,
       homeDirectory ? null,
-      remoteBuild ? true,
+      remoteBuild ? false,
       large ? false,
       type2 ? "desktop",
     }:
