@@ -19,7 +19,7 @@ in
   imports = [
     ../../core
     ../../dev
-    ../../dev/incus.nix
+    # ../../dev/incus.nix
     # ../../dev/virt-manager.nix
     ../../services/kanata.nix
     ../../services/podman.nix

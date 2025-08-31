@@ -37,7 +37,7 @@ in
     ../../services/veilid.nix
     ../../services/virt-manager.nix
     ../../dev
-    ../../dev/incus.nix
+    # ../../dev/incus.nix
 
     # Include the results of the hardware scan.
     ../../hardware/efi.nix
