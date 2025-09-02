@@ -913,11 +913,11 @@
     },
     "nixos-avf": {
       "locked": {
-        "lastModified": 1755349137,
-        "narHash": "sha256-xwgq0DinLBYKqo/FegSUkh4Pr0oexYfJzv+MMB/Xy4c=",
+        "lastModified": 1756812631,
+        "narHash": "sha256-EjRPR6EnTVjiHI5H0dsJNSbmpVJ65DLurdAeldqE1tI=",
         "owner": "nix-community",
         "repo": "nixos-avf",
-        "rev": "5615d1f6e268709dfed168dc7c5762a1e612bbd0",
+        "rev": "87a6e00a69a918c7d7c3bb40115b91f4e5f88214",
         "type": "github"
       },
       "original": {
