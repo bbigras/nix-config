@@ -298,6 +298,12 @@
   services = {
     # spotifyd.enable = true;
     syncthing.enable = true;
+    psd = {
+      enable = true;
+      browsers = [
+        "firefox"
+      ];
+    };
   };
 
   systemd.user.services = {
