@@ -133,6 +133,7 @@
       jan
       sops
       rustdesk-flutter
+      mergiraf
     ];
     shellAliases = {
       cat = "bat";
