@@ -117,25 +117,19 @@ in
     };
   };
 
-  #boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  boot.plymouth.enable = true;
-
-  # networking.interfaces."enp6s0".wakeOnLan.enable = true;
-
   boot = {
     binfmt.registrations.aarch64 = {
       interpreter = "${qemu-aarch64-static}/bin/qemu-aarch64-static";
       magicOrExtension = ''\x7fELF\x02\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\xb7\x00'';
       mask = ''\xff\xff\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\x00\xff\xfe\xff\xff\xff'';
     };
-    loader.systemd-boot.memtest86.enable = true;
-
     kernel.sysctl = {
       "kernel.sysrq" = 1;
       # "fs.inotify.max_user_watches" = 524288;
       # "vm.swappiness" = 1;
     };
+    loader.systemd-boot.memtest86.enable = true;
+    plymouth.enable = true;
   };
 
   home-manager.users.bbigras = {
@@ -187,59 +181,10 @@ in
 
   boot.supportedFilesystems = [ "ntfs" ];
 
-  # networking.firewall.enable = false;
-  networking.firewall.allowedTCPPorts = [
-    9977
-    9988
-    21000 # immersed
-    21013 # immersed
-    8077 # qBittorrent
-  ];
-  #   22000
-  #   6680
-  #   51413 # transmission
-  #   19515 # qbittorrent
-  # ];
-  # networking.firewall.allowedTCPPortRanges = [
-  # ];
-  # networking.firewall.allowedUDPPorts = [
-  #   21027
-  # ];
-  # networking.firewall.allowedUDPPortRanges = [
-  # ];
-
-  users.users.builder = {
-    createHome = true;
-    isNormalUser = true;
-  };
-
-  # services.resilio = {
-  #   enable = true;
-  #   # openFirewall = true;
-  #   enableWebUI = true;
-  # };
-
-  services.ollama = {
-    enable = false;
-    acceleration = "rocm";
-    environmentVariables = {
-      HCC_AMDGPU_TARGET = "gfx1031"; # used to be necessary, but doesn't seem to anymore
-    };
-    rocmOverrideGfx = "10.3.1";
-  };
-
-  services.open-webui = {
-    enable = false;
-    host = "0.0.0.0";
-  };
-
   environment.systemPackages = with pkgs; [
     fwupd
   ];
 
   services.fwupd.enable = true;
-
   services.flatpak.enable = true;
-
-  services.earlyoom.enable = false;
 }
