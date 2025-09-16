@@ -50,6 +50,7 @@ in
     # ./aarch64.nix
 
     ../../graphical
+    ../../graphical/cosmic.nix
     ../../graphical/trusted.nix
 
     # ../../dev/rust-embeded.nix
@@ -241,7 +242,4 @@ in
   services.flatpak.enable = true;
 
   services.earlyoom.enable = false;
-  services.desktopManager.cosmic.enable = true;
-  services.displayManager.cosmic-greeter.enable = true;
-  environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
 }

@@ -33,6 +33,7 @@ in
     ../../hardware/sound.nix
 
     ../../graphical
+    ../../graphical/cosmic.nix
     ../../graphical/trusted.nix
 
     # ../../dev/rust-embeded.nix
@@ -182,9 +183,6 @@ in
     };
     thermald.enable = true;
   };
-  services.desktopManager.cosmic.enable = true;
-  services.displayManager.cosmic-greeter.enable = true;
-  environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
 
   home-manager.users.bbigras = {
     imports = [
