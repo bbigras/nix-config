@@ -159,14 +159,7 @@ in
         dhcpV4Config = {
           UseDNS = false;
         };
-        dns = [
-          # https://developers.cloudflare.com/1.1.1.1/dns-over-tls
-          "1.1.1.1#cloudflare-dns.com"
-          "1.0.0.1#cloudflare-dns.com"
-        ];
         networkConfig = {
-          # DNSSEC = true;
-          DNSOverTLS = true;
           MulticastDNS = true;
         };
       };
