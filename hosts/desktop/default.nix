@@ -180,6 +180,7 @@ in
         networkConfig = {
           # DNSSEC = true;
           DNSOverTLS = true;
+          MulticastDNS = true;
         };
       };
     };
