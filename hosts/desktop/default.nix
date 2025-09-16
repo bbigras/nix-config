@@ -186,11 +186,6 @@ in
     };
   };
 
-  services.xserver = {
-    autorun = true;
-    enable = true;
-  };
-
   boot.supportedFilesystems = [ "ntfs" ];
 
   # networking.firewall.enable = false;
