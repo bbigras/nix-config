@@ -14,9 +14,10 @@
   services.resolved = {
     enable = true;
     dnssec = "allow-downgrade";
+    dnsovertls = "true";
     fallbackDns = [
-      "1.1.1.1"
-      "8.8.8.8"
+      "1.1.1.1#cloudflare-dns.com"
+      "1.0.0.1#cloudflare-dns.com"
     ];
     llmnr = "true";
     extraConfig = ''
