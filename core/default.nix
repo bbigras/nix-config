@@ -62,4 +62,10 @@
     nix-index.enable = true;
     fish.enable = true;
   };
+
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+    accent = "blue";
+  };
 }

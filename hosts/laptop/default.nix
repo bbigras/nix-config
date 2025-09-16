@@ -75,12 +75,6 @@ in
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  catppuccin = {
-    enable = true;
-    flavor = "mocha";
-    accent = "blue";
-  };
-
   networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [ ];
 

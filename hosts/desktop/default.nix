@@ -90,12 +90,6 @@ in
     fsType = "ntfs3";
   };
 
-  catppuccin = {
-    enable = true;
-    flavor = "mocha";
-    accent = "blue";
-  };
-
   nix = {
     extraOptions = ''
       extra-platforms = aarch64-linux i686-linux
