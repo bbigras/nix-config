@@ -11,6 +11,7 @@
   nixos-facter-modules,
   catppuccin,
   sops-nix,
+  nixpkgs-veilid,
   ...
 }:
 {
@@ -27,6 +28,10 @@
     ./resolved.nix
     ./tailscale.nix
     ./tmux.nix
+    {
+      imports = [ (nixpkgs-veilid + "/nixos/modules/services/networking/veilid.nix") ];
+      disabledModules = [ "services/networking/veilid.nix" ];
+    }
   ];
 
   boot.kernelParams = [ "log_buf_len=10M" ];

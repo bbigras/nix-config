@@ -1083,6 +1083,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-veilid": {
+      "locked": {
+        "lastModified": 1758650417,
+        "narHash": "sha256-kAzVzYH9/K/ZCtUOimqkFGLR6zB9uc8FNa2OZ3RfHTc=",
+        "owner": "bbigras",
+        "repo": "nixpkgs",
+        "rev": "3dd49d6051a23686ce7ba29c6e3c3588101d55f4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bbigras",
+        "ref": "push-xllkulzmxspx",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1708172716,
@@ -1247,6 +1263,7 @@
         "nixos-facter-modules": "nixos-facter-modules",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
+        "nixpkgs-veilid": "nixpkgs-veilid",
         "nixpkgs_tmux": "nixpkgs_tmux",
         "nur": "nur",
         "sops-nix": "sops-nix",

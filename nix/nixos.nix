@@ -48,6 +48,7 @@ let
             nixos-avf
             nixos-facter-modules
             nixos-hardware
+            nixpkgs-veilid
             nur
             sops-nix
             minimal-emacs-d
