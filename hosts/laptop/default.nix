@@ -196,15 +196,11 @@ in
       enable = true;
       settings = {
         als = {
-          webcam = {
-            video = 0;
+          time = {
             thresholds = {
               "0" = "night";
-              "15" = "dark";
-              "30" = "dim";
-              "45" = "normal";
-              "60" = "bright";
-              "75" = "outdoors";
+              "8" = "day";
+              "18" = "night";
             };
           };
         };
@@ -213,15 +209,7 @@ in
           {
             name = "eDP-1";
             path = "/sys/class/backlight/intel_backlight";
-            # capturer = "wayland";
-            capturer = "none";
-          }
-        ];
-
-        keyboard = [
-          {
-            name = "keyboard-dell";
-            path = "/sys/bus/platform/devices/dell-laptop/leds/dell::kbd_backlight";
+            capturer = "wayland";
           }
         ];
       };
