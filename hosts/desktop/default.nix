@@ -163,6 +163,12 @@ in
           MulticastDNS = true;
         };
       };
+      "20-wlan" = {
+        matchConfig.Name = "wlp*";
+        linkConfig = {
+          Unmanaged = true;
+        };
+      };
     };
   };
 
