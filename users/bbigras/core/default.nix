@@ -319,6 +319,7 @@
   services = {
     # spotifyd.enable = true;
     syncthing.enable = true;
+    tailscale-systray.enable = true;
     psd = {
       enable = true;
       browsers = [
