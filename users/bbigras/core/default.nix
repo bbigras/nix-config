@@ -15,6 +15,7 @@
     nix-index-database.homeModules.nix-index
     catppuccin.homeModules.catppuccin
 
+    ./asciinema.nix
     ./atuin.nix
     ./btop.nix
     ./easyeffects.nix
