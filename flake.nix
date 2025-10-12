@@ -177,6 +177,11 @@
       url = "github:misohena/el-easydraw";
       flake = false;
     };
+
+    winboat = {
+      url = "github:TibixDev/winboat";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

@@ -6,6 +6,9 @@
 }:
 with lib;
 {
+  users.groups = {
+    docker = { };
+  };
   users.users.bbigras = {
     createHome = true;
     # group = "bbigras";
@@ -13,6 +16,7 @@ with lib;
       "wheel"
       "dialout"
       "input"
+      "docker"
     ]
     ++ optionals config.hardware.uinput.enable [ "uinput" ]
     ++ optionals config.hardware.i2c.enable [ "i2c" ]

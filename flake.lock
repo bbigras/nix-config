@@ -1270,7 +1270,8 @@
         "srvos": "srvos",
         "systems": "systems",
         "treefmt-nix": "treefmt-nix_2",
-        "truecolor-check": "truecolor-check"
+        "truecolor-check": "truecolor-check",
+        "winboat": "winboat"
       }
     },
     "rust-overlay": {
@@ -1420,6 +1421,26 @@
       "original": {
         "type": "git",
         "url": "https://gist.github.com/fdeaf79e921c2f413f44b6f613f6ad53.git"
+      }
+    },
+    "winboat": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1760183562,
+        "narHash": "sha256-lauscAI61WXjLTuGiRDMUAEeTqvOTSWhRoHDaor5sfE=",
+        "owner": "TibixDev",
+        "repo": "winboat",
+        "rev": "ae60de6c2cba7a2001fef1027d5c2e06614e6904",
+        "type": "github"
+      },
+      "original": {
+        "owner": "TibixDev",
+        "repo": "winboat",
+        "type": "github"
       }
     },
     "xdg-desktop-portal-cosmic-src": {

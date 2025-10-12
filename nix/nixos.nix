@@ -38,6 +38,7 @@ let
         specialArgs = {
           hostAddress = address;
           hostType = type;
+          system = hostPlatform;
           inherit (inputs)
             catppuccin
             disko
@@ -52,6 +53,7 @@ let
             nur
             sops-nix
             minimal-emacs-d
+            winboat
             ;
         };
       }
