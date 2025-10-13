@@ -802,11 +802,11 @@
     "minimal-emacs-d": {
       "flake": false,
       "locked": {
-        "lastModified": 1760031755,
-        "narHash": "sha256-k25gBnI+tYY9gHVgwTHZXnenAVw3lLD27iWO9b/3ia8=",
+        "lastModified": 1760296440,
+        "narHash": "sha256-BFSxSrb+QFgfWVxTPk+QZhQ/8ZFmvTm9vtzjuj5Y1KA=",
         "owner": "jamescherti",
         "repo": "minimal-emacs.d",
-        "rev": "7a16448e98c7e546cb5537dc3eaa3ea6f7204879",
+        "rev": "b40ad4f962e29d2bce412e00cfadb72e133ec076",
         "type": "github"
       },
       "original": {
