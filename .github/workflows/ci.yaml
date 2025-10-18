@@ -32,9 +32,9 @@ jobs:
           - os: macos-15
             platform: aarch64-darwin
     steps:
-      - uses: DeterminateSystems/nix-installer-action@v20
+      - uses: nixbuild/nix-quick-install-action@v34
         with:
-          extra-conf: ${{ env.nix-conf }}
+          nix_conf: ${{ env.nix-conf }}
       - uses: cachix/cachix-action@v16
         with:
           name: bbigras-nix-config
@@ -55,9 +55,9 @@ jobs:
           - os: macos-15
             platform: aarch64-darwin
     steps:
-      - uses: DeterminateSystems/nix-installer-action@v20
+      - uses: nixbuild/nix-quick-install-action@v34
         with:
-          extra-conf: ${{ env.nix-conf }}
+          nix_conf: ${{ env.nix-conf }}
       - uses: cachix/cachix-action@v16
         with:
           name: bbigras-nix-config
@@ -92,9 +92,9 @@ jobs:
     env:
       system: ${{ matrix.attrs.hostPlatform }}
     steps:
-      - uses: DeterminateSystems/nix-installer-action@v20
+      - uses: nixbuild/nix-quick-install-action@v34
         with:
-          extra-conf: ${{ env.nix-conf }}
+          nix_conf: ${{ env.nix-conf }}
       - uses: cachix/cachix-action@v16
         with:
           name: bbigras-nix-config
@@ -115,9 +115,9 @@ jobs:
     env:
       system: ${{ matrix.attrs.equivalentLinuxPlatform }}
     steps:
-      - uses: DeterminateSystems/nix-installer-action@v20
+      - uses: nixbuild/nix-quick-install-action@v34
         with:
-          extra-conf: ${{ env.nix-conf }}
+          nix_conf: ${{ env.nix-conf }}
       - uses: cachix/cachix-action@v16
         with:
           name: bbigras-nix-config
@@ -138,9 +138,9 @@ jobs:
     env:
       system: ${{ matrix.attrs.hostPlatform }}
     steps:
-      - uses: DeterminateSystems/nix-installer-action@v20
+      - uses: nixbuild/nix-quick-install-action@v34
         with:
-          extra-conf: ${{ env.nix-conf }}
+          nix_conf: ${{ env.nix-conf }}
       - uses: cachix/cachix-action@v16
         with:
           name: bbigras-nix-config
@@ -162,9 +162,10 @@ jobs:
       - uses: wimpysworld/nothing-but-nix@main
         with:
           hatchet-protocol: "holster"
-      - uses: DeterminateSystems/nix-installer-action@v20
+          nix-permission-edict: true
+      - uses: nixbuild/nix-quick-install-action@v34
         with:
-          extra-conf: ${{ env.nix-conf }}
+          nix_conf: ${{ env.nix-conf }}
       - uses: cachix/cachix-action@v16
         with:
           name: bbigras-nix-config
