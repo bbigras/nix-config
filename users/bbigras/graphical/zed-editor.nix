@@ -25,6 +25,10 @@
       "toml"
     ];
     userSettings = {
+      node = {
+        path = lib.getExe pkgs.nodejs;
+        npm_path = lib.getExe' pkgs.nodejs "npm";
+      };
       lsp = {
         rust-analyzer = {
           initialization_options = {
