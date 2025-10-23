@@ -7,14 +7,12 @@
       "https://nix-community.cachix.org"
       "https://nix-on-droid.cachix.org"
       "https://pre-commit-hooks.cachix.org"
-      "https://cosmic.cachix.org"
     ];
     extra-trusted-public-keys = [
       "bbigras-nix-config.cachix.org-1:aXL6Q9Oi0jyF79YAKRu17iVNk9HY0p23OZX7FA8ulhU="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU="
       "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
-      "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
     ];
   };
 
@@ -27,11 +25,6 @@
         nixpkgs.follows = "nixpkgs";
         systems.follows = "systems";
       };
-    };
-
-    nixos-cosmic = {
-      url = "github:busyboredom/cosmic-nightly-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     truecolor-check = {

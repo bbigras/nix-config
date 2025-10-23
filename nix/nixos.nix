@@ -17,9 +17,6 @@ let
       lib.nixosSystem {
 
         modules = [
-          {
-            nixpkgs.overlays = [ inputs.nixos-cosmic.overlays.default ];
-          }
           (../hosts + "/${hostname}")
           {
             nix.registry = {
