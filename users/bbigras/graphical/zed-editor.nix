@@ -20,7 +20,9 @@
       "helm"
       "just"
       "nix"
+      "rust"
       "sql"
+      "toml"
     ];
     userSettings = {
       lsp = {
