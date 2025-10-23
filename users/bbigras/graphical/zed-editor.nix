@@ -29,6 +29,7 @@
         path = lib.getExe pkgs.nodejs;
         npm_path = lib.getExe' pkgs.nodejs "npm";
       };
+      auto_update = false;
       lsp = {
         rust-analyzer = {
           initialization_options = {
