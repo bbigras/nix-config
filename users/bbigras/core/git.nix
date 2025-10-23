@@ -4,10 +4,12 @@
     enable = true;
     package = pkgs.gitFull;
     lfs.enable = true;
-    userEmail = "bigras.bruno@gmail.com";
-    userName = "Bruno Bigras";
     signing.format = "ssh";
-    extraConfig = {
+    settings = {
+      user = {
+        email = "bigras.bruno@gmail.com";
+        name = "Bruno Bigras";
+      };
       diff = {
         colorMoved = "default";
         age.textconv = "${pkgs.rage}/bin/rage -i ~/.ssh/id_ed25519 --decrypt";
@@ -22,18 +24,17 @@
       credential.helper = "${pkgs.gitAndTools.gitFull}/bin/git-credential-libsecret";
       rerere.enabled = true;
       maintenance.prefetch.enabled = false;
-    };
+      alias = {
+        st = "status";
+        co = "checkout";
+        ci = "commit";
+        br = "branch";
+        lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+        recent = "for-each-ref --sort=-committerdate --format='%(committerdate:short): %(refname:short)' refs/heads/";
 
-    aliases = {
-      st = "status";
-      co = "checkout";
-      ci = "commit";
-      br = "branch";
-      lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
-      recent = "for-each-ref --sort=-committerdate --format='%(committerdate:short): %(refname:short)' refs/heads/";
-
-      # So you think you know git - Fosdem 2024
-      staash = "stash --all";
+        # So you think you know git - Fosdem 2024
+        staash = "stash --all";
+      };
     };
 
     ignores = [
