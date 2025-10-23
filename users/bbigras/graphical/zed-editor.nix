@@ -25,6 +25,9 @@
       "toml"
     ];
     userSettings = {
+      features = {
+        edit_prediction_provider = "copilot";
+      };
       node = {
         path = lib.getExe pkgs.nodejs;
         npm_path = lib.getExe' pkgs.nodejs "npm";
