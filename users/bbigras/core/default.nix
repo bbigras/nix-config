@@ -266,7 +266,6 @@
         tick_rate = 50;
         ui = {
           use_nerd_font_icons = true;
-          theme = "catppuccin-mocha-blue.toml";
         };
       };
     };
