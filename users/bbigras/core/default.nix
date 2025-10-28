@@ -129,7 +129,6 @@
       git-remote-gcrypt
       spacer
       faketty
-      radicle-node
       resticprofile
       tkey-ssh-agent
       jan
@@ -217,6 +216,14 @@
     };
     nix-your-shell.enable = true;
     pay-respects.enable = true;
+    radicle = {
+      enable = true;
+      settings = {
+        node = {
+          listen = [ "0.0.0.0:8776" ];
+        };
+      };
+    };
     ripgrep.enable = true;
     sesh.enable = true;
     sqls.enable = true;
@@ -319,6 +326,10 @@
 
   services = {
     # spotifyd.enable = true;
+    radicle.node = {
+      enable = true;
+      lazy.enable = true;
+    };
     syncthing.enable = true;
     tailscale-systray.enable = true;
     psd = {
