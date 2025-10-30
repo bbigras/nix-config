@@ -21,7 +21,7 @@
       mergetool.prompt = true;
       pull.ff = "only";
       rebase.updateRefs = true;
-      credential.helper = "${pkgs.gitAndTools.gitFull}/bin/git-credential-libsecret";
+      credential.helper = "${pkgs.gitFull}/bin/git-credential-libsecret";
       rerere.enabled = true;
       maintenance.prefetch.enabled = false;
       alias = {
