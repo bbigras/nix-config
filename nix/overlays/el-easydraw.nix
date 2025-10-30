@@ -1,6 +1,6 @@
 self: super: {
-  emacsPackages = super.emacsPackages // {
-    el-easydraw = super.emacsPackages.trivialBuild {
+  emacs.pkgs = super.emacs.pkgs // {
+    el-easydraw = super.emacs.pkgs.trivialBuild {
       pname = "el-easydraw";
       version = "git";
       src = self.__inputs.el-easydraw;

@@ -83,7 +83,7 @@ in
 
         edraw-org = {
           enable = true;
-          package = _epkgs: pkgs.emacsPackages.el-easydraw;
+          package = _epkgs: pkgs.emacs.pkgs.el-easydraw;
         };
 
         org = {

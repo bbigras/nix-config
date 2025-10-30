@@ -190,7 +190,7 @@
 
         ultra-scroll = {
           enable = true;
-          package = _epkgs: pkgs.emacsPackages.ultra-scroll;
+          package = _epkgs: pkgs.emacs.pkgs.ultra-scroll;
           init = ''
             (setq scroll-conservatively 101 ; important!
                     scroll-margin 0)
@@ -202,7 +202,7 @@
 
         gptel = {
           enable = true;
-          package = _epkgs: pkgs.emacsPackages.gptel;
+          package = _epkgs: pkgs.emacs.pkgs.gptel;
           init = ''
             (setq gptel-model "gpt-4o")
           '';
@@ -365,7 +365,7 @@
         envrc = {
           enable = true;
           defer = 1;
-          package = _epkgs: pkgs.emacsPackages.envrc;
+          package = _epkgs: pkgs.emacs.pkgs.envrc;
           command = [ "envrc-global-mode" ];
           config = ''
             (setq envrc-remote t)
