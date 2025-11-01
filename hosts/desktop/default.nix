@@ -7,7 +7,6 @@
   lib,
   pkgs,
   nur,
-  winboat,
   system,
   ...
 }:
@@ -38,7 +37,6 @@ in
     ../../services/podman.nix
     ../../services/veilid.nix
     ../../services/virt-manager.nix
-    # ../../services/winboat.nix
     ../../dev
     # ../../dev/incus.nix
 

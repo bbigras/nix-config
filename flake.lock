@@ -840,8 +840,7 @@
         "srvos": "srvos",
         "systems": "systems",
         "treefmt-nix": "treefmt-nix_2",
-        "truecolor-check": "truecolor-check",
-        "winboat": "winboat"
+        "truecolor-check": "truecolor-check"
       }
     },
     "rust-overlay": {
@@ -991,26 +990,6 @@
       "original": {
         "type": "git",
         "url": "https://gist.github.com/fdeaf79e921c2f413f44b6f613f6ad53.git"
-      }
-    },
-    "winboat": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1761706386,
-        "narHash": "sha256-rTIOYFYUvnZG0x1ZF/NDWdvuiZVhBkzceKyDK8nC3+U=",
-        "owner": "TibixDev",
-        "repo": "winboat",
-        "rev": "197ce74c95713e9b67f6494aed58b7bd44e6064c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "TibixDev",
-        "repo": "winboat",
-        "type": "github"
       }
     }
   },

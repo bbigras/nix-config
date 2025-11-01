@@ -50,7 +50,6 @@ let
             nur
             sops-nix
             minimal-emacs-d
-            winboat
             ;
         };
       }
