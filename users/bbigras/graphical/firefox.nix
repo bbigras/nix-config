@@ -5,7 +5,7 @@
 
   catppuccin.firefox.enable = false;
   programs.firefox = {
-    enable = pkgs.hostPlatform.system == "x86_64-linux";
+    enable = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
     package =
       if lib.meta.availableOn pkgs.stdenv.hostPlatform pkgs.firefox-bin then
         pkgs.firefox-bin
