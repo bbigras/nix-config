@@ -1,7 +1,6 @@
 { lib, pkgs, ... }:
 {
   imports = [
-    ./bongocat.nix
     ./firefox.nix
     ./mpv.nix
     ./tkey-ssh-agent.nix
