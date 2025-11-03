@@ -135,6 +135,7 @@
       sops
       rustdesk-flutter
       mergiraf
+      winboat
     ];
     shellAliases = {
       cat = "bat";
