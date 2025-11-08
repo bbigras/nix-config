@@ -54,7 +54,7 @@
     daemonIOSchedPriority = 5;
     nixPath = [ "nixpkgs=/run/current-system/nixpkgs" ];
     optimise = {
-      automatic = true;
+      automatic = false;
       dates = [ "03:00" ];
     };
   }
