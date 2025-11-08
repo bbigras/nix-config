@@ -87,8 +87,8 @@ in
   };
 
   fileSystems."/media/gamedisk" = {
-    device = "/dev/disk/by-uuid/CA909C6D909C622D";
-    fsType = "ntfs3";
+    device = "/dev/disk/by-id/wwn-0x5000c5006527e1b4-part2";
+    fsType = "ext4";
   };
 
   nix = {
