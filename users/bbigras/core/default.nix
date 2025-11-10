@@ -27,6 +27,7 @@
     ./tmux.nix
     ./xdg.nix
     ./fish.nix
+    ./vicinae.nix
     ./yazi.nix
   ];
 
