@@ -15,7 +15,6 @@
     with pkgs;
     [
       dbeaver-bin
-      element-desktop
       libnotify
       pavucontrol
       qalculate-gtk
