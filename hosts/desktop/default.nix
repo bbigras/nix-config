@@ -97,10 +97,10 @@ in
     '';
     settings = {
       substituters = [
-        "http://192.168.68.6:8501?priority=1"
+        "http://192.168.0.201:8501?priority=1"
       ];
       trusted-public-keys = [
-        "192.168.68.6:zSAiwQJTX02yGP2NSof1Pin339R5YP+91Y5xdaqFsnU="
+        "192.168.0.201:zSAiwQJTX02yGP2NSof1Pin339R5YP+91Y5xdaqFsnU="
       ];
       extra-sandbox-paths = [ "/run/binfmt/aarch64=${qemu-aarch64-static}/bin/qemu-aarch64-static" ];
       system-features = [
