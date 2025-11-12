@@ -735,11 +735,11 @@
     },
     "nixpkgs_tmux": {
       "locked": {
-        "lastModified": 1756257760,
-        "narHash": "sha256-tfeGE/xhFfuxIwydxV4ERAucWR+ZpZVSHiFLhzpwKbI=",
+        "lastModified": 1762962948,
+        "narHash": "sha256-mXJgkXk+G8Mbs8Q7gfKn9cjPNqLZcudVpEeus3zE+UI=",
         "owner": "bbigras",
         "repo": "nixpkgs",
-        "rev": "4e88fa5da3958e5498ab9cbbca376b7184dc8e66",
+        "rev": "bca25d8c24db89fbba19b8f96dfd527e3d789be7",
         "type": "github"
       },
       "original": {
