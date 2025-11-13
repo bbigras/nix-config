@@ -112,6 +112,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs_tmux.url = "github:bbigras/nixpkgs/push-swylwxzotmzl";
     nixpkgs-veilid.url = "github:bbigras/nixpkgs/push-xllkulzmxspx";
+    nixpkgs-wivrn.url = "github:ImSapphire/nixpkgs/wivrn/25.11";
 
     nixos-avf.url = "github:nix-community/nixos-avf";
 
