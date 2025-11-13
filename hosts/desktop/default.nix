@@ -37,6 +37,7 @@ in
     ../../services/podman.nix
     ../../services/veilid.nix
     ../../services/virt-manager.nix
+    ../../services/wivrn.nix
     ../../dev
     # ../../dev/incus.nix
 

@@ -24,6 +24,7 @@ in
     ../../services/kanata.nix
     ../../services/podman.nix
     ../../services/veilid.nix
+    ../../services/wivrn.nix
 
     { config.facter.reportPath = ./facter.json; }
     nixos-hardware.nixosModules.framework-12-13th-gen-intel
