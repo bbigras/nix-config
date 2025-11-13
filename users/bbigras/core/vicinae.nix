@@ -8,6 +8,6 @@
   };
 
   systemd.user.services.vicinae.Service.Environment = [
-    "PATH=/etc/profiles/per-user/bbigras/bin"
+    "PATH=/etc/profiles/per-user/bbigras/bin:/run/current-system/sw/bin"
   ];
 }
