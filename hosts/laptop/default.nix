@@ -34,6 +34,7 @@ in
 
     ../../graphical
     ../../graphical/cosmic.nix
+    ../../graphical/heroic.nix
     ../../graphical/trusted.nix
 
     # ../../dev/rust-embeded.nix

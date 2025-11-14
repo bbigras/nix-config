@@ -52,6 +52,7 @@ in
 
     ../../graphical
     ../../graphical/cosmic.nix
+    ../../graphical/heroic.nix
     ../../graphical/trusted.nix
 
     # ../../dev/rust-embeded.nix
@@ -150,6 +151,7 @@ in
   programs.steam.enable = true;
   programs.steam.remotePlay.openFirewall = true;
   programs.gamemode.enable = true;
+  programs.gamescope.enable = true;
   systemd.network = {
     enable = true;
     networks = {
