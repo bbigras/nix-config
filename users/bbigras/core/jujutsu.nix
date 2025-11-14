@@ -3,7 +3,6 @@
 {
   home = {
     packages = with pkgs; [
-      jjui
       kdiff3
       meld
       watchman
