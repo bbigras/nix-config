@@ -176,6 +176,7 @@
       extraPackages = with pkgs.bat-extras; [ batman ];
     };
     carapace.enable = true;
+    difftastic.enable = true;
     eza.enable = true;
     gcc = {
       enable = true;
