@@ -133,7 +133,6 @@
       tkey-ssh-agent
       jan
       sops
-      rustdesk-flutter
       mergiraf
       winboat
     ];
