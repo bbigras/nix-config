@@ -134,7 +134,6 @@
       jan
       sops
       mergiraf
-      winboat
     ];
     shellAliases = {
       cat = "bat";
