@@ -22,6 +22,7 @@
     ./git.nix
     ./jjui.nix
     ./jujutsu.nix
+    ./lutris.nix
     ./emacs
     ./process-compose.nix
     ./tmux.nix
