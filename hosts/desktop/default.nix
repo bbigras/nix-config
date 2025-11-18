@@ -148,6 +148,7 @@ in
 
   services.smartd.enable = true;
   services.gnome.gnome-keyring.enable = false;
+  services.orca.enable = false;
 
   programs.steam.enable = true;
   programs.steam.remotePlay.openFirewall = true;

@@ -167,6 +167,7 @@ in
   services.flatpak.enable = true;
   services.smartd.enable = true;
   services.gnome.gnome-keyring.enable = false;
+  services.orca.enable = false;
 
   services.earlyoom = {
     enable = true;
