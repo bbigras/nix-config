@@ -5,6 +5,15 @@
     cosmic-ext-applet-caffeine
   ];
 
+  environment.cosmic.excludePackages = with pkgs; [
+    cosmic-edit
+    cosmic-ext-calculator
+    cosmic-player
+    cosmic-reader
+    cosmic-store
+    cosmic-term
+  ];
+
   services = {
     desktopManager.cosmic.enable = true;
     displayManager.cosmic-greeter.enable = true;
