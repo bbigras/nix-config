@@ -88,7 +88,7 @@
   };
 
   system = {
-    extraSystemBuilderCmds = ''
+    systemBuilderCommands = ''
       ln -sv ${pkgs.path} $out/nixpkgs
     '';
     rebuild.enableNg = true;
