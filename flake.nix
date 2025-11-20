@@ -87,10 +87,7 @@
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
       inputs = {
-        flake-compat.follows = "flake-compat";
-        flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
-        pre-commit-hooks-nix.follows = "git-hooks";
       };
     };
 
