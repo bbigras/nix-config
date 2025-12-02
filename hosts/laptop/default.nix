@@ -69,6 +69,7 @@ in
 
   programs.steam.enable = true;
   programs.steam.remotePlay.openFirewall = true;
+  programs.steam.extraCompatPackages = [ pkgs.proton-ge-bin ];
   programs.gamemode.enable = true;
 
   sops.secrets = {
