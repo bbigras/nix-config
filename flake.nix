@@ -1,118 +1,108 @@
 {
   description = "bbigras's NixOS config";
 
-  nixConfig = {
+  nixConfig = rec {
     extra-substituters = [
-      "https://bbigras-nix-config.cachix.org"
-      "https://nix-community.cachix.org"
-      "https://nix-on-droid.cachix.org"
-      "https://pre-commit-hooks.cachix.org"
+      "https://bbigras-nix-config.cachix.org?priority=1"
+      "https://nix-community.cachix.org?priority=2"
     ];
+    extra-trusted-substituters = extra-substituters;
     extra-trusted-public-keys = [
-      "bbigras-nix-config.cachix.org-1:aXL6Q9Oi0jyF79YAKRu17iVNk9HY0p23OZX7FA8ulhU="
+      "bbigras-nix-config.cachix.org-1:Vd6raEuldeIZpttVQfrUbLvXJHzzzkS0pezXCVVjDG4="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU="
-      "pre-commit-hooks.cachix.org-1:Pkk3Panw5AW24TOv6kz3PvLhlH8puAsJTBbOPmBo7Rc="
     ];
   };
 
   inputs = {
-    agenix = {
-      url = "github:ryantm/agenix";
+    # Core infrastructure
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
+    # CI workflow generation
+    actions-nix = {
+      url = "github:nialov/actions.nix";
       inputs = {
-        darwin.follows = "darwin";
-        home-manager.follows = "home-manager";
         nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
+        flake-parts.follows = "flake-parts";
+        git-hooks.follows = "git-hooks";
       };
     };
 
-    truecolor-check = {
-      url = "git+https://gist.github.com/fdeaf79e921c2f413f44b6f613f6ad53.git";
-      flake = false;
-    };
+    # nixos-unified for unified configuration management
+    nixos-unified.url = "github:srid/nixos-unified";
 
-    minimal-emacs-d = {
-      url = "github:jamescherti/minimal-emacs.d";
-      flake = false;
-    };
-
-    darwin = {
+    # System modules
+    nix-darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
-
-    srvos = {
-      url = "github:nix-community/srvos";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    flake-compat.url = "github:edolstra/flake-compat";
-
-    deploy-rs = {
-      url = "github:serokell/deploy-rs";
-      inputs = {
-        flake-compat.follows = "flake-compat";
-        nixpkgs.follows = "nixpkgs";
-        utils.follows = "flake-utils";
-      };
-    };
-
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    flake-parts.url = "github:hercules-ci/flake-parts";
-
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-      inputs.systems.follows = "systems";
-    };
-
-    gemoji = {
-      url = "github:github/gemoji";
-      flake = false;
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Security and secrets
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs = {
+        darwin.follows = "nix-darwin";
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+      };
+    };
+    agenix-rekey = {
+      url = "github:oddlama/agenix-rekey";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+        pre-commit-hooks.follows = "git-hooks";
+        treefmt-nix.follows = "treefmt-nix";
+      };
+    };
+
+    # Disk management
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Persistence
     impermanence.url = "github:nix-community/impermanence";
 
+    # Secure boot
     lanzaboote = {
       url = "github:nix-community/lanzaboote";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        pre-commit.follows = "git-hooks";
       };
     };
 
+    # Build tools
     nix-fast-build = {
-      url = "github:bbigras/nix-fast-build/impure";
+      url = "github:Mic92/nix-fast-build";
       inputs = {
         flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
+        treefmt-nix.follows = "treefmt-nix";
       };
     };
 
+    # Package index
     nix-index-database = {
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Hardware support
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs_tmux.url = "github:bbigras/nixpkgs/push-swylwxzotmzl";
-    nixpkgs-veilid.url = "github:bbigras/nixpkgs/push-xllkulzmxspx";
-    nixpkgs-wivrn.url = "github:ImSapphire/nixpkgs/wivrn/25.11";
-
-    nixos-avf.url = "github:nix-community/nixos-avf";
-
+    # Development tools
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs = {
@@ -120,143 +110,44 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nur.url = "nur";
-    emacs-overlay = {
-      url = "github:nix-community/emacs-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # copilot_pkgs.url = "github:bbigras/nixpkgs/copilot";
-    # copilot-node-server_pkgs.url = "github:bbigras/nixpkgs/copilot-node-server";
-
-    defmacro-gensym = {
-      url = "gitlab:akater/defmacro-gensym";
-      flake = false;
-    };
-
-    nix-on-droid = {
-      url = "github:nix-community/nix-on-droid";
-      inputs.home-manager.follows = "home-manager";
-    };
-
-    catppuccin.url = "github:catppuccin/nix";
-
-    systems.url = "github:nix-systems/default";
-
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    gptel = {
-      url = "github:karthink/gptel/feature-tool-use";
+    # Utility inputs
+    flake-compat = {
+      url = "github:edolstra/flake-compat";
       flake = false;
     };
+    systems.url = "github:nix-systems/default";
 
-    emacs-ultra-scroll = {
-      url = "github:jdtsmith/ultra-scroll";
-      flake = false;
+    # Theming
+    catppuccin.url = "github:catppuccin/nix";
+
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    el-easydraw = {
-      url = "github:misohena/el-easydraw";
+    emacs-overlay = {
+      url = "github:nix-community/emacs-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    minimal-emacs-d = {
+      url = "github:jamescherti/minimal-emacs.d";
       flake = false;
     };
   };
 
   outputs =
-    inputs@{
-      self,
-      flake-parts,
-      ...
-    }:
-    flake-parts.lib.mkFlake { inherit inputs; } (
-      toplevel@{ withSystem, ... }:
-      {
-        imports = [
-          inputs.git-hooks.flakeModule
-          inputs.treefmt-nix.flakeModule
-        ];
-        systems = [
-          "aarch64-linux"
-          "x86_64-linux"
-        ];
-        perSystem =
-          ctx@{
-            config,
-            self',
-            inputs',
-            pkgs,
-            system,
-            ...
-          }:
-          {
-            _module.args.pkgs = import inputs.nixpkgs {
-              localSystem = system;
-              overlays = [ self.overlays.default ];
-              config = {
-                allowUnfree = false;
-                allowAliases = true;
-                allowUnfreePredicate =
-                  pkg:
-                  builtins.elem (pkgs.lib.getName pkg) [
-                    "copilot-language-server"
-                    "firefox-bin"
-                    "firefox-bin-unwrapped"
-                    "steam"
-                    "steam-original"
-                    "steam-run"
-                    "steam-unwrapped"
-                  ];
-              };
-            };
-
-            devShells = import ./nix/dev-shell.nix ctx;
-
-            packages = import ./nix/packages.nix toplevel ctx;
-
-            pre-commit = {
-              check.enable = true;
-              settings.hooks = {
-                actionlint.enable = true;
-                nil.enable = true;
-                shellcheck.enable = true;
-                statix.enable = false;
-                treefmt.enable = true;
-              };
-            };
-
-            treefmt = {
-              projectRootFile = "flake.nix";
-              flakeCheck = false; # Covered by git-hooks check
-              programs = {
-                nixfmt.enable = true;
-                shfmt = {
-                  enable = true;
-                  indent_size = 0;
-                };
-              };
-            };
-          };
-
-        flake = {
-          hosts = import ./nix/hosts.nix;
-
-          darwinConfigurations = import ./nix/darwin.nix toplevel;
-          homeConfigurations = import ./nix/home-manager.nix toplevel;
-          nixosConfigurations = import ./nix/nixos.nix toplevel;
-          nixondroidConfigurations = import ./nix/nix-on-droid.nix toplevel;
-
-          deploy = import ./nix/deploy.nix toplevel;
-
-          overlays = import ./nix/overlay.nix toplevel;
-        };
-      }
-    );
+    inputs:
+    inputs.nixos-unified.lib.mkFlake {
+      inherit inputs;
+      root = ./.;
+      systems = [
+        # "aarch64-darwin"
+        # "aarch64-linux"
+        "x86_64-linux"
+      ];
+    };
 }
