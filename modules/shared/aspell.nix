@@ -7,7 +7,7 @@
         en
         en-computers
         en-science
-        # fr_CA
+        fr
       ]
     ))
   ];

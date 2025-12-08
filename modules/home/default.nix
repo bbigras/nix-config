@@ -160,6 +160,10 @@ in
         jan
         mergiraf
       ]
+      ++ (with pkgs.hunspellDicts; [
+        fr-moderne
+        en_CA
+      ])
     );
     shellAliases = {
       cat = "bat";

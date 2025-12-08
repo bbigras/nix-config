@@ -49,6 +49,19 @@
           (consult-denote-mode 1)
         '';
       };
+
+      denote-search = {
+        enable = true;
+        bind = {
+          "C-c s s" = "denote-search";
+          "C-c s d" = "denote-search-marked-dired-files";
+          "C-c s r" = "denote-search-files-referenced-in-region";
+        };
+        custom = {
+          "denote-search-format-heading-function" = "#'denote-search-format-heading-with-keywords";
+        };
+      };
+
     };
   };
 }

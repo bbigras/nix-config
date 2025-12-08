@@ -198,41 +198,41 @@
           '';
         };
 
-        consult-imenu = {
-          enable = true;
-        };
+        # consult-imenu = {
+        #   enable = true;
+        # };
 
-        consult-dir = {
-          enable = true;
-          bind = {
-            "C-x C-d" = "consult-dir";
-          };
-          config = ''
-            (define-key minibuffer-local-completion-map (kbd "C-x C-d") #'consult-dir)
-            (define-key minibuffer-local-completion-map (kbd "C-x C-j") #'consult-dir-jump-file)
-          '';
-        };
+        # consult-dir = {
+        #   enable = true;
+        #   bind = {
+        #     "C-x C-d" = "consult-dir";
+        #   };
+        #   config = ''
+        #     (define-key minibuffer-local-completion-map (kbd "C-x C-d") #'consult-dir)
+        #     (define-key minibuffer-local-completion-map (kbd "C-x C-j") #'consult-dir-jump-file)
+        #   '';
+        # };
 
-        consult-flycheck = {
-          enable = true;
-          bindLocal = {
-            flycheck-command-map = {
-              "!" = "consult-flycheck";
-            };
-          };
-        };
+        # consult-flycheck = {
+        #   enable = true;
+        #   bindLocal = {
+        #     flycheck-command-map = {
+        #       "!" = "consult-flycheck";
+        #     };
+        #   };
+        # };
 
-        embark-consult = {
-          enable = true;
-          after = [
-            "embark"
-            "consult"
-          ];
-          hook = [
-            "(embark-collect-mode . consult-preview-at-point-mode)"
-            # "(prog-mode . lsp)"
-          ];
-        };
+        # embark-consult = {
+        #   enable = true;
+        #   after = [
+        #     "embark"
+        #     "consult"
+        #   ];
+        #   hook = [
+        #     "(embark-collect-mode . consult-preview-at-point-mode)"
+        #     # "(prog-mode . lsp)"
+        #   ];
+        # };
       };
     };
   };
