@@ -18,6 +18,7 @@ in
     asciinema
     bash
     btop
+    delta
     dev
     fish
     git
