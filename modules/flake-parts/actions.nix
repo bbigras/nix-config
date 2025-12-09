@@ -56,11 +56,16 @@ let
     cache = "actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830"; # v4.3.0
     cachix = "cachix/cachix-action@0fc020193b5a1fa3ac4575aa3a7d3aa6a35435ad"; # v16
     checkout = "actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8"; # v6.0.1
+    nothing-but-nix = "wimpysworld/nothing-but-nix@6af122a9403f936ef689e44cc013ae3f3e2f1c3b"; # v6
     nix-installer = "DeterminateSystems/nix-installer-action@c5a866b6ab867e88becbed4467b93592bce69f8a"; # v21
   };
 
   # Reusable step definitions
   steps = {
+    nothing-but-nix = {
+      uses = actions.nothing-but-nix;
+    };
+
     checkout = {
       uses = actions.checkout;
       "with".persist-credentials = false;
@@ -103,6 +108,7 @@ let
 
   # Common setup steps for build jobs
   setupSteps = [
+    steps.nothing-but-nix
     steps.checkout
     steps.nixInstaller
     steps.nixCache
