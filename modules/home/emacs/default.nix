@@ -49,8 +49,7 @@ in
           (defconst dw/is-termux (getenv "ANDROID_ROOT"))
 
           ;; list font families with `fc-list : family`
-          (set-face-attribute 'default nil :family "Iosevka Nerd Font")
-          (set-face-attribute 'default nil :height (* 13 10))
+          (set-face-attribute 'default nil :family "NotoSansM Nerd Font Mono" :height 130)
         '';
 
       usePackage = {
