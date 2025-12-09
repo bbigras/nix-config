@@ -93,7 +93,7 @@ let
     cachix = {
       uses = actions.cachix;
       "with" = {
-        name = "nix-config";
+        name = "bbigras-nix-config";
         authToken = "\${{ secrets.CACHIX_AUTH_TOKEN }}";
         extraPullNames = "nix-community";
       };

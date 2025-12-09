@@ -32,7 +32,7 @@ jobs:
       with:
         authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
         extraPullNames: nix-community
-        name: nix-config
+        name: bbigras-nix-config
     - name: nix-fast-build
       run: nix run 'git+file:.#nix-fast-build' -- --no-nom --skip-cached --retries=3
         --option accept-flake-config true --flake='git+file:.#${{ matrix.attrs.attr
@@ -90,7 +90,7 @@ jobs:
       with:
         authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
         extraPullNames: nix-community
-        name: nix-config
+        name: bbigras-nix-config
     - name: nix flake check
       run: nix flake check 'git+file:.'
     - name: nix flake show
