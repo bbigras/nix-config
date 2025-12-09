@@ -17,7 +17,7 @@ in
           "@wheel"
         ];
         substituters = [
-          "https://nix-config.cachix.org"
+          "https://bbigras-nix-config.cachix.org"
           "https://nix-community.cachix.org"
         ];
         trusted-public-keys = [
