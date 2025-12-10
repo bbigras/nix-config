@@ -15,7 +15,6 @@ in
   ]
   ++ (with self.homeModules; [
     nixpkgs
-    registry
     theme
   ]);
 
@@ -38,8 +37,8 @@ in
 
   xdg = {
     dataFile.nixpkgs.source = inputs.nixpkgs;
-    configFile."nix/nix.conf".text = ''
-      flake-registry = ${config.xdg.configHome}/nix/registry.json
-    '';
+    # configFile."nix/nix.conf".text = ''
+    #   flake-registry = ${config.xdg.configHome}/nix/registry.json
+    # '';
   };
 }

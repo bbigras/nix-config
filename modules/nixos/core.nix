@@ -14,7 +14,6 @@ in
     common
     nix
     nixpkgs
-    registry
     resolved
     services-veilid
     tmux
