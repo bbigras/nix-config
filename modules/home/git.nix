@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   programs = {
     delta = {
@@ -16,6 +18,7 @@
           email = "bigras.bruno@gmail.com";
           name = "Bruno Bigras";
         };
+        credential.helper = "${pkgs.gitFull}/bin/git-credential-libsecret";
         diff.colorMoved = "default";
         difftool.prompt = true;
         github.user = "bbigras";
