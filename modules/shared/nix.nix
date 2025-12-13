@@ -17,10 +17,12 @@ in
           "@wheel"
         ];
         substituters = [
+          "http://192.168.0.201:8501?priority=1"
           "https://bbigras-nix-config.cachix.org"
           "https://nix-community.cachix.org"
         ];
         trusted-public-keys = [
+          "192.168.0.201:zSAiwQJTX02yGP2NSof1Pin339R5YP+91Y5xdaqFsnU="
           "bbigras-nix-config.cachix.org-1:Vd6raEuldeIZpttVQfrUbLvXJHzzzkS0pezXCVVjDG4="
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         ];
