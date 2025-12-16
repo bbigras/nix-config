@@ -1,0 +1,5 @@
+{
+  programs.chromium = {
+    enable = true;
+  };
+}
