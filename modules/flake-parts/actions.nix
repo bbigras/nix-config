@@ -54,6 +54,7 @@ let
   actions = {
     alls-green = "re-actors/alls-green@05ac9388f0aebcb5727afa17fcccfecd6f8ec5fe"; # v1.2.2
     cache = "actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830"; # v4.3.0
+    automerge = "peter-evans/enable-pull-request-automerge@a660677d5469627102a1c1e11409dd063606628d"; # v3.0.0
     cachix = "cachix/cachix-action@0fc020193b5a1fa3ac4575aa3a7d3aa6a35435ad"; # v16
     checkout = "actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8"; # v6.0.1
     nothing-but-nix = "wimpysworld/nothing-but-nix@6af122a9403f936ef689e44cc013ae3f3e2f1c3b"; # v6
@@ -209,25 +210,35 @@ in
         };
       };
 
-      # Regenerate workflows for Renovate PRs
+      # Regenerate workflows for Renovate PRs or manual trigger
       ".github/workflows/regenerate-workflows.yaml" = {
         name = "regenerate-workflows";
 
-        on.pull_request.paths = [ "modules/flake-parts/actions.nix" ];
+        on = {
+          pull_request.paths = [
+            "modules/flake-parts/actions.nix"
+            "flake.lock"
+          ];
+          workflow_dispatch = { };
+        };
 
-        permissions.contents = "write";
+        permissions = {
+          contents = "write";
+          pull-requests = "write";
+        };
 
         jobs.regenerate = {
           runs-on = "ubuntu-24.04";
-          # Only run for Renovate PRs (pre-commit hook handles local dev)
-          "if" = "github.actor == 'renovate[bot]'";
+          # Only run for Renovate PRs or manual dispatch
+          "if" = "github.actor == 'renovate[bot]' || github.event_name == 'workflow_dispatch'";
           steps = [
             (
               steps.checkout
               // {
                 "with" = {
-                  ref = "\${{ github.head_ref }}";
+                  ref = "\${{ github.head_ref || github.ref_name }}";
                   token = "\${{ secrets.PAT }}";
+                  fetch-depth = 2;
                 };
               }
             )
@@ -247,6 +258,14 @@ in
                 git diff --staged --quiet || git commit --amend --no-edit
                 git push --force-with-lease
               '';
+            }
+            {
+              uses = actions.automerge;
+              "with" = {
+                token = "\${{ secrets.PAT }}";
+                pull-request-number = "\${{ github.event.pull_request.number }}";
+                merge-method = "rebase";
+              };
             }
           ];
         };

@@ -5,12 +5,13 @@
 # Or commit to trigger the pre-commit hook if enabled.
 jobs:
   regenerate:
-    if: github.actor == 'renovate[bot]'
+    if: github.actor == 'renovate[bot]' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
       with:
-        ref: ${{ github.head_ref }}
+        fetch-depth: 2
+        ref: ${{ github.head_ref || github.ref_name }}
         token: ${{ secrets.PAT }}
     - uses: DeterminateSystems/nix-installer-action@c5a866b6ab867e88becbed4467b93592bce69f8a
       with:
@@ -39,11 +40,19 @@ jobs:
         git add .github/workflows/
         git diff --staged --quiet || git commit --amend --no-edit
         git push --force-with-lease
+    - uses: peter-evans/enable-pull-request-automerge@a660677d5469627102a1c1e11409dd063606628d
+      with:
+        merge-method: rebase
+        pull-request-number: ${{ github.event.pull_request.number }}
+        token: ${{ secrets.PAT }}
     timeout-minutes: 60
 name: regenerate-workflows
 'on':
   pull_request:
     paths:
     - modules/flake-parts/actions.nix
+    - flake.lock
+  workflow_dispatch: {}
 permissions:
   contents: write
+  pull-requests: write

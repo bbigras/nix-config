@@ -3,6 +3,9 @@
   "extends": [
     "config:recommended"
   ],
+  "gitIgnoredAuthors": [
+    "noreply@github.com"
+  ],
   "github-actions": {
     "enabled": false
   },
