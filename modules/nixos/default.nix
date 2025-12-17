@@ -32,6 +32,10 @@ in
     accent = "blue";
   };
 
+  environment.systemPackages = with pkgs; [
+    uv
+  ];
+
   programs.nix-ld.enable = true;
 
   # Home-manager integration
