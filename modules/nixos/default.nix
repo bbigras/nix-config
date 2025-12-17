@@ -32,6 +32,8 @@ in
     accent = "blue";
   };
 
+  programs.nix-ld.enable = true;
+
   # Home-manager integration
   # Note: stylix.homeModules.stylix is auto-imported via stylix.homeManagerIntegration
   home-manager = {
