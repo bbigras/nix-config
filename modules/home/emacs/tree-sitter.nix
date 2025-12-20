@@ -1,35 +1,32 @@
 { pkgs, ... }:
 
 let
-  withPlugins =
-    with pkgs;
-    grammarFn:
-    let
-      grammars = grammarFn tree-sitter.builtGrammars;
-    in
-    linkFarm "grammars" (
-      map (
-        drv:
-        let
-          name = lib.strings.getName drv;
-        in
-        {
-          name = "lib" + (lib.strings.removeSuffix "-grammar" name) + ".so";
-          path = "${drv}/parser";
-        }
-      ) grammars
-    );
-
-  grammarsLibPath = withPlugins (_: pkgs.tree-sitter.allGrammars);
+  grammarsLibPath = pkgs.emacsPackages.treesit-grammars.with-grammars (
+    p: with p; [
+      tree-sitter-bash
+      tree-sitter-css
+      tree-sitter-hcl
+      tree-sitter-html
+      tree-sitter-javascript
+      tree-sitter-jsdoc
+      tree-sitter-json
+      tree-sitter-nix
+      tree-sitter-prisma
+      tree-sitter-python
+      tree-sitter-rust
+      tree-sitter-typescript
+      tree-sitter-yaml
+    ]
+  );
 in
 {
   programs.emacs = {
     init = {
       usePackage = {
         treesit = {
-          enable = false;
+          enable = true;
           config = ''
-            (setq treesit-extra-load-path '("${grammarsLibPath}"))
+            (setq treesit-extra-load-path '("${pkgs.lib.makeLibraryPath [ grammarsLibPath ]}"))
 
             ;; Optional, but recommended. Tree-sitter enabled major modes are
             ;; distinct from their ordinary counterparts.
