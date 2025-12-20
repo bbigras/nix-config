@@ -27,7 +27,7 @@ in
     init = {
       usePackage = {
         treesit = {
-          enable = true;
+          enable = false;
           config = ''
             (setq treesit-extra-load-path '("${grammarsLibPath}"))
 
