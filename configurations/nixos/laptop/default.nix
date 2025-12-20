@@ -74,6 +74,7 @@ in
   security.sudo.wheelNeedsPassword = true;
 
   services = {
+    flatpak.enable = true;
     udisks2.enable = true;
   };
 
