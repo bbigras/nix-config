@@ -101,6 +101,7 @@ in
     flatpak.enable = true;
     fwupd.enable = true;
     udisks2.enable = true;
+    avahi.enable = pkgs.lib.mkForce false;
   };
 
   systemd.network.networks = {
