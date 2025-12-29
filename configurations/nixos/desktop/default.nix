@@ -148,16 +148,10 @@ in
     };
   };
 
-  systemd.network.networks = {
-    lan = {
+  systemd.network.networks = {    
+    "10-lan" = {
       DHCP = "yes";
       matchConfig.Name = "enp*";
-      dhcpV4Config.RouteMetric = 20;
-      # dhcpV6Config.RouteMetric = 20;
-      linkConfig = {
-        Multicast = true;
-        RequiredForOnline = "routable";
-      };
       networkConfig = {
         MulticastDNS = true;
         LLMNR = true;
