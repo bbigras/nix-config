@@ -4,7 +4,7 @@
     systemd.enable = true;
 
     # https://docs.vicinae.com/quickstart/cosmic#layer-shell
-    useLayerShell = false;
+    settings.launcher_window.layer_shell.enabled = false;
   };
 
   systemd.user.services.vicinae.Service.Environment = [
