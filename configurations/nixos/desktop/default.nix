@@ -105,6 +105,7 @@ in
   networking = {
     # hostId = "";
     hostName = "desktop";
+    networkmanager.enable = false;
     wireguard.enable = true;
   };
 
