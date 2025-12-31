@@ -148,6 +148,7 @@ in
   # These options are unnecessary when managing DNS ourselves
   networking.useDHCP = false;
   networking.dhcpcd.enable = false;
+  facter.detected.dhcp.enable = false;
 
   services = {
     fwupd = {
