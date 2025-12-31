@@ -158,6 +158,7 @@ in
         tkey-ssh-agent
         jan
         mergiraf
+        winboat
       ]
       ++ (with pkgs.hunspellDicts; [
         fr-moderne
