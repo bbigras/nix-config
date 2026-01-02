@@ -301,5 +301,7 @@ in
 
   systemd.user.startServices = "sd-switch";
 
+  services.tailscale-systray.enable = true;
+
   xdg.configFile."nixpkgs/config.nix".text = "{ allowUnfree = true; }";
 }
