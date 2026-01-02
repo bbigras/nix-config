@@ -30,9 +30,8 @@ in
 
   networking = {
     firewall = {
-      checkReversePath = "loose";
       trustedInterfaces = [ "tailscale0" ];
-      allowedUDPPorts = [ config.services.tailscale.port ];
+      allowedUDPPorts = [ ];
     };
     useDHCP = false;
     useNetworkd = true;
@@ -54,7 +53,12 @@ in
       enable = true;
       settings.PermitRootLogin = lib.mkDefault "no";
     };
-    tailscale.enable = true;
+    tailscale = {
+      enable = true;
+      openFirewall = true;
+      useRoutingFeatures = "client";
+      disableUpstreamLogging = true;
+    };
     fwupd.daemonSettings.EspLocation = config.boot.loader.efi.efiSysMountPoint;
   };
 
