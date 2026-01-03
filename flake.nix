@@ -123,11 +123,15 @@
     systems.url = "github:nix-systems/default";
 
     # Theming
-    catppuccin.url = "github:catppuccin/nix";
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
