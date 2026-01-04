@@ -36,7 +36,7 @@
 
         org-download = {
           enable = true;
-          extraPackages = [ pkgs.xclip ];
+          extraPackages = [ pkgs.wl-clipboard ];
         };
 
         # Highlight and annotate text file and websites
