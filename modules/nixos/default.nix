@@ -30,6 +30,7 @@ in
     enable = true;
     flavor = "mocha";
     accent = "blue";
+    cursors.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
