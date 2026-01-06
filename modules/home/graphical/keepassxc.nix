@@ -14,6 +14,9 @@
         LaunchAtStartup = true;
       };
       SSHAgent.Enabled = false;
+      Security = {
+        LockDatabaseIdleSeconds = 18000;
+      };
     };
   };
 }
