@@ -39,7 +39,6 @@ in
     useUserPackages = true;
     extraSpecialArgs = { inherit flake; };
     sharedModules = [
-      inputs.impermanence.homeManagerModules.impermanence
       inputs.nix-index-database.homeModules.nix-index
       inputs.catppuccin.homeModules.catppuccin
       nurNoPkgs.repos.rycee.hmModules.emacs-init
