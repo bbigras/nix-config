@@ -226,6 +226,7 @@ in
       enable = true;
       flake = "git+https://github.com/bbigras/nix-config";
     };
+    opencode.enable = true;
     pay-respects.enable = true;
     ripgrep.enable = true;
     sesh.enable = true;
