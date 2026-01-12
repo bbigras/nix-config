@@ -229,6 +229,9 @@ in
     opencode = {
       enable = true;
       enableMcpIntegration = true;
+      settings = {
+        plugin = [ "@simonwjackson/opencode-direnv" ];
+      };
     };
     mcp = {
       enable = true;
