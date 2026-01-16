@@ -115,6 +115,10 @@
 
         org = {
           enable = true;
+          command = [
+            "org-mode"
+            "org-version"
+          ];
           bind = {
             "C-c c" = "org-capture";
             "C-c a" = "org-agenda";
@@ -128,6 +132,12 @@
             # "org-agenda-start-with-log-mode" = true;
             # (setq org-extend-today-until 4)
             "org-extend-today-until" = 4;
+
+            org-hide-leading-stars = "t";
+            org-startup-indented = "t";
+            org-adapt-indentation = "nil";
+            org-edit-src-content-indentation = 0;
+            org-startup-truncated = "t";
           };
           hook = [
             "(org-mode . dw/org-mode-setup)"

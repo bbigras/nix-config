@@ -14,6 +14,7 @@ let
       tree-sitter-prisma
       tree-sitter-python
       tree-sitter-rust
+      tree-sitter-toml
       tree-sitter-typescript
       tree-sitter-yaml
     ]

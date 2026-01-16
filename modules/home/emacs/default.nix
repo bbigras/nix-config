@@ -47,6 +47,63 @@ in
 
           ;; list font families with `fc-list : family`
           (set-face-attribute 'default nil :family "NotoSansM Nerd Font Mono" :height 130)
+
+          ;; Add to your init.el before loading nix-ts-mode
+          (setq treesit-font-lock-level 4)
+
+          ;; When Delete Selection mode is enabled, typed text replaces the selection
+          ;; if the selection is active.
+          (delete-selection-mode 1)
+
+          ;; Paren match highlighting
+          (add-hook 'after-init-hook #'show-paren-mode)
+
+          ;; Track changes in the window configuration, allowing undoing actions such as
+          ;; closing windows.
+          (add-hook 'after-init-hook #'winner-mode)
+
+          ;; Window dividers separate windows visually. Window dividers are bars that can
+          ;; be dragged with the mouse, thus allowing you to easily resize adjacent
+          ;; windows.
+          ;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Window-Dividers.html
+          (add-hook 'after-init-hook #'window-divider-mode)
+
+          ;; Constrain vertical cursor movement to lines within the buffer
+          (setq dired-movement-style 'bounded-files)
+
+          ;; Dired buffers: Automatically hide file details (permissions, size,
+          ;; modification date, etc.) and all the files in the `dired-omit-files' regular
+          ;; expression for a cleaner display.
+          (add-hook 'dired-mode-hook #'dired-hide-details-mode)
+
+          ;; Hide files from dired
+          (setq dired-omit-files (concat "\\`[.]\\'"
+                                         "\\|\\(?:\\.js\\)?\\.meta\\'"
+                                         "\\|\\.\\(?:elc|a\\|o\\|pyc\\|pyo\\|swp\\|class\\)\\'"
+                                         "\\|^\\.DS_Store\\'"
+                                         "\\|^\\.\\(?:svn\\|git\\)\\'"
+                                         "\\|^\\.ccls-cache\\'"
+                                         "\\|^__pycache__\\'"
+                                         "\\|^\\.project\\(?:ile\\)?\\'"
+                                         "\\|^flycheck_.*"
+                                         "\\|^flymake_.*"))
+          (add-hook 'dired-mode-hook #'dired-omit-mode)
+
+          ;; dired: Group directories first
+          (with-eval-after-load 'dired
+            (let ((args "--group-directories-first -ahlv"))
+              (when (or (eq system-type 'darwin) (eq system-type 'berkeley-unix))
+                (if-let* ((gls (executable-find "gls")))
+                    (setq insert-directory-program gls)
+                  (setq args nil)))
+              (when args
+                (setq dired-listing-switches args))))
+
+          ;; Enables visual indication of minibuffer recursion depth after initialization.
+          (add-hook 'after-init-hook #'minibuffer-depth-indicate-mode)
+
+          ;; Configure Emacs to ask for confirmation before exiting
+          (setq confirm-kill-emacs 'y-or-n-p)
         '';
 
       usePackage = {
@@ -56,6 +113,10 @@ in
 
         project = {
           enable = true;
+          custom = {
+            "project-mode-line" = "t";
+            "project-kill-buffers-display-buffer-list" = "t";
+          };
           config = lib.optionalString config.programs.jujutsu.enable ''
             (add-to-list 'project-vc-extra-root-markers ".jj")
           '';
@@ -101,14 +162,6 @@ in
           '';
         };
 
-        meow = {
-          enable = true;
-          # config = ''
-          #   (meow-setup)
-          #   (meow-global-mode 1)
-          # '';
-        };
-
         dock = {
           enable = true;
           init = ''
@@ -116,24 +169,6 @@ in
                        (lambda (_buf _msg) (dock-set-needs-attention)))
           '';
         };
-
-        aidermacs = {
-          enable = true;
-          bind = {
-            "C-c a" = "aidermacs-transient-menu";
-          };
-          custom = {
-            "aidermacs-default-chat-mode" = "architect";
-            "aidermacs-default-model" = ''"sonnet"'';
-          };
-          config = ''
-            (aidermacs-setup-minor-mode)
-          '';
-        };
-
-        # god-mode = {
-        #   enable = true;
-        # };
 
         casual-suite = {
           enable = true;
@@ -352,17 +387,17 @@ in
           '';
         };
 
-        ultra-scroll = {
-          enable = true;
-          package = _epkgs: pkgs.emacs.pkgs.ultra-scroll;
-          init = ''
-            (setq scroll-conservatively 101 ; important!
-                    scroll-margin 0)
-          '';
-          config = ''
-            (ultra-scroll-mode 1)
-          '';
-        };
+        # ultra-scroll = {
+        #   enable = true;
+        #   package = _epkgs: pkgs.emacs.pkgs.ultra-scroll;
+        #   init = ''
+        #     (setq scroll-conservatively 101 ; important!
+        #             scroll-margin 0)
+        #   '';
+        #   config = ''
+        #     (ultra-scroll-mode 1)
+        #   '';
+        # };
 
         # gptel = {
         #   enable = true;
@@ -524,14 +559,14 @@ in
         #   };
         # };
 
-        copilot = {
-          enable = false;
-          config = ''
-            (add-hook 'prog-mode-hook 'copilot-mode)
-            (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
-            (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
-          '';
-        };
+        # copilot = {
+        #   enable = true;
+        #   config = ''
+        #     (add-hook 'prog-mode-hook 'copilot-mode)
+        #     (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+        #     (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+        #   '';
+        # };
         # # (setq copilot--server-executable "${pkgs.my_copilot-node-server}/lib/node_modules/copilot-node-server/copilot/dist/agent.js")
         # #
         # # my_copilot-node-server
@@ -671,12 +706,12 @@ in
         #   '';
         # };
 
-        apheleia = {
-          enable = true;
-          config = ''
-            (apheleia-global-mode +1)
-          '';
-        };
+        # apheleia = {
+        #   enable = true;
+        #   config = ''
+        #     (apheleia-global-mode +1)
+        #   '';
+        # };
 
         # which-key = {
         #   enable = true;
@@ -720,18 +755,18 @@ in
           hook = [ "(dired-mode . all-the-icons-dired-mode)" ];
         };
 
-        flycheck-eglot = {
-          # enable = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
-          enable = true;
-          after = [
-            "eglot"
-            "flycheck"
-          ];
-          # hook = [ "(flycheck-mode . eglot-flycheck-setup)" ];
-          config = ''
-            (global-flycheck-eglot-mode 1)
-          '';
-        };
+        # flycheck-eglot = {
+        #   # enable = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
+        #   enable = true;
+        #   after = [
+        #     "eglot"
+        #     "flycheck"
+        #   ];
+        #   # hook = [ "(flycheck-mode . eglot-flycheck-setup)" ];
+        #   config = ''
+        #     (global-flycheck-eglot-mode 1)
+        #   '';
+        # };
 
         emacs = {
           enable = true;
@@ -777,14 +812,35 @@ in
           '';
         };
 
+        # surround = {
+        #   enable = true;
+        #   bind = {
+        #     "M-'" = "surround-keymap";
+        #   };
+        # };
+
         tempel-collection = {
           enable = true;
         };
 
         corfu = {
           enable = true;
-          config = ''
+          init = ''
             (global-corfu-mode)
+            (corfu-popupinfo-mode)
+          '';
+          config = ''
+            ;; Sane defaults to make Corfu feel like a modern, automatic popup
+            (setq corfu-cycle t              ; Allow cycling through candidates
+                  corfu-auto t               ; Enable auto-completion
+                  corfu-preview-current nil  ; Don't preview current candidate
+                  corfu-separator ?\s        ; Use space as separator
+                  corfu-quit-at-boundary 'separator ; Hide popup when you type space
+                  corfu-quit-no-match 'separator    ; Hide popup if there are no matches
+                  corfu-auto-prefix 2        ; Start completion after 2 char
+                  corfu-auto-delay 0.1       ; Wait 0.1s before showing popup
+                  corfu-popupinfo-delay '(1.0 . 0.5)
+                  )
           '';
         };
 
@@ -797,6 +853,10 @@ in
 
         cape = {
           enable = true;
+          # config = ''
+          #   (add-to-list 'completion-at-point-functions #'cape-dabbrev) ; in-buffer
+          #   (add-to-list 'completion-at-point-functions #'cape-file)    ; file paths
+          # '';
           bind = {
             # "C-." = "embark-act";
             "C-c p" = "cape-prefix-map";
@@ -819,7 +879,6 @@ in
                                  #'tempel-expand))))
 
             (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)
-
           '';
         };
 
@@ -1053,20 +1112,104 @@ in
         #   };
         # };
 
-        nix-mode = {
+        # easysession = {
+        #   enable = true;
+        #   command = [
+        #     "easysession-switch-to"
+        #     "easysession-save-as"
+        #     "easysession-save-mode"
+        #     "easysession-load-including-geometry"
+        #   ];
+        #   custom = {
+        #     easysession-mode-line-misc-info = "t";
+        #     easysession-save-interval = "(* 10 60)";
+        #   };
+        #   init = ''
+        #     (global-set-key (kbd "C-c l") 'easysession-switch-to)
+        #     (global-set-key (kbd "C-c s") 'easysession-save-as)
+        #     (add-hook 'emacs-startup-hook #'easysession-load-including-geometry 102)
+        #     (add-hook 'emacs-startup-hook #'easysession-save-mode 103)
+        #   '';
+        # };
+
+        eglot = {
           enable = true;
-          hook = [ "(nix-mode . subword-mode)" ];
+          command = [
+            "eglot-ensure"
+            "eglot-format-buffer"
+            "eglot-rename"
+          ];
+          # :hook ((svelte-ts-mode . eglot-ensure)
+          #        (typescript-mode . eglot-ensure)
+          #        (json-mode . eglot-ensure)
+          #        (rustic-mode . eglot-ensure))
+          config = ''
+            (add-to-list 'eglot-server-programs
+                           '(json-mode . ("vscode-json-languageserver" "--stdio")))
+            (add-to-list 'eglot-server-programs
+                          '((rust-ts-mode rust-mode) .
+                            ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
+            (add-to-list 'eglot-server-programs '(svelte-ts-mode . ("svelteserver" "--stdio")))
+            (add-to-list 'eglot-server-programs
+                          '(typescript-mode . ("typescript-language-server" "--stdio")))
+            ;; Customize symbol highlight face for stronger background highlight
+            (set-face-attribute 'eglot-highlight-symbol-face nil
+                                :background (face-background 'region)
+                                :weight 'bold)
+            (set-face-attribute 'eglot-diagnostic-tag-unnecessary-face nil
+                                :inherit 'flymake-warning)
+          '';
+        };
+
+        toml-ts-mode = {
+          enable = true;
+          hook = [
+            "(toml-ts-mode . eglot-ensure)"
+          ];
+          config = ''
+            (with-eval-after-load 'eglot
+              (setq eglot-server-programs
+                    (cons '(toml-ts-mode . ("rass" "--" "crates-lsp"))
+                    (assoc-delete-all 'toml-ts-mode eglot-server-programs))))
+
+            (add-hook 'after-save-hook 'eglot-format)
+          '';
+          # config = ''
+          #   (with-eval-after-load 'eglot
+          #     (setq eglot-server-programs
+          #           (cons '(toml-ts-mode . ("rass" "--" "tombi" "lsp" "--" "crates-lsp"))
+          #           (assoc-delete-all 'toml-ts-mode eglot-server-programs))))
+
+          #   (add-hook 'after-save-hook 'eglot-format)
+          # '';
+        };
+
+        nix-ts-mode = {
+          enable = true;
+          mode = [ ''"\\.nix\\'"'' ];
+          # hook = [ "(nix-mode . subword-mode)" ];
+          hook = [
+            "(nix-ts-mode . eglot-ensure)"
+          ];
+          # config = ''
+          #   (with-eval-after-load 'eglot
+          #     (setq eglot-server-programs
+          #           (cons '(nix-mode . ("rass" "--" "nixd" "--" "nil" "--stdio"))
+          #                 (assoc-delete-all 'nix-mode eglot-server-programs))))
+
+          #   (add-hook 'after-save-hook 'eglot-format)
+          # '';
         };
 
         # wgrep.enable = true;
 
-        topsy = {
-          enable = true;
-          hook = [
-            "(prog-mode . topsy-mode)"
-            "(magit-section-mode . topsy-mode)"
-          ];
-        };
+        # topsy = {
+        #   enable = true;
+        #   hook = [
+        #     "(prog-mode . topsy-mode)"
+        #     "(magit-section-mode . topsy-mode)"
+        #   ];
+        # };
 
         # nginx-mode.enable = true;
 
@@ -1088,6 +1231,13 @@ in
         #   '';
         # };
 
+        savehist = {
+          enable = true;
+          init = ''
+            (savehist-mode)
+          '';
+        };
+
         vertico = {
           enable = true;
           command = [ "vertico-mode" ];
@@ -1101,6 +1251,23 @@ in
               ;; using orderless completion.
               ("M-TAB" . vertico-insert))
           '';
+        };
+
+        vertico-directory = {
+          enable = true;
+          after = [
+            "vertico"
+          ];
+          hook = [
+            "(rfn-eshadow-update-overlay . vertico-directory-tidy)"
+          ];
+          bindLocal = {
+            vertico-map = {
+              #     "RET" = "vertico-directory-enter";
+              #     "DEL" = "vertico-directory-delete-char";
+              "M-DEL" = "vertico-directory-delete-word";
+            };
+          };
         };
 
         orderless = {
