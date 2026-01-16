@@ -1181,18 +1181,15 @@ in
         nix-ts-mode = {
           enable = true;
           mode = [ ''"\\.nix\\'"'' ];
-          # hook = [ "(nix-mode . subword-mode)" ];
           hook = [
             "(nix-ts-mode . eglot-ensure)"
           ];
-          # config = ''
-          #   (with-eval-after-load 'eglot
-          #     (setq eglot-server-programs
-          #           (cons '(nix-mode . ("rass" "--" "nixd" "--" "nil" "--stdio"))
-          #                 (assoc-delete-all 'nix-mode eglot-server-programs))))
-
-          #   (add-hook 'after-save-hook 'eglot-format)
-          # '';
+          config = ''
+            (with-eval-after-load 'eglot
+              (setq eglot-server-programs
+                    (cons '(nix-mode . ("rass" "--" "nixd" "--" "nil" "--stdio"))
+                          (assoc-delete-all 'nix-mode eglot-server-programs))))
+          '';
         };
 
         # wgrep.enable = true;
