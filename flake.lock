@@ -570,7 +570,8 @@
         "nixpkgs": "nixpkgs_2",
         "nur": "nur",
         "systems": "systems",
-        "treefmt-nix": "treefmt-nix"
+        "treefmt-nix": "treefmt-nix",
+        "treesit-sexp": "treesit-sexp"
       }
     },
     "rust-overlay": {
@@ -626,6 +627,22 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "treesit-sexp": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1768613415,
+        "narHash": "sha256-mBVZtLqp5t8BXyod2qUTjqRuDMgwQ6Eu+ZE7X8UcRJQ=",
+        "owner": "alexispurslane",
+        "repo": "treesit-sexp",
+        "rev": "c9aafc4e5f705a70e96ac733aa5a0960c50de7f2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alexispurslane",
+        "repo": "treesit-sexp",
         "type": "github"
       }
     }

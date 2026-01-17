@@ -17,6 +17,15 @@ in
         (final: _: {
           inherit (inputs.nix-fast-build.packages.${final.stdenv.hostPlatform.system}) nix-fast-build;
         })
+        (self: super: {
+          emacs.pkgs = super.emacs.pkgs // {
+            treesit-sexp = super.emacs.pkgs.trivialBuild {
+              pname = "treesit-sexp";
+              version = "git";
+              src = inputs.treesit-sexp;
+            };
+          };
+        })
       ]
       ++ (lib.attrValues localOverlays)
     );

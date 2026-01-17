@@ -213,6 +213,14 @@ in
           # '';
         };
 
+        treesit-sexp = {
+          enable = true;
+          package = _epkgs: pkgs.emacs.pkgs.treesit-sexp;
+          config = ''
+            (global-treesit-sexp-mode 1)
+          '';
+        };
+
         # combobulate = {
         #   enable = true;
         #   package = _epkgs: pkgs.emacsPackages.combobulate;

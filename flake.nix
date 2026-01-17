@@ -141,6 +141,12 @@
       url = "github:jamescherti/minimal-emacs.d";
       flake = false;
     };
+
+    # emacs packages
+    treesit-sexp = {
+      url = "github:alexispurslane/treesit-sexp";
+      flake = false;
+    };
   };
 
   outputs =
