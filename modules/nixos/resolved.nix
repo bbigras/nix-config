@@ -22,10 +22,10 @@
       "2001:4860:4860::8844"
     ];
     llmnr = "true";
-    extraConfig = ''
-      Domains=~.
-      MulticastDNS=true
-    '';
+    settings.Resolve = {
+      Domains = "~.";
+      MulticastDNS = true;
+    };
   };
 
   system.nssDatabases.hosts = lib.mkMerge [
