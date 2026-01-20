@@ -1,8 +1,13 @@
 {
   programs.emacs = {
     init = {
-      go-mode = {
-        enable = true;
+      usePackage = {
+        go-ts-mode = {
+          enable = true;
+          hook = [
+            "(go-ts-mode . eglot-ensure)"
+          ];
+        };
       };
     };
   };

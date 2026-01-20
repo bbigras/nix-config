@@ -109,10 +109,29 @@ in
       usePackage = {
         # logview.enable = true;
 
-        journalctl-mode.enable = true;
+        benchmark-init = {
+          enable = true;
+          earlyInit = ''
+            (require 'benchmark-init)
+            (benchmark-init/activate)
+          '';
+        };
+        # (require 'benchmark-init)
+
+        journalctl-mode = {
+          enable = true;
+          defer = true;
+          command = [ "journalctl-mode" ];
+        };
 
         project = {
           enable = true;
+          defer = 1;
+          command = [
+            "project-find-file"
+            "project-switch-to-buffer"
+            "project-switch-project"
+          ];
           custom = {
             "project-mode-line" = "t";
             "project-kill-buffers-display-buffer-list" = "t";
@@ -138,18 +157,20 @@ in
 
         kirigami = {
           enable = true;
-          # config = ''
-          #   (global-set-key (kbd "C-c k o") 'kirigami-open-fold)     ; Open fold at point
-          #   (global-set-key (kbd "C-c k O") 'kirigami-open-fold-rec) ; Open fold recursively
-          #   (global-set-key (kbd "C-c k m") 'kirigami-close-folds)   ; Close all folds
-          #   (global-set-key (kbd "C-c k c") 'kirigami-close-fold)    ; Close fold at point
-          #   (global-set-key (kbd "C-c k r") 'kirigami-open-folds)    ; Open all folds
-          #   (global-set-key (kbd "C-c k TAB") 'kirigami-toggle-fold) ; Toggle fold at point
-          # '';
+          defer = true;
+          command = [
+            "kirigami-toggle-fold"
+            "kirigami-open-fold"
+            "kirigami-close-fold"
+            "kirigami-open-folds"
+            "kirigami-close-folds"
+          ];
         };
 
         p-search = {
           enable = true;
+          defer = true;
+          command = [ "p-search" ];
           config = ''
             (require 'p-search-x-denote)
           '';
@@ -164,6 +185,8 @@ in
 
         dock = {
           enable = true;
+          defer = true;
+          command = [ "dock-set-needs-attention" ];
           init = ''
             (add-hook 'compilation-finish-functions
                        (lambda (_buf _msg) (dock-set-needs-attention)))
@@ -173,22 +196,12 @@ in
         casual-suite = {
           enable = true;
           after = [
-            #   "bookmark"
-            #   "calc"
-            #   "dired"
-            #   "ediff"
-            #   "ibuffer"
-            #   "info"
             "org-agenda"
-            #   "re-builder"
           ];
-          # bind = {
-          # "C-o" = "casual-editkit-main-tmenu";
-          # (casual-ediff-tmenu)
-          # };
-          #   "C-o" = "casual-suite-tmenu";
-          #   "M-g" = "casual-avy-tmenu";
-          # };
+          bind = {
+            "C-o" = "casual-editkit-main-tmenu";
+            "M-g" = "casual-avy-tmenu";
+          };
           bindLocal = {
             bookmark-bmenu-mode-map."C-o" = "casual-bookmarks-tmenu";
             calc-mode-map."C-o" = "casual-calc-tmenu";
@@ -200,19 +213,12 @@ in
             symbol-overlay-map."C-o" = "casual-symbol-overlay-tmenu";
             ediff-mode-map."C-o" = "casual-ediff-tmenu";
           };
-          # config = ''
-          #   (keymap-global-set "C-o" #'casual-editkit-main-tmenu)
-          #   (keymap-global-set "M-g" #'casual-avy-tmenu)
-          # '';
           # https://kickingvegas.github.io/casual/Ediff-Install.html
-          init = ''
+          config = ''
             (casual-ediff-install)
             (setq ediff-keep-variants nil
                   ediff-window-setup-function 'ediff-setup-windows-plain
-                  ediff-split-window-function 'split-window-horizontally
-            )
-            (keymap-global-set "C-o" #'casual-editkit-main-tmenu)
-            (keymap-global-set "M-g" #'casual-avy-tmenu)
+                  ediff-split-window-function 'split-window-horizontally)
           '';
         };
 
@@ -235,22 +241,23 @@ in
 
         kele = {
           enable = true;
-          # config = ''
-          #   (kele-mode 1)
-          # '';
+          defer = true;
+          command = [
+            "kele-mode"
+            "kele-get"
+          ];
         };
 
         treesit-sexp = {
           enable = true;
           package = _epkgs: pkgs.emacs.pkgs.treesit-sexp;
-          config = ''
-            (global-treesit-sexp-mode 1)
-          '';
+          hook = [ "(prog-mode . treesit-sexp-mode)" ];
         };
 
         majutsu = {
           enable = true;
           package = _epkgs: pkgs.emacs.pkgs.majutsu;
+          defer = true;
         };
 
         # combobulate = {
@@ -284,8 +291,8 @@ in
 
         pulsar = {
           enable = true;
+          hook = [ "(after-init . pulsar-global-mode)" ];
           config = ''
-            (pulsar-global-mode 1)
             (add-hook 'next-error-hook #'pulsar-pulse-line)
             (add-hook 'minibuffer-setup-hook #'pulsar-pulse-line-blue)
 
@@ -343,6 +350,11 @@ in
 
         dwim-shell-command = {
           enable = true;
+          defer = true;
+          command = [
+            "dwim-shell-command"
+            "dwim-shell-command-on-marked-files"
+          ];
           extraPackages = [
             pkgs.atool
             pkgs.zrok
@@ -513,29 +525,14 @@ in
         # https://github.com/bbatsov/crux
         crux = {
           enable = true;
-          # bind = {
-          #   "C-c d" = "crux-duplicate-current-line-or-region";
-          #   "C-c M-d" = "crux-duplicate-and-comment-current-line-or-region";
-
-          #   # "C-k" = "crux-smart-kill-line";
-          #   "C-k" = "crux-kill-and-join-forward";
-
-          #   "C-S-RET" = "crux-smart-open-line-above";
-          #   "S-RET" = "crux-smart-open-line";
-          #   "C-x 4 t" = "crux-transpose-windows";
-          #   "C-c D" = "crux-delete-file-and-buffer";
-          #   # "C-c r" = "crux-rename-file-and-buffer";
-          #   "C-c TAB" = "crux-indent-rigidly-and-copy-to-clipboard";
-          #   # "Super-j" = "crux-top-join-line";
-          #   # "C-Backspace" = "crux-kill-line-backwards";
-          #   "M-o" = "crux-other-window-or-switch-buffer";
-          # };
+          bind = {
+            "C-c o" = "crux-open-with";
+            "S-<return>" = "crux-smart-open-line";
+            "s-r" = "crux-recentf-find-file";
+            "C-<backspace>" = "crux-kill-line-backwards";
+          };
           config = ''
             (global-set-key [remap move-beginning-of-line] #'crux-move-beginning-of-line)
-            (global-set-key (kbd "C-c o") #'crux-open-with)
-            (global-set-key [(shift return)] #'crux-smart-open-line)
-            (global-set-key (kbd "s-r") #'crux-recentf-find-file)
-            (global-set-key (kbd "C-<backspace>") #'crux-kill-line-backwards)
             (global-set-key [remap kill-whole-line] #'crux-kill-whole-line)
             (global-set-key [remap keyboard-quit] #'crux-keyboard-quit-dwim)
 
@@ -730,6 +727,7 @@ in
 
         all-the-icons = {
           enable = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
+          defer = true;
         };
 
         all-the-icons-completion = {
@@ -744,6 +742,8 @@ in
 
         dired-du = {
           enable = true;
+          defer = true;
+          command = [ "dired-du-mode" ];
         };
 
         all-the-icons-dired = {
@@ -821,15 +821,14 @@ in
 
         tempel-collection = {
           enable = true;
+          after = [ "tempel" ];
         };
 
         corfu = {
           enable = true;
-          init = ''
-            (global-corfu-mode)
-            (corfu-popupinfo-mode)
-          '';
+          hook = [ "(after-init . global-corfu-mode)" ];
           config = ''
+            (corfu-popupinfo-mode)
             ;; Sane defaults to make Corfu feel like a modern, automatic popup
             (setq corfu-cycle t              ; Allow cycling through candidates
                   corfu-auto t               ; Enable auto-completion
@@ -846,6 +845,7 @@ in
 
         nerd-icons-corfu = {
           enable = true;
+          after = [ "corfu" ];
           config = ''
             (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter)
           '';
@@ -873,10 +873,9 @@ in
 
             (defun my/eglot-capf ()
               (setq-local completion-at-point-functions
-                          (list (cape-capf-super
-                                #'cape-emoji
-                                 #'eglot-completion-at-point
-                                 #'tempel-expand))))
+                          (list #'tempel-expand
+                                #'eglot-completion-at-point
+                                #'cape-emoji)))
 
             (add-hook 'eglot-managed-mode-hook #'my/eglot-capf)
           '';
@@ -903,119 +902,118 @@ in
         #   '';
         # };
 
-        # embark = {
-        #   enable = true;
-        #   bind = {
-        #     "C-." = "embark-act";
-        #     "M-." = "embark-dwim";
-        #     "C-h B" = "embark-bindings";
-        #   };
-        #   init = ''
-        #     ;; Optionally replace the key help with a completing-read interface
-        #     (setq prefix-help-command #'embark-prefix-help-command)
-        #   '';
-        #   config = ''
-        #     ;; Hide the mode line of the Embark live/completions buffers
-        #     (add-to-list 'display-buffer-alist
-        #                  '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
-        #                    nil
-        #                    (window-parameters (mode-line-format . none))))
+        embark = {
+          enable = true;
+          bind = {
+            "C-." = "embark-act";
+            "C-h B" = "embark-bindings";
+          };
+          init = ''
+            ;; Optionally replace the key help with a completing-read interface
+            (setq prefix-help-command #'embark-prefix-help-command)
+          '';
+          config = ''
+            ;; Hide the mode line of the Embark live/completions buffers
+            (add-to-list 'display-buffer-alist
+                         '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+                           nil
+                           (window-parameters (mode-line-format . none))))
 
-        #     (defun embark-magit-status (file)
-        #       "Run `magit-status` on repo containing the embark target."
-        #       (interactive "GFile: ")
-        #       (magit-status (locate-dominating-file file ".git")))
+            (defun embark-magit-status (file)
+              "Run `magit-status` on repo containing the embark target."
+              (interactive "GFile: ")
+              (magit-status (locate-dominating-file file ".git")))
 
-        #     (defun embark-target-this-buffer-file ()
-        #       (cons 'this-buffer-file (or (buffer-file-name) (buffer-name))))
+            (defun embark-target-this-buffer-file ()
+              (cons 'this-buffer-file (or (buffer-file-name) (buffer-name))))
 
-        #     (add-to-list 'embark-target-finders #'embark-target-this-buffer-file 'append)
+            (add-to-list 'embark-target-finders #'embark-target-this-buffer-file 'append)
 
-        #     (add-to-list 'embark-keymap-alist '(this-buffer-file . this-buffer-file-map))
+            (add-to-list 'embark-keymap-alist '(this-buffer-file . this-buffer-file-map))
 
-        #     ;; ------------------------------------------------------------
+            ;; ------------------------------------------------------------
 
-        #     ; Colorize the current Vertico candidate differently when acting
-        #     (defun embark-vertico-indicator ()
-        #       (let ((fr face-remapping-alist))
-        #         (lambda (&optional keymap _targets prefix)
-        #           (when (bound-and-true-p vertico--input)
-        #             (setq-local face-remapping-alist
-        #                         (if keymap
-        #                             (cons '(vertico-current . embark-target) fr)
-        #                           fr))))))
+            ; Colorize the current Vertico candidate differently when acting
+            (defun embark-vertico-indicator ()
+              (let ((fr face-remapping-alist))
+                (lambda (&optional keymap _targets prefix)
+                  (when (bound-and-true-p vertico--input)
+                    (setq-local face-remapping-alist
+                                (if keymap
+                                    (cons '(vertico-current . embark-target) fr)
+                                  fr))))))
 
-        #     (add-to-list 'embark-indicators #'embark-vertico-indicator)
+            (add-to-list 'embark-indicators #'embark-vertico-indicator)
 
-        #     ; Automatically resizing auto-updating Embark Collect buffers to fit their contents
-        #     (add-hook 'embark-collect-post-revert-hook
-        #               (defun resize-embark-collect-window (&rest _)
-        #                 (when (memq embark-collect--kind '(:live :completions))
-        #                   (fit-window-to-buffer (get-buffer-window)
-        #                                         (floor (frame-height) 2) 1))))
+            ; Automatically resizing auto-updating Embark Collect buffers to fit their contents
+            (add-hook 'embark-collect-post-revert-hook
+                      (defun resize-embark-collect-window (&rest _)
+                        (when (memq embark-collect--kind '(:live :completions))
+                          (fit-window-to-buffer (get-buffer-window)
+                                                (floor (frame-height) 2) 1))))
 
-        #     ; Switch between candidates and actions like in Helm
-        #     (defun with-minibuffer-keymap (keymap)
-        #       (lambda (fn &rest args)
-        #         (minibuffer-with-setup-hook
-        #             (lambda ()
-        #               (use-local-map
-        #                (make-composed-keymap keymap (current-local-map))))
-        #           (apply fn args))))
+            ; Switch between candidates and actions like in Helm
+            (defun with-minibuffer-keymap (keymap)
+              (lambda (fn &rest args)
+                (minibuffer-with-setup-hook
+                    (lambda ()
+                      (use-local-map
+                       (make-composed-keymap keymap (current-local-map))))
+                  (apply fn args))))
 
-        #     (defvar embark-completing-read-prompter-map
-        #       (let ((map (make-sparse-keymap)))
-        #         (define-key map (kbd "<tab>") 'abort-recursive-edit)
-        #         map))
+            (defvar embark-completing-read-prompter-map
+              (let ((map (make-sparse-keymap)))
+                (define-key map (kbd "<tab>") 'abort-recursive-edit)
+                map))
 
-        #     (advice-add 'embark-completing-read-prompter :around
-        #                 (with-minibuffer-keymap embark-completing-read-prompter-map))
-        #     (define-key vertico-map (kbd "<tab>") 'embark-act-with-completing-read)
+            (advice-add 'embark-completing-read-prompter :around
+                        (with-minibuffer-keymap embark-completing-read-prompter-map))
+            (define-key vertico-map (kbd "<tab>") 'embark-act-with-completing-read)
 
-        #       (defun embark-act-with-completing-read (&optional arg)
-        #         (interactive "P")
-        #         (let* ((embark-prompter 'embark-completing-read-prompter)
-        #                (act (propertize "Act" 'face 'highlight))
-        #                (embark-indicator (lambda (_keymap targets) nil)))
-        #           (embark-act arg)))
+              (defun embark-act-with-completing-read (&optional arg)
+                (interactive "P")
+                (let* ((embark-prompter 'embark-completing-read-prompter)
+                       (act (propertize "Act" 'face 'highlight))
+                       (embark-indicator (lambda (_keymap targets) nil)))
+                  (embark-act arg)))
 
-        #     ; Show the current Embark target types in the modeline
-        #     (defvar embark--target-mode-timer nil)
-        #     (defvar embark--target-mode-string "")
+            ; Show the current Embark target types in the modeline
+            (defvar embark--target-mode-timer nil)
+            (defvar embark--target-mode-string "")
 
-        #     (defun embark--target-mode-update ()
-        #       (setq embark--target-mode-string
-        #             (if-let (targets (embark--targets))
-        #                 (format "[%s%s] "
-        #                         (propertize (symbol-name (plist-get (car targets) :type)) 'face 'bold)
-        #                         (mapconcat (lambda (x) (format ", %s" (plist-get x :type)))
-        #                                    (cdr targets)
-        #                                    ""))
-        #               "")))
+            (defun embark--target-mode-update ()
+              (setq embark--target-mode-string
+                    (if-let (targets (embark--targets))
+                        (format "[%s%s] "
+                                (propertize (symbol-name (plist-get (car targets) :type)) 'face 'bold)
+                                (mapconcat (lambda (x) (format ", %s" (plist-get x :type)))
+                                           (cdr targets)
+                                           ""))
+                      "")))
 
-        #     (define-minor-mode embark-target-mode
-        #       "Shows the current targets in the modeline."
-        #       :global t
-        #       (setq mode-line-misc-info (assq-delete-all 'embark-target-mode mode-line-misc-info))
-        #       (when embark--target-mode-timer
-        #         (cancel-timer embark--target-mode-timer)
-        #         (setq embark--target-mode-timer nil))
-        #       (when embark-target-mode
-        #         (push '(embark-target-mode (:eval embark--target-mode-string)) mode-line-misc-info)
-        #         (setq embark--target-mode-timer
-        #               (run-with-idle-timer 0.1 t #'embark--target-mode-update))))
-        #   '';
+            (define-minor-mode embark-target-mode
+              "Shows the current targets in the modeline."
+              :global t
+              (setq mode-line-misc-info (assq-delete-all 'embark-target-mode mode-line-misc-info))
+              (when embark--target-mode-timer
+                (cancel-timer embark--target-mode-timer)
+                (setq embark--target-mode-timer nil))
+              (when embark-target-mode
+                (push '(embark-target-mode (:eval embark--target-mode-string)) mode-line-misc-info)
+                (setq embark--target-mode-timer
+                      (run-with-idle-timer 0.1 t #'embark--target-mode-update))))
+          '';
 
-        #   bindLocal = {
-        #     minibuffer-local-completion-map = {
-        #       "M-o" = "embark-act";
-        #     };
-        #     embark-file-map = {
-        #       "s" = "sudo-edit";
-        #       "l" = "vlf";
-        #     };
-        #   };
-        # };
+          bindLocal = {
+            minibuffer-local-completion-map = {
+              "M-o" = "embark-act";
+            };
+            embark-file-map = {
+              "s" = "sudo-edit";
+              "l" = "vlf";
+            };
+          };
+        };
 
         # string-inflection = {
         #   enable = true;
@@ -1026,6 +1024,7 @@ in
 
         secrets = {
           enable = true;
+          defer = 1;
           config = ''
             (setq auth-sources '(
             "secrets:Mots de passe"
@@ -1091,7 +1090,6 @@ in
           # extraPackages = [ pkgs.marksman ];
           config = ''
             (setq markdown-command "marked")
-            (add-hook 'markdown-mode-hook #'dw/setup-markdown-mode)
             (dolist (face '((markdown-header-face-1 . 1.2)
                              (markdown-header-face-2 . 1.1)
                              (markdown-header-face-3 . 1.0)
@@ -1172,16 +1170,9 @@ in
                     (cons '(toml-ts-mode . ("rass" "--" "crates-lsp"))
                     (assoc-delete-all 'toml-ts-mode eglot-server-programs))))
 
-            (add-hook 'after-save-hook 'eglot-format)
+            (add-hook 'toml-ts-mode-hook
+                      (lambda () (add-hook 'after-save-hook #'eglot-format nil t)))
           '';
-          # config = ''
-          #   (with-eval-after-load 'eglot
-          #     (setq eglot-server-programs
-          #           (cons '(toml-ts-mode . ("rass" "--" "tombi" "lsp" "--" "crates-lsp"))
-          #           (assoc-delete-all 'toml-ts-mode eglot-server-programs))))
-
-          #   (add-hook 'after-save-hook 'eglot-format)
-          # '';
         };
 
         nix-ts-mode = {
@@ -1244,7 +1235,6 @@ in
           init = "(vertico-mode)";
           extraConfig = ''
             :bind (:map vertico-map
-              ("TAB" . minibuffer-complete)
               ;; M-v is taken by vertico
               ("M-g M-c" . switch-to-completions)
               ;; Original tab binding, which we want sometimes when

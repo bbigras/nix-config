@@ -38,7 +38,44 @@
         #  (denote-rename-buffer-mode 1)
 
       };
-      denote-explore.enable = true;
+
+      denote-journal = {
+        enable = true;
+        after = [ "denote" ];
+        defer = true;
+        command = [ "denote-journal-new-entry" ];
+      };
+      denote-journal-capture = {
+        enable = true;
+        after = [ "denote-journal" ];
+        config = ''
+          (setq org-capture-templates '(("a" "Appointment" entry
+                                         (file+olp denote-journal-capture-entry-for-date "Appointments")
+                                         "* %(denote-journal-capture-timestamp) %^{Subject?}")))
+        '';
+      };
+      denote-project-notes = {
+        enable = true;
+        after = [ "denote" ];
+        defer = true;
+        command = [ "denote-project-notes" ];
+      };
+      # denote-agenda = {
+      #   enable = true;
+      #   config = ''
+      #     (denote-agenda-insinuate)
+      #   '';
+      # };
+
+      denote-explore = {
+        enable = true;
+        after = [ "denote" ];
+        defer = true;
+        command = [
+          "denote-explore-network"
+          "denote-explore-random-note"
+        ];
+      };
       consult-denote = {
         enable = true;
         after = [

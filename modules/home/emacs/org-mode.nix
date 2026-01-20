@@ -36,13 +36,28 @@
 
         org-download = {
           enable = true;
+          after = [ "org" ];
+          defer = true;
+          command = [
+            "org-download-clipboard"
+            "org-download-yank"
+            "org-download-screenshot"
+          ];
           extraPackages = [ pkgs.wl-clipboard ];
         };
 
         # Highlight and annotate text file and websites
         # org-remark.enable = true;
 
-        org-ql.enable = true;
+        org-ql = {
+          enable = true;
+          after = [ "org" ];
+          defer = true;
+          command = [
+            "org-ql-search"
+            "org-ql-view"
+          ];
+        };
 
         consult-notes = {
           enable = true;
@@ -60,7 +75,7 @@
 
         org-tempo = {
           enable = true;
-          # :demand t
+          after = [ "org" ];
           package = "org";
           config = ''
             (dolist (item '(("sh" . "src sh")
@@ -77,8 +92,25 @@
           '';
         };
 
-        org-mime.enable = true;
-        org-web-tools.enable = true;
+        org-mime = {
+          enable = true;
+          after = [ "org" ];
+          defer = true;
+          command = [
+            "org-mime-htmlize"
+            "org-mime-org-buffer-htmlize"
+            "org-mime-org-subtree-htmlize"
+          ];
+        };
+        org-web-tools = {
+          enable = true;
+          after = [ "org" ];
+          defer = true;
+          command = [
+            "org-web-tools-insert-link-for-url"
+            "org-web-tools-read-url-as-org"
+          ];
+        };
         # ox-clip.enable = true;
         # ox-tufte.enable = true;
 
@@ -89,9 +121,11 @@
 
         org-modern = {
           enable = true;
-          config = ''
-            (global-org-modern-mode)
-          '';
+          after = [ "org" ];
+          hook = [
+            "(org-mode . org-modern-mode)"
+            "(org-agenda-finalize . org-modern-agenda)"
+          ];
         };
 
         # org-hyperscheduler = {
@@ -111,6 +145,8 @@
         edraw-org = {
           enable = true;
           package = _epkgs: pkgs.emacs.pkgs.el-easydraw;
+          after = [ "org" ];
+          defer = true;
         };
 
         org = {
@@ -149,8 +185,7 @@
                           (org-indent-mode 1)
                           (auto-fill-mode 0)
                           (visual-line-mode 1)
-                          (setq corfu-auto nil)
-                          (setq evil-auto-indent nil))
+                          (setq corfu-auto nil))
 
                         (defun dw/org-move-done-tasks-to-bottom ()
                           "Sort all tasks in the topmost heading by TODO state."
@@ -173,7 +208,6 @@
                                     org-src-fontify-natively t
                                     org-fontify-quote-and-verse-blocks t
                                     org-src-tab-acts-natively t
-                                    org-edit-src-content-indentation 2
                                     org-hide-block-startup nil
                                     org-src-preserve-indentation nil
                                     org-startup-folded 'content
@@ -214,12 +248,7 @@
                                                    :background "gold"
                                                    :foreground "black")))
 
-                                                   ;; Make done tasks show up in the agenda log
-                                                   (setq org-log-done 'time)
                                                    (setq org-log-into-drawer t)
-
-                                                   ;; Only make context tags inheritable (what about noexport?)
-                                                   (setq org-use-tag-inheritance "^@")
 
                                                     (setq-default org-tag-alist
                                                                   '((:startgroup)
@@ -259,8 +288,6 @@
                                                                     ("@review" . ?r)
                                                                     ("@followup" . ?f)
                                                                     (:endgroup)))
-
-                        (setq org-use-tag-inheritance "^@")
 
             ;; Active Org-babel languages
             (org-babel-do-load-languages 'org-babel-load-languages
@@ -547,20 +574,20 @@
         # # (org-image-actual-width nil)
         org-tree-slide = {
           enable = true;
-          command = [ "org-tree-slide-mode" ];
-          # hook = [
-          #   "(org-tree-slide-play . efs/presentation-setup)"
-          #   "(org-tree-slide-stop . efs/presentation-end)"
-          # ];
-          init = ''
-            (global-set-key (kbd "<f8>") 'org-tree-slide-mode)
-            (global-set-key (kbd "S-<f8>") 'org-tree-slide-skip-done-toggle)
-
-            (with-eval-after-load "org-tree-slide"
-              (define-key org-tree-slide-mode-map (kbd "<f9>") 'org-tree-slide-move-previous-tree)
-              (define-key org-tree-slide-mode-map (kbd "<f10>") 'org-tree-slide-move-next-tree)
-              )
-          '';
+          command = [
+            "org-tree-slide-mode"
+            "org-tree-slide-skip-done-toggle"
+          ];
+          bind = {
+            "<f8>" = "org-tree-slide-mode";
+            "S-<f8>" = "org-tree-slide-skip-done-toggle";
+          };
+          bindLocal = {
+            org-tree-slide-mode-map = {
+              "<f9>" = "org-tree-slide-move-previous-tree";
+              "<f10>" = "org-tree-slide-move-next-tree";
+            };
+          };
         };
       };
     };

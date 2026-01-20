@@ -12,7 +12,6 @@
             "C-c M-x" = "consult-mode-command";
             "C-c h" = "consult-history";
             "C-c k" = "consult-kmacro";
-            "C-c m" = "consult-man";
             "C-c i" = "consult-info";
             # ([remap Info-search] = "consult-info";
             # C-x bindings (ctl-x-map)
@@ -67,63 +66,37 @@
           };
 
           init = ''
-                        (require 'consult-xref)
-                        (require 'consult-org)
+            ;; These settings can be applied before consult loads since they
+            ;; configure built-in Emacs variables, not consult functions.
+            (setq register-preview-delay 0.5
+                  register-preview-function #'consult-register-format)
 
-                        ;; Optionally configure the register formatting. This improves the register
-                        ;; preview for `consult-register', `consult-register-load',
-                        ;; `consult-register-store' and the Emacs built-ins.
-                        (setq register-preview-delay 0.5
-                              register-preview-function #'consult-register-format)
+            ;; Optionally tweak the register preview window.
+            (advice-add #'register-preview :override #'consult-register-window)
 
-                        ;; Optionally tweak the register preview window.
-                        ;; This adds thin lines, sorting and hides the mode line of the window.
-                        (advice-add #'register-preview :override #'consult-register-window)
+            ;; Use Consult to select xref locations with preview
+            (setq xref-show-xrefs-function #'consult-xref
+                  xref-show-definitions-function #'consult-xref)
 
-                        ;; Use Consult to select xref locations with preview
-                        (setq xref-show-xrefs-function #'consult-xref
-                              xref-show-definitions-function #'consult-xref)
+            ;; org clock (can be set before consult loads)
+            (setq org-clock-persist t)
+            (with-eval-after-load 'org
+              (org-clock-persistence-insinuate))
+          '';
 
-                        ;; Configure other variables and modes in the :config section,
-                        ;; after lazily loading the package.
-                        :config
+          config = ''
+            (require 'consult-xref)
+            (require 'consult-org)
 
-                        ;; Optionally configure preview. The default value
-                        ;; is 'any, such that any key triggers the preview.
-                        ;; (setq consult-preview-key 'any)
-                        ;; (setq consult-preview-key "M-.")
-                        ;; (setq consult-preview-key '("S-<down>" "S-<up>"))
-                        ;; For some commands and buffer sources it is useful to configure the
-                        ;; :preview-key on a per-command basis using the `consult-customize' macro.
-                        (consult-customize
-                         consult-theme :preview-key '(:debounce 0.2 any)
-                         consult-ripgrep consult-git-grep consult-grep
-                         consult-bookmark consult-recent-file consult-xref
-                         ;; :preview-key "M-."
-                         :preview-key '(:debounce 0.4 any))
+            ;; Configure preview keys per-command
+            (consult-customize
+             consult-theme :preview-key '(:debounce 0.2 any)
+             consult-ripgrep consult-git-grep consult-grep
+             consult-bookmark consult-recent-file consult-xref
+             :preview-key '(:debounce 0.4 any))
 
-                        ;; Optionally configure the narrowing key.
-                        ;; Both < and C-+ work reasonably well.
-                        (setq consult-narrow-key "<") ;; "C-+"
-
-                        ;; Optionally make narrowing help available in the minibuffer.
-                        ;; You may want to use `embark-prefix-help-command' or which-key instead.
-                        ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
-
-                        ;; By default `consult-project-function' uses `project-root' from project.el.
-                        ;; Optionally configure a different project root function.
-                        ;;;; 1. project.el (the default)
-                        ;; (setq consult-project-function #'consult--default-project--function)
-                        ;;;; 2. vc.el (vc-root-dir)
-                        ;; (setq consult-project-function (lambda (_) (vc-root-dir)))
-                        ;;;; 3. locate-dominating-file
-                        ;; (setq consult-project-function (lambda (_) (locate-dominating-file "." ".git")))
-                        ;;;; 4. projectile.el (projectile-project-root)
-                        ;; (autoload 'projectile-project-root "projectile")
-                        ;; (setq consult-project-function (lambda (_) (projectile-project-root)))
-                        ;;;; 5. No project support
-                        ;; (setq consult-project-function nil)
-
+            ;; Configure the narrowing key.
+            (setq consult-narrow-key "<")
 
             (defvar consult--previous-point nil
                 "Location of point before entering minibuffer.
@@ -157,12 +130,6 @@
                                          point-pos)))
                                    (length vertico--candidates))))))
               (setq consult--previous-point nil))
-
-            ;; org clock
-
-            (setq org-clock-persist t)
-            (with-eval-after-load 'org
-              (org-clock-persistence-insinuate))
 
             (defun consult-clock-in (&optional match scope resolve)
               "Clock into an Org heading."
@@ -220,17 +187,16 @@
         #   };
         # };
 
-        # embark-consult = {
-        #   enable = true;
-        #   after = [
-        #     "embark"
-        #     "consult"
-        #   ];
-        #   hook = [
-        #     "(embark-collect-mode . consult-preview-at-point-mode)"
-        #     # "(prog-mode . lsp)"
-        #   ];
-        # };
+        embark-consult = {
+          enable = true;
+          after = [
+            "embark"
+            "consult"
+          ];
+          hook = [
+            "(embark-collect-mode . consult-preview-at-point-mode)"
+          ];
+        };
       };
     };
   };
