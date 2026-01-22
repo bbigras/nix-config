@@ -11,7 +11,7 @@ jobs:
     name: ${{ matrix.attrs.name }} (${{ matrix.attrs.hostPlatform }})
     runs-on: ${{ matrix.attrs.runsOn }}
     steps:
-    - uses: wimpysworld/nothing-but-nix@6af122a9403f936ef689e44cc013ae3f3e2f1c3b
+    - uses: wimpysworld/nothing-but-nix@a77b09ee91691223ff188d8fb6a87d699d457b4f
     - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
       with:
         persist-credentials: false
@@ -69,7 +69,7 @@ jobs:
     name: flake check (${{ matrix.systems.platform }})
     runs-on: ${{ matrix.systems.os }}
     steps:
-    - uses: wimpysworld/nothing-but-nix@6af122a9403f936ef689e44cc013ae3f3e2f1c3b
+    - uses: wimpysworld/nothing-but-nix@a77b09ee91691223ff188d8fb6a87d699d457b4f
     - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
       with:
         persist-credentials: false
