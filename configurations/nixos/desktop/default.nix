@@ -102,6 +102,10 @@ in
     fwupd.enable = true;
     udisks2.enable = true;
     avahi.enable = pkgs.lib.mkForce false;
+    earlyoom = {
+      enable = true;
+      enableNotifications = true;
+    };
   };
 
   systemd.network.networks = {
