@@ -52,6 +52,8 @@ in
       usePackage = {
         # logview.enable = true;
 
+        journalctl-mode.enable = true;
+
         project = {
           enable = true;
           config = lib.optionalString config.programs.jujutsu.enable ''
