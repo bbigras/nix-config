@@ -27,10 +27,10 @@ in
   ]);
 
   catppuccin = {
-    enable = true;
+    enable = false;
     flavor = "mocha";
     accent = "blue";
-    cursors.enable = true;
+    cursors.enable = false;
   };
 
   # Home-manager integration

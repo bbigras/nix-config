@@ -27,7 +27,7 @@ in
     jjui
     ssh
     starship
-    syncthing
+    # syncthing
     television
     tmux
     xdg
@@ -38,17 +38,17 @@ in
   dconf.enable = false;
 
   catppuccin = {
-    enable = true;
+    enable = false;
     flavor = "mocha";
     accent = "blue";
-    cursors.enable = true;
+    cursors.enable = false;
   };
 
-  gtk.enable = true;
-  home.pointerCursor = {
-    x11.enable = true;
-    gtk.enable = true;
-  };
+  gtk.enable = false;
+  # home.pointerCursor = {
+  #   x11.enable = false;
+  #   gtk.enable = false;
+  # };
 
   home = {
     stateVersion = lib.mkDefault "25.11";
@@ -71,8 +71,8 @@ in
         viddy
         xh
         zrok
-        xournalpp
-        dbeaver-bin
+        # xournalpp
+        # dbeaver-bin
 
         nix-closure-size
         mosh
@@ -100,7 +100,6 @@ in
         # cool cli tools
         fd
         hexyl
-        pwgen
         sd # find & replace
         doggo
 
@@ -137,17 +136,16 @@ in
 
         docker-credential-helpers
         viddy
-        natscli
         just
 
         # media
         mediainfo
-        kooha
+        # kooha
 
         zrok
 
-        devpod
-        altair
+        # devpod
+        # altair
         broot
         distrobox
         incus.client
@@ -157,12 +155,12 @@ in
         git-annex
         git-remote-gcrypt
         spacer
-        faketty
+        # faketty
         resticprofile
         tkey-ssh-agent
-        jan
+        # jan
         mergiraf
-        winboat
+        # winboat
       ]
       ++ (with pkgs.hunspellDicts; [
         fr-moderne
@@ -218,7 +216,7 @@ in
     kubeswitch = {
       enable = true;
     };
-    mangohud.enable = true;
+    # mangohud.enable = true;
     nh = {
       enable = true;
       flake = "git+https://github.com/bbigras/nix-config";
@@ -244,69 +242,69 @@ in
     pay-respects.enable = true;
     ripgrep.enable = true;
     sesh.enable = true;
-    streamlink = {
-      enable = true;
-      settings = {
-        player = "${pkgs.mpv}/bin/mpv";
-        player-args = "--cache 2048";
-        player-no-close = true;
-        twitch-disable-ads = true;
-        twitch-low-latency = true;
-      };
-    };
-    swappy = {
-      enable = true;
-      settings = {
-        Default = {
-          auto_save = false;
-          custom_color = "rgba(193,125,17,1)";
-          early_exit = false;
-          fill_shape = false;
-          line_size = 5;
-          paint_mode = "brush";
-          save_dir = "$HOME/Desktop";
-          save_filename_format = "swappy-%Y%m%d-%H%M%S.png";
-          show_panel = false;
-          text_font = "sans-serif";
-          text_size = 20;
-          transparency = 50;
-          transparent = false;
-        };
-      };
-    };
+    # streamlink = {
+    #   enable = true;
+    #   settings = {
+    #     player = "${pkgs.mpv}/bin/mpv";
+    #     player-args = "--cache 2048";
+    #     player-no-close = true;
+    #     twitch-disable-ads = true;
+    #     twitch-low-latency = true;
+    #   };
+    # };
+    # swappy = {
+    #   enable = true;
+    #   settings = {
+    #     Default = {
+    #       auto_save = false;
+    #       custom_color = "rgba(193,125,17,1)";
+    #       early_exit = false;
+    #       fill_shape = false;
+    #       line_size = 5;
+    #       paint_mode = "brush";
+    #       save_dir = "$HOME/Desktop";
+    #       save_filename_format = "swappy-%Y%m%d-%H%M%S.png";
+    #       show_panel = false;
+    #       text_font = "sans-serif";
+    #       text_size = 20;
+    #       transparency = 50;
+    #       transparent = false;
+    #     };
+    #   };
+    # };
     trippy.enable = true;
-    vesktop = {
-      enable = false;
-      settings = {
-        appBadge = false;
-        arRPC = true;
-        checkUpdates = false;
-        customTitleBar = false;
-        disableMinSize = true;
-        minimizeToTray = false;
-        tray = false;
-        splashBackground = "#000000";
-        splashColor = "#ffffff";
-        splashTheming = true;
-        staticTitle = true;
-        hardwareAcceleration = true;
-        discordBranch = "stable";
-      };
-      vencord.settings = {
-        autoUpdate = false;
-        autoUpdateNotification = false;
-        notifyAboutUpdates = false;
-        useQuickCss = true;
-        disableMinSize = true;
-        plugins = {
-          # MessageLogger = {
-          #   enabled = true;
-          #   ignoreSelf = true;
-          # };
-          FakeNitro.enabled = true;
-        };
-      };
-    };
+    # vesktop = {
+    #   enable = false;
+    #   settings = {
+    #     appBadge = false;
+    #     arRPC = true;
+    #     checkUpdates = false;
+    #     customTitleBar = false;
+    #     disableMinSize = true;
+    #     minimizeToTray = false;
+    #     tray = false;
+    #     splashBackground = "#000000";
+    #     splashColor = "#ffffff";
+    #     splashTheming = true;
+    #     staticTitle = true;
+    #     hardwareAcceleration = true;
+    #     discordBranch = "stable";
+    #   };
+    #   vencord.settings = {
+    #     autoUpdate = false;
+    #     autoUpdateNotification = false;
+    #     notifyAboutUpdates = false;
+    #     useQuickCss = true;
+    #     disableMinSize = true;
+    #     plugins = {
+    #       # MessageLogger = {
+    #       #   enabled = true;
+    #       #   ignoreSelf = true;
+    #       # };
+    #       FakeNitro.enabled = true;
+    #     };
+    #   };
+    # };
     vivid = {
       enable = true;
       activeTheme = "catppuccin-mocha";
