@@ -33,10 +33,6 @@ in
     cursors.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    uv
-  ];
-
   # Home-manager integration
   # Note: stylix.homeModules.stylix is auto-imported via stylix.homeManagerIntegration
   home-manager = {
