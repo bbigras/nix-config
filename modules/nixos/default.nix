@@ -28,10 +28,10 @@ in
   ]);
 
   catppuccin = {
-    enable = true;
+    enable = false;
     flavor = "mocha";
     accent = "blue";
-    cursors.enable = true;
+    cursors.enable = false;
   };
 
   programs.nix-ld.enable = true;

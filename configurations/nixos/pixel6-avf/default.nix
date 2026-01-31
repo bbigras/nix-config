@@ -22,6 +22,7 @@ in
   ];
 
   # for avf
+  avf.defaultUser = "bbigras";
   networking.useDHCP = lib.mkForce true;
   services.resolved.settings.Resolve.DNSSEC = lib.mkForce "false";
 
