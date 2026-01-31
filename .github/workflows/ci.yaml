@@ -49,6 +49,10 @@ jobs:
           hostPlatform: x86_64-linux
           name: laptop
           runsOn: ubuntu-24.04
+        - attr: nixosConfigurations.pixel6-avf.config.system.build.toplevel
+          hostPlatform: aarch64-linux
+          name: pixel6-avf
+          runsOn: ubuntu-22.04-arm
         - attr: nixosConfigurations.work.config.system.build.toplevel
           hostPlatform: x86_64-linux
           name: work
@@ -100,6 +104,8 @@ jobs:
         systems:
         - os: ubuntu-24.04
           platform: x86_64-linux
+        - os: ubuntu-22.04-arm
+          platform: aarch64-linux
     timeout-minutes: 60
 name: ci
 'on':

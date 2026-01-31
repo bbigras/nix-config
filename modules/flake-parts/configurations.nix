@@ -16,6 +16,7 @@ in
     nixosConfigurations = {
       desktop = mkNixos (self + "/configurations/nixos/desktop");
       laptop = mkNixos (self + "/configurations/nixos/laptop");
+      pixel6-avf = mkNixos (self + "/configurations/nixos/pixel6-avf");
       work = mkNixos (self + "/configurations/nixos/work");
     };
 
