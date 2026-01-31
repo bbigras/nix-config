@@ -9,6 +9,7 @@ let
   # Platform mappings: Nix system -> GitHub runner
   platforms = {
     x86_64-linux.os = "ubuntu-24.04";
+    aarch64-linux.os = "ubuntu-22.04-arm";
   };
 
   # Build matrix entry from configuration (autodiscovery)
