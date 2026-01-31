@@ -37,7 +37,7 @@ in
     autoEnable = true;
     flavor = "mocha";
     accent = "blue";
-    cursors.enable = true;
+    cursors.enable = false;
   };
 
   programs = {

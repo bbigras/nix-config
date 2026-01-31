@@ -38,7 +38,7 @@ in
     jjui
     ssh
     starship
-    syncthing
+    # syncthing
     television
     tmux
     xdg
@@ -53,15 +53,15 @@ in
     autoEnable = true;
     flavor = "mocha";
     accent = "blue";
-    cursors.enable = true;
+    cursors.enable = false;
   };
 
-  gtk.enable = true;
-  home.pointerCursor = {
-    enable = true;
-    gtk.enable = true;
-    x11.enable = true;
-  };
+   gtk.enable = false;
+   # home.pointerCursor = {
+   #   enable = true;
+   #   gtk.enable = true;
+   #   x11.enable = true;
+   # };
 
   home = {
     stateVersion = lib.mkDefault "26.05";
@@ -82,8 +82,8 @@ in
         viddy
         xh
         zrok
-        xournalpp
-        dbeaver-bin
+        # xournalpp
+        # dbeaver-bin
 
         nix-closure-size
         mosh
@@ -142,16 +142,15 @@ in
 
         docker-credential-helpers
         viddy
-        natscli
         just
 
         # media
         mediainfo
-        kooha
+        # kooha
 
         zrok
 
-        altair
+        # altair
         broot
         distrobox
         incus.client
@@ -160,9 +159,9 @@ in
         git-annex
         git-remote-gcrypt
         spacer
-        faketty
+        # faketty
         hl-log-viewer
-        android-tools
+        # android-tools
         resticprofile
         openbao
         nmap
@@ -369,7 +368,7 @@ in
     kubeswitch = {
       enable = true;
     };
-    mangohud.enable = true;
+    # mangohud.enable = true;
     nh = {
       enable = true;
       flake = "git+https://github.com/bbigras/nix-config";
@@ -380,26 +379,6 @@ in
     pay-respects.enable = true;
     ripgrep.enable = true;
     sesh.enable = true;
-    swappy = {
-      enable = true;
-      settings = {
-        Default = {
-          auto_save = false;
-          custom_color = "rgba(193,125,17,1)";
-          early_exit = false;
-          fill_shape = false;
-          line_size = 5;
-          paint_mode = "brush";
-          save_dir = "$HOME/Desktop";
-          save_filename_format = "swappy-%Y%m%d-%H%M%S.png";
-          show_panel = false;
-          text_font = "sans-serif";
-          text_size = 20;
-          transparency = 50;
-          transparent = false;
-        };
-      };
-    };
     tirith = {
       enable = false;
       policy = {
@@ -412,13 +391,9 @@ in
       };
     };
     npm.enable = true;
-    codex = {
-      enable = true;
-      enableMcpIntegration = true;
-    };
     trippy.enable = true;
     equibop = {
-      enable = true;
+      enable = false;
       settings = {
         appBadge = false;
         arRPC = true;
