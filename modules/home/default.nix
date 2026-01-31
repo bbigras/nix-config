@@ -140,9 +140,6 @@ in
         natscli
         just
 
-        # usb imagers
-        usbimager
-
         # media
         mediainfo
         kooha
