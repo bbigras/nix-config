@@ -31,7 +31,7 @@ in
     enable = true;
     flavor = "mocha";
     accent = "blue";
-    cursors.enable = true;
+    cursors.enable = false;
   };
 
   programs.nix-ld.enable = true;

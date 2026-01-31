@@ -54,7 +54,7 @@ in
       settings.PermitRootLogin = lib.mkDefault "no";
     };
     smartd = {
-      enable = true;
+      enable = false;
       notifications = {
         systembus-notify.enable = true;
       };
