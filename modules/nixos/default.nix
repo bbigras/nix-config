@@ -1,12 +1,8 @@
 # NixOS modules aggregator
 # This is the main entry point for NixOS configurations
-{ flake, pkgs, ... }:
+{ flake, ... }:
 let
   inherit (flake) inputs self;
-  nurNoPkgs = import inputs.nur {
-    pkgs = null;
-    nurpkgs = pkgs;
-  };
 in
 {
   imports = [
@@ -45,7 +41,7 @@ in
     sharedModules = [
       inputs.nix-index-database.homeModules.nix-index
       inputs.catppuccin.homeModules.catppuccin
-      nurNoPkgs.repos.rycee.hmModules.emacs-init
+      inputs.rycee-nur-expressions.hmModules.emacs-init
       self.homeModules.default
     ];
   };
