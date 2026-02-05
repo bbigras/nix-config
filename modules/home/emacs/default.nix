@@ -221,6 +221,11 @@ in
           '';
         };
 
+        majutsu = {
+          enable = true;
+          package = _epkgs: pkgs.emacs.pkgs.majutsu;
+        };
+
         # combobulate = {
         #   enable = true;
         #   package = _epkgs: pkgs.emacsPackages.combobulate;

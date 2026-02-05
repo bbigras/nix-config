@@ -148,6 +148,10 @@
       url = "github:alexispurslane/treesit-sexp";
       flake = false;
     };
+    majutsu = {
+      url = "github:0WD0/majutsu";
+      flake = false;
+    };
   };
 
   outputs =

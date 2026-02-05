@@ -348,6 +348,22 @@
         "type": "github"
       }
     },
+    "majutsu": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1770295304,
+        "narHash": "sha256-5BoksUv85iom/p51Uu8SxZlSU0pf/42NFEaiBgb1Il8=",
+        "owner": "0WD0",
+        "repo": "majutsu",
+        "rev": "d54a91dd65145c18fb589dad91216ee82d92bfca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "0WD0",
+        "repo": "majutsu",
+        "type": "github"
+      }
+    },
     "minimal-emacs-d": {
       "flake": false,
       "locked": {
@@ -576,6 +592,7 @@
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "lanzaboote": "lanzaboote",
+        "majutsu": "majutsu",
         "minimal-emacs-d": "minimal-emacs-d",
         "nix-darwin": "nix-darwin",
         "nix-fast-build": "nix-fast-build",

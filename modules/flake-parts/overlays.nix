@@ -29,6 +29,14 @@ in
               version = "git";
               src = inputs.treesit-sexp;
             };
+            majutsu = super.emacs.pkgs.trivialBuild {
+              pname = "majutsu";
+              version = "git";
+              src = inputs.majutsu;
+              packageRequires = [
+                super.emacs.pkgs.magit
+              ];
+            };
           };
         })
       ]
