@@ -16,6 +16,7 @@
   inputs = {
     # Core infrastructure
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs_tmux_fingers.url = "github:bbigras/nixpkgs/push-quntkuksospr";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";

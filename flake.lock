@@ -523,6 +523,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_tmux_fingers": {
+      "locked": {
+        "lastModified": 1770265817,
+        "narHash": "sha256-L3+v3MAS+OSzhlhtZqJjVZsRN8SSryx19oTj5vQQn50=",
+        "owner": "bbigras",
+        "repo": "nixpkgs",
+        "rev": "77bf9b15d5eaa475e50a9d6a6885af0e2cd9e68f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bbigras",
+        "ref": "push-quntkuksospr",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nur": {
       "inputs": {
         "flake-parts": [
@@ -568,6 +584,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixos-unified": "nixos-unified",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs_tmux_fingers": "nixpkgs_tmux_fingers",
         "nur": "nur",
         "systems": "systems",
         "treefmt-nix": "treefmt-nix",
