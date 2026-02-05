@@ -14,7 +14,7 @@
       extrakto
       fuzzback
       tmux-fzf
-      tmux-thumbs
+      fingers
       lazy-restore
     ];
     mouse = true;
