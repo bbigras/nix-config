@@ -11,9 +11,6 @@
     # attaches if the session exists, otherwise creates it.
     newSession = false;
     plugins = with pkgs.tmuxPlugins; [
-      extrakto
-      fuzzback
-      tmux-fzf
       fingers
       lazy-restore
     ];
