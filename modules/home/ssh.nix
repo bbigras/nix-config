@@ -5,9 +5,9 @@
     Host *
       CanonicalizeHostname yes
       PermitLocalCommand yes
-      CanonicalDomains meurer.org.beta.tailscale.net
+      CanonicalDomains tamarin-macaroni.ts.net
 
-    Match canonical Host *.meurer.org,*.meurer.org.beta.tailscale.net
+    Match canonical Host *.tamarin-macaroni.ts.net
       ForwardAgent yes
 
     Match canonical Host *
