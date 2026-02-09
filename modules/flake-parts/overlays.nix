@@ -17,11 +17,6 @@ in
         (final: _: {
           inherit (inputs.nix-fast-build.packages.${final.stdenv.hostPlatform.system}) nix-fast-build;
         })
-        (final: super: {
-          tmuxPlugins = super.tmuxPlugins // {
-            inherit (final.callPackage "${inputs.nixpkgs_tmux_fingers}/pkgs/misc/tmux-plugins" { }) fingers;
-          };
-        })
         (_self: super: {
           emacs.pkgs = super.emacs.pkgs // {
             treesit-sexp = super.emacs.pkgs.trivialBuild {
