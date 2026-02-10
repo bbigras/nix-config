@@ -94,14 +94,6 @@ in
           '';
         };
 
-        agent-shell = {
-          enable = true;
-          package = _epkgs: pkgs.emacs.pkgs.agent-shell;
-          config = ''
-            (setopt agent-shell-file-completion-enabled t)
-          '';
-        };
-
         gleam-ts-mode = {
           enable = true;
           extraConfig = ''

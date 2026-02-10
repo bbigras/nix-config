@@ -6,7 +6,7 @@
       kdiff3
       meld
       mergiraf
-      watchman
+      # watchman
     ];
   };
 
