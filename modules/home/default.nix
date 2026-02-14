@@ -274,6 +274,17 @@ in
         };
       };
     };
+    tirith = {
+      enable = true;
+      policy = {
+        version = 1;
+        fail_mode = "open";
+        allow_bypass = true;
+        severity_overrides = {
+          docker_untrusted_registry = "CRITICAL";
+        };
+      };
+    };
     trippy.enable = true;
     vesktop = {
       enable = false;
