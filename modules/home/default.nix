@@ -72,6 +72,7 @@ in
         xh
         zrok
         xournalpp
+        dbeaver-bin
 
         nix-closure-size
         mosh

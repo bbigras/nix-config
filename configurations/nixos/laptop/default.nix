@@ -37,6 +37,7 @@ in
     self.homeModules.syncthing
     self.homeModules.graphical
     self.homeModules.graphical-heroic
+    self.homeModules.graphical-lutris
     self.homeModules.tkey-ssh-agent
   ];
 
