@@ -17,6 +17,13 @@ in
         (final: _: {
           inherit (inputs.nix-fast-build.packages.${final.stdenv.hostPlatform.system}) nix-fast-build;
         })
+        (final: super: {
+          emacs-lsp-booster =
+            final.callPackage "${inputs.nixpkgs}/pkgs/by-name/em/emacs-lsp-booster/package.nix"
+              {
+                emacs = super.emacs;
+              };
+        })
         (_self: super: {
           emacs.pkgs = super.emacs.pkgs // {
             treesit-sexp = super.emacs.pkgs.trivialBuild {
