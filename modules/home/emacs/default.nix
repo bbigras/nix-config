@@ -1133,6 +1133,17 @@ in
         #   '';
         # };
 
+        eglot-booster = {
+          enable = true;
+          after = [ "eglot" ];
+          extraPackages = [
+            pkgs.emacs-lsp-booster
+          ];
+          config = ''
+            (eglot-booster-mode)
+          '';
+        };
+
         eglot = {
           enable = true;
           command = [
