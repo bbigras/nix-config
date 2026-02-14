@@ -181,6 +181,21 @@ in
 
         gleam-ts-mode = {
           enable = true;
+          extraPackages = [
+            pkgs.glas
+          ];
+          hook = [
+            "(gleam-ts-mode . eglot-ensure)"
+          ];
+          config = ''
+            (with-eval-after-load 'eglot
+              (setq eglot-server-programs
+                    (cons '(gleam-ts-mode . ("rass" "--" "glas"))
+                    (assoc-delete-all 'gleam-ts-mode eglot-server-programs))))
+
+            (add-hook 'gleam-ts-mode-hook
+                      (lambda () (add-hook 'after-save-hook #'eglot-format nil t)))
+          '';
           extraConfig = ''
             :mode (rx ".gleam" eos)
           '';

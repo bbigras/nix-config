@@ -5,6 +5,7 @@ let
     p: with p; [
       tree-sitter-bash
       tree-sitter-css
+      tree-sitter-gleam
       tree-sitter-hcl
       tree-sitter-html
       tree-sitter-javascript
