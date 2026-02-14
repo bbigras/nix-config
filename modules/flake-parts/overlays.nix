@@ -21,7 +21,7 @@ in
           emacs-lsp-booster =
             final.callPackage "${inputs.nixpkgs}/pkgs/by-name/em/emacs-lsp-booster/package.nix"
               {
-                emacs = super.emacs;
+                inherit (super) emacs;
               };
         })
         (_self: super: {
