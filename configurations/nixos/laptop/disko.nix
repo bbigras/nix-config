@@ -2,6 +2,7 @@
   fileSystems = {
     "/nix/state".neededForBoot = true;
     "/nix".neededForBoot = true;
+    "/home".neededForBoot = true;
   };
 
   # https://github.com/nix-community/disko/issues/452#issuecomment-1868276953
