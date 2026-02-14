@@ -144,6 +144,17 @@ in
           '';
         };
 
+        consult-project-extra = {
+          enable = true;
+          custom = {
+            "consult-project-function" = "#'consult-project-extra-project-fn";
+          };
+          bind = {
+            "C-c p f" = "consult-project-extra-find";
+            "C-c p o" = "consult-project-extra-find-other-window";
+          };
+        };
+
         jinx = {
           enable = true;
           hook = [
