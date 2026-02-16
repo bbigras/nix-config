@@ -207,6 +207,58 @@ in
     };
     gpg.enable = true;
     jq.enable = true;
+    k9s = {
+      enable = true;
+      aliases = {
+        # Use pp as an alias for Pod
+        pp = "v1/pods";
+      };
+      hotKeys = {
+        shift-0 = {
+          shortCut = "Shift-0";
+          description = "Viewing pods";
+          command = "pods";
+        };
+      };
+      plugins = {
+        # Defines a plugin to provide a `ctrl-l` shortcut to
+        # tail the logs while in pod view.
+        fred = {
+          shortCut = "Ctrl-L";
+          description = "Pod logs";
+          scopes = [ "po" ];
+          command = "kubectl";
+          background = false;
+          args = [
+            "logs"
+            "-f"
+            "$NAME"
+            "-n"
+            "$NAMESPACE"
+            "--context"
+            "$CLUSTER"
+          ];
+        };
+      };
+      settings = {
+        k9s = {
+          refreshRate = 2;
+        };
+      };
+      views = {
+        "v1/pods" = {
+          columns = [
+            "AGE"
+            "NAMESPACE"
+            "NAME"
+            "IP"
+            "NODE"
+            "STATUS"
+            "READY"
+          ];
+        };
+      };
+    };
     kubecolor = {
       enable = true;
       enableAlias = true;
