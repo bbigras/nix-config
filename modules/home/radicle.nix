@@ -1,4 +1,12 @@
+{ pkgs, ... }:
+
 {
+  home = {
+    packages = with pkgs; [
+      radicle-tui
+    ];
+  };
+
   programs = {
     radicle = {
       enable = true;
