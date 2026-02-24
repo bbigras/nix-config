@@ -196,8 +196,8 @@
 
                           ;; Reset the view of TODO items
                           (org-overview)
-                          (org-show-entry)
-                          (org-show-children))
+                          (org-fold-show-entry)
+                          (org-fold-show-children))
 
                         (defun dw/org-todo-state-change-hook ()
                           (when (string= org-state "DONE")
@@ -212,7 +212,7 @@
                                     org-src-preserve-indentation nil
                                     org-startup-folded 'content
                                     org-cycle-separator-lines 2
-                                    org-capture-bookmark nil)
+                                    org-bookmark-names-plist nil)
 
                                     (setq org-refile-targets '((nil :maxlevel . 1)
                                                                 (org-agenda-files :maxlevel . 1))

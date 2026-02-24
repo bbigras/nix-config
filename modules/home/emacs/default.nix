@@ -791,7 +791,7 @@ in
         emacs = {
           enable = true;
           custom = {
-            "tab-always-indent" = "complete";
+            "tab-always-indent" = "'complete";
             "text-mode-ispell-word-completion" = "nil";
             "read-extended-command-predicate" = "#'command-completion-default-include-p";
           };
@@ -956,7 +956,7 @@ in
             ; Colorize the current Vertico candidate differently when acting
             (defun embark-vertico-indicator ()
               (let ((fr face-remapping-alist))
-                (lambda (&optional keymap _targets prefix)
+                (lambda (&optional keymap _targets _prefix)
                   (when (bound-and-true-p vertico--input)
                     (setq-local face-remapping-alist
                                 (if keymap
@@ -993,8 +993,8 @@ in
               (defun embark-act-with-completing-read (&optional arg)
                 (interactive "P")
                 (let* ((embark-prompter 'embark-completing-read-prompter)
-                       (act (propertize "Act" 'face 'highlight))
-                       (embark-indicator (lambda (_keymap targets) nil)))
+                       (_act (propertize "Act" 'face 'highlight))
+                       (embark-indicator (lambda (_keymap _targets) nil)))
                   (embark-act arg)))
 
             ; Show the current Embark target types in the modeline
@@ -1014,6 +1014,7 @@ in
             (define-minor-mode embark-target-mode
               "Shows the current targets in the modeline."
               :global t
+              :group 'embark
               (setq mode-line-misc-info (assq-delete-all 'embark-target-mode mode-line-misc-info))
               (when embark--target-mode-timer
                 (cancel-timer embark--target-mode-timer)

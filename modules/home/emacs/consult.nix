@@ -5,9 +5,7 @@
         consult = {
           enable = true;
           after = [ "org" ];
-          hook = [
-            "(completion-list-mode . consult-preview-at-point-mode)"
-          ];
+          # preview is now enabled automatically in recent consult versions
           bind = {
             "C-c M-x" = "consult-mode-command";
             "C-c h" = "consult-history";
@@ -193,9 +191,7 @@
             "embark"
             "consult"
           ];
-          hook = [
-            "(embark-collect-mode . consult-preview-at-point-mode)"
-          ];
+          # consult-preview-at-point-mode is obsolete; preview is now automatic
         };
       };
     };
