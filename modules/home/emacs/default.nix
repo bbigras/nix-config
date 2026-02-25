@@ -262,24 +262,97 @@ in
           bind = {
             "C-o" = "casual-editkit-main-tmenu";
             "M-g" = "casual-avy-tmenu";
+
+            "C-c w" = "casual-editkit-windows-tmenu";
+            "C-c r" = "casual-editkit-rectangle-tmenu";
+            "C-c g" = "casual-editkit-registers-tmenu";
+            "C-c p" = "casual-editkit-project-tmenu";
           };
           bindLocal = {
-            bookmark-bmenu-mode-map."C-o" = "casual-bookmarks-tmenu";
+            bookmark-bmenu-mode-map = {
+              "C-o" = "casual-bookmarks-tmenu";
+              "J" = "bookmark-jump";
+            };
             calc-mode-map."C-o" = "casual-calc-tmenu";
-            dired-mode-map."C-o" = "casual-dired-tmenu";
+            css-mode-map."M-m" = "casual-css-tmenu";
+            csv-mode-map."M-m" = "casual-csv-tmenu";
+            dired-mode-map = {
+              "C-o" = "casual-dired-tmenu";
+              "s" = "casual-dired-sort-by-tmenu";
+              "/" = "casual-dired-search-replace-tmenu";
+            };
+            ediff-mode-map."C-o" = "casual-ediff-tmenu";
             isearch-mode-map."C-o" = "casual-isearch-tmenu";
-            org-agenda-mode-map."C-o" = "casual-agenda-tmenu";
+            org-agenda-mode-map = {
+              "C-o" = "casual-agenda-tmenu";
+              "M-j" = "org-agenda-clock-goto";
+              "J" = "bookmark-jump";
+            };
+            org-mode-map."M-m" = "casual-org-tmenu";
+            org-table-fedit-map."M-m" = "casual-org-table-fedit-tmenu";
             reb-lisp-mode-map."C-o" = "casual-re-builder-tmenu";
             reb-mode-map."C-o" = "casual-re-builder-tmenu";
             symbol-overlay-map."C-o" = "casual-symbol-overlay-tmenu";
-            ediff-mode-map."C-o" = "casual-ediff-tmenu";
+
+            compilation-mode-map."C-o" = "casual-compile-tmenu";
+            grep-mode-map."C-o" = "casual-compile-tmenu";
+
+            compilation-mode-map = {
+              "k" = "compilation-previous-error";
+              "j" = "compilation-next-error";
+              "o" = "compilation-display-error";
+              "[" = "compilation-previous-file";
+              "]" = "compilation-next-file";
+            };
+
+            grep-mode-map = {
+              "k" = "compilation-previous-error";
+              "j" = "compilation-next-error";
+              "o" = "compilation-display-error";
+              "[" = "compilation-previous-file";
+              "]" = "compilation-next-file";
+            };
+
+            html-ts-mode-map."M-m" = "casual-html-tmenu";
+            html-ts-mode-map."C-c m" = "casual-html-tags-tmenu";
+            image-mode-map."C-o" = "casual-image-tmenu";
+
+            ibuffer-mode-map = {
+              "C-o" = "casual-ibuffer-tmenu";
+              "F" = "casual-ibuffer-filter-tmenu";
+              "s" = "casual-ibuffer-sortby-tmenu";
+              "{" = "ibuffer-backwards-next-marked";
+              "}" = "ibuffer-forward-next-marked";
+              "[" = "ibuffer-backward-filter-group";
+              "]" = "ibuffer-forward-filter-group";
+              "$" = "ibuffer-toggle-filter-group";
+              "<double-mouse-1>" = "ibuffer-visit-buffer";
+              "M-<double-mouse-1>" = "ibuffer-visit-buffer-other-window";
+            };
           };
+
           # https://kickingvegas.github.io/casual/Ediff-Install.html
           config = ''
             (casual-ediff-install)
             (setq ediff-keep-variants nil
                   ediff-window-setup-function 'ediff-setup-windows-plain
                   ediff-split-window-function 'split-window-horizontally)
+
+            (require 'hl-line)
+            (add-hook 'bookmark-bmenu-mode-hook #'hl-line-mode)
+            (add-hook 'ibuffer-mode-hook #'hl-line-mode)
+            (add-hook 'ibuffer-mode-hook #'ibuffer-auto-mode)
+
+            ;; disable line wrap
+            (add-hook 'csv-mode-hook
+                      (lambda ()
+                        (visual-line-mode -1)
+                        (toggle-truncate-lines 1)))
+
+            ;; auto detect separator
+            (add-hook 'csv-mode-hook #'csv-guess-set-separator)
+            ;; turn on field alignment
+            (add-hook 'csv-mode-hook #'csv-align-mode)
           '';
         };
 
