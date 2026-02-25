@@ -766,6 +766,28 @@ in
           command = [ "dired-du-mode" ];
         };
 
+        gumshoe = {
+          enable = true;
+          init = ''
+            ;; Enabing global-gumshoe-mode will initiate tracking
+            (global-gumshoe-mode +1)
+            ;; customize peruse slot display if you like
+            (setf gumshoe-slot-schema '(time buffer position line))
+            ;; personally, I use perspectives
+            ;; (setf gumshoe-slot-schema '(perspective time buffer position line))
+            ;; disable auto-cancel of backtracking
+            (setf gumshoe-auto-cancel-backtracking-p nil)
+          '';
+        };
+
+        consult-gumshoe = {
+          enable = true;
+          after = [
+            "consult"
+            "gumshoe"
+          ];
+        };
+
         all-the-icons-dired = {
           enable = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
           after = [
