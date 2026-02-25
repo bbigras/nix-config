@@ -211,6 +211,49 @@ in
           '';
         };
 
+        dired = {
+          enable = true;
+          earlyInit = ''
+            (require 'dired-x)
+            (require 'wdired)
+            (require 'hl-line)
+            (require 'mouse)
+            (require 'image-dired)
+            (require 'image-dired-dired)
+          '';
+          extraPackages = [
+            pkgs.imagemagick
+          ];
+          bindLocal = {
+            dired-mode-map = {
+              "M-o" = "dired-omit-mode";
+              "E" = "wdired-change-to-wdired-mode";
+              "M-n" = "dired-next-dirline";
+              "M-p" = "dired-prev-dirline";
+              "]" = "dired-next-subdir";
+              "[" = "dired-prev-subdir";
+              "A-M-<mouse-1>" = "browse-url-of-dired-file";
+              "<backtab>" = "dired-prev-subdir";
+              "TAB" = "dired-next-subdir";
+              "M-j" = "dired-goto-subdir";
+              ";" = "image-dired-dired-toggle-marked-thumbs";
+            };
+            image-dired-thumbnail-mode-map = {
+              "n" = "image-dired-display-next";
+              "p" = "image-dired-display-previous";
+            };
+          };
+          config = ''
+            (add-hook 'dired-mode-hook 'hl-line-mode)
+            (add-hook 'dired-mode-hook 'context-menu-mode)
+            (add-hook 'dired-mode-hook 'dired-async-mode)
+            (add-hook
+             'dired-mode-hook
+             (lambda ()
+               (setq-local mouse-1-click-follows-link 'double)))
+          '';
+        };
+
         casual-suite = {
           enable = true;
           after = [
