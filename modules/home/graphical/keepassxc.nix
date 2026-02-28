@@ -4,7 +4,9 @@
     settings = {
       Browser.Enabled = false;
       # Browser.UpdateBinaryPath = false;
-      # MinimizeAfterUnlock = true;
+      General = {
+        MinimizeAfterUnlock = true;
+      };
       FdoSecrets.Enabled = true;
       GUI = {
         AdvancedSettings = true;
@@ -12,6 +14,8 @@
         CompactMode = true;
         HidePasswords = true;
         LaunchAtStartup = true;
+        MinimizeToTray = true;
+        ShowTrayIcon = true;
       };
       SSHAgent.Enabled = false;
       Security = {
