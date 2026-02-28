@@ -14,6 +14,7 @@
         CompactMode = true;
         HidePasswords = true;
         LaunchAtStartup = true;
+        MinimizeOnClose = true;
         MinimizeToTray = true;
         ShowTrayIcon = true;
       };
