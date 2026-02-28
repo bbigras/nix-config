@@ -2,7 +2,7 @@
   programs.keepassxc = {
     enable = true;
     settings = {
-      Browser.Enabled = false;
+      Browser.Enabled = true;
       # Browser.UpdateBinaryPath = false;
       General = {
         MinimizeAfterUnlock = true;
