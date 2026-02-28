@@ -181,6 +181,22 @@
         "type": "github"
       }
     },
+    "eglot-multi-preset": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771724147,
+        "narHash": "sha256-oCH9+LK9O3fdii1oV0Q0NytJWCqQ+Kk31HxCDD/ouhg=",
+        "owner": "kn66",
+        "repo": "eglot-multi-preset",
+        "rev": "0efc6f821b9a15f2ee21a0fa67a32296f0fff819",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kn66",
+        "repo": "eglot-multi-preset",
+        "type": "github"
+      }
+    },
     "emacs-overlay": {
       "inputs": {
         "nixpkgs": [
@@ -772,6 +788,7 @@
         "agenix-rekey": "agenix-rekey",
         "catppuccin": "catppuccin",
         "disko": "disko",
+        "eglot-multi-preset": "eglot-multi-preset",
         "emacs-overlay": "emacs-overlay",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",

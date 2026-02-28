@@ -382,6 +382,14 @@ in
           ];
         };
 
+        eglot-multi-preset = {
+          enable = true;
+          package = _epkgs: pkgs.emacs.pkgs.eglot-multi-preset;
+          config = ''
+            (eglot-multi-preset-mode 1)
+          '';
+        };
+
         treesit-sexp = {
           enable = true;
           package = _epkgs: pkgs.emacs.pkgs.treesit-sexp;

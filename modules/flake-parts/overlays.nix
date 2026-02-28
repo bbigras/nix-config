@@ -26,6 +26,11 @@ in
         })
         (_self: super: {
           emacs.pkgs = super.emacs.pkgs // {
+            eglot-multi-preset = super.emacs.pkgs.trivialBuild {
+              pname = "eglot-multi-preset";
+              version = "git";
+              src = inputs.eglot-multi-preset;
+            };
             treesit-sexp = super.emacs.pkgs.trivialBuild {
               pname = "treesit-sexp";
               version = "git";

@@ -141,6 +141,10 @@
     };
 
     # emacs packages
+    eglot-multi-preset = {
+      url = "github:kn66/eglot-multi-preset";
+      flake = false;
+    };
     treesit-sexp = {
       url = "github:alexispurslane/treesit-sexp";
       flake = false;
