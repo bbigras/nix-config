@@ -269,7 +269,9 @@ in
         treesit-sexp = {
           enable = true;
           package = _epkgs: pkgs.emacs.pkgs.treesit-sexp;
-          hook = [ "(prog-mode . treesit-sexp-mode)" ];
+          config = ''
+            (global-treesit-sexp-mode 1)
+          '';
         };
 
         majutsu = {
