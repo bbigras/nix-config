@@ -46,4 +46,14 @@ in
   services = {
     remmina.enable = true;
   };
+  systemd.user.services = {
+    remmina = {
+      Unit = {
+        After = [ "app-org.keepassxc.KeePassXC@autostart.service" ];
+        Requires = lib.mkForce [ "app-org.keepassxc.KeePassXC@autostart.service" ];
+        PartOf = [ "graphical-session.target" ];
+      };
+      Install.WantedBy = lib.mkForce [ "xdg-desktop-autostart.target" ];
+    };
+  };
 }
