@@ -351,11 +351,11 @@
     "majutsu": {
       "flake": false,
       "locked": {
-        "lastModified": 1772403249,
-        "narHash": "sha256-/sm7kFl1/8oLlN8rsqlfgDyuwwpECXfdUmNIU+UrSNA=",
+        "lastModified": 1772494056,
+        "narHash": "sha256-Wv1TMTQRDF6y50K1mI9+cA6vpaH4MdQs4ZbzAJw9OFA=",
         "owner": "0WD0",
         "repo": "majutsu",
-        "rev": "63b3e187390e5ed094806cffd213a8bfbd6324f4",
+        "rev": "83ed523c195ba08c5fdec961e694fd9577827e59",
         "type": "github"
       },
       "original": {
@@ -549,11 +549,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1772485474,
-        "narHash": "sha256-R2Mi5SCB2TMupjcTOkJjKjEVcOvdR0ye9OcUkEatqpg=",
+        "lastModified": 1772488892,
+        "narHash": "sha256-bvFEKLK9H5suHHiPD5YJNGo0qd96Mde+owdUHwGKdXE=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "ce8b356686b181289760a05bb8f4fe20909aac82",
+        "rev": "f7f65efdd2f64d98e58269d094b8528d4c3f7a28",
         "type": "github"
       },
       "original": {
