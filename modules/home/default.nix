@@ -341,7 +341,7 @@ in
       };
     };
     tirith = {
-      enable = true;
+      enable = false;
       policy = {
         version = 1;
         fail_mode = "open";
