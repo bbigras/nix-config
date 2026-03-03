@@ -168,18 +168,6 @@ in
           };
         };
 
-        kirigami = {
-          enable = true;
-          defer = true;
-          command = [
-            "kirigami-toggle-fold"
-            "kirigami-open-fold"
-            "kirigami-close-fold"
-            "kirigami-open-folds"
-            "kirigami-close-folds"
-          ];
-        };
-
         p-search = {
           enable = true;
           defer = true;
