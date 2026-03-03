@@ -48,12 +48,6 @@ in
 
             (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode))
             (add-to-list 'auto-mode-alist '("\\.json\\'" . json-ts-mode))
-            (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-ts-mode))
-            (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-ts-mode))
-
-            (with-eval-after-load 'org
-              (add-to-list 'org-src-lang-modes '("yml"  . yaml-ts))
-              (add-to-list 'org-src-lang-modes '("yaml" . yaml-ts)))
           '';
         };
       };

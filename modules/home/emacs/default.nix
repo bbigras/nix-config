@@ -1340,6 +1340,45 @@ in
           '';
         };
 
+        yaml-ts-mode =
+          let
+            my_helm_ls = pkgs.symlinkJoin {
+              name = "wrapped-hello";
+              paths = [ pkgs.helm-ls ];
+              buildInputs = [ pkgs.makeWrapper ];
+              postBuild = ''
+                wrapProgram $out/bin/helm_ls \
+                  --set YAMLLS_PATH "/nix/store/04jik4sing6sdixchim52hn1yijzp22m-yaml-schema-router-0.2.0/bin/yaml-schema-router"
+              '';
+            };
+          in
+          {
+            enable = true;
+            extraPackages = [
+              pkgs.helm-ls
+              pkgs.yaml-language-server
+            ];
+            mode = lib.mkForce [ ];
+            hook = [
+              "(yaml-ts-mode . eglot-ensure)"
+              "(helm-ts-mode . eglot-ensure)"
+            ];
+            config = ''
+              (add-to-list 'eglot-server-programs
+                '(yaml-ts-mode . ("/nix/store/04jik4sing6sdixchim52hn1yijzp22m-yaml-schema-router-0.2.0/bin/yaml-schema-router" "--stdio")))
+
+              (add-to-list 'eglot-server-programs '(helm-ts-mode "${my_helm_ls}/bin/helm_ls" "serve"))
+            '';
+            init = ''
+              (define-derived-mode helm-ts-mode yaml-ts-mode "helm"
+                "Major mode for editing kubernetes helm templates")
+
+              (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-ts-mode))
+              (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-ts-mode))
+              (add-to-list 'auto-mode-alist '("values\\.yaml\\'" . helm-ts-mode))
+            '';
+          };
+
         toml-ts-mode = {
           enable = true;
           hook = [
