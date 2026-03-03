@@ -2,6 +2,7 @@
 {
   flake,
   pkgs,
+  lib,
   ...
 }:
 let
@@ -18,7 +19,7 @@ in
     self.nixosModules.graphical-fonts
     self.nixosModules.graphical-trusted
     self.nixosModules.pam-limits
-    self.nixosModules.hardware-nonsecureboot
+    self.nixosModules.hardware-secureboot
     self.nixosModules.services-podman
     self.nixosModules.services-wivrn
     #self.nixosModules.services-virt-manager
@@ -57,6 +58,7 @@ in
     initrd = {
       systemd.enable = true;
     };
+    lanzaboote.pkiBundle = lib.mkForce "/var/lib/sbctl";
     plymouth.enable = true;
   };
 
