@@ -746,13 +746,13 @@ in
           hook = [ "(after-init . doom-modeline-mode)" ];
         };
 
-        # drag-stuff = {
-        #   enable = true;
-        #   bind = {
-        #     "M-<up>" = "drag-stuff-up";
-        #     "M-<down>" = "drag-stuff-down";
-        #   };
-        # };
+        drag-stuff = {
+          enable = true;
+          config = ''
+            (drag-stuff-global-mode 1)
+            (drag-stuff-define-keys)
+          '';
+        };
 
         # diff-hl = {
         #   enable = true;
