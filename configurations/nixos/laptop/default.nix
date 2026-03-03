@@ -1,4 +1,4 @@
-# NixOS configuration for desktop
+# NixOS configuration for laptop
 {
   flake,
   pkgs,
