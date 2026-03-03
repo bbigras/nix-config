@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   ...
@@ -17,5 +16,5 @@
 
   environment.systemPackages = with pkgs; [ sbctl ];
 
-  environment.persistence."/nix/state".directories = [ config.boot.lanzaboote.pkiBundle ];
+  # environment.persistence."/nix/state".directories = [ config.boot.lanzaboote.pkiBundle ];
 }
