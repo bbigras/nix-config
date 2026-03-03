@@ -113,13 +113,12 @@ in
         # logview.enable = true;
 
         benchmark-init = {
-          enable = true;
+          enable = false;
           earlyInit = ''
             (require 'benchmark-init)
             (benchmark-init/activate)
           '';
         };
-        # (require 'benchmark-init)
 
         journalctl-mode = {
           enable = true;
