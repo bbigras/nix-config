@@ -1411,13 +1411,13 @@ in
 
         # wgrep.enable = true;
 
-        # topsy = {
-        #   enable = true;
-        #   hook = [
-        #     "(prog-mode . topsy-mode)"
-        #     "(magit-section-mode . topsy-mode)"
-        #   ];
-        # };
+        topsy = {
+          enable = true;
+          hook = [
+            "(prog-mode . topsy-mode)"
+            "(magit-section-mode . topsy-mode)"
+          ];
+        };
 
         # nginx-mode.enable = true;
 
