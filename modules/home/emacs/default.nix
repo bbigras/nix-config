@@ -703,12 +703,12 @@ in
         #   ];
         # };
 
-        # deadgrep = {
-        #   enable = true;
-        #   bind = {
-        #     "C-x f" = "deadgrep";
-        #   };
-        # };
+        deadgrep = {
+          enable = true;
+          bind = {
+            "C-x f" = "deadgrep";
+          };
+        };
 
         # copilot = {
         #   enable = true;
