@@ -710,18 +710,22 @@ in
           };
         };
 
-        # copilot = {
-        #   enable = true;
-        #   config = ''
-        #     (add-hook 'prog-mode-hook 'copilot-mode)
-        #     (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
-        #     (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
-        #   '';
-        # };
-        # # (setq copilot--server-executable "${pkgs.my_copilot-node-server}/lib/node_modules/copilot-node-server/copilot/dist/agent.js")
-        # #
-        # # my_copilot-node-server
-        # # "/home/bbigras/.emacs.d/.cache/copilot/bin/copilot-node-server"
+        copilot = {
+          enable = true;
+          hook = [
+            "(prog-mode . copilot-mode)"
+          ];
+          bindLocal = {
+            copilot-completion-map = {
+              "<tab>" = "copilot-accept-completion";
+              "TAB" = "copilot-accept-completion";
+              "C-<tab>" = "copilot-accept-completion-by-word";
+              "C-TAB" = "copilot-accept-completion-by-word";
+              "C-n" = "copilot-next-completion";
+              "C-p" = "copilot-previous-completion";
+            };
+          };
+        };
 
         envrc = {
           enable = true;
