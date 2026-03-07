@@ -21,7 +21,7 @@ in
     self.nixosModules.hardware-nonsecureboot
     self.nixosModules.services-podman
     self.nixosModules.services-wivrn
-    self.nixosModules.services-virt-manager
+    #self.nixosModules.services-virt-manager
 
     # Hardware modules from nixos-hardware
     inputs.nixos-hardware.nixosModules.common-cpu-intel
