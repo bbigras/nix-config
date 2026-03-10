@@ -163,6 +163,7 @@ in
         jan
         mergiraf
         winboat
+        hl-log-viewer
       ]
       ++ (with pkgs.hunspellDicts; [
         fr-moderne
