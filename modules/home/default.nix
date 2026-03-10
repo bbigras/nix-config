@@ -239,6 +239,26 @@ in
             "$CLUSTER"
           ];
         };
+        jsonLogs = {
+          shortCut = "Shift-L";
+          description = "Prettified json logs";
+          scopes = [
+            "daemonset"
+            "deploy"
+            "job"
+            "pod"
+            "replicaset"
+            "service"
+            "statefulset"
+          ];
+          command = "sh";
+          args = [
+            "-c"
+            ''
+              kubectl logs --follow --context="$CONTEXT" --namespace="$NAMESPACE" "$RESOURCE_NAME/$NAME" | ${lib.getExe pkgs.hl-log-viewer} --paging=never
+            ''
+          ];
+        };
       };
       settings = {
         k9s = {
