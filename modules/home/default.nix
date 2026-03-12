@@ -161,7 +161,6 @@ in
         resticprofile
         tkey-ssh-agent
         jan
-        mergiraf
         winboat
         hl-log-viewer
         android-tools

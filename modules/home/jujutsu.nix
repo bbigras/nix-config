@@ -5,7 +5,6 @@
     packages = with pkgs; [
       kdiff3
       meld
-      mergiraf
       # watchman
     ];
   };
@@ -15,6 +14,10 @@
   # ];
 
   programs = {
+    mergiraf = {
+      enable = true;
+      enableJujutsuIntegration = true;
+    };
     jujutsu = {
       enable = true;
       settings = {
