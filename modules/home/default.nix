@@ -164,6 +164,7 @@ in
         mergiraf
         winboat
         hl-log-viewer
+        android-tools
       ]
       ++ (with pkgs.hunspellDicts; [
         fr-moderne
