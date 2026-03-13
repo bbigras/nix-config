@@ -49,7 +49,6 @@ let
 
   # Discover modules for each category
   nixosModulesDiscovered = discoverModules ../../modules/nixos "";
-  darwinModulesDiscovered = discoverModules ../../modules/darwin "";
   homeModulesDiscovered = discoverModules ../../modules/home "";
   sharedModulesDiscovered = discoverModules ../../modules/shared "";
   flakeModulesDiscovered = discoverModules ../../modules/flake-parts "";
@@ -58,7 +57,6 @@ in
   flake = {
     flakeModules = flakeModulesDiscovered;
     nixosModules = sharedModulesDiscovered // nixosModulesDiscovered;
-    darwinModules = sharedModulesDiscovered // darwinModulesDiscovered;
     homeModules = sharedModulesDiscovered // homeModulesDiscovered;
   };
 }

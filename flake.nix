@@ -35,10 +35,6 @@
     nixos-unified.url = "github:srid/nixos-unified";
 
     # System modules
-    nix-darwin = {
-      url = "github:LnL7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,7 +44,6 @@
     agenix = {
       url = "github:ryantm/agenix";
       inputs = {
-        darwin.follows = "nix-darwin";
         home-manager.follows = "home-manager";
         nixpkgs.follows = "nixpkgs";
         systems.follows = "systems";

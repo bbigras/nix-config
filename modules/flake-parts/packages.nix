@@ -15,22 +15,18 @@
         self.nixosConfigurations or { }
       );
       homeDrvs = lib.mapAttrs (_: home: home.activationPackage) (self.homeConfigurations or { });
-      darwinDrvs = lib.mapAttrs (_: darwin: darwin.system) (self.darwinConfigurations or { });
-      hostDrvs = nixosDrvs // homeDrvs // darwinDrvs;
+      hostDrvs = nixosDrvs // homeDrvs;
 
       # Filter to hosts compatible with current system
       compatHostDrvs = lib.filterAttrs (
         name: _:
         let
           isNixos = (self.nixosConfigurations or { }) ? ${name};
-          isDarwin = (self.darwinConfigurations or { }) ? ${name};
           isHome = (self.homeConfigurations or { }) ? ${name};
 
           hostSystem =
             if isNixos then
               self.nixosConfigurations.${name}.pkgs.stdenv.hostPlatform.system
-            else if isDarwin then
-              self.darwinConfigurations.${name}.pkgs.stdenv.hostPlatform.system
             else if isHome then
               self.homeConfigurations.${name}.pkgs.stdenv.hostPlatform.system
             else

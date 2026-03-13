@@ -20,32 +20,20 @@ let
       platform = cfg.pkgs.stdenv.hostPlatform.system;
       platformInfo = platforms.${platform} or null;
     in
-    lib.optionalAttrs (platformInfo != null) (
-      {
-        inherit name;
-        hostPlatform = platform;
-        runsOn = platformInfo.os;
-        attr =
-          if kind == "nixos" then
-            "nixosConfigurations.${name}.config.system.build.toplevel"
-          else if kind == "darwin" then
-            "darwinConfigurations.${name}.config.system.build.toplevel"
-          else
-            "homeConfigurations.${name}.activationPackage";
-      }
-      // lib.optionalAttrs (kind == "darwin") rec {
-        inherit (platformInfo) equivalentLinuxPlatform;
-        equivalentLinuxRunner = platforms.${equivalentLinuxPlatform}.os;
-        linuxBuilderAttr = "darwinConfigurations.${name}.config.nix.linux-builder.package.nixosConfig.system.build.toplevel";
-      }
-    );
+    lib.optionalAttrs (platformInfo != null) {
+      inherit name;
+      hostPlatform = platform;
+      runsOn = platformInfo.os;
+      attr =
+        if kind == "nixos" then
+          "nixosConfigurations.${name}.config.system.build.toplevel"
+        else
+          "homeConfigurations.${name}.activationPackage";
+    };
 
   # Autodiscover all hosts and filter out unsupported platforms
   nixosHosts = lib.filter (h: h != { }) (
     lib.mapAttrsToList (mkHostInfo "nixos") (self.nixosConfigurations or { })
-  );
-  darwinHosts = lib.filter (h: h != { }) (
-    lib.mapAttrsToList (mkHostInfo "darwin") (self.darwinConfigurations or { })
   );
   homeHosts = lib.filter (h: h != { }) (
     lib.mapAttrsToList (mkHostInfo "home") (self.homeConfigurations or { })
@@ -120,7 +108,7 @@ let
   # Platforms to run flake check/show on (derived from all hosts)
   checkPlatforms =
     let
-      allHosts = nixosHosts ++ darwinHosts ++ homeHosts;
+      allHosts = nixosHosts ++ homeHosts;
       hostPlatforms = lib.unique (map (h: h.hostPlatform) allHosts);
     in
     map (p: {

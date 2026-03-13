@@ -19,9 +19,6 @@ in
       work = mkNixos (self + "/configurations/nixos/work");
     };
 
-    darwinConfigurations = {
-    };
-
     homeConfigurations = {
     };
   };
