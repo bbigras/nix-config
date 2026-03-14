@@ -22,5 +22,9 @@
         "$character"
       ];
     };
+    presets = [
+      "nerd-font-symbols"
+      "pure-preset"
+    ];
   };
 }
