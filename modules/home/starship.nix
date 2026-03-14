@@ -1,9 +1,16 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   programs.starship = {
     enable = true;
     settings = {
       add_newline = false;
+      custom = {
+        jj = {
+          when = "${lib.getExe pkgs.jj-starship} detect";
+          shell = [ "${lib.getExe pkgs.jj-starship}" ];
+          format = "$output ";
+        };
+      };
       format = lib.concatStrings [
         "$username"
         "$hostname"
