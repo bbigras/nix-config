@@ -539,6 +539,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_electron_39": {
+      "locked": {
+        "lastModified": 1773611597,
+        "narHash": "sha256-NcfBzsI4RgUudExfyhE+VGQLDaRdJ07K0MtR0e4aikc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "336fd4210d57fd69e9e7f14af9f54849efde7fe7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "336fd4210d57fd69e9e7f14af9f54849efde7fe7",
+        "type": "github"
+      }
+    },
     "nur": {
       "inputs": {
         "flake-parts": [
@@ -584,6 +600,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixos-unified": "nixos-unified",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs_electron_39": "nixpkgs_electron_39",
         "nur": "nur",
         "systems": "systems",
         "treefmt-nix": "treefmt-nix",
