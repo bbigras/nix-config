@@ -296,13 +296,6 @@ in
       enable = true;
       flake = "git+https://github.com/bbigras/nix-config";
     };
-    opencode = {
-      enable = true;
-      enableMcpIntegration = true;
-      settings = {
-        plugin = [ "@simonwjackson/opencode-direnv" ];
-      };
-    };
     mcp = {
       enable = true;
       servers = {
