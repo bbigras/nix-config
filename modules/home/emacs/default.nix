@@ -1248,12 +1248,14 @@ in
         #   '';
         # };
 
-        # expand-region = {
-        #   enable = true;
-        #   config = ''
-        #     (global-set-key (kbd "C-=") 'er/expand-region)
-        #   '';
-        # };
+        expreg = {
+          enable = true;
+          bind = {
+            # "C-c e" = "expreg-query-replace";
+            "C-=" = "expreg-expand";
+            "C--" = "expreg-contract";
+          };
+        };
 
         markdown-mode = {
           enable = true;
