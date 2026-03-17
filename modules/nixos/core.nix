@@ -53,6 +53,12 @@ in
       enable = true;
       settings.PermitRootLogin = lib.mkDefault "no";
     };
+    smartd = {
+      enable = true;
+      notifications = {
+        systembus-notify.enable = true;
+      };
+    };
     tailscale = {
       enable = true;
       openFirewall = true;
