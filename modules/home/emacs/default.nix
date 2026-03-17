@@ -177,6 +177,16 @@ in
           '';
         };
 
+        agent-shell = {
+          enable = true;
+          extraPackages = [
+            pkgs.claude-code-acp
+          ];
+          config = ''
+            (setopt agent-shell-file-completion-enabled t)
+          '';
+        };
+
         gleam-ts-mode = {
           enable = true;
           extraPackages = [
