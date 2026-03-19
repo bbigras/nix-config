@@ -20,6 +20,7 @@ in
     self.nixosModules.graphical-trusted
     self.nixosModules.pam-limits
     self.nixosModules.hardware-secureboot
+    self.nixosModules.services-peerix
     self.nixosModules.services-podman
     self.nixosModules.services-wivrn
     #self.nixosModules.services-virt-manager

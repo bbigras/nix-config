@@ -19,6 +19,7 @@ in
     inputs.lanzaboote.nixosModules.lanzaboote
     inputs.nix-index-database.nixosModules.nix-index
     inputs.nixos-facter-modules.nixosModules.facter
+    inputs.peerix.nixosModules.peerix
   ]
   ++ (with self.nixosModules; [
     agenix-rekey

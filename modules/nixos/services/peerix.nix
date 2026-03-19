@@ -1,0 +1,3 @@
+{
+  services.peerix.enable = true;
+}
