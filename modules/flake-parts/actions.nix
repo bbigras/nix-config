@@ -47,7 +47,7 @@ let
     cachix = "cachix/cachix-action@1eb2ef646ac0255473d23a5907ad7b04ce94065c"; # v17
     checkout = "actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd"; # v6.0.2
     nothing-but-nix = "wimpysworld/nothing-but-nix@687c797a730352432950c707ab493fcc951818d7"; # v10
-    nix-installer = "DeterminateSystems/nix-installer-action@c5a866b6ab867e88becbed4467b93592bce69f8a"; # v21
+    install-nix-action = "cachix/install-nix-action@1ca7d21a94afc7c957383a2d217460d980de4934"; # v31.10.1
   };
 
   # Reusable step definitions
@@ -62,13 +62,7 @@ let
     };
 
     nixInstaller = {
-      uses = actions.nix-installer;
-      "with".extra-conf = ''
-        accept-flake-config = true
-        always-allow-substitutes = true
-        builders-use-substitutes = true
-        max-jobs = auto
-      '';
+      uses = actions.install-nix-action;
     };
 
     nixCache = {

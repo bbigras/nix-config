@@ -15,13 +15,7 @@ jobs:
     - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
       with:
         persist-credentials: false
-    - uses: DeterminateSystems/nix-installer-action@c5a866b6ab867e88becbed4467b93592bce69f8a
-      with:
-        extra-conf: |-
-          accept-flake-config = true
-          always-allow-substitutes = true
-          builders-use-substitutes = true
-          max-jobs = auto
+    - uses: cachix/install-nix-action@1ca7d21a94afc7c957383a2d217460d980de4934
     - uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7
       with:
         key: nix-eval-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('flake.lock')
@@ -73,13 +67,7 @@ jobs:
     - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
       with:
         persist-credentials: false
-    - uses: DeterminateSystems/nix-installer-action@c5a866b6ab867e88becbed4467b93592bce69f8a
-      with:
-        extra-conf: |-
-          accept-flake-config = true
-          always-allow-substitutes = true
-          builders-use-substitutes = true
-          max-jobs = auto
+    - uses: cachix/install-nix-action@1ca7d21a94afc7c957383a2d217460d980de4934
     - uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7
       with:
         key: nix-eval-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('flake.lock')
