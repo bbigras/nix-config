@@ -738,6 +738,22 @@
         "type": "indirect"
       }
     },
+    "nixpkgs_claude-code-acp": {
+      "locked": {
+        "lastModified": 1773345267,
+        "narHash": "sha256-U8A10+AUnhYuLyuJNY4xN9veofWE0jGRibHtIAwk54c=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "36a560410203ca37c700b6d06851ef1825dbf819",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "36a560410203ca37c700b6d06851ef1825dbf819",
+        "type": "github"
+      }
+    },
     "nur": {
       "inputs": {
         "flake-parts": [
@@ -805,6 +821,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixos-unified": "nixos-unified",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs_claude-code-acp": "nixpkgs_claude-code-acp",
         "nur": "nur",
         "peerix": "peerix",
         "systems": "systems",
