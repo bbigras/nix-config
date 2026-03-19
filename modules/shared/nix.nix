@@ -1,12 +1,17 @@
 # Shared nix settings for NixOS and Darwin
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  flake,
+  ...
+}:
 let
-  inherit (pkgs.stdenv) isDarwin;
+  inherit (pkgs.stdenv) isDarwin hostPlatform;
 in
 {
   nix = lib.mkMerge [
     {
-      package = pkgs.nixVersions.latest;
+      package = flake.inputs.nix.packages.${hostPlatform.system}.nix;
       settings = {
         accept-flake-config = true;
         allowed-users = [ "@wheel" ];
