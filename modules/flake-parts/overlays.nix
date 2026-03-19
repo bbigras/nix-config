@@ -24,14 +24,6 @@ in
                 inherit (super) emacs;
               };
         })
-        # (final: super: {
-        #   electron_39 =
-        #     final.callPackage "${inputs.nixpkgs_electron_39}/pkgs/development/tools/electron/package.nix"
-        #       { };
-        # })
-        (final: _: {
-          inherit (inputs.nixpkgs_electron_39.legacyPackages.${final.stdenv.hostPlatform.system}) electron_39;
-        })
         (_self: super: {
           emacs.pkgs = super.emacs.pkgs // {
             treesit-sexp = super.emacs.pkgs.trivialBuild {
