@@ -541,17 +541,17 @@
     },
     "nixpkgs_electron_39": {
       "locked": {
-        "lastModified": 1773611597,
-        "narHash": "sha256-NcfBzsI4RgUudExfyhE+VGQLDaRdJ07K0MtR0e4aikc=",
+        "lastModified": 1773901292,
+        "narHash": "sha256-0AtmTLExoKV6RsWfUTcZ+qiaLZUk8Lq9t7jtgeDUl5Y=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "336fd4210d57fd69e9e7f14af9f54849efde7fe7",
+        "rev": "9fbe055270246ccdafe157ed256c0807a37e3d2a",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "336fd4210d57fd69e9e7f14af9f54849efde7fe7",
+        "rev": "9fbe055270246ccdafe157ed256c0807a37e3d2a",
         "type": "github"
       }
     },
