@@ -26,20 +26,20 @@ in
           "bbigras-nix-config.cachix.org-1:aXL6Q9Oi0jyF79YAKRu17iVNk9HY0p23OZX7FA8ulhU="
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         ];
-        cores = 0;
-        max-jobs = "auto";
+        # cores = 0;
+        # max-jobs = "auto";
         experimental-features = [
           "auto-allocate-uids"
           "configurable-impure-env"
           "flakes"
           "nix-command"
         ];
-        http-connections = 0;
+        # http-connections = 0;
         # flake-registry = "/etc/nix/registry.json";
         always-allow-substitutes = true;
       };
 
-      distributedBuilds = true;
+      # distributedBuilds = true;
       extraOptions = ''
         !include tokens.conf
       '';
@@ -52,8 +52,8 @@ in
         sandbox = true;
       };
       channel.enable = false;
-      daemonCPUSchedPolicy = "batch";
-      daemonIOSchedPriority = 5;
+      # daemonCPUSchedPolicy = "batch";
+      # daemonIOSchedPriority = 5;
       optimise = {
         automatic = true;
         dates = [ "03:00" ];
