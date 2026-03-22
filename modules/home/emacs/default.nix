@@ -25,6 +25,7 @@ in
     with pkgs;
     lib.optionals (stdenv.hostPlatform.system == "x86_64-linux") [
       samba # for tramp
+      mermaid-cli
     ]
     ++ [
       pkgs.rassumfrassum
