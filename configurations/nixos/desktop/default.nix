@@ -36,6 +36,15 @@ in
 
   hardware.amdgpu.initrd.enable = true;
 
+  services.udev.extraRules = ''
+    # Block ASRock LED Controller joystick node
+    SUBSYSTEM=="input", KERNEL=="js*", ATTRS{id/vendor}=="26ce", ATTRS{id/product}=="01a2", MODE="0000"
+    # Block NuPhy hidraw interfaces
+    SUBSYSTEM=="hidraw", ATTRS{idVendor}=="19f5", ATTRS{idProduct}=="3246", MODE="0000"
+    # Block NuPhy System Control event node (the one SDL misidentifies as a joystick)
+    SUBSYSTEM=="input", KERNEL=="event*", ATTRS{name}=="NuPhy NuPhy Air75 V2 System Control", MODE="0000"
+  '';
+
   # Host-specific home-manager user config
   home-manager.users.bbigras.imports = [
     self.homeModules.trusted
