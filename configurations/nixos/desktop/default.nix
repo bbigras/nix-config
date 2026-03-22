@@ -117,6 +117,13 @@ in
       enable = true;
       enableNotifications = true;
     };
+    tuned = {
+      enable = true;
+      ppdSupport = false;
+      recommend = {
+        balanced = { };
+      };
+    };
   };
 
   systemd.network.networks = {

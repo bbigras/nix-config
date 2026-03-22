@@ -159,5 +159,7 @@ in
       # uefiCapsuleSettings.DisableCapsuleUpdateOnDisk = true;
     };
     thermald.enable = true;
+    tlp.enable = false;
+    tuned.enable = true;
   };
 }

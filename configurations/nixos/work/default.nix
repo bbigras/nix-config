@@ -70,6 +70,13 @@ in
   services = {
     fwupd.enable = true;
     udisks2.enable = true;
+    tuned = {
+      enable = true;
+      ppdSupport = false;
+      recommend = {
+        balanced = { };
+      };
+    };
   };
 
 }
