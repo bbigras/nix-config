@@ -738,6 +738,22 @@
         "type": "indirect"
       }
     },
+    "nixpkgs_veilid": {
+      "locked": {
+        "lastModified": 1774286705,
+        "narHash": "sha256-K4uiK5ewcGg8Mgdz5N6B2TTgdy3KyNOf1gUCjAjFEnE=",
+        "owner": "bbigras",
+        "repo": "nixpkgs",
+        "rev": "cbd24e196fa1fcb8d4fd835ff5acc983e85f353e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bbigras",
+        "ref": "push-qrwnyqqrlvpl",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nur": {
       "inputs": {
         "flake-parts": [
@@ -805,6 +821,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixos-unified": "nixos-unified",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs_veilid": "nixpkgs_veilid",
         "nur": "nur",
         "peerix": "peerix",
         "systems": "systems",

@@ -24,6 +24,9 @@ in
                 inherit (super) emacs;
               };
         })
+        (final: _super: {
+          veilid = final.callPackage "${inputs.nixpkgs_veilid}/pkgs/by-name/ve/veilid/package.nix" { };
+        })
         (_self: super: {
           emacs.pkgs = super.emacs.pkgs // {
             eglot-multi-preset = super.emacs.pkgs.trivialBuild {
