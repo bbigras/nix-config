@@ -410,7 +410,6 @@ in
         majutsu = {
           enable = true;
           package = _epkgs: pkgs.emacs.pkgs.majutsu;
-          defer = true;
         };
 
         # combobulate = {
