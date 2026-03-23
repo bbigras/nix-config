@@ -13,7 +13,7 @@ jobs:
         fetch-depth: 2
         ref: ${{ github.head_ref || github.ref_name }}
         token: ${{ secrets.PAT }}
-    - uses: cachix/install-nix-action@1ca7d21a94afc7c957383a2d217460d980de4934
+    - uses: cachix/install-nix-action@51f3067b56fe8ae331890c77d4e454f6d60615ff
     - uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7
       with:
         key: nix-eval-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('flake.lock')
