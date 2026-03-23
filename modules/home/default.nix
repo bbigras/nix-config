@@ -65,7 +65,6 @@ in
         nix-closure-size
         nix-output-monitor
         pwgen-secure
-        resticprofile
         rsync
         truecolor-check
         viddy
@@ -158,7 +157,6 @@ in
         git-remote-gcrypt
         spacer
         faketty
-        resticprofile
         tkey-ssh-agent
         jan
         winboat
