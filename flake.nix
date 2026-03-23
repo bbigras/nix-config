@@ -16,7 +16,7 @@
   inputs = {
     # Core infrastructure
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs_claude-code-acp.url = "github:NixOS/nixpkgs?rev=4621bf9fa0842b52ab65eefbe907cfbe909189e5"; # renovate:ignore
+    nixpkgs_claude-code-acp.url = "github:NixOS/nixpkgs?rev=3938bb0f58ef9b559987945ef2194705b2aa808c"; # renovate:ignore
     nix.url = "github:NixOS/nix/2.33.3";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
