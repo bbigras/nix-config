@@ -35,6 +35,11 @@
   ],
   "packageRules": [
     {
+      "matchManagers": ["nix"],
+      "matchPackageNames": ["nixpkgs_claude-code-acp"],
+      "enabled": false
+    },
+    {
       "matchManagers": [
         "custom.regex"
       ],
