@@ -401,6 +401,8 @@ in
           '';
         };
 
+        syncthing.enable = true;
+
         treesit-sexp = {
           enable = true;
           package = _epkgs: pkgs.emacs.pkgs.treesit-sexp;
