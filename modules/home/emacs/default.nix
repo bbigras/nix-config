@@ -509,6 +509,7 @@ in
           ];
           extraPackages = [
             pkgs.atool
+            pkgs.curl
             pkgs.sendme
             pkgs.zrok
           ];
@@ -539,6 +540,52 @@ in
                                   ))
                                 (t
                                 (error "sendme not found"))))
+
+            (defun my/syncthing-get-api-key ()
+              "Get Syncthing API key from ~/.local/state/syncthing/config.xml."
+              (let ((config-file (expand-file-name "~/.local/state/syncthing/config.xml")))
+                (unless (file-exists-p config-file)
+                  (error "Syncthing config not found: %s" config-file))
+                (with-temp-buffer
+                  (insert-file-contents config-file)
+                  (goto-char (point-min))
+                  (if (re-search-forward "<apikey>\\([^<]+\\)</apikey>" nil t)
+                      (match-string 1)
+                    (error "No <apikey> found in %s" config-file)))))
+
+            (defun my/syncthing-get-folders ()
+              "Fetch Syncthing folders via REST API."
+              (require 'json)
+              (let ((api-key (my/syncthing-get-api-key)))
+                (unless api-key (error "No Syncthing API key found"))
+                (with-temp-buffer
+                  (insert (format "header \"X-API-Key: %s\"\n" api-key))
+                  (let ((exit-code (call-process-region (point-min) (point-max)
+                                                        "curl" t t nil
+                                                        "-s" "--config" "-"
+                                                        "http://localhost:8384/rest/config/folders")))
+                    (unless (eq exit-code 0)
+                      (error "curl failed with exit code %d: %s" exit-code (buffer-string)))
+                    (goto-char (point-min))
+                    (json-parse-buffer :object-type 'alist)))))
+
+            (defun my/dwim-shell-commands-syncthing-copy ()
+              "Copy file(s) to a Syncthing folder."
+              (interactive)
+              (let* ((folders (my/syncthing-get-folders))
+                     (folder-alist (mapcar (lambda (f)
+                                            (cons (or (alist-get 'label f)
+                                                      (alist-get 'id f))
+                                                  (alist-get 'path f)))
+                                          folders))
+                     (name (completing-read "Syncthing folder: "
+                                            (mapcar #'car folder-alist) nil t))
+                     (dest (expand-file-name (cdr (assoc name folder-alist)))))
+                (dwim-shell-command-on-marked-files
+                 (format "Copy to Syncthing folder '%s'" name)
+                 (format "cp -r '<<f>>' '%s/'" dest)
+                 :utils "cp"
+                 :silent-success t)))
           '';
         };
 
