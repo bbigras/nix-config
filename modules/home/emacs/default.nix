@@ -509,6 +509,7 @@ in
           ];
           extraPackages = [
             pkgs.atool
+            pkgs.sendme
             pkgs.zrok
           ];
           config = ''
@@ -527,6 +528,17 @@ in
                     (t
                      (error "zrok not found"))))
 
+            (defun my/dwim-shell-commands-sendme-send ()
+                          "Send current file or dir with sendme."
+                          (interactive)
+                          (cond ((executable-find "sendme")
+                                (dwim-shell-command-on-marked-files
+                                  "sendme send file or dir"
+                                  "sendme send --clipboard '<<f>>'"
+                                  :utils "sendme"
+                                  ))
+                                (t
+                                (error "sendme not found"))))
           '';
         };
 
