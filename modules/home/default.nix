@@ -161,6 +161,7 @@ in
         jan
         hl-log-viewer
         android-tools
+        resticprofile
       ]
       ++ (with pkgs.hunspellDicts; [
         fr-moderne
