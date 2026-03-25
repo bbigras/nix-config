@@ -394,6 +394,10 @@ in
         eglot-multi-preset = {
           enable = true;
           package = _epkgs: pkgs.emacs.pkgs.eglot-multi-preset;
+          extraPackages = with pkgs; [
+            tailwindcss-language-server
+            vscode-langservers-extracted
+          ];
           config = ''
             (eglot-multi-preset-mode 1)
           '';
