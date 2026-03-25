@@ -16,6 +16,7 @@ let
       tree-sitter-python
       tree-sitter-rust
       tree-sitter-toml
+      tree-sitter-tsx
       tree-sitter-typescript
       tree-sitter-yaml
     ]
