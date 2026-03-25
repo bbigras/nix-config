@@ -949,6 +949,10 @@ in
         #   # package = _epkgs: pkgs.emacs.pkgs.dired-plus;
         # };
 
+        pdf-tools = {
+          enable = true;
+        };
+
         dired-du = {
           enable = true;
           defer = true;
