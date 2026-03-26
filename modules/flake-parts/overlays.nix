@@ -24,11 +24,6 @@ in
                 inherit (super) emacs;
               };
         })
-        (final: _super: {
-          claude-code-acp =
-            final.callPackage "${inputs.nixpkgs_claude-code-acp}/pkgs/by-name/cl/claude-agent-acp/package.nix"
-              { };
-        })
         (_self: super: {
           emacs.pkgs = super.emacs.pkgs // {
             eglot-multi-preset = super.emacs.pkgs.trivialBuild {
