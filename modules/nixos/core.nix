@@ -69,7 +69,7 @@ in
   };
 
   system = {
-    stateVersion = lib.mkDefault "25.11";
+    stateVersion = lib.mkDefault "26.05";
   };
 
   systemd = {
