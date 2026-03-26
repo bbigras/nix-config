@@ -12,6 +12,13 @@
           '';
         };
 
+        inheritenv = {
+          enable = true;
+          config = ''
+            (inheritenv-add-advice 'cargo-mode--start-cmd)
+          '';
+        };
+
         rust-ts-mode = {
           enable = true;
           hook = [
