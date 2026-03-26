@@ -159,7 +159,6 @@ in
         faketty
         tkey-ssh-agent
         jan
-        winboat
         hl-log-viewer
         android-tools
       ]
