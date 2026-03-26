@@ -381,16 +381,7 @@ in
         };
       };
     };
-    vivid = {
-      enable = true;
-      activeTheme = "catppuccin-mocha";
-      themes = {
-        catppuccin-mocha = builtins.fetchurl {
-          url = "https://raw.githubusercontent.com/sharkdp/Vivid/refs/heads/master/themes/catppuccin-mocha.yml";
-          sha256 = "sha256:1hfwaf8lfq32w9vcdlbwrq5hwwz725i7icavg6qs66awpzqqb34k";
-        };
-      };
-    };
+    vivid.enable = true;
     tealdeer.enable = true;
     zoxide.enable = true;
   };
