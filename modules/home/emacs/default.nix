@@ -510,7 +510,6 @@ in
             "dwim-shell-command-on-marked-files"
           ];
           extraPackages = [
-            pkgs.atool
             pkgs.curl
             pkgs.sendme
             pkgs.zrok

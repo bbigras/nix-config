@@ -180,6 +180,10 @@ in
   };
 
   programs = {
+    atool = {
+      enable = true;
+      extraPackages = with pkgs; [ bzip2 gnutar gzip lhasa lzop p7zip unzip xz zip ];
+    };
     atuin = {
       enable = true;
       settings.auto_sync = true;
