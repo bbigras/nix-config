@@ -197,6 +197,22 @@
         "type": "github"
       }
     },
+    "eglot-x": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1771277968,
+        "narHash": "sha256-c8NzzK7SOYYDB803Osp3TOymrmwC07+dcvbI4waAfco=",
+        "owner": "nemethf",
+        "repo": "eglot-x",
+        "rev": "46bca93291727454dd92567e761a1e2ab5622590",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nemethf",
+        "repo": "eglot-x",
+        "type": "github"
+      }
+    },
     "emacs-overlay": {
       "inputs": {
         "nixpkgs": [
@@ -821,6 +837,7 @@
         "catppuccin": "catppuccin",
         "disko": "disko",
         "eglot-multi-preset": "eglot-multi-preset",
+        "eglot-x": "eglot-x",
         "emacs-overlay": "emacs-overlay",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",

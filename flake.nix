@@ -153,6 +153,10 @@
       url = "github:kn66/eglot-multi-preset";
       flake = false;
     };
+    eglot-x = {
+      url = "github:nemethf/eglot-x";
+      flake = false;
+    };
     treesit-sexp = {
       url = "github:alexispurslane/treesit-sexp";
       flake = false;

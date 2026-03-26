@@ -37,6 +37,11 @@ in
               version = "git";
               src = inputs.eglot-multi-preset;
             };
+            eglot-x = super.emacs.pkgs.trivialBuild {
+              pname = "eglot-x";
+              version = "git";
+              src = inputs.eglot-x;
+            };
             treesit-sexp = super.emacs.pkgs.trivialBuild {
               pname = "treesit-sexp";
               version = "git";

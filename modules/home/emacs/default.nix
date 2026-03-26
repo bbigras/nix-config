@@ -1400,6 +1400,23 @@ in
           '';
         };
 
+        eglot-x = {
+          enable = true;
+          package = _epkgs: pkgs.emacs.pkgs.eglot-x;
+          after = [
+            "eglot"
+            "rust-ts-mode"
+          ];
+          bindLocal = {
+            eglot-mode-map = {
+              "s-." = "eglot-x-find-refs";
+            };
+          };
+          config = ''
+            (eglot-x-setup)
+          '';
+        };
+
         yaml-ts-mode =
           let
             my_helm_ls = pkgs.symlinkJoin {
