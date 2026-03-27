@@ -214,6 +214,12 @@ in
       };
     };
     gpg.enable = true;
+    grype = {
+      enable = true;
+      settings = {
+        check-for-app-update = false;
+      };
+    };
     jq.enable = true;
     k9s = {
       enable = true;
