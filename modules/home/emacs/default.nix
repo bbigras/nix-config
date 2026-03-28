@@ -41,7 +41,6 @@ in
 
       packageQuickstart = false;
       recommendedGcSettings = false;
-      usePackageVerbose = false;
 
       prelude = builtins.readFile "${minimal-emacs-d}/init.el";
       earlyInit =
