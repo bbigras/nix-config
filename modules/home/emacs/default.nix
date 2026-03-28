@@ -37,6 +37,7 @@ in
 
     init = {
       enable = true;
+      checkGeneratedConfig = true;
 
       packageQuickstart = false;
       recommendedGcSettings = false;
