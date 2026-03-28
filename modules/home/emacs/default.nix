@@ -38,8 +38,6 @@ in
     init = {
       enable = true;
       checkGeneratedConfig = true;
-
-      packageQuickstart = false;
       recommendedGcSettings = false;
 
       prelude = builtins.readFile "${minimal-emacs-d}/init.el";
