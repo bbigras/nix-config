@@ -17,7 +17,6 @@
     # Core infrastructure
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs_resticprofile.url = "github:bbigras/nixpkgs/push-lmprnwkxwynz";
-    nixpkgs_veilid.url = "github:bbigras/nixpkgs/push-qrwnyqqrlvpl";
     nix.url = "github:NixOS/nix/2.33.3";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";

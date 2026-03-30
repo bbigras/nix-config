@@ -25,9 +25,6 @@ in
               };
         })
         (final: _super: {
-          veilid = final.callPackage "${inputs.nixpkgs_veilid}/pkgs/by-name/ve/veilid/package.nix" { };
-        })
-        (final: _super: {
           resticprofile = final.callPackage "${inputs.nixpkgs_resticprofile}/pkgs/by-name/re/resticprofile/package.nix" { };
         })
         (_self: super: {
