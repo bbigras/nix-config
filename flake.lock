@@ -841,7 +841,6 @@
         "nixpkgs_resticprofile": "nixpkgs_resticprofile",
         "nur": "nur",
         "peerix": "peerix",
-        "rycee-nur-expressions": "rycee-nur-expressions",
         "systems": "systems",
         "treefmt-nix": "treefmt-nix",
         "treesit-sexp": "treesit-sexp"
@@ -866,27 +865,6 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "type": "github"
-      }
-    },
-    "rycee-nur-expressions": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1774723116,
-        "narHash": "sha256-43yZz9SJ8qXuKJ7teRinse5MarTo8PQhk9ClWUcf60Q=",
-        "owner": "bbigras",
-        "repo": "nur-expressions",
-        "rev": "46fc842b2d7d0c9d2d0748914afefe6c81a2d997",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "bbigras",
-        "ref": "push-mpopmklxlqoz",
-        "repo": "nur-expressions",
-        "type": "gitlab"
       }
     },
     "systems": {
