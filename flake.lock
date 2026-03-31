@@ -83,6 +83,22 @@
         "type": "github"
       }
     },
+    "batppuccin-emacs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1774810826,
+        "narHash": "sha256-HMYXbBOws8y5dUVe4LcPr6LWAzN0bmMRuGHCW3pQ8Tw=",
+        "owner": "bbatsov",
+        "repo": "batppuccin-emacs",
+        "rev": "c1c7d60e49963b954257c1123b34780ca1418a17",
+        "type": "github"
+      },
+      "original": {
+        "owner": "bbatsov",
+        "repo": "batppuccin-emacs",
+        "type": "github"
+      }
+    },
     "catppuccin": {
       "inputs": {
         "nixpkgs": [
@@ -681,6 +697,7 @@
         "actions-nix": "actions-nix",
         "agenix": "agenix",
         "agenix-rekey": "agenix-rekey",
+        "batppuccin-emacs": "batppuccin-emacs",
         "catppuccin": "catppuccin",
         "disko": "disko",
         "eglot-multi-preset": "eglot-multi-preset",

@@ -29,6 +29,11 @@ in
         })
         (_self: super: {
           emacs.pkgs = super.emacs.pkgs // {
+            batppuccin-emacs = super.emacs.pkgs.trivialBuild {
+              pname = "batppuccin-emacs";
+              version = "git";
+              src = inputs.batppuccin-emacs;
+            };
             eglot-multi-preset = super.emacs.pkgs.trivialBuild {
               pname = "eglot-multi-preset";
               version = "git";

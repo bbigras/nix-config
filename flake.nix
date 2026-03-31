@@ -141,6 +141,10 @@
     };
 
     # emacs packages
+    batppuccin-emacs = {
+      url = "github:bbatsov/batppuccin-emacs";
+      flake = false;
+    };
     eglot-multi-preset = {
       url = "github:kn66/eglot-multi-preset";
       flake = false;

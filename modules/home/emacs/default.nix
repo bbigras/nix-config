@@ -495,10 +495,11 @@ in
         #   '';
         # };
 
-        catppuccin-theme = {
+        batppuccin-mocha-theme = {
           enable = true;
+          package = _epkgs: pkgs.emacs.pkgs.batppuccin-emacs;
           config = ''
-            (load-theme 'catppuccin :no-confirm)
+            (load-theme 'batppuccin-mocha t)
           '';
         };
 
