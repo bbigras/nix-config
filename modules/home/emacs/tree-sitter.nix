@@ -11,6 +11,7 @@ let
       tree-sitter-javascript
       tree-sitter-jsdoc
       tree-sitter-json
+      tree-sitter-just
       tree-sitter-nix
       tree-sitter-prisma
       tree-sitter-python
