@@ -413,6 +413,8 @@ in
 
         just-ts-mode.enable = true;
 
+        git-modes.enable = true;
+
         majutsu = {
           enable = false;
           package = _epkgs: pkgs.emacs.pkgs.majutsu;
