@@ -138,6 +138,40 @@ in
           command = [ "journalctl-mode" ];
         };
 
+        eww.enable = true;
+
+        org-remark-global-tracking = {
+          enable = true;
+          hook = [ "(after-init . org-remark-global-tracking-mode)" ];
+        };
+
+        org-remark-eww = {
+          enable = true;
+          after = [
+            "eww"
+          ];
+          config = ''
+            (org-remark-eww-mode +1)
+          '';
+        };
+
+        org-remark = {
+          enable = true;
+          bind = {
+            "C-c n m" = "org-remark-mark";
+            "C-c n l" = "org-remark-mark-line";
+          };
+          bindLocal = {
+            org-remark-mode-map = {
+              "C-c n o" = "org-remark-open";
+              "C-c n ]" = "org-remark-view-next";
+              "C-c n [" = "org-remark-view-prev";
+              "C-c n r" = "org-remark-remove";
+              "C-c n d" = "org-remark-delete";
+            };
+          };
+        };
+
         project = {
           enable = true;
           defer = 1;
