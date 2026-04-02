@@ -427,32 +427,85 @@
             '';
           };
           config = ''
-                        (setq org-agenda-custom-commands
-                              `(("d" "Dashboard"
-                                 ((agenda "" ((org-deadline-warning-days 7)))
-                                  (tags-todo "+PRIORITY=\"A\""
-                                             ((org-agenda-overriding-header "High Priority")))
-                                  (todo "*" ((org-agenda-files '("~/dev/org-mode/inbox.org"))
-                                             (org-agenda-overriding-header "Unfiled Inbox Tasks")))
-                                  (tags-todo "+@followup" ((org-agenda-overriding-header "Needs Follow Up")))))
+            (setq org-agenda-custom-commands
+                  `(("d" "󰕮 Dashboard"
+                     ((agenda "" ((org-agenda-span 'day)
+                                  (org-deadline-warning-days 7)
+                                  (org-agenda-overriding-header "󰃭 Today & Upcoming  ────────────────────")))
+                      (todo "STRT"
+                            ((org-agenda-overriding-header " In Progress  ──────────────────────────")))
+                      (todo "NEXT"
+                            ((org-agenda-overriding-header "󰒊 Next Up  ──────────────────────────────")
+                             (org-agenda-max-todos 15)))
+                      (tags-todo "+PRIORITY=\"A\""
+                                 ((org-agenda-overriding-header " High Priority  ─────────────────────")
+                                  (org-agenda-skip-function
+                                   '(org-agenda-skip-entry-if 'todo '("STRT" "NEXT" "DONE" "CANCELLED")))))
+                      (todo "*" ((org-agenda-files '("~/dev/org-mode/inbox.org"))
+                                 (org-agenda-overriding-header " Unfiled Inbox  ─────────────────────")
+                                 (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))))))
 
-                                ("u" tags-todo "+ALLTAGS=\"\""
-                                 ((org-agenda-overriding-header "Untagged Tasks")))
+                    ("M" "Révision mensuelle"
+                     ((org-ql-block '(and (todo)
+                                          (not (tags)))
+                                    ((org-ql-block-header "📥 À classer / sans tag")))
 
-                                ("n" "Next Tasks"
-                                 ((agenda "" ((org-deadline-warning-days 7)))
-                                  (todo "NEXT"
-                                        ((org-agenda-overriding-header "Next Tasks")))))
+                      (org-ql-block '(todo "WAITING")
+                                    ((org-ql-block-header "🕒 En attente / suivis")))
 
-                                ;; Low-effort next actions
-                                ("e" tags-todo "+TODO=\"NEXT\"+Effort<15&+Effort>0"
-                                 ((org-agenda-overriding-header "Low Effort Tasks")
-                                  (org-agenda-max-todos 20)
-                                  (org-agenda-files org-agenda-files)))))
+                      (org-ql-block '(todo "SOMEDAY")
+                                    ((org-ql-block-header "💭 Un jour / peut-être")))
 
-            (setq org-agenda-window-setup 'current-window)
-            (setq org-agenda-span 'day)
-            (setq org-agenda-start-with-log-mode t)
+                      (org-ql-block '(and (todo "NEXT")
+                                          (ts :to -30))
+                                    ((org-ql-block-header "🧊 NEXT stagnants — 30+ jours")))
+
+                      (org-ql-block '(and (todo "TODO")
+                                          (ts :to -60))
+                                    ((org-ql-block-header "🧹 TODO stagnants — 60+ jours")))
+
+                      (org-ql-block '(and (not (todo))
+                                          (ts :to -90))
+                                    ((org-ql-block-header "📦 Notes / items sans mot-clé — 90+ jours")))
+
+                      (agenda ""
+                              ((org-agenda-span 31)
+                               (org-agenda-start-day "today")
+                               (org-agenda-overriding-header "📅 Prochain mois")))))
+
+
+                    ("w" " Work"
+                     ((agenda "" ((org-agenda-span 'day)
+                                  (org-agenda-overriding-header " Work ›  Today  ─────────────────────")
+                                  (org-agenda-skip-function
+                                   '(org-agenda-skip-entry-if 'notregexp ":@work:"))))
+                      (tags-todo "+@work+TODO=\"STRT\""
+                                 ((org-agenda-overriding-header " Work ›  In Progress  ───────────────")))
+                      (tags-todo "+@work+TODO=\"NEXT\""
+                                 ((org-agenda-overriding-header " Work › 󰒊 Next Up  ──────────────────")
+                                  (org-agenda-max-todos 10)))
+                      (tags-todo "+@work+PRIORITY=\"A\""
+                                 ((org-agenda-overriding-header " Work ›  High Priority  ─────────────")
+                                  (org-agenda-skip-function
+                                   '(org-agenda-skip-entry-if 'todo '("STRT" "NEXT" "DONE")))))))
+
+                    ("p" " Personal"
+                     ((agenda "" ((org-agenda-span 'day)
+                                  (org-agenda-overriding-header " Personal ›  Today  ─────────────────")
+                                  (org-agenda-skip-function
+                                   '(org-agenda-skip-entry-if 'regexp ":@work:"))))
+                      (tags-todo "-@work+TODO=\"STRT\""
+                                 ((org-agenda-overriding-header " Personal ›  In Progress  ───────────")))
+                      (tags-todo "-@work+TODO=\"NEXT\""
+                                 ((org-agenda-overriding-header " Personal › 󰒊 Next Up  ──────────────")
+                                  (org-agenda-max-todos 10)))))
+
+                    ("u" tags-todo "+ALLTAGS=\"\""
+                     ((org-agenda-overriding-header "󰓹 Untagged Tasks  ────────────────────────")))
+
+                    ("e" tags-todo "+TODO=\"NEXT\"+Effort<15&+Effort>0"
+                     ((org-agenda-overriding-header " Low Effort  ‹15 min  ───────────────────")
+                      (org-agenda-max-todos 20)))))
           '';
         };
 
