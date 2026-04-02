@@ -878,7 +878,7 @@ in
 
         hcl-mode.enable = true;
 
-        # graphql-mode.enable = true;
+        graphql-ts-mode.enable = true;
 
         # hydra = {
         #   enable = true;
