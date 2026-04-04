@@ -81,12 +81,10 @@ in
 
         # net
         dumbpipe
-        croc
         rclone
         sendme
         tailscale
         tcpdump
-        webwormhole
         xh
 
         # nix
