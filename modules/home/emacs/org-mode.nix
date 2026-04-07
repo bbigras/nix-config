@@ -119,6 +119,13 @@
         #   after = [ "ox" ];
         # };
 
+        corg = {
+          enable = true;
+          hook = [
+            "(org-mode . corg-setup)"
+          ];
+        };
+
         org-modern = {
           enable = true;
           after = [ "org" ];
