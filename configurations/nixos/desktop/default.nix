@@ -65,6 +65,7 @@ in
 
   # Host-specific configuration
   boot = {
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
     initrd = {
       systemd.enable = true;
     };
