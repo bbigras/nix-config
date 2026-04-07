@@ -78,6 +78,14 @@ in
   services = {
     flatpak.enable = true;
     udisks2.enable = true;
+    fwupd = {
+      enable = true;
+      extraRemotes = [ "lvfs-testing" ];
+      # uefiCapsuleSettings.DisableCapsuleUpdateOnDisk = true;
+    };
+    thermald.enable = true;
+    tlp.enable = false;
+    tuned.enable = true;
   };
 
   networking.networkmanager = {
@@ -151,15 +159,4 @@ in
   networking.useDHCP = false;
   networking.dhcpcd.enable = false;
   facter.detected.dhcp.enable = false;
-
-  services = {
-    fwupd = {
-      enable = true;
-      extraRemotes = [ "lvfs-testing" ];
-      # uefiCapsuleSettings.DisableCapsuleUpdateOnDisk = true;
-    };
-    thermald.enable = true;
-    tlp.enable = false;
-    tuned.enable = true;
-  };
 }
