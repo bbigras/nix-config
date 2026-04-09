@@ -1431,7 +1431,7 @@ in
               buildInputs = [ pkgs.makeWrapper ];
               postBuild = ''
                 wrapProgram $out/bin/helm_ls \
-                  --set YAMLLS_PATH "/nix/store/04jik4sing6sdixchim52hn1yijzp22m-yaml-schema-router-0.2.0/bin/yaml-schema-router"
+                  --set YAMLLS_PATH "${lib.getExe pkgs.yaml-schema-router}"
               '';
             };
           in
@@ -1448,7 +1448,7 @@ in
             ];
             config = ''
               (add-to-list 'eglot-server-programs
-                '(yaml-ts-mode . ("/nix/store/04jik4sing6sdixchim52hn1yijzp22m-yaml-schema-router-0.2.0/bin/yaml-schema-router" "--stdio")))
+                '(yaml-ts-mode . ("${lib.getExe pkgs.yaml-schema-router}" "--stdio")))
 
               (add-to-list 'eglot-server-programs '(helm-ts-mode "${my_helm_ls}/bin/helm_ls" "serve"))
             '';
