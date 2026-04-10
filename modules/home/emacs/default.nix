@@ -410,7 +410,7 @@ in
         };
 
         majutsu = {
-          enable = true;
+          enable = false;
           package = _epkgs: pkgs.emacs.pkgs.majutsu;
         };
 
