@@ -635,16 +635,16 @@
     },
     "nixpkgs_resticprofile": {
       "locked": {
-        "lastModified": 1774719378,
-        "narHash": "sha256-uC7xh2KPi8gm+LWsAo7SOSE5pUZi8HeWqGV4E2TjZoQ=",
+        "lastModified": 1775714323,
+        "narHash": "sha256-O0zuTrtEwcU1Gfb3tzKFmzAjcv773yKzOXietF3pUCQ=",
         "owner": "bbigras",
         "repo": "nixpkgs",
-        "rev": "114dd039dd8f81f4d44ca812ca9ae8284bf6a716",
+        "rev": "c8de574401acba0803a4331a9f7f432bb021263b",
         "type": "github"
       },
       "original": {
         "owner": "bbigras",
-        "ref": "push-lmprnwkxwynz",
+        "ref": "push-zswsmktvsmpo",
         "repo": "nixpkgs",
         "type": "github"
       }
