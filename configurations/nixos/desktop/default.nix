@@ -132,7 +132,7 @@ in
       DHCP = "yes";
       matchConfig.Name = "enp*";
       dhcpV4Config.RouteMetric = 20;
-      dhcpV6Config.RouteMetric = 20;
+      # dhcpV6Config.RouteMetric = 20;
       linkConfig = {
         Multicast = true;
         RequiredForOnline = "routable";
