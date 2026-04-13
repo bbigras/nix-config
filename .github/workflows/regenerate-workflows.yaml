@@ -15,7 +15,7 @@ jobs:
         ref: ${{ github.head_ref || github.ref_name }}
         token: ${{ secrets.PAT }}
     - uses: cachix/install-nix-action@616559265b40713947b9c190a8ff4b507b5df49b
-    - uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7
+    - uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae
       with:
         key: nix-eval-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('flake.lock')
           }}
