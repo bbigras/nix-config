@@ -42,7 +42,7 @@ let
   # GitHub Actions references - all versions consolidated here for Renovate
   actions = {
     alls-green = "re-actors/alls-green@05ac9388f0aebcb5727afa17fcccfecd6f8ec5fe"; # v1.2.2
-    cache = "actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7"; # v5.0.4
+    cache = "actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae"; # v5.0.5
     automerge = "peter-evans/enable-pull-request-automerge@a660677d5469627102a1c1e11409dd063606628d"; # v3.0.0
     cachix = "cachix/cachix-action@1eb2ef646ac0255473d23a5907ad7b04ce94065c"; # v17
     checkout = "actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd"; # v6.0.2
