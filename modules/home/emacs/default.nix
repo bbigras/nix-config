@@ -823,15 +823,18 @@ in
           };
         };
 
-        envrc = {
+        ben = {
           enable = true;
-          defer = 1;
-          # package = _epkgs: pkgs.emacs.pkgs.envrc;
-          command = [ "envrc-global-mode" ];
+          hook = [ "(after-init . ben-global-mode)" ];
+          bind = {
+            "C-c E" = "ben-command-map";
+          };
           config = ''
-            (setq envrc-remote t)
+            ;; There is a bug in doom-modeline where some squares appear if the icon is
+            ;; propertized.
+            (setq ben-indicator `(,(substring-no-properties (nerd-icons-faicon "nf-fa-cubes"))
+                                  "[" (:eval (ben--status)) "]"))
           '';
-          hook = [ "(after-init . envrc-global-mode)" ];
         };
 
         # dockerfile-mode.enable = true;
