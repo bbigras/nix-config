@@ -112,9 +112,6 @@ in
         file
         strace
 
-        # rust
-        cargo
-
         pv
 
         docker-compose
