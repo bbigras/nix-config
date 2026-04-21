@@ -949,7 +949,14 @@ in
 
         all-the-icons-completion = {
           enable = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
+          after = [
+            "marginalia"
+            "all-the-icons"
+          ];
           hook = [ "(marginalia-mode . all-the-icons-completion-marginalia-setup)" ];
+          init = ''
+            (all-the-icons-completion-mode)
+          '';
         };
 
         # dired-plus = {
