@@ -47,7 +47,7 @@ let
     cachix = "cachix/cachix-action@1eb2ef646ac0255473d23a5907ad7b04ce94065c"; # v17
     checkout = "actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd"; # v6.0.2
     nothing-but-nix = "wimpysworld/nothing-but-nix@687c797a730352432950c707ab493fcc951818d7"; # v10
-    install-nix-action = "cachix/install-nix-action@616559265b40713947b9c190a8ff4b507b5df49b"; # v31.10.4
+    install-nix-action = "cachix/install-nix-action@ab739621df7a23f52766f9ccc97f38da6b7af14f"; # v31.10.5
   };
 
   # Reusable step definitions
