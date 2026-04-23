@@ -157,6 +157,7 @@ in
         hl-log-viewer
         android-tools
         resticprofile
+        openbao
       ]
       ++ (with pkgs.hunspellDicts; [
         fr-moderne
