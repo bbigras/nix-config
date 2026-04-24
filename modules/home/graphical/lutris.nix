@@ -2,7 +2,7 @@
 
 {
   programs.lutris = {
-    enable = true;
+    enable = false;
     defaultWinePackage = pkgs.proton-ge-bin;
     extraPackages = with pkgs; [
       mangohud
