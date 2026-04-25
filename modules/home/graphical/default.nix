@@ -18,7 +18,6 @@ in
     with pkgs;
     lib.filter (lib.meta.availableOn stdenv.hostPlatform) [
       libnotify
-      qalculate-gtk
       qbittorrent
     ]
     ++ lib.optionals (stdenv.hostPlatform.system == "x86_64-linux") [

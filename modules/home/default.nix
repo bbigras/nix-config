@@ -293,6 +293,24 @@ in
         };
       };
     };
+    qalculate = {
+      enable = true;
+      package = pkgs.qalculate-gtk;
+      settings = {
+        General = {
+          precision = 10;
+          colorize = 1;
+          save_mode_on_exit = 1;
+          save_definitions_on_exit = 0;
+        };
+        Mode = {
+          angle_unit = 1;
+          number_base = 10;
+          min_deci = 0;
+          max_deci = -1;
+        };
+      };
+    };
     kubecolor = {
       enable = true;
       enableAlias = true;
