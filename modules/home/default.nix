@@ -175,6 +175,7 @@ in
   };
 
   programs = {
+    alacritty.enable = true;
     atool = {
       enable = true;
       extraPackages = with pkgs; [
