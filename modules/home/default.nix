@@ -385,8 +385,8 @@ in
       };
     };
     trippy.enable = true;
-    vesktop = {
-      enable = false;
+    equibop = {
+      enable = true;
       settings = {
         appBadge = false;
         arRPC = true;
@@ -402,7 +402,7 @@ in
         hardwareAcceleration = true;
         discordBranch = "stable";
       };
-      vencord.settings = {
+      equicord.settings = {
         autoUpdate = false;
         autoUpdateNotification = false;
         notifyAboutUpdates = false;
