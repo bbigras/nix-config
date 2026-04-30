@@ -36,6 +36,11 @@ in
     useDHCP = false;
     useNetworkd = true;
     wireguard.enable = true;
+    timeServers = [
+      "time.cloudflare.com"
+      "time1.mbix.ca"
+      "time.web-clock.ca"
+    ];
   };
 
   security = {
@@ -57,6 +62,13 @@ in
       enable = true;
       notifications = {
         systembus-notify.enable = true;
+      };
+    };
+    timesyncd.enable = false;
+    ntpd-rs = {
+      enable = true;
+      settings = {
+        observability.log-level = "warn";
       };
     };
     tailscale = {
