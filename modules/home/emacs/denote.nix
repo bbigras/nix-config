@@ -48,11 +48,6 @@
       denote-journal-capture = {
         enable = true;
         after = [ "denote-journal" ];
-        config = ''
-          (setq org-capture-templates '(("a" "Appointment" entry
-                                         (file+olp denote-journal-capture-entry-for-date "Appointments")
-                                         "* %(denote-journal-capture-timestamp) %^{Subject?}")))
-        '';
       };
       denote-project-notes = {
         enable = true;
