@@ -158,6 +158,7 @@ in
         android-tools
         resticprofile
         openbao
+        nmap
       ]
       ++ (with pkgs.hunspellDicts; [
         fr-moderne
