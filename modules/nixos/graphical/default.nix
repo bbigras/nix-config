@@ -9,7 +9,7 @@
   };
 
   # programs.dconf.enable = true;
-  programs.wireshark.enable = true;
+  programs.wireshark.enable = false;
 
   services = {
     # dbus.packages = with pkgs; [ dconf ];
