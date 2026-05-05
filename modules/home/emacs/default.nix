@@ -1352,12 +1352,22 @@ in
         #   '';
         # };
 
-        vundo = {
+        undo-fu = {
           enable = true;
-          defer = 1;
           config = ''
-            (setq vundo-glyph-alist vundo-unicode-symbols)
-            (vundo-popup-mode 1)
+            (global-unset-key (kbd "C-z"))
+            (global-unset-key (kbd "C-/"))
+            (global-unset-key (kbd "C-x u"))
+            (global-set-key (kbd "C-z")   'undo-fu-only-undo)
+            (global-set-key (kbd "C-S-z") 'undo-fu-only-redo)
+          '';
+        };
+
+        undo-fu-session = {
+          enable = true;
+          config = ''
+            (setq undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'"))
+            (undo-fu-session-global-mode)
           '';
         };
 
