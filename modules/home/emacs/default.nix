@@ -1549,23 +1549,9 @@ in
 
         # nginx-mode.enable = true;
 
-        # flycheck = {
-        #   enable = true;
-        #   command = [ "global-flycheck-mode" ];
-        #   defer = 1;
-        #   bind = {
-        #     "M-n" = "flycheck-next-error";
-        #     "M-p" = "flycheck-previous-error";
-        #   };
-        #   config = ''
-        #     ;; Only check buffer when mode is enabled or buffer is saved.
-        #     (setq flycheck-check-syntax-automatically '(mode-enabled save)
-        #         flycheck-markdown-mdl-executable "${pkgs.mdl}/bin/mdl")
-
-        #     ;; Enable flycheck in all eligible buffers.
-        #     (global-flycheck-mode)
-        #   '';
-        # };
+        flymake = {
+          enable = true;
+        };
 
         savehist = {
           enable = true;
