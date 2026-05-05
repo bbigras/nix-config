@@ -1094,6 +1094,24 @@ in
           after = [ "tempel" ];
         };
 
+        prescient = {
+          enable = true;
+          config = ''
+            ;; to save your command history on disk, so the sorting gets more
+            ;; intelligent over time
+            (prescient-persist-mode +1)
+            (setq completion-preview-sort-function #'prescient-completion-sort)
+          '';
+        };
+
+        corfu-prescient = {
+          enable = true;
+          after = [ "corfu" ];
+          config = ''
+            (corfu-prescient-mode 1)
+          '';
+        };
+
         corfu = {
           enable = true;
           hook = [ "(after-init . global-corfu-mode)" ];
