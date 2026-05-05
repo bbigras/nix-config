@@ -263,6 +263,23 @@ in
           '';
         };
 
+        dired-subtree = {
+          enable = true;
+          after = [
+            "dired"
+          ];
+          bindLocal = {
+            dired-mode-map = {
+              "<tab>" = "dired-subtree-toggle";
+              "<backtab>" = "dired-subtree-cycle";
+            };
+          };
+          custom = {
+            "dired-subtree-use-backgrounds" = "nil";
+            "dired-subtree-line-prefix" = ''"    "'';
+          };
+        };
+
         casual-suite = {
           enable = true;
           after = [
