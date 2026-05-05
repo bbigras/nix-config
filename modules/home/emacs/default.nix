@@ -1083,6 +1083,12 @@ in
             (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
           '';
         };
+
+        rainbow-delimiters = {
+          enable = true;
+          hook = [ "(prog-mode . rainbow-delimiters-mode)" ];
+        };
+
         tempel-collection = {
           enable = true;
           after = [ "tempel" ];
