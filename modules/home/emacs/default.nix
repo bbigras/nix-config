@@ -1073,6 +1073,16 @@ in
         #   };
         # };
 
+        dumb-jump = {
+          enable = true;
+          init = ''
+            (setq xref-show-definitions-function #'xref-show-definitions-completing-read)
+          '';
+
+          config = ''
+            (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
+          '';
+        };
         tempel-collection = {
           enable = true;
           after = [ "tempel" ];
