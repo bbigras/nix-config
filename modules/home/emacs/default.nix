@@ -844,10 +844,10 @@ in
           '';
         };
 
-        # diff-hl = {
-        #   enable = true;
-        #   config = "(global-diff-hl-mode)";
-        # };
+        diff-hl = {
+          enable = true;
+          config = "(global-diff-hl-mode)";
+        };
 
         # eldoc = {
         #   enable = true;
