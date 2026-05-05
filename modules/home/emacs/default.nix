@@ -325,6 +325,39 @@ in
           };
         };
 
+        ghostel = {
+          enable = true;
+          bind = {
+            "C-x m" = "ghostel";
+          };
+          bindLocal = {
+            ghostel-mode-map = {
+              "<f7>" = "org-clock-goto";
+              "C-s" = "consult-line";
+            };
+            project-prefix-map = {
+              "m" = "ghostel-project";
+            };
+          };
+          config = ''
+            (add-to-list 'ghostel-eval-cmds '("magit-status-setup-buffer" magit-status-setup-buffer))
+          '';
+        };
+
+        ghostel-eshell = {
+          enable = true;
+          hook = [
+            "(eshell-load-hook . ghostel-eshell-visual-command-mode)"
+          ];
+        };
+
+        ghostel-compile = {
+          enable = true;
+          hook = [
+            "(after-init . ghostel-compile-global-mode)"
+          ];
+        };
+
         casual-suite = {
           enable = true;
           after = [
