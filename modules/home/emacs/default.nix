@@ -998,6 +998,16 @@ in
           ];
         };
 
+        buffer-terminator = {
+          enable = true;
+          custom = {
+            "buffer-terminator-prompt-on-kill" = "nil";
+          };
+          config = ''
+            (buffer-terminator-mode 1)
+          '';
+        };
+
         nerd-icons = {
           enable = true;
         };
