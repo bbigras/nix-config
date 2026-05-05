@@ -1537,7 +1537,7 @@ in
           '';
         };
 
-        # wgrep.enable = true;
+        wgrep.enable = true;
 
         topsy = {
           enable = true;
