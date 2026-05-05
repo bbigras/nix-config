@@ -998,18 +998,6 @@ in
           ];
         };
 
-        # flycheck-eglot = {
-        #   # enable = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
-        #   enable = true;
-        #   after = [
-        #     "eglot"
-        #     "flycheck"
-        #   ];
-        #   # hook = [ "(flycheck-mode . eglot-flycheck-setup)" ];
-        #   config = ''
-        #     (global-flycheck-eglot-mode 1)
-        #   '';
-        # };
         nerd-icons = {
           enable = true;
         };
