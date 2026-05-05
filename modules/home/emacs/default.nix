@@ -961,23 +961,6 @@ in
         #   '';
         # };
 
-        all-the-icons = {
-          enable = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
-          defer = true;
-        };
-
-        all-the-icons-completion = {
-          enable = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
-          after = [
-            "marginalia"
-            "all-the-icons"
-          ];
-          hook = [ "(marginalia-mode . all-the-icons-completion-marginalia-setup)" ];
-          init = ''
-            (all-the-icons-completion-mode)
-          '';
-        };
-
         # dired-plus = {
         #   enable = true;
         #   # package = _epkgs: pkgs.emacs.pkgs.dired-plus;
@@ -1015,15 +998,6 @@ in
           ];
         };
 
-        all-the-icons-dired = {
-          enable = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
-          after = [
-            "dired"
-            "all-the-icons"
-          ];
-          hook = [ "(dired-mode . all-the-icons-dired-mode)" ];
-        };
-
         # flycheck-eglot = {
         #   # enable = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
         #   enable = true;
@@ -1036,6 +1010,19 @@ in
         #     (global-flycheck-eglot-mode 1)
         #   '';
         # };
+        nerd-icons = {
+          enable = true;
+        };
+
+        nerd-icons-ibuffer = {
+          enable = true;
+          hook = [ "(ibuffer-mode . nerd-icons-ibuffer-mode)" ];
+        };
+
+        nerd-icons-dired = {
+          enable = true;
+          hook = [ "(dired-mode . nerd-icons-dired-mode)" ];
+        };
 
         emacs = {
           enable = true;
