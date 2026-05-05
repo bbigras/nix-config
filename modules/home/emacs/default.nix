@@ -858,7 +858,7 @@ in
         #   enable = true;
         # };
 
-        # hcl-mode.enable = true;
+        hcl-mode.enable = true;
 
         # graphql-mode.enable = true;
 
