@@ -176,15 +176,6 @@
         #   '';
         # };
 
-        # consult-flycheck = {
-        #   enable = true;
-        #   bindLocal = {
-        #     flycheck-command-map = {
-        #       "!" = "consult-flycheck";
-        #     };
-        #   };
-        # };
-
         embark-consult = {
           enable = true;
           after = [
