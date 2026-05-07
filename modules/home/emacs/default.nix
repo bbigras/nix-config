@@ -418,7 +418,7 @@ in
         git-modes.enable = true;
 
         majutsu = {
-          enable = false;
+          enable = true;
           package = _epkgs: pkgs.emacs.pkgs.majutsu;
         };
 
