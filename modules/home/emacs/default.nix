@@ -106,6 +106,8 @@ in
 
           ;; Configure Emacs to ask for confirmation before exiting
           (setq confirm-kill-emacs 'y-or-n-p)
+
+          (global-set-key (kbd "C-S-d") #'duplicate-dwim)
         '';
 
       usePackage = {
