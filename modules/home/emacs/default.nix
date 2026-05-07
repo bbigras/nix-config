@@ -1668,6 +1668,10 @@ in
           enable = true;
         };
 
+        breadcrumb = {
+          enable = true;
+        };
+
         savehist = {
           enable = true;
           init = ''
