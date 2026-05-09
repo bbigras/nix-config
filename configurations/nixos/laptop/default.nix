@@ -137,6 +137,8 @@ in
     upower.enable = true;
   };
 
+  systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false;
+
   networking.networkmanager = {
     enable = true;
     dns = "systemd-resolved";
