@@ -1452,6 +1452,9 @@ in
             "eglot-format-buffer"
             "eglot-rename"
           ];
+          hook = [
+            "(before-save-hook . (lambda () (when (eglot-managed-p) (eglot-format-buffer))))"
+          ];
           # :hook ((svelte-ts-mode . eglot-ensure)
           #        (typescript-mode . eglot-ensure)
           #        (json-mode . eglot-ensure)
