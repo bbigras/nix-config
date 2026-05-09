@@ -784,13 +784,13 @@ in
           '';
         };
 
-        # ws-butler = {
-        #   enable = true;
-        #   hook = [
-        #     "(text-mode . ws-butler-mode)"
-        #     "(prog-mode . ws-butler-mode)"
-        #   ];
-        # };
+        ws-butler = {
+          enable = true;
+          hook = [
+            "(text-mode . ws-butler-mode)"
+            "(prog-mode . ws-butler-mode)"
+          ];
+        };
 
         deadgrep = {
           enable = true;
