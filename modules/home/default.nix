@@ -107,7 +107,6 @@ in
         # cool cli tools
         fd
         hexyl
-        pwgen
         sd # find & replace
         doggo
 
