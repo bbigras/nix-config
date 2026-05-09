@@ -1112,6 +1112,14 @@ in
           '';
         };
 
+        vertico-prescient = {
+          enable = true;
+          after = [ "vertico" ];
+          config = ''
+            (vertico-prescient-mode 1)
+          '';
+        };
+
         corfu = {
           enable = true;
           hook = [ "(after-init . global-corfu-mode)" ];
