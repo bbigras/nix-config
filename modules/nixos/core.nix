@@ -36,11 +36,6 @@ in
     useDHCP = false;
     useNetworkd = true;
     wireguard.enable = true;
-    timeServers = [
-      "time.cloudflare.com"
-      "time1.mbix.ca"
-      "time.web-clock.ca"
-    ];
   };
 
   security = {
@@ -69,6 +64,20 @@ in
       enable = true;
       settings = {
         observability.log-level = "warn";
+        source = [
+          {
+            mode = "nts";
+            address = "time.cloudflare.com";
+          }
+          {
+            mode = "nts";
+            address = "time1.mbix.ca";
+          }
+          {
+            mode = "nts";
+            address = "time.web-clock.ca";
+          }
+        ];
       };
     };
     tailscale = {
