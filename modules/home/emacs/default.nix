@@ -1189,6 +1189,34 @@ in
           '';
         };
 
+        completion-preview = {
+          enable = true;
+          hook = [ "(after-init . global-completion-preview-mode)" ];
+          bindLocal = {
+            completion-preview-active-mode-map = {
+              "M-n" = "completion-preview-next-candidate";
+              "M-p" = "completion-preview-prev-candidate";
+            };
+          };
+          custom = {
+            completion-preview-minimum-symbol-length = 2; # Show the preview already after two symbol characters
+            completion-preview-exact-match-only = "nil"; # If t, only show suggestion if there is only one candidate
+            completion-preview-idle-delay = 0.3; # If non-nil, wait this many idle seconds before displaying preview
+          };
+          config = ''
+            (with-eval-after-load 'org
+              ;; Add Org mode's custom 'self-insert-command' to completion-previews
+              (push 'org-self-insert-command completion-preview-commands)
+              )
+            ;; Disable completion preview in Org tables (Emacs 31+)
+            (defun my/detect-org-table ()
+              "Return true if point in Org table."
+              (and (derived-mode-p 'org-mode) (org-at-table-p)))
+            (add-hook 'completion-preview-inhibit-functions
+                      #'my/detect-org-table)            
+          '';
+        };
+
         corfu-prescient = {
           enable = true;
           after = [ "corfu" ];
