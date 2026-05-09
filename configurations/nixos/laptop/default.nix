@@ -92,6 +92,7 @@ in
   environment.systemPackages = with pkgs; [
     cntr
     wireguard-tools
+    (writers.writeBashBin "fs-diff" (builtins.readFile ./fs-diff.sh))
   ];
 
   # agenix-rekey host pubkey
