@@ -437,6 +437,11 @@ in
         majutsu = {
           enable = true;
           package = _epkgs: pkgs.emacs.pkgs.majutsu;
+          bind = {
+            "C-x v s" = "majutsu";
+            "C-x v d" = "majutsu-diff-dwim";
+            "C-x v n" = "majutsu-new-dwim";
+          };
         };
 
         # combobulate = {
