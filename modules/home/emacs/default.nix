@@ -108,6 +108,13 @@ in
           (setq confirm-kill-emacs 'y-or-n-p)
 
           (global-set-key (kbd "C-S-d") #'duplicate-dwim)
+
+          (defun my/save-without-formatting ()
+            (interactive)
+            (let ((before-save-hook nil))
+              (save-buffer)))
+
+          (global-set-key (kbd "C-x M-s") #'my/save-without-formatting)
         '';
 
       usePackage = {
