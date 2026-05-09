@@ -1549,6 +1549,13 @@ in
 
         # nginx-mode.enable = true;
 
+        csv-mode = {
+          enable = true;
+          hook = [
+            "(csv-mode-hook . csv-guess-set-separator)"
+          ];
+        };
+
         flymake = {
           enable = true;
         };
