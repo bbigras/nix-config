@@ -184,6 +184,7 @@ in
       ls = "eza --binary --header --long";
       man = "batman";
       nix-clean = "${nixCleanScript}";
+      nh-clean = "nh clean all --keep-since 7d --keep 4 --no-gc";
     };
   };
 
