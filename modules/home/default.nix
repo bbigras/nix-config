@@ -12,6 +12,16 @@ let
   # When integrated with NixOS/Darwin, osConfig is the parent system config
   # When standalone, osConfig is null
   # isIntegrated = osConfig != null;
+
+  nixCleanScript = pkgs.writers.writeBash "nix-clean" ''
+    sudo sh <<'EOF'
+    nix-env -p /nix/var/nix/profiles/system --list-generations \
+      | awk '{print $1, $2}' \
+      | sort -k2,2 -k1,1rn \
+      | awk 'seen[$2]++ {print $1}' \
+      | xargs -r nix-env -p /nix/var/nix/profiles/system --delete-generations
+    EOF
+  '';
 in
 {
   imports = with self.homeModules; [
@@ -173,6 +183,7 @@ in
       la = "ls --all";
       ls = "eza --binary --header --long";
       man = "batman";
+      nix-clean = "${nixCleanScript}";
     };
   };
 
