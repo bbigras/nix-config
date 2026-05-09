@@ -103,7 +103,7 @@ in
 
         # Android
         # android-studio
-        # scrcpy
+        scrcpy
 
         # backup
         restic
