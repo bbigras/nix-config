@@ -266,22 +266,6 @@
         "type": "github"
       }
     },
-    "flake-compat_2": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1627913399,
-        "narHash": "sha256-hY8g6H2KFL8ownSiFeMOjwPC8P0ueXpCVEbxgda3pko=",
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "rev": "12c64ca55c1014cdc1b16ed5a804aa8576601ff2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "edolstra",
-        "repo": "flake-compat",
-        "type": "github"
-      }
-    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -299,21 +283,6 @@
       "original": {
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "type": "github"
-      }
-    },
-    "flake-utils": {
-      "locked": {
-        "lastModified": 1634851050,
-        "narHash": "sha256-N83GlSGPJJdcqhUxSCS/WwW5pksYf3VP1M13cDRTSVA=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "c91f3de5adaf1de973b797ef7485e441a65b8935",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
         "type": "github"
       }
     },
@@ -618,21 +587,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
-      "locked": {
-        "lastModified": 1771207753,
-        "narHash": "sha256-b9uG8yN50DRQ6A7JdZBfzq718ryYrlmGgqkRm9OOwCE=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "d1c15b7d5806069da59e819999d70e1cec0760bf",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "ref": "nixpkgs-unstable",
-        "type": "indirect"
-      }
-    },
     "nixpkgs_resticprofile": {
       "locked": {
         "lastModified": 1775714323,
@@ -672,26 +626,6 @@
         "type": "github"
       }
     },
-    "peerix": {
-      "inputs": {
-        "flake-compat": "flake-compat_2",
-        "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs_3"
-      },
-      "locked": {
-        "lastModified": 1772566807,
-        "narHash": "sha256-e5Fdb2K0GHPGVj3l+Jn/QIdxaR30WZATmmOb6amaVRA=",
-        "owner": "sophronesis",
-        "repo": "peerix",
-        "rev": "a56a9ff1dd1023bae1d68dfe5d1133822ad6f4ae",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sophronesis",
-        "repo": "peerix",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "actions-nix": "actions-nix",
@@ -719,7 +653,6 @@
         "nixpkgs": "nixpkgs_2",
         "nixpkgs_resticprofile": "nixpkgs_resticprofile",
         "nur": "nur",
-        "peerix": "peerix",
         "systems": "systems",
         "treefmt-nix": "treefmt-nix",
         "treesit-sexp": "treesit-sexp"

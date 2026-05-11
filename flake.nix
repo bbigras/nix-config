@@ -66,7 +66,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    peerix.url = "github:sophronesis/peerix";
 
     # Persistence
     impermanence.url = "github:nix-community/impermanence";
