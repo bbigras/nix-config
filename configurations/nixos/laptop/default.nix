@@ -16,6 +16,7 @@ in
     self.nixosModules.graphical
     self.nixosModules.graphical-cosmic
     self.nixosModules.graphical-steam
+    self.nixosModules.graphical-fonts
     self.nixosModules.graphical-trusted
     self.nixosModules.pam-limits
     self.nixosModules.hardware-secureboot
