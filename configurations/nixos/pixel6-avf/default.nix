@@ -13,6 +13,7 @@ in
     # Internal modules via flake outputs
     self.nixosModules.default
     self.nixosModules.users-bbigras
+    self.nixosModules.graphical-fonts
 
     inputs.nixos-avf.nixosModules.avf
   ];
