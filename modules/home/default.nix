@@ -161,7 +161,7 @@ in
         git-remote-gcrypt
         spacer
         # faketty
-        resticprofile
+        # resticprofile
         openbao
         nmap
         tkey-ssh-agent
