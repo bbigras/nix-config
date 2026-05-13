@@ -162,7 +162,7 @@ in
         # faketty
         hl-log-viewer
         # android-tools
-        resticprofile
+        # resticprofile
         openbao
         nmap
         ctx7
