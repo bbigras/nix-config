@@ -303,6 +303,28 @@
                 (mermaid . t)
                 (sql . t)
                 (shell . t)))
+
+            ;; Check for org mode and existence of buffer
+            (defun f-ediff-org-showhide (buf command &rest cmdargs)
+              "If buffer exists and is orgmode then execute command"
+              (when buf
+                (when (eq (buffer-local-value 'major-mode (get-buffer buf)) 'org-mode)
+                  (save-excursion (set-buffer buf) (apply command cmdargs)))))
+
+            (defun f-ediff-org-unfold-tree-element ()
+              "Unfold tree at diff location"
+              (f-ediff-org-showhide ediff-buffer-A 'org-reveal)
+              (f-ediff-org-showhide ediff-buffer-B 'org-reveal)
+              (f-ediff-org-showhide ediff-buffer-C 'org-reveal))
+
+            (defun f-ediff-org-fold-tree ()
+              "Fold tree back to top level"
+              (f-ediff-org-showhide ediff-buffer-A 'hide-sublevels 1)
+              (f-ediff-org-showhide ediff-buffer-B 'hide-sublevels 1)
+              (f-ediff-org-showhide ediff-buffer-C 'hide-sublevels 1))
+
+            (add-hook 'ediff-select-hook 'f-ediff-org-unfold-tree-element)
+            (add-hook 'ediff-unselect-hook 'f-ediff-org-fold-tree)
           '';
           # bindLocal = {
           #   org-mode-map = {
