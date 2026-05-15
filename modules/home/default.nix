@@ -429,6 +429,9 @@ in
         };
       };
     };
+    t3code = {
+      enable = true;
+    };
     trippy.enable = true;
     equibop = {
       enable = true;
