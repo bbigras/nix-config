@@ -207,6 +207,39 @@ in
       enable = true;
       settings.auto_sync = true;
       flags = [ "--disable-up-arrow" ];
+      settings = {
+        sync.records = true;
+        cwd_filter = [
+          "^/tmp"
+          "^/var/tmp"
+          "^/run"
+        ];
+        history_filter = [
+          # Leading space (manual "don't record this" convention)
+          "^ "
+
+          # Secrets passed as flags
+          ".*--password[= ]"
+          ".*--passwd[= ]"
+          ".*--secret[= ]"
+          ".*--token[= ]"
+          ".*--api-key[= ]"
+
+          # Inline env var assignments with secrets
+          ".*API_KEY="
+          ".*SECRET="
+          ".*PASSWORD="
+          ".*TOKEN="
+
+          # Specific noisy/useless commands
+          "^ls$"
+          "^cd$"
+          "^pwd$"
+          "^exit$"
+          "^clear$"
+          "^history$"
+        ];
+      };
     };
     bat = {
       enable = true;
