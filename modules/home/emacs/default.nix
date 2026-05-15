@@ -1559,6 +1559,8 @@ in
           '';
         };
 
+        caddyfile-mode.enable = true;
+
         nix-ts-mode = {
           enable = true;
           mode = [ ''"\\.nix\\'"'' ];
