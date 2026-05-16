@@ -422,6 +422,7 @@ in
         };
       };
     };
+    npm.enable = true;
     t3code = {
       enable = true;
     };
