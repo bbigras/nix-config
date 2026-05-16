@@ -17,6 +17,7 @@ in
     inputs.home-manager.nixosModules.home-manager
     inputs.impermanence.nixosModules.impermanence
     inputs.lanzaboote.nixosModules.lanzaboote
+    inputs.niks3.nixosModules.niks3-auto-upload
     inputs.nix-index-database.nixosModules.nix-index
     inputs.nixos-facter-modules.nixosModules.facter
   ]

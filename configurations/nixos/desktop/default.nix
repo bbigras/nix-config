@@ -18,6 +18,7 @@ in
     self.nixosModules.graphical-steam
     self.nixosModules.graphical-fonts
     self.nixosModules.graphical-trusted
+    self.nixosModules.niks3-auto-upload
     self.nixosModules.pam-limits
     self.nixosModules.hardware-secureboot
     self.nixosModules.services-podman
