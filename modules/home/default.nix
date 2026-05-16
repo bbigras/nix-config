@@ -168,6 +168,7 @@ in
         resticprofile
         openbao
         nmap
+        ctx7
       ]
       ++ (with pkgs.hunspellDicts; [
         fr-moderne
@@ -376,14 +377,6 @@ in
     };
     mcp = {
       enable = true;
-      servers = {
-        context7 = {
-          url = "https://mcp.context7.com/mcp";
-          headers = {
-            CONTEXT7_API_KEY = "{env:CONTEXT7_API_KEY}";
-          };
-        };
-      };
     };
     pay-respects.enable = true;
     ripgrep.enable = true;
