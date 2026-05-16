@@ -423,6 +423,10 @@ in
       };
     };
     npm.enable = true;
+    codex = {
+      enable = true;
+      enableMcpIntegration = true;
+    };
     t3code = {
       enable = true;
     };
