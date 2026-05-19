@@ -5,50 +5,46 @@
   programs.ssh = {
     enable = true;
 
-    extraConfig = ''
-      CanonicalizeHostname yes
-      CanonicalDomains tamarin-macaroni.ts.net
-      PermitLocalCommand yes
-    '';
+    settings = {
+      "*" = {
+        CanonicalizeHostname = true;
+        CanonicalDomains = "tamarin-macaroni.ts.net";
+        PermitLocalCommand = true;
 
-    matchBlocks = {
-      "tailnet" = lib.hm.dag.entryBefore [ "*" ] {
-        match = "canonical host *.tamarin-macaroni.ts.net";
-        forwardAgent = true;
+        ForwardAgent = false;
+        AddKeysToAgent = "confirm";
+        IdentityFile = [ ];
+
+        Compression = false;
+        ServerAliveInterval = 60;
+        ServerAliveCountMax = 5;
+        HashKnownHosts = true;
+        UserKnownHostsFile = "~/.ssh/known_hosts";
+
+        ControlMaster = "auto";
+        ControlPath = "~/.ssh/sockets/master-%r@%n:%p";
+        ControlPersist = "30m";
+
+        PreferredAuthentications = "publickey,password";
+        # PreferredAuthentications = "publickey";
+        # PasswordAuthentication = "no";
+        KbdInteractiveAuthentication = false;
+        ChallengeResponseAuthentication = false;
+
+        IdentitiesOnly = true;
+
+        StrictHostKeyChecking = "accept-new";
+        VerifyHostKeyDNS = true;
+        UpdateHostKeys = true;
+
+        ForwardX11 = false;
+        ForwardX11Trusted = false;
+
+        RekeyLimit = "1G 1h";
       };
 
-      "*" = {
-        forwardAgent = false;
-        addKeysToAgent = "confirm";
-        # identityFile = [ ];
-
-        compression = false;
-        serverAliveInterval = 60;
-        serverAliveCountMax = 5;
-        hashKnownHosts = true;
-        userKnownHostsFile = "~/.ssh/known_hosts";
-
-        controlMaster = "auto";
-        controlPath = "~/.ssh/sockets/master-%r@%n:%p";
-        controlPersist = "30m";
-
-        extraOptions = {
-          PreferredAuthentications = "publickey";
-          PasswordAuthentication = "no";
-          KbdInteractiveAuthentication = "no";
-          ChallengeResponseAuthentication = "no";
-
-          IdentitiesOnly = "yes";
-
-          StrictHostKeyChecking = "accept-new";
-          VerifyHostKeyDNS = "yes";
-          UpdateHostKeys = "yes";
-
-          ForwardX11 = "no";
-          ForwardX11Trusted = "no";
-
-          RekeyLimit = "1G 1h";
-        };
+      "Match canonical host *.tamarin-macaroni.ts.net" = lib.hm.dag.entryBefore [ "*" ] {
+        ForwardAgent = true;
       };
     };
   };
