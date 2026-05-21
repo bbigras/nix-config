@@ -145,4 +145,10 @@ in
       };
     };
   };
+
+  hardware.openrazer.enable = true;
+  users.users.bbigras.extraGroups = [
+    "plugdev"
+    "openrazer"
+  ];
 }
