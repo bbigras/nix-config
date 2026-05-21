@@ -185,6 +185,9 @@
           hook = [
             "(org-mode . dw/org-mode-setup)"
           ];
+          init = ''
+            (setq org-startup-with-inline-images t)
+          '';
           config = ''
                         ;; Turn on indentation and auto-fill mode for Org files
                         (defun dw/org-mode-setup ()
