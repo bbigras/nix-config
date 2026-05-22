@@ -72,7 +72,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
     # Persistence
     impermanence.url = "github:nix-community/impermanence";
 
@@ -104,6 +103,9 @@
     # Hardware support
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
+
+    # other
+    nix-cache-beacon.url = "github:adisbladis/nix-cache-beacon";
 
     # Development tools
     git-hooks = {

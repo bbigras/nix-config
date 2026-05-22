@@ -14,6 +14,7 @@ in
     inputs.agenix.nixosModules.default
     inputs.catppuccin.nixosModules.catppuccin
     inputs.disko.nixosModules.default
+    inputs.nix-cache-beacon.nixosModules.nix-cache-beacon
     inputs.home-manager.nixosModules.home-manager
     inputs.impermanence.nixosModules.impermanence
     inputs.lanzaboote.nixosModules.lanzaboote

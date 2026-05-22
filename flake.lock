@@ -469,6 +469,24 @@
         "type": "github"
       }
     },
+    "nix-cache-beacon": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1779419437,
+        "narHash": "sha256-NyAMLWmp3QdChialUPdr6yxJD6uooW4mLQ30R6tR5JQ=",
+        "owner": "adisbladis",
+        "repo": "nix-cache-beacon",
+        "rev": "657f7730b94b612a14ed0a9b31fcc3829cd6232f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "adisbladis",
+        "repo": "nix-cache-beacon",
+        "type": "github"
+      }
+    },
     "nix-fast-build": {
       "inputs": {
         "flake-parts": [
@@ -594,6 +612,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1778869304,
+        "narHash": "sha256-30sZNZoA1cqF5JNO9fVX+wgiQYjB7HJqqJ4ztCDeBZE=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "d233902339c02a9c334e7e593de68855ad26c4cb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1779357205,
         "narHash": "sha256-cCO8aTqss5x9Ky8GWkpY0Hy5fyTZEbtifSUV8QjSzic=",
         "owner": "NixOS",
@@ -667,12 +701,13 @@
         "majutsu": "majutsu",
         "minimal-emacs-d": "minimal-emacs-d",
         "niks3": "niks3",
+        "nix-cache-beacon": "nix-cache-beacon",
         "nix-fast-build": "nix-fast-build",
         "nix-index-database": "nix-index-database",
         "nixos-facter-modules": "nixos-facter-modules",
         "nixos-hardware": "nixos-hardware",
         "nixos-unified": "nixos-unified",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "nixpkgs_resticprofile": "nixpkgs_resticprofile",
         "nur": "nur",
         "systems": "systems",
