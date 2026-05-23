@@ -13,7 +13,6 @@ in
     # graphical-common
     graphical-firefox
     graphical-keepassxc
-    graphical-psd
     graphical-vicinae
     graphical-zed-editor
     graphical-mime
