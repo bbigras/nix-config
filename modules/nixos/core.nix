@@ -25,6 +25,7 @@ in
   ];
 
   boot.kernelParams = [ "log_buf_len=10M" ];
+  boot.loader.timeout = 0;
 
   i18n.defaultLocale = "fr_CA.UTF-8";
 
