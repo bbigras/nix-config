@@ -116,6 +116,10 @@ in
 
           (global-set-key (kbd "C-x M-s") #'my/save-without-formatting)
         '';
+      postlude = ''
+        (setq custom-file (locate-user-emacs-file "custom.el"))
+        (load custom-file 'noerror)
+      '';
 
       usePackage = {
         # logview.enable = true;
