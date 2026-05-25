@@ -15,6 +15,7 @@ in
   imports = [
     ./consult.nix
     ./denote.nix
+    ./elfeed.nix
     ./rust.nix
     ./typescript.nix
     ./org-mode.nix
