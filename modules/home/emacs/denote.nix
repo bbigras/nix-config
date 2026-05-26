@@ -63,7 +63,7 @@
       # };
 
       denote-explore = {
-        enable = true;
+        enable = false;
         after = [ "denote" ];
         defer = true;
         command = [
