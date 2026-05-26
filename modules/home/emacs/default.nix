@@ -653,17 +653,16 @@ in
           '';
         };
 
-        # ultra-scroll = {
-        #   enable = true;
-        #   package = _epkgs: pkgs.emacs.pkgs.ultra-scroll;
-        #   init = ''
-        #     (setq scroll-conservatively 101 ; important!
-        #             scroll-margin 0)
-        #   '';
-        #   config = ''
-        #     (ultra-scroll-mode 1)
-        #   '';
-        # };
+        ultra-scroll = {
+          enable = true;
+          init = ''
+            (setq scroll-conservatively 3 ; or whatever value you prefer, since v0.4
+                  scroll-margin 0)        ; important: scroll-margin>0 not yet supported
+          '';
+          config = ''
+            (ultra-scroll-mode 1)
+          '';
+        };
 
         # gptel = {
         #   enable = true;
