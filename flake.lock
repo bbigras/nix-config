@@ -448,6 +448,26 @@
         "type": "github"
       }
     },
+    "ncro": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1780172063,
+        "narHash": "sha256-TNVhADu3fY7hklHGtwcUi5rQWW5wY6mJl9wBngl7/MQ=",
+        "owner": "feel-co",
+        "repo": "ncro",
+        "rev": "2486600d8e7dfb1c851fd6616243f36daf30e945",
+        "type": "github"
+      },
+      "original": {
+        "owner": "feel-co",
+        "repo": "ncro",
+        "type": "github"
+      }
+    },
     "niks3": {
       "inputs": {
         "nixpkgs": [
@@ -682,6 +702,7 @@
         "lanzaboote": "lanzaboote",
         "majutsu": "majutsu",
         "minimal-emacs-d": "minimal-emacs-d",
+        "ncro": "ncro",
         "niks3": "niks3",
         "nix-fast-build": "nix-fast-build",
         "nix-index-database": "nix-index-database",

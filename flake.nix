@@ -103,6 +103,12 @@
     # Hardware support
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
+    ncro = {
+      url = "github:feel-co/ncro";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
 
     # Development tools
     git-hooks = {
