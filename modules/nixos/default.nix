@@ -46,6 +46,8 @@ in
     sharedModules = [
       inputs.nix-index-database.homeModules.nix-index
       inputs.catppuccin.homeModules.catppuccin
+      inputs.niri.homeModules.niri
+      inputs.noctalia.homeModules.default
       nurNoPkgs.repos.rycee.hmModules.emacs-init
       self.homeModules.default
     ];

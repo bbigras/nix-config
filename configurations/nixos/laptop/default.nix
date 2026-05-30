@@ -14,13 +14,13 @@ in
     self.nixosModules.default
     self.nixosModules.users-bbigras
     self.nixosModules.graphical
-    self.nixosModules.graphical-cosmic
     self.nixosModules.graphical-steam
     self.nixosModules.graphical-fonts
     self.nixosModules.graphical-trusted
     self.nixosModules.ncro
     self.nixosModules.niks3-auto-upload
     self.nixosModules.pam-limits
+    self.nixosModules.hardware-bluetooth
     self.nixosModules.hardware-secureboot
     self.nixosModules.hardware-yubikey
     self.nixosModules.services-podman
@@ -44,6 +44,8 @@ in
     self.homeModules.graphical
     self.homeModules.graphical-heroic
     self.homeModules.graphical-lutris
+    self.homeModules.graphical-niri
+    self.homeModules.graphical-noctalia
   ];
 
   # SSH target for remote activation
@@ -79,6 +81,11 @@ in
 
   security.sudo.wheelNeedsPassword = true;
 
+  environment.pathsToLink = [
+    "/share/applications"
+    "/share/xdg-desktop-portal"
+  ];
+
   services = {
     flatpak.enable = true;
     udisks2.enable = true;
@@ -87,9 +94,20 @@ in
       extraRemotes = [ "lvfs-testing" ];
       # uefiCapsuleSettings.DisableCapsuleUpdateOnDisk = true;
     };
+    displayManager.sessionPackages = [ pkgs.niri ];
+    displayManager.sddm.enable = true;
+    displayManager.sddm.settings.Theme = {
+      CursorTheme = "catppuccin-mocha-blue-cursors";
+      CursorSize = 24;
+    };
+    displayManager.sddm.wayland = {
+      enable = true;
+      compositor = "kwin";
+    };
     thermald.enable = true;
     tlp.enable = false;
     tuned.enable = true;
+    upower.enable = true;
   };
 
   networking.networkmanager = {

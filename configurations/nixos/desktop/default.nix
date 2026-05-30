@@ -14,7 +14,6 @@ in
     self.nixosModules.default
     self.nixosModules.users-bbigras
     self.nixosModules.graphical
-    self.nixosModules.graphical-cosmic
     self.nixosModules.graphical-steam
     self.nixosModules.graphical-fonts
     self.nixosModules.graphical-trusted
@@ -57,6 +56,8 @@ in
     self.homeModules.graphical
     self.homeModules.graphical-heroic
     self.homeModules.graphical-lutris
+    self.homeModules.graphical-niri
+    self.homeModules.graphical-noctalia
   ];
 
   # SSH target for remote activation
@@ -111,9 +112,26 @@ in
 
   security.sudo.wheelNeedsPassword = true;
 
+  environment.pathsToLink = [
+    "/share/applications"
+    "/share/xdg-desktop-portal"
+  ];
+
   services = {
     flatpak.enable = true;
     fwupd.enable = true;
+    displayManager.sessionPackages = [ pkgs.niri ];
+    displayManager.sddm = {
+      enable = true;
+      settings.Theme = {
+        CursorTheme = "catppuccin-mocha-blue-cursors";
+        CursorSize = 24;
+      };
+    };
+    displayManager.sddm.wayland = {
+      enable = true;
+      compositor = "kwin";
+    };
     udisks2.enable = true;
     avahi.enable = pkgs.lib.mkForce false;
     earlyoom = {

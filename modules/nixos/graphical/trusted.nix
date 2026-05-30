@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{
+  lib,
+  pkgs,
+  ...
+}:
 {
   programs = {
   };
@@ -7,6 +11,6 @@
 
   services = {
     dbus.packages = with pkgs; [ gcr ];
-    gnome.gnome-keyring.enable = false;
+    gnome.gnome-keyring.enable = lib.mkForce false;
   };
 }

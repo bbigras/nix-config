@@ -14,6 +14,7 @@ in
         inputs.agenix.overlays.default
         inputs.emacs-overlay.overlay
         inputs.nur.overlays.default
+        inputs.niri.overlays.niri
         (final: _: {
           inherit (inputs.nix-fast-build.packages.${final.stdenv.hostPlatform.system}) nix-fast-build;
         })

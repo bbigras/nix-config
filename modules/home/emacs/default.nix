@@ -1825,7 +1825,7 @@ in
       };
     };
   }
-  // lib.optionalAttrs (osConfig.services.desktopManager.cosmic.enable or false) {
+  // lib.optionalAttrs (osConfig.services.displayManager.sddm.wayland.enable or false) {
     package = pkgs.emacs-pgtk;
   };
 }
