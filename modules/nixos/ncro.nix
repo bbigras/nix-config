@@ -1,9 +1,25 @@
-{lib, ...}:
+{ lib, ... }:
 
+let
+  port = 4070;
+in
 {
+  networking.firewall = {
+    allowedTCPPorts = [
+      port
+    ];
+    allowedUDPPorts = [
+      7946
+      5353
+    ];
+  };
   services.ncro = {
     enable = true;
     settings = {
+      server = {
+        listen = ":${toString port}";
+        cache_priority = 20;
+      };
       # logging.level = "debug";
       discovery.enabled = true;
       upstreams = [
@@ -41,5 +57,5 @@
   # from its capabilities fully. If there are other substituters in your
   # list, or if you don't mkForce this option, ncro will perform less
   # efficiently.
-  nix.settings.substituters = lib.mkForce [ "http://localhost:8080" ];
+  nix.settings.substituters = lib.mkForce [ "http://localhost:${toString port}" ];
 }
