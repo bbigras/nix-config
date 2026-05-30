@@ -20,7 +20,7 @@
         }
 
         {
-          url = "https://bbigras-nix-config";
+          url = "https://bbigras-nix-config.cachix.org";
           priority = 30;
           public_key = "bbigras-nix-config.cachix.org-1:aXL6Q9Oi0jyF79YAKRu17iVNk9HY0p23OZX7FA8ulhU=";
         }
