@@ -104,9 +104,6 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
 
-    # other
-    nix-cache-beacon.url = "github:adisbladis/nix-cache-beacon";
-
     # Development tools
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
