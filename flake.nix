@@ -184,6 +184,10 @@
       url = "github:0WD0/majutsu";
       flake = false;
     };
+    space-tree = {
+      url = "github:chiply/space-tree";
+      flake = false;
+    };
   };
 
   outputs =

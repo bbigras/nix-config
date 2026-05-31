@@ -47,6 +47,11 @@ in
               version = "git";
               src = inputs.eglot-x;
             };
+            space-tree = super.emacs.pkgs.trivialBuild {
+              pname = "space-tree";
+              version = "git";
+              src = inputs.space-tree;
+            };
             treesit-sexp = super.emacs.pkgs.trivialBuild {
               pname = "treesit-sexp";
               version = "git";

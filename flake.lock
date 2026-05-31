@@ -808,6 +808,7 @@
         "nixpkgs_resticprofile": "nixpkgs_resticprofile",
         "noctalia": "noctalia",
         "nur": "nur",
+        "space-tree": "space-tree",
         "systems": "systems",
         "treefmt-nix": "treefmt-nix_2",
         "treesit-sexp": "treesit-sexp"
@@ -831,6 +832,22 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "space-tree": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1779712420,
+        "narHash": "sha256-eaF3LM2nvJ5r5Rl0FyTn5TXNV3KptmWnYbwTmh7PHC4=",
+        "owner": "chiply",
+        "repo": "space-tree",
+        "rev": "ce075d23879c1527c2a39be8fa8743073b1be087",
+        "type": "github"
+      },
+      "original": {
+        "owner": "chiply",
+        "repo": "space-tree",
         "type": "github"
       }
     },

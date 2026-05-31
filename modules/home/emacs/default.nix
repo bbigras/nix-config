@@ -133,6 +133,28 @@ in
           '';
         };
 
+        space-tree = {
+          enable = true;
+          package = _epkgs: pkgs.emacsPackages.space-tree;
+          bind = {
+            "M-1" = "space-tree-to-1";
+            "M-2" = "space-tree-to-2";
+            "M-3" = "space-tree-to-3";
+            # "M-a" = "space-tree-sub-1";
+            # "M-b" = "space-tree-sub-2";
+            # "M-c" = "space-tree-sub-3";
+          };
+          config = ''
+            (space-tree-init)
+
+            (with-eval-after-load 'doom-modeline
+              (doom-modeline-def-segment space-tree
+                (space-tree-modeline-lighter))
+
+              (doom-modeline-add-segment 'space-tree 'major-mode :before))
+          '';
+        };
+
         journalctl-mode = {
           enable = true;
           defer = true;
