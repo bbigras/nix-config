@@ -38,6 +38,7 @@ in
   home-manager.users.bbigras.imports = [
     self.homeModules.trusted
     self.homeModules.emacs
+    self.homeModules.radicle
     self.homeModules.syncthing
     self.homeModules.graphical
     self.homeModules.graphical-heroic
