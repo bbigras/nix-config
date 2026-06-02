@@ -24,7 +24,7 @@
       new-session -A -s 0
 
       # update the env when attaching to an existing session
-      set -g update-environment -r
+      #set -g update-environment -r
 
       set -g set-clipboard on
       set -ag terminal-overrides ",alacritty*:Tc,foot*:Tc,xterm*:Tc"

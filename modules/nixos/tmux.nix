@@ -27,7 +27,7 @@
     terminal = "tmux-256color";
     extraConfig = ''
       # update the env when attaching to an existing session
-      set -g update-environment -r
+      #set -g update-environment -r
 
       set -ag terminal-overrides ",alacritty*:Tc,foot*:Tc,xterm-kitty*:Tc,xterm-256color:Tc"
 
