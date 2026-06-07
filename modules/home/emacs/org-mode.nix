@@ -60,7 +60,7 @@
         };
 
         consult-notes = {
-          enable = true;
+          enable = false;
           bind = {
             "C-c n f" = "consult-notes";
           };
