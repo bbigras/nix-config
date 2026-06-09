@@ -67,6 +67,9 @@ in
       # update the env when attaching to an existing session
       #set -g update-environment -r
 
+      set -g extended-keys on
+      set -g extended-keys-format csi-u
+
       set -g set-clipboard on
       set -ag terminal-overrides ",alacritty*:Tc,foot*:Tc,xterm*:Tc"
 
