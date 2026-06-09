@@ -943,7 +943,7 @@ in
         #   enable = true;
         # };
 
-        hcl-mode.enable = true;
+        terraform-mode.enable = true;
 
         graphql-ts-mode.enable = true;
 
