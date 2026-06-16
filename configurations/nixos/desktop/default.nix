@@ -22,6 +22,7 @@ in
     self.nixosModules.niks3-auto-upload
     self.nixosModules.pam-limits
     self.nixosModules.hardware-secureboot
+    self.nixosModules.hardware-yubikey
     self.nixosModules.services-podman
     self.nixosModules.services-wivrn
     #self.nixosModules.services-virt-manager
