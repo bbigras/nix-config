@@ -56,7 +56,6 @@ in
     self.homeModules.graphical
     self.homeModules.graphical-heroic
     self.homeModules.graphical-lutris
-    self.homeModules.tkey-ssh-agent
   ];
 
   # SSH target for remote activation

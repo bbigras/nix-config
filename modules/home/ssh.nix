@@ -2,12 +2,6 @@
 {
   home.file.".ssh/sockets/.keep".text = "";
 
-  # tkey hardware key public key (private half lives on the TKey, not on disk).
-  # Used as IdentityFile so IdentitiesOnly=yes will offer this agent identity.
-  home.file.".ssh/tkey.pub".text = ''
-    ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGPpDAsQDRslxy69ylheWAtg2synerGqkCeCw6F4ISXp TKey
-  '';
-
   programs.ssh = {
     enable = true;
 
@@ -26,7 +20,7 @@
       "*" = {
         forwardAgent = false;
         addKeysToAgent = "confirm";
-        identityFile = [ "~/.ssh/tkey.pub" ];
+        # identityFile = [ ];
 
         compression = false;
         serverAliveInterval = 60;

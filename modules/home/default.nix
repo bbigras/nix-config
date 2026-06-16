@@ -161,7 +161,6 @@ in
         git-remote-gcrypt
         spacer
         faketty
-        tkey-ssh-agent
         jan
         hl-log-viewer
         android-tools
