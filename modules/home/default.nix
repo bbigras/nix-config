@@ -379,6 +379,34 @@ in
     };
     navi.enable = true;
     pay-respects.enable = true;
+    pi-coding-agent = {
+      enable = true;
+      extraPackages = [
+        pkgs.bun
+        pkgs.nodejs
+        pkgs.opencode
+        pkgs.python3
+        pkgs.rtk
+        pkgs.uv
+      ];
+      settings = {
+        # lastChangelogVersion = "0.79.4";
+        # theme = "catppuccin-mocha";
+        defaultProvider = "openai-codex";
+        defaultModel = "gpt-5.6-terra";
+        defaultThinkingLevel = "medium";
+        packages = [
+          "npm:@mjakl/pi-subagent"
+          "npm:@sting8k/pi-vcc"
+          "npm:pi-ast-grep"
+          "npm:pi-chatgpt-limit"
+          "npm:pi-code-index"
+          "npm:pi-direnv"
+          "npm:pi-rtk-optimizer"
+          "npm:pi-web-kit"
+        ];
+      };
+    };
     ripgrep.enable = true;
     sesh.enable = true;
     swappy = {
