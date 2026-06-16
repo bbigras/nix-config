@@ -278,9 +278,6 @@ in
 
         agent-shell = {
           enable = true;
-          extraPackages = [
-            pkgs.claude-agent-acp
-          ];
           config = ''
             (setopt agent-shell-file-completion-enabled t)
           '';
