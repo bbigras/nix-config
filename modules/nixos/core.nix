@@ -44,7 +44,7 @@ in
     polkit.enable = true;
     sudo-rs = {
       enable = true;
-      wheelNeedsPassword = lib.mkDefault false;
+      wheelNeedsPassword = true;
     };
   };
 
