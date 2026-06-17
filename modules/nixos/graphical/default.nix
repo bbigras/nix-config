@@ -19,8 +19,6 @@
     #   wayland = true;
     # };
     # gnome.at-spi2-core.enable = true;
-    orca.enable = false;
-    speechd.enable = false;
     # xserver.enable = true;
   };
 
