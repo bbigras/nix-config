@@ -5,7 +5,6 @@
 }:
 {
   boot = {
-    bootspec.enable = true;
     lanzaboote = {
       enable = true;
       autoGenerateKeys.enable = true;
