@@ -49,6 +49,7 @@ in
 
   catppuccin = {
     enable = true;
+    autoEnable = true;
     flavor = "mocha";
     accent = "blue";
     cursors.enable = true;
