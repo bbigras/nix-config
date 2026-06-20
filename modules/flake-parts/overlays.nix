@@ -25,7 +25,9 @@ in
               };
         })
         (final: _super: {
-          resticprofile = final.callPackage "${inputs.nixpkgs_resticprofile}/pkgs/by-name/re/resticprofile/package.nix" { };
+          resticprofile =
+            final.callPackage "${inputs.nixpkgs_resticprofile}/pkgs/by-name/re/resticprofile/package.nix"
+              { };
         })
         (_self: super: {
           emacs.pkgs = super.emacs.pkgs // {
