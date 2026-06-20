@@ -30,6 +30,7 @@ in
     btop
     delta
     dev
+    docker
     fish
     git
     htop
