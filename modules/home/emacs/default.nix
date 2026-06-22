@@ -903,6 +903,7 @@ in
           enable = true;
           hook = [
             "(prog-mode . copilot-mode)"
+            "(prog-mode . copilot-nes-mode)"
           ];
           bindLocal = {
             copilot-completion-map = {
