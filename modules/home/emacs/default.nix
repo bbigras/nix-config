@@ -900,7 +900,7 @@ in
         };
 
         copilot = {
-          enable = false;
+          enable = true;
           hook = [
             "(prog-mode . copilot-mode)"
           ];
