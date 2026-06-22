@@ -152,6 +152,9 @@ in
     "10-lan" = {
       DHCP = "yes";
       matchConfig.Name = "enp*";
+      address = [
+        "fd47:9483:1a8c:0::10/64"
+      ];
       networkConfig = {
         MulticastDNS = true;
         LLMNR = true;
