@@ -36,7 +36,13 @@ in
     cursors.enable = true;
   };
 
-  programs.nix-ld.enable = true;
+  programs = {
+    nix-ld.enable = true;
+    ssh = {
+      enableAskPassword = true;
+      askPassword = "${pkgs.openssh-askpass}/libexec/gtk-ssh-askpass";
+    };
+  };
 
   # Home-manager integration
   # Note: stylix.homeModules.stylix is auto-imported via stylix.homeManagerIntegration
