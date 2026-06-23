@@ -122,15 +122,19 @@ in
       extraRemotes = [ "lvfs-testing" ];
       # uefiCapsuleSettings.DisableCapsuleUpdateOnDisk = true;
     };
-    displayManager.sessionPackages = [ pkgs.niri ];
-    displayManager.sddm.enable = true;
-    displayManager.sddm.settings.Theme = {
-      CursorTheme = "catppuccin-mocha-blue-cursors";
-      CursorSize = 24;
-    };
-    displayManager.sddm.wayland = {
-      enable = true;
-      compositor = "kwin";
+    displayManager = {
+      sessionPackages = [ pkgs.niri ];
+      sddm = {
+        enable = true;
+        settings.Theme = {
+          CursorTheme = "catppuccin-mocha-blue-cursors";
+          CursorSize = 24;
+        };
+        wayland = {
+          enable = true;
+          compositor = "kwin";
+        };
+      };
     };
     thermald.enable = true;
     tlp.enable = false;

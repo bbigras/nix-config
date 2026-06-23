@@ -121,17 +121,19 @@ in
   services = {
     flatpak.enable = true;
     fwupd.enable = true;
-    displayManager.sessionPackages = [ pkgs.niri ];
-    displayManager.sddm = {
-      enable = true;
-      settings.Theme = {
-        CursorTheme = "catppuccin-mocha-blue-cursors";
-        CursorSize = 24;
+    displayManager = {
+      sessionPackages = [ pkgs.niri ];
+      sddm = {
+        enable = true;
+        settings.Theme = {
+          CursorTheme = "catppuccin-mocha-blue-cursors";
+          CursorSize = 24;
+        };
+        wayland = {
+          enable = true;
+          compositor = "kwin";
+        };
       };
-    };
-    displayManager.sddm.wayland = {
-      enable = true;
-      compositor = "kwin";
     };
     udisks2.enable = true;
     avahi.enable = pkgs.lib.mkForce false;
@@ -148,7 +150,7 @@ in
     };
   };
 
-  systemd.network.networks = {    
+  systemd.network.networks = {
     "10-lan" = {
       DHCP = "yes";
       matchConfig.Name = "enp*";
