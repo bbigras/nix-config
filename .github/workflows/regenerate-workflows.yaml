@@ -15,12 +15,10 @@ jobs:
         ref: ${{ github.head_ref || github.ref_name }}
         token: ${{ secrets.PAT }}
     - uses: cachix/install-nix-action@8aa03977d8d733052d78f4e008a241fd1dbf36b3
-    - uses: actions/cache@2c8a9bd7457de244a408f35966fab2fb45fda9c8
+    - uses: Mic92/hestia@v1
       with:
-        key: nix-eval-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('flake.lock')
-          }}
-        path: ~/.cache/nix
-        restore-keys: nix-eval-${{ runner.os }}-${{ runner.arch }}-
+        upstream-cache-filter: true
+        upstream-cache-key-names: cache.nixos.org-1 nix-community.cachix.org-1
     - uses: cachix/cachix-action@5f2d7c5294214f71b873db4b969586b980625e71
       with:
         authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
