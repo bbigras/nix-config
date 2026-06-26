@@ -42,10 +42,10 @@ let
   # GitHub Actions references - all versions consolidated here for Renovate
   actions = {
     alls-green = "re-actors/alls-green@05ac9388f0aebcb5727afa17fcccfecd6f8ec5fe"; # v1.2.2
-    cache = "actions/cache@2c8a9bd7457de244a408f35966fab2fb45fda9c8"; # v6
     automerge = "peter-evans/enable-pull-request-automerge@a660677d5469627102a1c1e11409dd063606628d"; # v3.0.0
     cachix = "cachix/cachix-action@5f2d7c5294214f71b873db4b969586b980625e71"; # v17
     checkout = "actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0"; # v7
+    hestia = "Mic92/hestia@v1";
     nothing-but-nix = "wimpysworld/nothing-but-nix@687c797a730352432950c707ab493fcc951818d7"; # v10
     install-nix-action = "cachix/install-nix-action@8aa03977d8d733052d78f4e008a241fd1dbf36b3"; # v31.10.6
   };
@@ -65,12 +65,11 @@ let
       uses = actions.install-nix-action;
     };
 
-    nixCache = {
-      uses = actions.cache;
+    hestia = {
+      uses = actions.hestia;
       "with" = {
-        path = "~/.cache/nix";
-        key = "nix-eval-\${{ runner.os }}-\${{ runner.arch }}-\${{ hashFiles('flake.lock') }}";
-        restore-keys = "nix-eval-\${{ runner.os }}-\${{ runner.arch }}-";
+        upstream-cache-filter = true;
+        upstream-cache-key-names = "cache.nixos.org-1 nix-community.cachix.org-1";
       };
     };
 
@@ -95,7 +94,7 @@ let
     steps.nothing-but-nix
     steps.checkout
     steps.nixInstaller
-    steps.nixCache
+    steps.hestia
     steps.cachix
   ];
 
@@ -229,7 +228,7 @@ in
               }
             )
             steps.nixInstaller
-            steps.nixCache
+            steps.hestia
             steps.cachix
             {
               name = "Regenerate workflows";
