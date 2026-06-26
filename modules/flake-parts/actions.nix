@@ -78,7 +78,7 @@ let
       "with" = {
         name = "bbigras-nix-config";
         authToken = "\${{ secrets.CACHIX_AUTH_TOKEN }}";
-        extraPullNames = "nix-community";
+        extraPullNames = "nix-community,noctalia,niri";
       };
     };
 
