@@ -117,6 +117,11 @@ in
               (save-buffer)))
 
           (global-set-key (kbd "C-x M-s") #'my/save-without-formatting)
+
+          (setq completion-eager-update t)
+          (setq completion-eager-display 'auto)
+          (setq minibuffer-visible-completions 'up-down)
+          (setq eldoc-help-at-pt t)
         '';
       postlude = ''
         (setq custom-file (locate-user-emacs-file "custom.el"))
@@ -1569,6 +1574,7 @@ in
                                 :weight 'bold)
             (set-face-attribute 'eglot-diagnostic-tag-unnecessary-face nil
                                 :inherit 'flymake-warning)
+            (setq eglot-documentation-renderer 'markdown-ts-view-mode)
           '';
         };
 
