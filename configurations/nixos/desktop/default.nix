@@ -143,6 +143,9 @@ in
     };
     tuned = {
       enable = true;
+      package = pkgs.tuned.overrideAttrs (old: {
+        installTargets = [ "install" ];
+      });
       ppdSupport = false;
       recommend = {
         balanced = { };
