@@ -89,6 +89,10 @@
       set -g detach-on-destroy off  # don't exit from tmux when closing a session
       set -g @t-fzf-find-binding 'ctrl-f:change-prompt(  )+reload(fd -H -d 2 -t d . ~)'
       set -g @t-fzf-prompt '  '
+
+      # for pi agent
+      set -g extended-keys on
+      set -g extended-keys-format csi-u
     '';
   };
 }
