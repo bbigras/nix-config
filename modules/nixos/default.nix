@@ -28,6 +28,10 @@ in
     # tailscale-address
   ]);
 
+  environment.systemPackages = [
+    inputs.niks3.packages.${pkgs.stdenv.hostPlatform.system}.niks3
+  ];
+
   catppuccin = {
     enable = true;
     autoEnable = true;
