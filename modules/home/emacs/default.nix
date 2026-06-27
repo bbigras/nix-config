@@ -1859,6 +1859,6 @@ in
     };
   }
   // lib.optionalAttrs (osConfig.services.displayManager.sddm.wayland.enable or false) {
-    package = pkgs.emacs-pgtk;
+    package = pkgs.emacs-unstable-pgtk;
   };
 }
