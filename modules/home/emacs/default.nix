@@ -537,7 +537,7 @@ in
         syncthing.enable = true;
 
         treesit-sexp = {
-          enable = true;
+          enable = false;
           package = _epkgs: pkgs.emacs.pkgs.treesit-sexp;
           config = ''
             (global-treesit-sexp-mode 1)
