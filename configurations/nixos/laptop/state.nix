@@ -175,7 +175,6 @@ in
       files = [
         ".cache/keepassxc/keepassxc.ini"
         ".cache/noctalia/shell-state.json"
-        ".config/attic/config.toml"
         ".config/cachix/cachix.dhall"
         ".config/git-annex/autostart"
         ".config/remmina/remmina.pref"

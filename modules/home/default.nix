@@ -67,7 +67,6 @@ in
     packages = lib.filter (lib.meta.availableOn pkgs.stdenv.hostPlatform) (
       with pkgs;
       [
-        attic-client
         ccinit
         fd
         git-annex
@@ -157,7 +156,6 @@ in
         distrobox
         incus.client
         srgn
-        attic-client
         # aider-chat
         git-annex
         git-remote-gcrypt
