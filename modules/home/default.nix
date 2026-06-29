@@ -150,7 +150,6 @@ in
 
         zrok
 
-        devpod
         altair
         broot
         distrobox
