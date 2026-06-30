@@ -428,9 +428,6 @@ in
       enable = true;
       enableMcpIntegration = true;
     };
-    t3code = {
-      enable = true;
-    };
     trippy.enable = true;
     equibop = {
       enable = true;
