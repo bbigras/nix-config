@@ -1621,6 +1621,12 @@ in
               "(helm-ts-mode . eglot-ensure)"
             ];
             config = ''
+              (defun my/yaml-ts-mode-setup ()
+                (setq-local tab-width 2
+                            indent-tabs-mode nil
+                            yaml-indent-offset 2))
+              (add-hook 'yaml-ts-mode-hook #'my/yaml-ts-mode-setup)
+
               (add-to-list 'eglot-server-programs
                 '(yaml-ts-mode . ("${lib.getExe pkgs.yaml-schema-router}" "--stdio")))
 
