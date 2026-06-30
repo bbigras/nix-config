@@ -43,6 +43,17 @@ in
     };
   };
 
+  xdg.dataFile."flatpak/overrides/global" = {
+    force = true;
+    text = ''
+      [Context]
+      filesystems=xdg-config/gtk-4.0:ro;
+
+      [Environment]
+      PATH=/app/bin:/usr/bin:/bin
+    '';
+  };
+
   gtk = {
     enable = true;
     gtk2.extraConfig = "gtk-application-prefer-dark-theme = true";

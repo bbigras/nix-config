@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   # silent boot for plymouth
@@ -13,7 +13,15 @@
   programs.dconf.enable = true;
   programs.wireshark.enable = false;
 
+  environment.systemPackages = [
+    (lib.hiPrio (pkgs.writeShellScriptBin "flatpak" ''
+      exec ${pkgs.coreutils}/bin/env -u PATH ${pkgs.flatpak}/bin/flatpak "$@"
+    ''))
+  ];
+
   services = {
+    envfs.enable = true;
+
     # displayManager.gdm = {
     #   enable = true;
     #   autoSuspend = true;
