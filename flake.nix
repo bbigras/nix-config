@@ -21,7 +21,6 @@
     # Core infrastructure
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs_resticprofile.url = "github:bbigras/nixpkgs/push-zswsmktvsmpo";
-    nixpkgs_veilid.url = "github:bbigras/nixpkgs/push-yyqolvozuvvx";
     niks3 = {
       url = "github:Mic92/niks3";
       inputs = {

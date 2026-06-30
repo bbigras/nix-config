@@ -29,7 +29,6 @@ in
           resticprofile =
             final.callPackage "${inputs.nixpkgs_resticprofile}/pkgs/by-name/re/resticprofile/package.nix"
               { };
-          veilid = final.callPackage "${inputs.nixpkgs_veilid}/pkgs/by-name/ve/veilid/package.nix" { };
         })
         (_self: super: {
           emacs.pkgs = super.emacs.pkgs // {

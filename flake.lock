@@ -734,22 +734,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_veilid": {
-      "locked": {
-        "lastModified": 1782175788,
-        "narHash": "sha256-ZqTtxCmt5+tl+qFrFuKbHuexqpFP5UDJogY1oPret3U=",
-        "owner": "bbigras",
-        "repo": "nixpkgs",
-        "rev": "e9db32aa61f1b9e0f3574cdc486e9e18ae5bb3bb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "bbigras",
-        "ref": "push-yyqolvozuvvx",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "noctalia": {
       "inputs": {
         "nixpkgs": [
@@ -822,7 +806,6 @@
         "nixos-unified": "nixos-unified",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs_resticprofile": "nixpkgs_resticprofile",
-        "nixpkgs_veilid": "nixpkgs_veilid",
         "noctalia": "noctalia",
         "nur": "nur",
         "space-tree": "space-tree",
