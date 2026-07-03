@@ -17,7 +17,7 @@ jobs:
       with:
         persist-credentials: false
     - uses: cachix/install-nix-action@8aa03977d8d733052d78f4e008a241fd1dbf36b3
-    - uses: Mic92/hestia@7ae4509d1c3cacd4a31b91d9ad308d74e0b5a053
+    - uses: Mic92/hestia@2606720eb6e4a34a070bf175d58883ad84b3ad61
       with:
         upstream-cache-filter: true
         upstream-cache-key-names: cache.nixos.org-1 nix-community.cachix.org-1
@@ -68,7 +68,7 @@ jobs:
       with:
         persist-credentials: false
     - uses: cachix/install-nix-action@8aa03977d8d733052d78f4e008a241fd1dbf36b3
-    - uses: Mic92/hestia@7ae4509d1c3cacd4a31b91d9ad308d74e0b5a053
+    - uses: Mic92/hestia@2606720eb6e4a34a070bf175d58883ad84b3ad61
       with:
         upstream-cache-filter: true
         upstream-cache-key-names: cache.nixos.org-1 nix-community.cachix.org-1
