@@ -96,6 +96,10 @@ in
 
   systemd = {
     network.wait-online.anyInterface = true;
+    services.fwupd-refresh = {
+      after = [ "polkit.service" ];
+      wants = [ "polkit.service" ];
+    };
   };
 
   time.timeZone = "America/Montreal";
