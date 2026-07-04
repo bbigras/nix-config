@@ -1575,6 +1575,8 @@ in
             (set-face-attribute 'eglot-diagnostic-tag-unnecessary-face nil
                                 :inherit 'flymake-warning)
             (setq eglot-documentation-renderer 'markdown-ts-view-mode)
+            (setq-default eglot-workspace-configuration
+                          '(:nil (:nix (:flake (:autoArchive t)))))
           '';
         };
 
