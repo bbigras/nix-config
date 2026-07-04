@@ -252,6 +252,7 @@ in
     fzf = {
       enable = true;
       tmux.enableShellIntegration = true;
+      historyWidget.command = "";
     };
     gcc = {
       enable = true;
