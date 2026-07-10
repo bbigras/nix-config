@@ -101,7 +101,6 @@ in
         ".config/pipewire"
         ".config/rclone"
         ".config/resticprofile"
-        ".config/streamlink"
         ".config/unity3d"
         ".config/vicinae"
         ".config/winboat"
