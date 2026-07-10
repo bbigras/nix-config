@@ -160,7 +160,6 @@ in
         git-remote-gcrypt
         spacer
         faketty
-        jan
         hl-log-viewer
         android-tools
         resticprofile
@@ -379,16 +378,6 @@ in
     pay-respects.enable = true;
     ripgrep.enable = true;
     sesh.enable = true;
-    streamlink = {
-      enable = true;
-      settings = {
-        player = "${pkgs.mpv}/bin/mpv";
-        player-args = "--cache 2048";
-        player-no-close = true;
-        twitch-disable-ads = true;
-        twitch-low-latency = true;
-      };
-    };
     swappy = {
       enable = true;
       settings = {
