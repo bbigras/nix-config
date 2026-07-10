@@ -536,7 +536,7 @@ in
         git-modes.enable = true;
 
         majutsu = {
-          enable = true;
+          enable = false;
           package = _epkgs: pkgs.emacs.pkgs.majutsu;
           bind = {
             "C-x v s" = "majutsu";
