@@ -10,7 +10,7 @@
 
         };
         custom = {
-          "denote-directory" = ''"~/Documents/notes"'';
+          "denote-directory" = ''"~/dev/org-mode/notes"'';
           "denote-rename-buffer-format" = ''"Denote: %t (%k)"'';
           # "denote-infer-keywords" = "nil";
           # "denote-known-keywords" = ''

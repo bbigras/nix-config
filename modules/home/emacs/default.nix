@@ -21,6 +21,7 @@ in
     ./typescript.nix
     ./org-mode.nix
     ./tree-sitter.nix
+    ./vulpea.nix
   ];
 
   home.packages =
