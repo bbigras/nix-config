@@ -160,7 +160,6 @@ in
         git-remote-gcrypt
         spacer
         faketty
-        jan
         hl-log-viewer
         android-tools
         resticprofile
