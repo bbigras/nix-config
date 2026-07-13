@@ -58,8 +58,9 @@ in
 
   gtk.enable = true;
   home.pointerCursor = {
-    x11.enable = true;
+    enable = true;
     gtk.enable = true;
+    x11.enable = true;
   };
 
   home = {
