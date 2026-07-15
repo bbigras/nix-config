@@ -14,7 +14,7 @@ jobs:
         fetch-depth: 2
         ref: ${{ github.head_ref || github.ref_name }}
         token: ${{ secrets.PAT }}
-    - uses: cachix/install-nix-action@a49548c11d9846ad46ecc0115273879b045f001c
+    - uses: cachix/install-nix-action@630ae543ea3a38a9a4166f03376c02c50f408342
     - uses: Mic92/hestia@fb239a2f72d4b6e26eec5425f289dea23b27a527
       with:
         upstream-cache-filter: true
