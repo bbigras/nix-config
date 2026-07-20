@@ -44,7 +44,7 @@ let
     alls-green = "re-actors/alls-green@05ac9388f0aebcb5727afa17fcccfecd6f8ec5fe"; # v1.2.2
     automerge = "peter-evans/enable-pull-request-automerge@a660677d5469627102a1c1e11409dd063606628d"; # v3.0.0
     cachix = "cachix/cachix-action@5f2d7c5294214f71b873db4b969586b980625e71"; # v17
-    checkout = "actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0"; # v7
+    checkout = "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1"; # v7
     hestia = "Mic92/hestia@fb239a2f72d4b6e26eec5425f289dea23b27a527"; # v2
     nothing-but-nix = "wimpysworld/nothing-but-nix@687c797a730352432950c707ab493fcc951818d7"; # v10
     install-nix-action = "cachix/install-nix-action@630ae543ea3a38a9a4166f03376c02c50f408342"; # v31.11.0
