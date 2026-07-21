@@ -14,6 +14,7 @@ in
 {
   imports = [
     ./consult.nix
+    ./dape.nix
     ./denote.nix
     ./elfeed.nix
     ./rust.nix
