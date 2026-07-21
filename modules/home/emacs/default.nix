@@ -919,16 +919,28 @@ in
             "(prog-mode . copilot-mode)"
             "(prog-mode . copilot-nes-mode)"
           ];
-          bindLocal = {
-            copilot-completion-map = {
-              "<tab>" = "copilot-accept-completion";
-              "TAB" = "copilot-accept-completion";
-              "C-<tab>" = "copilot-accept-completion-by-word";
-              "C-TAB" = "copilot-accept-completion-by-word";
-              "C-n" = "copilot-next-completion";
-              "C-p" = "copilot-previous-completion";
-            };
-          };
+          # bindLocal = {
+          #   copilot-completion-map = {
+          #     # "<tab>" = "copilot-accept-completion";
+          #     # "TAB" = "copilot-accept-completion";
+          #     # "C-<tab>" = "copilot-accept-completion-by-word";
+          #     # "C-TAB" = "copilot-accept-completion-by-word";
+          #     "C-n" = "copilot-next-completion";
+          #     "C-p" = "copilot-previous-completion";
+          #   };
+          # };
+          config = ''
+            (keymap-unset copilot-completion-map "<tab>")
+            (keymap-unset copilot-completion-map "TAB")
+            (keymap-set copilot-completion-map "<right>" #'copilot-accept-completion)
+            (keymap-set copilot-completion-map "C-f" #'copilot-accept-completion)
+            (keymap-set copilot-completion-map "M-<right>" #'copilot-accept-completion-by-word)
+            (keymap-set copilot-completion-map "M-f" #'copilot-accept-completion-by-word)
+            (keymap-set copilot-completion-map "C-e" #'copilot-accept-completion-by-line)
+            (keymap-set copilot-completion-map "<end>" #'copilot-accept-completion-by-line)
+            (keymap-set copilot-completion-map "M-n" #'copilot-next-completion)
+            (keymap-set copilot-completion-map "M-p" #'copilot-previous-completion)
+          '';
         };
 
         ben = {
