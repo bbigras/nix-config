@@ -1223,36 +1223,35 @@ in
             ;; to save your command history on disk, so the sorting gets more
             ;; intelligent over time
             (prescient-persist-mode +1)
-            (setq completion-preview-sort-function #'prescient-completion-sort)
           '';
+          # (setq completion-preview-sort-function #'prescient-completion-sort)
         };
 
+        # https://protesilaos.com/codelog/2026-07-19-emacs-completion-at-point-functions/#org8a380be
         completion-preview = {
-          enable = true;
+          enable = false;
           hook = [ "(after-init . global-completion-preview-mode)" ];
           bindLocal = {
             completion-preview-active-mode-map = {
               "M-n" = "completion-preview-next-candidate";
               "M-p" = "completion-preview-prev-candidate";
+              "M-<return>" = "completion-preview-insert";
+              "<tab>" = "completion-preview-complete";
             };
           };
           custom = {
-            completion-preview-minimum-symbol-length = 2; # Show the preview already after two symbol characters
-            completion-preview-exact-match-only = "nil"; # If t, only show suggestion if there is only one candidate
-            completion-preview-idle-delay = 0.3; # If non-nil, wait this many idle seconds before displaying preview
+            completion-preview-commands = ''
+              '(self-insert-command
+                insert-char
+                analyze-text-conversion
+                completion-preview-insert-word)
+            '';
+            completion-preview-exact-match-only = "nil";
+            completion-preview-idle-delay = 0.3;
+            completion-preview-ignore-case = "t";
+            completion-preview-minimum-symbol-length = 2;
+            completion-preview-sort-function = "#'identity";
           };
-          config = ''
-            (with-eval-after-load 'org
-              ;; Add Org mode's custom 'self-insert-command' to completion-previews
-              (push 'org-self-insert-command completion-preview-commands)
-              )
-            ;; Disable completion preview in Org tables (Emacs 31+)
-            (defun my/detect-org-table ()
-              "Return true if point in Org table."
-              (and (derived-mode-p 'org-mode) (org-at-table-p)))
-            (add-hook 'completion-preview-inhibit-functions
-                      #'my/detect-org-table)            
-          '';
         };
 
         corfu-prescient = {
