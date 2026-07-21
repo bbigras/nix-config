@@ -1707,6 +1707,9 @@ in
 
         flymake = {
           enable = true;
+          custom = {
+            flymake-show-diagnostics-at-end-of-line = "t";
+          };
         };
 
         breadcrumb = {
