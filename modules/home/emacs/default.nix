@@ -131,6 +131,13 @@ in
       usePackage = {
         # logview.enable = true;
 
+        ast-grep = {
+          enable = true;
+          extraPackages = [
+            pkgs.ast-grep
+          ];
+        };
+
         benchmark-init = {
           enable = false;
           earlyInit = ''
