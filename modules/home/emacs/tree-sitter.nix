@@ -20,6 +20,7 @@ let
       tree-sitter-just
       tree-sitter-kotlin
       tree-sitter-markdown
+      tree-sitter-markdown-inline
       tree-sitter-nix
       tree-sitter-prisma
       tree-sitter-python

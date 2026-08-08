@@ -1519,6 +1519,10 @@ in
         markdown-ts-mode = {
           enable = true;
           defer = true;
+          package = "__emacs_builtin__"; # Built into Emacs.
+          mode = [
+            ''(rx ".md" eos)''
+          ];
         };
 
         # pandoc-mode = {
