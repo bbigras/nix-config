@@ -69,7 +69,7 @@ let
       uses = actions.hestia;
       "with" = {
         upstream-cache-filter = true;
-        upstream-cache-key-names = "cache.nixos.org-1 nix-community.cachix.org-1";
+        upstream-cache-key-names = "cache.nixos.org-1 nix-community.cachix.org-1 noctalia.cachix.org-1 niri.cachix.org-1 bbigras-nix-config.cachix.org-1";
       };
     };
 
@@ -82,10 +82,11 @@ let
       };
     };
 
-    # Helper to create nix-fast-build step for a given attribute expression
-    nix-fast-build = flakeAttr: {
-      name = "nix-fast-build";
-      run = "nix run '${flakeRef}#nix-fast-build' -- --no-nom --skip-cached --retries=3 --option accept-flake-config true --flake='${flakeRef}#${flakeAttr}'";
+    # Build directly so Nix substitutes cached host outputs without
+    # nix-fast-build's recursive cache-status evaluation.
+    nix-build = flakeAttr: {
+      name = "nix build";
+      run = "nix build --no-link '${flakeRef}#${flakeAttr}' --option accept-flake-config true";
     };
   };
 
@@ -171,7 +172,7 @@ in
               matrix.attrs = nixosHosts ++ homeHosts;
             };
             runs-on = "\${{ matrix.attrs.runsOn }}";
-            steps = setupSteps ++ [ (steps.nix-fast-build "\${{ matrix.attrs.attr }}") ];
+            steps = setupSteps ++ [ (steps.nix-build "\${{ matrix.attrs.attr }}") ];
           };
 
           # Final check job - aggregates all results
