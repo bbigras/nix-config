@@ -33,6 +33,10 @@ in
           "configurable-impure-env"
           "flakes"
           "nix-command"
+
+          "ca-derivations"
+          "dynamic-derivations"
+          "recursive-nix"
         ];
         # http-connections = 0;
         # flake-registry = "/etc/nix/registry.json";
