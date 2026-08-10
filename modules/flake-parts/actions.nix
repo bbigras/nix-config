@@ -69,7 +69,7 @@ let
       uses = actions.hestia;
       "with" = {
         upstream-cache-filter = true;
-        upstream-cache-key-names = "cache.nixos.org-1 nix-community.cachix.org-1";
+        upstream-cache-key-names = "cache.nixos.org-1 nix-community.cachix.org-1 noctalia.cachix.org-1 niri.cachix.org-1 bbigras-nix-config.cachix.org-1";
       };
     };
 

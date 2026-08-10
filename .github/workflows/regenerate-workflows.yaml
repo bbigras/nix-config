@@ -18,7 +18,8 @@ jobs:
     - uses: Mic92/hestia@b21a1aaf8c3d5c2e430c9ba278c0f78abd46a320
       with:
         upstream-cache-filter: true
-        upstream-cache-key-names: cache.nixos.org-1 nix-community.cachix.org-1
+        upstream-cache-key-names: cache.nixos.org-1 nix-community.cachix.org-1 noctalia.cachix.org-1
+          niri.cachix.org-1 bbigras-nix-config.cachix.org-1
     - uses: cachix/cachix-action@5f2d7c5294214f71b873db4b969586b980625e71
       with:
         authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
