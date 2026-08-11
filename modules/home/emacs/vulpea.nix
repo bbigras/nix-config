@@ -80,6 +80,14 @@
         package = _epkgs: pkgs.emacsPackages.vulpea-para;
         config = ''
           (vulpea-para-setup-defaults)
+
+          (setq org-capture-templates
+                '(("t" "Task" entry
+                   (file+headline "inbox.org" "Tasks")
+                   (function vulpea-para-capture-task-template))
+          ("p" "PARA project" entry #'vulpea-para-capture-project-target #'vulpea-para-capture-project-template)
+          ("m" "PARA meeting" entry #'vulpea-para-capture-meeting-target #'vulpea-para-capture-meeting-template :clock-in t :clock-resume t)
+          ))
         '';
       };
     };
