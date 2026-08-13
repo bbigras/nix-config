@@ -15,7 +15,7 @@ jobs:
         ref: ${{ github.head_ref || github.ref_name }}
         token: ${{ secrets.PAT }}
     - uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24
-    - uses: Mic92/hestia@b21a1aaf8c3d5c2e430c9ba278c0f78abd46a320
+    - uses: Mic92/hestia@f1f4df2801140a36398ed423533c8460618539df
       with:
         upstream-cache-filter: true
         upstream-cache-key-names: cache.nixos.org-1 nix-community.cachix.org-1 noctalia.cachix.org-1
