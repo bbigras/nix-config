@@ -696,22 +696,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_resticprofile": {
-      "locked": {
-        "lastModified": 1786646776,
-        "narHash": "sha256-Ym4PfHTC0zGGWpO6czRz0v21tX86ts5lQE/K+UuH+yM=",
-        "owner": "bbigras",
-        "repo": "nixpkgs",
-        "rev": "790dd6a524abbd72cd3a4f13ac29b2fb73c9a0b4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "bbigras",
-        "ref": "push-zswsmktvsmpo",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "noctalia": {
       "inputs": {
         "nixpkgs": [
@@ -783,7 +767,6 @@
         "nixos-hardware": "nixos-hardware",
         "nixos-unified": "nixos-unified",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs_resticprofile": "nixpkgs_resticprofile",
         "noctalia": "noctalia",
         "nur": "nur",
         "space-tree": "space-tree",
