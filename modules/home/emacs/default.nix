@@ -1624,8 +1624,6 @@ in
             (set-face-attribute 'eglot-highlight-symbol-face nil
                                 :background (face-background 'region)
                                 :weight 'bold)
-            (set-face-attribute 'eglot-diagnostic-tag-unnecessary-face nil
-                                :inherit 'flymake-warning)
             (setq eglot-documentation-renderer 'markdown-ts-view-mode)
             (setq-default eglot-workspace-configuration
                           '(:nil (:nix (:flake (:autoArchive t)))))
@@ -1745,11 +1743,17 @@ in
           ];
         };
 
-        flymake = {
+        flycheck = {
           enable = true;
+          hook = [
+            "(after-init-hook . global-flycheck-annotate-mode)"
+          ];
           custom = {
-            flymake-show-diagnostics-at-end-of-line = "t";
+
           };
+          config = ''
+            (global-flycheck-eglot-mode 1)
+          '';
         };
 
         breadcrumb = {
