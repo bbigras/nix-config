@@ -35,6 +35,11 @@
     enable = true;
     wlr.enable = true;
     extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
-    config.common.default = "*";
+    config.common = {
+      # xdg-desktop-portal-wlr does not implement a file chooser.  Select the
+      # GTK backend explicitly so Steam can open one on Niri.
+      default = "*";
+      "org.freedesktop.impl.portal.FileChooser" = "gtk";
+    };
   };
 }
