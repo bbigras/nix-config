@@ -377,6 +377,7 @@ in
     mcp = {
       enable = true;
     };
+    navi.enable = true;
     pay-respects.enable = true;
     ripgrep.enable = true;
     sesh.enable = true;
