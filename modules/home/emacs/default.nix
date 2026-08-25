@@ -910,11 +910,12 @@ in
           '';
         };
 
-        ws-butler = {
+        stripspace = {
           enable = true;
           hook = [
-            "(text-mode . ws-butler-mode)"
-            "(prog-mode . ws-butler-mode)"
+            "(prog-mode . stripspace-local-mode)"
+            "(text-mode . stripspace-local-mode)"
+            "(conf-mode . stripspace-local-mode)"
           ];
         };
 
