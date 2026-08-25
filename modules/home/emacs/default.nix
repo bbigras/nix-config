@@ -32,6 +32,7 @@ in
     ]
     ++ [
       pkgs.rassumfrassum
+      pkgs.nerd-fonts.fira-code
     ];
 
   programs.emacs = {
@@ -51,7 +52,18 @@ in
           (defconst dw/is-termux (getenv "ANDROID_ROOT"))
 
           ;; list font families with `fc-list : family`
-          (set-face-attribute 'default nil :family "NotoSansM Nerd Font Mono" :height 130)
+          (set-frame-font "FiraCode Nerd Font" nil t)
+          (set-face-attribute 'default nil
+                              :font "FiraCode Nerd Font"
+                              :height 113)
+          (add-hook
+           'after-make-frame-functions
+           (lambda (frame)
+             (with-selected-frame frame
+               (set-frame-font "FiraCode Nerd Font" nil t)
+               (set-face-attribute 'default frame
+                                   :font "FiraCode Nerd Font"
+                                   :height 113))))
 
           ;; Add to your init.el before loading nix-ts-mode
           (setq treesit-font-lock-level 4)
