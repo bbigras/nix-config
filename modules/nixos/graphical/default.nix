@@ -14,9 +14,11 @@
   programs.wireshark.enable = false;
 
   environment.systemPackages = [
-    (lib.hiPrio (pkgs.writeShellScriptBin "flatpak" ''
-      exec ${pkgs.coreutils}/bin/env -u PATH ${pkgs.flatpak}/bin/flatpak "$@"
-    ''))
+    (lib.hiPrio (
+      pkgs.writeShellScriptBin "flatpak" ''
+        exec ${pkgs.coreutils}/bin/env -u PATH ${pkgs.flatpak}/bin/flatpak "$@"
+      ''
+    ))
   ];
 
   services = {
