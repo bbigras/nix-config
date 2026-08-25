@@ -1242,6 +1242,18 @@ in
           hook = [ "(prog-mode . rainbow-delimiters-mode)" ];
         };
 
+        centaur-tabs = {
+          enable = true;
+          demand = true;
+          config = ''
+            (centaur-tabs-mode t)
+          '';
+          bind = {
+            "C-<prior>" = "centaur-tabs-backward";
+            "C-<next>" = "centaur-tabs-forward";
+          };
+        };
+
         tempel-collection = {
           enable = true;
           after = [ "tempel" ];
