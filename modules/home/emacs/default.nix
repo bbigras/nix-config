@@ -1136,9 +1136,10 @@ in
         buffer-terminator = {
           enable = true;
           custom = {
-            "buffer-terminator-prompt-on-kill" = "nil";
+            # "buffer-terminator-prompt-on-kill" = "nil";
+            "buffer-terminator-verbose" = "nil";
           };
-          config = ''
+          init = ''
             (buffer-terminator-mode 1)
           '';
         };
