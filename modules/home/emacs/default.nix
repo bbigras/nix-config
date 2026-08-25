@@ -1534,25 +1534,25 @@ in
           };
         };
 
-        # avy = {
-        #   enable = true;
-        #   # avy-org-goto-heading-timer
-        #   # avy-goto-char-timer
-        #   # avy-org-refile-as-child
-        #   # avy-goto-word-or-subword-1
-        #   bind = {
-        #     "C-:" = "avy-goto-char";
-        #     "C-'" = "avy-goto-char-2";
-        #     "M-g f" = "avy-goto-line";
-        #     "M-g w" = "avy-goto-word-1";
-        #     "M-g e" = "avy-goto-word-0";
-        #     "C-c C-j" = "avy-resume";
-        #   };
-        #   command = [ "avy-process" ];
-        #   config = ''
-        #     (setq avy-all-windows t)
-        #   '';
-        # };
+        avy = {
+          enable = true;
+          # avy-org-goto-heading-timer
+          # avy-goto-char-timer
+          # avy-org-refile-as-child
+          # avy-goto-word-or-subword-1
+          bind = {
+            "C-:" = "avy-goto-char";
+            "C-'" = "avy-goto-char-2";
+            "M-g f" = "avy-goto-line";
+            "M-g w" = "avy-goto-word-1";
+            "M-g e" = "avy-goto-word-0";
+            "C-c C-j" = "avy-resume";
+          };
+          command = [ "avy-process" ];
+          config = ''
+            (setq avy-all-windows t)
+          '';
+        };
 
         undo-fu = {
           enable = true;
