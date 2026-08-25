@@ -51,6 +51,10 @@ in
         + ''
           (defconst dw/is-termux (getenv "ANDROID_ROOT"))
 
+          ;; Transparency
+          (set-frame-parameter nil 'alpha-background 90) ; For current frame
+          (add-to-list 'default-frame-alist '(alpha-background . 90)) ; For all new frames henceforth
+
           ;; list font families with `fc-list : family`
           (set-frame-font "FiraCode Nerd Font" nil t)
           (set-face-attribute 'default nil
