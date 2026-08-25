@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       Browser.Enabled = true;
-      # Browser.UpdateBinaryPath = false;
+      Browser.UpdateBinaryPath = false;
       General = {
         MinimizeAfterUnlock = true;
       };
