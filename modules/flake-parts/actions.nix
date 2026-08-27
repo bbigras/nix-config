@@ -90,18 +90,17 @@ let
       };
     };
 
-    # Build directly so Nix substitutes cached host outputs without
-    # nix-fast-build's recursive cache-status evaluation.
-    nix-build = flakeAttr: {
-      name = "nix build";
-      run = "nix build --no-link '${flakeRef}#${flakeAttr}' --option accept-flake-config true";
+    nix-fast-build = flakeAttr: {
+      name = "nix-fast-build";
+      run = "nix run '${flakeRef}#nix-fast-build' -- --no-nom --skip-cached --retries=3 --option accept-flake-config true --flake='${flakeRef}#${flakeAttr}'";
     };
   };
 
-  # Common setup steps for build jobs
-  setupSteps = [
+  # Common setup steps. nix-fast-build needs the full Git history, while
+  # ordinary flake checks can retain checkout's shallow default.
+  setupSteps = checkoutStep: [
     steps.nothing-but-nix
-    steps.checkout
+    checkoutStep
     steps.nixInstaller
     steps.hestia
     steps.cachix
@@ -159,7 +158,7 @@ in
             environment = "ci";
             strategy.matrix.systems = checkPlatforms;
             runs-on = "\${{ matrix.systems.os }}";
-            steps = setupSteps ++ [
+            steps = setupSteps steps.checkout ++ [
               {
                 name = "nix flake check";
                 run = "nix flake check '${flakeRef}'";
@@ -180,7 +179,10 @@ in
               matrix.attrs = nixosHosts ++ homeHosts;
             };
             runs-on = "\${{ matrix.attrs.runsOn }}";
-            steps = setupSteps ++ [ (steps.nix-build "\${{ matrix.attrs.attr }}") ];
+            timeout-minutes = 120;
+            steps = setupSteps steps.checkoutFullHistory ++ [
+              (steps.nix-fast-build "\${{ matrix.attrs.attr }}")
+            ];
           };
 
           # Final check job - aggregates all results
@@ -218,13 +220,7 @@ in
           environment = "ci";
           runs-on = "ubuntu-24.04";
           timeout-minutes = 120;
-          steps = [
-            steps.nothing-but-nix
-            steps.checkoutFullHistory
-            steps.nixInstaller
-            steps.hestia
-            steps.cachix
-          ] ++ [
+          steps = setupSteps steps.checkoutFullHistory ++ [
             {
               name = "nix-fast-build (skip cached)";
               run = ''
