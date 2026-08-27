@@ -61,6 +61,14 @@ let
       "with".persist-credentials = false;
     };
 
+    # nix-fast-build evaluates git metadata, including revCount, which is not
+    # available in checkout's default shallow clone.
+    checkoutFullHistory = steps.checkout // {
+      "with" = steps.checkout."with" // {
+        fetch-depth = 0;
+      };
+    };
+
     nixInstaller = {
       uses = actions.install-nix-action;
     };
@@ -210,7 +218,13 @@ in
           environment = "ci";
           runs-on = "ubuntu-24.04";
           timeout-minutes = 120;
-          steps = setupSteps ++ [
+          steps = [
+            steps.nothing-but-nix
+            steps.checkoutFullHistory
+            steps.nixInstaller
+            steps.hestia
+            steps.cachix
+          ] ++ [
             {
               name = "nix-fast-build (skip cached)";
               run = ''
