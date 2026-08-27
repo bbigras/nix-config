@@ -195,6 +195,34 @@ in
         };
       };
 
+      # Isolate nix-fast-build's cache-download behaviour on the host that
+      # timed out after a lock-file update.  This is dispatch-only: do not make
+      # it part of the required CI path unless it wins reliably.
+      ".github/workflows/nix-fast-build-trial.yaml" = {
+        name = "nix-fast-build-trial";
+
+        on.workflow_dispatch = { };
+
+        permissions = { };
+
+        jobs.laptop = {
+          name = "laptop (x86_64-linux)";
+          environment = "ci";
+          runs-on = "ubuntu-24.04";
+          timeout-minutes = 120;
+          steps = setupSteps ++ [
+            {
+              name = "nix-fast-build (skip cached)";
+              run = ''
+                started_at="$(date +%s)"
+                trap 'printf "nix-fast-build elapsed_seconds=%s\\n" "$(( $(date +%s) - started_at ))"' EXIT
+                nix run '${flakeRef}#nix-fast-build' -- --no-nom --skip-cached --retries=3 --option accept-flake-config true --flake='${flakeRef}#nixosConfigurations.laptop.config.system.build.toplevel'
+              '';
+            }
+          ];
+        };
+      };
+
       # Regenerate workflows for Renovate PRs or manual trigger
       ".github/workflows/regenerate-workflows.yaml" = {
         name = "regenerate-workflows";
