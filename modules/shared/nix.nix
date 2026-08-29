@@ -28,6 +28,8 @@ in
         ];
         # cores = 0;
         # max-jobs = "auto";
+        auto-allocate-uids = true;
+        extra-system-features = [ "uid-range" ];
         experimental-features = [
           "auto-allocate-uids"
           "configurable-impure-env"
@@ -37,6 +39,8 @@ in
           "ca-derivations"
           "dynamic-derivations"
           "recursive-nix"
+          "auto-allocate-uids"
+          "cgroups"
         ];
         # http-connections = 0;
         # flake-registry = "/etc/nix/registry.json";
