@@ -1267,6 +1267,8 @@ in
           };
         };
 
+        edit-indirect.enable = true;
+
         corfu-prescient = {
           enable = true;
           after = [ "corfu" ];
