@@ -396,7 +396,6 @@ in
           ];
           bind = {
             "C-o" = "casual-editkit-main-tmenu";
-            "M-g" = "casual-avy-tmenu";
 
             "C-c w" = "casual-editkit-windows-tmenu";
             "C-c r" = "casual-editkit-rectangle-tmenu";
