@@ -28,7 +28,7 @@ in
         peers = [
           {
             addr = "cade:7946";
-            public_key = "9e05669b28dceec3c454a127a2685a318831c399a8eae84084991ad8d40a6a41";
+            public_key = "9e05669b28dceec3c454a127a2685a318831c399a8eae84084991ad8d40a6a41"; # pragma: allowlist secret
           }
         ];
       };
