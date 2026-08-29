@@ -1729,8 +1729,8 @@ in
           config = ''
             (with-eval-after-load 'eglot
               (setq eglot-server-programs
-                    (cons '(nix-mode . ("rass" "--" "nixd" "--" "nil" "--stdio"))
-                          (assoc-delete-all 'nix-mode eglot-server-programs))))
+              (cons '(nix-mode . ("rass"  "--" "nil" "--stdio" "--" "nixd"))
+              (assoc-delete-all 'nix-mode eglot-server-programs))))
           '';
         };
 
@@ -1811,7 +1811,7 @@ in
         orderless = {
           enable = true;
           init = ''
-                        (setq completion-styles '(orderless partial-completion basic)
+            (setq completion-styles '(orderless partial-completion basic)
                               completion-category-defaults nil)
 
                               (setq completion-category-overrides '((eglot (styles orderless))
