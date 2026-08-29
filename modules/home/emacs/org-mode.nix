@@ -177,7 +177,6 @@
             "org-extend-today-until" = 4;
 
             org-hide-leading-stars = "t";
-            org-startup-indented = "t";
             org-adapt-indentation = "nil";
             org-edit-src-content-indentation = 0;
             org-startup-truncated = "t";
@@ -192,7 +191,6 @@
                         ;; Turn on indentation and auto-fill mode for Org files
                         (defun dw/org-mode-setup ()
                           ;; (variable-pitch-mode 1)
-                          (org-indent-mode 1)
                           (auto-fill-mode 0)
                           (visual-line-mode 1)
                           (setq corfu-auto nil))
