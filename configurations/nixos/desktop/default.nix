@@ -34,19 +34,7 @@ in
     # Host-specific files
     # ./state.nix
     { config.facter.reportPath = ./facter.json; }
-  ]
-  ++ (
-    if builtins.pathExists ("/home/bbigras/nix-config/secrets-submodule/at_home.nix") then
-    [ "/home/bbigras/nix-config/secrets-submodule/at_home.nix" ]
-    else
-    [ ]
-  )
-  ++ (
-    if builtins.pathExists ("/home/bbigras/nix-config/secrets-submodule/desktop.nix") then
-    [ "/home/bbigras/nix-config/secrets-submodule/desktop.nix" ]
-    else
-    [ ]
-  );
+  ];
 
   hardware.amdgpu.initrd.enable = true;
 

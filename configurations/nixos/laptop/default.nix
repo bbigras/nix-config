@@ -33,19 +33,7 @@ in
     # Host-specific files
     ./disko.nix
     ./state.nix
-  ]
-  ++ (
-    # if builtins.pathExists ("/home/bbigras/nix-config/secrets-submodule/at_home.nix") then
-    [ ("/home/bbigras/nix-config/secrets-submodule/at_home.nix") ]
-    # else
-    # [ ]
-  )
-  ++ (
-    # if builtins.pathExists ("/home/bbigras/nix-config/secrets-submodule/desktop.nix") then
-    [ ("/home/bbigras/nix-config/secrets-submodule/laptop.nix") ]
-    # else
-    # [ ]
-  );
+  ];
 
   # Host-specific home-manager user config
   home-manager.users.bbigras.imports = [
