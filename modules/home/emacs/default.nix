@@ -1513,21 +1513,86 @@ in
 
         avy = {
           enable = true;
-          # avy-org-goto-heading-timer
-          # avy-goto-char-timer
-          # avy-org-refile-as-child
-          # avy-goto-word-or-subword-1
           bind = {
-            "C-:" = "avy-goto-char";
-            "C-'" = "avy-goto-char-2";
-            "M-g f" = "avy-goto-line";
-            "M-g w" = "avy-goto-word-1";
-            "M-g e" = "avy-goto-word-0";
-            "C-c C-j" = "avy-resume";
+            "M-j" = "avy-goto-char-timer";
           };
           command = [ "avy-process" ];
           config = ''
-            (setq avy-all-windows t)
+            (defun avy-action-kill-whole-line (pt)
+              (save-excursion
+                (goto-char pt)
+                (kill-whole-line))
+              (select-window
+               (cdr
+                (ring-ref avy-ring 0)))
+              t)
+
+            (setf (alist-get ?k avy-dispatch-alist) 'avy-action-kill-stay
+                  (alist-get ?K avy-dispatch-alist) 'avy-action-kill-whole-line)
+
+            (defun avy-action-copy-whole-line (pt)
+              (save-excursion
+                (goto-char pt)
+                (cl-destructuring-bind (start . end)
+                    (bounds-of-thing-at-point 'line)
+                  (copy-region-as-kill start end)))
+              (select-window
+               (cdr
+                (ring-ref avy-ring 0)))
+              t)
+
+            (defun avy-action-yank-whole-line (pt)
+              (avy-action-copy-whole-line pt)
+              (save-excursion (yank))
+              t)
+
+            (setf (alist-get ?y avy-dispatch-alist) 'avy-action-yank
+                  (alist-get ?w avy-dispatch-alist) 'avy-action-copy
+                  (alist-get ?W avy-dispatch-alist) 'avy-action-copy-whole-line
+                  (alist-get ?Y avy-dispatch-alist) 'avy-action-yank-whole-line)
+
+            (defun avy-action-teleport-whole-line (pt)
+              (avy-action-kill-whole-line pt)
+              (save-excursion (yank)) t)
+
+            (setf (alist-get ?t avy-dispatch-alist) 'avy-action-teleport
+                  (alist-get ?T avy-dispatch-alist) 'avy-action-teleport-whole-line)
+
+            (defun avy-action-mark-to-char (pt)
+              (activate-mark)
+              (goto-char pt))
+
+            (setf (alist-get ?  avy-dispatch-alist) 'avy-action-mark-to-char)
+
+            (defun avy-action-flyspell (pt)
+              (save-excursion
+                (goto-char pt)
+                (when (require 'flyspell nil t)
+                  (flyspell-auto-correct-word)))
+              (select-window
+               (cdr (ring-ref avy-ring 0)))
+              t)
+
+            ;; Bind to semicolon (flyspell uses C-;)
+            (setf (alist-get ?\; avy-dispatch-alist) 'avy-action-flyspell)
+
+            (defun avy-action-embark (pt)
+              (unwind-protect
+                  (save-excursion
+                    (goto-char pt)
+                    (embark-act))
+                (select-window
+                 (cdr (ring-ref avy-ring 0))))
+              t)
+
+            (setf (alist-get ?. avy-dispatch-alist) 'avy-action-embark)
+
+            (defun avy-action-exchange (pt)
+              "Exchange sexp at PT with the one at point."
+              (set-mark pt)
+              (transpose-sexps 0))
+
+            (add-to-list 'avy-dispatch-alist '(?e . avy-action-exchange))
           '';
         };
 
