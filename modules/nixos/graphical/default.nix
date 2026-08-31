@@ -21,6 +21,8 @@
     ))
   ];
 
+  security.soteria.enable = true;
+
   services = {
     envfs.enable = true;
 
