@@ -23,7 +23,7 @@ jobs:
         upstream-cache-filter: true
         upstream-cache-key-names: cache.nixos.org-1 nix-community.cachix.org-1 noctalia.cachix.org-1
           niri.cachix.org-1 bbigras-nix-config.cachix.org-1
-    - uses: cachix/cachix-action@5f2d7c5294214f71b873db4b969586b980625e71
+    - uses: cachix/cachix-action@38b082610b782e7e93e209c35fd730d399dee866
       with:
         authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
         extraPullNames: nix-community,noctalia,niri
@@ -75,7 +75,7 @@ jobs:
         upstream-cache-filter: true
         upstream-cache-key-names: cache.nixos.org-1 nix-community.cachix.org-1 noctalia.cachix.org-1
           niri.cachix.org-1 bbigras-nix-config.cachix.org-1
-    - uses: cachix/cachix-action@5f2d7c5294214f71b873db4b969586b980625e71
+    - uses: cachix/cachix-action@38b082610b782e7e93e209c35fd730d399dee866
       with:
         authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
         extraPullNames: nix-community,noctalia,niri
