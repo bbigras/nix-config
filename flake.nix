@@ -19,7 +19,7 @@
 
   inputs = {
     # Core infrastructure
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
     niks3 = {
       url = "github:Mic92/niks3";
       inputs = {
