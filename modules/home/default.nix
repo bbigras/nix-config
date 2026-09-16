@@ -407,9 +407,6 @@ in
         packages = [
           "npm:@mjakl/pi-subagent"
           "npm:@sting8k/pi-vcc"
-          "npm:pi-ast-grep"
-          "npm:pi-chatgpt-limit"
-          "npm:pi-code-index"
           "npm:pi-direnv"
           "npm:pi-rtk-optimizer"
           "npm:pi-web-kit"
