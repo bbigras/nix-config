@@ -46,14 +46,6 @@ in
               version = "git";
               src = inputs.space-tree;
             };
-            vulpea-para = super.emacs.pkgs.trivialBuild {
-              pname = "vulpea-para";
-              version = "git";
-              src = inputs.vulpea-para;
-              packageRequires = [
-                super.emacs.pkgs.vulpea
-              ];
-            };
             treesit-sexp = super.emacs.pkgs.trivialBuild {
               pname = "treesit-sexp";
               version = "git";

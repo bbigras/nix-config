@@ -619,8 +619,7 @@
         "space-tree": "space-tree",
         "systems": "systems",
         "treefmt-nix": "treefmt-nix",
-        "treesit-sexp": "treesit-sexp",
-        "vulpea-para": "vulpea-para"
+        "treesit-sexp": "treesit-sexp"
       }
     },
     "rust-overlay": {
@@ -708,22 +707,6 @@
       "original": {
         "owner": "alexispurslane",
         "repo": "treesit-sexp",
-        "type": "github"
-      }
-    },
-    "vulpea-para": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1783966845,
-        "narHash": "sha256-FSs0z//mQT+rNBHcYVcCBc7EHOtcRhoVmCaUa28fWgM=",
-        "owner": "d12frosted",
-        "repo": "vulpea-para",
-        "rev": "c47ca23dd5d998236895571626b045f046d99659",
-        "type": "github"
-      },
-      "original": {
-        "owner": "d12frosted",
-        "repo": "vulpea-para",
         "type": "github"
       }
     }

@@ -180,10 +180,6 @@
       url = "github:chiply/space-tree";
       flake = false;
     };
-    vulpea-para = {
-      url = "github:d12frosted/vulpea-para";
-      flake = false;
-    };
   };
 
   outputs =
