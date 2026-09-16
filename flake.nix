@@ -24,6 +24,7 @@
       url = "github:Mic92/niks3";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        treefmt-nix.follows = "treefmt-nix";
       };
     };
     flake-parts = {
@@ -86,6 +87,8 @@
 
     # Persistence
     impermanence.url = "github:nix-community/impermanence";
+    impermanence.inputs.home-manager.follows = "home-manager";
+    impermanence.inputs.nixpkgs.follows = "nixpkgs";
 
     # Secure boot
     lanzaboote = {
@@ -114,6 +117,7 @@
 
     # Hardware support
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nixos-hardware.inputs.nixpkgs.follows = "nixpkgs";
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
     ncro = {
       url = "github:feel-co/ncro";
