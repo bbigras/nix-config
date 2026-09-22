@@ -45,7 +45,7 @@ let
     automerge = "peter-evans/enable-pull-request-automerge@a660677d5469627102a1c1e11409dd063606628d"; # v3.0.0
     cachix = "cachix/cachix-action@38b082610b782e7e93e209c35fd730d399dee866"; # v17
     checkout = "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1"; # v7.0.1
-    hestia = "Mic92/hestia@f1f4df2801140a36398ed423533c8460618539df"; # v3.0.1
+    hestia = "Mic92/hestia@dfed9ced335d28978ba74e513939a10db1f71025"; # v3.1.0
     nothing-but-nix = "wimpysworld/nothing-but-nix@687c797a730352432950c707ab493fcc951818d7"; # v10
     install-nix-action = "cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24"; # v31.11.1
   };
