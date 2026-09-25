@@ -141,7 +141,6 @@ in
         ".kube/cache"
         ".lxmd"
         ".pki"
-        ".radicle"
         ".reticulum"
         ".winboat"
 
