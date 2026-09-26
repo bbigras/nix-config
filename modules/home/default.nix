@@ -157,7 +157,6 @@ in
         incus.client
         srgn
         # aider-chat
-        git-annex
         git-remote-gcrypt
         spacer
         faketty
