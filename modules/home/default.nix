@@ -70,7 +70,7 @@ in
       [
         ccinit
         fd
-        git-annex
+        # git-annex
         git-remote-gcrypt
         incus.client
         mosh
