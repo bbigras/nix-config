@@ -64,9 +64,7 @@
     agenix = {
       url = "github:ryantm/agenix";
       inputs = {
-        home-manager.follows = "home-manager";
         nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
       };
     };
     agenix-rekey = {
