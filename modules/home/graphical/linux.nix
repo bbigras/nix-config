@@ -36,6 +36,7 @@ in
     ];
 
     sessionVariables = {
+      TERMINAL = "ghostty";
       MOZ_DBUS_REMOTE = 1;
       MOZ_USE_XINPUT2 = 1;
       QT_AUTO_SCREEN_SCALE_FACTOR = 1;
