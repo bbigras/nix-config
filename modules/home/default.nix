@@ -166,6 +166,7 @@ in
         openbao
         nmap
         ctx7
+        smartmontools
       ]
       ++ (with pkgs.hunspellDicts; [
         fr-moderne
@@ -484,6 +485,7 @@ in
   systemd.user.startServices = "sd-switch";
 
   services.tailscale-systray.enable = true;
+  services.kdeconnect.enable = true;
 
   xdg.configFile."nixpkgs/config.nix".text = "{ allowUnfree = true; }";
 }
