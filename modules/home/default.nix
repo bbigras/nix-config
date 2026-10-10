@@ -377,6 +377,15 @@ in
     mcp = {
       enable = true;
     };
+    moor = {
+      enable = true;
+      enableJujutsuIntegration = true;
+      options = {
+        no-linenumbers = true;
+        no-statusbar = true;
+        quit-if-one-screen = true;
+      };
+    };
     navi.enable = true;
     pay-respects.enable = true;
     pi-coding-agent = {

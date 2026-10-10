@@ -3,7 +3,6 @@
     delta = {
       enable = true;
       enableGitIntegration = true;
-      enableJujutsuIntegration = true;
     };
 
     jjui = {
