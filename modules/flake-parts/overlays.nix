@@ -23,6 +23,10 @@ in
               {
                 inherit (super) emacs;
               };
+          go-mockery =
+            final.callPackage "${inputs.nixpkgs_go-mockery}/pkgs/by-name/go/go-mockery/package.nix"
+              {
+              };
         })
         (_self: super: {
           emacs.pkgs = super.emacs.pkgs // {
