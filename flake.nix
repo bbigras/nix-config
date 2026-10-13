@@ -16,7 +16,7 @@
   inputs = {
     # Core infrastructure
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
-    nixpkgs_go-mockery.url = "github:nixos/nixpkgs?rev=94e73195242c0a963e79f7c725df601888133431";
+    nixpkgs_go-mockery.url = "github:nixos/nixpkgs?rev=f3c61c8956ce4d55a499ea2d23e38fd73ff07caf";
     niks3 = {
       url = "github:Mic92/niks3";
       inputs = {
