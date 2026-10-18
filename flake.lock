@@ -567,17 +567,17 @@
     },
     "nixpkgs_go-mockery": {
       "locked": {
-        "lastModified": 1792011824,
-        "narHash": "sha256-D/JgfF6poB5iuXONAIP1EOe7gyvDDUyqXmQOQ/w74Ss=",
+        "lastModified": 1792288083,
+        "narHash": "sha256-BfksQJmHIXszbRGdbdBWSQlSSGO+x0pmLkhioiG4Wt4=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "4188bc73038d3717792f4989834d6dc41a561efc",
+        "rev": "157397eed01e01ef53d2fcd79977abdb132eb4a0",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "4188bc73038d3717792f4989834d6dc41a561efc",
+        "rev": "157397eed01e01ef53d2fcd79977abdb132eb4a0",
         "type": "github"
       }
     },
