@@ -167,6 +167,7 @@ in
         nmap
         ctx7
         smartmontools
+        ansifilter
       ]
       ++ (with pkgs.hunspellDicts; [
         fr-moderne
