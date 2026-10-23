@@ -47,7 +47,7 @@ let
     checkout = "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1"; # v7.0.1
     hestia = "Mic92/hestia@dfed9ced335d28978ba74e513939a10db1f71025"; # v3.1.0
     nothing-but-nix = "wimpysworld/nothing-but-nix@687c797a730352432950c707ab493fcc951818d7"; # v10
-    install-nix-action = "cachix/install-nix-action@448cde739abec1eaf0646249e3d25bb8d9bc7702"; # v31.11.2
+    install-nix-action = "cachix/install-nix-action@75c75c31ebece974e48ebc36b4ad125bd97bd97b"; # 31.11.3
   };
 
   # Reusable step definitions
