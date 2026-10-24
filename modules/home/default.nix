@@ -402,7 +402,7 @@ in
         # lastChangelogVersion = "0.79.4";
         # theme = "catppuccin-mocha";
         defaultProvider = "openai-codex";
-        defaultModel = "gpt-5.6-terra";
+        defaultModel = "gpt-6.1-terra";
         defaultThinkingLevel = "medium";
         packages = [
           "npm:@mjakl/pi-subagent"
