@@ -67,9 +67,6 @@ in
   # Host-specific configuration
   boot = {
     binfmt.emulatedSystems = [ "aarch64-linux" ];
-    initrd = {
-      systemd.enable = true;
-    };
     lanzaboote.pkiBundle = lib.mkForce "/var/lib/sbctl";
     plymouth.enable = true;
   };

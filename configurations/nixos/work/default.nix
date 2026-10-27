@@ -34,9 +34,6 @@ in
 
   # Host-specific configuration
   boot = {
-    initrd = {
-      systemd.enable = true;
-    };
     plymouth.enable = true;
   };
 
