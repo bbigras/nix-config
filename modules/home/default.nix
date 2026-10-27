@@ -408,7 +408,7 @@ in
           "npm:@mjakl/pi-subagent"
           "npm:@sting8k/pi-vcc"
           "npm:pi-direnv"
-          "npm:pi-rtk-optimizer"
+          # "npm:pi-rtk-optimizer"
           "npm:pi-web-kit"
         ];
       };
