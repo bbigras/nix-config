@@ -565,22 +565,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_go-mockery": {
-      "locked": {
-        "lastModified": 1793064736,
-        "narHash": "sha256-Rdv/PXB0FoCb5Yss1F1hpsnbOTpinib0io4mtYczD0E=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "3624aba25b1b1f45ba351f4b231368a1c9120929",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "3624aba25b1b1f45ba351f4b231368a1c9120929",
-        "type": "github"
-      }
-    },
     "nur": {
       "inputs": {
         "flake-parts": [
@@ -631,7 +615,6 @@
         "nixos-hardware": "nixos-hardware",
         "nixos-unified": "nixos-unified",
         "nixpkgs": "nixpkgs",
-        "nixpkgs_go-mockery": "nixpkgs_go-mockery",
         "nur": "nur",
         "space-tree": "space-tree",
         "systems": "systems",
