@@ -56,7 +56,6 @@ in
   boot = {
     initrd = {
       systemd = {
-        enable = true;
         services.rollback = {
           description = "Rollback BTRFS root and home subvolumes to a pristine state on boot";
           wantedBy = [ "initrd.target" ];
