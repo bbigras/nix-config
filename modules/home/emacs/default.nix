@@ -522,6 +522,21 @@ in
           ];
           config = ''
             (eglot-multi-preset-mode 1)
+            ;; Preset mode replaces Eglot's default workspace configuration, so
+            ;; nil otherwise receives null and repeatedly prompts to fetch flake inputs.
+            (defun my/eglot-workspace-configuration (server)
+              (let* ((config (eglot-multi-preset--workspace-configuration-function server))
+                     (nil-config '(:nix (:flake (:autoArchive t)))))
+                (cond
+                 ((and (consp (car-safe config))
+                       (not (or (assoc :nil config) (assoc 'nil config)
+                                (assoc "nil" config))))
+                  (append config (list (cons :nil nil-config))))
+                 ((and (not (consp (car-safe config)))
+                       (not (plist-member config :nil)))
+                  (append config (list :nil nil-config)))
+                 (t config))))
+            (setq-default eglot-workspace-configuration #'my/eglot-workspace-configuration)
           '';
         };
 
@@ -1696,8 +1711,6 @@ in
                                 :background (face-background 'region)
                                 :weight 'bold)
             (setq eglot-documentation-renderer 'markdown-ts-view-mode)
-            (setq-default eglot-workspace-configuration
-                          '(:nil (:nix (:flake (:autoArchive t)))))
           '';
         };
 
