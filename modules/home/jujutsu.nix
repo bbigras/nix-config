@@ -25,7 +25,10 @@
           name = "Bruno Bigras";
           email = "bigras.bruno@gmail.com";
         };
-        ui.revsets-use-glob-by-default = true;
+        ui = {
+          conflict-marker-style = "git";
+          revsets-use-glob-by-default = true;
+        };
       };
     };
   };
