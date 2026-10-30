@@ -1823,6 +1823,47 @@ in
           ];
         };
 
+        smerge-mode = {
+          enable = true;
+          init = ''
+            (defvar-local my/smerge-suspended-flycheck nil
+              "Whether smerge suspended Flycheck in this buffer.")
+
+            (defun my/smerge-suspend-flycheck ()
+              "Suspend Flycheck while smerge is active, including delayed starts."
+              (when (and (bound-and-true-p smerge-mode)
+                         (bound-and-true-p flycheck-mode))
+                (setq my/smerge-suspended-flycheck t)
+                (flycheck-mode -1)))
+
+            (defun my/smerge-manage-flycheck ()
+              "Suspend Flycheck during smerge and restore its previous state."
+              (if (bound-and-true-p smerge-mode)
+                  (my/smerge-suspend-flycheck)
+                (when my/smerge-suspended-flycheck
+                  (setq my/smerge-suspended-flycheck nil)
+                  (flycheck-mode 1))))
+
+            (defun my/smerge-maybe-enable ()
+              "Enable smerge when the buffer contains a Git-style conflict."
+              (save-excursion
+                (goto-char (point-min))
+                (when (and (re-search-forward "^<<<<<<< " nil t)
+                           (save-excursion
+                             (goto-char (match-beginning 0))
+                             (require 'smerge-mode)
+                             (condition-case nil
+                                 (progn (smerge-match-conflict) t)
+                               (error nil))))
+                  (smerge-mode 1))))
+
+            (add-hook 'smerge-mode-hook #'my/smerge-manage-flycheck)
+            (add-hook 'flycheck-mode-hook #'my/smerge-suspend-flycheck)
+            (add-hook 'find-file-hook #'my/smerge-maybe-enable)
+            (add-hook 'after-revert-hook #'my/smerge-maybe-enable)
+          '';
+        };
+
         flycheck = {
           enable = true;
           hook = [
