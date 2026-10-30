@@ -261,6 +261,16 @@ in
           custom = {
             "jinx-languages" = ''"fr_CA en_CA"'';
           };
+          config = ''
+            ;; Documentation comments can share a face with string docstrings.
+            (setf (alist-get 'prog-mode jinx-include-faces)
+                  '(font-lock-comment-face font-lock-doc-face))
+            (defun bbigras/jinx-skip-non-comments (pos)
+              "Skip text outside comments in programming modes at POS."
+              (and (derived-mode-p 'prog-mode)
+                   (not (nth 4 (save-excursion (syntax-ppss pos))))))
+            (add-hook 'jinx--predicates #'bbigras/jinx-skip-non-comments)
+          '';
         };
 
         p-search = {
