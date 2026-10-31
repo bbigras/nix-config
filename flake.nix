@@ -14,6 +14,12 @@
   };
 
   inputs = {
+    # Noctalia community plugins, pinned for both desktop and laptop.
+    noctalia-community-plugins = {
+      url = "github:noctalia-dev/community-plugins/3b3f98722139dd395751ed756610da7a5b11fb2d";
+      flake = false;
+    };
+
     # Core infrastructure
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
     niks3 = {

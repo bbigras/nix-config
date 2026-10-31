@@ -1,3 +1,4 @@
+{ flake, ... }:
 {
   programs.noctalia = {
     enable = true;
@@ -14,49 +15,59 @@
         builtin = "Catppuccin";
       };
 
-      bar = {
-        density = "compact";
-        position = "right";
-        showCapsule = false;
-        widgets = {
-          left = [
-            {
-              id = "ControlCenter";
-              useDistroLogo = true;
-            }
-            {
-              id = "Network";
-            }
-            {
-              id = "Bluetooth";
-            }
-          ];
-          center = [
-            {
-              hideUnoccupied = false;
-              id = "Workspace";
-              labelMode = "none";
-            }
-          ];
-          right = [
-            {
-              alwaysShowPercentage = false;
-              id = "Battery";
-              warningThreshold = 30;
-            }
-            {
-              formatHorizontal = "HH:mm";
-              formatVertical = "HH mm";
-              id = "Clock";
-              useMonospacedFont = true;
-              usePrimaryColor = true;
-            }
-          ];
-        };
+      bar.widgets = {
+        start = [ "launcher" "wallpaper" "workspaces" "spacer_2" "preview" ];
+        center = [
+          "summary"
+          "network_tx"
+          "network_rx"
+          "status"
+          "clock"
+          "privacy"
+          "bar_2"
+          "bar_3"
+          "widget_2"
+          "bar_4"
+          "weather"
+        ];
       };
-      location = {
-        # monthBeforeDay = true;
-        name = "Montreal, Qubec";
+
+      widget = {
+        bar_2.type = "rylos/tailnet:bar";
+        bar_3.type = "rylos/remmina:bar";
+        bar_4.type = "icefish/phone-connect:bar";
+        preview.type = "teagar/niri-workspace-preview:preview";
+        spacer_2.type = "spacer";
+        status.type = "pozzoo/hassio:status";
+        summary.type = "gustav0ar/drive-health:summary";
+        widget_2.type = "thepunkoff/pomodoro:widget";
+      };
+
+      plugins = {
+        enabled = [
+          "felipeartur/ai-usagebar"
+          "gustav0ar/drive-health"
+          "pozzoo/hassio"
+          "davemhammer/k8s-status"
+          "setyvii/niri-rules-studio"
+          "teagar/niri-workspace-preview"
+          "knyrps/nix-search"
+          "icefish/phone-connect"
+          "thepunkoff/pomodoro"
+          "rylos/remmina"
+          "whyoolw/sharednd"
+          "rylos/tailnet"
+          "dunarand/tmux-provider"
+          "nzlov/daily-wallpaper"
+        ];
+        source = [
+          {
+            name = "nix-community-plugins";
+            kind = "path";
+            location = "${flake.inputs.noctalia-community-plugins}";
+            enabled = true;
+          }
+        ];
       };
     };
   };
