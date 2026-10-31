@@ -656,6 +656,9 @@ in
           package = _epkgs: pkgs.emacs.pkgs.batppuccin-emacs;
           config = ''
             (load-theme 'batppuccin-mocha t)
+            ;; The theme's fake cursor color is too close to the background.
+            (custom-set-faces
+             '(mc/cursor-face ((t (:background "#f5e0dc" :foreground "#1e1e2e" :inverse-video nil)))))
           '';
         };
 
