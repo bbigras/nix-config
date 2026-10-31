@@ -1,4 +1,4 @@
-{ flake, ... }:
+{ flake, lib, config, ... }:
 {
   programs.noctalia = {
     enable = true;
@@ -7,6 +7,7 @@
       shell = {
         # font = "JetBrainsMono Nerd Font";
         settings_show_advanced = true;
+        telemetry_enabled = false;
       };
 
       theme = {
@@ -71,6 +72,12 @@
       };
     };
   };
+
+  # Skip the first-run wizard, which includes the telemetry prompt.
+  home.activation.noctaliaSetupComplete = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    run mkdir -p ${lib.escapeShellArg "${config.xdg.stateHome}/noctalia"}
+    run touch ${lib.escapeShellArg "${config.xdg.stateHome}/noctalia/.setup-complete"}
+  '';
 
   # from https://docs.noctalia.dev/noctalia/compositor-settings/niri/
   wayland.windowManager.niri = {
