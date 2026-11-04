@@ -86,6 +86,11 @@
           spawn-sh = "ghostty";
         };
 
+        "Mod+E" = {
+          _props.hotkey-overlay-title = "Open File Manager: Thunar";
+          spawn-sh = "thunar";
+        };
+
         # Core Noctalia binds
         "Mod+Space" = {
           spawn-sh = "noctalia msg panel-toggle launcher";
