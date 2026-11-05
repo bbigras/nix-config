@@ -383,7 +383,6 @@ in
       extraPackages = [
         pkgs.bun
         pkgs.nodejs
-        pkgs.opencode
         pkgs.python3
         pkgs.rtk
         pkgs.uv
