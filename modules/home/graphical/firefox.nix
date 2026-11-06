@@ -11,6 +11,41 @@
             pkgs.firefox;
       in
       ff.override { };
+
+    policies."3rdparty".Extensions."uBlock0@raymondhill.net" = {
+      userSettings = [
+        [ "advancedUserEnabled" "true" ]
+      ];
+
+      toOverwrite.filterLists = [
+        "user-filters"
+        "ublock-filters"
+        "ublock-badware"
+        "ublock-privacy"
+        "ublock-quick-fixes"
+        "ublock-unbreak"
+        "easylist"
+        "easyprivacy"
+        "adguard-spyware-url"
+        "urlhaus-1"
+        "plowe-0"
+        "fanboy-cookiemonster"
+        "ublock-cookies-easylist"
+        "fanboy-social"
+        "fanboy-ai-suggestions"
+        "easylist-chat"
+        "easylist-newsletters"
+        "easylist-notifications"
+        "easylist-annoyances"
+        "ublock-annoyances"
+        "FRA-0"
+      ];
+
+      toAdd.trustedSiteDirectives = [
+        "crm.democratik.org"
+        "www.greenmangaming.com"
+      ];
+    };
   };
 
   xdg.mimeApps.defaultApplications = {
