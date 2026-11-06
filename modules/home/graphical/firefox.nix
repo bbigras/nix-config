@@ -39,6 +39,8 @@
         "easylist-annoyances"
         "ublock-annoyances"
         "FRA-0"
+        "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/pro.mini.txt"
+        "https://raw.githubusercontent.com/yokoffing/filterlists/main/privacy_essentials.txt"
       ];
 
       toAdd.trustedSiteDirectives = [
