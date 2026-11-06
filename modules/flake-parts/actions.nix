@@ -46,7 +46,7 @@ let
     cachix = "cachix/cachix-action@38b082610b782e7e93e209c35fd730d399dee866"; # v17
     checkout = "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1"; # v7.0.1
     hestia = "Mic92/hestia@dfed9ced335d28978ba74e513939a10db1f71025"; # v3.1.0
-    nothing-but-nix = "wimpysworld/nothing-but-nix@687c797a730352432950c707ab493fcc951818d7"; # v10
+    nothing-but-nix = "wimpysworld/nothing-but-nix@59a79ef03bc486f0acca5480b7edf426ae7e7b0c"; # v11
     install-nix-action = "cachix/install-nix-action@75c75c31ebece974e48ebc36b4ad125bd97bd97b"; # 31.11.3
   };
 
