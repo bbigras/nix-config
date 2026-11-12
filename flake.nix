@@ -69,6 +69,7 @@
         nixpkgs.follows = "nixpkgs";
         pre-commit-hooks.follows = "git-hooks";
         treefmt-nix.follows = "treefmt-nix";
+        flake-compat.follows = "flake-compat";
       };
     };
 
