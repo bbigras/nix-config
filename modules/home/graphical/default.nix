@@ -11,6 +11,7 @@ in
 {
   imports = [
     self.homeModules.graphical-linux
+    flake.inputs.hermes-agent.homeManagerModules.default
   ];
   # ++ lib.optionals isLinux [ self.homeModules.graphical-linux ];
 
@@ -25,11 +26,14 @@ in
     ]
     ++ lib.optionals isLinux [
       xdg-utils
-    ]
-    ++ lib.optional (flake.inputs.hermes-agent.packages.${stdenv.hostPlatform.system} ? desktop)
-      flake.inputs.hermes-agent.packages.${stdenv.hostPlatform.system}.desktop;
+    ];
 
   programs = {
+    hermes-agent = lib.mkIf (flake.inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system} ? desktop) {
+      enable = true;
+      desktop.enable = true;
+    };
+
     ghostty = {
       enable = true;
       enableBashIntegration = true;
