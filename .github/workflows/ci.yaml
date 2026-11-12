@@ -17,7 +17,7 @@ jobs:
       with:
         fetch-depth: 0
         persist-credentials: false
-    - uses: cachix/install-nix-action@91f6a0f59e94dfb2cfed0f4000f36a68ead1d20c
+    - uses: cachix/install-nix-action@3dc140bfc76c49fbd4dd958429132e3746bcb086
     - uses: Mic92/hestia@dfed9ced335d28978ba74e513939a10db1f71025
       with:
         upstream-cache-filter: true
@@ -69,7 +69,7 @@ jobs:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
       with:
         persist-credentials: false
-    - uses: cachix/install-nix-action@91f6a0f59e94dfb2cfed0f4000f36a68ead1d20c
+    - uses: cachix/install-nix-action@3dc140bfc76c49fbd4dd958429132e3746bcb086
     - uses: Mic92/hestia@dfed9ced335d28978ba74e513939a10db1f71025
       with:
         upstream-cache-filter: true
