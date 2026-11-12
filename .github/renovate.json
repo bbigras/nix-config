@@ -44,6 +44,11 @@
   ],
   "packageRules": [
     {
+      "matchManagers": ["nix"],
+      "matchDepNames": ["/^temp_overlay_/"],
+      "enabled": false
+    },
+    {
       "matchManagers": [
         "custom.regex"
       ],
