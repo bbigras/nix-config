@@ -23,6 +23,7 @@
     # Core infrastructure
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
     nixpkgs_veilid.url = "github:nixos/nixpkgs?rev=a95a15da58e0fbe6625d57c087a653a9aa851025";
+    nixpkgs_convco.url = "github:nixos/nixpkgs?rev=00ce556c2402a8cd360c13bf51571ca9028d6047";
     niks3 = {
       url = "github:Mic92/niks3";
       inputs = {
