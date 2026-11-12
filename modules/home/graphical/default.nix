@@ -25,7 +25,9 @@ in
     ]
     ++ lib.optionals isLinux [
       xdg-utils
-    ];
+    ]
+    ++ lib.optional (flake.inputs.hermes-agent.packages.${stdenv.hostPlatform.system} ? desktop)
+      flake.inputs.hermes-agent.packages.${stdenv.hostPlatform.system}.desktop;
 
   programs = {
     ghostty = {

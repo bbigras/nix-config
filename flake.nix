@@ -149,6 +149,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hermes-agent = {
+      url = "github:NousResearch/hermes-agent/v0.23.1";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";

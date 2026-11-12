@@ -23,6 +23,15 @@
   "customManagers": [
     {
       "customType": "regex",
+      "managerFilePatterns": ["/(^|/)flake\\.nix$/"],
+      "matchStrings": ["github:NousResearch/hermes-agent/(?<currentValue>v[0-9]+\\.[0-9]+\\.[0-9]+)"],
+      "depNameTemplate": "NousResearch/hermes-agent",
+      "datasourceTemplate": "github-tags",
+      "versioningTemplate": "semver-coerced",
+      "extractVersionTemplate": "^(?<version>v[0-9]+\\.[0-9]+\\.[0-9]+)$"
+    },
+    {
+      "customType": "regex",
       "managerFilePatterns": [
         "/modules/flake-parts/actions\\.nix$/"
       ],
