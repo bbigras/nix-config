@@ -23,6 +23,7 @@ in
               {
                 inherit (super) emacs;
               };
+          veilid = final.callPackage "${inputs.nixpkgs_veilid}/pkgs/by-name/ve/veilid/package.nix" { };
         })
         (_self: super: {
           emacs.pkgs = super.emacs.pkgs // {
