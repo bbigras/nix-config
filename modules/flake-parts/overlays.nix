@@ -24,6 +24,7 @@ in
                 inherit (super) emacs;
               };
           veilid = final.callPackage "${inputs.nixpkgs_veilid}/pkgs/by-name/ve/veilid/package.nix" { };
+          convco = final.callPackage "${inputs.nixpkgs_convco}/pkgs/by-name/co/convco/package.nix" { };
         })
         (_self: super: {
           emacs.pkgs = super.emacs.pkgs // {

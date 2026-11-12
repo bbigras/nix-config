@@ -565,6 +565,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_convco": {
+      "locked": {
+        "lastModified": 1794213288,
+        "narHash": "sha256-Hu5crRKh03KeQkmxZEGLkJh/kscPghm5nT2u7F/EE6c=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "00ce556c2402a8cd360c13bf51571ca9028d6047",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "00ce556c2402a8cd360c13bf51571ca9028d6047",
+        "type": "github"
+      }
+    },
     "nixpkgs_veilid": {
       "locked": {
         "lastModified": 1794460277,
@@ -648,6 +664,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixos-unified": "nixos-unified",
         "nixpkgs": "nixpkgs",
+        "nixpkgs_convco": "nixpkgs_convco",
         "nixpkgs_veilid": "nixpkgs_veilid",
         "noctalia-community-plugins": "noctalia-community-plugins",
         "nur": "nur",
