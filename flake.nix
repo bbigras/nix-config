@@ -155,7 +155,6 @@
       inputs = {
         flake-parts.follows = "flake-parts";
         home-manager.follows = "home-manager";
-        nixpkgs.follows = "nixpkgs";
       };
     };
 
