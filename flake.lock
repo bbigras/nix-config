@@ -598,17 +598,17 @@
     "noctalia-community-plugins": {
       "flake": false,
       "locked": {
-        "lastModified": 1794848116,
-        "narHash": "sha256-HZSKN5ZxxZKyTzO5qbD+8FjawUJKuKo9UcHiB4rkx1M=",
+        "lastModified": 1794869494,
+        "narHash": "sha256-wMLXGYGKOYtk/Lr80S5mSnPx/B+C5aoSzPI1Jbe35uA=",
         "owner": "noctalia-dev",
         "repo": "community-plugins",
-        "rev": "29a0756b71f19a38ace074d195be3a14cd6700f6",
+        "rev": "6036d2d668d5b43c9f1121256935aa86fda1929b",
         "type": "github"
       },
       "original": {
         "owner": "noctalia-dev",
         "repo": "community-plugins",
-        "rev": "29a0756b71f19a38ace074d195be3a14cd6700f6",
+        "rev": "6036d2d668d5b43c9f1121256935aa86fda1929b",
         "type": "github"
       }
     },
