@@ -6,7 +6,8 @@
 jobs:
   regenerate:
     environment: renovate
-    if: github.actor == 'renovate[bot]' || github.event_name == 'workflow_dispatch'
+    if: (github.actor == 'renovate[bot]' && github.event.pull_request.head.repo.full_name
+      == github.repository) || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
@@ -25,16 +26,20 @@ jobs:
         authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
         extraPullNames: nix-community,noctalia,niri
         name: bbigras-nix-config
+    - if: github.event_name == 'pull_request' && startsWith(github.head_ref, 'renovate/nousresearch-hermes-agent-')
+      name: Update Hermes lock file
+      run: nix flake update hermes-agent
     - name: Regenerate workflows
       run: nix run .#render-workflows
-    - name: Amend commit with regenerated workflows
+    - name: Amend commit with generated files
       run: |-
         git config user.name "github[bot]"
         git config user.email "noreply@github.com"
-        git add .github/workflows/
+        git add flake.lock .github/workflows/
         git diff --staged --quiet || git commit --amend --no-edit
         git push --force-with-lease
-    - uses: peter-evans/enable-pull-request-automerge@a660677d5469627102a1c1e11409dd063606628d
+    - if: github.event_name == 'pull_request' && !startsWith(github.head_ref, 'renovate/nousresearch-hermes-agent-')
+      uses: peter-evans/enable-pull-request-automerge@a660677d5469627102a1c1e11409dd063606628d
       with:
         merge-method: rebase
         pull-request-number: ${{ github.event.pull_request.number }}
@@ -46,6 +51,7 @@ name: regenerate-workflows
     paths:
     - modules/flake-parts/actions.nix
     - flake.lock
+    - flake.nix
   workflow_dispatch: {}
 permissions:
   contents: write

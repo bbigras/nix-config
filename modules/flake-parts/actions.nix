@@ -152,6 +152,17 @@ in
         permissions = { };
 
         jobs = {
+          lock-consistency = {
+            steps = [
+              steps.checkout
+              steps.nixInstaller
+              {
+                name = "Check flake.lock matches flake.nix";
+                run = "nix flake metadata --no-update-lock-file > /dev/null";
+              }
+            ];
+          };
+
           # Flake check on all platforms
           flake-check = {
             name = "flake check (\${{ matrix.systems.platform }})";
@@ -191,6 +202,7 @@ in
             needs = [
               "flake-check"
               "build"
+              "lock-consistency"
             ];
             "if" = "always()";
             steps = [
@@ -241,6 +253,7 @@ in
           pull_request.paths = [
             "modules/flake-parts/actions.nix"
             "flake.lock"
+            "flake.nix"
           ];
           workflow_dispatch = { };
         };
@@ -254,7 +267,7 @@ in
           runs-on = "ubuntu-24.04";
           environment = "renovate";
           # Only run for Renovate PRs or manual dispatch
-          "if" = "github.actor == 'renovate[bot]' || github.event_name == 'workflow_dispatch'";
+          "if" = "(github.actor == 'renovate[bot]' && github.event.pull_request.head.repo.full_name == github.repository) || github.event_name == 'workflow_dispatch'";
           steps = [
             (
               steps.checkout
@@ -270,21 +283,27 @@ in
             steps.hestia
             steps.cachix
             {
+              name = "Update Hermes lock file";
+              "if" = "github.event_name == 'pull_request' && startsWith(github.head_ref, 'renovate/nousresearch-hermes-agent-')";
+              run = "nix flake update hermes-agent";
+            }
+            {
               name = "Regenerate workflows";
               run = "nix run .#render-workflows";
             }
             {
-              name = "Amend commit with regenerated workflows";
+              name = "Amend commit with generated files";
               run = ''
                 git config user.name "github[bot]"
                 git config user.email "noreply@github.com"
-                git add .github/workflows/
+                git add flake.lock .github/workflows/
                 git diff --staged --quiet || git commit --amend --no-edit
                 git push --force-with-lease
               '';
             }
             {
               uses = actions.automerge;
+              "if" = "github.event_name == 'pull_request' && !startsWith(github.head_ref, 'renovate/nousresearch-hermes-agent-')";
               "with" = {
                 token = "\${{ secrets.PAT }}";
                 pull-request-number = "\${{ github.event.pull_request.number }}";

@@ -54,6 +54,7 @@ jobs:
     needs:
     - flake-check
     - build
+    - lock-consistency
     runs-on: ubuntu-24.04
     steps:
     - uses: re-actors/alls-green@b5b5b37504aa4183270bd3d855c52a67f212be35
@@ -89,6 +90,16 @@ jobs:
         systems:
         - os: ubuntu-24.04
           platform: x86_64-linux
+    timeout-minutes: 60
+  lock-consistency:
+    runs-on: ubuntu-24.04
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      with:
+        persist-credentials: false
+    - uses: cachix/install-nix-action@3dc140bfc76c49fbd4dd958429132e3746bcb086
+    - name: Check flake.lock matches flake.nix
+      run: nix flake metadata --no-update-lock-file > /dev/null
     timeout-minutes: 60
 name: ci
 'on':
