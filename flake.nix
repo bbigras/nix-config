@@ -152,7 +152,7 @@
     };
 
     hermes-agent = {
-      url = "github:NousResearch/hermes-agent/v0.23.3";
+      url = "github:NousResearch/hermes-agent/v0.23.4";
       inputs = {
         flake-parts.follows = "flake-parts";
         home-manager.follows = "home-manager";
