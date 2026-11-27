@@ -16,7 +16,7 @@
   inputs = {
     # Noctalia community plugins, pinned for both desktop and laptop.
     noctalia-community-plugins = {
-      url = "github:noctalia-dev/community-plugins/b8e6bbbed56e41daa6d8440f3305858d09083bb3";
+      url = "github:noctalia-dev/community-plugins/e5948122fbd1e8e9858c077429af92c8fd61ea06";
       flake = false;
     };
 
